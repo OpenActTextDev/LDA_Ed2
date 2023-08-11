@@ -6,7 +6,7 @@
   <meta http-equiv="X-UA-Compatible" content="IE=edge" />
   <title>Chapter 8 Simulation and Resampling | Loss Data Analytics</title>
   <meta name="description" content="Chapter 8 Simulation and Resampling | Loss Data Analytics is an interactive, online, freely available text. - The online version will contain many interactive objects (quizzes, computer demonstrations, interactive graphs, video, and the like) to promote deeper learning. - A subset of the book will be available in pdf format for low-cost printing. - The online text will be available in multiple languages to promote access to a worldwide audience." />
-  <meta name="generator" content="bookdown 0.32 and GitBook 2.6.7" />
+  <meta name="generator" content="bookdown 0.27 and GitBook 2.6.7" />
 
   <meta property="og:title" content="Chapter 8 Simulation and Resampling | Loss Data Analytics" />
   <meta property="og:type" content="book" />
@@ -515,7 +515,7 @@ code span.al { color: #ff0000; font-weight: bold; } /* Alert */
 code span.an { color: #60a0b0; font-weight: bold; font-style: italic; } /* Annotation */
 code span.at { color: #7d9029; } /* Attribute */
 code span.bn { color: #40a070; } /* BaseN */
-code span.bu { color: #008000; } /* BuiltIn */
+code span.bu { } /* BuiltIn */
 code span.cf { color: #007020; font-weight: bold; } /* ControlFlow */
 code span.ch { color: #4070a0; } /* Char */
 code span.cn { color: #880000; } /* Constant */
@@ -528,7 +528,7 @@ code span.er { color: #ff0000; font-weight: bold; } /* Error */
 code span.ex { } /* Extension */
 code span.fl { color: #40a070; } /* Float */
 code span.fu { color: #06287e; } /* Function */
-code span.im { color: #008000; font-weight: bold; } /* Import */
+code span.im { } /* Import */
 code span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Information */
 code span.kw { color: #007020; font-weight: bold; } /* Keyword */
 code span.op { color: #666666; } /* Operator */
@@ -844,7 +844,8 @@ div.csl-indent {
 <li class="chapter" data-level="9.4.3" data-path="ChBayes.html"><a href="ChBayes.html#the-metropolishastings-algorithm"><i class="fa fa-check"></i><b>9.4.3</b> The Metropolis–Hastings Algorithm</a></li>
 <li class="chapter" data-level="9.4.4" data-path="ChBayes.html"><a href="ChBayes.html#ChBayes:SubsecDiag"><i class="fa fa-check"></i><b>9.4.4</b> Markov Chain Diagnostics</a></li>
 </ul></li>
-<li class="chapter" data-level="9.5" data-path="ChBayes.html"><a href="ChBayes.html#ChBayes:SecFurther"><i class="fa fa-check"></i><b>9.5</b> Further Resources and Contributors</a>
+<li class="chapter" data-level="9.5" data-path="ChBayes.html"><a href="ChBayes.html#ChBayes:SecPractice"><i class="fa fa-check"></i><b>9.5</b> Bayesian Inference in Practice</a></li>
+<li class="chapter" data-level="9.6" data-path="ChBayes.html"><a href="ChBayes.html#ChBayes:SecFurther"><i class="fa fa-check"></i><b>9.6</b> Further Resources and Contributors</a>
 <ul>
 <li class="chapter" data-level="" data-path="ChBayes.html"><a href="ChBayes.html#contributors-8"><i class="fa fa-check"></i>Contributors</a></li>
 </ul></li>
@@ -910,32 +911,33 @@ div.csl-indent {
 <li class="chapter" data-level="12" data-path="ChapCredibility.html"><a href="ChapCredibility.html"><i class="fa fa-check"></i><b>12</b> Experience Rating Using Credibility Theory</a>
 <ul>
 <li class="chapter" data-level="12.1" data-path="ChapCredibility.html"><a href="ChapCredibility.html#introduction-to-applications-of-credibility-theory"><i class="fa fa-check"></i><b>12.1</b> Introduction to Applications of Credibility Theory</a></li>
-<li class="chapter" data-level="12.2" data-path="ChapCredibility.html"><a href="ChapCredibility.html#limited-fluctuation-credibility"><i class="fa fa-check"></i><b>12.2</b> Limited Fluctuation Credibility</a>
+<li class="chapter" data-level="12.2" data-path="ChapCredibility.html"><a href="ChapCredibility.html#S:Cred:Buhlmann"><i class="fa fa-check"></i><b>12.2</b> Bühlmann Credibility</a>
 <ul>
-<li class="chapter" data-level="12.2.1" data-path="ChapCredibility.html"><a href="ChapCredibility.html#S:frequency"><i class="fa fa-check"></i><b>12.2.1</b> Full Credibility for Claim Frequency</a></li>
-<li class="chapter" data-level="12.2.2" data-path="ChapCredibility.html"><a href="ChapCredibility.html#full-credibility-for-aggregate-losses-and-pure-premium"><i class="fa fa-check"></i><b>12.2.2</b> Full Credibility for Aggregate Losses and Pure Premium</a></li>
-<li class="chapter" data-level="12.2.3" data-path="ChapCredibility.html"><a href="ChapCredibility.html#full-credibility-for-severity"><i class="fa fa-check"></i><b>12.2.3</b> Full Credibility for Severity</a></li>
-<li class="chapter" data-level="12.2.4" data-path="ChapCredibility.html"><a href="ChapCredibility.html#partial-credibility"><i class="fa fa-check"></i><b>12.2.4</b> Partial Credibility</a></li>
+<li class="chapter" data-level="12.2.1" data-path="ChapCredibility.html"><a href="ChapCredibility.html#S:Cred-Weight"><i class="fa fa-check"></i><b>12.2.1</b> Credibility-Weighted Estimate for the Expected Loss</a></li>
+<li class="chapter" data-level="12.2.2" data-path="ChapCredibility.html"><a href="ChapCredibility.html#S:EPV-VHM-Z"><i class="fa fa-check"></i><b>12.2.2</b> Credibility <em>Z</em>, <em>EPV</em>, and <em>VHM</em></a></li>
 </ul></li>
-<li class="chapter" data-level="12.3" data-path="ChapCredibility.html"><a href="ChapCredibility.html#S:Cred:Buhlmann"><i class="fa fa-check"></i><b>12.3</b> Bühlmann Credibility</a>
+<li class="chapter" data-level="12.3" data-path="ChapCredibility.html"><a href="ChapCredibility.html#S:Cred:BayesInf"><i class="fa fa-check"></i><b>12.3</b> Bayesian Inference and Bühlmann Credibility</a>
 <ul>
-<li class="chapter" data-level="12.3.1" data-path="ChapCredibility.html"><a href="ChapCredibility.html#S:EPV-VHM-Z"><i class="fa fa-check"></i><b>12.3.1</b> Credibility <em>Z</em>, <em>EPV</em>, and <em>VHM</em></a></li>
+<li class="chapter" data-level="12.3.1" data-path="ChapCredibility.html"><a href="ChapCredibility.html#beta-binomial-model"><i class="fa fa-check"></i><b>12.3.1</b> Beta-Binomial Model</a></li>
+<li class="chapter" data-level="12.3.2" data-path="ChapCredibility.html"><a href="ChapCredibility.html#Sec:Cred:gammaPoisson"><i class="fa fa-check"></i><b>12.3.2</b> Gamma-Poisson Model</a></li>
+<li class="chapter" data-level="12.3.3" data-path="ChapCredibility.html"><a href="ChapCredibility.html#exact-credibility"><i class="fa fa-check"></i><b>12.3.3</b> Exact Credibility</a></li>
 </ul></li>
 <li class="chapter" data-level="12.4" data-path="ChapCredibility.html"><a href="ChapCredibility.html#bühlmann-straub-credibility"><i class="fa fa-check"></i><b>12.4</b> Bühlmann-Straub Credibility</a></li>
-<li class="chapter" data-level="12.5" data-path="ChapCredibility.html"><a href="ChapCredibility.html#S:Cred:BayesInf"><i class="fa fa-check"></i><b>12.5</b> Bayesian Inference and Bühlmann Credibility</a>
+<li class="chapter" data-level="12.5" data-path="ChapCredibility.html"><a href="ChapCredibility.html#S:EstimateCred"><i class="fa fa-check"></i><b>12.5</b> Estimating Credibility Parameters</a>
 <ul>
-<li class="chapter" data-level="12.5.1" data-path="ChapCredibility.html"><a href="ChapCredibility.html#Sec:Cred:gammaPoisson"><i class="fa fa-check"></i><b>12.5.1</b> Gamma-Poisson Model</a></li>
-<li class="chapter" data-level="12.5.2" data-path="ChapCredibility.html"><a href="ChapCredibility.html#beta-binomial-model"><i class="fa fa-check"></i><b>12.5.2</b> Beta-Binomial Model</a></li>
-<li class="chapter" data-level="12.5.3" data-path="ChapCredibility.html"><a href="ChapCredibility.html#exact-credibility"><i class="fa fa-check"></i><b>12.5.3</b> Exact Credibility</a></li>
+<li class="chapter" data-level="12.5.1" data-path="ChapCredibility.html"><a href="ChapCredibility.html#nonparametric-estimation-for-bühlmann-and-bühlmann-straub-models"><i class="fa fa-check"></i><b>12.5.1</b> Nonparametric Estimation for Bühlmann and Bühlmann-Straub Models</a></li>
+<li class="chapter" data-level="12.5.2" data-path="ChapCredibility.html"><a href="ChapCredibility.html#semiparametric-estimation-for-bühlmann-and-bühlmann-straub-models"><i class="fa fa-check"></i><b>12.5.2</b> Semiparametric Estimation for Bühlmann and Bühlmann-Straub Models</a></li>
 </ul></li>
-<li class="chapter" data-level="12.6" data-path="ChapCredibility.html"><a href="ChapCredibility.html#estimating-credibility-parameters"><i class="fa fa-check"></i><b>12.6</b> Estimating Credibility Parameters</a>
+<li class="chapter" data-level="12.6" data-path="ChapCredibility.html"><a href="ChapCredibility.html#limited-fluctuation-credibility"><i class="fa fa-check"></i><b>12.6</b> Limited Fluctuation Credibility</a>
 <ul>
-<li class="chapter" data-level="12.6.1" data-path="ChapCredibility.html"><a href="ChapCredibility.html#full-credibility-standard-for-limited-fluctuation-credibility"><i class="fa fa-check"></i><b>12.6.1</b> Full Credibility Standard for Limited Fluctuation Credibility</a></li>
-<li class="chapter" data-level="12.6.2" data-path="ChapCredibility.html"><a href="ChapCredibility.html#nonparametric-estimation-for-bühlmann-and-bühlmann-straub-models"><i class="fa fa-check"></i><b>12.6.2</b> Nonparametric Estimation for Bühlmann and Bühlmann-Straub Models</a></li>
-<li class="chapter" data-level="12.6.3" data-path="ChapCredibility.html"><a href="ChapCredibility.html#semiparametric-estimation-for-bühlmann-and-bühlmann-straub-models"><i class="fa fa-check"></i><b>12.6.3</b> Semiparametric Estimation for Bühlmann and Bühlmann-Straub Models</a></li>
-<li class="chapter" data-level="12.6.4" data-path="ChapCredibility.html"><a href="ChapCredibility.html#balancing-credibility-estimators"><i class="fa fa-check"></i><b>12.6.4</b> Balancing Credibility Estimators</a></li>
+<li class="chapter" data-level="12.6.1" data-path="ChapCredibility.html"><a href="ChapCredibility.html#S:frequency"><i class="fa fa-check"></i><b>12.6.1</b> Full Credibility for Claim Frequency</a></li>
+<li class="chapter" data-level="12.6.2" data-path="ChapCredibility.html"><a href="ChapCredibility.html#full-credibility-for-aggregate-losses-and-pure-premium"><i class="fa fa-check"></i><b>12.6.2</b> Full Credibility for Aggregate Losses and Pure Premium</a></li>
+<li class="chapter" data-level="12.6.3" data-path="ChapCredibility.html"><a href="ChapCredibility.html#full-credibility-for-severity"><i class="fa fa-check"></i><b>12.6.3</b> Full Credibility for Severity</a></li>
+<li class="chapter" data-level="12.6.4" data-path="ChapCredibility.html"><a href="ChapCredibility.html#partial-credibility"><i class="fa fa-check"></i><b>12.6.4</b> Partial Credibility</a></li>
+<li class="chapter" data-level="12.6.5" data-path="ChapCredibility.html"><a href="ChapCredibility.html#full-credibility-standard-for-limited-fluctuation-credibility"><i class="fa fa-check"></i><b>12.6.5</b> Full Credibility Standard for Limited Fluctuation Credibility</a></li>
 </ul></li>
-<li class="chapter" data-level="12.7" data-path="ChapCredibility.html"><a href="ChapCredibility.html#Cred-further-reading-and-resources"><i class="fa fa-check"></i><b>12.7</b> Further Resources and Contributors</a></li>
+<li class="chapter" data-level="12.7" data-path="ChapCredibility.html"><a href="ChapCredibility.html#balancing-credibility-estimators"><i class="fa fa-check"></i><b>12.7</b> Balancing Credibility Estimators</a></li>
+<li class="chapter" data-level="12.8" data-path="ChapCredibility.html"><a href="ChapCredibility.html#Cred-further-reading-and-resources"><i class="fa fa-check"></i><b>12.8</b> Further Resources and Contributors</a></li>
 </ul></li>
 <li class="chapter" data-level="13" data-path="ChapPortMgt.html"><a href="ChapPortMgt.html"><i class="fa fa-check"></i><b>13</b> Insurance Portfolio Management including Reinsurance</a>
 <ul>
@@ -1316,7 +1318,7 @@ parameter <span class="math inline">\(\theta\)</span> so that <span class="math 
 inverse transform, we can use the following steps:
 <span class="math display">\[
 \begin{aligned}
-y = F(x) &amp;\Leftrightarrow  y = 1-e^{-x/\theta} \\
+ y = F(x) &amp;\Leftrightarrow  y = 1-e^{-x/\theta} \\
   &amp;\Leftrightarrow -\theta \ln(1-y) = x = F^{-1}(y) .
 \end{aligned}
 \]</span></p>
@@ -1386,7 +1388,7 @@ Suppose that we would like to generate observations from a Pareto distribution w
 the inverse transform, we can use the following steps:</p>
 <p><span class="math display">\[
 \begin{aligned}
-y = F(x) &amp;\Leftrightarrow 1-y = \left(\frac{\theta}{x+\theta} \right)^{\alpha} \\
+ y = F(x) &amp;\Leftrightarrow 1-y = \left(\frac{\theta}{x+\theta} \right)^{\alpha} \\
   &amp;\Leftrightarrow \left(1-y\right)^{-1/\alpha} = \frac{x+\theta}{\theta} = \frac{x}{\theta} +1 \\
     &amp;\Leftrightarrow \theta \left((1-y)^{-1/\alpha} - 1\right) = x = F^{-1}(y) .\end{aligned}
 \]</span></p>
@@ -1402,7 +1404,7 @@ y = F(x) &amp;\Leftrightarrow 1-y = \left(\frac{\theta}{x+\theta} \right)^{\alph
 <p><span class="math display">\[
 \begin{aligned}
 \Pr(X \le x) &amp;= \Pr(F^{-1}(U) \le x) \\
-&amp;= \Pr(F(F^{-1}(U)) \le F(x)) \\
+ &amp;= \Pr(F(F^{-1}(U)) \le F(x)) \\
 &amp;= \Pr(U \le F(x)) = F(x)
 \end{aligned}
 \]</span></p>
@@ -1598,7 +1600,7 @@ random outcomes:</p>
 \begin{aligned}
 X = \left\{ \begin{array}{cc}
   \textrm{whole life} &amp;   0&lt;U  \leq 0.1  \\
-\textrm{endowment} &amp;  0.1 &lt; U  \leq  0.3\\
+ \textrm{endowment} &amp;  0.1 &lt; U  \leq  0.3\\
 \textrm{term life} &amp;  0.3 &lt; U  \leq  0.4\\
   \textrm{universal life} &amp;  0.4 &lt; U  \leq  0.8  \\
   \textrm{variable life} &amp;  0.8 &lt; U  \leq  1.0 .
@@ -1612,7 +1614,7 @@ X = \left\{ \begin{array}{cc}
 \begin{aligned}
 X = \left\{ \begin{array}{cc}
   \textrm{whole life} &amp;   0.9&lt;U&lt;1.0  \\
-\textrm{endowment} &amp;  0.7 \leq U &lt; 0.9\\
+ \textrm{endowment} &amp;  0.7 \leq U &lt; 0.9\\
 \textrm{term life} &amp;  0.6 \leq U &lt; 0.7\\
   \textrm{universal life} &amp;  0.2 \leq U &lt; 0.6  \\
   \textrm{variable life} &amp;  0 \leq U &lt; 0.2 .
@@ -2384,7 +2386,7 @@ Figure 8.10: <strong>Comparision of Estimates.</strong> True value of the parame
 <h3><span class="header-section-number">8.2.3</span> Confidence Intervals<a href="ChapSimulation.html#confidence-intervals" class="anchor-section" aria-label="Anchor link to header"></a></h3>
 <p>The bootstrap procedure generates <em>B</em> replicates <span class="math inline">\(\hat{\theta}_1^*, \ldots,\hat{\theta}_B^*\)</span> of the estimator <span class="math inline">\(\hat{\theta}\)</span>. In <em>Example 7.2.1,</em> we saw how to use standard normal approximations to create a confidence interval for parameters of interest. However, given that a major point is to use bootstrapping to avoid relying on assumptions of approximate normality, it is not surprising that there are alternative confidence intervals available.</p>
 <p>For an estimator <span class="math inline">\(\hat{\theta}\)</span>, the <em>basic</em> bootstrap confidence interval is</p>
-<p><span class="math display" id="eq:basicBootCI">\[\begin{equation}
+<p><span class="math display" id="eq:basicBootCI">\[\begin{equation} 
   \left(2 \hat{\theta} - q_U, 2 \hat{\theta} - q_L \right) ,
 \tag{8.2}
 \end{equation}\]</span></p>
@@ -3084,7 +3086,7 @@ NaN
 </ul>
 <hr />
 <!-- ## Cross-Validation -->
-<p>Cross-validation, briefly introduced in Section <a href="ChapModelSelection.html#S:MS:Cross-Validation">6.6</a>, is a technique based on simulated outcomes. We now compare and contrast cross-validation to other simulation techniques already introduced in this chapter.”</p>
+<p>Cross-validation, briefly introduced in Section <a href="ChapModelSelection.html#S:MS:Cross-Validation">6.6</a>, is a technique based on simulated outcomes. We now compare and contrast cross-validation to other simulation techniques already introduced in this chapter."</p>
 <ul>
 <li>Simulation, or Monte-Carlo, introduced in Section <a href="ChapSimulation.html#S:SimulationFundamentals">8.1</a>, allows us to compute expected values and other summaries of statistical distributions, such as <span class="math inline">\(p\)</span>-values, readily.</li>
 <li>Bootstrap, and other resampling methods introduced in Section <a href="ChapSimulation.html#S:Bootstrap">8.2</a>, provides estimators of the precision, or variability, of statistics.</li>
@@ -3657,7 +3659,7 @@ gitbook.start({
     var script = document.createElement("script");
     script.type = "text/javascript";
     var src = "true";
-    if (src === "" || src === "true") src = "https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.9/latest.js?config=TeX-MML-AM_CHTML";
+    if (src === "" || src === "true") src = "https://mathjax.rstudio.com/latest/MathJax.js?config=TeX-MML-AM_CHTML";
     if (location.protocol !== "file:")
       if (/^https?:/.test(src))
         src = src.replace(/^https?:/, '');

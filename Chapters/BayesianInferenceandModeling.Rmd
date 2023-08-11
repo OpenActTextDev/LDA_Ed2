@@ -1,9 +1,9 @@
 
 # Bayesian Inference and Modeling {#ChBayes}
 
-*Chapter Preview.* Up to this point in the book, we have focused almost exclusively on the frequentist approach to estimate our various loss distribution parameters. In this chapter, we switch gears and discuss a different paradigm: Bayesianism. These approaches are different as Bayesian and frequentist statisticians disagree on the source of the uncertainty: Bayesian statistics assumes that the observed data sample is fixed and that model parameters are random, whereas frequentism considers the opposite (i.e., a random sample but fixed---yet unknown---model parameters). 
+*Chapter Preview.* Up to this point in the book, we have focused almost exclusively on the `r Gloss('frequentist')` approach to estimate our various loss distribution parameters. In this chapter, we switch gears and discuss a different paradigm: Bayesianism. These approaches are different as `r Gloss('Bayesian')` and frequentist statisticians disagree on the source of the uncertainty: Bayesian statistics assumes that the observed data sample is fixed and that model parameters are random, whereas frequentism considers the opposite (i.e., a random sample but fixed---yet unknown---model parameters). 
 
-In this chapter, we introduce Bayesian inference and modeling with a particular focus on loss data analytics. We begin in Section \@ref(ChBayes:SecIntro) by explaining the basics of Bayesian statistics: we compare it to frequentism and provide some historical context for the paradigm. We also introduce the seminal Bayes' rule that serves as a key component in Bayesian statistics. Then, building on this, we present the main ingredients of Bayesian inference in Section \@ref(ChBayes:SecBuildingBlocks): the posterior distribution, the likelihood function, and the prior distribution. Section \@ref(ChBayes:SecConjugate) provides some examples of simple cases where the prior distribution is chosen for algebraic convenience, giving rise to a closed-form expression for the posterior; these are called conjugate families in the literature. Finally, the last section of this chapter, Section \@ref(ChBayes:SecPosterior), is dedicated to cases where we cannot get closed-form expressions and for which numerical integration is needed. Specifically, we discuss two influential Markov chain Monte Carlo samplers: the Gibbs sampler and the Metropolis--Hastings algorithm. We also discuss how to interpret the chains obtained by these methods (i.e., Markov chain diagnostics).
+In this chapter, we introduce Bayesian inference and modeling with a particular focus on loss data analytics. We begin in Section \@ref(ChBayes:SecIntro) by explaining the basics of Bayesian statistics: we compare it to frequentism and provide some historical context for the paradigm. We also introduce the seminal Bayes' rule that serves as a key component in Bayesian statistics. Then, building on this, we present the main ingredients of Bayesian inference in Section \@ref(ChBayes:SecBuildingBlocks): the posterior distribution, the likelihood function, and the prior distribution. Section \@ref(ChBayes:SecConjugate) provides some examples of simple cases where the prior distribution is chosen for algebraic convenience, giving rise to a closed-form expression for the posterior; these are called conjugate families in the literature. Section \@ref(ChBayes:SecPosterior) is dedicated to cases where we cannot get closed-form expressions and for which numerical integration is needed. Specifically, we discuss two influential Markov chain Monte Carlo samplers: the Gibbs sampler and the Metropolis--Hastings algorithm. We also discuss how to interpret the chains obtained by these methods (i.e., Markov chain diagnostics). Finally, the last section of this chapter, Section \@ref(ChBayes:SecPractice), explains the main computing resources available and gives an illustration in the context of loss data.
 
 ## A Gentle Introduction to Bayesian Statistics {#ChBayes:SecIntro}
 
@@ -24,9 +24,9 @@ Classic frequentist statistics rely on frequentist probability---an interpretati
 
 ***
 
-**Example 8.1.1. Coin Toss.** Considering the simple case of coin tossing, if we flip a fair coin many times, we expect to see heads about 50\% of the time. If we flip the coin only a few times, however, we could see a different distribution just by chance. Indeed, there is a non-zero probability of observing all heads if the sample is small enough. Figure \@ref(fig:ChBayesHistogram) illustrates this very fact by showing the number of heads observed in 100 samples of five iid tosses; in this specific example, we observe six samples for which all tosses are heads.[^ChBayesFt1]
+**Example 9.1.1. Coin Toss.** Considering the simple case of coin tossing, if we flip a fair coin many times, we expect to see heads about 50\% of the time. If we flip the coin only a few times, however, we could see a different distribution just by chance. Indeed, there is a non-zero probability of observing all heads (and this even if the sample is very large). Figure \@ref(fig:ChBayesHistogram) illustrates this very fact by showing the number of heads observed in 100 samples of five iid tosses; in this specific example, we observe six samples for which all tosses are heads.[^ChBayesFt1]
 
-[^ChBayesFt1]: Each coin toss can be seen as a Bernoulli random variable, meaning that their sum is a binomial with parameters $q=0.5$ and $m=5$. See <span style="color:red">Chapter 19.1</span> for more details.
+[^ChBayesFt1]: Each coin toss can be seen as a Bernoulli random variable, meaning that their sum is a binomial with parameters $q=0.5$ and $m=5$. See Chapter \@ref(S:DiscreteDistributions) for more details.
 
 (ref:ChBayesHistogram) **Frequency histogram of the number of heads in a sample of five data points**
 
@@ -72,13 +72,13 @@ ggplot(datanbtotheads, aes(x=index, y=value)) +
 
 ***
 
-Bayesians see things differently: they interpret probabilities as degrees of certainty about some quantity of interest. To find such probabilities, they draw on prior knowledge about those quantities, expressing one's beliefs before some data are taken into account. Then, as data are collected, knowledge about the world is updated, allowing us to incorporate such new information is a consistent manner; the resulting quantity is referred to as the posterior, which summarizes the information in both the prior and the data.
+Bayesians see things differently: they interpret probabilities as degrees of certainty about some quantity of interest. To find such probabilities, they draw on prior knowledge about those quantities, expressing one's beliefs before some data are taken into account. Then, as data are collected, knowledge about the world is updated, allowing us to incorporate such new information in a consistent manner; the resulting distribution is referred to as the posterior, which summarizes the information in both the prior and the data.
 
-In the context of Bayesian inference and modeling, this interpretation of probability implies that model parameters are assumed to be random variables---unlike the frequentist approach that considers them fixed. Starting from the prior distribution, the data---summarized via the likelihood function---are used to update the prior distribution and create a posterior distribution of the parameters (see Section \@ref(ChBayes:SecBuildingBlocks) for more details on the posterior distribution, the likelihood function, and the prior distribution). The influence of the prior distribution on the posterior distribution becomes weaker as the size of the observed data sample increases: the prior information is less and less relevant as new information comes in.
+In the context of Bayesian inference and modeling, this interpretation of probability implies that model parameters are assumed to be random variables---unlike the frequentist approach that considers them fixed. Starting from the prior distribution, the data---summarized via the likelihood function---are used to update the prior distribution and create a posterior distribution of the parameters (see Section \@ref(ChBayes:SecBuildingBlocks) for more details on the `r Gloss('posterior distribution')`, the `r Gloss('likelihood function')`, and the `r Gloss('prior distribution')`). The influence of the prior distribution on the posterior distribution becomes weaker as the size of the observed data sample increases: the prior information is less and less relevant as new information comes in.
 
 ***
 
-**Example 8.1.1. Coin Toss, continued.** We now reconsider the coin tossing experiment above through a Bayesian lens. Let us first assume that we have a (potentially unfair) coin, and we wish to understand the probability of obtaining heads, denoted by $q$ in this example. Consistent with the Bayesian paradigm, this parameter is random; let us assume that the random variable associated with the probability of observing heads denoted by $Q$. For simplicity, we assume that we do not have prior information on the specific coin under investigation.[^ChBayesFt2] Assuming again that our sample contains only five iid tosses, we know that the probability of observing $x$ heads is given by the binomial distribution with $m=5$ such that
+**Example 9.1.1. Coin Toss, continued.** We now reconsider the coin tossing experiment above through a Bayesian lens. Let us first assume that we have a (potentially unfair) coin, and we wish to understand the probability of obtaining heads, denoted by $q$ in this example. Consistent with the Bayesian paradigm, this parameter is random; let us assume that the random variable associated with the probability of observing heads denoted by $Q$. For simplicity, we assume that we do not have prior information on the specific coin under investigation.[^ChBayesFt2] Assuming again that our sample contains only five iid tosses, we know that the probability of observing $x$ heads is given by the binomial distribution with $m=5$ such that
 
 $$
 p_{X|Q=q}(x) = \mathrm{Pr}(X = x \, | \, Q = q) = \binom{5}{x} q^x (1-q)^{5-x}, \quad x \in \{0,1,...,5\},
@@ -108,7 +108,7 @@ where $\propto$ means proportional to (note that obtaining this equation require
 
 [^ChBayesFt3]: This is also an application of the beta--binomial conjugate family that will be explained in Section \@ref(ChBayes:SubsecBetaBin)
 
-(ref:ChBayesBayesianToss) **Posterior probability density function of the parameter $q$ for a sample of five data points**
+(ref:ChBayesBayesianToss) **Posterior probability density function of parameter $q$ for a sample of five data points**
 
 ```{r ChBayesBayesianToss, echo = FALSE, fig.cap='(ref:ChBayesBayesianToss)', out.width = '80%', fig.asp = 0.75, fig.align = 'center'}
 xs <- seq(from = 0, to = 1, by = 0.001)
@@ -126,27 +126,6 @@ Figure \@ref(fig:ChBayesBayesianTossAnimation) reports the analog of Figure \@re
 (ref:ChBayesBayesianTossAnimation) **Posterior probability density function of parameter $q$ as a function of the sample size**
 
 ```{r echo = FALSE, eval = FALSE}
-
-set.seed(1)
-nbheads <- c()
-for (i in 1:100) {
-  num_flips <- 5
-  coin <- c('heads', 'tails')
-  flips <- sample(coin, size = 5, replace = TRUE)
-  nbheads[i] <- sum(flips=="heads")
-}
-datanbheads <- data.frame(value=nbheads)
-
-set.seed(1)
-nbtotheads <- c(0)
-for (i in 2:1001) {
-  flip <- sample(coin, size = 1)
-  nbtotheads[i] = nbtotheads[i-1] + (flip == "heads")
-}
-nbtotheads <- nbtotheads[2:1001]
-relfreq <- nbtotheads/seq(from=1,to=1000)
-datanbtotheads <- data.frame(index=seq(from=1,to=1000),value=relfreq)
-
 xs <- seq(from = 0, to = 1, by = 0.001)
 allposterior <- c()
 allxs <- c()
@@ -168,29 +147,31 @@ animp <- ggplot(dataallposterior, aes(x=x, y=y)) +
 save(animp, file= "../IntermediateCalcs/BayesChap/Example811Animate.Rdata")
 ```
 
-```{r ChBayesBayesianTossAnimation, fig.cap='(ref:ChBayesBayesianTossAnimation)', out.width = '80%', fig.asp = 0.75, eval = ANIMATION, echo=SHOW_PDF}
+```{r ChBayesBayesianTossAnimation, echo = FALSE, fig.cap='(ref:ChBayesBayesianTossAnimation)', out.width = '80%', fig.asp = 0.75, fig.align = 'center'}
 load(file= "IntermediateCalcs/BayesChap/Example811Animate.Rdata")
-# load(file= "../IntermediateCalcs/BayesChap/Example811Animate.Rdata")
-animate(animp, fps=5,nframes=200)
-
+animate(animp, fps=5, nframes=200)
 ```
 
 ***
 
-**But why be Bayesian?** There are indeed several advantages to the Bayesian approach. First, this approach allows us to describe the entire distribution of parameters conditional on the data. This allows us, for example, to provide probability statements regarding the parameters that could be interpreted as such. Second, it provides a unified approach for estimating parameters. Some non-Bayesian methods, such as least squares, require a separate approach to estimate variance components. In contrast, in Bayesian methods, all parameters can be treated in a similar fashion. Third, it allows experimenters to blend prior information from other sources with the data in a coherent manner.[^ChBayesFt4]
+**But why be Bayesian?** There are indeed several advantages to the Bayesian approach. First, this approach allows us to describe the entire distribution of parameters conditional on the data and to provide probability statements regarding the parameters that could be interpreted as such. Second, it provides a unified approach for estimating parameters. Some non-Bayesian methods, such as `r Gloss('least squares')`, require a separate approach to estimate variance components. In contrast, in Bayesian methods, all parameters can be treated in a similar fashion. Third, it allows experimenters to blend prior information from other sources with the data in a coherent manner.[^ChBayesFt4]
 
-[^ChBayesFt4]: There is also a rich history blending prior information with data in loss modeling and in actuarial science, generally speaking; it is known as credibility. For more details on experience rating using credibility theory, see <span style="color:red">Chapter 11</span>.
+[^ChBayesFt4]: There is also a rich history blending prior information with data in loss modeling and in actuarial science, generally speaking; it is known as credibility. For more details on experience rating using credibility theory, see Chapter \@ref(ChapCredibility).
+
+**Are there any disadvantages to being Bayesian?** Well, of course: while the Bayesian approach has many advantages, it is not without its disadvantages. First, it tends to be very computationally demanding (i.e., Bayesian methods often require complex computations, especially when dealing with high-dimensional problems or large datasets). For instance, complex models may not have closed-form solutions and require specialized computational techniques, which can be time-consuming. Second, there is some subjectivity in selecting priors---our initial beliefs and knowledge about the parameters---and this can lead to different results in the end. Third,  Bayesian analysis often produces results that can be challenging to communicate effectively to non-experts. 
+
+Despite these disadvantages, the Bayesian approach remain powerful and flexible for many actuarial problems. 
 
 ### A Brief History Lesson
 
-Interestingly, some have argued that the birth of Bayesian statistics is intimately related to insurance; see, for instance, @cowles2013applied. Specifically, the Great Fire of London in 1666---destroying more than 10,000 homes and about 100 churches---led to the rise of insurance as we know it today. Shortly after, the first full-fledged fire insurance company came into existence in England during the 1680s. By the turn of the century, the idea of insurance was well ingrained and its use was booming in England. Yet, the lack of statistical models and methods---much needed to understand risk---drove some insurers to bankruptcy.
+Interestingly, some have argued that the birth of Bayesian statistics is intimately related to insurance; see, for instance, @cowles2013applied. Specifically, the Great Fire of London in 1666---destroying more than 10,000 homes and about 100 churches---led to the rise of insurance as we know it today. Shortly after, the first full-fledged fire insurance company came into existence in England during the 1680s. By the turn of the century, the idea of insurance was well ingrained and its use was booming in England; see, for instance, @haueter2017history. Yet, the lack of statistical models and methods---much needed to understand risk---drove some insurers to bankruptcy.
 
 Thomas Bayes, an English statistician, philosopher and Presbyterian minister, applied his mind to some of these important statistical questions raised by insurers. This culminated into Bayes' theory of probability in his seminar essay entitled *Essay towards solving a problem in the doctrine of chances*, published posthumously in 1763. This essay laid out the foundation of what we now know as Bayesian statistics.
 
 (ref:ExampleFigure) **Portrait of an unknown Presbyterian clergyman identified as Thomas Bayes in @o1936history**
 
 ```{r ThomasBayes, fig.cap='(ref:ExampleFigure)', out.width = '33%', fig.align = 'center', echo = FALSE}
-knitr::include_graphics("Figures/ThomasBayes.png")
+knitr::include_graphics("Figures/ThomasBayes.gif")
 ```
 
 Thomas Bayes' work also helped Pierre-Simon Laplace, a famous French scholar and polymath, to develop and popularize the Bayesian interpretation of probability in the late 1700s and early 1800s. He also moved beyond Bayes' essay and generalized his framework. Laplace's efforts were followed by many, and Bayesian thinking continued to progress throughout the years with the help of statisticians like Bruno de Finetti, Harold Jeffreys, Dennis Lindley, and Leonard Jimmie Savage. 
@@ -199,7 +180,7 @@ Nowadays, Bayesian statistics and modeling is widely used in science, thanks to 
 
 ### Bayes' Rule {#ChBayes:SubsecBayesRule}
 
-This subsection introduces how the Bayes' rule is applied to calculating conditional probability for events. 
+This subsection introduces how the Bayes' rule is applied to calculating conditional probabilities for events. 
 
 **Conditional Probability.** The concept of conditional probability considers the relationship between probabilities of two (or more) events happening. In its most simple form, being interested in conditional probability boils down to answering this question: *given that event $B$ happened, how does this affect the probability that $A$ happens?* To answer this question, we can define formally the concept of conditional probability:
 
@@ -210,10 +191,10 @@ To be properly defined, we must assume that $\Pr(B)$ is larger than zero; that i
 
 ***
 
-**Example 8.1.2. Actuarial Exam Question.**
+**Example 9.1.2. Actuarial Exam Question.**
 An insurance company estimates that 40% of policyholders who have an extended health policy will renew next year, and 70% of policyholders who have a long-term disability policy will renew next year. The company also estimates that 50% of their clients who have both policies will renew at least one next year. The company records report that 65% of clients have an extended health policy, 40% have a long-term disability policy, and 10% have both. Using the data above, calculate the percentage of policyholders that will review at least one policy next year.
 
-`r HideExample('8.1.2', 'Show Example Solution')`
+`r HideExample('9.1.2', 'Show Example Solution')`
 
 **Solution.**
 Let $E$ be the event that a policyholder has an extended health policy, $D$ be the event that a policyholder has a long-term disability policy, and $R$ be the event that a policyholder renews a policy. We are given:
@@ -249,7 +230,7 @@ Moreover, note that $E\cap D^{\text{c}}$, $E^{\text{c}}\cap D$, and $E\cap D$ ar
 
 ***
 
-**Independence.** If two events are unrelated to one another, we say that they are independent. Specifically, $A$ and $B$ are independent if 
+**Independence.** If two events are unrelated to one another, we say that they are `r Gloss('independent')`. Specifically, $A$ and $B$ are independent if 
 
 $$
 \Pr(A \cap B) = \Pr(A) \, \Pr(B).
@@ -259,13 +240,13 @@ For positive probability events, independence between $A$ and $B$ is also equiva
 $$
 \Pr(A\,|\, B) = \Pr(A) \quad \text{and} \quad \Pr(B\,|\, A) = \Pr(B),
 $$
-which means that the occurrence of event $B$ does not have an impact on the occurence of $A$, and vice versa.
+which means that the occurrence of event $B$ does not have an impact on the occurrence of $A$, and vice versa.
 
-**Bayes' Rule.** Intuitively speaking, Bayes’ rule provides a mechanism to put our Bayesian thinking into practice. It allows us to update our information by combining the data---from the likelihood---and the prior together to obtain a posterior probability.
+**Bayes' Rule.** Intuitively speaking, `r Gloss('Bayes’ rule')` provides a mechanism to put our Bayesian thinking into practice. It allows us to update our information by combining the data---from the likelihood---and the prior together to obtain a posterior probability.
 
 ***
 
-**Proposition 8.1.1. Bayes' Rule for Events.**
+**Proposition 9.1.1. Bayes' Rule for Events.**
 For events $A$ and $B$, the posterior probability of event $A$ given $B$ follows
 
 $$
@@ -308,7 +289,7 @@ Simply put, the posterior probability of event $A$ given $B$ is obtained by comb
 
 ***
 
-**Example 8.1.3. Actuarial Exam Question.**
+**Example 9.1.3. Actuarial Exam Question.**
 An automobile insurance company insures drivers of all ages. An actuary compiled the following statistics on the company’s insured drivers: 
 
 $$
@@ -326,7 +307,7 @@ $$
 
 A randomly selected driver that the company insures has an accident. Calculate the probability that the driver was age 16-20.
 
-`r HideExample('8.1.3', 'Show Example Solution')`
+`r HideExample('9.1.3', 'Show Example Solution')`
 
 **Solution.**
 Let $B$ be the event of an insured driver having an accident, and let
@@ -352,21 +333,21 @@ Then,
 The example above illustrates how to use Bayes' rule in an academic context; the focus of this book is, nonetheless, data analytics. We therefore also wish to illustrate Bayes' rule by using *real* data. In this introductory example, we use the Singapore auto data `sgautonb` of the R package `CASdatasets` that was already used in Chapter \@ref(ChapFrequency-Modeling) (see also Section \@ref(S:data-CASdatasets) for more details).
 
 ```{r ChBayesLoadSingaporeData, echo = TRUE, eval = TRUE}
-library(CASdatasets)
+library('CASdatasets')
 data(sgautonb)
 
 ```
 
 This dataset contains information about the number of car accidents and some risk factors (i.e., the type of the vehicle insured, the age of the vehicle, the sex of the policyholder, and the age of the policyholder grouped into seven categories).[^ChBayesFt6]
 
-[^ChBayesFt6]: The data are from the General Insurance Association of Singapore, an organization consisting of non-life insurers in Singapore. These data contains the number of car accidents for $n=7{,}483$ auto insurance policies with several categorical explanatory variables and the exposure for each policy. 
+[^ChBayesFt6]: The data are from the General Insurance Association of Singapore, an organization consisting of non-life insurers in Singapore. These data contain the number of car accidents for $n=7{,}483$ auto insurance policies with several categorical explanatory variables and the exposure for each policy. 
 
 ***
 
-**Example 8.1.4. Singapore Insurance Data.**
+**Example 9.1.4. Singapore Insurance Data.**
 A new insurance company---targeting an older segment of the population---estimates that 20% of their policyholders will be 65 years old and older. The actuaries working at the insurance company believes that the Singapore insurance dataset is credible to understand the accident occurrence of the new company. Based on this information, find the probability that a randomly selected driver having (at least) an accident is 65 years old and older for the new insurance company.
 
-`r HideExample('8.1.4', 'Show Example Solution')`
+`r HideExample('9.1.4', 'Show Example Solution')`
 
 **Solution.**
 Let $O$ denote the event related to the policyholder being 65 years old and older (i.e., Age Category 6 in the dataset), and $A$ the event of a policyholder having at least an accident. Using Bayes' rule, we have that
@@ -402,7 +383,7 @@ The probability that a randomly selected driver has (at least) an accident is 65
 
 ***
 
-In the next section, we will expand on the idea of Bayes' rule and apply it to slightly more general cases involving random variables instead of events.
+In the next section, we expand on the idea of Bayes' rule and apply it to slightly more general cases involving random variables instead of events.
 
 ## Building Blocks of Bayesian Inference {#ChBayes:SecBuildingBlocks}
 
@@ -411,11 +392,11 @@ In the next section, we will expand on the idea of Bayes' rule and apply it to s
 In Section \@ref(ChBayes:SecBuildingBlocks), you learn how to:
 
 -   Describe the main components of Bayesian inference; that is, the posterior distribution, the likelihood function, and the prior distribution. 
--   Summarize the different classes of prior used in practice. 
+-   Summarize the different classes of priors used in practice. 
 
 ------------------------------------------------------------------------
 
-Proposition 8.1.1 above deals with the elementary case of Bayes' rule for events. Although this version of Bayes' rule is useful to understand the foundation of Bayesian statistics, we will need slightly more general versions of it to achieve Bayesian inference. Specifically, Proposition 8.1.1 needs to be generalized to the case of random variables. 
+Proposition 9.1.1 above deals with the elementary case of Bayes' rule for events. Although this version of Bayes' rule is useful to understand the foundation of Bayesian statistics, we will need slightly more general versions of it to achieve Bayesian inference. Specifically, Proposition 9.1.1 needs to be generalized to the case of random variables. 
 
 Let us first consider the case of discrete random variables. Assume $X$ and $Y$ are both discrete random variables that allow for the following joint pmf of 
 
@@ -429,7 +410,7 @@ $$
 p_X(x)= \Pr(X=x) = \sum_k p_{X,Y}(x,k) \quad \text{and} \quad p_Y(y)= \Pr(Y=y) = \sum_k p_{X,Y}(k,y),
 $$
 
-respectively. Using the result of Proposition 8.1.1 and setting event $A$ as $\{Y=y\}$ and $B$ as $\{X=x\}$ yields 
+respectively. Using the result of Proposition 9.1.1 and setting event $A$ as $\{Y=y\}$ and $B$ as $\{X=x\}$ yields 
 
 $$
 p_{Y|X=x}(y)= \frac{p_{X|Y=y}(x)\, p_Y(y)}{p_X(x)},
@@ -451,7 +432,7 @@ We can also obtain a similar Bayes' rule for continuous random variables by repl
 
 ***
 
-**Proposition 8.2.1. Bayes' Rule for Continuous Random Variables.**
+**Proposition 9.2.1. Bayes' Rule for Continuous Random Variables.**
 For two continuous random variables $X$ and $Y$, the conditional probability density function of $Y$ given $X=x$ follows
 
 $$
@@ -515,7 +496,7 @@ $$
 \mathbf{X} = (X_1, X_2, ..., X_n).
 $$
 
-If $Y$ in Proposition 8.2.1 is replaced by $\Theta$ and $X$ by $\mathbf{X}$, we obtain
+If $Y$ in Proposition 9.2.1 is replaced by $\Theta$ and $X$ by $\mathbf{X}$, we obtain
 
 $$
 f_{\Theta|\mathbf{X}=\mathbf{x}}(\theta) = \frac{f_{\mathbf{X}|\Theta=\theta}(\mathbf{x})\, f_{\Theta}(\theta)}{f_{\mathbf{X}}(\mathbf{x})},
@@ -539,7 +520,7 @@ $$
  
 ***
 
-**Example 8.2.1. A Problem Inspired from @meyers1994quantifying.**
+**Example 9.2.1. A Problem Inspired from @meyers1994quantifying.**
 A car insurance pays the following (independent) claim amounts on an automobile insurance policy:
 
 $$
@@ -560,7 +541,7 @@ $$
 
 Find the posterior distribution of parameter $\alpha$. 
 
-`r HideExample('8.2.1', 'Show Example Solution')`
+`r HideExample('9.2.1', 'Show Example Solution')`
 
 **Solution.**
 The likelihood function is constructed by multiplying the pdf of the single payment amounts because they are independent; that is,
@@ -575,7 +556,7 @@ $$
 f_{A|\mathbf{X}=\mathbf{x}}(\alpha) = \frac{\alpha^{7} \, e^{-6.66518\alpha-41.44653}}{\int_0^{\infty} \! \alpha^{7} \, e^{-6.66518\alpha-41.44653} \, d\alpha} = \frac{\alpha^{7} \, e^{-6.66518\alpha}}{\int_0^{\infty} \! \alpha^{7} \, e^{-6.66518\alpha} \, d\alpha} .
 $$
 
-Interestingly, we do not need to solve the integral at the denominator to find this distribution. As we know that the results should be a proper pdf and that the numerator looks like a gamma distribution, we can deduce that
+Interestingly, we do not need to solve the integral in the denominator to find this distribution. As we know that the results should be a proper pdf and that the numerator looks like a gamma distribution, we can deduce that
 
 $$
 f_{A|\mathbf{X}=\mathbf{x}}(\alpha) = \frac{6.66518^8}{\Gamma(8)} \, \alpha^7 \, e^{-6.66518 \, \alpha}, 
@@ -604,10 +585,10 @@ The discussion above considered continuous random variables, but the same logic 
 
 *** 
 
-**Example 8.2.2. Coin Toss Revisited.**
+**Example 9.2.2. Coin Toss Revisited.**
 Assume that you observe three heads out of five (independent) tosses. Each toss has a probability of $q$ of observing heads and $1-q$ of observing tails. Find the posterior distribution of $q$ assuming a uniform prior distribution over the interval $[0,1]$.
 
-`r HideExample('8.2.2', 'Show Example Solution')`
+`r HideExample('9.2.2', 'Show Example Solution')`
 
 **Solution.**
 The prior distribution of $q$ is given by
@@ -641,7 +622,7 @@ In the following subsections, we will discuss at greater length the two main bui
 
 The likelihood function is a fundamental concept in statistical inference. It is used to estimate the parameters of a statistical model based on observed data. As mentioned in previous chapters, the likelihood function can be used to find the maximum likelihood estimator. In Bayesian statistics, the likelihood function is used to update the prior based on the evidence (or data).
 
-As explained above and in <span style="color:red">Appendix C</span>, the likelihood function is defined as the conditional joint pdf or pmf of the observed data, given the model parameters. In other words, it is the probability of observing the data given a specific  parameter values. 
+As explained above and in Chapter \@ref(CAppA), the likelihood function is defined as the conditional joint pdf or pmf of the observed data, given the model parameters. In other words, it is the probability of observing the data given a specific  parameter values. 
 
 Mathematically, the likelihood function is written as $f_{\mathbf{X}|\Theta=\theta}(x)$ (for continuous random variables) or $p_{\mathbf{X}|\Theta=\theta}(x)$ (for discrete random variables). Note that, throughout the book, the notation $L(\theta|\mathbf{x})$ has also been used for the likelihood function, and we will use both interchangeably in this chapter.
 
@@ -661,9 +642,9 @@ The choice of prior distribution is subjective and often based on external infor
 
 #### Informative and Weakly Informative Priors
 
-Informative and weakly informative priors are terms used to describe the amount of prior knowledge or beliefs that is incorporated into a statistical model. Informative priors contain substantial prior knowledge about the parameters of a model, while weakly informative priors contain moderate prior knowledge.
+`r Gloss('Informative')` and `r Gloss('weakly informative')` priors are terms used to describe the amount of prior knowledge or beliefs that is incorporated into a statistical model. Informative priors contain substantial prior knowledge about the parameters of a model, while weakly informative priors contain moderate prior knowledge.
 
-Informative priors are useful when there is strong, potentially subjective prior information available about the model parameters, which can help to constrain the posterior distribution and improve inference. For example, in an insurance claims analysis study, an informative prior may be used to incorporate previous knowledge, such as the results of a previous claims study. This can help to reduce the uncertainty in the estimation of the claim distribution and improve the power of the analysis.
+Informative priors are useful when there is strong, potentially subjective prior information available about the model parameters, which can help to constrain the posterior distribution and improve inference. For example, in an insurance claims analysis study, an informative prior may be used to incorporate previous knowledge, such as the results of a previous claims study. 
 
 On the other hand, weakly informative priors are used when there is some---yet little---prior knowledge available or when the goal is to allow the data to drive the inference. Weakly informative priors are designed to mildly impact the posterior distribution and are often chosen based on principles such as symmetry or scale invariance.
 
@@ -671,7 +652,7 @@ Overall, the choice of prior depends on the specific problem at hand and the ava
 
 ***
 
-**Example 8.2.3. Actuarial Exam Question.**
+**Example 9.2.3. Actuarial Exam Question.**
 You are given:
 
 - Annual claim frequencies follow a Poisson distribution with mean $\lambda$.
@@ -682,7 +663,7 @@ $$
 
 Ten claims are observed for an insured in Year 1. Calculate the expected value of the posterior distribution of $\lambda$.
 
-`r HideExample('8.2.3', 'Show Example Solution')`
+`r HideExample('9.2.3', 'Show Example Solution')`
 
 **Solution.**
 The posterior distribution can be found from:
@@ -707,13 +688,13 @@ The posterior mean is therefore given by
 
 #### Noninformative Priors
 
-It is possible to take the idea of weakly informative priors to the extreme by using noninformative priors. A noninformative prior is a prior distribution that is intentionally chosen to allow the data to have a more decisive influence on the posterior distribution rather than being overly influenced by prior beliefs or assumptions.
+It is possible to take the idea of weakly informative priors to the extreme by using `r Gloss('noninformative')` priors. A noninformative prior is a prior distribution that is intentionally chosen to allow the data to have a more decisive influence on the posterior distribution rather than being overly influenced by prior beliefs or assumptions.
 
 Noninformative priors can take different forms, such as flat priors, for instance. A flat prior assigns equal probability to all possible parameter values without additional information or assumptions. 
 
 ***
 
-**Example 8.2.4. Informative Versus Noninformative Priors.**
+**Example 9.2.4. Informative Versus Noninformative Priors.**
 You wish to investigate the impact of having informative and noninformative priors on a claim frequency analysis. Assume that the claim frequency for each policy follows a Bernoulli random variable with a probability of $q$ such that
 
 $$
@@ -725,9 +706,9 @@ where $q \in [0,1]$, and consider two different prior distributions:
 - Informative: Based on past experience, you know that the claim probability is typically less than 5%, thus justifying the use of a uniform distribution over $[0,0.05]$.
 - Noninformative: You do not wish your posterior distribution to be impacted by your prior assumption and simply select a uniform distribution over the domain of $p$, which is $[0,1]$.
 
-Using the first 250 lines of the Singapore insurance dataset (see Example 8.1.4 for more details on this dataset), find the two posterior distributions as well as the posterior expected value of the probability $q$ under both prior assumptions. 
+Using the first 250 lines of the Singapore insurance dataset (see Example 9.1.4 for more details on this dataset), find the two posterior distributions as well as the posterior expected value of the probability $q$ under both prior assumptions. 
 
-`r HideExample('8.2.4', 'Show Example Solution')`
+`r HideExample('9.2.4', 'Show Example Solution')`
 
 **Solution.**
 Let us start with the informative prior, where
@@ -741,7 +722,7 @@ and zero otherwise. In this case, assuming $x = \sum_{i=1}^{250} x_i$, the poste
 \begin{align}
 f_{Q|\mathbf{X}=\mathbf{x}} (q) \propto &\, f_{\mathbf{X}|Q=q}(\mathbf{x}) f_Q(q) \\
 \propto& \, \prod_{i=1}^{250} q^{x_i} (1-q)^{1-x_i} \\
-= &\, q^{x} (1-q)^{250-x)}, \quad \text{ if }\, 0 \leq q \leq 0.05,
+= &\, q^{x} (1-q)^{250-x}, \quad \text{ if }\, 0 \leq q \leq 0.05,
 \end{align}
 
 and zero otherwise. We can numerically obtain the shape of this posterior distribution by dividing $q^{x} (1-q)^{250-x}$ by
@@ -749,6 +730,8 @@ and zero otherwise. We can numerically obtain the shape of this posterior distri
 $$
 \int_0^{0.05} \! q^{x} (1-q)^{250-x} \, dq. 
 $$
+
+Note that this prior makes it impossible for the estimated frequency to be greater than 0.05.
 
 The second prior is still uniform, but over $[0,1]$ this time, which is given mathematically by
 
@@ -818,13 +801,13 @@ As one can see, these values are different, meaning that the prior distribution 
 
 #### Improper Priors
 
-An improper prior is a prior distribution that is not a proper probability distribution, meaning that it does not integrate (or sum) to one over the entire parameter space. Improper priors can be used in Bayesian analyses, but they require careful handling because they can lead to improper posterior distributions.
+An `r Gloss('improper')` prior is a prior distribution that is not a proper probability distribution, meaning that it does not integrate (or sum) to one over the entire parameter space. Improper priors can be used in Bayesian analyses, but they require careful handling because they can lead to improper posterior distributions.
 
 Improper priors are typically used when there is little or no prior information about the parameter of interest---some noninformative priors are indeed improper---and they can be thought of as representing a very diffuse or noncommittal prior belief. For instance, the uniform distribution on an infinite interval is a common choice of improper prior. 
 
 ***
 
-**Example 8.2.5. Improper Prior, Proper Posterior.**
+**Example 9.2.5. Improper Prior, Proper Posterior.**
 Let us assume a random sample $\mathbf{x}$ of size $n$, which is a realization of the collection of random variables $\mathbf{X} = (X_1,X_2, ..., X_n)$. Further, assume that each random variable $X_i$ is independent and normally distributed with mean of $\mu$ and variance of 1: 
 
 $$
@@ -833,7 +816,7 @@ $$
 
 where $\mu$ is a (random) parameter. Obtain the posterior distribution of $\mu$ assuming that its prior distribution is improper and given by $f_M(\mu) \propto 1$, where $\mu \in \mathbb{R}$. 
 
-`r HideExample('8.2.5', 'Show Example Solution')`
+`r HideExample('9.2.5', 'Show Example Solution')`
 
 **Solution.**
 According to Bayes' rule, we have that
@@ -857,6 +840,16 @@ which is a normal distribution with mean $\frac{\sum_{i=1}^n x_i}{n}$ and varian
 
 </div>
 
+***
+
+Special care is needed when dealing with improper priors. Indeed, if one can derive the posterior distribution in closed form and show that it is proper---like in Example 9.2.5---it should not be a concern. On the other hand, in cases where the posterior distribution cannot be obtained in closed form, there is no assurance that the posterior will be proper and extra attention is required. 
+
+#### Prior Sensitivity Analysis
+
+Prior sensitivity analysis is an important step in Bayesian inference and modeling processes. It refers to the examination and evaluation of the impact of different prior assumptions on the results of a statistical analysis. In other words, such analyses aim to verify the robustness of the conclusions drawn from Bayesian inference to the choice of the prior distribution. By exploring a range of plausible prior distributions, experimenters can gain insights into how much the choice of prior influences the final results and whether those conclusions remain consistent under different prior assumptions. 
+
+For instance, prior distributions may significantly influence on the posterior estimates, leading to drastically different conclusions. Some of these might be subjective (i.e., informative priors) or based on expert knowledge, and assessing the impact of such assumptions promotes transparency and objectivity in the analysis. 
+
 ## Conjugate Families {#ChBayes:SecConjugate}
 
 ------------------------------------------------------------------------
@@ -869,7 +862,7 @@ In Section \@ref(ChBayes:SecConjugate), you learn how to:
 
 ------------------------------------------------------------------------
 
-In Bayesian statistics, if a posterior distribution is the same distribution as the prior distribution, the prior and posterior are called conjugate distributions. Note that both posterior and prior have similar shapes but will have different parameters, generally speaking.
+In Bayesian statistics, if a posterior distribution comes from the same distribution as the prior distribution, the prior and posterior are called `r Gloss('conjugate distributions')`. Note that both posterior and prior have similar shapes but will have different parameters, generally speaking.
 
 **But Why?** Two main reasons explain why conjugate families have been so popular historically: 
 
@@ -892,7 +885,7 @@ $$
 
 with probabilities $q$ and $1-q$, respectively. Let us further define $x =  \sum_{i=1}^m x_i$ the sum of the realized successes. 
 
-We know from elementary probability that $X = \sum_{i=1}^m X_i$ follows a binomial distribution (i.e., the number of successes $x$ in $m$ Bernoulli trials) with unknown probability of success $q$ in $[0,1]$, similar to the coin tossing case of Example 8.1.1, such that the likelihood function is given by
+We know from elementary probability that $X = \sum_{i=1}^m X_i$ follows a binomial distribution (i.e., the number of successes $x$ in $m$ Bernoulli trials) with unknown probability of success $q$ in $[0,1]$, similar to the coin tossing case of Example 9.1.1, such that the likelihood function is given by
 
 $$
 p_{\mathbf{X}|Q=q}(\mathbf{x}) = \binom{m}{x} q^x (1-q)^{m-x}, \quad x \in \{0,1,...,m\},
@@ -906,13 +899,13 @@ $$
 
 where $a$ and $b$ are shape parameters of the beta distribution.[^ChBayesFt8]
 
-[^ChBayesFt8]: Here, we assume that the domain of the beta is $[0,1]$, meaning that $\theta = 1$. For more details, see <span style="color:red">Appendix D</span>.
+[^ChBayesFt8]: Here, we assume that the domain of the beta is $[0,1]$, meaning that $\theta = 1$. For more details, see Chapter \@ref(ChapSummaryDistributions).
 
 We can now combine the prior distribution---beta---with the likelihood function---binomial---to obtain the posterior distribution.
 
 ***
 
-**Proposition 8.3.1. Beta--Binomial Conjugate Family.**
+**Proposition 9.3.1. Beta--Binomial Conjugate Family.**
 Consider a sample of $m$ iid Bernoulli experiments $(X_1,X_2,...,X_m)$ each with success probability $q$. Further assume that the random variable associated with the success probability, $Q$, has a prior that is beta with shape parameters $a$ and $b$. The posterior distribution of $Q$ is therefore given by
 
 $$
@@ -949,11 +942,11 @@ $$
 
 ***
 
-**Parameters Versus Hyperparameters.** In this context, $a$ and $b$ are called hyperparameters---parameters of the prior. These are different from parameters of the underlying model (i.e., $q$ in the beta--binomial family). Hyperparameters are typically known and determined by the experimenter, whereas the underlying model parameters are random in the Bayesian context. 
+**Parameters Versus Hyperparameters.** In this context, $a$ and $b$ are called `r Gloss('hyperparameters')`---parameters of the prior. These are different from parameters of the underlying model (i.e., $q$ in the beta--binomial family). Hyperparameters are typically known and determined by the experimenter, whereas the underlying model parameters are random in the Bayesian context. 
 
 ***
 
-**Example 8.3.1. Actuarial Exam Question.**
+**Example 9.3.1. Actuarial Exam Question.**
 You are given:
 
 - The annual number of claims in Year $i$ for a policyholder has a binomial distribution with pmf
@@ -969,7 +962,7 @@ $$
 
 The policyholder had one claim in each of Years 1 and 2. Calculate the Bayesian estimate of the expected number of claims in Year 3.
 
-`r HideExample('8.3.1', 'Show Example Solution')`
+`r HideExample('9.3.1', 'Show Example Solution')`
 
 **Solution.**
 The likelihood function based on this policyholder's number of claims in Years 1 and 2 is given by:
@@ -1005,7 +998,7 @@ Ultimately, this leads to an expected number of claim in Year 3 of $2 \left(\tfr
 
 ***
 
-**Example 8.3.2. Impact of Beta Prior on Posterior.**
+**Example 9.3.2. Impact of Beta Prior on Posterior.**
 You wish to investigate the impact of having different beta hyperparameters on the posterior distribution. Assume that the claim frequency for each policy follows a Bernoulli random variable with a probability of $q$ such that
 
 $$
@@ -1035,9 +1028,9 @@ ggplot(dataprior, aes(x=x, y=y1)) +
   xlab(expression(italic('q'))) + ylab('Prior density')
 ```
 
-Using again the first 250 lines of the Singapore insurance dataset (see Example 8.1.4 for more details on this dataset), find the two posterior distributions.
+Using again the first 250 lines of the Singapore insurance dataset (see Example 9.1.4 for more details on this dataset), find the two posterior distributions.
 
-`r HideExample('8.3.2', 'Show Example Solution')`
+`r HideExample('9.3.2', 'Show Example Solution')`
 
 **Solution.**
 The likelihood function associated with the observations is given by
@@ -1046,7 +1039,7 @@ $$
 p_{\mathbf{X}|Q=q}(\mathbf{x}) = \binom{250}{x} \, q^{x} (1-q)^{250-x}, \quad \text{where }\, x = \sum_{i=1}^{250} x_i,
 $$
 
-as mentioned already in Example 8.2.4. Combining this likelihood with a beta prior gives a beta posterior: 
+as mentioned already in Example 9.2.4. Combining this likelihood with a beta prior gives a beta posterior: 
 
 $$
 f_{Q|\mathbf{X}=\mathbf{x}}(q) = \frac{\Gamma(a+b+250)}{\Gamma\left(a+x\right)\, \Gamma\left(b+250-x\right)} \, q^{a+x-1} (1-q)^{b+250-x-1},
@@ -1101,11 +1094,11 @@ we can show that the posterior distribution of $\lambda$ is also gamma.
 
 ***
 
-**Proposition 8.3.2. Gamma--Poisson Conjugate Family.**
+**Proposition 9.3.2. Gamma--Poisson Conjugate Family.**
 Consider a sample of $n$ iid Poisson experiments $(X_1,X_2,...,X_n)$, each with rate parameter $\lambda$. Further assume that the random variable associated with the rate, $\Lambda$, has a prior that is gamma distributed with shape hyperparameter $\alpha$ and scale hyperparameter $\theta$. The posterior distribution of $\Lambda$ is therefore given by
 
 $$
-f_{\Lambda|\mathbf{X}=\mathbf{x}}(\lambda) = \frac{1}{\Gamma(\alpha+x)\left(\frac{\theta}{n\theta+1} \right)^{\alpha+1}} \lambda^{\alpha+x-1} \, e^{-\frac{\lambda\,(n\theta+1)}{\theta}},
+f_{\Lambda|\mathbf{X}=\mathbf{x}}(\lambda) = \frac{1}{\Gamma(\alpha+x)\left(\frac{\theta}{n\theta+1} \right)^{\alpha+x}} \lambda^{\alpha+x-1} \, e^{-\frac{\lambda\,(n\theta+1)}{\theta}},
 $$
 
 where $x = \sum_{i=1}^n x_i$, which is a gamma distribution with shape parameter $\alpha+x$ and scale parameter $\tfrac{\theta}{n\theta+1}$. 
@@ -1124,21 +1117,21 @@ where $x = \sum_{i=1}^n x_i$. We therefore only need to find the normalizing con
 
 \begin{align}
 &\,\int_0^{\infty} \! \lambda^{\alpha+x-1} \, e^{-\frac{\lambda (n\theta+1)}{\theta}} \, d\lambda \\
-=&\, \Gamma(\alpha+x)\left(\frac{\theta}{n\theta+1} \right)^{\alpha+1}  \int_0^{\infty} \!\frac{1}{\Gamma(\alpha+x)\left(\frac{\theta}{n\theta+1} \right)^{\alpha+1}}  \, \lambda^{\alpha+x-1} \, e^{-\frac{\lambda (n\theta+1)}{\theta}} \, d\lambda \\
-=&\, \Gamma(\alpha+x)\left(\frac{\theta}{n\theta+1} \right)^{\alpha+1},
+=&\, \Gamma(\alpha+x)\left(\frac{\theta}{n\theta+1} \right)^{\alpha+x}  \int_0^{\infty} \!\frac{1}{\Gamma(\alpha+x)\left(\frac{\theta}{n\theta+1} \right)^{\alpha+x}}  \, \lambda^{\alpha+x-1} \, e^{-\frac{\lambda (n\theta+1)}{\theta}} \, d\lambda \\
+=&\, \Gamma(\alpha+x)\left(\frac{\theta}{n\theta+1} \right)^{\alpha+x},
 \end{align}
 
 and 
 
 $$
-f_{\Lambda|\mathbf{X}=\mathbf{x}}(\lambda) = \frac{1}{\Gamma(\alpha+x)\left(\frac{\theta}{n\theta+1} \right)^{\alpha+1}} \lambda^{\alpha+x-1} \, e^{-\frac{\lambda\,(n\theta+1)}{\theta}}.
+f_{\Lambda|\mathbf{X}=\mathbf{x}}(\lambda) = \frac{1}{\Gamma(\alpha+x)\left(\frac{\theta}{n\theta+1} \right)^{\alpha+x}} \lambda^{\alpha+x-1} \, e^{-\frac{\lambda\,(n\theta+1)}{\theta}}.
 $$
 
 </div>
 
 ***
 
-**Example 8.3.3. Actuarial Exam Question.**
+**Example 9.3.3. Actuarial Exam Question.**
 You are given:
 
 - The number of claims incurred in a month by any insured has a Poisson distribution with mean $\lambda$.
@@ -1166,7 +1159,7 @@ $$
 
 Calculate the expected number of claims in Month 4.
 
-`r HideExample('8.3.3', 'Show Example Solution')`
+`r HideExample('9.3.3', 'Show Example Solution')`
 
 **Solution.**
 The likelihood function based on this policyholder's number of claims in Months 1, 2, and 3 is given by:
@@ -1232,7 +1225,7 @@ where $\theta$ is the mean parameter and $\tau^2$ is the variance parameter. We 
 
 ***
 
-**Proposition 8.3.3. Normal--Normal Conjugate Family.**
+**Proposition 9.3.3. Normal--Normal Conjugate Family.**
 Consider a sample of $n$ iid normals $(X_1,X_2,...,X_n)$, each with mean parameter $\mu$ and variance parameter $\sigma^2$ that is known. Further assume that the random variable associated with the mean, $M$, has a prior that is normally distributed with mean hyperparameter $\theta$ and variance hyperparameter $\tau^2$. The posterior distribution of $M$ is therefore given by
 
 $$
@@ -1280,7 +1273,7 @@ The prior distribution hyperparameters and posterior distribution parameters can
 
 ***
 
-**Example 8.3.4. Impact of Normal Prior on Posterior.**
+**Example 9.3.4. Impact of Normal Prior on Posterior.**
 Assume the following observed automobile claims for a small portfolio of policies:
 
 $$
@@ -1312,10 +1305,10 @@ ggplot(dataprior, aes(x=x, y=y1)) +
 
 ```
 
-`r HideExample('8.3.4', 'Show Example Solution')`
+`r HideExample('9.3.4', 'Show Example Solution')`
 
 **Solution.**
-Using the results of Proposition 8.3.3, we can obtain the following posterior distributions:
+Using the results of Proposition 9.3.3, we can obtain the following posterior distributions:
 
 (ref:ChBayesNormalPosterior2) **Posterior densities based on three different priors: $\tau^2 = 0.1$ (light gray), $\tau^2=1$ (gray), and $\tau^2 = 10$ (black)**
 
@@ -1352,7 +1345,7 @@ ggplot(dataposterior, aes(x=x, y=y1)) +
 
 ***
 
-Interestingly, as shown in Example 8.3.4, the prior distribution can have some impact on the final posterior distribution. When the prior assumption about the mean is very precise, having a few data points do not create a huge gap between the prior and the posterior (see the light gray curves in Figures \@ref(fig:ChBayesNormalPrior1) and \@ref(fig:ChBayesNormalPosterior2)). When the prior is very imprecise, on the other hand, then the data are allow to speak, and the posterior can be quite different from the prior distribution.
+Interestingly, as shown in Example 9.3.4, the prior distribution can have some impact on the final posterior distribution. When the prior assumption about the mean is very precise, having a few data points do not create a huge gap between the prior and the posterior (see the light gray curves in Figures \@ref(fig:ChBayesNormalPrior1) and \@ref(fig:ChBayesNormalPosterior2)). When the prior is very imprecise, on the other hand, then the data are allow to speak, and the posterior can be quite different from the prior distribution.
 
 
 ### Criticism of Conjugate Family Models
@@ -1380,7 +1373,7 @@ In Section \@ref(ChBayes:SecPosterior), you learn how to:
 
 Sometimes, using conjugate family models is ill-suited for the problem at hand, and more complicated priors need to be selected. Under other circumstances, complex models involve many parameters making the posterior distribution intractable. In these cases, the posterior distribution of the parameters will not have a closed-form solution, generally speaking, and will need to be estimated via numerical methods. 
 
-A common way to generate draws of the parameter posterior distribution is to create Markov chains for which their stationary distributions correspond to the posterior of interest. These Markov chain-based methods are known as Markov chain Monte Carlo (MCMC) methods in the literature. This section provides a brief overview of these methods and of their uses. We do not intent to give much of the theory behind these methods, which would require a deep understanding of Markov chains and their theory.[^ChBayesFt10] Instead, we focus on their applications in insurance and loss modeling. Specifically, in the next two subsections, we introduce the two most common MCMC methods; that is, the Gibbs sampler of @gelfand1990sampling and the Metropolis--Hastings algorithm of @hastings1970monte and @metropolis1953equation.
+A common way to generate draws of the parameter posterior distribution is to create Markov chains for which their stationary distributions correspond to the posterior of interest. These Markov chain-based methods are known as Markov chain Monte Carlo (MCMC) methods in the literature. This section provides a brief overview of these methods and of their uses. We do not intend to give much of the theory behind these methods, which would require a deep understanding of Markov chains and their theory.[^ChBayesFt10] Instead, we focus on their applications in insurance and loss modeling. Specifically, in the next two subsections, we introduce the two most common MCMC methods; that is, the `r Gloss('Gibbs sampler')` of @gelfand1990sampling and the `r Gloss('Metropolis--Hastings algorithm')` of @hastings1970monte and @metropolis1953equation.
 
 [^ChBayesFt10]: For an overview of the theory behind MCMC methods, see @robert1999monte.
 
@@ -1426,9 +1419,7 @@ $$
 
 where $\varepsilon_i$ is a disturbance term that captures the potential for errors in the linear relationship. This error term is typically assumed to be normally distributed with mean zero and variance $\sigma^2$. 
 
-In general, the coefficients $\alpha$ and $\beta$ are unknown and need to be estimated. The experimenter can rely on Bayesian inference to find out the posterior distribution of the parameters $\alpha$ and $\beta$ along with that of $\sigma^2$. 
-
-For the rest of the subsection, we investigate a specific application of Gibbs sampling to the context of linear regression. 
+In general, the coefficients $\alpha$ and $\beta$ are unknown and need to be estimated. The experimenter can rely on Bayesian inference to find out the posterior distribution of the parameters $\alpha$ and $\beta$ along with that of $\sigma^2$. For the rest of the subsection, we investigate a specific application of Gibbs sampling to the context of linear regression. 
 
 We begin by computing the likelihood function conditional on the parameter values:
 
@@ -1449,7 +1440,7 @@ f_{\Sigma^2}(\sigma^2) =&\,  \frac{(\theta_{\sigma}/2)^{n_{\sigma}/2}}{\Gamma(n_
 
 ***
 
-**Proposition 8.4.1. Full Conditional Distributions of Bayesian Linear Regression Parameters.**
+**Proposition 9.4.1. Full Conditional Distributions of Bayesian Linear Regression Parameters.**
 Consider a sample of $n$ observations $\mathbf{x} = (x_1,...,x_n)$ for which
 
 $$
@@ -1546,14 +1537,13 @@ We now apply the Gibbs sampler on *real* data. The example will use motorcycle i
 ```{r ChBayesLoadWasaData, echo = TRUE, eval = TRUE}
 library('insuranceData')
 data(dataOhlsson)
-
 ```
 
 This dataset contains information about the number of motorcycle accidents, their claim cost, and some risk factors (e.g., the age of the driver, the age of the vehicle, the geographic zone).
 
 ***
 
-**Example 8.4.1. Bayesian Linear Regression.**
+**Example 9.4.1. Bayesian Linear Regression.**
 You wish to understand the relationship between the age of the driver and the (logarithm of the) claim cost. Let $x_i$ be the logarithm of the $i^{\text{th}}$ claim cost and $z_i$ be the age associated with the $i^{\text{th}}$ claim. Further assume the following linear relationship between the two quantities:
 
 $$
@@ -1562,7 +1552,7 @@ $$
 
 where $\varepsilon_i$ is normally distributed with mean zero and variance $\sigma^2$. Find the posterior density of the three parameters $\alpha$, $\beta$, and $\sigma^2$ using the Gibbs sampler.
 
-`r HideExample('8.4.1', 'Show Example Solution')`
+`r HideExample('9.4.1', 'Show Example Solution')`
 
 **Solution.**
 Let us begin by visualizing the data. Figure \@ref(fig:ChBayesGibbs1) reports the logarithm of the claim cost as a function of the driver's age. At first sight, it seems that the relationship between the claim cost and age is negative, so we should expect a negative $\beta$, generally speaking.
@@ -1582,7 +1572,7 @@ Let us now turn to Bayesian inference via Gibbs sampling to find the posterior d
 
 ```{r ChBayesGibbsIter, echo = TRUE, eval = TRUE}
 set.seed(1)
-library('invgamma')
+library('nimble')
 dataOhlsson <- dataOhlsson[dataOhlsson$skadkost > 0,]
 dataOhlsson$logskadkost <- log(dataOhlsson$skadkost)
 
@@ -1622,7 +1612,7 @@ for (m in 2:(M+1)) {
   
   betas[m] <- rnorm(1,mean=mean_beta,sd=sqrt(var_beta))
   
-  # Generate sigma
+  # Generate sigma^2
   shape_sigma <- (nsigma+n)/2
   scale_sigma <- (thetasigma + sum((x-alphas[m]-betas[m]*z)^2))/2
   
@@ -1631,7 +1621,7 @@ for (m in 2:(M+1)) {
 
 ```
  
-Once we have the posterior parameter samples, we can get multiple quantities of interest. For instance, the posterior mean of parameters $\alpha$, $\beta$, and $\sigma^2$ are $9.843$, $-0.0208$, and $3.517 \times 10^{-6}$, respectively.
+Once we have the posterior parameter samples, we can get multiple quantities of interest. For instance, the posterior mean of parameters $\alpha$, $\beta$, and $\sigma^2$ are $9.843$, $-0.0208$, and $2.551$, respectively.
 
 ```{r ChBayesGibbsMean, echo = FALSE, eval = TRUE}
 cat('The posterior mean for coefficient alpha is',mean(alphas[(M-Mstar+2):(M+1)]))
@@ -1655,7 +1645,7 @@ p1 <- ggplot(posteriorchains, aes(x=alpha)) +
 
 p2 <- ggplot(posteriorchains, aes(x=beta)) + 
   geom_histogram(bins=20,fill='darkgray',color='white') +
-  xlab(expression(alpha)) + ylab('Count')
+  xlab(expression(beta)) + ylab('Count')
 
 p3 <- ggplot(posteriorchains, aes(x=sigma2)) + 
   geom_histogram(bins=20,fill='darkgray',color='white') +
@@ -1670,14 +1660,15 @@ The top panel of Figure \@ref(fig:ChBayesGibbs5) reports a plot of the post-burn
 (ref:ChBayesGibbs5) **Trace plot of $\alpha$ for the post-burn-in iterations (top panel) and for the first 50 iterations (bottom panel)**
 
 ```{r ChBayesGibbs5, echo = FALSE, fig.cap='(ref:ChBayesGibbs5)', out.width = '80%', fig.asp = 0.75, fig.align = 'center'}
-posteriorchainswithburnin <- data.frame(it=seq(from=1,to=M+1),alpha=alphas,beta=betas,sigma2=sigma2s)
+posteriorchainswithburnin <- data.frame(it=seq(from=5001,to=M),alpha=alphas[5001:10000])
+posteriorchainsburnin <- data.frame(it=seq(from=1,to=50),alpha=alphas[1:50])
 
 t1 <- ggplot(posteriorchainswithburnin, aes(x=it, y=alpha)) + 
   geom_line(color='black',lwd = 1.5) +
-  xlim(Mstar+1,M+1) + ylim(9.842,9.844) + 
+  xlim(Mstar+1,M+1) + #ylim(9.842,9.844) + 
   xlab('Iteration') + ylab(expression(alpha))
 
-t2 <- ggplot(posteriorchainswithburnin, aes(x=it, y=alpha)) + 
+t2 <- ggplot(posteriorchainsburnin, aes(x=it, y=alpha)) + 
   geom_line(color='black',lwd = 1.5) +
   xlim(1,50) + ylim(9,10) + 
   xlab('Iteration') + ylab(expression(alpha))
@@ -1717,7 +1708,7 @@ $$
 \right.
 $$
 
-Then, we can repeat the same process for all other parameters to obtain $\theta_2^{(1)}$ to $\theta_k^{(1)}$, while replacing the parameters  $\theta_{\backslash i}$ by their most current values in the chain. Once we have updated all values, we can repeat this process for all $m$ in $\{2,3,...,M\}$, similar to the iterative process used in the Gibbs sampler. 
+Then, we can repeat the same process for all other parameters to obtain $\theta_2^{(1)}$ to $\theta_k^{(1)}$, while replacing the parameters  $\pmb{\theta}_{\backslash i}$ by their most current values in the chain. Once we have updated all values, we can repeat this process for all $m$ in $\{2,3,...,M\}$, similar to the iterative process used in the Gibbs sampler. 
 
 **Special Case: Symmetric Proposal Distribution.** If a proposal distribution is symmetric, then 
 
@@ -1735,7 +1726,7 @@ This special case is called the Metropolis algorithm.
 
 ***
 
-The Metropolis--Hastings sampler requires a lot of fine-tuning, generally speaking, because the experimenter needs to select one proposal distributions for each parameter. A common approach is to assume a normal proposal distribution centered at the previous value; that is, 
+The Metropolis--Hastings sampler requires a lot of fine-tuning, generally speaking, because the experimenter needs to select a proposal distribution for each parameter. A common approach is to assume a normal proposal distribution centered at the previous value; that is, 
 
 $$
 \Theta_i^* \sim \text{Normal}\left( \theta_i^{(m-1)} , \sigma_i^2 \right),
@@ -1745,7 +1736,7 @@ at step $m$, where $\sigma_i^2$ is the variance of the $i^{\text{th}}$ parameter
 
 ***
 
-**Example 8.4.2. Impact of Proposal Density on the Acceptance Rate.**
+**Example 9.4.2. Impact of Proposal Density on the Acceptance Rate.**
 Assume that each policyholder's claim count (frequency) is distributed as a Poisson random variable such that
 
 $$
@@ -1758,9 +1749,9 @@ $$
 f_{\Lambda}(\lambda) \propto 1, \quad \lambda \in [0,\infty].
 $$
 
-Find the posterior distribution of the parameter using 1,000 iterations of the Metropolis--Hastings sampler assuming the claim count data of the Singapore Insurance Data (see Example 8.1.4 for more details). Use a normal proposal with small ($1\times 10^{-7}$), moderate ($1\times 10^{-4}$), and large ($1 \times 10^{-1}$) values as the proposal variance in your tests and comment on the differences.  
+Find the posterior distribution of the parameter using 1,000 iterations of the Metropolis--Hastings sampler assuming the claim count data of the Singapore Insurance Data (see Example 9.1.4 for more details). Use a normal proposal with small ($1\times 10^{-7}$), moderate ($1\times 10^{-4}$), and large ($1 \times 10^{-1}$) values as the proposal variance in your tests and comment on the differences.  
 
-`r HideExample('8.4.2', 'Show Example Solution')`
+`r HideExample('9.4.2', 'Show Example Solution')`
 
 **Solution.**
 Starting from the the likelihood function and the prior distribution, we have that 
@@ -1937,8 +1928,8 @@ Using the wrong proposal distribution can have an impact on the posterior distri
 
 ***
 
-**Example 8.4.3. Impact of Initial Parameters.**
-Consider the motorcycle insurance data from Wasa used in Example 8.4.1. We wish to model the claim amount from motorcycle losses with a gamma distribution; that is,
+**Example 9.4.3. Impact of Initial Parameters.**
+Consider the motorcycle insurance data from Wasa used in Example 9.4.1. We wish to model the claim amount from motorcycle losses with a gamma distribution; that is,
 
 $$
 f_{X_i\,|\,\Theta = \theta,\, A = \alpha}(x_i) = \frac{1}{\theta^{\alpha}\Gamma(\alpha)} x_i^{\alpha-1} e^{-\frac{x_i}{\theta}},
@@ -1952,7 +1943,7 @@ $$
 
 Find the posterior distribution of the parameter using 1,000 iterations of the Metropolis--Hastings sampler. Use a normal proposal with a proposal variance $5 \times 10^7$ for $\theta$ and $1 \times 10^{-2}$ for $\alpha$, and rely on $\theta^{(0)} = 50,000$ and $\alpha^{(0)} = 0.5$ to start the Metropolis--Hastings sampler. Redo the experiment with $\theta^{(0)} = 10,000$ and $\alpha^{(0)} = 2.5$.
 
-`r HideExample('8.4.3', 'Show Example Solution')`
+`r HideExample('9.4.3', 'Show Example Solution')`
 
 **Solution.**
 Starting from the the likelihood function and the prior distribution, we have that 
@@ -1980,8 +1971,7 @@ accepttheta1 <- rep(NA,M)
 acceptalpha1 <- rep(NA,M)
 
 for (m in 2:(M+1)) {
-  # Let us start with theta
-  # Compute logarithm of h for past value
+  # Let us start with theta and compute the logarithm of h for the past value
   loghpast <- sum(dgamma(x,scale=thetas1[m-1],shape=alphas1[m-1],log=TRUE))
   
   # Generate proposed parameter and compute logarithm of h for proposed value
@@ -2002,8 +1992,7 @@ for (m in 2:(M+1)) {
     accepttheta1[m-1] <- 0
   }
   
-  # And then deal with alpha
-  # Compute logarithm of h for past value
+  # And then deal with alpha and compute the logarithm of h for the past value
   loghpast <- sum(dgamma(x,scale=thetas1[m],shape=alphas1[m-1],log=TRUE))
   
   # Generate proposed parameter and compute logarithm of h for proposed value
@@ -2036,8 +2025,7 @@ accepttheta2 <- rep(NA,M)
 acceptalpha2 <- rep(NA,M)
 
 for (m in 2:(M+1)) {
-  # Let us start with theta
-  # Compute logarithm of h for past value
+  # Let us start with theta and compute the logarithm of h for the past value
   loghpast <- sum(dgamma(x,scale=thetas2[m-1],shape=alphas2[m-1],log=TRUE))
   
   # Generate proposed parameter and compute logarithm of h for proposed value
@@ -2058,8 +2046,7 @@ for (m in 2:(M+1)) {
     accepttheta2[m-1] <- 0
   }
   
-  # And then deal with alpha
-  # Compute logarithm of h for past value
+  # And then deal with alpha and compute the logarithm of h for the past value
   loghpast <- sum(dgamma(x,scale=thetas1[m],shape=alphas2[m-1],log=TRUE))
   
   # Generate proposed parameter and compute logarithm of h for proposed value
@@ -2185,10 +2172,10 @@ We now apply these various diagnostics to an example.
 
 ***
 
-**Example 8.4.4. Markov Chain Diagnostics.**
-Consider the setup of Example 8.4.2. Using chains of 51,000 iterations and a burn-in of 1,000 iterations, calculate the various Markov chain diagnostics mentioned above.
+**Example 9.4.4. Markov Chain Diagnostics.**
+Consider the setup of Example 9.4.2. Using chains of 51,000 iterations and a burn-in of 1,000 iterations, calculate the various Markov chain diagnostics mentioned above.
 
-`r HideExample('8.4.4', 'Show Example Solution')`
+`r HideExample('9.4.4', 'Show Example Solution')`
 
 **Solution.**
 Let us begin by generating five chains.
@@ -2231,9 +2218,11 @@ for (r in 1:R) {
     }
   }
 }
+```
+
+```{r echo = FALSE, eval = FALSE}
 save(lambdas, accept, sgautonb, alpha, lambdastar, loghpast, loghstar, m, M, Mstar,
              r, R, sigma2, file= "../IntermediateCalcs/BayesChap/Example844.Rdata")
-
 ```
 
 Figure \@ref(fig:ChBayesDiag2) reports the trace plot for the first chain: it indeed looks like a hairy caterpillar, which is a good sign.
@@ -2271,7 +2260,7 @@ GR <- sqrt( (M-Mstar-1)/(M-Mstar) + (R+1)/(R*(M-Mstar))*B/W )
 cat('The Gelman-Rubin statistic is',GR)
 ```
 
-The Gelman--Rubin statistic is very close to 1 in this case, meaning that the chain converged.
+The Gelman--Rubin statistic is very close to 1 in this case, meaning that the chains converged.
 
 ```{r ChBayesDiag6, echo = TRUE, eval = TRUE}
 library('mcmcse')
@@ -2285,6 +2274,115 @@ The last diagnostic refers to the ESS, and its comparison to the minimum ESS. In
 </div>
 
 ***
+
+## Bayesian Inference in Practice {#ChBayes:SecPractice}
+
+------------------------------------------------------------------------
+
+In Section \@ref(ChBayes:SecPractice), you learn how to:
+
+- Describe the main computing resources available for Bayesian inference and modeling.
+-	Apply one of them to loss data.
+
+------------------------------------------------------------------------
+
+Fortunately for end users, some of these methods are readily available in R, meaning that they are quite accessible. Some popular computing resources used in Bayesian statistics are listed below:
+
+- `RSTAN`, named in honor of Stanislaw Ulam, is an R implementation of the widely used STAN probabilistic programming language for Bayesian statistical modeling and inference. It is highly flexible and allows users to define complex statistical models.
+- `nimble` stands for Numerical Inference for Bayesian and Likelihood Estimation and is an R package designed for statistical computing and hierarchical modeling. `nimble` provides a high-level programming language that allows users to define complex statistical models with ease.
+- `R2OpenBUGS` allows R users to use OpenBUGS, a classic and widely-used software package for Bayesian data analysis. It uses MCMC techniques like Gibbs sampling to obtain samples from the posterior distribution.
+- `rjags` is an R implementation of the JAGS (Just Another Gibbs Sampler) program. It is an open-source software that was developed as an extension of BUGS. It provides a platform-independent engine for the BUGS language, allowing for the use of BUGS models in various environments. Like BUGS, `JAGS` is also used for Bayesian analysis through MCMC sampling techniques.
+
+In what follows, we will use the `nimble` package in the context of loss data.
+
+***
+
+**Example 9.5.1. The `nimble` package.**
+Similar to the setup of Example 9.4.2, consider that each policyholder's claim count (frequency) is distributed as a Poisson random variable such that
+$$
+p_{N_i\,|\,\Lambda=\lambda}(n_i) = \frac{\lambda^{n_i}e^{-\lambda}}{n_i!},
+$$
+where $n_i$ is the number of claims associated with the $i^{\text{th}}$ policyholder. Unlike the previous example, however, let us assume an inverse gamma prior with a shape parameter of 2 and a scale parameter of 5.[^ChBayesFt11]
+
+[^ChBayesFt11]: Note that the inverse gamma prior combined with a Poisson distribution does not generally lead to closed-form posterior densities and thus requires us to use MCMC methods.
+
+Find the posterior distribution of the parameter by creating a chain of 51,000 iterations and a burn-in of 1,000 iterations using the `nimble` package.
+
+`r HideExample('9.5.1', 'Show Example Solution')`
+
+**Solution.** 
+First, we need to define the model using the `nimble` language. Simply put, the model is comprised of a likelihood density and a prior density. The former links the observations to a Poisson distribution with parameter $\lambda$, and the latter states the prior distribution, which is inverse gamma with shape and scale parameters of 2 and 5, respectively.
+
+```{r ChBayesNIMBLE1, echo = TRUE, eval = TRUE}
+claimmodel <- nimbleCode({ 
+  for (i in 1:N){
+    # Likelihood
+    count[i] ~ dpois(lambda)
+  }
+  # Prior distribution
+  lambda ~ dinvgamma(shape = 2, scale = 5)
+})
+```
+
+Then, we define the data, the constant (i.e., the number of observations in this case), the parameter list (i.e., only $\lambda$ here), and the initial value set to 0.05 in this illustration. 
+
+```{r ChBayesNIMBLE2, echo = TRUE, eval = TRUE}
+claimdata <- list(count = sgautonb$Clm_Count)
+claimconstant <- list(N = length(sgautonb$Clm_Count))
+claimparameters <- c("lambda")
+claiminitial <- list(lambda = 0.05)
+```
+
+The MCMC chain is then run using for 51,000 iterations and a burn-in of 1,000 iterations.
+
+```{r ChBayesNIMBLE3, echo = TRUE, eval = FALSE}
+mcmcoutput <- nimbleMCMC(code = claimmodel,
+                          data = claimdata,
+                          constants = claimconstant,
+                          inits = claiminitial,
+                          monitors = claimparameters,
+                          niter = 51000,
+                          nburnin = 1000,
+                          nchains = 1)
+```
+
+```{r echo = FALSE, eval = FALSE}
+save(mcmcoutput, file= "../IntermediateCalcs/BayesChap/Example951.Rdata")
+```
+
+Finally, we display the trace plot, obtain the histogram of the posterior distribution of $\lambda$, and compute some descriptive statistics of the parameter.
+
+(ref:ChBayesPractice) **Trace plot and posterior density for parameter $\lambda$**
+
+```{r ChBayesPractice, echo = FALSE, fig.cap='(ref:ChBayesPractice)', out.width = '80%', fig.asp = 0.75, fig.align = 'center'}
+load(file= "IntermediateCalcs/BayesChap/Example951.Rdata")
+
+datalambdaspractice <- data.frame(x=seq(from=1,to=50000),y1=mcmcoutput[1:50000])
+
+p14 <- ggplot(datalambdaspractice, aes(x=x, y=y1)) + 
+  geom_line(color='black',lwd = 1.5) +
+  xlim(1,50000) + ylim(0.06,0.10) + 
+  ylab(expression(lambda)) + xlab('Iteration') +
+  ggtitle('Trace plot') 
+
+p15 <- ggplot(datalambdaspractice, aes(x=y1)) + 
+  geom_histogram(bins=15,fill='darkgray',color='white') +
+  xlab(expression(lambda)) + ylab('Count') + 
+  xlim(0.06,0.10) + 
+  ggtitle('Posterior density') 
+  
+p14 + p15
+
+meanlambdapractice <- mean(mcmcoutput[1:50000])
+stdlambdapractice <- sd(mcmcoutput[1:50000])
+
+cat('The posterior mean of the parameter is',meanlambdapractice)
+cat('The posterior standard deviation of the parameter is',stdlambdapractice)
+```
+
+</div>
+
+This simple illustration demonstrates the simplicity of utilizing R packages to generate MCMC chains, all without the need for writing extensive code. For more details on the `nimble` package, see @de2017programming.
 
 ## Further Resources and Contributors {#ChBayes:SecFurther}
 
