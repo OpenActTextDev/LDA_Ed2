@@ -426,6 +426,11 @@ rating-factors-and-tariff
 multiplicative-tariff-model
 poisson-regression-for-multiplicative-tariff
 numerical-examples
+risk-classification-vs-discrimination
+economic-commodity-vs-social-good
+information-asymmetry
+sensitive-variables-and-regulation
+big-data-models-and-proxy-discrimination
 RC:further-reading-and-resources
 ChapCredibility
 introduction-to-applications-of-credibility-theory
