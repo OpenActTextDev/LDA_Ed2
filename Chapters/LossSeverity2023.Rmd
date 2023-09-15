@@ -4,9 +4,9 @@
 # Modeling Loss Severity {#ChapSeverity}
 
 
-*Chapter Preview.* The traditional loss distribution approach to modeling `r Gloss('aggregate losses')` starts by separately fitting a frequency distribution to the number of losses and a severity distribution to the size of losses. The estimated aggregate loss distribution combines the loss frequency distribution and the loss severity distribution by convolution. Discrete distributions often referred to as counting or frequency distributions were used in Chapter \@ref(ChapFrequency-Modeling) to describe the number of events such as number of accidents to the driver or number of claims to the insurer. Lifetimes, asset values, losses and claim sizes are usually modeled as continuous random variables and as such are modeled using continuous distributions, often referred to as loss or severity distributions. A `r Gloss('mixture distribution', '3')` is a weighted combination of simpler distributions that is used to model phenomenon investigated in a heterogeneous population, such as modeling more than one type of claims in `r Gloss('liability insurance')` (small frequent claims and large relatively rare claims). In this chapter we explore the use of continuous as well as mixture distributions to model the random size of loss. Sections \@ref(S:BasicQuantities) and \@ref(S:ContinuousDistn) present key attributes that characterize continuous models and means of creating new distributions from existing ones. Section \@ref(S:CoverageModifications) describes the effect of coverage modifications, which change the conditions that trigger a payment, such as applying deductibles, limits, or adjusting for inflation, on the distribution of individual loss amounts. For calibrating models, Section \@ref(S:MaxLikeEstimation) deepens our understanding of maximum likelihood methods. The frequency distributions from Chapter \@ref(ChapFrequency-Modeling) will be combined with the ideas from this chapter to describe the aggregate losses over the whole portfolio in Chapter \@ref(ChapAggLossModels).
+*Chapter Preview.* The traditional loss distribution approach to modeling `r Gloss('aggregate losses')` starts by separately fitting a frequency distribution to the number of losses and a severity distribution to the size of losses. The estimated aggregate loss distribution combines the loss frequency distribution and the loss severity distribution by convolution. Discrete distributions often referred to as counting or frequency distributions were used in Chapter \@ref(ChapFrequency-Modeling) to describe the number of events such as number of accidents to the driver or number of claims to the insurer. Lifetimes, asset values, losses and claim sizes are usually modeled as continuous random variables and as such are modeled using continuous distributions, often referred to as loss or severity distributions. A `r Gloss('mixture distribution', '3')` is a weighted combination of simpler distributions that is used to model phenomenon investigated in a heterogeneous population, such as modeling more than one type of claims in `r Gloss('liability insurance')` (small frequent claims and large relatively rare claims). In this chapter we explore the use of continuous as well as mixture distributions to model the random size of loss. 
 
-
+Sections \@ref(S:BasicQuantities) to \@ref(S:MethodsCreation) present key attributes that characterize continuous models and means of creating new distributions from existing ones. Section \@ref(S:MS:NonParEst) describes some principal non-parametric methods for estimating loss distributions: moment and percentile based, empirical, and density estimation methods. Section \@ref(S:Parametric) covers parametric estimation methods including method of moments and percentile matching, and deepens our understanding of maximum likelihood methods. The frequency distributions from Chapter \@ref(ChapFrequency-Modeling) will be combined with the ideas from this chapter to describe the aggregate losses over the whole portfolio in Chapter \@ref(ChapAggLossModels).
 
 ## Basic Distributional Quantities {#S:BasicQuantities}
 
@@ -14,13 +14,12 @@
 In this section, you learn how to define some basic distributional quantities:
 
 -   moments,
--   percentiles, and 
--   generating functions.
+-   moment generating functions, and
+-   percentiles
 
 ***
 
-
-### Moments {#S:Chap3Moments}
+### Moments and Moment Generating Functions {#S:Chap3Moments}
 
 Let $X$ be a `r Gloss('continuous random variable')` with probability density function (*pdf*) $f_{X}\left( x \right)$ and distribution function $F_{X}\left( x \right)$. The *k*-th `r Gloss ('raw moment')` of $X$, denoted by $\mu_{k}^{\prime}$, is the `r Gloss('expected value')` of the *k*-th power of $X$, provided it exists. The first raw moment $\mu_{1}^{\prime}$ is the mean of $X$ usually denoted by $\mu$. The formula for $\mu_{k}^{\prime}$ is given as
 
@@ -77,134 +76,6 @@ Hence, $\alpha = 4$. Since, $\mathrm{E}\left( X \right) = \alpha\theta = 8$, the
 
 *** 
 
-### Quantiles {#S:LS:Quantiles}
-
-Quantiles can also be used to describe the characteristics of the distribution of $X$. When the distribution of $X$ is continuous, for a given fraction $0 \leq p \leq 1$ the corresponding quantile is the solution of the equation
-$$
-F_{X}\left( \pi_{p} \right) = p .
-$$
-For example, the middle point of the distribution, $\pi_{0.5}$, is the `r Gloss('median')`. A `r Gloss('percentile', '3.1')` is a type of quantile; a $100p$ percentile is the number such that $100 \times p$ percent of the data is below it.
-
-
-**Example 4.1.1. Actuarial Exam Question.**
-Let $X$ be a continuous random variable with density function $f_{X}\left( x \right) = \theta e^{- \theta x}$, for $x > 0$ and 0 elsewhere. If the median of this distribution is $\frac{1}{3}$, find $\theta$.
-
-`r HideExample('4.1.2','Show Example Solution')`
-
-**Solution.**
-
-The distribution function is $F_{X}\left( x \right) = 1 - e^{- \theta x}$. So, $F_{X}\left( \pi_{0.5} \right) = 1 - e^{- \theta\pi_{0.5}} = 0.5$. As, $\pi_{0.5} = \frac{1}{3}$, we have $F_X\left(\frac{1}{3}\right) =  1 - e^{-\theta / 3} = 0.5$ and $\theta = 3 \log 2$.
-</div>
-
-*** 
-
-Section \@ref(S:MS:QuantileEstimator) will extend the definition of quantiles to include distributions that are discrete, continuous, or a hybrid combination.
-
-
-#### Quartiles, Percentiles and Quantiles {#S:MS:QuantileEstimator}
-
-We have already seen in Section \@ref(S:Chap3Moments) the `r Gloss('median')`, which is the number such that approximately half of a data set is below (or above) it. The `r Gloss('first quartile')` is the number such that approximately 25\% of the data is below it and the `r Gloss('third quartile')` is the number such that approximately 75\% of the data is below it. A $100p$ `r Gloss('percentile', '4.1')` is the number such that $100 \times p$ percent of the data is below it.
-
-To generalize this concept, consider a distribution function $F(\cdot)$, which may or may not be continuous, and let $q$ be a fraction so that $0<q<1$. We want to define a `r Gloss('quantile')`, say $q_F$, to be a number such that $F(q_F) \approx q$. Notice that when $q = 0.5$, $q_F$ is the median; when $q = 0.25$, $q_F$ is the first quartile, and so on.  In the same way, when $q = 0, 0.01, 0.02, \ldots, 0.99, 1.00$, the resulting $q_F$ is a percentile. So, a quantile generalizes the concepts of median, quartiles, and percentiles.
-
-To be precise, for a given $0<q<1$, define the $q$**th quantile** $q_F$ to be *any* number that satisfies
-
-\begin{equation}
-F(q_F-) \le q \le F(q_F)
-(\#eq:Quantile)
-\end{equation}
-
-Here, the notation $F(x-)$ means to evaluate the function $F(\cdot)$ as a left-hand limit.
-
-To get a better understanding of this definition, let us look at a few special cases. First, consider the case where $X$ is a continuous random variable so that the distribution function $F(\cdot)$ has no jump points, as illustrated in Figure \@ref(fig:Quantile1). In this figure, a few fractions, $q_1$, $q_2$, and $q_3$ are shown with their corresponding quantiles $q_{F,1}$, $q_{F,2}$, and $q_{F,3}$. In each case, it can be seen that $F(q_F-)= F(q_F)$ so that there is a unique quantile. Because we can find a unique inverse of the distribution function at any $0<q<1$, we can write $q_F= F^{-1}(q)$.
-
-(ref:Quantile1) **Continuous Quantile Case**
-
-```{r Quantile1, echo=FALSE, fig.cap='(ref:Quantile1)', out.width='60%', fig.asp=.75, fig.align='center'}
-curve(pnorm(x,0,1), -4, 4, ylab="F(x)", xaxt="n", yaxt="n", lwd=2)
-axis(side=2, at=c(0.1,0.5,0.9), labels=c(expression(q[1]),expression(q[2]),expression(q[3])),las=1)
-axis(side=1, at=c(qnorm(0.1,0,1), qnorm(0.5,0,1), qnorm(0.9,0,1)), labels=c(expression(q['F,1']), expression(q['F,2']), expression(q['F,3'])))
-segments(x0=-4, y0=0.1, x1=qnorm(0.1,0,1), y1=0.1, lty=1)
-segments(x0=-4, y0=0.5, x1=qnorm(0.5,0,1), y1=0.5, lty=1)
-segments(x0=-4, y0=0.9, x1=qnorm(0.9,0,1), y1=0.9, lty=1)
-segments(x0=qnorm(0.1,0,1), y0=0, x1=qnorm(0.1,0,1), y1=0.1, lty=3)
-segments(x0=qnorm(0.5,0,1), y0=0, x1=qnorm(0.5,0,1), y1=0.5, lty=3)
-segments(x0=qnorm(0.9,0,1), y0=0, x1=qnorm(0.9,0,1), y1=0.9, lty=3)
-```
-
-Figure \@ref(fig:Quantile2) shows three cases for distribution functions. The left panel corresponds to the continuous case just discussed. The middle panel displays a jump point similar to those we already saw in the empirical distribution function of Figure \@ref(fig:EDFToy). For the value of $q$ shown in this panel, we still have a unique value of the quantile $q_F$. Even though there are many values of $q$ such that $F(q_F-) \le q \le F(q_F)$, for a particular value of $q$, there is only one solution to equation \@ref(eq:Quantile). The right panel depicts a situation in which the quantile cannot be uniquely determined for the $q$ shown as there is a range of $q_F$'s satisfying equation \@ref(eq:Quantile). 
-
-(ref:Quantile2) **Three Quantile Cases**
-
-```{r Quantile2, echo=FALSE, fig.cap='(ref:Quantile2)', out.width='90%', fig.asp=.40, fig.align='center'}
-par(mfrow=c(1,3))
-
-curve(x/1,0,1, ylab="F(x)", xaxt="n", yaxt="n")
-axis(side=2, at=c(0.5), labels=c(expression(q)), las=1)
-axis(side=1, at=c(0.5), labels=c(expression(q[F])))
-segments(x0=0, y0=0.5, x1=0.5, y1=0.5, lty=3)
-segments(x0=0.5, y0=0, x1=0.5, y1=0.5, lty=3)
-
-curve((4/5)*x,0,0.5, ylab="F(x)", xaxt="n", yaxt="n", xlim=c(0,1), ylim=c(0,1))
-curve((4/5)*x+0.2,0.5,1, add=TRUE)
-axis(side=2, at=c(0.5), labels=c(expression(q)), las=1)
-axis(side=1, at=c(0.5), labels=c(expression(q[F])))
-points(x=0.5, y=0.4, pch=1, cex=2)
-points(x=0.5, y=0.6, pch=16, cex=2)
-
-curve((5/4)*x,0,0.4, ylab="F(x)", xaxt="n", yaxt="n", xlim=c(0,1), ylim=c(0,1))
-curve((5/4)*x-0.25,0.6,1, add=TRUE)
-curve(0*x+0.5,0.4,0.6, add=TRUE)
-axis(side=2, at=c(0.5), labels=c(expression(q)), las=1)
-axis(side=1, at=c(0.5), labels=c(expression(q[F])))
-```
-
-***
-
-
-**Example 5.1.2. Toy Data Set: Continued.**
-Determine quantiles corresponding to the 20th, 50th, and 95th percentiles.
-
-`r HideExample('5.1.2', 'Show Example Solution')`
-
-**Solution**.
-Consider Figure \@ref(fig:EDFToy). The case of $q=0.20$ corresponds to the middle panel of Figure Figure \@ref(fig:Quantile2), so the 20th percentile is 15. The case of $q=0.50$ corresponds to the right panel, so the median is any number between 20 and 23 inclusive. Many software packages use the average 21.5 (e.g. `R`, as seen below). For the 95th percentile, the solution is 30. We can see from  Figure \@ref(fig:EDFToy) that 30 also corresponds to the 99th and the 99.99th percentiles.
-
-```{r, warning=FALSE}
-xExample <- c(10,rep(15,3),20,rep(23,4),30)
-quantile(xExample, probs=c(0.2, 0.5, 0.95), type=6)
-```
-
-</div>
-
-***
-
-By taking a weighted average between data observations, smoothed empirical quantiles can handle cases such as the right panel in Figure \@ref(fig:Quantile2). The $q$th `r Gloss('smoothed empirical quantile')` is defined as 
-$$
-\hat{\pi}_q = (1-h) X_{(j)} + h X_{(j+1)}
-$$
-where $j=\lfloor(n+1)q\rfloor$, $h=(n+1)q-j$, and $X_{(1)}, \ldots, X_{(n)}$ are the ordered values (known as the *order statistics*) corresponding to $X_1, \ldots, X_n$. (Recall that the brackets $\lfloor \cdot\rfloor$ are the floor function denoting the greatest integer value.) Note that $\hat{\pi}_q$ is simply a linear interpolation between $X_{(j)}$ and $X_{(j+1)}$.
-
-
-**Example 5.1.3. Toy Data Set: Continued.**
-Determine the 50th and 20th smoothed percentiles.
-
-`r HideExample('5.1.3', 'Show Example Solution')`
-
-**Solution**
-Take $n=10$ and $q=0.5$. Then, $j=\lfloor(11)(0.5) \rfloor= \lfloor 5.5 \rfloor=5$ and $h=(11)(0.5)-5=0.5$. Then the 0.5-th smoothed empirical quantile is
-$$\hat{\pi}_{0.5} = (1-0.5) X_{(5)} + (0.5) X_{(6)} = 0.5 (20) + (0.5)(23) = 21.5.$$
-Now take $n=10$ and $q=0.2$. In this case, $j=\lfloor(11)(0.2)\rfloor=\lfloor 2.2 \rfloor=2$ and $h=(11)(0.2)-2=0.2$. Then the 0.2-th smoothed empirical quantile is
-$$\hat{\pi}_{0.2} = (1-0.2) X_{(2)} + (0.2) X_{(3)} = 0.8 (15) + (0.2)(15) = 15.$$
-
-</div>
-
-***
-
-
-
-### Moment Generating Function
-
 The `r Gloss('moment generating function (mgf)')`, denoted by $M_{X}(t)$ uniquely characterizes the distribution of $X$. While it is possible for two different distributions to have the same moments and yet still differ, this is not the case with the moment generating function. That is, if two random variables have the same moment generating function, then they have the same distribution. The moment generating function is given by
 $$
 M_{X}(t) = \mathrm{E}\left( e^{tX} \right) = \int_{0}^{\infty}{e^{\text{tx}}f_{X}\left( x \right) dx }
@@ -215,10 +86,10 @@ $$
 $$
 
 
-**Example 4.1.3. Actuarial Exam Question.**
+**Example 4.1.2. Actuarial Exam Question.**
 The random variable $X$ has an exponential distribution with mean $\frac{1}{b}$. It is found that $M_{X}\left( - b^{2} \right) = 0.2$. Find $b$. (*Hint*: The exponential is a special case of the gamma distribution which is reviewed in Section \@ref(S:Loss:Gamma).)
 
-`r HideExample('4.1.3','Show Example Solution')`
+`r HideExample('4.1.2','Show Example Solution')`
 
 **Solution.**
 
@@ -237,10 +108,10 @@ Thus, $b = 4$.
 
 *** 
 
-**Example 4.1.4. Actuarial Exam Question.**
+**Example 4.1.3. Actuarial Exam Question.**
 Let $X_{1}, \ldots, X_{n}$ be `r Gloss('independent')` random variables, where $X_i$ has a gamma distribution with parameters $\alpha_{i}$ and $\theta$. Find the distribution of $S = \sum_{i = 1}^{n}X_{i}$, the mean $\mathrm{E}(S)$, and the variance $\mathrm{Var}(S)$.
 
-`r HideExample('4.1.4','Show Example Solution')`
+`r HideExample('4.1.3','Show Example Solution')`
 
 **Solution.**
 
@@ -282,9 +153,36 @@ $$
 
 As introduced in Section \@ref(S:generating-functions), the probability generating function is more useful for discrete random variables. 
 
+*** 
+
+### Quantiles {#S:LS:Quantiles}
+
+Quantiles can also be used to describe the characteristics of the distribution of $X$. When the distribution of $X$ is continuous, for a given fraction $0 \leq p \leq 1$ the corresponding quantile is the solution of the equation
+$$
+F_{X}\left( \pi_{p} \right) = p .
+$$
+For example, the middle point of the distribution, $\pi_{0.5}$, is the `r Gloss('median')`. A `r Gloss('percentile', '3.1')` is a type of quantile; a $100p$ percentile is the number such that $100 \times p$ percent of the data is below it.
+
+
+**Example 4.1.4. Actuarial Exam Question.**
+Let $X$ be a continuous random variable with density function $f_{X}\left( x \right) = \theta e^{- \theta x}$, for $x > 0$ and 0 elsewhere. If the median of this distribution is $\frac{1}{3}$, find $\theta$.
+
+`r HideExample('4.1.4','Show Example Solution')`
+
+**Solution.**
+
+The distribution function is $F_{X}\left( x \right) = 1 - e^{- \theta x}$. So, $F_{X}\left( \pi_{0.5} \right) = 1 - e^{- \theta\pi_{0.5}} = 0.5$. As, $\pi_{0.5} = \frac{1}{3}$, we have $F_X\left(\frac{1}{3}\right) =  1 - e^{-\theta / 3} = 0.5$ and $\theta = 3 \log 2$.
+</div>
+
+*** 
+
+Section \@ref(S:MS:QuantileEstimator) extends the definition of quantiles to include distributions that are discrete, continuous, or a hybrid combination.
+
 
 ```{r child = './Quizzes/Quiz31.html', eval = QUIZ}
 ```
+
+***
 
 ## Continuous Distributions for Modeling Loss Severity {#S:ContinuousDistn}
 
@@ -298,14 +196,11 @@ In this section, you learn how to define and apply four fundamental severity dis
 
 ***
 
-
-
 ### Gamma Distribution {#S:Loss:Gamma}
 
 Recall that the traditional approach in modeling losses is to fit separate models for frequency and claim severity. When frequency and severity are modeled separately it is common for actuaries to use the Poisson distribution (introduced in Section \@ref(S:poisson-distribution)) for claim count and the gamma distribution to model severity. An alternative approach for modeling losses that has recently gained popularity is to create a single model for pure premium (average claim cost) that will be described in Chapter \@ref(ChapModelSelection).
 
-The continuous variable $X$ is said to have the gamma distribution with shape parameter $\alpha$ and scale parameter $\theta$ if its probability
-density function is given by
+The continuous variable $X$ is said to have the gamma distribution with shape parameter $\alpha$ and scale parameter $\theta$ if its probability density function is given by
 $$
 f_{X}\left( x \right) = \frac{\left( x/ \theta  \right)^{\alpha}}{x~ \Gamma\left( \alpha \right)}\exp \left( -x/ \theta \right) \ \ \ \text{for } x > 0 .
 $$
@@ -595,7 +490,7 @@ Earlier applications of the *GB2* were on income data and more recently have bee
 ```{r child = './Quizzes/Quiz32.html', eval = QUIZ}
 ```
 
-## Methods of Creating New Distributions {#MethodsCreation}
+## Methods of Creating New Distributions {#S:MethodsCreation}
 
 ***
 In this section, you learn how to:
@@ -611,7 +506,7 @@ In this section, you learn how to:
 
 In Section \@ref(S:ContinuousDistn) we discussed some elementary known distributions. In this section we discuss means of creating new parametric probability distributions from existing ones. Specifically, let $X$ be a continuous random variable with a known *pdf* $f_{X}(x)$ and distribution function $F_{X}(x)$. We are interested in the distribution of $Y = g\left( X \right)$, where $g(X)$ is a one-to-one `r Gloss('transformation')` defining a new random variable $Y$. In this section we apply the following techniques for creating new families of distributions: (a) multiplication by a constant (b) raising to a power, (c) exponentiation and (d) mixing.
 
-### Multiplication by a Constant
+#### Multiplication by a Constant
 
 If claim data show change over time then such transformation can be useful to adjust for inflation. If the level of inflation is positive then claim costs are rising, and if it is negative then costs are falling. To adjust for inflation we multiply the cost $X$ by 1+ inflation rate (negative inflation is deflation). To account for currency impact on claim costs we also use a transformation to apply currency conversion from a base to a counter currency.
 
@@ -681,7 +576,7 @@ Using the same approach you can demonstrate that other distributions introduced 
 
 *** 
 
-### Raising to a Power {#S:LossSev:Raising}
+#### Raising to a Power {#S:LossSev:Raising}
 
 In Section \@ref(S:LS:Weibull) we talked about the flexibility of the Weibull distribution in fitting `r Gloss('reliability data')`. Looking to the origins of the Weibull distribution, we recognize that the Weibull is a `r Gloss('power transformation')` of the exponential distribution. This is an application of another type of transformation which involves raising the random variable to a power.
 
@@ -756,7 +651,7 @@ Residual analysis provides another direct application. Suppose we have an outcom
 </div>
 
 
-### Exponentiation
+#### Exponentiation
 
 The normal distribution is a very popular model for a wide number of applications and when the sample size is large, it can serve as an approximate distribution for other models. If the random variable $X$ has a normal distribution with mean $\mu$ and variance $\sigma^{2}$, then $Y = e^{X}$ has a `r Gloss('lognormal distribution')` with parameters $\mu$ and $\sigma^{2}$. The lognormal random variable has a lower bound of zero, is positively skewed and has a long right tail. A lognormal distribution is commonly used to describe distributions of financial assets such as stock prices. It is also used in fitting claim amounts for automobile as well as health insurance. This is an example of another type of transformation which involves exponentiation.
 
@@ -800,12 +695,14 @@ Since $0 < x < c$, then $1 < y  <  e^{c}$.
 
 *** 
 
-### Finite Mixtures
+### Mixture Distributions for Severity
 
 Mixture distributions represent a useful way of modeling data that are drawn from a `r Gloss('heterogeneous population')`. This parent population can be
 thought to be divided into multiple subpopulations with distinct distributions.
 
-#### Two-point Mixture
+#### Finite Mixtures
+
+##### Two-point Mixture
 
 If the underlying phenomenon is diverse and can actually be described as two phenomena representing two subpopulations with different modes, we can construct the two-point mixture random variable $X$. Given random variables $X_{1}$ and $X_{2}$, with *pdf*s $f_{X_{1}}\left( x \right)$ and $f_{X_{2}}\left( x \right)$ respectively, the *pdf* of $X$ is the weighted average of the component *pdf* $f_{X_{1}}\left( x \right)$ and $f_{X_{2}}\left( x \right)$. The *pdf* and distribution function of $X$ are given by
 $$f_{X}\left( x \right) = af_{X_{1}}\left( x \right) + \left( 1 - a \right)f_{X_{2}}\left( x \right),$$
@@ -833,7 +730,7 @@ $$\mathrm{E}\left(X\right)=0.25\mathrm{E}\left(X_1\right)+0.75\mathrm{E}\left(X_
 
 *** 
 
-#### *k*-point Mixture
+##### *k*-point Mixture
 
 In case of finite mixture distributions, the random variable of interest $X$ has a probability $p_{i}$ of being drawn from homogeneous subpopulation $i$, where $i = 1,2,\ldots,k$ and $k$ is the initially specified number of subpopulations in our mixture. The mixing parameter $p_{i}$ represents the proportion of observations from subpopulation $i$. Consider the random variable $X$ generated from $k$ distinct subpopulations, where subpopulation $i$ is modeled by the continuous distribution $f_{X_{i}}\left( x \right)$. The probability distribution of $X$ is given by
 $$f_{X}\left( x \right) = \sum_{i = 1}^{k}{p_{i}f_{X_{i}}\left( x \right)},$$
@@ -872,7 +769,7 @@ Then, $Z$ is a mixture of $X_{1}$, $X_{2}$, $X_{3}$ and $X_{4}$, with mixing wei
 
 *** 
 
-### Continuous Mixtures 
+#### Continuous Mixtures 
 
 A mixture with a very large number of subpopulations ($k$ goes to infinity) is often referred to as a `r Gloss('continuous mixture')`. In a continuous mixture, subpopulations are not distinguished by a discrete mixing parameter but by a continuous variable $\Theta$, where $\Theta$ plays the role of $p_{i}$ in the finite mixture. Consider the random variable $X$ with a distribution depending on a parameter $\Theta$, where $\Theta$ itself is a continuous random variable. This description yields the following model for $X$
 $$
@@ -989,11 +886,9 @@ In this section, you learn how to:
 
 - Estimate moments, quantiles, and distributions without reference to a parametric distribution
 - Summarize the data graphically without reference to a parametric distribution
-- Determine measures that summarize deviations of a parametric from a nonparametric fit
-- Use nonparametric estimators to approximate parameters that can be used to start a parametric estimation procedure
+- Use method of moments, percentile matching, and maximum likelihood estimation to estimate parameters for different distributions.  
 
 ***
-
 
 ### Nonparametric Estimation {#S:MS:NonParEst}
 
@@ -1001,14 +896,35 @@ In Section \@ref(S:basic-frequency-distributions) for frequency and Section \@re
 
 i. assume a parametric form for a distribution, such as a negative binomial for frequency or a gamma distribution for severity, 
 ii. estimate the parameters of that distribution, and then 
-iii. use the distribution with the estimated parameters  to calculate the desired summary measure.
+iii. use the distribution with the estimated parameters to calculate the desired summary measure.
 
 This is the `r Gloss('parametric')` approach. Another strategy is to estimate the desired summary measure directly from the observations *without* reference to a parametric model. Not surprisingly, this is known as the 
 `r Gloss('nonparametric')` approach.
 
-Let us start by considering the most basic type of `r Gloss('sampling scheme')` and assume that observations are realizations from a set of random variables $X_1, \ldots, X_n$ that are `r Gloss('iid')` draws from an unknown population distribution $F(\cdot)$. An equivalent way of saying this is that $X_1, \ldots, X_n$, is a *random sample* (with replacement) from $F(\cdot)$. To see how this works, we now describe nonparametric estimators of many important measures that summarize a distribution.
+Let us start by considering the most basic type of `r Gloss('sampling scheme')` and assume that observations are realizations from a set of random variables $X_1, \ldots, X_n$ that are `r Gloss('iid')` draws from an unknown population distribution $F(\cdot)$. An equivalent way of saying this is that $X_1, \ldots, X_n$, is a *random sample* (with replacement) from $F(\cdot)$. We now describe nonparametric estimators of many important measures that summarize a distribution.
 
-  
+#### Moment Estimators {#S:MS:MomentEstimator}
+
+We learned how to define moments in Section \@ref(S:generating-functions) for frequency and Section \@ref(S:Chap3Moments) for severity. In particular, the $k$-th moment, $\mathrm{E~}[X^k] = \mu^{\prime}_k$, summarizes many aspects of the distribution for different choices of $k$. Here, $\mu^{\prime}_k$ is sometimes called the $k$th *population* moment to distinguish it from the $k$th sample moment, 
+$$
+\frac{1}{n} \sum_{i=1}^n X_i^k ,
+$$
+which is the corresponding nonparametric estimator. In typical applications, $k$ is a positive integer, although it need not be in theory. The sample estimator for the population mean $\mu$ is called the *sample mean*, denoted with a bar on top of the random variable: 
+
+$$
+\overline{X} =\frac{1}{n} \sum_{i=1}^n X_i .
+$$
+A nonparametric, or sample, estimator of the $k$*-th central moment*, $\mu_k$ is
+$$
+\frac{1}{n} \sum_{i=1}^n \left(X_i - \overline{X}\right)^k .
+$$
+Properties of the sample moment estimator of the variance such as $n^{-1}\sum_{i=1}^n \left(X_i - \overline{X}\right)^2$ have been studied extensively but is not the only possible estimator. The most widely used version is one where the effective sample size is reduced by one, and so we define
+$$
+s^2 = \frac{1}{n-1} \sum_{i=1}^n \left(X_i - \overline{X}\right)^2.
+$$
+
+Dividing by $n-1$ instead of $n$ matters little when you have a large sample size $n$ as is common in insurance applications. The *sample variance* estimator $s^2$ is `r Gloss('unbiased')` in the sense that $\mathrm{E~} [s^2] = \sigma^2$, a desirable property particularly when interpreting results of an analysis.  
+
 
 #### Empirical Distribution Function
 
@@ -1027,7 +943,7 @@ As $F_n(\cdot)$ is based on only observations and does not assume a parametric f
 
 
 
-**Example 5.1.1. Toy Data Set**. To illustrate, consider a fictitious, or "toy," data set of $n=10$ observations. Determine the empirical distribution function.
+**Example 4.4.1. Toy Data Set**. To illustrate, consider a fictitious, or "toy," data set of $n=10$ observations. Determine the empirical distribution function.
 
 $$
 {\small
@@ -1041,7 +957,7 @@ X_i& 10 &15 &15 &15 &20 &23 &23 &23 &23 &30\\
 $$
 
 
-`r HideExample('5.1.1', 'Show Example Solution')`
+`r HideExample('4.4.1', 'Show Example Solution')`
 
 You should check that the sample mean is $\overline{X} = 19.7$ and that the sample variance is $s^2 =34.45556$. The corresponding empirical distribution function is
 
@@ -1077,12 +993,105 @@ plot(PercentilesxExample, main="",xlab="x")
 PercentilesxExample <- ecdf(xExample)
 plot(PercentilesxExample, main="",xlab="x")
 ```
+
 </div>
+
+#### Quartiles, Percentiles and Quantiles {#S:MS:QuantileEstimator}
+
+We have already seen in Section \@ref(S:LS:Quantiles) the `r Gloss('median')`, which is the number such that approximately half of a data set is below (or above) it. The `r Gloss('first quartile')` is the number such that approximately 25\% of the data is below it and the `r Gloss('third quartile')` is the number such that approximately 75\% of the data is below it. A $100p$ `r Gloss('percentile', '4.1')` is the number such that $100 \times p$ percent of the data is below it.
+
+To generalize this concept, consider a distribution function $F(\cdot)$, which may or may not be continuous, and let $q$ be a fraction so that $0<q<1$. We want to define a `r Gloss('quantile')`, say $q_F$, to be a number such that $F(q_F) \approx q$. Notice that when $q = 0.5$, $q_F$ is the median; when $q = 0.25$, $q_F$ is the first quartile, and so on.  In the same way, when $q = 0, 0.01, 0.02, \ldots, 0.99, 1.00$, the resulting $q_F$ is a percentile. So, a quantile generalizes the concepts of median, quartiles, and percentiles.
+
+To be precise, for a given $0<q<1$, define the $q$**th quantile** $q_F$ to be *any* number that satisfies
+
+\begin{equation}
+F(q_F-) \le q \le F(q_F)
+(\#eq:Quantile)
+\end{equation}
+
+Here, the notation $F(x-)$ means to evaluate the function $F(\cdot)$ as a left-hand limit.
+
+To get a better understanding of this definition, let us look at a few special cases. First, consider the case where $X$ is a continuous random variable so that the distribution function $F(\cdot)$ has no jump points, as illustrated in Figure \@ref(fig:Quantile1). In this figure, a few fractions, $q_1$, $q_2$, and $q_3$ are shown with their corresponding quantiles $q_{F,1}$, $q_{F,2}$, and $q_{F,3}$. In each case, it can be seen that $F(q_F-)= F(q_F)$ so that there is a unique quantile. Because we can find a unique inverse of the distribution function at any $0<q<1$, we can write $q_F= F^{-1}(q)$.
+
+(ref:Quantile1) **Continuous Quantile Case**
+
+```{r Quantile1, echo=FALSE, fig.cap='(ref:Quantile1)', out.width='60%', fig.asp=.75, fig.align='center'}
+curve(pnorm(x,0,1), -4, 4, ylab="F(x)", xaxt="n", yaxt="n", lwd=2)
+axis(side=2, at=c(0.1,0.5,0.9), labels=c(expression(q[1]),expression(q[2]),expression(q[3])),las=1)
+axis(side=1, at=c(qnorm(0.1,0,1), qnorm(0.5,0,1), qnorm(0.9,0,1)), labels=c(expression(q['F,1']), expression(q['F,2']), expression(q['F,3'])))
+segments(x0=-4, y0=0.1, x1=qnorm(0.1,0,1), y1=0.1, lty=1)
+segments(x0=-4, y0=0.5, x1=qnorm(0.5,0,1), y1=0.5, lty=1)
+segments(x0=-4, y0=0.9, x1=qnorm(0.9,0,1), y1=0.9, lty=1)
+segments(x0=qnorm(0.1,0,1), y0=0, x1=qnorm(0.1,0,1), y1=0.1, lty=3)
+segments(x0=qnorm(0.5,0,1), y0=0, x1=qnorm(0.5,0,1), y1=0.5, lty=3)
+segments(x0=qnorm(0.9,0,1), y0=0, x1=qnorm(0.9,0,1), y1=0.9, lty=3)
+```
+
+Figure \@ref(fig:Quantile2) shows three cases for distribution functions. The left panel corresponds to the continuous case just discussed. The middle panel displays a jump point similar to those we already saw in the empirical distribution function of Figure \@ref(fig:EDFToy). For the value of $q$ shown in this panel, we still have a unique value of the quantile $q_F$. Even though there are many values of $q$ such that $F(q_F-) \le q \le F(q_F)$, for a particular value of $q$, there is only one solution to equation \@ref(eq:Quantile). The right panel depicts a situation in which the quantile cannot be uniquely determined for the $q$ shown as there is a range of $q_F$'s satisfying equation \@ref(eq:Quantile). 
+
+(ref:Quantile2) **Three Quantile Cases**
+
+```{r Quantile2, echo=FALSE, fig.cap='(ref:Quantile2)', out.width='90%', fig.asp=.40, fig.align='center'}
+par(mfrow=c(1,3))
+
+curve(x/1,0,1, ylab="F(x)", xaxt="n", yaxt="n")
+axis(side=2, at=c(0.5), labels=c(expression(q)), las=1)
+axis(side=1, at=c(0.5), labels=c(expression(q[F])))
+segments(x0=0, y0=0.5, x1=0.5, y1=0.5, lty=3)
+segments(x0=0.5, y0=0, x1=0.5, y1=0.5, lty=3)
+
+curve((4/5)*x,0,0.5, ylab="F(x)", xaxt="n", yaxt="n", xlim=c(0,1), ylim=c(0,1))
+curve((4/5)*x+0.2,0.5,1, add=TRUE)
+axis(side=2, at=c(0.5), labels=c(expression(q)), las=1)
+axis(side=1, at=c(0.5), labels=c(expression(q[F])))
+points(x=0.5, y=0.4, pch=1, cex=2)
+points(x=0.5, y=0.6, pch=16, cex=2)
+
+curve((5/4)*x,0,0.4, ylab="F(x)", xaxt="n", yaxt="n", xlim=c(0,1), ylim=c(0,1))
+curve((5/4)*x-0.25,0.6,1, add=TRUE)
+curve(0*x+0.5,0.4,0.6, add=TRUE)
+axis(side=2, at=c(0.5), labels=c(expression(q)), las=1)
+axis(side=1, at=c(0.5), labels=c(expression(q[F])))
+```
+
+***
+
+**Example 4.4.2. Toy Data Set: Continued.**
+Determine quantiles corresponding to the 20th, 50th, and 95th percentiles.
+
+`r HideExample('4.4.2', 'Show Example Solution')`
+
+**Solution**.
+Consider Figure \@ref(fig:EDFToy). The case of $q=0.20$ corresponds to the middle panel of Figure Figure \@ref(fig:Quantile2), so the 20th percentile is 15. The case of $q=0.50$ corresponds to the right panel, so the median is any number between 20 and 23 inclusive. Many software packages use the average 21.5 (e.g. `R`, as seen below). For the 95th percentile, the solution is 30. We can see from  Figure \@ref(fig:EDFToy) that 30 also corresponds to the 99th and the 99.99th percentiles.
+
+```{r, warning=FALSE}
+xExample <- c(10,rep(15,3),20,rep(23,4),30)
+quantile(xExample, probs=c(0.2, 0.5, 0.95), type=6)
+```
 
 </div>
 
 ***
 
+By taking a weighted average between data observations, smoothed empirical quantiles can handle cases such as the right panel in Figure \@ref(fig:Quantile2). The $q$th `r Gloss('smoothed empirical quantile')` is defined as 
+$$
+\hat{\pi}_q = (1-h) X_{(j)} + h X_{(j+1)}
+$$
+where $j=\lfloor(n+1)q\rfloor$, $h=(n+1)q-j$, and $X_{(1)}, \ldots, X_{(n)}$ are the ordered values (known as the *order statistics*) corresponding to $X_1, \ldots, X_n$. (Recall that the brackets $\lfloor \cdot\rfloor$ are the floor function denoting the greatest integer value.) Note that $\hat{\pi}_q$ is simply a linear interpolation between $X_{(j)}$ and $X_{(j+1)}$.
+
+
+**Example 4.4.3. Toy Data Set: Continued.**
+Determine the 50th and 20th smoothed percentiles.
+
+`r HideExample('4.4.3', 'Show Example Solution')`
+
+**Solution**
+Take $n=10$ and $q=0.5$. Then, $j=\lfloor(11)(0.5) \rfloor= \lfloor 5.5 \rfloor=5$ and $h=(11)(0.5)-5=0.5$. Then the 0.5-th smoothed empirical quantile is
+$$\hat{\pi}_{0.5} = (1-0.5) X_{(5)} + (0.5) X_{(6)} = 0.5 (20) + (0.5)(23) = 21.5.$$
+Now take $n=10$ and $q=0.2$. In this case, $j=\lfloor(11)(0.2)\rfloor=\lfloor 2.2 \rfloor=2$ and $h=(11)(0.2)-2=0.2$. Then the 0.2-th smoothed empirical quantile is
+$$\hat{\pi}_{0.2} = (1-0.2) X_{(2)} + (0.2) X_{(3)} = 0.8 (15) + (0.2)(15) = 15.$$
+
+***
 
 #### Density Estimators {#S:MS:Density}
 
@@ -1131,13 +1140,13 @@ f_n(x) = \frac{1}{nb} \sum_{i=1}^n w\left(\frac{x-X_i}{b}\right) ,
 (\#eq:kernelDens)
 \end{equation}
 
-where $w$ is a probability density function centered about 0. Note that equation \@ref(eq:KDF) is a special case of the kernel density estimator where $w(x) = \frac{1}{2}I(-1 < x \le 1)$, also known as the *uniform kernel*. Other popular choices are shown in [Table 5.1].
+where $w$ is a probability density function centered about 0. Note that equation \@ref(eq:KDF) is a special case of the kernel density estimator where $w(x) = \frac{1}{2}I(-1 < x \le 1)$, also known as the *uniform kernel*. Other popular choices are shown in [Table 4.1].
 
-[Table 5.1]:\#tab:5.1
+[Table 4.1]:\#tab:4.1
 
-<a id=tab:5.1></a>
+<a id=tab:4.1></a>
 
-Table 5.1. **Popular Kernel Choices**
+Table 4.1. **Popular Kernel Choices**
 
 $$
 {\small
@@ -1161,7 +1170,7 @@ Here, $\phi(\cdot)$ is the standard normal density function. As we will see in t
 ***
 
 
-**Example 5.1.4. Property Fund.**
+**Example 4.4.4. Property Fund.**
 Figure \@ref(fig:Density2) shows a histogram (with shaded gray rectangles) of logarithmic property claims from 2010. The (blue) thick curve represents a Gaussian kernel density where the bandwidth was selected automatically using an ad hoc rule based on the sample size and volatility of these data. For this dataset, the bandwidth turned out to be $b=0.3255$. For comparison, the (red) dashed curve represents the density estimator with a bandwidth equal to 0.1 and the green smooth curve uses a bandwidth of 1. As anticipated, the smaller bandwidth (0.1) indicates taking local averages over less data so that we get a better idea of the local average, but at the price of higher volatility. In contrast, the larger bandwidth (1) smooths out local fluctuations, yielding a smoother curve that may miss perturbations in the local average. For actuarial applications, we mainly use the kernel density estimator to get a quick visual impression of the data. From this perspective, you can simply use the default ad hoc rule for bandwidth selection, knowing that you have the ability to change it depending on the situation at hand.
 
 (ref:Density2) **Histogram of Logarithmic Property Claims with Superimposed Kernel Density Estimators**
@@ -1209,7 +1218,7 @@ $$
 
 ***
 
-**Example 5.1.5. Actuarial Exam Question.** 
+**Example 4.4.5. Actuarial Exam Question.** 
 
 You study five lives to estimate the time from the onset of a disease to death. The times to death are:
 
@@ -1221,7 +1230,7 @@ $$
 
 Using a triangular kernel with bandwidth $2$, calculate the density function estimate at 2.5.
 
-`r HideExample('5.1.5', 'Show Example Solution')`
+`r HideExample('4.4.5', 'Show Example Solution')`
 
 **Solution.**
 For the kernel density estimate, we have
@@ -1250,13 +1259,140 @@ Then the kernel density estimate at $x=2.5$ is $$f_n(2.5) = \frac{1}{5(2)}\left(
 
 ***
 
-### Parametric Estimation
+### Parametric Estimation {#S:Parametric}
+
+Section \@ref(S:ContinuousDistn) has focused on parametric distributions that are commonly used in insurance applications. However, to be useful in applied work, these distributions must use "realistic" values for the parameters. In this section we cover three methods for estimating parameters: Method of moments, Percentile matching, and Maximum likelihood estimation. 
+
+#### Method of Moments
+Under the `r Gloss('method of moments')`, we approximate the moments of the parametric distribution using the empirical moments described in Section \@ref(S:MS:MomentEstimator). We can then algebraically solve for the parameter estimates.
+
+***
+
+**Example 4.4.6. Property Fund.**
+For the 2010 property fund, there are $n=1,377$ individual claims (in thousands of dollars) with
+
+$$m_1 = \frac{1}{n} \sum_{i=1}^n X_i = 26.62259 \ \ \ \
+\text{and} \ \ \ \
+ m_2 = \frac{1}{n} \sum_{i=1}^n X_i^2 = 136154.6 .$$
+ Fit the parameters of the gamma and Pareto distributions using the method of moments.
+
+`r HideExample('4.4.6', 'Show Example Solution')`
+
+**Solution.**
+To fit a gamma distribution, we have $\mu_1 = \alpha \theta$ and $\mu_2^{\prime} = \alpha(\alpha+1) \theta^2$. Equating the two yields the method of moments estimators, easy algebra shows that
+
+$$\alpha = \frac{\mu_1^2}{\mu_2^{\prime}-\mu_1^2}  \ \ \ \text{and} \ \ \  \theta = \frac{\mu_2^{\prime}-\mu_1^2}{\mu_1}.$$
+
+Thus, the method of moment estimators are
+
+$$
+\begin{aligned}
+\hat{\alpha} &=  \frac{26.62259^2}{136154.6-26.62259^2} = 0.005232809 \\
+\hat{\theta} &=  \frac{136154.6-26.62259^2}{26.62259} = 5,087.629.
+\end{aligned}
+$$
+
+For comparison, the maximum likelihood values (see Section \@ref(S:Maxlike)) turn out to be $\hat{\alpha}_{MLE} =  0.2905959$ and $\hat{\theta}_{MLE} = 91.61378$, so there are big discrepancies between the two estimation procedures. This is one indication, as we have seen before, that the gamma model fits poorly.
+
+In contrast, now assume a Pareto distribution so that $\mu_1 = \theta/(\alpha -1)$ and $\mu_2^{\prime} = 2\theta^2/((\alpha-1)(\alpha-2) )$. Note that this expression for $\mu_2^{\prime}$ is only valid for $\alpha>2$. Easy algebra shows
+
+$$\alpha = 1+ \frac{\mu_2^{\prime}}{\mu_2^{\prime}-\mu_1^2} \ \ \ \
+\text{and} \ \ \ \ \
+ \theta = (\alpha-1)\mu_1.$$
+
+Thus, the method of moment estimators are
+
+$$
+\begin{aligned}
+\hat{\alpha} &=  1+ \frac{136154.6}{136154.6-26,62259^2} = 2.005233 \\
+\hat{\theta} &=  (2.005233-1) \cdot 26.62259 = 26.7619
+\end{aligned}
+$$
+
+The maximum likelihood values turn out to be $\hat{\alpha}_{MLE} =  0.9990936$ and $\hat{\theta}_{MLE} = 2.2821147$. It is interesting that $\hat{\alpha}_{MLE}<1$; for the Pareto distribution, recall that $\alpha <1$ means that the mean is infinite. This is another indication that the property claims data set is a long tail distribution.
+
+</div>
+
+***
+
+As the above example suggests, there is flexibility with the method of moments. For example, we could have matched the second and third moments instead of the first and second, yielding different estimators. Furthermore, there is no guarantee that a solution will exist for each problem. For data that are censored or truncated, matching moments is possible for a few problems but, in general, this is a more difficult scenario. Finally, for distributions where the moments do not exist or are infinite, method of moments is not available. As an alternative, one can use the percentile matching technique.
 
 
-### Maximum Likelihood Estimators for Complete Data
+#### Percentile Matching
+
+Under `r Gloss('percentile matching')`, we approximate the quantiles or percentiles of the parametric distribution using the empirical quantiles or percentiles described in Section \@ref(S:MS:QuantileEstimator).
+
+***
+
+**Example 4.4.7. Property Fund.** 
+For the 2010 property fund, we illustrate matching on quantiles. In particular, the Pareto distribution is intuitively pleasing because of the closed-form solution for the quantiles. Recall that the distribution function for the Pareto distribution is 
+$$F(x) = 1 - \left(\frac{\theta}{x+\theta}\right)^{\alpha}.$$ 
+Easy algebra shows that we can express the quantile as 
+
+$$F^{-1}(q) = \theta \left( (1-q)^{-1/\alpha} -1 \right).$$
+for a fraction $q$, $0<q<1$.
+
+Determine estimates of the Pareto distribution parameters using the 25th and 95th empirical quantiles.
 
 
-Up to this point, the chapter has focused on parametric distributions that are commonly used in insurance applications. However, to be useful in applied work, these distributions must use "realistic" values for the parameters and for this we turn to data. At a foundational level, we assume that the analyst has available a random sample $X_1, \ldots, X_n$ from a distribution with distribution function $F_X$ (for brevity, we sometimes drop the subscript $X$). As is common, we use the vector $\boldsymbol \theta$ to denote the set of parameters for $F$. This basic sample scheme is reviewed in Appendix Section \@ref(S:AppA:BASIC). Although basic, this sampling scheme provides the foundations for understanding more complex schemes that are regularly used in practice, and so it is important to master the basics.
+`r HideExample('4.4.7', 'Show Example Solution')`
+
+**Solution.**
+
+The 25th percentile (the first quartile) turns out to be $0.78853$ and the 95th percentile is $50.98293$ (both in thousands of dollars). With two equations
+$$0.78853 = \theta \left( 1- (1-.25)^{-1/\alpha} \right) \ \ \ \ \text{and} \ \ \ \ 50.98293 = \theta \left( 1- (1-.75)^{-1/\alpha} \right)$$
+and two unknowns, the solution is
+$$\hat{\alpha} = 0.9412076 \ \ \ \ \ \text{and} \ \ \ \
+\hat{\theta} = 2.205617 .$$
+We remark here that a numerical routine is required for these solutions as no analytic solution is available. Furthermore, recall that the `r Gloss('maximum likelihood estimates')` are $\hat{\alpha}_{MLE} =  0.9990936$ and $\hat{\theta}_{MLE} = 2.2821147$, so the percentile matching provides a better approximation for the Pareto distribution than the method of moments.
+
+</div>
+
+***
+
+**Example 4.4.8. Actuarial Exam Question.** 
+You are given: 
+
+
+(i) Losses follow a loglogistic distribution with cumulative distribution function:
+    $$F(x) = \frac{\left(x/\theta\right)^{\gamma}}{1+\left(x/\theta\right)^{\gamma}}$$
+(ii) The sample of losses is:
+
+$$
+\begin{array}{ccccccccccc}
+10 &35 &80 &86 &90 &120 &158 &180 &200 &210 &1500 \\
+\end{array}
+$$
+
+Calculate the estimate of $\theta$ by percentile matching, using the 40th and 80th empirically smoothed percentile estimates.
+
+`r HideExample('4.4.8', 'Show Example Solution')`
+
+**Solution.**
+With 11 observations, we have $j=\lfloor(n+1)q\rfloor = \lfloor 12(0.4) \rfloor = \lfloor 4.8\rfloor=4$ and $h=(n+1)q-j = 12(0.4)-4=0.8$. By interpolation, the 40th empirically smoothed percentile estimate is $\hat{\pi}_{0.4} = (1-h) X_{(j)} + h X_{(j+1)} = 0.2(86)+0.8(90)=89.2$.
+
+Similarly, for the 80th empirically smoothed percentile estimate, we have $12(0.8)=9.6$ so the estimate is $\hat{\pi}_{0.8} = 0.4(200)+0.6(210)=206$.
+
+
+Using the loglogistic cumulative distribution, we need to solve the following two equations for parameters ${\hat{\theta}}$ and ${\hat{\gamma}}$:
+$$
+0.4=\frac{(89.2/{\hat{\theta}})^{\hat{\gamma}}}{1+(89.2/{\hat{\theta}})^{\hat{\gamma}}} \ \ \ \text{and} \ \ \ \   0.8=\frac{(206/{\hat{\theta}})^{\hat{\gamma}}}{1+(206/{\hat{\theta}})^{\hat{\gamma}}} .
+$$ 
+
+
+Solving for each parenthetical expression gives $\frac{2}{3}=(89.2/\theta)^{\hat{\gamma}}$ and $4=(206/{\hat{\theta}})^{\hat{\gamma}}$. Taking the ratio of the second equation to the first gives $6=(206/89.2)^{\hat{\gamma}}\Rightarrow {\hat{\gamma}}=\frac{\log(6)}{\log(206/89.2)} = 2.1407$. Then $4^{1/2.1407}=206/{\hat{\theta}} \Rightarrow {\hat{\theta}}=107.8$.
+
+</div>
+
+***
+
+Like the method of moments, percentile matching is almost too flexible in the sense that estimators can vary depending on different percentiles chosen. For example, one actuary may use estimation on the 25th and 95th percentiles whereas another uses the 20th and 80th percentiles. In general estimated parameters will differ and there is no compelling reason to prefer one over the other. Also as with the method of moments, percentile matching is appealing because it provides a technique that can be readily applied in selected situations and has an intuitive basis. Although most actuarial applications use maximum likelihood estimators, it can be convenient to have alternative approaches such as method of moments and percentile matching available.
+
+***
+
+#### Maximum Likelihood Estimators for Complete Data {#S:Maxlike}
+
+At a foundational level, we assume that the analyst has available a random sample $X_1, \ldots, X_n$ from a distribution with distribution function $F_X$ (for brevity, we sometimes drop the subscript $X$). As is common, we use the vector $\boldsymbol \theta$ to denote the set of parameters for $F$. This basic sample scheme is reviewed in Appendix Section \@ref(S:AppA:BASIC). Although basic, this sampling scheme provides the foundations for understanding more complex schemes that are regularly used in practice, and so it is important to master the basics.
 
 Before drawing from a distribution, we consider potential outcomes summarized by the random variable $X_i$ (here, $i$ is 1, 2, ..., $n$). After the draw, we observe $x_i$. Notationally, we use uppercase roman letters for random variables and lower case ones for realizations. We have seen this set-up already in Section \@ref(S:estimating-frequency-distributions), where we used
 $\Pr(X_1 =x_1, \ldots, X_n=x_n)$ to quantify the "likelihood" of drawing a sample $\{x_1, \ldots, x_n\}$. With continuous data, we use the joint probability density function instead of joint probabilities. With the independence assumption, the joint *pdf* may be written as the product of pdfs. Thus, we define the **likelihood** to be
@@ -1277,7 +1413,7 @@ l(\boldsymbol \theta) = \log L(\boldsymbol \theta) = \sum_{i=1}^n \log f(x_i) .
 
 Appendix Section \@ref(S:AppA:MLE) reviews the foundations of maximum likelihood estimation with more mathematical details in Appendix Chapter \@ref(CAppC).
 
-**Example 4.5.1. Actuarial Exam Question.** You are given the following five observations: 521, 658, 702, 819, 1217. You use the single-parameter Pareto with distribution function:
+**Example 4.4.9. Actuarial Exam Question.** You are given the following five observations: 521, 658, 702, 819, 1217. You use the single-parameter Pareto with distribution function:
 
 $$
 F(x) = 1- \left(\frac{500}{x}\right)^{\alpha}, ~~~~ x>500 .
@@ -1333,11 +1469,11 @@ This code confirms our hand calculation result where the maximum likelihood esti
 
 We present a few additional examples to illustrate how actuaries fit a parametric distribution model to a set of claim data using maximum likelihood. 
 
-**Example 4.5.2. Actuarial Exam Question.**
+**Example 4.4.10. Actuarial Exam Question.**
 Consider a random sample of claim amounts: 8000 10000 12000 15000. You assume that claim amounts follow an inverse exponential distribution, with parameter $\theta$. Calculate the maximum likelihood estimator for $\theta$.
 
 
-`r HideExample('4.5.2','Show Example Solution')`
+`r HideExample('4.4.10','Show Example Solution')`
 
 **Solution.**
 
@@ -1386,7 +1522,7 @@ Evaluating the second derivative of the loglikelihood function at $\hat{\theta} 
 *** 
 
 
-**Example 4.5.3. Actuarial Exam Question.**
+**Example 4.4.11. Actuarial Exam Question.**
 A random sample of size 6 is from a lognormal distribution with parameters $\mu$ and $\sigma$. The sample values are 
 
 $$
@@ -1395,7 +1531,7 @@ $$
 
 Calculate the maximum likelihood estimator for $\mu$ and $\sigma$.
 
-`r HideExample('4.5.3','Show Example Solution')`
+`r HideExample('4.4.11','Show Example Solution')`
 
 **Solution.**
 
@@ -1466,14 +1602,14 @@ $$
 Two follow-up questions rely on large sample properties that you may have seen in an earlier course. Appendix Chapter \@ref(CAppC) reviews the definition of the likelihood function, introduces its properties, reviews the maximum likelihood estimators, extends their large-sample properties to the case where there are multiple parameters in the model, and reviews statistical inference based on maximum likelihood estimators. In the solutions of these examples we derive the asymptotic variance of maximum-likelihood estimators of the model parameters. We use the delta method to derive the asymptotic variances of functions of these parameters.
 
 
-**Example 4.5.2 - Follow - Up.** Refer to **Example 4.5.2.**
+**Example 4.4.10 - Follow - Up.** Refer to **Example 4.4.10.**
 
 a.   Approximate the variance of the maximum likelihood estimator.
 b.   Determine an approximate 95% confidence interval for $\theta$.
 c.   Determine an approximate 95% confidence interval for $\Pr \left( X \leq 9,000 \right).$
 
 
-`r HideExample('4.5.2a','Show Example Solution')`
+`r HideExample('4.4.10a','Show Example Solution')`
 
 **Solution.**
 
@@ -1510,14 +1646,14 @@ $$
 
 
 
-**Example 4.5.3 - Follow - Up.** Refer to **Example 4.5.3.**
+**Example 4.4.11 - Follow - Up.** Refer to **Example 4.4.11.**
 
 a.  Estimate the `r Gloss('covariance matrix')` of the maximum likelihood estimator.
 b.  Determine approximate 95% confidence intervals for $\mu$ and $\sigma$.
 c.  Determine an approximate 95% confidence interval for the mean of the lognormal distribution.
 
 
-`r HideExample('4.5.3a','Show Example Solution')`
+`r HideExample('4.4.11a','Show Example Solution')`
 
 
 **a.** To derive the covariance matrix of the `r Gloss('mle')` we need to find the expectations of the second derivatives. Since the random variable $X$ is from a lognormal distribution with parameters $\mu$ and $\sigma$, then $\log X$ is normally distributed with mean $\mu$ and variance $\sigma^{2}$.
@@ -1622,12 +1758,12 @@ Since the mean of the lognormal distribution cannot be negative, we should repla
 
 
 
-**Example 4.5.4. Wisconsin Property Fund.** To see how maximum likelihood estimators work with real data, we return to the 2010 claims data introduced in Section \@ref(S:LGPIF). 
+**Example 4.4.12. Wisconsin Property Fund.** To see how maximum likelihood estimators work with real data, we return to the 2010 claims data introduced in Section \@ref(S:LGPIF). 
 
 The following snippet of code shows how to fit the exponential, gamma, Pareto, lognormal, and $GB2$ models. For consistency, the code employs the `R` package `VGAM`. The acronym stands for *Vector Generalized Linear and Additive Models*; as suggested by the name, this package can do far more than fit these models although it suffices for our purposes. The one exception is the $GB2$ density which is not widely used outside of insurance applications; however, we can code this density and compute maximum likelihood estimators using the `optim` general purpose optimizer.
 
 
-`r HideExample('4.5.4','Show Example Solution')`
+`r HideExample('4.4.12','Show Example Solution')`
 
 
 ```{r MLECompare, eval= FALSE, echo=SHOW_PDF}
@@ -1714,139 +1850,11 @@ Results from the fitting exercise are summarized in Figure \@ref(fig:MLEComparea
 
 #### Starting Values
 
-The method of moments and percentile matching are nonparametric estimation methods that provide alternatives to maximum likelihood. Generally, maximum likelihood is the preferred technique because it employs data more efficiently. (See Appendix Chapter \@ref(CAppC) for precise definitions of efficiency.) However, methods of moments and percentile matching are useful because they are easier to interpret and therefore allow the actuary or analyst to explain procedures to others. Additionally, the numerical estimation procedure (e.g. if performed in `R`) for the maximum likelihood is iterative and requires starting values to begin the recursive process. Although many problems are robust to the choice of the starting values, for some complex situations, it can be important to have a starting value that is close to the (unknown) optimal value. Method of moments and percentile matching are techniques that can produce desirable estimates without a serious computational investment and can thus be used as a *starting value* for computing maximum likelihood.
-
-#### Method of Moments
-Under the `r Gloss('method of moments')`, we approximate the moments of the parametric distribution using the empirical (nonparametric) moments described in Section \@ref(S:MS:MomentEstimator). We can then algebraically solve for the parameter estimates.
-
-***
-
-**Example 5.1.9. Property Fund.**
-For the 2010 property fund, there are $n=1,377$ individual claims (in thousands of dollars) with
-
-$$m_1 = \frac{1}{n} \sum_{i=1}^n X_i = 26.62259 \ \ \ \
-\text{and} \ \ \ \
- m_2 = \frac{1}{n} \sum_{i=1}^n X_i^2 = 136154.6 .$$
- Fit the parameters of the gamma and Pareto distributions using the method of moments.
-
-`r HideExample('5.1.9', 'Show Example Solution')`
-
-**Solution.**
-To fit a gamma distribution, we have $\mu_1 = \alpha \theta$ and $\mu_2^{\prime} = \alpha(\alpha+1) \theta^2$. Equating the two yields the method of moments estimators, easy algebra shows that
-
-$$\alpha = \frac{\mu_1^2}{\mu_2^{\prime}-\mu_1^2}  \ \ \ \text{and} \ \ \  \theta = \frac{\mu_2^{\prime}-\mu_1^2}{\mu_1}.$$
-
-Thus, the method of moment estimators are
-
-$$
-\begin{aligned}
-\hat{\alpha} &=  \frac{26.62259^2}{136154.6-26.62259^2} = 0.005232809 \\
-\hat{\theta} &=  \frac{136154.6-26.62259^2}{26.62259} = 5,087.629.
-\end{aligned}
-$$
-
-For comparison, the maximum likelihood values turn out to be $\hat{\alpha}_{MLE} =  0.2905959$ and $\hat{\theta}_{MLE} = 91.61378$, so there are big discrepancies between the two estimation procedures. This is one indication, as we have seen before, that the gamma model fits poorly.
-
-In contrast, now assume a Pareto distribution so that $\mu_1 = \theta/(\alpha -1)$ and $\mu_2^{\prime} = 2\theta^2/((\alpha-1)(\alpha-2) )$. Note that this expression for $\mu_2^{\prime}$ is only valid for $\alpha>2$. Easy algebra shows
-
-$$\alpha = 1+ \frac{\mu_2^{\prime}}{\mu_2^{\prime}-\mu_1^2} \ \ \ \
-\text{and} \ \ \ \ \
- \theta = (\alpha-1)\mu_1.$$
-
-Thus, the method of moment estimators are
-
-$$
-\begin{aligned}
-\hat{\alpha} &=  1+ \frac{136154.6}{136154.6-26,62259^2} = 2.005233 \\
-\hat{\theta} &=  (2.005233-1) \cdot 26.62259 = 26.7619
-\end{aligned}
-$$
-
-The maximum likelihood values turn out to be $\hat{\alpha}_{MLE} =  0.9990936$ and $\hat{\theta}_{MLE} = 2.2821147$. It is interesting that $\hat{\alpha}_{MLE}<1$; for the Pareto distribution, recall that $\alpha <1$ means that the mean is infinite. This is another indication that the property claims data set is a long tail distribution.
-
-</div>
-
-***
-
-As the above example suggests, there is flexibility with the method of moments. For example, we could have matched the second and third moments instead of the first and second, yielding different estimators. Furthermore, there is no guarantee that a solution will exist for each problem. For data that are censored or truncated, matching moments is possible for a few problems but, in general, this is a more difficult scenario. Finally, for distributions where the moments do not exist or are infinite, method of moments is not available. As an alternative, one can use the percentile matching technique.
-
-
-#### Percentile Matching
-
-Under `r Gloss('percentile matching')`, we approximate the quantiles or percentiles of the parametric distribution using the empirical (nonparametric) quantiles or percentiles described in Section \@ref(S:MS:QuantileEstimator).
-
-***
-
-**Example 5.1.10. Property Fund.** 
-For the 2010 property fund, we illustrate matching on quantiles. In particular, the Pareto distribution is intuitively pleasing because of the closed-form solution for the quantiles. Recall that the distribution function for the Pareto distribution is 
-$$F(x) = 1 - \left(\frac{\theta}{x+\theta}\right)^{\alpha}.$$ 
-Easy algebra shows that we can express the quantile as 
-
-$$F^{-1}(q) = \theta \left( (1-q)^{-1/\alpha} -1 \right).$$
-for a fraction $q$, $0<q<1$.
-
-Determine estimates of the Pareto distribution parameters using the 25th and 95th empirical quantiles.
-
-
-`r HideExample('5.1.10', 'Show Example Solution')`
-
-**Solution.**
-
-The 25th percentile (the first quartile) turns out to be $0.78853$ and the 95th percentile is $50.98293$ (both in thousands of dollars). With two equations
-$$0.78853 = \theta \left( 1- (1-.25)^{-1/\alpha} \right) \ \ \ \ \text{and} \ \ \ \ 50.98293 = \theta \left( 1- (1-.75)^{-1/\alpha} \right)$$
-and two unknowns, the solution is
-$$\hat{\alpha} = 0.9412076 \ \ \ \ \ \text{and} \ \ \ \
-\hat{\theta} = 2.205617 .$$
-We remark here that a numerical routine is required for these solutions as no analytic solution is available. Furthermore, recall that the `r Gloss('maximum likelihood estimates')` are $\hat{\alpha}_{MLE} =  0.9990936$ and $\hat{\theta}_{MLE} = 2.2821147$, so the percentile matching provides a better approximation for the Pareto distribution than the method of moments.
-
-</div>
-
-***
-
-
-**Example 5.1.11. Actuarial Exam Question.** 
-You are given: 
-
-
-(i) Losses follow a loglogistic distribution with cumulative distribution function:
-    $$F(x) = \frac{\left(x/\theta\right)^{\gamma}}{1+\left(x/\theta\right)^{\gamma}}$$
-(ii) The sample of losses is:
-
-$$
-\begin{array}{ccccccccccc}
-10 &35 &80 &86 &90 &120 &158 &180 &200 &210 &1500 \\
-\end{array}
-$$
-
-Calculate the estimate of $\theta$ by percentile matching, using the 40th and 80th empirically smoothed percentile estimates.
-
-`r HideExample('5.1.11', 'Show Example Solution')`
-
-**Solution.**
-With 11 observations, we have $j=\lfloor(n+1)q\rfloor = \lfloor 12(0.4) \rfloor = \lfloor 4.8\rfloor=4$ and $h=(n+1)q-j = 12(0.4)-4=0.8$. By interpolation, the 40th empirically smoothed percentile estimate is $\hat{\pi}_{0.4} = (1-h) X_{(j)} + h X_{(j+1)} = 0.2(86)+0.8(90)=89.2$.
-
-Similarly, for the 80th empirically smoothed percentile estimate, we have $12(0.8)=9.6$ so the estimate is $\hat{\pi}_{0.8} = 0.4(200)+0.6(210)=206$.
-
-
-Using the loglogistic cumulative distribution, we need to solve the following two equations for parameters ${\hat{\theta}}$ and ${\hat{\gamma}}$:
-$$
-0.4=\frac{(89.2/{\hat{\theta}})^{\hat{\gamma}}}{1+(89.2/{\hat{\theta}})^{\hat{\gamma}}} \ \ \ \text{and} \ \ \ \   0.8=\frac{(206/{\hat{\theta}})^{\hat{\gamma}}}{1+(206/{\hat{\theta}})^{\hat{\gamma}}} .
-$$ 
-
-
-Solving for each parenthetical expression gives $\frac{2}{3}=(89.2/\theta)^{\hat{\gamma}}$ and $4=(206/{\hat{\theta}})^{\hat{\gamma}}$. Taking the ratio of the second equation to the first gives $6=(206/89.2)^{\hat{\gamma}}\Rightarrow {\hat{\gamma}}=\frac{\log(6)}{\log(206/89.2)} = 2.1407$. Then $4^{1/2.1407}=206/{\hat{\theta}} \Rightarrow {\hat{\theta}}=107.8$.
-
-</div>
-
-***
-
-Like the method of moments, percentile matching is almost too flexible in the sense that estimators can vary depending on different percentiles chosen. For example, one actuary may use estimation on the 25th and 95th percentiles whereas another uses the 20th and 80th percentiles. In general estimated parameters will differ and there is no compelling reason to prefer one over the other. Also as with the method of moments, percentile matching is appealing because it provides a technique that can be readily applied in selected situations and has an intuitive basis. Although most actuarial applications use maximum likelihood estimators, it can be convenient to have alternative approaches such as method of moments and percentile matching available.
+Generally, maximum likelihood is the preferred technique for parameter estimation because it employs data more efficiently. (See Appendix Chapter \@ref(CAppC) for precise definitions of efficiency.) However, methods of moments and percentile matching are useful because they are easier to interpret and therefore allow the actuary or analyst to explain procedures to others. Additionally, the numerical estimation procedure (e.g. if performed in `R`) for the maximum likelihood is iterative and requires starting values to begin the recursive process. Although many problems are robust to the choice of the starting values, for some complex situations it can be important to have a starting value that is close to the (unknown) optimal value. Method of moments and percentile matching can produce desirable estimates without a serious computational investment and can thus be used as a *starting value* for computing maximum likelihood.
 
 
 ```{r child = './Quizzes/Quiz41.html', eval = QUIZ}
 ```
-
-
 
 
 

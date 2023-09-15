@@ -1,0 +1,742 @@
+
+# Bayesian Inference {#ChapBayesInference}
+
+***
+
+**This section is being written and is not yet complete nor edited. It is here to give you a flavor of what will be in the final version.**
+
+***
+
+
+
+***
+
+In this section, you learn how to:
+
+- Describe the Bayesian model as an alternative to the frequentist approach and summarize the five components of this modeling approach.
+- Summarize posterior distributions of parameters and use these posterior distributions to predict new outcomes.
+- Use conjugate distributions to determine posterior distributions of parameters.
+
+***
+
+
+### Introduction to Bayesian Inference {#S:IntroBayes}
+
+Up to this point, our inferential methods have focused on the `r Gloss('frequentist')` setting, in which samples are repeatedly drawn from a population. The vector of parameters $\boldsymbol \theta$ is fixed yet unknown, whereas the outcomes $X$ are realizations of random variables.
+
+In contrast, under the `r Gloss('Bayesian')` framework, we view both the model parameters and the data as random variables. We are uncertain about the parameters $\boldsymbol \theta$ and use probability tools to reflect this uncertainty.
+
+To get a sense of the Bayesian framework, begin by recalling Bayes’ rule,
+
+$$
+\Pr(parameters|data) = \frac{\Pr(data|parameters) \times \Pr(parameters)}{\Pr(data)},
+$$
+
+
+where
+
+- $\Pr(parameters)$ is the distribution of the parameters, known as the *prior* distribution.
+- $\Pr(data | parameters)$ is the sampling distribution. In a frequentist context, it is used for making inferences about the parameters and is known as the *likelihood*.
+- $\Pr(parameters | data)$ is the distribution of the parameters having observed the data, known as the *posterior* distribution.
+- $\Pr(data)$ is the marginal distribution of the data. It is generally obtained by integrating (or summing) the joint distribution of data and parameters over parameter values. 
+
+
+**Why Bayes?** There are several advantages of the Bayesian approach. First, we can describe the entire distribution of parameters conditional on the data. This allows us, for example, to provide probability statements regarding the likelihood of parameters. Second, the Bayesian approach provides a unified approach for estimating parameters. Some non-Bayesian methods, such as `r Gloss('least squares')`, require a separate approach to estimate variance components. In contrast, in Bayesian methods, all parameters can be treated in a similar fashion. This is convenient for explaining results to consumers of the data analysis. Third, this approach allows analysts to blend prior information known from other sources with the data in a coherent manner. This topic is developed in detail in the `r Gloss('credibility', '4.4')` Chapter \@ref(ChapCredibility). Fourth, Bayesian analysis is particularly useful for forecasting future responses.
+
+**Gamma - Poisson Special Case.** To develop intuition, we consider the gamma-Poisson case that holds a prominent position in actuarial applications. The idea is to consider a set of random variables $X_1, \ldots, X_n$ where each $X_i$ could represent the number of claims for the $i$th policyholder. Assume that claims of all policyholders follow the same Poisson so that $X_i$ has a Poisson distribution with parameter $\lambda$. This is analogous to the likelihood that we first saw in Chapter \@ref(ChapFrequency-Modeling). In a non-Bayesian (or frequentist) context, the parameter $\lambda$ is viewed as an unknown quantity that is not random (it is said to be "fixed"). In the Bayesian context, the unknown parameter $\lambda$ is viewed as uncertain and is modeled as a random variable. In this special case, we use the gamma distribution to reflect this uncertainty, the `r Gloss('prior distribution', '4.4')`.
+
+Think of the following two-stage sampling scheme to motivate our probabilistic set-up.
+
+1. In the first stage, the parameter $\lambda$ is drawn from a gamma distribution. 
+2. In the second stage, for that value of  $\lambda$, there are $n$ draws from the same (identical) Poisson distribution that are independent, conditional on  $\lambda$.
+
+From this simple set-up, some important conclusions emerge.
+
+- The marginal, or unconditional, distribution of $X_i$ is no longer Poisson. For this special case, it turns out to be a negative binomial distribution (see the following "Snippet of Theory").
+- The random variables $X_1, \ldots, X_n$ are not independent. This is because they share the common random variable $\lambda$. 
+- As in the frequentist context, the goal is to make statements about likely values of parameters such as $\lambda$ given the observed data $X_1, \ldots, X_n$. However, because now both the parameter and the data are random variables, we can use the language of conditional probability to make such statements. As we will see in Section \@ref(S:ConjugateDistributions), it turns out that the distribution of $\lambda$ given the data $X_1, \ldots, X_n$ is also gamma (with updated parameters), a result that simplifies the task of inferring likely values of the parameter $\lambda$.
+
+`r HideProofTheory('Theory.2', 'Show A Snippet of Theory')`
+
+***
+
+Let us demonstrate that the distribution of $X$ is negative binomial. We assume that the distribution of $X$ given $\lambda$ is Poisson, so that 
+$$
+\Pr(X = x|\lambda) = \frac{\lambda^x}{\Gamma(x+1)} e^{-\lambda} ,
+$$
+using notation $\Gamma(x+1) = x!$ for integer $x$. Assume that $\lambda$ is a draw from a gamma distribution with fixed parameters, say, $\alpha$ and $\theta$, so this has *pdf*
+$$
+f(\lambda) = \frac{\lambda^{\alpha-1}}{\theta^{\alpha}\Gamma(\alpha)}\exp(-\lambda/\theta).
+$$
+We know that a *pdf* integrates to one and so we have
+
+$$
+\int_0^{\infty} f(\lambda) ~d\lambda =1 ~~~ \implies ~~~ \theta^{\alpha} \Gamma(\alpha) = \int_0^{\infty} \lambda^{\alpha-1} \exp\left(-\lambda/\theta\right) ~
+d\lambda .
+$$
+
+From Appendix Chapter \@ref(CAppB) on `r Gloss('iterated expectations')`, we have that the `r Gloss('pmf')` of $X$ can be computed in an iterated fashion as
+
+
+$$
+\begin{aligned}
+\Pr(X = x) 
+&=  \mathrm{E} \left\{\Pr(X = x|\lambda)\right\}\\
+&=  \int_0^{\infty} \Pr(X = x|\lambda) f(\lambda) ~d\lambda \\
+&=  \int_0^{\infty} \frac{\lambda^x}{\Gamma(x+1)} e^{-\lambda} \frac{\lambda^{\alpha-1}}{\theta^{\alpha}\Gamma(\alpha)}\exp(-\lambda/\theta) ~d\lambda\\
+&=  \frac{1}{\theta^{\alpha}\Gamma(x+1)\Gamma(\alpha)} \int_0^{\infty} \lambda^{x+\alpha-1} \exp\left(-\lambda(1+\frac{1}{\theta})\right) ~d\lambda \\
+&=  \frac{1}{\theta^{\alpha}\Gamma(x+1)\Gamma(\alpha)} \Gamma(x+\alpha)\left(1+\frac{1}{\theta}\right)^{-(x+\alpha)} \\
+&=  \frac{\Gamma(x+\alpha)}{\Gamma(x+1)\Gamma(\alpha)}\left(\frac{1}{1+\theta}\right)^{\alpha} \left(\frac{\theta}{1+\theta}\right)^{x} .\\
+\end{aligned} 
+$$
+Here, we used the gamma distribution equality with the substitution $\theta_r = 1/(1 + 1/\theta)$. As can be seen from Section \@ref(S:negative-binomial-distribution), this is a negative binomial distribution with parameter $r = \alpha$ and $\beta = \theta$.
+
+***
+
+</div>
+
+In this section, we use small examples that can be done by hand in order to focus on the foundations. For practical implementation, analysts rely heavily on simulation methods using modern computational methods such as `r Gloss('Markov Chain Monte Carlo (MCMC) simulation')`. We will get an exposure to simulation techniques in Chapter \@ref(ChapSimulation) but more intensive techniques such as *MCMC* requires yet more background. See @hartman2016 for an introduction to computational Bayesian methods from an actuarial perspective.
+
+### Bayesian Model
+
+With the intuition developed in the preceding Section \@ref(S:IntroBayes), we now restate the Bayesian model with a bit more precision using mathematical notation. For simplicity, we assume both the outcomes and parameters are **continuous** random variables. In the examples, we sometimes ask the viewer to apply these same principles to discrete versions. Conceptually both the continuous and discrete cases are the same; mechanically, one replaces a *pdf* by a *pmf* and an integral by a sum. 
+
+To emphasize, under the Bayesian perspective, the model parameters and data are both viewed as random. Our uncertainty about the parameters of the underlying data generating process is reflected in the use of probability tools.
+
+**Prior Distribution.**
+Specifically, think about parameters $\boldsymbol \theta$ as a random vector and let $\pi(\boldsymbol \theta)$ denote the corresponding mass or density function. This is knowledge that we have before outcomes are observed and is called the *prior distribution*. Typically, the prior distribution is a regular distribution and so integrates or sums to one, depending on whether $\boldsymbol \theta$ is continuous or discrete. However, we may be very uncertain (or have no clue) about the distribution of $\boldsymbol \theta$; the Bayesian machinery allows the following situation
+
+$$
+\int \pi(\theta) ~d\theta = \infty,
+$$
+
+in which case $\pi(\cdot)$ is called an `r Gloss('improper prior')`.
+
+**Model Distribution.**
+The distribution of outcomes given an assumed value of $\boldsymbol \theta$ is known as the model distribution and denoted as $f(x | \boldsymbol \theta) = f_{X|\boldsymbol \theta} (x|\boldsymbol \theta )$. This is the usual frequentist mass or density function. This is simply the likelihood in the frequentist context and so it is also convenient to use this as a descriptor for the model distribution.
+
+
+**Joint Distribution.** 
+The distribution of outcomes and model parameters is a joint distribution of two random quantities. Its joint density function is denoted as $f(x , \boldsymbol \theta) = f(x|\boldsymbol \theta )\pi(\boldsymbol \theta)$.
+
+**Marginal Outcome Distribution.** The distribution of outcomes can be expressed as
+
+$$
+f(x) = \int f(x | \boldsymbol \theta)\pi(\boldsymbol \theta) ~d \boldsymbol \theta.
+$$
+
+This is analogous to a frequentist mixture distribution. In the mixture distribution, we combine (or "mix") different subpopulations. In the Bayesian context, the marginal distribution is a combination of different realizations of parameters (in some literatures, you can think about this as combining different "states of nature").
+
+**Posterior Distribution of Parameters.** After outcomes have been observed (hence the terminology "posterior"), one can use Bayes theorem to write the density function as
+
+$$
+\pi(\boldsymbol \theta | x) =\frac{f(x , \boldsymbol \theta)}{f(x)} =\frac{f(x|\boldsymbol \theta )\pi(\boldsymbol \theta)}{f(x)} .
+$$
+
+The idea is to update your knowledge of the distribution of $\boldsymbol \theta$ ($\pi(\boldsymbol \theta)$) with the data $x$. Making statements about potential values of parameters is an important aspect of statistical inference. 
+
+### Bayesian Inference
+
+#### Summarizing the Posterior Distribution of Parameters
+
+One way to summarize a distribution is to use a `r Gloss('confidence interval')` type statement. To summarize the *posterior* distribution of parameters, the interval $[a,b]$ is said to be a $100(1-\alpha)\%$ `r Gloss('credibility interval')` for $\boldsymbol \theta$  if
+
+$$
+\Pr (a \le \theta \le b | \mathbf{x}) \ge 1- \alpha.
+$$
+
+Particularly for insurance applications, this is also known as a *credible interval* to distinguish it from credibility theory introduced in Chapter \@ref(ChapCredibility).
+
+For another approach to summarization, we can look to classical `r Gloss('decision analysis')`. In this set-up, the loss function $l(\hat{\theta}, \theta)$ determines the penalty paid for using the estimate $\hat{\theta}$ instead of the true $\theta$. The **Bayes estimate** is the value that minimizes the expected loss $\mathrm{E~}[ l(\hat{\theta}, \theta)]$. Some important special cases include:
+
+$$
+{\small
+\begin{array}{cll}
+\hline
+\text{Loss function } l(\hat{\theta}, \theta) & \text{Descriptor} & \text{Bayes Estimate} \\
+\hline 
+(\hat{\theta}- \theta)^2 & \text{squared error loss} & \mathrm{E}(\theta|X) \\
+|\hat{\theta}- \theta| & \text{absolute deviation loss} & \text{median of } \pi(\theta|x) \\
+I(\hat{\theta} =\theta) & \text{zero-one loss (for discrete probabilities)} & \text{mode of } \pi(\theta|x) \\
+\hline
+\end{array}
+}
+$$
+
+Minimizing expected loss is a rigorous method for providing a single "best guess" about a likely value of a parameter, comparable to a frequentist estimator of the unknown (fixed) parameter. 
+
+***
+
+**Example 8.4.1. Actuarial Exam Question.** 
+You are given: 
+
+
+(i) In a portfolio of risks, each policyholder can have at most one claim per year.
+(ii) The probability of a claim for a policyholder during a year is $q$.
+(iii) The prior density is $$\pi(q) = q^3/0.07, \ \ \ 0.6 < q < 0.8$$
+
+A randomly selected policyholder has one claim in Year 1 and zero claims in Year 2. For this policyholder, calculate the posterior probability that $0.7 < q < 0.8$.
+
+`r HideExample('8.4.1', 'Show Example Solution')`
+
+**Solution.**
+The posterior density is proportional to the product of the likelihood function and prior density. Thus,
+$$\pi(q|1,0) \propto f(1|q)\ f(0|q)\ \pi(q) \propto q(1-q)q^3 = q^4-q^5$$
+
+To get the exact posterior density, we integrate the above function over its range $(0.6, 0.8)$
+
+$$\int_{0.6}^{0.8} q^4-q^5 dq = \frac{q^5}{5} - \left. \frac{q^6}{6} \right|_{0.6}^{0.8} = 0.014069 \ \Rightarrow \ \pi(q|1,0)=\frac{q^4-q^5}{0.014069}$$
+
+Then $$\Pr(0.7<q<0.8|1,0)= \int_{0.7}^{0.8} \frac{q^4-q^5}{0.014069}dq = 0.5572$$
+
+</div>
+
+***
+
+**Example 8.4.2. Actuarial Exam Question.**
+You are given:
+
+(i) The prior distribution of the parameter $\Theta$ has probability density function: $$\pi(\theta) = \frac{1}{\theta^2}, \ \ 1 < \theta < \infty$$
+(ii) Given $\Theta = \theta$, claim sizes follow a Pareto distribution with parameters $\alpha=2$ and $\theta$.
+
+A claim of 3 is observed. Calculate the posterior probability that $\Theta$ exceeds 2.
+
+`r HideExample('8.4.2', 'Show Example Solution')`
+
+*Solution:* The posterior density, given an observation of 3 is
+
+$$\pi(\theta|3) =  \frac{f(3|\theta)\pi(\theta)}{\int_1^\infty f(3|\theta)\pi(\theta)d\theta} =
+\frac{\frac{2\theta^2}{(3+\theta)^3}\frac{1}{\theta^2}}{\int_1^\infty 2(3+\theta)^{-3} d\theta} =
+\frac{2(3+\theta)^{-3}}{\left. -(3+\theta)^{-2}\right|_1^\infty} = 32(3+\theta)^{-3}, \ \ \theta > 1$$
+
+Then
+
+$$\Pr(\Theta>2|3) = \int_2^\infty 32(3+\theta)^{-3}d\theta = \left. -16(3+\theta)^{-2} \right|_2^\infty = \frac{16}{25} = 0.64$$
+
+</div>
+
+***
+
+#### Bayesian Predictive Distribution
+
+For another type of statistical inference, it is often of interest to "predict" the value of a random outcome that is yet to be observed. Specifically, for new data $y$, the `r Gloss('predictive distribution')` is 
+$$
+f(y|x) = \int f(y|\theta) \pi(\theta|x) d\theta .
+$$
+
+It is also sometimes called a "posterior predictive" distribution as the distribution of the new data is conditional on a base set of data.
+
+
+Using squared error loss for the loss function, the **Bayesian prediction** of $Y$ is
+
+$$
+\begin{aligned}
+\mathrm{E}(Y|X) &=  \int ~y f(y|X) dy = \int y \left(\int f(y|\theta) \pi(\theta|X) d\theta \right) dy \\
+&= \int \left(\int y f(y|\theta)  ~dy \right) \pi(\theta|X) ~d\theta \\
+&=  \int  \mathrm{E}(Y|\theta) \pi(\theta|X) ~d\theta .
+\end{aligned}
+$$
+As noted earlier, for some situations the distribution of parameters is discrete, not continuous. Having a discrete set of possible parameters allows us to think of them as alternative "states of nature," a helpful interpretation.
+
+
+***
+
+
+**Example 8.4.3. Actuarial Exam Question.** 
+For a particular policy, the conditional probability of the annual number of claims given $\Theta = \theta$, and the probability distribution of $\Theta$ are as follows: 
+
+
+$$
+{\small
+\begin{array}{l|ccc}
+\hline
+\text{Number of Claims} & 0 & 1 & 2 \\
+\text{Probability} & 2\theta & \theta & 1-3\theta \\
+\hline
+\end{array}
+}
+$$
+
+$$
+{\small
+\begin{array}{l|cc}
+\hline
+\theta & 0.05 & 0.30 \\
+\text{Probability} & 0.80 & 0.20 \\
+\hline
+\end{array}
+}
+$$
+
+Two claims are observed in Year 1. Calculate the Bayesian prediction of the number of claims in Year 2.
+
+`r HideExample('8.4.3', 'Show Example Solution')`
+
+**Solution.**
+Start with the posterior distribution of the parameter
+$$
+\Pr(\theta|X) = \frac{\Pr(X|\theta)\Pr(\theta)}{\sum_{\theta}\Pr(X|\theta)\Pr(\theta)}
+$$
+so
+$$
+\begin{aligned} 
+\Pr(\theta=0.05|X=2) &= \frac{\Pr(X=2|\theta=0.05)\Pr(\theta=0.05)}
+{\Pr(X=2|\theta=0.05)\Pr(\theta=0.05)+\Pr(X=2|\theta=0.3)\Pr(\theta=0.3)}\\
+&=\frac{(1-3\times 0.05)(0.8)}{(1-3\times 0.05)(0.8)+(1-3\times 0.3)(0.2)}= \frac{68}{70}.
+\end{aligned} 
+$$
+
+Thus, $\Pr(\theta=0.3|X=1)= 1 - \Pr(\theta=0.05|X=1) = \frac{2}{70}$.
+
+From the model distribution, we have 
+$$
+E(X|\theta) = 0 \times 2\theta + 1 \times \theta + 2 \times (1-3\theta) = 2 - 5 \theta.
+$$
+Thus,
+
+
+$$
+\begin{aligned}
+E(Y|X)
+&=   \sum_{\theta}  \mathrm{E}(Y|\theta) \pi(\theta|X) \\
+&= \mathrm{E}(Y|\theta=0.05) \pi(\theta=0.05|X)+\mathrm{E}(Y|\theta=0.3) \pi(\theta=0.3|X)\\
+&= ( 2 - 5 (0.05))\frac{68}{70} + ( 2 - 5 (0.3))\frac{2}{70} = 1.714.
+\end{aligned}
+$$
+
+
+</div>
+
+***
+
+
+**Example 8.4.4. Actuarial Exam Question.** 
+You are given:
+
+(i) Losses on a company's insurance policies follow a Pareto distribution with probability density function: 
+$$
+f(x|\theta) = \frac{\theta}{(x+\theta)^2}, \ \ 0 < x < \infty
+$$
+(ii) For half of the company's policies $\theta=1$ , while for the other half $\theta=3$.
+
+For a randomly selected policy, losses in Year 1 were 5. Calculate the posterior probability that losses for this policy in Year 2 will exceed 8.
+
+`r HideExample('8.4.4', 'Show Example Solution')`
+
+**Solution.**
+We are given the prior distribution of $\theta$ as $\Pr(\theta=1)=\Pr(\theta=3)=\frac{1}{2}$, the conditional distribution $f(x|\theta)$, and the fact that we observed $X_1=5$. The goal is to find the predictive probability $\Pr(X_2>8|X_1=5)$.
+
+The posterior probabilities are
+
+$$
+\begin{aligned}
+\Pr(\theta=1|X_1=5) &= \frac{f(5|\theta=1)\Pr(\theta=1)}{f(5|\theta=1)\Pr(\theta=1) + f(5|\theta=3)\Pr(\theta=3)} \\
+&= \frac{\frac{1}{36}(\frac{1}{2})}{\frac{1}{36}(\frac{1}{2})+\frac{3}{64}(\frac{1}{2})} = \frac{\frac{1}{72}}{\frac{1}{72} + \frac{3}{128}} = \frac{16}{43}
+\end{aligned}
+$$
+
+$$
+\begin{aligned}
+\Pr(\theta=3|X_1=5) &= \frac{f(5|\theta=3)\Pr(\theta=3)}{f(5|\theta=1)\Pr(\theta=1) + f(5|\theta=3)\Pr(\theta=3)} \\
+&= 1-\Pr(\theta=1|X_1=5) = \frac{27}{43}
+\end{aligned}
+$$
+
+Note that the conditional probability that losses exceed 8 is
+
+$$
+\begin{aligned}
+\Pr(X_2>8|\theta) &= \int_8^\infty f(x|\theta)dx \\
+&= \int_8^\infty \frac{\theta}{(x+\theta)^2}dx = \left. -\frac{\theta}{x+\theta} \right|_8^\infty = \frac{\theta}{8 + \theta}
+\end{aligned}
+$$
+
+The predictive probability is therefore
+
+$$
+\begin{aligned}
+\Pr(X_2>8|X_1=5) &= \Pr(X_2>8|\theta=1) \Pr(\theta=1|X_1=5) + \Pr(X_2>8|\theta=3) \Pr(\theta=3 | X_1=5) \\
+&= \frac{1}{8+1}\left( \frac{16}{43}\right) + \frac{3}{8+3} \left( \frac{27}{43}\right) = 0.2126
+\end{aligned}
+$$
+
+</div>
+
+***
+
+
+**Example 8.4.5. Actuarial Exam Question.** 
+You are given:
+
+(i) The probability that an insured will have at least one loss during any year is $p$.
+(ii) The prior distribution for $p$ is uniform on $[0, 0.5]$.
+(iii) An insured is observed for 8 years and has at least one loss every year.
+
+Calculate the posterior probability that the insured will have at least one loss during Year 9.
+
+`r HideExample('8.4.5', 'Show Example Solution')`
+
+**Solution.** To ease notation, define $\mathbf{x}= (1,1,1,1,1,1,1,1)$ represent the data indicating that an insured has at least one loss every year for 8 years. Conditional on knowing $p$, this has probability $p^8$. With this, the posterior probability density is proportional to
+$$
+\begin{aligned}
+\pi(p|\mathbf{x}) &\propto \Pr(\mathbf{x}|p)\ \pi(p) = p^8(2) \propto p^8 .
+\end{aligned}
+$$
+Because a *pdf* integrates to one, we can calculate the proportionality constant as
+$$
+\begin{aligned}
+\pi(p|\mathbf{x}) &= \frac{p^8}{\int_0^5 p^8 dp} = \frac{p^8}{(0.5^9)/9} = 9(0.5^{-9})p^8 .
+\end{aligned}
+$$
+
+Thus, the posterior probability that the insured will have at least one loss during Year 9 is
+
+$$
+\begin{aligned}
+\Pr(X_9=1|\mathbf{x}) &= \int_0^5 \Pr(X_9=1|p) \left\{\pi(p|\mathbf{x})\right\} ~dp \\
+&= \int_0^5 p \left\{(9)(0.5^{-9})p^8\right\} ~dp \\
+&= 9(0.5^{-9})(0.5^{10})/10 = 0.45
+\end{aligned}
+$$
+
+</div>
+
+***
+
+
+**Example 8.4.6. Actuarial Exam Question.** 
+You are given:
+
+(i) Each risk has at most one claim each year. 
+$$
+{\small
+\begin{array}{ccc}
+\hline
+\text{Type of Risk} & \text{Prior Probability} & \text{Annual Claim Probability} \\
+\hline
+\text{I} & 0.7 & 0.1 \\
+\text{II} & 0.2 & 0.2 \\
+\text{III} & 0.1 & 0.4 \\
+\hline
+\end{array}
+}
+$$
+
+One randomly chosen risk has three claims during Years 1-6. Calculate the posterior probability of a claim for this risk in Year 7.
+
+`r HideExample('8.4.6', 'Show Example Solution')`
+
+**Solution.**
+The probabilities are from a binomial distribution with 6 trials in which 3 successes were observed.
+
+
+$$
+\begin{aligned} 
+\Pr(3|\text{I}) &= {6 \choose 3} (0.1^3)(0.9^3) = 0.01458 \\
+\Pr(3|\text{II}) &= {6 \choose 3} (0.2^3)(0.8^3) = 0.08192 \\
+\Pr(3|\text{III}) &= {6 \choose 3} (0.4^3)(0.6^3) = 0.27648
+\end{aligned}
+$$
+
+The probability of observing three successes is 
+$$
+\begin{aligned} \Pr(3) &= \Pr(3|\text{I})\Pr(\text{I}) + \Pr(3|\text{II})\Pr(\text{II}) + \Pr(3|\text{III})\Pr(\text{III}) \\
+&=  0.7(0.01458) + 0.2(0.08192) + 0.1(0.27648) = 0.054238
+\end{aligned}
+$$
+
+The three posterior probabilities are
+$$
+\begin{aligned}
+\Pr(\text{I}|3) &= \frac{\Pr(3|\text{I})\Pr(\text{I})}{\Pr(3)} = \frac{0.7(0.01458)}{0.054238} = 0.18817 \\
+\Pr(\text{II}|3) &= \frac{\Pr(3|\text{II})\Pr(\text{II})}{\Pr(3)} = \frac{0.2(0.08192)}{0.054238} = 0.30208 \\
+\Pr(\text{III}|3) &= \frac{\Pr(3|\text{III})\Pr(\text{III})}{\Pr(3)} = \frac{0.1(0.27648)}{0.054238} = 0.50975 
+\end{aligned}
+$$
+
+The posterior probability of a claim is then 
+$$
+\begin{aligned} 
+\Pr(\text{claim} | 3) &= \Pr(\text{claim}|\text{I})\Pr(\text{I} | 3) + \Pr(\text{claim} | \text{II})\Pr(\text{II} | 3) + \Pr(\text{claim} | \text{III}) \Pr(\text{III} | 3) \\ 
+&= 0.1(0.18817) + 0.2(0.30208) + 0.4(0.50975) = 0.28313
+\end{aligned}
+$$
+
+</div>
+
+***
+
+### Conjugate Distributions {#S:ConjugateDistributions}
+
+In the Bayesian framework, the key to statistical inference is understanding the posterior distribution of the parameters. As described in Section \@ref(S:IntroBayes), modern data analysis using Bayesian methods utilize computationally intensive techniques such as `r Gloss('MCMC')` simulation. Another approach for computing posterior distributions are based on `r Gloss('conjugate distributions.')` Although this approach is available only for a limited number of distributions, it has the appeal that it provides closed-form expressions for the distributions, allowing for easy interpretations of results.
+
+To relate the prior and posterior distributions of the parameters, we have the relationship
+
+$$
+\begin{array}{ccc}
+\pi(\boldsymbol \theta | x) & = & \frac{f(x|\boldsymbol \theta )\pi(\boldsymbol \theta)}{f(x)}  \\
+ & \propto  & f(x|\boldsymbol \theta ) \pi(\boldsymbol \theta) \\
+\text{Posterior} & \text{is proportional to} & \text{likelihood} \times \text{prior} .
+\end{array}
+$$
+
+For conjugate distributions, the posterior and the prior belong to the same family of distributions. The following illustration looks at the gamma-Poisson special case, the most well-known in actuarial applications.
+
+**Special Case -- Gamma-Poisson - Continued.** Assume a Poisson($\lambda$) model distribution and that $\lambda$ follows a gamma($\alpha, \theta$) prior distribution. Then, the posterior distribution of $\lambda$ given the data follows a gamma distribution with new parameters $\alpha_{post} = \sum_i x_i + \alpha$ and $\theta_{post} = 1/(n + 1/\theta)$.
+
+`r HideExample('Conj.4f', 'Show Special Case Details')`
+
+The model distribution is
+$$f(\mathbf{x} | \lambda) = \prod_{i=1}^n \frac{\lambda^{x_i} e^{-\lambda}}{x_i!} .$$
+The prior distribution is
+$$\pi(\lambda) = \frac{\left(\lambda/\theta\right)^{\alpha} \exp(-\lambda/\theta)}{\lambda \Gamma(\alpha)}.$$
+Thus, the posterior distribution is proportional to
+$$
+\begin{aligned}
+\pi(\lambda | \mathbf{x}) &\propto f(\mathbf{x}|\theta ) \pi(\lambda) \\
+&= C \lambda^{\sum_i x_i + \alpha -1} \exp(-\lambda(n+1/\theta))
+\end{aligned}
+$$
+
+where $C$ is a constant. We recognize this to be a gamma distribution with new parameters $\alpha_{post} = \sum_i x_i + \alpha$ and $\theta_{post} = 1/(n + 1/\theta)$. Thus, the gamma distribution is a conjugate prior for the Poisson model distribution. 
+
+</div>
+
+***
+
+
+**Example 8.4.7. Actuarial Exam Question.** 
+You are given:
+
+(i) The conditional distribution of the number of claims per policyholder is Poisson with mean $\lambda$.
+(ii) The variable $\lambda$ has a gamma distribution with parameters $\alpha$ and $\theta$.
+(iii) For policyholders with 1 claim in Year 1, the Bayes prediction for the number of claims in Year 2 is 0.15.
+(iv) For policyholders with an average of 2 claims per year in Year 1 and Year 2, the Bayes prediction for the number of claims in Year 3 is 0.20.
+
+Calculate $\theta$.
+
+`r HideExample('8.4.7', 'Show Example Solution')`
+
+**Solution.**
+
+Since the conditional distribution of the number of claims per policyholder,  $\mathrm{E}(X|\lambda)=\mathrm{Var}(X|\lambda)=\lambda$, the Bayes prediction is
+
+$$
+\begin{aligned}
+\mathrm{E}(X_2|X_1)
+&= \int \mathrm{E}(X_2|\lambda) \pi(\lambda|X_1) d\lambda = \alpha_{new} \theta_{new}
+\end{aligned}
+$$
+because the posterior distribution is gamma with parameters $\alpha_{new}$ and $\theta_{new}$.
+
+
+For year 1, we have
+$$
+0.15 = (X_1 + \alpha) \times \frac{1}{n+1/\theta} = (1 + \alpha) \times \frac{1}{1+1/\theta},
+$$
+so $0.15(1+1/\theta)= 1 + \alpha.$ For year 2, we have
+$$
+0.2 = (X_1+X_2 + \alpha) \times \frac{1}{n+1/\theta} = (4 + \alpha) \times \frac{1}{2+1/\theta},
+$$
+so $0.2(2+1/\theta)= 4 + \alpha.$ Equating these yields
+$$
+0.2(2+1/\theta)=3 + 0.15(1+1/\theta)
+$$
+resulting in $\theta = 1/55 = 0.018182$. 
+
+
+</div>
+
+***
+
+Closed-form expressions mean that results can be readily interpreted and easily computed; hence, conjugate distributions are useful in actuarial practice. Two other special cases used extensively are:
+
+- The uncertainty of parameters is summarized using a beta distribution and the outcomes have a (conditional on the parameter) binomial distribution.
+- The uncertainty about the mean of the normal distribution is summarized using a normal distribution and the outcomes are conditionally normally distributed.
+
+
+Additional results on conjugate distributions are summarized in the Appendix Section \@ref(S:AppConjugateDistributions).
+
+
+```{r child = './Quizzes/Quiz44.html', eval = QUIZ}
+```
+
+## Monte Carlo Markov Chain (MCMC)  {#S:MCMC}
+
+
+***
+
+**This section is being written and is not yet complete nor edited. It is here to give you a flavor of what will be in the final version.**
+
+***
+
+
+The idea of Monte Carlo techniques rely on the law of large numbers (that insures the convergence of the average towards the integral) and the central limit theorem (that is used to quantify uncertainty in the computations). Recall that if $(X_i)$ is an *iid* sequence of random variables with distribution $F$, then
+
+$$
+\frac{1}{\sqrt{n}}\left(\sum_{i=1}^n h(X_i)-\int h(x)dF(x)\right)\overset{\mathcal{L}}{\rightarrow }\mathcal{N}(0,\sigma^2),\text{ as }n\rightarrow\infty ,
+$$
+for some variance $\sigma^2>0$. But actually, the `r Gloss('ergodic theorem')` can be used to weaker the previous result, since it is not necessary to have independence of the variables. More precisely, if $(X_i)$ is a `r Gloss('Markov Process')` with `r Gloss('invariant measure')` $\mu$, under some additional technical assumptions, we can obtain that
+
+$$
+\frac{1}{\sqrt{n}}\left(\sum_{i=1}^n h(X_i)-\int h(x)d\mu(x)\right)\overset{\mathcal{L}}{\rightarrow }\mathcal{N}(0,\sigma_\star^2),\text{ as }n\rightarrow\infty.
+$$
+for some variance $\sigma_\star^2>0$.
+
+Hence, from this property, we can see that it is possible not necessarily to generate independent values from $F$, but to generate a Markov process with invariant measure $F$, and to consider means over the process (not necessarily independent).
+
+Consider the case of a constrained Gaussian vector : we want to generate random pairs from a random vector $\boldsymbol{X}$, but we are interested only in the case where the sum of the `r Gloss('composants')` is large enough, which can be written $\boldsymbol{X}^T\boldsymbol{1}> m$ for some real valued $m$. Of course, it is possible to use the *accept-reject* algorithm, but we have seen that it might be quite inefficient. One can use `r Gloss('Metropolis Hastings')` and `r Gloss('Gibbs sampler')` to generate a Markov process with such an invariant measure.
+
+### Metropolis Hastings 
+
+The algorithm is rather simple to generate from $f$: we start with a feasible value $x_1$. Then, at step $t$, we need to specify a transition kernel : given $x_t$, we need a conditional distribution for $X_{t+1}$ given $x_t$. The algorithm will work well if that conditional distribution can easily be simulated. Let $\pi(\cdot|x_t)$ denote that probability.
+
+Draw a potential value $x_{t+1}^\star$, and $u$, from a uniform distribution. Compute 
+$$
+R=  \frac{f(x_{t+1}^\star)}{f(x_t)}
+$$
+and 
+
+- if $u < r$, then set $x_{t+1}=x_t^\star$
+- if $u\leq r$, then set $x_{t+1}=x_t$
+
+Here $r$ is called the *acceptance*-ratio: we accept the new value with probability $r$ (or actually the smallest between $1$ and $r$ since $r$ can exceed $1$).
+
+For instance, assume that $f(\cdot|x_t)$ is uniform on $[x_t-\varepsilon,x_t+\varepsilon]$ for some $\varepsilon>0$, and where $f$ (our target distribution) is the $\mathcal{N}(0,1)$. We will never *draw* from $f$, but we will use it to compute our acceptance ratio at each step.
+
+`r HideRCode('MCMC.1','Show R Code')`
+
+```{r echo=SHOW_PDF}
+metrop1 <- function(n=1000,eps=0.5){
+ vec <- matrix(NA, n, 3)
+ x=0
+ vec[1] <- x
+ for (i in 2:n) {
+ innov <- runif(1,-eps,eps)
+ mov <- x+innov
+ R <- min(1,dnorm(mov)/dnorm(x))
+ u <- runif(1)
+ if (u < R) x <- mov
+ vec[i,] <- c(x,mov,R)
+ }
+return(vec)}
+```
+
+</div>
+
+In the code above, `vec` contains values of $\boldsymbol{x}=(x_1,x_2,\cdots)$, `innov` is the innovation.
+
+`r HideRCode('MCMC.2','Show R Code')`
+
+```{r eval = ANIMATION, echo=SHOW_PDF, animation.hook=ANIMATIONHOOK, cache = TRUE}
+#install.packages('gifski')
+#if (packageVersion('knitr') < '1.20.14') {
+#  remotes::install_github('yihui/knitr')
+#}
+vec <- metrop1(25)
+u=seq(-3,3,by=.01)
+pic_ani = function(k){
+  plot(1:k,vec[1:k,1],pch=19,xlim=c(0,25),ylim=c(-2,2),xlab="",ylab="")
+    if(vec[k+1,1]==vec[k+1,2]) points(k+1,vec[k+1,1],col="blue",pch=19)
+    if(vec[k+1,1]!=vec[k+1,2]) points(k+1,vec[k+1,1],col="red",pch=19)
+  points(k+1,vec[k+1,2],cex=1.5)
+  arrows(k+1,vec[k,1]-.5,k+1,vec[k,1]+.5,col="green",angle=90,code = 3,length=.1)
+  polygon(c(k+dnorm(u)*10,rep(k,length(u))),c(u,rev(u)),col=rgb(0,1,0,.3),
+          border=NA)  
+  segments(k,vec[k,1],k+dnorm(vec[k,1])*10,vec[k,1])
+  segments(k,vec[k+1,2],k+dnorm(vec[k+1,2])*10,vec[k+1,2])
+  text(k,2,round(vec[k+1,3],digits=3))
+}
+
+```
+
+</div>
+
+```{r sampleani_HM_1, eval = ANIMATION, echo=SHOW_PDF, animation.hook=ANIMATIONHOOK}
+for (k in 2:23) {pic_ani(k)}
+```
+
+
+
+Now, if we use more simulations, we get
+
+
+```{r  eval = ANIMATION, echo=SHOW_PDF, cache = TRUE}
+vec <- metrop1(10000)
+simx <- vec[1000:10000,1]
+par(mfrow=c(1,4))
+plot(simx,type="l")
+hist(simx,probability = TRUE,col="light blue",border="white")
+lines(u,dnorm(u),col="red")
+qqnorm(simx)
+acf(simx,lag=100,lwd=2,col="light blue")
+```
+
+
+### Gibbs Sampler
+
+Consider some vector $\boldsymbol{X}=(X_1,\cdots,X_d)$ with independent components, $X_i \sim \mathcal{E}(\lambda_i)$. We sample to sample from $\boldsymbol{X}$ given $\boldsymbol{X}^T\boldsymbol{1}>s$ for some threshold $s>0$.
+
+- with some starting point  $\boldsymbol{x}_0$, 
+- pick up (randomly) $i\in\{1,\cdots,d\}$
+- $X_i$ given $X_i > s-\boldsymbol{x}_{(-i)}^T\boldsymbol{1}$ has an Exponential distribution $\mathcal{E}(\lambda_i)$
+- draw $Y\sim \mathcal{E}(\lambda_i)$ and set $x_i=y +(s-\boldsymbol{x}_{(-i)}^T\boldsymbol{1})_+$ until $\boldsymbol{x}_{(-i)}^T\boldsymbol{1}+x_i>s$
+
+`r HideRCode('Gibbs.1','Show R Code')`
+
+```{r echo=SHOW_PDF}
+sim <- NULL
+ lambda <- c(1,2)
+ X <- c(3,3)
+ s <- 5
+ for(k in 1:1000){
+ i <- sample(1:2,1)
+ X[i] <- rexp(1,lambda[i])+max(0,s-sum(X[-i]))
+ while(sum(X)<s){
+ X[i] <- rexp(1,lambda[i])+max(0,s-sum(X[-i])) }
+ sim <- rbind(sim,X) }
+
+```
+
+</div>
+
+```{r echo=SHOW_PDF}
+plot(sim,xlim=c(1,11),ylim=c(0,4.3))
+polygon(c(-1,-1,6),c(-1,6,-1),col="red",density=15,border=NA)
+abline(5,-1,col="red")
+```
+
+The construction of the sequence (`r Gloss('MCMC')` algorithms are iterative) can be visualized below
+
+`r HideRCode('Gibbs.2','Show R Code')`
+
+```{r, echo=SHOW_PDF, cache = TRUE}
+lambda <- c(1,2)
+X <- c(3,3)
+sim <- X
+s <- 5
+for(k in 1:100){
+ set.seed(k)
+ i <- sample(1:2,1)
+ X[i] <- rexp(1,lambda[i])+max(0,s-sum(X[-i]))
+ while(sum(X)<s){
+ X[i] <- rexp(1,lambda[i])+max(0,s-sum(X[-i])) }
+ sim <- rbind(sim,X) }
+pic_ani = function(n){
+plot(sim[1:n,],xlim=c(1,11),ylim=c(0,5),xlab="",ylab="")
+i=which(apply(sim[(n-1):n,],2,diff)==0)
+if(i==1) abline(v=sim[n,1],col="grey")
+if(i==2) abline(h=sim[n,2],col="grey")
+if(n>=1) points(sim[n,1],sim[n,2],pch=19,col="blue",cex=1.4)
+if(n>=2) points(sim[n-1,1],sim[n-1,2],pch=19,col="red",cex=1.4)
+polygon(c(-1,-1,6),c(-1,6,-1),col="red",density=15,border=NA)
+abline(5,-1,col="red")
+}
+```
+
+</div>
+
+```{r sampleani_HM, eval = ANIMATION, echo=SHOW_PDF, animation.hook=ANIMATIONHOOK, cache = TRUE}
+for (i in 2:100) {pic_ani(i)}
+```
+

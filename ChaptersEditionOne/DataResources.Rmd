@@ -1,0 +1,421 @@
+
+#  Appendix. Data Resources {#DataResources}
+
+This appendix section describes the datasets used in this book and others that you may wish to explore.
+
+For each set of data, we provide download buttons so that you can easily access the data in standard .csv (comma separated value) format. This allows you replicate and experiment with the methods developed in the book as well as sharpen your understanding through exercises.
+
+We provide the source of each dataset. We also recommend, for deeper understanding, that you occasionally refer to these original sources to further develop your appreciation of the data underpinning the analytics developed in this book.
+
+
+##  Wisconsin Property Fund {#S:WiscPropFundA}
+
+
+**Description**: The Wisconsin Local Government Property Insurance Fund (LGPIF) is an insurance pool administered by the Wisconsin Office of the Insurance Commissioner. The LGPIF was established to provide property insurance for local government entities that include counties, cities, towns, villages, school districts, and library boards. The fund insures local government property such as government buildings, schools, libraries, and motor vehicles. It covers all property losses except those resulting from flood, earthquake, wear and tear, extremes in temperature, mold, war, nuclear reactions, and embezzlement or theft by an employee.
+
+
+The data are available using this download button: <a href="https://raw.githubusercontent.com/OpenActTextDev/LDA_Ed2/main/Data/WiscPropFund.csv" download> 
+<button type="button"  style="background-color:#008CBA;color:white">Download the Wisconsin Property Fund Data</button></a> 
+
+
+```{r echo = FALSE, eval = FALSE}
+Wisc_Fund1 <- read.csv("../Data/Insample.csv")
+Wisc_Fund <- Wisc_Fund1[c("PolicyNum","Year", "Premium", "Deduct","BCcov",
+                          "Freq","Fire5","NoClaimCredit")]
+Wisc_Fund$EntityType <- 1*Wisc_Fund1$TypeVillage + 2*Wisc_Fund1$TypeCity +
+                        3*Wisc_Fund1$TypeCounty + 4*Wisc_Fund1$TypeMisc +
+                        5*Wisc_Fund1$TypeSchool + 6*Wisc_Fund1$TypeTown
+Wisc_Fund$AlarmCredit <- 1*Wisc_Fund1$AC00 + 2*Wisc_Fund1$AC05 + 
+                         3*Wisc_Fund1$AC10 + 4*Wisc_Fund1$AC15
+Wisc_Fund$BCClaim     <- Wisc_Fund1$y 
+write.csv(Wisc_Fund, "../Data/WiscPropFund.csv", row.names = FALSE)
+```
+
+
+```{r echo = FALSE}
+
+#TypeName <- read.csv("../Data/WiscPropFund.csv",nrows = 1, header=F)
+TypeName <- read.csv("Data/WiscPropFund.csv",nrows = 1, header=F)
+
+Type1 <- "Policy number"  
+Type2 <- "Contract year"  
+Type3 <- "Premium"  
+Type4 <- "Deductible"
+Type5 <- "Coverage for building and contents"  
+Type6 <- "Number of claims during the year (frequency)"  
+Type7 <- "Binary variable to indicate the fire class is below 5"  
+Type8 <- "Binary variable to indicate no claims in the past two years"
+Type9 <- "Categorical variable that is one of six types:  1=Village, 2=City,3=County, 4=Misc, 5=School, or Town)"  
+Type10 <- "Categorical variable that is one of four types:  (0, 5, 10, or 15) for automatic smoke alarms in main rooms"  
+Type11 <- "Builing and contents claims"  
+
+Descrip <- c(Type1, Type2, Type3, Type4, Type5, Type6, Type7, Type8,Type9, Type10, Type11)
+text_tbl <- data.frame(t(TypeName) , Descrip)
+colnames(text_tbl) <- c("Variable", "Description")
+rownames(text_tbl) <- NULL
+```
+
+```{r echo = FALSE}
+library(knitr)
+#library(kableExtra)
+knitr::kable(text_tbl, caption = "**Variables in the Wisconsin Property Fund Dataset**", booktabs = T) %>%
+  kableExtra::kable_classic(full_width = FALSE) %>% 
+  kableExtra::column_spec(1,  width = "3.5cm") %>%
+  kableExtra::kable_styling(bootstrap_options = c("striped", "condensed"))
+```
+
+
+```{r echo = FALSE}
+printnum = 5 # Number to print in tables
+
+#Wisc_Fund <- read.csv("../Data/WiscPropFund.csv")
+Wisc_Fund <- read.csv("Data/WiscPropFund.csv")
+knitr::kable(head(Wisc_Fund, n=printnum), align = "cccccccc", caption = "**Wisconsin Property Fund First Five Rows**") %>%
+  kableExtra::kable_classic(full_width = FALSE) %>% 
+  kableExtra::kable_styling(bootstrap_options = c("striped", "condensed"), font_size = 10)
+tmp_tail_data <- tail(Wisc_Fund, n=printnum)
+rownames(tmp_tail_data) <- NULL
+knitr::kable(tmp_tail_data, align = "cccccccc", caption = "**Wisconsin Property Fund Last Five Rows**") %>%
+  kableExtra::kable_classic(full_width = FALSE) %>% 
+  kableExtra::kable_styling(bootstrap_options = c("striped", "condensed"), font_size = 10)
+```
+
+
+## ANU Corporate Travel Data {#Sec:DataTravel}
+
+```{r echo = FALSE}
+#TravelClaims <- read.csv("../Data/ANUTravelClaims2022.csv")
+TravelClaims <- read.csv("Data/ANUTravelClaims2022.csv")
+```
+
+Universities purchase corporate travel policies to cover employees and students traveling on official university business for a wide variety of accidents and incidents while away from the campus or primary workplace. This broad coverage includes medical care and evacuation, loss of personal property, extraction for political and weather related reasons, and more. See  @frees2022ANURisks for more information about this coverage.
+
+There are `r nrow(TravelClaims)` observations in this dataset. The variable names are described in Table \@ref(tab:DescribeTravel) and the first and last five observations are in Table \@ref(tab:PrintNumTravel). 
+
+Data are available using this button: <a href="https://datacommons.anu.edu.au/DataCommons/rest/records/anudc:6160/data/TravelClaims2022.csv"
+download >
+<button type="button"  style="background-color:#008CBA;color:white">Download Corporate Travel Claims Data</button></a>.
+
+```{r echo = FALSE}
+#TypeName <- read.csv("../Data/ANUTravelClaims2022.csv",nrows = 1, header=F)
+TypeName <- read.csv("Data/ANUTravelClaims2022.csv",nrows = 1, header=F)
+
+Type1 <- "Underwriting Year "  
+Type2 <- "Date that the loss occurred"  
+Type3 <- "Date that the loss was reported"  
+Type4 <- "Last date in which there was a transaction regarding the loss"
+Type5 <- "Cumulative amount paid on the loss"  
+Type6 <- "Estimate of the loss amount yet to be paid"  
+Type7 <- "Sum of the amount paid and the estimate of future payments"  
+Type8 <- "An indicator as to whether the claim has been deemed settled (closed) or not settled (open)"
+
+Descrip <- c(Type1, Type2, Type3, Type4, Type5, Type6, Type7, Type8)
+text_tbl <- data.frame(t(TypeName) , Descrip)
+colnames(text_tbl) <- c("Variable", "Description")
+rownames(text_tbl) <- NULL
+```
+
+```{r DescribeTravel, echo = FALSE}
+library(knitr)
+#library(kableExtra)
+knitr::kable(text_tbl, caption = "**Variables in the Corporate Travel Dataset**", booktabs = T) %>%
+  kableExtra::kable_classic(full_width = FALSE) %>% 
+  kableExtra::column_spec(1,  width = "3.5cm") %>%
+  kableExtra::kable_styling(bootstrap_options = c("striped", "condensed"))
+
+```
+
+
+```{r PrintNumTravel, echo = FALSE}
+printnum = 5 # Number to print in tables
+
+PrintData <- TravelClaims
+knitr::kable(head(PrintData, n=printnum), align = "cccccccc", caption = "**Corporate Travel Data First Five Rows**")  %>%
+  kableExtra::kable_classic(full_width = FALSE) %>% 
+  kableExtra::kable_styling(bootstrap_options = c("striped", "condensed"), font_size = 11)
+PrintData_tail <- tail(PrintData, n=printnum)
+rownames(PrintData_tail) <- NULL
+knitr::kable(PrintData_tail, align = "cccccccc", caption = "**Corporate Travel Data Last Five Rows**")  %>%
+  kableExtra::kable_classic(full_width = FALSE) %>% 
+  kableExtra::kable_styling(bootstrap_options = c("striped", "condensed"), font_size = 11)
+```
+
+
+<br>
+
+*Source*: Frees, Edward and Butt, Adam (2022). "ANU Corporate Travel Insurance Claims 2022". Australian National University Data Commons. DOI https://doi.org/10.25911/vrdw-9f32.
+
+
+
+## ANU Group Personal Accident Data {#Sec:DataGPA}
+
+```{r echo = FALSE}
+#GPAClaims <- read.csv("../Data/ANUGroupPersonalAccidentClaims2022.csv",header=T)
+GPAClaims <- read.csv("Data/ANUGroupPersonalAccidentClaims2022.csv",header=T)
+```
+
+Group personal accident insurance offers financial protection in case of injury or death resulting from an incident that occurs on the job. Like workers’ compensation, group personal accident offers insurance coverage and liability insurance protection against accidental death or injury. Unlike workers’ compensation, group personal accident covers students and ANU’s voluntary workers.  See  @frees2022ANURisks for more information about this coverage.
+
+ There are `r nrow(GPAClaims)` observations in this dataset. The variable names are described in Table \@ref(tab:DescribeGPA) and the first and last five observations are in Table \@ref(tab:PrintNumGPA). 
+
+Data are available using this button: <a href="https://datacommons.anu.edu.au/DataCommons/rest/records/anudc:6164/data/GroupPersonalAccidentClaims2022.csv" download > <button type="button"  style="background-color:#008CBA;color:white">Download Group Personal Accident Claims Data</button></a>.
+
+```{r echo = FALSE}
+#TypeName <- read.csv("../Data/ANUGroupPersonalAccidentClaims2022.csv",nrows = 1, header=F)
+TypeName <- read.csv("Data/ANUGroupPersonalAccidentClaims2022.csv",nrows = 1, header=F)
+
+Type1 <- "Underwriting Year "  
+Type2 <- "Date that the loss occurred"  
+Type3 <- "Date that the loss was reported"  
+Type4 <- "Last date in which there was a transaction regarding the loss."
+Type5 <- "Cumulative amount paid on the loss"  
+Type6 <- "Estimate of the loss amount yet to be paid"  
+Type7 <- "Sum of the amount paid and the estimate of future payments"  
+Type8 <- "An indicator as to whether the claim has been deemed settled (closed) or not settled (open)"
+
+Descrip <- c(Type1, Type2,  Type4, Type5, Type6, Type7, Type8) #Type3,
+text_tbl <- data.frame(t(TypeName) , Descrip)
+colnames(text_tbl) <- c("Variable", "Description")
+rownames(text_tbl) <- NULL
+```
+
+```{r DescribeGPA, echo = FALSE}
+library(knitr)
+#library(kableExtra)
+knitr::kable(text_tbl, caption = "**Variables in the Group Personal Accident Dataset**", booktabs = T) %>%
+  kableExtra::kable_classic(full_width = FALSE) %>% 
+  kableExtra::column_spec(1,  width = "3.5cm") %>%
+  kableExtra::kable_styling(bootstrap_options = c("striped", "condensed"))
+
+```
+
+
+```{r PrintNumGPA, echo = FALSE}
+printnum = 5 # Number to print in tables
+
+PrintData <- GPAClaims
+knitr::kable(head(PrintData, n=printnum), align = "cccccccc", caption = "**Group Personal Accident  Data First Five Rows**")  %>%
+  kableExtra::kable_classic(full_width = FALSE) %>% 
+  kableExtra::kable_styling(bootstrap_options = c("striped", "condensed"), font_size = 11)
+PrintData_tail <- tail(PrintData, n=printnum)
+rownames(PrintData_tail) <- NULL
+knitr::kable(PrintData_tail, align = "cccccccc", caption = "**Group Personal Accident Data Last Five Rows**")  %>%
+  kableExtra::kable_classic(full_width = FALSE) %>% 
+  kableExtra::kable_styling(bootstrap_options = c("striped", "condensed"), font_size = 11)
+```
+
+<br>
+
+*Source*: Frees, Edward and Butt, Adam (2022). "ANU Group Personal Accident Claims 2022". Australian National University Data Commons. https://doi.org/10.25911/jcfx-zj56.
+
+
+## ANU Motor Vehicle Data {#Sec:DataAuto}
+
+```{r echo = FALSE}
+#AutoClaims  <- read.csv("../Data/ANUMotorClaims2022.csv",header=T)
+AutoClaims  <- read.csv("Data/ANUMotorClaims2022.csv",header=T)
+```
+
+
+This policy covers ANU’s vehicles including cars, vans, utilities, and motorcycles.  See  @frees2022ANURisks for more information about this coverage. 
+
+There are `r nrow(AutoClaims)` observations in this dataset. The variable names are described in Table \@ref(tab:DescribeAuto) and the first and last five observations are in Table \@ref(tab:PrintNumAuto). 
+
+Data are available using this button: <a href="https://datacommons.anu.edu.au/DataCommons/rest/records/anudc:6165/data/MotorClaims2022.csv"
+download >
+<button type="button"  style="background-color:#008CBA;color:white">Download Motor Vehicle Claims Data</button></a>.
+
+
+```{r echo = FALSE}
+#TypeName <- read.csv("../Data/ANUMotorClaims2022.csv",nrows = 1, header=F)
+TypeName <- read.csv("Data/ANUMotorClaims2022.csv",nrows = 1, header=F)
+
+Type1 <- "Start date of the contract year in which the loss occurred"  
+Type2 <- "Date that the loss occurred"  
+Type3 <- "Date that the loss was reported"  
+Type4 <- "Party responsible for the loss"  
+Type5 <- "Age of the driver"  
+Type6 <- "Type of vehicle"  
+Type7 <- "Postal code where the loss occurred"  
+Type8 <- "The deductible applied to the loss"
+Type9 <- "Amount paid to the insured (ANU)"  
+Type10 <- "Estimate of the loss amount yet to be paid"  
+Type11 <- "Sum of the amount paid and the estimate of future payments"  
+Type12 <- "Indicates whether a responsible third party could be identified"  
+Type13 <- "Indicates whether a responsible third party was insured"
+
+Descrip <- c(Type1, Type2, Type3, Type4, Type5, Type6, Type7, Type8, Type9, Type10, Type11, Type12, Type13) 
+text_tbl <- data.frame(t(TypeName) , Descrip)
+colnames(text_tbl) <- c("Variable", "Description")
+rownames(text_tbl) <- NULL
+```
+
+```{r DescribeAuto, echo = FALSE}
+library(knitr)
+#library(kableExtra)
+knitr::kable(text_tbl, caption = "**Variables in the Motor Vehicle Dataset**", booktabs = T) %>%
+  kableExtra::kable_classic(full_width = FALSE) %>% 
+  kableExtra::column_spec(1,  width = "4.5cm") %>%
+  kableExtra::kable_styling(bootstrap_options = c("striped", "condensed"))
+
+```
+
+
+```{r PrintNumAuto, echo = FALSE}
+printnum = 5 # Number to print in tables
+
+PrintData <- AutoClaims
+PrintData_head <- head(PrintData, n=printnum)
+knitr::kable(PrintData_head[,1:7], align = "cccccccc", caption = "**Motor Vehicle  Data First Five Rows**")  %>%
+  kableExtra::kable_classic(full_width = FALSE) %>% 
+  kableExtra::kable_styling(bootstrap_options = c("striped", "condensed"), font_size = 10)
+knitr::kable(PrintData_head[,8:13], align = "cccccccc")  %>%
+  kableExtra::kable_classic(full_width = FALSE) %>% 
+  kableExtra::kable_styling(bootstrap_options = c("striped", "condensed"), font_size = 10)
+
+
+PrintData_tail <- tail(PrintData, n=printnum)
+rownames(PrintData_tail) <- NULL
+knitr::kable(PrintData_tail[,1:7], align = "cccccccc", caption = "**Motor Vehicle Data Last Five Rows**")  %>%
+  kableExtra::kable_classic(full_width = FALSE) %>% 
+  kableExtra::kable_styling(bootstrap_options = c("striped", "condensed"), font_size = 10)
+knitr::kable(PrintData_tail[,8:13], align = "cccccccc")  %>%
+  kableExtra::kable_classic(full_width = FALSE) %>% 
+  kableExtra::kable_styling(bootstrap_options = c("striped", "condensed"), font_size = 10)
+```
+
+<br>
+
+*Source*: Frees, Edward and Butt, Adam (2022). "ANU Motor Vehicle Claims 2022". Australian National University Data Commons. DOI https://doi.org/10.25911/g7e4-9e46.
+
+## Spanish Personal Insurance Data
+
+This dataset consists of 10,000 insurance private customers of a real portfolio of insurance policy holders in Spain with a motor insurance and a homeowners insurance contract for policy year 2014. The data contain information on each customer, policies and yearly claims by type of contract.
+
+The data are available using this download button: <a href="https://raw.githubusercontent.com/OpenActTextDev/LDA_Ed2/main/Data/SpanishPersonalIns.csv" download> 
+<button type="button"  style="background-color:#008CBA;color:white">Download the Spanish Personal Insurance Data</button></a> 
+
+The description of the data is the following: 
+
+```{r echo = FALSE, warning = FALSE}
+#library(kableExtra)
+types <- c("gender", "Age_client", "year", 
+           "age_of_car_M" ,"Car_power_M", "Car_2ndDriver_M", 
+           "num_policiesC", "metro_code", "Policy_PaymentMethodA",  "Policy_PaymentMethodH",
+           "Insuredcapital_content_re", "Insuredcapital_continent_re", "appartment",
+           "Client_Seniority", "Retention", "NClaims1",  "NClaims2", "Claims1",
+           "Claims2","Types", "PolID") 
+gender           <- "1 for male and 0 for female" 
+Age_client       <- "the age of the customer in years"
+year             <-  "Policy year. Equals 5 corresponding to 2014."
+age_of_car_M     <- "the number of years since the vehicle was bought by the customer" 
+Car_power_M      <- "the power of the vehicle" 
+Car_2ndDriver_M  <- "1 if the customer has informed the insurance company that a second occasional driver uses the vehicle, and 0 otherwise" 
+num_policiesC    <- "the total number of policies held by the same customer in the insurance company"
+metro_code       <- "1 for urban or metropolitan and 0 for rural" 
+Policy_PaymentMethodA  <- "1 for annual payment and  0 for monthly payment in the motor policy"  
+Policy_PaymentMethodH  <- "1 for annual payment and  0 for monthly payment in the homeowners policy"
+Insuredcapital_content_re  <- "the value of content in homeowners insurance" 
+Insuredcapital_continent_re  <- "the value of building in homeowners insurance" 
+appartment  <- "1 if the homeowners insurance correspond to an apartment and 0 otherwise" 
+Client_Seniority  <- "the number of years that the customer has been in the company"
+Retention  <- "1 if the policy is renewed and 0 otherwise"
+NClaims1   <- "the number of claims in the motor insurance policy for the corresponding year" 
+NClaims2   <- "the number of claims in the homeowners insurance policy for the corresponding year" 
+Claims1    <- "the sum of claims cost  in the motor insurance policy for the corresponding year"
+Claims2    <- "the sum of claims cost  in the homeowners insurance policy for the corresponding year"
+Types      <- "1 when neither an auto nor a home claim, it is equal to  2 when the customer has an auto but not a home claim, it is equal to 3 when the customer does not have  not an auto but a home claim and it is equal to  4 when  both an auto and a home claim."
+PolID <- "Policy Identification Number"
+
+Descrip <- c(gender, Age_client, year, age_of_car_M, Car_power_M, Car_2ndDriver_M, 
+             num_policiesC, metro_code, Policy_PaymentMethodA, Policy_PaymentMethodH,
+             Insuredcapital_content_re, Insuredcapital_continent_re, appartment, 
+             Client_Seniority, Retention, NClaims1, NClaims2, Claims1, Claims2, Types,PolID)
+text_tbl <- data.frame(types, Descrip)
+colnames(text_tbl) <- c("Variable", "Description")
+```
+
+```{r DescribeCover, echo = FALSE}
+knitr::kable(text_tbl, caption = "Variable and Description of Spanish Personal Insurance Data", booktabs = T) %>%
+  kableExtra::kable_classic(full_width = FALSE) %>% 
+  kableExtra::column_spec(1,  width = "2.5cm") %>%
+  kableExtra::kable_styling(bootstrap_options = c("striped", "condensed"))
+
+```
+
+All monetary units are expressed in Euros. In motor insurance, only claims at fault are considered.
+
+
+```{r PrintNumPersonalIns, echo = FALSE}
+printnum = 5 # Number to print in tables
+#PersonalInsData <- read.csv("../Data/SpanishPersonalIns.csv",header=T)
+PersonalInsData <- read.csv("Data/SpanishPersonalIns.csv",header=T)
+
+PrintData <- PersonalInsData
+PrintData_head <- head(PrintData, n=printnum)
+knitr::kable(PrintData_head[,1:10], align = "cccccccc", 
+    caption = "**Spanish Personal Insurance  Data First Five Rows**")  %>%
+  kableExtra::kable_classic(full_width = FALSE) %>% 
+  kableExtra::kable_styling(bootstrap_options = c("striped", "condensed"), font_size = 9)
+knitr::kable(PrintData_head[,11:21], align = "cccccccc")  %>%
+  kableExtra::kable_classic(full_width = FALSE) %>% 
+  kableExtra::kable_styling(bootstrap_options = c("striped", "condensed"), font_size = 9)
+PrintData_tail <- tail(PrintData, n=printnum)
+rownames(PrintData_tail) <- NULL
+knitr::kable(PrintData_tail[,1:10], align = "cccccccc", 
+    caption = "**Spanish Personal Insurance Data Last Five Rows**")  %>%
+  kableExtra::kable_classic(full_width = FALSE) %>% 
+  kableExtra::kable_styling(bootstrap_options = c("striped", "condensed"), font_size = 9)
+knitr::kable(PrintData_tail[,11:21], align = "cccccccc")  %>%
+  kableExtra::kable_classic(full_width = FALSE) %>% 
+  kableExtra::kable_styling(bootstrap_options = c("striped", "condensed"), font_size = 9)
+```
+
+
+
+These data were drawn from a larger database of 40,284 insurance private customers. These customers are tracked from 2010 to 2014. Some customers do not renew their policies, so that they do not stay in the sample for five years. For the smaller data, only the 2014 policy year was used and from this, a random sample of 10,000 customers was drawn. 
+
+See @frees2021dependence  for more information about this dataset. The larger database contains 122935 rows and is freely available at:
+
+
+*Source:*
+
+Guillen, Montserrat; Bolancé, Catalina; Frees, Edward W.; Valdez, Emiliano A. (2021), "Insurance data for homeowners and motor insurance customers monitored over five years”, Mendeley Data, V1, DOI https://doi.org/10.17632/vfchtm5y7j.1
+
+
+## 'R' Package CASdatasets
+
+The `R` package `CASdatasets` provides a convenient way to access many well-known insurance datasets. This package was originally created to support the book *Computational Actuarial Science with R*, edited by Arthur Charpentier, @charpentier2014computational. 
+
+To install the package, here is a bit of `R` code:
+
+```{r eval = FALSE}
+install.packages("CASdatasets", repos = "http://cas.uqam.ca/pub/", type="source")
+library(CASdatasets)
+?CASdatasets
+?sgautonb # See the documentation of the Singapore Auto Data
+?lossalae # See the documentation of the Loss and Expense Data
+```    
+
+Note that this package assumes that you have already installed a few other packages, including *xts*, *sp*, and *zoo*.
+
+To illustrate, 
+
+*  in Chapter 4 we use the Singapore data (referred to as `sgautonb` in the package) and 
+*  in Chapter 15 we use the loss and expense data (referred to as `lossalae` in the package).
+    
+
+## Other Data Sources
+
+There exists man other (non-actarial) data sources. First, data can be obtained from university-based researchers who collect primary data. Second, data can be obtained from organizations that are set up for the purpose of releasing secondary data for the general research community. Third, data can be obtained from national and regional statistical institutes that collect data. Finally, companies have corporate data that can be obtained for research purposes.
+
+While it might be difficult to obtain data to address a specific research problem or answer a business question, it is relatively easy to obtain data to test a model or an algorithm for data analysis. In the modern era, readers can obtain datasets from the Internet. The following is a list of some websites to obtain real-world data:
+
+*  **UCI Machine Learning Repository.** This website (url: [http://archive.ics.uci.edu/ml/index.php](http://archive.ics.uci.edu/ml/index.php)) maintains more than 400 datasets that can be used to test machine learning algorithms.
+*  **Kaggle.** The Kaggle website (url: [https://www.kaggle.com/](https://www.kaggle.com/)) include real-world datasets used for data science competitions. Readers can download data from Kaggle by registering an account.
+*  **DrivenData.** DrivenData aims at bringing cutting-edge practices in data science to solve some of the world's biggest social challenges. In its website (url: [https://www.drivendata.org/](https://www.drivendata.org/)), readers can participate in data science competitions and download datasets.
+*  **Analytics Vidhya.** This website (url: [https://datahack.analyticsvidhya.com/contest/all/](https://datahack.analyticsvidhya.com/contest/all/)) allows you to participate and download datasets from practice problems and hackathon problems. 
+*  **KDD Cup.** KDD Cup is the annual Data Mining and Knowledge Discovery competition organized by the ACM Special Interest Group on Knowledge Discovery and Data Mining. This website (url: [http://www.kdd.org/kdd-cup](http://www.kdd.org/kdd-cup)) contains the datasets used in past KDD Cup competitions since 1997.
+*  **U.S. Government's open data.** This website (url: [https://www.data.gov/](https://www.data.gov/)) contains about 200,000 datasets covering a wide range of areas including climate, education, energy, and finance.
+*  **AWS Public Datasets.** In this website (url: [https://aws.amazon.com/datasets/](https://aws.amazon.com/datasets/)), Amazon provides a centralized repository of public datasets, including some huge datasets.
+

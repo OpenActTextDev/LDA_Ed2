@@ -1,0 +1,1656 @@
+
+# Model Selection and Estimation {#ChapModelSelection}
+
+*Chapter Preview*. Chapters \@ref(ChapFrequency-Modeling) and \@ref(ChapSeverity) have described how to fit parametric models to frequency and severity data, respectively. This chapter begins with the selection of models. To compare alternative parametric models, it is helpful to summarize data without reference to a specific parametric distribution. Section \@ref(S:MS:NonParInf) describes nonparametric estimation, how we can use it for model comparisons and how it can be used to provide starting values for parametric procedures. The process of model selection is then summarized in Section \@ref(S:MS:ModelSelection). Although our focus is on data from continuous distributions, the same process can be used for discrete versions or data that come from a hybrid combination of discrete and continuous distributions. 
+
+Model selection and estimation are fundamental aspects of statistical modeling. To provide a flavor as to how they can be adapted to alternative sampling schemes, Section \@ref(S:MS:ModifiedData1) describes estimation for grouped, censored and truncated data (following the Section \@ref(S:MaxLikeEstimation) introduction). To see how they can be adapted to alternative models, the chapter closes with Section \@ref(S:MS:BayesInference) on Bayesian inference, an alternative procedure where the (typically unknown) parameters are treated as random variables.
+
+
+##  Nonparametric Inference {#S:MS:NonParInf}
+
+***
+
+In this section, you learn how to:
+
+- Estimate moments, quantiles, and distributions without reference to a parametric distribution
+- Summarize the data graphically without reference to a parametric distribution
+- Determine measures that summarize deviations of a parametric from a nonparametric fit
+- Use nonparametric estimators to approximate parameters that can be used to start a parametric estimation procedure
+
+***
+
+
+### Nonparametric Estimation {#S:MS:NonParEst}
+
+In Section \@ref(S:basic-frequency-distributions) for frequency and Section \@ref(S:BasicQuantities) for severity, we learned how to summarize  a distribution by computing means, variances, quantiles/percentiles, and so on. To approximate these summary measures using a dataset, one strategy is to: 
+
+i. assume a parametric form for a distribution, such as a negative binomial for frequency or a gamma distribution for severity, 
+ii. estimate the parameters of that distribution, and then 
+iii. use the distribution with the estimated parameters  to calculate the desired summary measure.
+
+This is the `r Gloss('parametric')` approach. Another strategy is to estimate the desired summary measure directly from the observations *without* reference to a parametric model. Not surprisingly, this is known as the 
+`r Gloss('nonparametric')` approach.
+
+Let us start by considering the most basic type of `r Gloss('sampling scheme')` and assume that observations are realizations from a set of random variables $X_1, \ldots, X_n$ that are `r Gloss('iid')` draws from an unknown population distribution $F(\cdot)$. An equivalent way of saying this is that $X_1, \ldots, X_n$, is a *random sample* (with replacement) from $F(\cdot)$. To see how this works, we now describe nonparametric estimators of many important measures that summarize a distribution.
+
+
+#### Moment Estimators {#S:MS:MomentEstimator}
+
+We learned how to define moments in Section \@ref(S:generating-functions) for frequency and Section \@ref(S:Chap3Moments) for severity. In particular, the $k$-th moment, $\mathrm{E~}[X^k] = \mu^{\prime}_k$, summarizes many aspects of the distribution for different choices of $k$. Here, $\mu^{\prime}_k$ is sometimes called the $k$th *population* moment to distinguish it from the $k$th sample moment, 
+$$
+\frac{1}{n} \sum_{i=1}^n X_i^k ,
+$$
+which is the corresponding nonparametric estimator. In typical applications, $k$ is a positive integer, although it need not be in theory. 
+
+An important special case is the first moment where $k=1$. In this case, the prime symbol ($\prime$) and the $1$ subscript are usually dropped and one uses $\mu=\mu^{\prime}_1$ to denote the population mean, or simply the *mean*. The corresponding sample estimator for $\mu$ is called the *sample mean*, denoted with a bar on top of the random variable: 
+
+$$
+\overline{X} =\frac{1}{n} \sum_{i=1}^n X_i .
+$$
+
+Another type of summary measure of interest is the $k$*-th central moment*, $\mathrm{E~} [(X-\mu)^k] = \mu_k$. (Sometimes, $\mu^{\prime}_k$ is called the $k$-th *raw* moment to distinguish it from the central moment $\mu_k$.). A nonparametric, or sample, estimator of  $\mu_k$ is
+$$
+\frac{1}{n} \sum_{i=1}^n \left(X_i - \overline{X}\right)^k .
+$$
+The second central moment ($k=2$) is an important case for which we typically assign a new symbol, $\sigma^2 = \mathrm{E~} [(X-\mu)^2]$, known as the *variance*. Properties of the sample moment estimator of the variance such as $n^{-1}\sum_{i=1}^n \left(X_i - \overline{X}\right)^2$ have been studied extensively but is not the only possible estimator. The most widely used version is one where the effective sample size is reduced by one, and so we define
+$$
+s^2 = \frac{1}{n-1} \sum_{i=1}^n \left(X_i - \overline{X}\right)^2.
+$$
+
+Dividing by $n-1$ instead of $n$ matters little when you have a large sample size $n$ as is common in insurance applications. The *sample variance* estimator $s^2$ is `r Gloss('unbiased')` in the sense that $\mathrm{E~} [s^2] = \sigma^2$, a desirable property particularly when interpreting results of an analysis.  
+
+#### Empirical Distribution Function
+
+We have seen how to compute nonparametric estimators of the $k$th moment $\mathrm{E~} [X^k]$. In the same way, for any known function $\mathrm{g}(\cdot)$, we can estimate $\mathrm{E~} [\mathrm{g}(X)]$ using $n^{-1}\sum_{i=1}^n \mathrm{g}(X_i)$. 
+
+Now consider the function $\mathrm{g}(X) = I(X \le x)$ for a fixed $x$. Here, the notation $I(\cdot)$ is the `r Gloss('indicator')` function; it returns 1 if the event $(\cdot)$ is true and 0 otherwise. Note that now the random variable $\mathrm{g}(X)$ has Bernoulli distribution (a binomial distribution with $n=1$). We can use this distribution to readily calculate quantities such as the mean and the variance. For example, for this choice of $\mathrm{g}(\cdot)$, the expected value is $\mathrm{E~} [I(X \le x)] = \Pr(X \le x) = F(x)$, the distribution function evaluated at $x$. Using the `r Gloss('analog principle')`, we define the nonparametric estimator of the distribution function
+
+$$
+\begin{aligned}
+F_n(x)
+&=  \frac{1}{n} \sum_{i=1}^n I\left(X_i \le x\right) \\
+&=  \frac{\text{number of observations less than or equal to }x}{n} . 
+\end{aligned}
+$$
+As $F_n(\cdot)$ is based on only observations and does not assume a parametric family for the distribution, it is nonparametric and also known as the `r Gloss('empirical distribution function')`. It is also known as the *empirical cumulative distribution function* and, in `R`, one can use the `ecdf(.)` function to compute it.
+
+
+
+**Example 5.1.1. Toy Data Set**. To illustrate, consider a fictitious, or "toy," data set of $n=10$ observations. Determine the empirical distribution function.
+
+$$
+{\small
+\begin{array}{c|cccccccccc}
+\hline
+i &1&2&3&4&5&6&7&8&9&10 \\
+X_i& 10 &15 &15 &15 &20 &23 &23 &23 &23 &30\\
+\hline
+\end{array}
+}
+$$
+
+
+`r HideExample('5.1.1', 'Show Example Solution')`
+
+You should check that the sample mean is $\overline{X} = 19.7$ and that the sample variance is $s^2 =34.45556$. The corresponding empirical distribution function is
+
+$$
+\begin{aligned}
+F_n(x) &=
+\left\{
+\begin{array}{ll}
+0 & \text{ for }\ x<10 \\
+0.1 & \text{ for }\ 10 \leq x<15 \\
+0.4 & \text{ for }\ 15 \leq x<20 \\
+0.5 & \text{ for }\ 20 \leq x<23 \\
+0.9 & \text{ for }\ 23 \leq x<30 \\
+1 & \text{ for }\ x \geq 30,
+\end{array}
+\right.\end{aligned}
+$$
+
+as shown in Figure \@ref(fig:EDFToy). The empirical distribution is generally discrete and  continuous from the right.
+
+(ref:EDFToy) **Empirical Distribution Function of a Toy Example**
+
+```{r EDFToy, echo=FALSE, fig.cap='(ref:EDFToy)', out.width='60%', fig.asp=.75, fig.align='center'}
+xExample <- c(10,rep(15,3),20,rep(23,4),30)
+PercentilesxExample <- ecdf(xExample)
+plot(PercentilesxExample, main="",xlab="x")
+```
+
+`r HideRCode('Toy.4f', 'Show R Code')`
+
+```{r, echo=SHOW_PDF, eval=FALSE}
+(xExample <- c(10,rep(15,3),20,rep(23,4),30))
+PercentilesxExample <- ecdf(xExample)
+plot(PercentilesxExample, main="",xlab="x")
+```
+</div>
+
+</div>
+
+***
+
+
+#### Quartiles, Percentiles and Quantiles {#S:MS:QuantileEstimator}
+
+We have already seen in Section \@ref(S:Chap3Moments) the `r Gloss('median')`, which is the number such that approximately half of a data set is below (or above) it. The `r Gloss('first quartile')` is the number such that approximately 25\% of the data is below it and the `r Gloss('third quartile')` is the number such that approximately 75\% of the data is below it. A $100p$ `r Gloss('percentile', '4.1')` is the number such that $100 \times p$ percent of the data is below it.
+
+To generalize this concept, consider a distribution function $F(\cdot)$, which may or may not be continuous, and let $q$ be a fraction so that $0<q<1$. We want to define a `r Gloss('quantile')`, say $q_F$, to be a number such that $F(q_F) \approx q$. Notice that when $q = 0.5$, $q_F$ is the median; when $q = 0.25$, $q_F$ is the first quartile, and so on.  In the same way, when $q = 0, 0.01, 0.02, \ldots, 0.99, 1.00$, the resulting $q_F$ is a percentile. So, a quantile generalizes the concepts of median, quartiles, and percentiles.
+
+To be precise, for a given $0<q<1$, define the $q$**th quantile** $q_F$ to be *any* number that satisfies
+
+\begin{equation}
+F(q_F-) \le q \le F(q_F)
+(\#eq:Quantile)
+\end{equation}
+
+Here, the notation $F(x-)$ means to evaluate the function $F(\cdot)$ as a left-hand limit.
+
+To get a better understanding of this definition, let us look at a few special cases. First, consider the case where $X$ is a continuous random variable so that the distribution function $F(\cdot)$ has no jump points, as illustrated in Figure \@ref(fig:Quantile1). In this figure, a few fractions, $q_1$, $q_2$, and $q_3$ are shown with their corresponding quantiles $q_{F,1}$, $q_{F,2}$, and $q_{F,3}$. In each case, it can be seen that $F(q_F-)= F(q_F)$ so that there is a unique quantile. Because we can find a unique inverse of the distribution function at any $0<q<1$, we can write $q_F= F^{-1}(q)$.
+
+(ref:Quantile1) **Continuous Quantile Case**
+
+```{r Quantile1, echo=FALSE, fig.cap='(ref:Quantile1)', out.width='60%', fig.asp=.75, fig.align='center'}
+curve(pnorm(x,0,1), -4, 4, ylab="F(x)", xaxt="n", yaxt="n", lwd=2)
+axis(side=2, at=c(0.1,0.5,0.9), labels=c(expression(q[1]),expression(q[2]),expression(q[3])),las=1)
+axis(side=1, at=c(qnorm(0.1,0,1), qnorm(0.5,0,1), qnorm(0.9,0,1)), labels=c(expression(q['F,1']), expression(q['F,2']), expression(q['F,3'])))
+segments(x0=-4, y0=0.1, x1=qnorm(0.1,0,1), y1=0.1, lty=1)
+segments(x0=-4, y0=0.5, x1=qnorm(0.5,0,1), y1=0.5, lty=1)
+segments(x0=-4, y0=0.9, x1=qnorm(0.9,0,1), y1=0.9, lty=1)
+segments(x0=qnorm(0.1,0,1), y0=0, x1=qnorm(0.1,0,1), y1=0.1, lty=3)
+segments(x0=qnorm(0.5,0,1), y0=0, x1=qnorm(0.5,0,1), y1=0.5, lty=3)
+segments(x0=qnorm(0.9,0,1), y0=0, x1=qnorm(0.9,0,1), y1=0.9, lty=3)
+```
+
+Figure \@ref(fig:Quantile2) shows three cases for distribution functions. The left panel corresponds to the continuous case just discussed. The middle panel displays a jump point similar to those we already saw in the empirical distribution function of Figure \@ref(fig:EDFToy). For the value of $q$ shown in this panel, we still have a unique value of the quantile $q_F$. Even though there are many values of $q$ such that $F(q_F-) \le q \le F(q_F)$, for a particular value of $q$, there is only one solution to equation \@ref(eq:Quantile). The right panel depicts a situation in which the quantile cannot be uniquely determined for the $q$ shown as there is a range of $q_F$'s satisfying equation \@ref(eq:Quantile). 
+
+(ref:Quantile2) **Three Quantile Cases**
+
+```{r Quantile2, echo=FALSE, fig.cap='(ref:Quantile2)', out.width='90%', fig.asp=.40, fig.align='center'}
+par(mfrow=c(1,3))
+
+curve(x/1,0,1, ylab="F(x)", xaxt="n", yaxt="n")
+axis(side=2, at=c(0.5), labels=c(expression(q)), las=1)
+axis(side=1, at=c(0.5), labels=c(expression(q[F])))
+segments(x0=0, y0=0.5, x1=0.5, y1=0.5, lty=3)
+segments(x0=0.5, y0=0, x1=0.5, y1=0.5, lty=3)
+
+curve((4/5)*x,0,0.5, ylab="F(x)", xaxt="n", yaxt="n", xlim=c(0,1), ylim=c(0,1))
+curve((4/5)*x+0.2,0.5,1, add=TRUE)
+axis(side=2, at=c(0.5), labels=c(expression(q)), las=1)
+axis(side=1, at=c(0.5), labels=c(expression(q[F])))
+points(x=0.5, y=0.4, pch=1, cex=2)
+points(x=0.5, y=0.6, pch=16, cex=2)
+
+curve((5/4)*x,0,0.4, ylab="F(x)", xaxt="n", yaxt="n", xlim=c(0,1), ylim=c(0,1))
+curve((5/4)*x-0.25,0.6,1, add=TRUE)
+curve(0*x+0.5,0.4,0.6, add=TRUE)
+axis(side=2, at=c(0.5), labels=c(expression(q)), las=1)
+axis(side=1, at=c(0.5), labels=c(expression(q[F])))
+```
+
+***
+
+
+**Example 5.1.2. Toy Data Set: Continued.**
+Determine quantiles corresponding to the 20th, 50th, and 95th percentiles.
+
+`r HideExample('5.1.2', 'Show Example Solution')`
+
+**Solution**.
+Consider Figure \@ref(fig:EDFToy). The case of $q=0.20$ corresponds to the middle panel of Figure Figure \@ref(fig:Quantile2), so the 20th percentile is 15. The case of $q=0.50$ corresponds to the right panel, so the median is any number between 20 and 23 inclusive. Many software packages use the average 21.5 (e.g. `R`, as seen below). For the 95th percentile, the solution is 30. We can see from  Figure \@ref(fig:EDFToy) that 30 also corresponds to the 99th and the 99.99th percentiles.
+
+```{r, warning=FALSE}
+quantile(xExample, probs=c(0.2, 0.5, 0.95), type=6)
+```
+
+</div>
+
+***
+
+By taking a weighted average between data observations, smoothed empirical quantiles can handle cases such as the right panel in Figure \@ref(fig:Quantile2). The $q$th `r Gloss('smoothed empirical quantile')` is defined as 
+$$
+\hat{\pi}_q = (1-h) X_{(j)} + h X_{(j+1)}
+$$
+where $j=\lfloor(n+1)q\rfloor$, $h=(n+1)q-j$, and $X_{(1)}, \ldots, X_{(n)}$ are the ordered values (known as the *order statistics*) corresponding to $X_1, \ldots, X_n$. (Recall that the brackets $\lfloor \cdot\rfloor$ are the floor function denoting the greatest integer value.) Note that $\hat{\pi}_q$ is simply a linear interpolation between $X_{(j)}$ and $X_{(j+1)}$.
+
+
+**Example 5.1.3. Toy Data Set: Continued.**
+Determine the 50th and 20th smoothed percentiles.
+
+`r HideExample('5.1.3', 'Show Example Solution')`
+
+**Solution**
+Take $n=10$ and $q=0.5$. Then, $j=\lfloor(11)(0.5) \rfloor= \lfloor 5.5 \rfloor=5$ and $h=(11)(0.5)-5=0.5$. Then the 0.5-th smoothed empirical quantile is
+$$\hat{\pi}_{0.5} = (1-0.5) X_{(5)} + (0.5) X_{(6)} = 0.5 (20) + (0.5)(23) = 21.5.$$
+Now take $n=10$ and $q=0.2$. In this case, $j=\lfloor(11)(0.2)\rfloor=\lfloor 2.2 \rfloor=2$ and $h=(11)(0.2)-2=0.2$. Then the 0.2-th smoothed empirical quantile is
+$$\hat{\pi}_{0.2} = (1-0.2) X_{(2)} + (0.2) X_{(3)} = 0.8 (15) + (0.2)(15) = 15.$$
+
+</div>
+
+***
+
+
+#### Density Estimators {#S:MS:Density}
+
+**Discrete Variable.** When the random variable is discrete, estimating the probability mass function $f(x) = \Pr(X=x)$ is straightforward. We simply use the sample average, defined to be 
+
+$$
+f_n(x) = \frac{1}{n} \sum_{i=1}^n I(X_i = x),
+$$
+
+which is the proportion of the sample equal to $x$.
+
+**Continuous Variable within a Group.** For a continuous random variable, consider a discretized formulation in which the domain of $F(\cdot)$ is partitioned by constants $\{c_0 < c_1 < \cdots < c_k\}$ into intervals of the form $[c_{j-1}, c_j)$, for $j=1, \ldots, k$. The data observations are thus "grouped" by the intervals into which they fall. Then, we might use the basic definition of the empirical mass function, or a variation such as
+$$f_n(x) = \frac{n_j}{n \times (c_j - c_{j-1})}  \ \ \ \ \ \ c_{j-1} \le x < c_j,$$
+where $n_j$ is the number of observations ($X_i$) that fall into the interval $[c_{j-1}, c_j)$.
+
+**Continuous Variable (not grouped).** Extending this notion to instances where we observe individual data, note that we can always create arbitrary groupings and use this formula. More formally, let $b>0$ be a small positive constant, known as a `r Gloss('bandwidth')`, and define a density estimator to be
+
+\begin{equation}
+f_n(x) = \frac{1}{2nb} \sum_{i=1}^n I(x-b < X_i \le x + b)
+(\#eq:KDF)
+\end{equation}
+
+`r HideProofTheory('kernel.1',"Show A Snippet of Theory")`
+
+***
+
+**Snippet of Theory.** The idea is that the estimator $f_n(x)$ in equation \@ref(eq:KDF) is the average over $n$ *iid* realizations of a random variable with mean
+
+$$
+\begin{aligned}
+\mathrm{E~ } \left[\frac{1}{2b} I(x-b < X \le x + b)\right] &=  \frac{1}{2b}\left(F(x+b)-F(x-b)\right) \\
+& \rightarrow  F^{\prime}(x) = f(x),
+\end{aligned}
+$$
+
+as $b\rightarrow  0$. That is, $f_n(x)$ is an `r Gloss('asymptotically unbiased')` estimator of $f(x)$ (its expectation approaches the true value as sample size increases to infinity). This development assumes some smoothness of $F(\cdot)$, in particular, twice differentiability at $x$, but makes no assumptions on the form of the distribution function $F$. Because of this, the density estimator $f_n$ is said to be *nonparametric*.
+
+***
+
+</div>
+
+More generally, define the `r Gloss('kernel density estimator')` of the `r Gloss('pdf')` at $x$ as 
+
+\begin{equation} 
+f_n(x) = \frac{1}{nb} \sum_{i=1}^n w\left(\frac{x-X_i}{b}\right) ,
+(\#eq:kernelDens)
+\end{equation}
+
+where $w$ is a probability density function centered about 0. Note that equation \@ref(eq:KDF) is a special case of the kernel density estimator where $w(x) = \frac{1}{2}I(-1 < x \le 1)$, also known as the *uniform kernel*. Other popular choices are shown in [Table 5.1].
+
+[Table 5.1]:\#tab:5.1
+
+<a id=tab:5.1></a>
+
+Table 5.1. **Popular Kernel Choices**
+
+$$
+{\small
+\begin{matrix}
+\begin{array}{l|cc}
+\hline
+\text{Kernel} &  w(x) \\
+\hline
+\text{Uniform } &  \frac{1}{2}I(-1 < x \le 1) \\
+\text{Triangle} &  (1-|x|)\times I(|x| \le 1) \\
+\text{Epanechnikov} & \frac{3}{4}(1-x^2) \times I(|x| \le 1) \\
+\text{Gaussian} & \phi(x) \\
+\hline
+\end{array}\end{matrix}
+}
+$$
+
+Here, $\phi(\cdot)$ is the standard normal density function. As we will see in the following example, the choice of bandwidth $b$ comes with a `r Gloss('bias-variance tradeoff')` between matching local distributional features and reducing the volatility.
+
+
+***
+
+
+**Example 5.1.4. Property Fund.**
+Figure \@ref(fig:Density2) shows a histogram (with shaded gray rectangles) of logarithmic property claims from 2010. The (blue) thick curve represents a Gaussian kernel density where the bandwidth was selected automatically using an ad hoc rule based on the sample size and volatility of these data. For this dataset, the bandwidth turned out to be $b=0.3255$. For comparison, the (red) dashed curve represents the density estimator with a bandwidth equal to 0.1 and the green smooth curve uses a bandwidth of 1. As anticipated, the smaller bandwidth (0.1) indicates taking local averages over less data so that we get a better idea of the local average, but at the price of higher volatility. In contrast, the larger bandwidth (1) smooths out local fluctuations, yielding a smoother curve that may miss perturbations in the local average. For actuarial applications, we mainly use the kernel density estimator to get a quick visual impression of the data. From this perspective, you can simply use the default ad hoc rule for bandwidth selection, knowing that you have the ability to change it depending on the situation at hand.
+
+(ref:Density2) **Histogram of Logarithmic Property Claims with Superimposed Kernel Density Estimators**
+
+```{r Density2, echo=FALSE, warning=FALSE, message=FALSE, fig.cap='(ref:Density2)', out.width='70%', fig.asp=.70, fig.align='center'}
+ClaimLev <- read.csv("Data/CLAIMLEVEL.csv", header=TRUE); #nrow(ClaimLev); # 6258
+ClaimData<-subset(ClaimLev,Year==2010);     #2010 subset
+#Density Comparison
+hist(log(ClaimData$Claim), main="", ylim=c(0,.35),xlab="Log Expenditures", freq=FALSE, col="lightgray")
+lines(density(log(ClaimData$Claim)), col="blue",lwd=2.5)
+lines(density(log(ClaimData$Claim), bw=1), col="green")
+lines(density(log(ClaimData$Claim), bw=.1), col="red", lty=3)
+legend("topright", c("b=0.3255 (default)", "b=0.1", "b=1.0"), lty=c(1,3,1), lwd=c(2.5,1,1),
+       col=c("blue", "red", "green"), cex=1)
+#density(log(ClaimData$Claim))$bw   ##default bandwidth
+```
+
+`r HideRCode('kpdf',"Show R Code")`
+
+```{r, echo=SHOW_PDF, ref.label = 'Density2', eval=FALSE}
+```
+
+</div>
+
+***
+
+Nonparametric density estimators, such as the kernel estimator, are regularly used in practice. The concept can also be extended to give smooth versions of an empirical distribution function. Given the definition of the kernel density estimator, the *kernel estimator of the distribution function* can be found as 
+
+$$
+\begin{aligned}
+\tilde{F}_n(x) = \frac{1}{n} \sum_{i=1}^n W\left(\frac{x-X_i}{b}\right).\end{aligned}
+$$
+
+where $W$ is the distribution function associated with the kernel density $w$. To illustrate, for the uniform kernel, we have $w(y) = \frac{1}{2}I(-1 < y \le 1)$, so
+
+$$
+\begin{aligned}
+W(y) =
+\begin{cases}
+0 &            y<-1\\
+\frac{y+1}{2}& -1 \le y < 1 \\
+1 & y \ge 1 \\
+\end{cases}\end{aligned} .
+$$
+
+***
+
+**Example 5.1.5. Actuarial Exam Question.** 
+
+You study five lives to estimate the time from the onset of a disease to death. The times to death are:
+
+$$
+\begin{array}{ccccc}
+2 & 3 & 3 & 3 & 7  \\
+\end{array}
+$$
+
+Using a triangular kernel with bandwidth $2$, calculate the density function estimate at 2.5.
+
+`r HideExample('5.1.5', 'Show Example Solution')`
+
+**Solution.**
+For the kernel density estimate, we have
+$$f_n(x) = \frac{1}{nb} \sum_{i=1}^n w\left(\frac{x-X_i}{b}\right),$$
+where $n=5$, $b=2$, and $x=2.5$. For the triangular kernel, $w(x) = (1-|x|)\times I(|x| \le 1)$. Thus,
+
+$$
+\begin{array}{c|c|c}
+\hline
+X_i & \frac{x-X_i}{b} & w\left(\frac{x-X_i}{b} \right) \\
+\hline
+2 & \frac{2.5-2}{2}=\frac{1}{4} &  (1-\frac{1}{4})(1) = \frac{3}{4} \\
+\hline
+3 & & \\
+3 & \frac{2.5-3}{2}=\frac{-1}{4} & \left(1-\left| \frac{-1}{4} \right| \right)(1) = \frac{3}{4} \\
+3 & & \\
+\hline
+7 & \frac{2.5-7}{2}=-2.25 & (1-|-2.25|)(0) = 0\\
+\hline
+\end{array}
+$$
+
+Then the kernel density estimate at $x=2.5$ is $$f_n(2.5) = \frac{1}{5(2)}\left( \frac{3}{4} + (3) \frac{3}{4} + 0 \right) = \frac{3}{10}$$
+
+</div>
+
+***
+
+#### Plug-in Principle {#S:MS:PlugIn}
+
+One way to create a nonparametric estimator of some quantity is to use the *analog* or `r Gloss('plug-in principle')` where one replaces the unknown `r Gloss('cdf')` $F$ with a known estimate such as the empirical *cdf* $F_n$. So, if we are trying to estimate $\mathrm{E}~[\mathrm{g}(X)]=\mathrm{E}_F~[\mathrm{g}(X)]$ for a generic function *g*, then we define a nonparametric estimator to be $\mathrm{E}_{F_n}~[\mathrm{g}(X)]=n^{-1}\sum_{i=1}^n \mathrm{g}(X_i)$.
+
+To see how this works, as a special case of *g* we consider the loss per payment random variable is $Y = (X-d)_+$ and the *loss elimination ratio* introduced in Section 4.4.1. We can express this as
+$$
+LER(d) = \frac{\mathrm{E~}[X - (X-d)_+]}{\mathrm{E~}[X]} =\frac{\mathrm{E~}[\min(X,d)]}{\mathrm{E~}[X]} ,
+$$
+for a fixed deductible $d$. 
+
+**Example. 5.1.6. Bodily Injury Claims and Loss Elimination Ratios** 
+
+```{r comment="", warning=FALSE, echo = FALSE}
+# Example from Derrig et al
+#  "Applications of resampling methods in actuarial practice"
+#  CAS Proceedings 2001
+BIData <- read.csv("Data/DerrigResampling.csv", header =T)
+BIData$Censored <- 1*(BIData$AmountPaid >= BIData$PolicyLimit)
+BIDataUncensored <- subset(BIData, Censored == 0) 
+X <- BIDataUncensored$AmountPaid
+```
+
+We use a sample of `r nrow(BIData)` closed auto claims from Boston from @derrig2001applications. Losses are recorded for payments due to bodily injuries in auto accidents. Losses are not subject to deductibles but are limited by various maximum coverage amounts that are also available in the data. It turns out that only `r sum(BIData$Censored)` out of `r nrow(BIData)` ($\approx$ `r round(100*sum(BIData$Censored)/nrow(BIData), digits=0)`%) were subject to these policy limits and so we ignore these data for this illustration. 
+
+The average loss paid is `r round(mean(X),digits=0)` in U.S. dollars. Figure \@ref(fig:BIClaims) shows other aspects of the distribution. Specifically, the left-hand panel shows the empirical distribution function, the right-hand panel gives a nonparametric density plot.
+
+(ref:BIClaims) **Bodily Injury Claims.** The left-hand panel gives the empirical distribution function. The right-hand panel presents a nonparametric density plot.
+
+
+```{r BIClaims, echo=FALSE, fig.cap='(ref:BIClaims)', fig.align='center'}
+BI.cdf <- ecdf(X)
+par(mfrow=c(1,2))
+plot(BI.cdf , main="",xlab="x", ylab = "ECDF", cex = 0.3)
+plot(density(X), main="", xlab="x")
+
+```
+
+The impact of bodily injury losses can be mitigated by the imposition of limits or purchasing reinsurance policies (see Section 10.3). To quantify the impact of these risk mitigation tools, it is common to compute the *loss elimination ratio (LER)* as introduced in Section 4.4.1. The distribution function is not available and so must be estimated in some way. Using the plug-in principle, a nonparametric estimator can be defined as
+
+$$
+LER_n(d) = \frac{n^{-1} \sum_{i=1}^n \min(X_i,d)}{n^{-1} \sum_{i=1}^n X_i} = \frac{\sum_{i=1}^n \min(X_i,d)}{\sum_{i=1}^n X_i} .
+$$
+
+```{r comment="", echo=FALSE, warning=FALSE}
+LER <- function(d){
+  sumClaims <- sum(X)
+  sumClaims_d <- sum(pmin(X,d))
+  LER <-   sumClaims_d/sumClaims
+  return(LER)  
+}
+dVec <- seq(0,max(X), length.out = 1000)
+LERVec <- 0 * dVec
+for (i in 1:length(dVec)){LERVec[i] <- LER(dVec[i])} 
+```
+
+
+Figure \@ref(fig:LER) shows the estimator $LER_n(d)$ for various choices of $d$. For example, at $d=1,000$, we have $LER_n(1000) \approx$ `r round(LER(1000),digits = 4)`. Thus, imposing a limit of 1,000 means that expected retained claims are `r round(100*LER(1000),digits = 2)` percent lower when compared to expected claims with a zero deductible.
+
+(ref:LER) **LER for Bodily Injury Claims.** The figure presents the loss elimination ratio (LER) as a function of deductible $d$.
+
+```{r LER, echo=FALSE, fig.cap='(ref:LER)',  fig.align='center'}
+plot(dVec,LERVec, xlab="d", ylab = "LER", cex=.3)
+```
+
+
+
+### Tools for Model Selection and Diagnostics {#S:MS:ToolsModelSelection}
+
+The previous section introduced nonparametric estimators in which there was no parametric form assumed about the underlying distributions. However, in many actuarial applications, analysts seek to employ a parametric fit of a distribution for ease of explanation and the ability to readily extend it to more complex situations such as including explanatory variables in a regression setting. When fitting a parametric distribution, one analyst might try to use a gamma distribution to represent a set of loss data. However, another analyst may prefer to use a Pareto distribution. How does one determine which model to select?
+
+Nonparametric tools can be used to corroborate the selection of parametric models. Essentially, the approach is to compute selected summary measures under a fitted parametric model and to compare it to the corresponding quantity under the nonparametric model. As the nonparametric model does not assume a specific distribution and is merely a function of the data, it is used as a benchmark to assess how well the parametric distribution/model represents the data. 
+Also, as the sample size increases, the empirical distribution converges almost surely to the underlying population distribution (by the strong law of large numbers). Thus the empirical distribution is a good proxy for the population. The comparison of parametric to nonparametric estimators may alert the analyst to deficiencies in the parametric model and sometimes point ways to improving the parametric specification. Procedures geared towards assessing the validity of a model are known as `r Gloss('model diagnostics')`. 
+
+#### Graphical Comparison of Distributions {#S:MS:GraphComparison}
+
+We have already seen the technique of overlaying graphs for comparison purposes. To reinforce the application of this technique, Figure \@ref(fig:ComparisonCDFPDF) compares the empirical distribution to two parametric fitted distributions. The left panel shows the distribution functions of claims distributions. The dots forming an "S-shaped" curve represent the empirical distribution function at each observation. The thick blue curve gives corresponding values for the fitted gamma distribution and the light purple is for the fitted Pareto distribution. Because the Pareto is much closer to the empirical distribution function than the gamma, this provides evidence that the Pareto is the better model for this data set. The right panel gives similar information for the density function and provides a consistent message. Based (only) on these figures, the Pareto distribution is the clear choice for the analyst.
+
+(ref:ComparisonCDFPDF) **Nonparametric Versus Fitted Parametric Distribution and Density Functions.** The left-hand panel compares distribution functions, with the dots corresponding to the empirical distribution, the thick blue curve corresponding to the fitted gamma and the light purple curve corresponding to the fitted Pareto. The right hand panel compares these three distributions summarized using probability density functions.
+
+```{r ComparisonCDFPDF, warning=FALSE, message=FALSE, echo=FALSE, fig.cap='(ref:ComparisonCDFPDF)', out.width='80%', fig.asp=.60, fig.align='center'}
+library(MASS)
+library(VGAM)
+# Inference assuming a gamma distribution
+fit.gamma2 <- glm(Claim~1, data=ClaimData,family=Gamma(link=log))
+#summary(fit.gamma2, dispersion = gamma.dispersion(fit.gamma2))
+
+theta<-exp(coef(fit.gamma2))*gamma.dispersion(fit.gamma2) #mu=theta/alpha
+alpha<-1/gamma.dispersion(fit.gamma2)
+
+#  Inference assuming a Pareto Distribution
+fit.pareto <- vglm(Claim ~ 1, paretoII, loc=0, data = ClaimData)
+#summary(fit.pareto)
+#head(fitted(fit.pareto))
+#exp(coef(fit.pareto))
+
+x <- seq(0,15,by=0.01)
+
+par(mfrow=c(1, 2))
+LogPercentiles  <- ecdf(log(ClaimData$Claim))
+plot(LogPercentiles,  main="", xlab="Log Claims", ylab="Distribution Function", cex=1)
+Fgamma_ex = pgamma(exp(x), shape = alpha, scale=theta)
+lines(x,Fgamma_ex,col="blue")
+Fpareto_ex = pparetoII(exp(x),loc=0,shape = exp(coef(fit.pareto)[2]), scale = exp(coef(fit.pareto)[1]))
+lines(x,Fpareto_ex,col="purple")
+legend("bottomright", c("log(claims)", "Gamma","Pareto"), lty=1, cex=0.6,col = c("black","blue","purple"))
+
+plot(density(log(ClaimData$Claim)) ,main="", xlab="Log Claims")
+fgamma_ex = dgamma(exp(x), shape = alpha, scale=theta)*exp(x)
+lines(x,fgamma_ex,col="blue")
+fpareto_ex = dparetoII(exp(x),loc=0,shape = exp(coef(fit.pareto)[2]), scale = exp(coef(fit.pareto)[1]))*exp(x)
+lines(x,fpareto_ex,col="purple")
+legend("topright", c("log(claims)", "Gamma","Pareto"), lty=1, cex=0.6,col = c("black","blue","purple"))
+```
+
+For another way to compare the appropriateness of two fitted models, consider the `r Gloss("probability-probability (pp) plot")`. A $pp$ plot compares cumulative probabilities under two models. For our purposes, these two models are the nonparametric empirical distribution function and the parametric fitted model. Figure \@ref(fig:PPPlot) shows $pp$ plots for the Property Fund data introduced in Section \@ref(S:LGPIF). The fitted gamma is on the left and the fitted Pareto is on the right, compared to the same empirical distribution function of the data. The straight line represents equality between the two distributions being compared, so points close to the line are desirable. As seen in earlier demonstrations, the Pareto is much closer to the empirical distribution than the gamma, providing additional evidence that the Pareto is the better model.
+
+(ref:PPPlot) **Probability-Probability ($pp$) Plots.** The horizontal axis gives the empirical distribution function at each observation. In the left-hand panel, the corresponding distribution function for the gamma is shown in the vertical axis. The right-hand panel shows the fitted Pareto distribution. Lines of $y=x$ are superimposed.
+
+```{r PPPlot, message=FALSE, warning=FALSE, echo=FALSE, fig.cap='(ref:PPPlot)', out.width='80%', fig.asp=0.60, fig.align='center'}
+#  PP Plot
+par(mfrow=c(1, 2))
+Fgamma_ex = pgamma(ClaimData$Claim, shape = alpha, scale=theta)
+#plot(Percentiles(ClaimData$Claim),Fgamma_ex, xlab="Empirical DF", ylab="Gamma DF",cex=0.4)
+Fn <- ecdf(ClaimData$Claim)
+plot(Fn(ClaimData$Claim), Fgamma_ex, xlab="Empirical DF", ylab="Gamma DF", cex=0.4)
+abline(0,1)
+
+Fpareto_ex = pparetoII(ClaimData$Claim,loc=0,shape = exp(coef(fit.pareto)[2]), scale = exp(coef(fit.pareto)[1]))
+#plot(Percentiles(ClaimData$Claim),Fpareto_ex, xlab="Empirical DF", ylab="Pareto DF",cex=0.4)
+plot(Fn(ClaimData$Claim), Fpareto_ex, xlab="Empirical DF", ylab="Pareto DF", cex=0.4)
+abline(0,1)
+```
+
+A $pp$ plot is useful in part because no artificial scaling is required, such as with the overlaying of densities in Figure \@ref(fig:ComparisonCDFPDF), in which we switched to the log scale to better visualize the data. The Chapter 5 *Technical Supplement A.1* introduces a variation of the $pp$ plot known as a `r Gloss('Lorenz curve')`; this is an important tool for assessing  income inequality. Furthermore, $pp$ plots are available in multivariate settings where more than one outcome variable is available. However, a limitation of the $pp$ plot is that, because it plots *cumulative* distribution functions, it can sometimes be difficult to detect *where* a fitted parametric distribution is deficient. As an alternative, it is common to use a `r Gloss("quantile-quantile (qq) plot")`, as demonstrated in Figure \@ref(fig:QQPlot).
+
+
+The $qq$ plot compares two fitted models through their quantiles. As with $pp$ plots, we compare the nonparametric to a parametric fitted model. Quantiles may be evaluated at each point of the data set, or on a grid (e.g., at $0, 0.001, 0.002, \ldots, 0.999, 1.000$), depending on the application. In Figure \@ref(fig:QQPlot), for each point on the aforementioned grid, the horizontal axis displays the empirical quantile and the vertical axis displays the corresponding fitted parametric quantile (gamma for the upper two panels, Pareto for the lower two). Quantiles are plotted on the original scale in the left panels and on the log scale in the right panels to allow us to see where a fitted distribution is deficient. The straight line represents equality between the empirical distribution and fitted distribution. From these plots, we again see that the Pareto is an overall better fit than the gamma. Furthermore, the lower-right panel suggests that the Pareto distribution does a good job with large claims, but provides a poorer fit for small claims.
+
+(ref:QQPlot) **Quantile-Quantile ($qq$) Plots.** The horizontal axis gives the empirical quantiles at each observation. The right-hand panels they are graphed on a logarithmic basis. The vertical axis gives the quantiles from the fitted distributions; gamma quantiles are in the upper panels, Pareto quantiles are in the lower panels.
+
+```{r QQPlot, warning=FALSE, message=FALSE, echo=FALSE, fig.cap='(ref:QQPlot)', out.width='80%', fig.asp=0.90, fig.align='center'}
+#q-q plot
+options(scipen=10)
+par(mfrow=c(2, 2))
+xseq = seq(0.0001, 0.9999, by=1/length(ClaimData$Claim))
+empquant = quantile(ClaimData$Claim, xseq)
+Gammaquant = qgamma(xseq, shape = alpha, scale=theta)
+plot(empquant, Gammaquant, xlab="Empirical Quantile", ylab="Gamma Quantile")
+abline(0,1)
+plot(log(empquant), log(Gammaquant), xlab="Log Emp Quantile", ylab="Log Gamma Quantile")
+abline(0,1)
+Paretoquant = qparetoII(xseq,loc=0,shape = exp(coef(fit.pareto)[2]), scale = exp(coef(fit.pareto)[1]))
+plot(empquant, Paretoquant, xlab="Empirical Quantile", ylab="Pareto Quantile")
+abline(0,1)
+plot(log(empquant), log(Paretoquant), xlab="Log Emp Quantile", ylab="Log Pareto Quantile")
+abline(0,1)
+```
+
+***
+
+**Example 5.1.7. Actuarial Exam Question.** 
+The graph below shows a $pp$ plot of a fitted distribution compared to a sample. 
+
+
+```{r, echo=FALSE, warning=FALSE, message=FALSE, fig.cap='', out.width='40%', fig.asp=1, fig.align='center'}
+# set of points
+x <- c(    0, 0.1, 0.2,  0.25, 0.4,  0.5,  0.6,  0.7,  0.8, 0.85, 0.9,  1)
+y <- c(-0.05, 0.3, 0.23, 0.25, 0.33, 0.38, 0.41, 0.46, 0.7, 0.85, 0.95, 1)
+lo <- loess(y~x)
+xl <- seq(min(x),max(x), (max(x) - min(x))/1000)
+plot(xl, predict(lo,xl), type="l", xlab="Sample", ylab="Fitted", cex.lab=1.5, cex.axis=1.5)
+
+abline(0,1)
+```
+
+Comment on the two distributions with respect to left tail, right tail, and median probabilities.
+
+`r HideExample('5.1.7', 'Show Example Solution')`
+
+**Solution.**
+The tail of the fitted distribution is too thick on the left, too thin on the right, and the fitted distribution has less probability around the median than the sample. To see this, recall that the $pp$ plot graphs the cumulative distribution of two distributions on its axes (empirical on the x-axis and fitted on the y-axis in this case). For small values of $x$, the fitted model assigns greater probability to being below that value than occurred in the sample (i.e. $F(x) > F_n(x)$). This indicates that the model has a heavier left tail than the data. For large values of $x$, the model again assigns greater probability to being below that value and thus less probability to being above that value (i.e. $S(x) < S_n(x)$). This indicates that the model has a lighter right tail than the data. In addition, as we go from 0.4 to 0.6 on the horizontal axis (thus looking at the middle 20% of the data), the $pp$ plot increases from about 0.3 to 0.4. This indicates that the model puts only about 10% of the probability in this range.
+
+</div>
+
+***
+
+#### Statistical Comparison of Distributions  {#S:MS:Tools:Stats}
+
+When selecting a model, it is helpful to make the graphical displays presented. However, for reporting results, it can be effective to supplement the graphical displays with selected statistics that summarize model goodness of fit. [Table 5.2] provides three commonly used `r Gloss('goodness of fit statistics')`. In this table, $F_n$ is the empirical distribution, $F$ is the fitted or hypothesized distribution, and  $F_i^* = F(x_i)$. 
+
+
+[Table 5.2]:\#tab:5.2
+
+<a id=tab:5.2></a>
+
+Table 5.2. **Three Goodness of Fit Statistics**
+
+$$
+{\small
+\begin{matrix}
+\begin{array}{l|cc}
+\hline
+\text{Statistic} & \text{Definition} & \text{Computational Expression} \\
+\hline
+\text{Kolmogorov-} & \max_x |F_n(x) - F(x)| & \max(D^+, D^-) \text{ where } \\
+~~~\text{Smirnov} && D^+ = \max_{i=1, \ldots, n} \left|\frac{i}{n} - F_i^*\right| \\
+&& D^- = \max_{i=1, \ldots, n} \left| F_i^* - \frac{i-1}{n} \right| \\
+\text{Cramer-von Mises} & n \int (F_n(x) - F(x))^2 f(x) dx & \frac{1}{12n} + \sum_{i=1}^n \left(F_i^* - (2i-1)/n\right)^2 \\
+\text{Anderson-Darling} & n \int \frac{(F_n(x) - F(x))^2}{F(x)(1-F(x))} f(x) dx & -n-\frac{1}{n} \sum_{i=1}^n (2i-1) \log\left(F_i^*(1-F_{n+1-i})\right)^2 \\
+\hline
+\end{array} \\
+\end{matrix}
+}
+$$
+
+The *Kolmogorov-Smirnov statistic* is the maximum absolute difference between the fitted distribution function and the empirical distribution function. Instead of comparing differences between single points, the *Cramer-von Mises statistic* integrates the difference between the empirical and fitted distribution functions over the entire range of values. The *Anderson-Darling statistic* also integrates this difference over the range of values, although weighted by the inverse of the variance. It therefore places greater emphasis on the tails of the distribution (i.e when $F(x)$ or $1-F(x)=S(x)$ is small). 
+
+***
+
+**Example  5.1.8. Actuarial Exam Question (modified).**
+A sample of claim payments is: 
+
+
+$$
+\begin{array}{ccccc}
+29 & 64 & 90 & 135 & 182  \\
+\end{array}
+$$
+
+Compare the empirical claims distribution to an exponential distribution with mean $100$ by calculating the value of the Kolmogorov-Smirnov test statistic.
+
+`r HideExample('5.1.8', 'Show Example Solution')`
+
+**Solution.**
+For an exponential distribution with mean $100$, the cumulative distribution function is $F(x)=1-e^{-x/100}$. Thus,
+
+$$
+\begin{array}{ccccc}
+\hline
+x & F(x) & F_n(x) & F_n(x-) & \max(|F(x)-F_n(x)|,|F(x)-F_n(x-)|) \\
+\hline
+29  & 0.2517 & 0.2 & 0   & \max(0.0517, 0.2517) = 0.2517 \\
+64  & 0.4727 & 0.4 & 0.2 & \max(0.0727, 0.2727) = 0.2727 \\
+90  & 0.5934 & 0.6 & 0.4 & \max(0.0066, 0.1934) = 0.1934 \\
+135 & 0.7408 & 0.8 & 0.6 & \max(0.0592, 0.1408) = 0.1408 \\
+182 & 0.8380 & 1   & 0.8 & \max(0.1620, 0.0380) = 0.1620 \\
+\hline
+\end{array}
+$$
+
+The Kolmogorov-Smirnov test statistic is therefore 
+
+$$
+KS = \max(0.2517, 0.2727, 0.1934, 0.1408, 0.1620) = 0.2727 .
+$$
+
+</div>
+
+***
+
+
+### Starting Values
+
+The method of moments and percentile matching are nonparametric estimation methods that provide alternatives to maximum likelihood. Generally, maximum likelihood is the preferred technique because it employs data more efficiently. (See Appendix Chapter \@ref(CAppC) for precise definitions of efficiency.) However, methods of moments and percentile matching are useful because they are easier to interpret and therefore allow the actuary or analyst to explain procedures to others. Additionally, the numerical estimation procedure (e.g. if performed in `R`) for the maximum likelihood is iterative and requires starting values to begin the recursive process. Although many problems are robust to the choice of the starting values, for some complex situations, it can be important to have a starting value that is close to the (unknown) optimal value. Method of moments and percentile matching are techniques that can produce desirable estimates without a serious computational investment and can thus be used as a *starting value* for computing maximum likelihood.
+
+#### Method of Moments
+Under the `r Gloss('method of moments')`, we approximate the moments of the parametric distribution using the empirical (nonparametric) moments described in Section \@ref(S:MS:MomentEstimator). We can then algebraically solve for the parameter estimates.
+
+***
+
+**Example 5.1.9. Property Fund.**
+For the 2010 property fund, there are $n=1,377$ individual claims (in thousands of dollars) with
+
+$$m_1 = \frac{1}{n} \sum_{i=1}^n X_i = 26.62259 \ \ \ \
+\text{and} \ \ \ \
+ m_2 = \frac{1}{n} \sum_{i=1}^n X_i^2 = 136154.6 .$$
+ Fit the parameters of the gamma and Pareto distributions using the method of moments.
+
+`r HideExample('5.1.9', 'Show Example Solution')`
+
+**Solution.**
+To fit a gamma distribution, we have $\mu_1 = \alpha \theta$ and $\mu_2^{\prime} = \alpha(\alpha+1) \theta^2$. Equating the two yields the method of moments estimators, easy algebra shows that
+
+$$\alpha = \frac{\mu_1^2}{\mu_2^{\prime}-\mu_1^2}  \ \ \ \text{and} \ \ \  \theta = \frac{\mu_2^{\prime}-\mu_1^2}{\mu_1}.$$
+
+Thus, the method of moment estimators are
+
+$$
+\begin{aligned}
+\hat{\alpha} &=  \frac{26.62259^2}{136154.6-26.62259^2} = 0.005232809 \\
+\hat{\theta} &=  \frac{136154.6-26.62259^2}{26.62259} = 5,087.629.
+\end{aligned}
+$$
+
+For comparison, the maximum likelihood values turn out to be $\hat{\alpha}_{MLE} =  0.2905959$ and $\hat{\theta}_{MLE} = 91.61378$, so there are big discrepancies between the two estimation procedures. This is one indication, as we have seen before, that the gamma model fits poorly.
+
+In contrast, now assume a Pareto distribution so that $\mu_1 = \theta/(\alpha -1)$ and $\mu_2^{\prime} = 2\theta^2/((\alpha-1)(\alpha-2) )$. Note that this expression for $\mu_2^{\prime}$ is only valid for $\alpha>2$. Easy algebra shows
+
+$$\alpha = 1+ \frac{\mu_2^{\prime}}{\mu_2^{\prime}-\mu_1^2} \ \ \ \
+\text{and} \ \ \ \ \
+ \theta = (\alpha-1)\mu_1.$$
+
+Thus, the method of moment estimators are
+
+$$
+\begin{aligned}
+\hat{\alpha} &=  1+ \frac{136154.6}{136154.6-26,62259^2} = 2.005233 \\
+\hat{\theta} &=  (2.005233-1) \cdot 26.62259 = 26.7619
+\end{aligned}
+$$
+
+The maximum likelihood values turn out to be $\hat{\alpha}_{MLE} =  0.9990936$ and $\hat{\theta}_{MLE} = 2.2821147$. It is interesting that $\hat{\alpha}_{MLE}<1$; for the Pareto distribution, recall that $\alpha <1$ means that the mean is infinite. This is another indication that the property claims data set is a long tail distribution.
+
+</div>
+
+***
+
+As the above example suggests, there is flexibility with the method of moments. For example, we could have matched the second and third moments instead of the first and second, yielding different estimators. Furthermore, there is no guarantee that a solution will exist for each problem. For data that are censored or truncated, matching moments is possible for a few problems but, in general, this is a more difficult scenario. Finally, for distributions where the moments do not exist or are infinite, method of moments is not available. As an alternative, one can use the percentile matching technique.
+
+
+#### Percentile Matching
+
+Under `r Gloss('percentile matching')`, we approximate the quantiles or percentiles of the parametric distribution using the empirical (nonparametric) quantiles or percentiles described in Section \@ref(S:MS:QuantileEstimator).
+
+***
+
+**Example 5.1.10. Property Fund.** 
+For the 2010 property fund, we illustrate matching on quantiles. In particular, the Pareto distribution is intuitively pleasing because of the closed-form solution for the quantiles. Recall that the distribution function for the Pareto distribution is 
+$$F(x) = 1 - \left(\frac{\theta}{x+\theta}\right)^{\alpha}.$$ 
+Easy algebra shows that we can express the quantile as 
+
+$$F^{-1}(q) = \theta \left( (1-q)^{-1/\alpha} -1 \right).$$
+for a fraction $q$, $0<q<1$.
+
+Determine estimates of the Pareto distribution parameters using the 25th and 95th empirical quantiles.
+
+
+`r HideExample('5.1.10', 'Show Example Solution')`
+
+**Solution.**
+
+The 25th percentile (the first quartile) turns out to be $0.78853$ and the 95th percentile is $50.98293$ (both in thousands of dollars). With two equations
+$$0.78853 = \theta \left( 1- (1-.25)^{-1/\alpha} \right) \ \ \ \ \text{and} \ \ \ \ 50.98293 = \theta \left( 1- (1-.75)^{-1/\alpha} \right)$$
+and two unknowns, the solution is
+$$\hat{\alpha} = 0.9412076 \ \ \ \ \ \text{and} \ \ \ \
+\hat{\theta} = 2.205617 .$$
+We remark here that a numerical routine is required for these solutions as no analytic solution is available. Furthermore, recall that the `r Gloss('maximum likelihood estimates')` are $\hat{\alpha}_{MLE} =  0.9990936$ and $\hat{\theta}_{MLE} = 2.2821147$, so the percentile matching provides a better approximation for the Pareto distribution than the method of moments.
+
+</div>
+
+***
+
+
+**Example 5.1.11. Actuarial Exam Question.** 
+You are given: 
+
+
+(i) Losses follow a loglogistic distribution with cumulative distribution function:
+    $$F(x) = \frac{\left(x/\theta\right)^{\gamma}}{1+\left(x/\theta\right)^{\gamma}}$$
+(ii) The sample of losses is:
+
+$$
+\begin{array}{ccccccccccc}
+10 &35 &80 &86 &90 &120 &158 &180 &200 &210 &1500 \\
+\end{array}
+$$
+
+Calculate the estimate of $\theta$ by percentile matching, using the 40th and 80th empirically smoothed percentile estimates.
+
+`r HideExample('5.1.11', 'Show Example Solution')`
+
+**Solution.**
+With 11 observations, we have $j=\lfloor(n+1)q\rfloor = \lfloor 12(0.4) \rfloor = \lfloor 4.8\rfloor=4$ and $h=(n+1)q-j = 12(0.4)-4=0.8$. By interpolation, the 40th empirically smoothed percentile estimate is $\hat{\pi}_{0.4} = (1-h) X_{(j)} + h X_{(j+1)} = 0.2(86)+0.8(90)=89.2$.
+
+Similarly, for the 80th empirically smoothed percentile estimate, we have $12(0.8)=9.6$ so the estimate is $\hat{\pi}_{0.8} = 0.4(200)+0.6(210)=206$.
+
+
+Using the loglogistic cumulative distribution, we need to solve the following two equations for parameters ${\hat{\theta}}$ and ${\hat{\gamma}}$:
+$$
+0.4=\frac{(89.2/{\hat{\theta}})^{\hat{\gamma}}}{1+(89.2/{\hat{\theta}})^{\hat{\gamma}}} \ \ \ \text{and} \ \ \ \   0.8=\frac{(206/{\hat{\theta}})^{\hat{\gamma}}}{1+(206/{\hat{\theta}})^{\hat{\gamma}}} .
+$$ 
+
+
+Solving for each parenthetical expression gives $\frac{2}{3}=(89.2/\theta)^{\hat{\gamma}}$ and $4=(206/{\hat{\theta}})^{\hat{\gamma}}$. Taking the ratio of the second equation to the first gives $6=(206/89.2)^{\hat{\gamma}}\Rightarrow {\hat{\gamma}}=\frac{\log(6)}{\log(206/89.2)} = 2.1407$. Then $4^{1/2.1407}=206/{\hat{\theta}} \Rightarrow {\hat{\theta}}=107.8$.
+
+</div>
+
+***
+
+Like the method of moments, percentile matching is almost too flexible in the sense that estimators can vary depending on different percentiles chosen. For example, one actuary may use estimation on the 25th and 95th percentiles whereas another uses the 20th and 80th percentiles. In general estimated parameters will differ and there is no compelling reason to prefer one over the other. Also as with the method of moments, percentile matching is appealing because it provides a technique that can be readily applied in selected situations and has an intuitive basis. Although most actuarial applications use maximum likelihood estimators, it can be convenient to have alternative approaches such as method of moments and percentile matching available.
+
+
+```{r child = './Quizzes/Quiz41.html', eval = QUIZ}
+```
+
+## Model Selection {#S:MS:ModelSelection}
+
+***
+
+In this section, you learn how to:
+
+- Describe the iterative model selection specification process
+- Outline steps needed to select a parametric model
+- Describe pitfalls of model selection based purely on in-sample data when compared to the advantages of out-of-sample model validation
+
+***
+
+This section underscores the idea that model selection is an iterative process in which models are cyclically (re)formulated and tested for appropriateness before using them for inference. After an overview, we describe the `r Gloss('model selection')` process based on:
+
+- an `r Gloss("in-sample")` or training dataset,
+- an `r Gloss("out-of-sample")` or test dataset, and
+- a method that combines these approaches known as `r Gloss("cross-validation")`.
+
+
+### Iterative Model Selection
+
+In our development, we examine the data graphically, hypothesize a model structure, and compare the data to a candidate model in order to formulate an improved model. @box1980sampling describes this as an *iterative process* which is shown in Figure \@ref(fig:Iterative).
+
+(ref:Iterative) **Iterative Model Specification Process**
+
+```{r Iterative, echo=FALSE, fig.cap='(ref:Iterative)', out.width='80%', fig.align='center'}
+knitr::include_graphics("Figures/F5Iterative.png")
+```
+
+This iterative process provides a useful recipe for structuring the task of specifying a model to represent a set of data. 
+
+1. The first step, the model formulation stage, is accomplished by examining the data graphically and using prior knowledge of relationships, such as from economic theory or industry practice. 
+2. The second step in the iteration is fitting based on the assumptions of the specified model. These assumptions must be consistent with the data to make valid use of the model. 
+3. The third step is *diagnostic checking*; the data and model must be consistent with one another before additional inferences can be made. Diagnostic checking is an important part of the model formulation; it can reveal mistakes made in previous steps and provide ways to correct these mistakes.
+
+The iterative process also emphasizes the skills you need to make analytics work. First, you need a willingness to summarize information numerically and portray this information graphically. Second, it is important to develop an understanding of model properties. You should understand how a probabilistic model behaves in order to match a set of data to it. Third, theoretical properties of the model are also important for inferring general relationships based on the behavior of the data.
+
+### Model Selection Based on a Training Dataset
+
+It is common to refer to a dataset used for analysis as an *in-sample* or *training* dataset. Techniques available for selecting a model depend upon whether the outcomes $X$ are discrete, continuous, or a hybrid of the two, although the principles are the same.
+
+**Graphical and other Basic Summary Measures.** Begin by summarizing the data graphically and with statistics that do not rely on a specific parametric form, as summarized in Section \@ref(S:MS:NonParInf). Specifically, you will want to graph both the empirical distribution and density functions. Particularly for loss data that contain many zeros and that can be skewed, deciding on the appropriate scale (e.g., logarithmic) may present some difficulties. For discrete data, tables are often preferred. Determine sample moments, such as the mean and variance, as well as selected quantiles, including the minimum, maximum, and the median. For discrete data, the mode (or most frequently occurring value) is usually helpful.
+
+These summaries, as well as your familiarity of industry practice, will suggest one or more candidate parametric models. Generally, start with the simpler parametric models (for example, one parameter exponential before a two parameter gamma), gradually introducing more complexity into the modeling process.
+
+Critique the candidate parametric model numerically and graphically. For the graphs, utilize the tools introduced in Section \@ref(S:MS:ToolsModelSelection) such as $pp$ and $qq$ plots. For the numerical assessments, examine the statistical significance of parameters and try to eliminate parameters that do not provide additional information.
+
+**Likelihood Ratio Tests.** For comparing model fits, if one model is a subset of another, then a likelihood ratio test may be employed; the general approach to likelihood ratio testing is described in Sections \@ref(S:AppA:HT:LRT) and \@ref(S:AppC:MLEModelVal). 
+
+
+**Goodness of Fit Statistics.** Generally, models are not proper subsets of one another so overall goodness of fit statistics are helpful for comparing models. *Information criteria* are one type of goodness of statistic. The most widely used examples are Akaike's Information Criterion (*AIC*) and the (Schwarz) Bayesian Information Criterion (*BIC*); they are widely cited because they can be readily generalized to multivariate settings. Section \@ref(S:AppA:HT:IC) provides a summary of these statistics.
+
+For selecting the appropriate distribution, statistics that compare a parametric fit to a nonparametric alternative, summarized in Section \@ref(S:MS:Tools:Stats), are useful for model comparison. For discrete data, a *goodness of fit* statistic (as described in Section \@ref(S:goodness-of-fit)) is generally preferred as it is more intuitive and simpler to explain.
+
+
+### Model Selection Based on a Test Dataset
+
+`r Gloss('Model validation')` is the process of confirming that the proposed model is appropriate, especially in light of the purposes of the investigation. An important limitation of the model selection process based only on in-sample data is that it can be susceptible to `r Gloss("data-snooping")`, that is, fitting a great number of models to a single set of data. By looking at a large number of models, we may overfit the data and understate the natural variation in our representation.
+
+Selecting a model based only on in-sample data also does not support the goal of `r Gloss('predictive inference')`. Particularly in actuarial applications, our goal is to make statements about *new* experience rather than a dataset at hand. For example, we use claims experience from one year to develop a model that can be used to price insurance contracts for the following year. As an analogy, we can think about the training data set as experience from one year that is used to predict the behavior of the next year's test data set.
+
+We can respond to these criticisms by using a technique known as **out-of-sample validation**. The ideal situation is to have available two sets of data, one for training, or model development, and the other for testing, or model validation. We initially develop one or several models on the first data set that we call our *candidate* models. Then, the relative performance of the candidate models can be measured on the second set of data. In this way, the data used to validate the model are unaffected by the procedures used to formulate the model.
+
+**Random Split of the Data.** Unfortunately, rarely will two sets of data be available to the investigator. However, we can implement the validation process by splitting the data set into **training** and **test** subsamples, respectively. Figure \@ref(fig:ModelValidation) illustrates this splitting of the data.
+
+(ref:ModelValidation) **Model Validation.** A data set is randomly split into two subsamples.
+
+```{r ModelValidation, echo=FALSE, fig.cap='(ref:ModelValidation)', out.width='60%', fig.align='center'}
+par(mai=c(0,0.1,0,0))
+plot.new()
+plot.window(xlim=c(0,18),ylim=c(-10,10))
+rect(1,-1.2,14,1.2)
+rect(7,4,15,8)
+rect(1,-8,6,-4)
+x<-seq(1.5,9,length=6)
+y<-rep(0,6)
+text(x,y,labels=c(1:6),cex=1.5)
+x1<-seq(10.5,11.5,length=3)
+y1<-rep(0,3)
+text(x1,y1,labels=rep(".",3),cex=3)
+text(13,0,labels="n",cex=1.5)
+
+text(15,0,labels="ORIGINAL\nSAMPLE\nSIZE n",adj=0)
+text(7.6,6,labels="TRAINING\nSUBSAMPLE SIZE",adj=0)
+text(11.9,5.4, expression(n[1]), adj=0, cex=1.1)
+text(1.4,-6,labels="TEST\nSUBSAMPLE\nSIZE",adj=0)
+text(2.7,-7.0,expression(n[2]),adj=0, cex=1.1)
+
+arrows(1.8,0.8,8.3,3.9,code=2,lwd=2,angle=15,length=0.2)
+arrows(4.8,0.8,9,3.8,code=2,lwd=2,angle=15,length=0.2)
+arrows(9.1,0.9,9.5,3.8,code=2,lwd=2,angle=15,length=0.2)
+arrows(12.8,0.8,10,3.8,code=2,lwd=2,angle=15,length=0.2)
+arrows(2.9,-0.9,2.5,-3.8,code=2,lwd=2,angle=15,length=0.2)
+arrows(5.9,-0.9,3.1,-3.8,code=2,lwd=2,angle=15,length=0.2)
+arrows(7.4,-0.9,3.5,-3.8,code=2,lwd=2,angle=15,length=0.2)
+
+```
+
+
+Various researchers recommend different proportions for the allocation. @snee1977validation suggests that data-splitting not be done unless the sample size is moderately large. The guidelines of @picard1990data show that the greater the number of parameters to be estimated, the greater the proportion of observations needed for the model development subsample.
+
+**Model Validation Statistics.** Much of the literature supporting the establishment of a model validation process is based on regression and classification models that you can think of as an *input-output* problem (@james2013introduction). That is, we have several inputs $x_1, \ldots, x_k$ that are related to an output $y$ through a function such as
+$$y = \mathrm{g}\left(x_1, \ldots, x_k\right).$$
+One uses the training sample to develop an estimate of $\mathrm{g}$, say, $\hat{\mathrm{g}}$, and then calibrate the distance from the observed outcomes to the predictions using a criterion of the form
+
+\begin{equation}
+\sum_i \mathrm{d}(y_i,\hat{\mathrm{g}}\left(x_{i1}, \ldots, x_{ik}\right) ) .
+(\#eq:OutSampleCriter)
+\end{equation}
+
+Here, "d" is some measure of distance and the sum $i$ is over the test data. In many regression applications, it is common to use squared Euclidean distance of the form $\mathrm{d}(y_i,\mathrm{g}) = (y_i-\mathrm{g})^2$. In actuarial applications, Euclidean distance $\mathrm{d}(y_i,\mathrm{g}) = |y_i-\mathrm{g}|$ is often preferred because of the skewed nature of the data (large outlying values of $y$ can have a large effect on the measure). Chapter \@ref(ChapPremiumFoundations) describes another measure, the `r Gloss('Gini index', '4.2')`, that is useful in actuarial applications particularly when there is a large proportion of zeros in claims data (corresponding to no claims).
+
+**Selecting a Distribution.** Still, our focus so far has been to select a distribution for a data set that can be used for actuarial modeling without additional inputs $x_1, \ldots, x_k$. Even in this more fundamental problem, the model validation approach is valuable. If we base all inference on only in-sample data, then there is a tendency to select more complicated models than needed. For example, we might select a four parameter GB2, generalized beta of the second kind, distribution when only a two parameter Pareto is needed. Information criteria such as `r Gloss('AIC')` and `r Gloss('BIC')` included penalties for model complexity and so provide some protection but using a test sample is the best guarantee to achieve parsimonious models. From a quote often attributed to Albert Einstein, we want to "use the simplest model as possible but no simpler."
+
+
+### Model Selection Based on Cross-Validation {#S:MS:Cross-Validation}
+
+Although out-of-sample validation is the gold standard in predictive modeling, it is not always practical to do so. The main reason is that we have limited sample sizes and the out-of-sample model selection criterion in equation \@ref(eq:OutSampleCriter) depends on a *random* split of the data. This means that different analysts, even when working the same data set and same approach to modeling, may select different models. This is likely in actuarial applications because we work with skewed data sets where there is a large chance of getting some very large outcomes and large outcomes may have a great influence on the parameter estimates.
+
+
+**Cross-Validation Procedure.** Alternatively, one may use **cross-validation**, as follows.
+
+- The procedure begins by using a random mechanism to split the data into $K$ subsets of roughly equal size known as *folds*, where analysts typically use 5 to 10.
+- Next, one uses the first $K$-1 subsamples to estimate model parameters. Then, “predict” the outcomes for the $K$th subsample and use a measure such as in equation \@ref(eq:OutSampleCriter) to summarize the fit.
+- Now, repeat this by holding out each of the $K$ subsamples, summarizing with an out-of-sample statistic. Thus, summarize these $K$ statistics, typically by averaging, to give a single overall statistic for comparison purposes.
+
+Repeat these steps for several candidate models and choose the model with the lowest overall cross-validation statistic.
+
+Cross-validation is widely used because it retains the predictive flavor of the out-of-sample model validation process but, due to the re-use of the data, is more stable over random samples.
+
+
+
+```{r child = './Quizzes/Quiz42.html', eval = QUIZ}
+```
+
+
+## Estimation using Modified Data {#S:MS:ModifiedData}
+
+***
+
+In this section, you learn how to:
+
+- Describe grouped, censored, and truncated data
+- Estimate parametric distributions based on grouped, censored, and truncated data
+- Estimate distributions nonparametrically based on grouped, censored, and truncated data
+
+***
+
+
+### Parametric Estimation using Modified Data {#S:MS:ModifiedData1}
+
+Basic theory and many applications are based on *individual* observations that are "*complete*" and "*unmodified*," as we have seen in the previous section.  Section \@ref(S:MaxLikeEstimation) introduced the concept of observations that are "*modified*" due to two common types of limitations: **censoring** and **truncation**. For example, it is common to think about an insurance deductible as producing data that are truncated (from the left) or policy limits as yielding data that are censored (from the right). This viewpoint is from the primary insurer (the seller of the insurance). Another viewpoint is that of a reinsurer (an insurer of an insurance company) that will be discussed more in Chapter \@ref(ChapPortMgt).
+A reinsurer may not observe a claim smaller than an amount, only that a claim exists; this is an example of censoring from the left. So, in this section, we cover the full gamut of alternatives. Specifically, this section will address parametric estimation methods for three alternatives to individual, complete, and unmodified data: **interval-censored** data available only in groups, data that are limited or **censored**, and data that may not be observed due to **truncation**. 
+
+
+
+
+#### Parametric Estimation using Grouped Data {#S:MS:GroupedData}
+
+Consider a sample of size $n$ observed from the distribution $F(\cdot)$, but in groups so that we only know the group into which each observation fell, not the exact value. This is referred to as **grouped** or **interval-censored** data. For example, we may be looking at two successive years of annual employee records. People employed in the first year but not the second have left sometime during the year. With an exact departure date (individual data), we could compute the amount of time that they were with the firm. Without the departure date (grouped data), we only know that they departed sometime during a year-long interval.
+
+Formalizing this idea, suppose there are $k$ groups or intervals delimited by boundaries $c_0 < c_1< \cdots < c_k$. For each observation, we only observe the interval into which it fell (e.g. $(c_{j-1}, c_j)$), not the exact value. Thus, we only know the number of observations in each interval. The constants $\{c_0 < c_1 < \cdots < c_k\}$ form some partition of the domain of $F(\cdot)$. Then the probability of an observation $X_i$ falling in the $j$th interval is $$\Pr\left(X
+_i \in (c_{j-1}, c_j]\right) = F(c_j) - F(c_{j-1}).$$
+
+The corresponding probability mass function for an observation is
+
+$$
+\begin{aligned}
+f(x) &=
+\begin{cases}
+F(c_1) - F(c_{0}) &   \text{if }\ x \in (c_{0}, c_1]\\
+\vdots & \vdots \\
+F(c_k) - F(c_{k-1}) &   \text{if }\ x \in (c_{k-1}, c_k]\\
+\end{cases} \\
+&= \prod_{j=1}^k \left\{F(c_j) - F(c_{j-1})\right\}^{I(x \in (c_{j-1}, c_j])}
+\end{aligned}
+$$
+
+Now, define $n_j$ to be the number of observations that fall in the $j$th interval, $(c_{j-1}, c_j]$. Thus, the `r Gloss('likelihood function')` (with respect to the parameter(s) $\theta$) is
+
+$$
+\begin{aligned}
+L(\theta) = \prod_{j=1}^n f(x_i) = \prod_{j=1}^k \left\{F(c_j) - F(c_{j-1})\right\}^{n_j}
+\end{aligned}
+$$
+
+And the log-likelihood function is
+$$
+\begin{aligned}
+l(\theta) = \log L(\theta) = \log \prod_{j=1}^n f(x_i) = \sum_{j=1}^k n_j \log \left\{F(c_j) - F(c_{j-1})\right\}
+\end{aligned}
+$$
+
+Maximizing the likelihood function (or equivalently, maximizing the log-likelihood function) would then produce the maximum likelihood estimates for grouped data.
+
+
+**Example 5.3.1. Actuarial Exam Question.** 
+You are given:
+
+(i) Losses follow an exponential distribution with mean $\theta$.
+(ii) A random sample of 20 losses is distributed as follows:
+
+$$
+{\small
+\begin{array}{l|c}
+\hline
+\text{Loss Range} & \text{Frequency} \\
+\hline
+[0,1000] & 7 \\
+(1000,2000] & 6 \\
+(2000,\infty) & 7 \\
+\hline
+\end{array}
+}
+$$
+
+Calculate the maximum likelihood estimate of $\theta$.
+
+`r HideExample('5.3.1', 'Show Example Solution')`
+
+**Solution.**
+$$
+\begin{aligned}
+L(\theta) &= F(1000)^7[F(2000)-F(1000)]^6[1-F(2000)]^7 \\
+&= (1-e^{-1000/\theta})^7(e^{-1000/\theta} - e^{-2000/\theta})^6(e^{-2000/\theta})^7 \\
+&= (1-p)^7(p-p^2)^6(p^2)^7 \\
+&= p^{20}(1-p)^{13}
+\end{aligned}
+$$
+
+where $p=e^{-1000/\theta}$. Maximizing this expression with respect to $p$ is equivalent to maximizing the likelihood with respect to $\theta$. The maximum occurs at $p=\frac{20}{33}$ and so $\hat{\theta}=\frac{-1000}{\log(20/33)}= 1996.90$.
+
+</div>
+
+***
+
+
+#### Censored Data
+
+**Censoring** occurs when we record only a limited value of an observation. The most common form is **right-censoring**, in which we record the *smaller* of the "true" dependent variable and a censoring value. Using notation, let $X$ represent an outcome of interest, such as the loss due to an insured event or time until an event. Let $C_U$ denote the censoring amount. With right-censored observations, we record $X_U^{\ast}= \min(X, C_U) = X \wedge C_U$. We also record whether or not censoring has occurred. Let $\delta_U= I(X \le C_U)$ be a binary variable that is 0 if censoring occurs and 1 if it does not, that is, $\delta_U$ indicates whether or not $X$ is uncensored. 
+
+For an example that we saw in Section \@ref(S:PolicyLimits), $C_U$ may represent the upper limit of coverage of an insurance policy (we used $u$ for the upper limit in that section). The loss may exceed the amount $C_U$, but the insurer only has $C_U$ in its records as the amount paid out and does not have the amount of the actual loss $X$ in its records.
+
+
+Similarly, with **left-censoring**, we record the *larger* of a variable of interest and a censoring variable. If $C_L$ is used to represent the censoring amount, we record $X_L^{\ast}= \max(X, C_L)$ along with the censoring indicator $\delta_L= I(X > C_L)$. 
+
+As an example, you got a brief introduction to reinsurance (insurance for insurers) in Section \@ref(S:Chap3Reinsurance) and will see more in Chapter \@ref(ChapPortMgt). Suppose a reinsurer will cover insurer losses greater than $C_L$; this means that the reinsurer is responsible for the excess of $X_L^{\ast}$ over $C_L$. Using notation, the loss of the reinsurer is $Y = X_L^{\ast} - C_L$. To see this, first consider the case where the policyholder loss $X < C_L$. Then, the insurer will pay the entire claim and $Y =C_L- C_L=0$, no loss for the reinsurer. For contrast, if the loss $X \ge C_L$, then $Y = X-C_L$ represents the reinsurer's retained claims. Put another way, if a loss occurs, the reinsurer records the actual amount if it exceeds the limit $C_L$ and otherwise it only records that it had a loss of $0$. 
+
+
+
+#### Truncated Data
+
+Censored observations are recorded for study, although in a limited form. In contrast, **truncated** outcomes are a type of missing data. An outcome is potentially truncated when the availability of an observation depends on the outcome. 
+
+In insurance, it is common for observations to be **left-truncated** at $C_L$ when the amount is 
+$$
+\begin{aligned}
+Y &=
+\left\{
+\begin{array}{cl}
+\text{we do not observe }X & X \le C_L \\
+X & X > C_L
+\end{array}
+\right.\end{aligned} .
+$$
+
+In other words, if $X$ is less than the threshold $C_L$, then it is not observed. 
+
+For an example we saw in Section \@ref(S:PolicyDeduct), $C_L$ may represent the deductible of an insurance policy (we used $d$ for the deductible in that section). If the insured loss is less than the deductible, then the insurer may not observe or record the loss at all. If the loss exceeds the deductible, then the excess $X-C_L$ is the claim that the insurer covers. In Section \@ref(S:PolicyDeduct), we defined the per payment loss to be
+$$
+Y^{P} = \left\{ \begin{matrix}
+\text{Undefined} & X \le d \\
+X - d & X > d 
+\end{matrix} \right. ,
+$$
+so that if a loss exceeds a deductible, we record the excess amount $X-d$. This is very important when considering amounts that the insurer will pay. However, for estimation purposes of this section, it matters little if we subtract a known constant such as $C_L=d$. So, for our truncated variable $Y$, we use the simpler convention and do not subtract $d$.
+
+Similarly for **right-truncated** data, if $X$ exceeds a threshold $C_U$, then it is not observed. In this case, the amount is 
+$$
+\begin{aligned}
+Y &=
+\left\{
+\begin{array}{cl}
+X & X \le C_U \\
+\text{we do not observe }X & X > C_U.
+\end{array}
+\right.\end{aligned}
+$$
+
+Classic examples of truncation from the right include $X$ as a measure of distance to a star. When the distance exceeds a certain level $C_U$, the star is no longer observable.
+
+Figure \@ref(fig:CensorTrunc) compares truncated and censored observations. Values of $X$ that are greater than the "upper" censoring limit $C_U$ are not observed at all (right-censored), while values of $X$ that are smaller than the "lower" truncation limit $C_L$ are observed, but observed as $C_L$ rather than the actual value of $X$ (left-truncated).
+
+(ref:CensorTrunc) **Censoring and Truncation**
+
+```{r CensorTrunc, fig.cap='(ref:CensorTrunc)', out.width='60%', fig.asp=.75, fig.align='center', echo=FALSE}
+plot.new()
+par(mar=c(0,0,0,0), cex=1.5)
+plot.window(xlim=c(0,14),ylim=c(0,3.5))
+figsize = 0.85
+arrows(1,1,13.5,1,code=2,lwd=2,angle=25,length=0.10)
+
+text(0.8,1.8,"No exact value under",adj=0, cex=figsize)
+text(1.9,1.5,"left-censoring",adj=0, cex=figsize)
+text(8.2,1.8,"No exact value under",adj=0, cex=figsize)
+text(9.3,1.5,"right-censoring",adj=0, cex=figsize)
+
+text(4.8,2.4,"No exact value under",adj=0, cex=figsize)
+text(5.2,2.1,"interval-censoring",adj=0, cex=figsize)
+
+text(0.8,3.1,"No observed value under",adj=0, cex=figsize)
+text(1.9,2.8,"left-truncation",adj=0, cex=figsize)
+text(8.2,3.1,"No observed value under",adj=0, cex=figsize)
+text(9.3,2.8,"right-truncation",adj=0, cex=figsize)
+
+text(1,1,labels="|",adj=0)
+text(4.5,1,labels="|",adj=0)
+text(8,1,labels="|",adj=0, cex=1)
+
+text(1,  0.6,expression(0),adj=0)
+text(4.5,0.6,expression(C[L]),adj=0)
+text(8,  0.6,expression(C[U]),adj=0)
+text(6,  0.3,expression(X),adj=0, cex=1.1)
+```
+
+***
+
+`r HideExample('Mort.4f', 'Show Mortality Study Example')`
+
+**Example -- Mortality Study.** Suppose that you are conducting a two-year study of mortality of high-risk subjects, beginning January 1, 2010 and finishing January 1, 2012. Figure \@ref(fig:Mortality) graphically portrays the six types of subjects recruited. For each subject, the beginning of the arrow represents that the subject was recruited and the arrow end represents the event time where in this example the event represents death. The arrow represents exposure time.
+
+(ref:Mortality) **Timeline for Several Subjects on Test in a Mortality Study**
+
+```{r Mortality, fig.cap='(ref:Mortality)', out.width='60%', fig.asp=.75, fig.align='center', echo=FALSE}
+plot.new()
+par(mar=c(0,0,0,0), cex=1.5)
+plot.window(xlim=c(0,14),ylim=c(0,10))
+
+arrows(1.2,1.2,13.5,1.2,code=2,lwd=2,angle=25,length=0.10)
+text(6,0.5,"Calendar Time",adj=0)
+arrows(1.5,8,11,8,code=2,lwd=2,angle=25,length=0.10)
+text(11.5,8,"A",adj=0, cex=0.8)
+arrows(1.8,7,6,7,code=2,lwd=2,angle=25,length=0.10)
+text(7,7,"B",adj=0, cex=0.8)
+arrows(4,6,11.2,6,code=2,lwd=2,angle=25,length=0.10)
+text(11.5,6,"C",adj=0, cex=0.8)
+arrows(3.5,5,6.5,5,code=2,lwd=2,angle=25,length=0.10)
+text(7,5,"D",adj=0, cex=0.8)
+arrows(1,4,2.8,4,code=2,lwd=2,angle=25,length=0.10)
+text(3.5,4,"E",adj=0, cex=0.8)
+arrows(9,3,11.4,3,code=2,lwd=2,angle=25,length=0.10)
+text(11.5,3,"F",adj=0, cex=0.8)
+
+arrows(2.9,9,3,1,code=2,lwd=2,angle=0,length=0.10)
+text(2.5,9.3,"1/1/2010",adj=0, cex=0.7)
+arrows(5.4,9,5.5,1,code=2,lwd=2,angle=0,length=0.10)
+text(4.9,9.3,"1/1/2011",adj=0, cex=0.7)
+arrows(7.9,9,8,1,code=2,lwd=2,angle=0,length=0.10)
+text(7.4,9.3,"1/1/2012",adj=0, cex=0.7)
+```
+
+* **Type A - Right-censored.** This subject is alive at the beginning and the end of the study. Because the time of death is not known by the end of the study, it is right-censored. Most subjects are Type A.
+* **Type B - Complete** information is available for a type B subject. The subject is alive at the beginning of the study and the death occurs within the observation period.
+* **Type C - Right-censored and left-truncated.** A type C subject is right-censored, in that death occurs after the observation period. However, the subject entered after the start of the study and is said to have a *delayed entry time*. Because the subject would not have been observed had death occurred before entry, it is left-truncated.
+* **Type D - Left-truncated.** A type D subject also has delayed entry. Because death occurs within the observation period, this subject is not right censored.
+* **Type E - Left-truncated.** A type E subject is not included in the study because death occurs prior to the observation period.
+* **Type F - Right-truncated.** Similarly, a type F subject is not included because the entry time occurs after the observation period.
+
+</div>
+
+***
+
+To summarize, for outcome $X$ and constants $C_L$ and $C_U$,
+
+    Limitation Type          Limited Variable              Recording Information
+  -------------------- ---------------------------- ------------------------------------
+  right censoring       $X_U^{\ast}= \min(X, C_U)$   $\delta_U= I(X \le C_U)$
+  left censoring        $X_L^{\ast}= \max(X, C_L)$   $\delta_L= I(X > C_L)$
+  interval censoring                            
+  right truncation                 $X$                   observe $X$ if $X \le C_U$
+  left truncation                  $X$                   observe $X$ if $X > C_L$
+
+
+
+#### Parametric Estimation using Censored and Truncated Data
+
+
+For simplicity, we assume non-random censoring amounts and a continuous outcome $X$. To begin, consider the case of right-censored data where we record $X_U^{\ast}= \min(X, C_U)$ and censoring indicator $\delta= I(X \le C_U)$. If censoring occurs so that $\delta=0$, then $X > C_U$ and the likelihood is $\Pr(X > C_U) = 1-F(C_U)$. If censoring does not occur so that $\delta=1$, then $X \le C_U$ and the likelihood is $f(x)$. Summarizing, we have the likelihood of a single observation as 
+
+$$
+\begin{aligned}
+\left\{
+\begin{array}{ll}
+1-F(C_U) & \text{if }\delta=0 \\
+f(x) & \text{if } \delta = 1 
+\end{array}
+\right. = \left\{ f(x)\right\}^{\delta} \left\{1-F(C_U)\right\}^{1-\delta} .
+\end{aligned}
+$$
+
+The right-hand expression allows us to present the likelihood more compactly. Now, for an *iid* sample of size $n$, the likelihood is
+
+$$
+L(\theta) = 
+\prod_{i=1}^n \left\{ f(x_i)\right\}^{\delta_i} \left\{1-F(C_{Ui})\right\}^{1-\delta_i} = \prod_{\delta_i=1} f(x_i) \prod_{\delta_i=0} \{1-F(C_{Ui})\},
+$$
+
+with potential censoring times $\{ C_{U1},  \ldots,C_{Un} \}$. Here, the notation "$\prod_{\delta_i=1}$" means to take the product over uncensored observations, and similarly for "$\prod_{\delta_i=0}$."
+
+On the other hand, truncated data are handled in likelihood inference via conditional probabilities. Specifically, we adjust the likelihood contribution by dividing by the probability that the variable was observed. To summarize, we have the following contributions to the likelihood function for six types of outcomes:
+
+$$
+{\small
+\begin{array}{lc}
+\hline
+\text{Outcome} & \text{Likelihood Contribution} \\
+\hline
+\text{exact value} & f(x) \\
+\text{right-censoring} & 1-F(C_U) \\
+\text{left-censoring} & F(C_L) \\
+\text{right-truncation} & f(x)/F(C_U) \\
+\text{left-truncation} & f(x)/(1-F(C_L)) \\
+\text{interval-censoring} & F(C_U)-F(C_L) \\
+\hline
+\end{array}
+}
+$$
+
+For known outcomes and censored data, the likelihood is
+$$L(\theta) = \prod_{E} f(x_i) \prod_{R} \{1-F(C_{Ui})\} \prod_{L}
+F(C_{Li}) \prod_{I} (F(C_{Ui})-F(C_{Li})),$$
+where "$\prod_{E}$" is the product over observations with *E*xact values, and similarly for $R$ight-, $L$eft- <br> and $I$nterval-censoring.
+
+For right-censored and left-truncated data, the likelihood is
+$$L(\theta) = \prod_{E} \frac{f(x_i)}{1-F(C_{Li})} \prod_{R} \frac{1-F(C_{Ui})}{1-F(C_{Li})},$$
+and similarly for other combinations. To get further insights, consider the following.
+
+***
+
+`r HideExample('Exp.4f', 'Show Special Case - Exponential Distribution')`
+
+**Special Case: Exponential Distribution.** Consider data that are right-censored and left-truncated, with random variables $X_i$ that are exponentially distributed with mean $\theta$. With these specifications, recall that $f(x) = \theta^{-1} \exp(-x/\theta)$ and $F(x) = 1-\exp(-x/\theta)$.
+
+For this special case, the log-likelihood is
+
+$$
+\begin{aligned}
+l(\theta) &= \sum_{E} \left\{ \log f(x_i) - \log (1-F(C_{Li})) \right\} + \sum_{R}\left\{ \log (1-F(C_{Ui}))- \log (1-\mathrm{F}(C_{Li})) \right\}\\
+&= \sum_{E} (-\log \theta -(x_i-C_{Li})/\theta ) -\sum_{R} (C_{Ui}-C_{Li})/\theta .
+\end{aligned}
+$$
+
+To simplify the notation, define $\delta_i = I(X_i < C_{Ui})$ to be a binary variable that indicates right-censoring. Let $X_i^{\ast \ast} = \min(X_i, C_{Ui}) - C_{Li}$ be the amount that the observed variable exceeds the lower truncation limit. With this, the log-likelihood is 
+
+\begin{equation}
+l(\theta) =  - \sum_{i=1}^n \left((1-\delta_i) \log \theta + \frac{x_i^{\ast \ast}}{\theta}\right)
+(\#eq:EXPloglik)
+\end{equation}
+
+Taking derivatives with respect to the parameter $\theta$ and setting it equal to zero yields the maximum likelihood estimator
+
+$$
+\widehat{\theta}  = \frac{1}{n_u} \sum_{i=1}^n  x_i^{\ast \ast},
+$$
+
+where $n_u = \sum_i (1-\delta_i)$ is the number of uncensored observations.
+
+</div>
+
+***
+
+
+**Example 5.3.2. Actuarial Exam Question.**
+You are given:
+
+(i) A sample of losses is: 600 700 900
+(ii) No information is available about losses of 500 or less.
+(iii) Losses are assumed to follow an exponential distribution with mean $\theta$.
+
+Calculate the maximum likelihood estimate of $\theta$.
+
+`r HideExample('5.3.2', 'Show Example Solution')`
+
+**Solution.**
+These observations are truncated at 500. The contribution of each observation to the likelihood function is $$\frac{f(x)}{1-F(500)} = \frac{\theta^{-1}e^{-x/\theta}}{e^{-500/\theta}}$$
+
+Then the likelihood function is
+
+$$L(\theta)= \frac{\theta^{-1} e^{-600/\theta} \theta^{-1} e^{-700/\theta} \theta^{-1} e^{-900/\theta}}{(e^{-500/\theta})^3} = \theta^{-3}e^{-700/\theta}$$
+
+The log-likelihood is
+
+$$
+l(\theta) = \log L(\theta) = -3 \log \theta - 700 \theta^{-1}
+$$
+
+Maximizing this expression by setting the derivative with respect to $\theta$ equal to 0, we have
+
+$$
+L'(\theta) = -3 \theta^{-1} + 700 \theta^{-2} = 0 \ \Rightarrow \ \hat{\theta} = \frac{700}{3} = 233.33 .
+$$
+
+</div>
+
+***
+
+**Example 5.3.3. Actuarial Exam Question.**
+You are given the following information about a random sample:
+
+(i)  The sample size equals five.
+(ii) The sample is from a Weibull distribution with $\tau=2$.
+(iii) Two of the sample observations are known to exceed 50, and the remaining three observations are 20, 30, and 45.
+
+Calculate the maximum likelihood estimate of $\theta$.
+
+`r HideExample('5.3.3', 'Show Example Solution')`
+
+**Solution.** The likelihood function is
+
+$$
+\begin{aligned} 
+L(\theta) &= f(20) f(30) f(45) [1-F(50)]^2 \\
+&= \frac{2(20/\theta)^2 e^{-(20/\theta)^2}}{20} \frac{2(30/\theta)^2 e^{-(30/\theta)^2}}{30} \frac{2(45/\theta)^2 e^{-(45/\theta)^2}}{45}(e^{-(50/\theta)^2})^2 \\
+&\propto \frac{1}{\theta^6} e^{-8325/\theta^2}
+\end{aligned}
+$$
+
+The natural logarithm of the above expression is $-6\log\theta - \frac{8325}{\theta^2}$. Maximizing this expression by setting its derivative to 0, we get
+
+$$\frac{-6}{\theta} + \frac{16650}{\theta^3} = 0 \ \Rightarrow \ \hat{\theta} = \left(\frac{16650}{6}\right)^{\frac{1}{2}} = 52.6783$$
+
+</div>
+
+***
+
+### Nonparametric Estimation using Modified Data
+
+Nonparametric estimators provide useful benchmarks, so it is helpful to understand the estimation procedures for grouped, censored, and truncated data.
+
+#### Grouped Data
+
+As we have seen in Section \@ref(S:MS:GroupedData), observations may be grouped (also referred to as interval censored) in the sense that we only observe them as belonging in one of $k$ intervals of the form $(c_{j-1}, c_j]$, for $j=1, \ldots, k$. At the boundaries, the empirical distribution function is defined in the usual way:
+$$
+F_n(c_j) = \frac{\text{number of observations } \le c_j}{n}.
+$$
+
+
+**Ogive Estimator.** For other values of $x \in (c_{j-1}, c_j)$, we can estimate the distribution function with the `r Gloss('ogive estimator')`, which linearly interpolates between $F_n(c_{j-1})$ and $F_n(c_j)$, i.e. the values of the boundaries $F_n(c_{j-1})$ and $F_n(c_j)$ are connected with a straight line. This can formally be expressed as
+$$F_n(x) = \frac{c_j-x}{c_j-c_{j-1}} F_n(c_{j-1}) + \frac{x-c_{j-1}}{c_j-c_{j-1}} F_n(c_j) \ \ \ \text{for } c_{j-1} \le x < c_j$$ 
+
+The corresponding density is
+
+$$
+f_n(x) = F^{\prime}_n(x) = \frac{F_n(c_j)-F_n(c_{j-1})}{c_j - c_{j-1}} \ \ \  \text{for } c_{j-1} < x < c_j .
+$$
+
+***
+
+
+**Example 5.3.4. Actuarial Exam Question.** 
+You are given the following information regarding claim sizes for 100 claims:
+
+$$
+{\small
+\begin{array}{r|c}
+\hline
+\text{Claim Size} &  \text{Number of Claims} \\
+\hline
+0 - 1,000 & 16 \\
+1,000 - 3,000 & 22 \\
+3,000 - 5,000 & 25 \\
+5,000 - 10,000 & 18 \\
+10,000 - 25,000 & 10 \\
+25,000 - 50,000 & 5 \\
+50,000 - 100,000 & 3 \\
+\text{over  } 100,000 & 1 \\
+\hline
+\end{array}
+}
+$$
+
+Using the ogive, calculate the estimate of the probability that a randomly chosen claim is between 2000 and 6000.
+
+`r HideExample('5.3.4', 'Show Example Solution')`
+
+**Solution.**
+At the boundaries, the empirical distribution function is defined in the usual way, so we have
+$$F_{100}(1000) = 0.16, \ F_{100}(3000)=0.38, \ F_{100}(5000)=0.63, \ F_{100}(10000)=0.81$$
+For other claim sizes, the ogive estimator linearly interpolates between these values:
+
+$$
+\begin{array}{ll}
+F_{100}(2000) &= 0.5F_{100}(1000) + 0.5F_{100}(3000) = 0.5(0.16)+0.5(0.38)=0.27 \\
+F_{100}(6000) &=0.8F_{100}(5000)+0.2F_{100}(10000) = 0.8(0.63)+0.2(0.81)=0.666
+\end{array}
+$$
+
+Thus, the probability that a claim is between 2000 and 6000 is $F_{100}(6000) - F_{100}(2000) = 0.666-0.27 = 0.396$.
+
+</div>
+
+***
+
+#### Right-Censored Empirical Distribution Function {#S:MS:RightCensored}
+
+
+It can be useful to calibrate parametric estimators with nonparametric methods that do not rely on a parametric form of the distribution. The `r Gloss("product-limit estimator")` due to [@kaplan1958] is a well-known estimator of the distribution function in the presence of censoring. 
+
+**Motivation for the Kaplan-Meier Product Limit Estimator.** To explain why the product-limit works so well with censored observations, let us first return to the "usual" case without censoring. Here, the empirical distribution function $F_n(x)$ is an *unbiased* estimator of the distribution function $F(x)$. This is because $F_n(x)$ is the average of indicator variables each of which are unbiased, that is, $\mathrm{E~} [I(X_i \le x)] = \Pr(X_i \le x) = F(x)$. 
+
+
+Now suppose the random outcome is censored on the right by a limiting amount, say, $C_U$, so that we record the smaller of the two, $X^* = \min(X, C_U)$. For values of $x$ that are smaller than $C_U$, the indicator variable still provides an unbiased estimator of the distribution function before we reach the censoring limit. That is,  $\mathrm{E~} [I(X^* \le x)] =  F(x)$ because $I(X^* \le x) =  I(X \le x)$ for $x < C_U$. In the same way, $\mathrm{E~} [I(X^* > x)] =  1 -F(x) = S(x)$. But, for $x>C_U$, $I(X^* \le x)$ is in general not an unbiased estimator of $F(x)$.
+
+
+As an alternative, consider *two* random variables that have different censoring limits. For illustration, suppose that we observe $X_1^* = \min(X_1, 5)$ and $X_2^* = \min(X_2, 10)$ where $X_1$ and $X_2$ are independent draws from the same distribution. For $x \le 5$, the empirical distribution function $F_2(x)$ is an unbiased estimator of $F(x)$. However, for $5 < x  \le 10$, the first observation cannot be used for the distribution function because of the censoring limitation. Instead, the strategy developed by [@kaplan1958] is to use $S_2(5)$ as an estimator of $S(5)$ and then to use the second observation to estimate the survival function conditional on survival to time 5, $\Pr(X > x | X >5) = \frac{S(x)}{S(5)}$. Specifically, for $5 < x  \le 10$, the estimator of the survival function is 
+
+$$
+\hat{S}(x) = S_2(5) \times I(X_2^* > x ) .
+$$
+
+**Kaplan-Meier Product Limit Estimator.** Extending this idea, for each observation $i$, let $u_i$ be the upper censoring limit ($=\infty$ if no censoring). Thus, the recorded value is $x_i$ in the case of no censoring and $u_i$ if there is censoring. Let $t_{1} <\cdots< t_{k}$ be $k$ distinct points at which an uncensored loss occurs, and let $s_j$ be the number of uncensored losses $x_i$'s at $t_{j}$. The corresponding `r Gloss('risk set')` is the number of observations that are active (not censored) at a value *less than* $t_{j}$, denoted as $R_j = \sum_{i=1}^n I(x_i \geq t_{j}) + \sum_{i=1}^n I(u_i \geq t_{j})$.
+
+
+With this notation, the **product-limit estimator** of the distribution function is 
+
+\begin{equation}
+\hat{F}(x) =
+\left\{
+\begin{array}{ll}
+0 & x<t_{1} \\
+1-\prod_{j:t_{j} \leq x}\left( 1-\frac{s_j}{R_{j}}\right) & x \geq t_{1} 
+\end{array}
+\right. .
+(\#eq:KaplanMeier)
+\end{equation}
+
+For example, if $x$ is smaller than the smallest uncensored loss, then $x<t_1$ and $\hat{F}(x) =0$. As another example, if $x$ falls between then second and third smallest uncensored losses, then $x \in (t_2,t_3]$ and $\hat{F}(x) = 1 - \left(1- \frac{s_1}{R_{1}}\right)\left(1- \frac{s_2}{R_{2}}\right)$.
+
+As usual, the corresponding estimate of the survival function is $\hat{S}(x) = 1 - \hat{F}(x)$.
+
+***
+
+
+**Example 5.3.5. Actuarial Exam Question.**
+The following is a sample of 10 payments: 
+
+
+$$
+\begin{array}{cccccccccc}
+4 &4 &5+ &5+ &5+ &8 &10+ &10+ &12 &15 \\
+\end{array}
+$$
+
+where $+$ indicates that a loss has exceeded the policy limit.
+
+Using the Kaplan-Meier product-limit estimator, calculate the probability that the loss on a policy exceeds 11, $\hat{S}(11)$.
+
+`r HideExample('5.3.5', 'Show Example Solution')`
+
+**Solution.**
+There are four event times (non-censored observations). For each time $t_j$, we can calculate the number of events $s_j$ and the risk set $R_j$ as the following:
+
+$$
+\begin{array}{cccc}
+\hline
+j & t_j & s_j & R_j \\
+\hline
+1 & 4 & 2 & 10 \\
+2 & 8 & 1 & 5 \\
+3 & 12 & 1 & 2 \\
+4 & 15 & 1 & 1 \\
+\hline
+\end{array}
+$$
+
+Thus, the Kaplan-Meier estimate of $S(11)$ is
+$$
+\begin{aligned}
+\hat{S}(11) &= \prod_{j:t_j\leq 11} \left( 1- \frac{s_j}{R_j} \right) =  \prod_{j=1}^{2} \left( 1- \frac{s_j}{R_j} \right)\\
+&= \left(1-\frac{2}{10} \right) \left(1-\frac{1}{5} \right) = (0.8)(0.8)= 0.64. \\
+\end{aligned}
+$$
+
+</div>
+
+***
+
+**Example. 5.3.6. Bodily Injury Claims.** We consider again the Boston auto bodily injury claims data from @derrig2001applications that was introduced in Example 5.1.11. In that example, we omitted the `r sum(BIData$Censored)` claims that were censored by policy limits. Now, we include the full dataset and use the Kaplan-Meier product limit to estimate the survival function. This is given in Figure \@ref(fig:KMSurvival).
+
+(ref:KMSurvival) **Kaplan-Meier Estimate of the Survival Function for Bodily Injury Claims**
+
+```{r KMSurvival, fig.cap='(ref:KMSurvival)', fig.align='center', echo = FALSE}
+library(survival)                # for Surv(), survfit()
+#BIData <- read.csv("Data/DerrigResampling.csv", header =T)
+BIData$UnCensored <- 1*(BIData$AmountPaid < BIData$PolicyLimit)
+## KM estimate
+KM0 <- survfit(Surv(AmountPaid, UnCensored) ~ 1,  type="kaplan-meier", data=BIData)
+plot(KM0, conf.int=FALSE, xlab="x",ylab="Kaplan Meier Survival")
+```
+
+`r HideRCode('KaplanMeier.4f', 'Show R Code')`
+
+```{r, echo=SHOW_PDF, ref.label = 'KMSurvival', eval=FALSE}
+```
+
+</div>
+
+***
+
+
+**Right-Censored, Left-Truncated Empirical Distribution Function.** 
+In addition to right-censoring, we now extend the framework to allow for left-truncated data. As before, for each observation $i$,  let $u_i$ be the upper censoring limit ($=\infty$ if no censoring). Further, let $d_i$ be the lower truncation limit (0 if no truncation). Thus, the recorded value (if it is greater than $d_i$) is $x_i$ in the case of no censoring and $u_i$ if there is censoring. Let $t_{1} <\cdots< t_{k}$ be $k$ distinct points at which an event of interest  occurs, and let $s_j$ be the number of recorded events $x_i$'s at time point $t_{j}$. The corresponding risk set is
+$$R_j = \sum_{i=1}^n I(x_i \geq t_{j}) + \sum_{i=1}^n I(u_i \geq t_{j}) - \sum_{i=1}^n I(d_i \geq t_{j}).$$
+
+With this new definition of the risk set, the product-limit estimator of the distribution function is as in equation \@ref(eq:KaplanMeier).
+
+**Greenwood's Formula**. [@greenwood1926] derived the formula for the estimated variance of the product-limit estimator to be
+
+$$
+\widehat{Var}(\hat{F}(x)) = (1-\hat{F}(x))^{2} \sum _{j:t_{j} \leq x} \dfrac{s_j}{R_{j}(R_{j}-s_j)}.
+$$
+
+As usual, we refer to the square root of the estimated variance as a *standard error*, a quantity that is routinely used in confidence intervals and for hypothesis testing. To compute this, `R`'s `survfit` method takes a survival data object and creates a new object containing the Kaplan-Meier estimate of the survival function along with confidence intervals. The Kaplan-Meier method (`type='kaplan-meier'`) is used by default to construct an estimate of the survival curve. The resulting discrete survival function has point masses at the observed event times (discharge dates) $t_j$, where the probability of an event given survival to that duration is estimated as the number of observed events at the duration $s_j$ divided by the number of subjects exposed or 'at-risk' just prior to the event duration $R_j$.
+
+**Alternative Estimators**. Two alternate types of estimation are also available for the `survfit` method. The alternative (`type='fh2'`) handles ties, in essence, by assuming that multiple events at the same duration occur in some arbitrary order. Another alternative (`type='fleming-harrington'`) uses the `r Gloss("Nelson-Aalen")` (see [@aalen1978]) estimate of the **cumulative hazard function** to obtain an estimate of the survival function. The estimated cumulative hazard $\hat{H}(x)$ starts at zero and is incremented at each observed event duration $t_j$ by the number of events $s_j$ divided by the number at risk $R_j$. With the same notation as above, the **Nelson-&Auml;alen** estimator of the distribution function is
+
+$$
+\begin{aligned}
+\hat{F}_{NA}(x) &=
+\left\{
+\begin{array}{ll}
+0 & x<t_{1} \\
+1- \exp \left(-\sum_{j:t_{j} \leq x}\frac{s_j}{R_j} \right) & x \geq t_{1} 
+\end{array}
+\right. .\end{aligned}
+$$
+
+Note that the above expression is a result of the Nelson-&Auml;alen estimator of the cumulative hazard function $$\hat{H}(x)=\sum_{j:t_j\leq x}  \frac{s_j}{R_j} $$
+and the relationship between the survival function and cumulative hazard function, $\hat{S}_{NA}(x)=e^{-\hat{H}(x)}$.
+
+***
+
+**Example 5.3.7. Actuarial Exam Question.** 
+
+For observation $i$ of a survival study:
+
+* $d_i$ is the left truncation point
+* $x_i$ is the observed value if not right censored
+* $u_i$ is the observed value if right censored
+
+You are given:
+
+
+$$
+{\small
+\begin{array}{c|cccccccccc}
+\hline
+\text{Observation } (i) & 1 & 2 & 3 & 4 & 5 & 6 & 7 & 8 & 9 & 10\\ \hline
+d_i & 0 & 0 & 0 & 0 & 0 & 0 & 0 & 1.3 & 1.5 & 1.6\\
+x_i & 0.9 & - & 1.5 & - & - & 1.7 & - & 2.1 & 2.1 & - \\
+u_i & - & 1.2 & - & 1.5 & 1.6 & - & 1.7 & - & - & 2.3 \\
+\hline
+\end{array}
+}
+$$
+
+
+Calculate the Kaplan-Meier product-limit estimate, $\hat{S}(1.6)$
+
+
+`r HideExample('5.3.7', 'Show Example Solution')`
+
+**Solution.** Recall the risk set $R_j = \sum_{i=1}^n \left\{ I(x_i \geq t_{j}) + I(u_i \geq t_{j}) - I(d_i \geq t_{j}) \right\}$. Then
+
+$$
+\begin{array}{ccccc}
+\hline
+j & t_j & s_j & R_j & \hat{S}(t_j) \\
+\hline
+1  & 0.9   & 1   & 10-3 = 7 & 1-\frac{1}{7} = \frac{6}{7} \\
+2  & 1.5   & 1   & 8-2 = 6  & \frac{6}{7}\left( 1 - \frac{1}{6} \right) = \frac{5}{7}\\
+3  & 1.7   & 1   & 5-0 = 5  & \frac{5}{7}\left( 1 - \frac{1}{5} \right) = \frac{4}{7}\\
+4  & 2.1   & 2   & 3        & \frac{4}{7}\left( 1 - \frac{2}{3}\right) = \frac{4}{21}\\
+\hline
+\end{array}
+$$
+
+The Kaplan-Meier estimate is therefore $\hat{S}(1.6) = \frac{5}{7}$.
+
+</div>
+
+
+***
+
+**Example 5.3.8. Actuarial Exam Question. - Continued.** 
+
+
+a) Using the Nelson-&Auml;alen estimator, calculate the probability that the loss on a policy exceeds 11, $\hat{S}_{NA}(11)$.
+b) Calculate Greenwood's approximation to the variance of the product-limit estimate $\hat{S}(11)$.
+
+`r HideExample('5.3.8', 'Show Example Solution')`
+
+**Solution.**
+As before, there are four event times (non-censored observations). For each time $t_j$, we can calculate the number of events $s_j$ and the risk set $R_j$ as the following:
+
+$$
+\begin{array}{cccc}
+\hline
+j & t_j & s_j & R_j \\
+\hline
+1 & 4 & 2 & 10 \\
+2 & 8 & 1 & 5 \\
+3 & 12 & 1 & 2 \\
+4 & 15 & 1 & 1 \\
+\hline
+\end{array}
+$$
+
+The Nelson-&Auml;alen estimate of $S(11)$ is $\hat{S}_{NA}(11)=e^{-\hat{H}(11)} = e^{-0.4} = 0.67$, since
+$$
+\begin{aligned}
+\hat{H}(11) &= \sum_{j:t_j\leq 11} \frac{s_j}{R_j}  = \sum_{j=1}^{2} \frac{s_j}{R_j}  \\
+&= \frac{2}{10} + \frac{1}{5}  = 0.2 + 0.2 = 0.4 .\\
+\end{aligned}
+$$
+
+From earlier work, the Kaplan-Meier estimate of $S(11)$ is $\hat{S}(11) = 0.64$. Then Greenwood's estimate of the variance of the product-limit estimate of $S(11)$ is
+$$
+\begin{aligned}
+\widehat{Var}(\hat{S}(11)) &= (\hat{S}(11))^2 \sum_{j:t_j\leq 11} \frac{s_j}{R_j(R_j-s_j)}
+&= (0.64)^2 \left(\frac{2}{10(8)} + \frac{1}{5(4)} \right)  = 0.0307. \\
+\end{aligned}
+$$
+
+</div>
+
+
+***
+
+
+```{r child = './Quizzes/Quiz43.html', eval = QUIZ}
+```
+
+
+## Further Resources and Contributors {#MS:further-reading-and-resources}
+
+
+#### Exercises {-}
+
+Here are a set of exercises that guide the viewer through some of the theoretical foundations of **Loss Data Analytics**. Each tutorial is based on one or more questions from the professional actuarial examinations, typically the Society of Actuaries Exam C/STAM.
+
+<p style="text-align: center;">
+[Model Selection Guided Tutorials](http://www.ssc.wisc.edu/~jfrees/loss-data-analytics/loss-data-analytics-model-selection/)
+</p>
+
+
+#### Contributors {-}
+
+- **Edward W. (Jed) Frees** and **Lisa Gao**, University of Wisconsin-Madison, are the principal authors of the initial version of this chapter. Email: jfrees@bus.wisc.edu for chapter comments and suggested improvements.
+- Chapter reviewers include: Vytaras Brazauskas, Yvonne Chueh, Eren Dodd, Hirokazu (Iwahiro) Iwasawa, Joseph Kim, Andrew Kwon-Nakamura, Jiandong Ren, and Di (Cindy) Xu.
