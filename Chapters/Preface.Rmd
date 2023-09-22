@@ -114,6 +114,10 @@ The project goal is to have the actuarial community author our textbooks in a co
 - **Nii-Armah Okine** is an assistant professor at the Mathematical Sciences Department at Appalachian State University.  He holds a Ph.D. in Business (Actuarial Science) from the University of Wisconsin - Madison and obtained his master’s degree in Actuarial science from Illinois State University. His research interest includes micro-level reserving, joint longitudinal-survival modeling, dependence modeling, micro-insurance, and machine learning.
 
 
+<img src = "ContributorPics\RajSahasrabuddhe.jpg" width = "150" height = "150" style = "float:right; margin-left: 10px; margin-top: 7px" />
+
+-  **Rajesh (Raj) Sahasrabuddhe** is a Partner and Philadelphia Office Leader with Oliver Wyman Actuarial Consulting. Raj is a Fellow of the Casualty Actuarial Society (CAS), an Associate of the Canadian Institute of Actuaries, and a Member of the American Academy of Actuaries. Raj has been an active volunteer with CAS Admissions committees throughout his career, including a term as Chairperson of the Syllabus Committee from 2010 to 2013. He currently serves on the MAS-II Examination Committee. He has authored or co-authored papers that have appeared on syllabi for both the CAS and Society of Actuaries.
+
 <img src = "ContributorPics\Selin_pictureA.png" width = "150" height = "150" style = "float:right; margin-left: 10px; margin-top: 7px" />
 
 - **Emine Selin Sarıdaş** is a doctoral candidate in the Statistics department of Mimar Sinan University. She holds a bachelor degree in Actuarial Science with a minor in Economics and a master degree in Actuarial Science from Hacettepe University. Her research interest includes dependence modeling, regression, loss models and life contingencies. 

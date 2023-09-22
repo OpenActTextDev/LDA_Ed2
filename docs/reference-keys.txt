@@ -413,6 +413,7 @@ adjustments-to-loss
 premium-on-level-adjustment
 premium-trend
 credibility
+further-resources-and-contributors
 ChapRiskClass
 S:RC:Introduction
 S:RC:PoissonRegression
