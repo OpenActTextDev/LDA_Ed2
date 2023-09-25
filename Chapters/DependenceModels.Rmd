@@ -1,73 +1,17 @@
-`r chapnum = 15`
+`r chapnum = 16`
 
-# Dependence Modeling {#ChapDependenceModel}
+# Quantifying Dependence {#ChapDependenceModel}
 
-*Chapter Preview*. In practice, there are many types of variables that one encounters. The first step in dependence modeling is identifying the type of variable to help direct you to the appropriate technique. This chapter introduces readers to variable types and techniques for modeling dependence or association of multivariate distributions. Section \@ref(S:VarTypes15) provides an overview of the types of variables. Section \@ref(S:Measures) then elaborates basic measures for modeling the dependence between variables. 
+*Chapter Preview*. Dependence modeling involves using statistical models to describe the dependence structure between random variables and enables us to understand the relationships between variables in a dataset. This chapter introduces readers to techniques for modeling and quantifying dependence or association of multivariate distributions. Section \@ref(S:Measures) elaborates basic measures for modeling the dependence between variables. 
 
 Section \@ref(S:Copula) introduces an approach to modeling dependence using copulas which is reinforced with practical illustrations in Section \@ref(S:CopAppl). The types of copula families and basic properties of copula functions are explained Section \@ref(S:CopTyp). The chapter concludes by explaining why the study of dependence modeling is important in Section \@ref(S:CopImp).
 
 
-## Multivariate Variables
-
-***
-
-In this section, you learn how to:
-
-- Differentiate between univariate and multivariate data
-- Handle missing variables 
-
-***
-
-People, firms, and other entities that we want to understand are described in a dataset by numerical characteristics. As these characteristics vary by entity, they are commonly known as `r Gloss('variables')`. To manage insurance systems, it will be critical to understand the distribution of each variable and how they are associated with one another. It is common for data sets to have many variables (`r Gloss('high dimensional')`) and so is useful to begin by classifying them into different types. As will be seen, these classifications are not strict; there is overlap among the groups. Nonetheless, the grouping summarized in  [Table 15.1] and explained in the remainder of this section provides a solid first step in framing a data set. 
-
-<a id=tab:15.1></a>  
-
-[Table 15.1]: \#tab:15.1
-
-Table 15.1. **Variable Types**
-
-$$
-{\small \begin{matrix}
-\begin{array}{l|l} \hline
-\textbf{Variable Type} & \textbf{Example} \\\hline
-Qualitative &            \\
-    \text{Binary} &        \text{Sex} \\
-\text{Categorical (Unordered, Nominal)} & \text{Territory (e.g., state/province) in which an insured resides} \\
-\text{Ordered Category (Ordinal)} & \text{Claimant satisfaction (five point scale ranging from 1=dissatisfied} \\
-& ~~~ \text{to 5 =satisfied)} \\\hline
-Quantitative &            \\
-\text{Continuous} & \text{Policyholder's age, weight, income} \\
-  \text{Discrete} & \text{Amount of deductible  (0, 250, 500, and 1000)} \\
-\text{Count} & \text{Number of insurance claims} \\
-\text{Combinations of}  & \text{Policy losses, mixture of 0's (for no loss)}  \\
-~~~ \text{Discrete and Continuous} & ~~~\text{and positive claim amount} \\
-\text{Interval Variable} & \text{Driver Age: 16-24 (young), 25-54 (intermediate),}  \\
-& ~~~\text{55 and over (senior)} \\
-\text{Circular Data} & \text{Time of day measures of customer arrival} \\ \hline
-Multivariate ~ Variable &            \\
-\text{High Dimensional Data} & \text{Characteristics of a firm purchasing worker's compensation} \\
-& ~~~\text{insurance (location of plants, industry, number of employees,} \\
-&~~~\text{and so on)} \\
-\text{Spatial Data} & \text{Longitude/latitude of the location an insurance hailstorm claim} \\
-\text{Missing Data} & \text{Policyholder's age (continuous/interval) and -99 for} \\
-&~~~ `\text{not reported,' that is, missing} \\
-\text{Censored and Truncated Data} & \text{Amount of insurance claims in excess of a deductible} \\
-\text{Aggregate Claims} & \text{Losses recorded for each claim in a motor vehicle policy.} \\
-\text{Stochastic Process Realizations} & \text{The time and amount of each occurrence of an insured loss} \\ \hline
-\end{array}
-\end{matrix}}
-$$
-
-
-
-
-In data analysis, it is important to understand what type of variable you are working with. For example, consider a pair of random variables ${\tt (Coverage, Claim)}$ from the *LGPIF* data introduced in Section \@ref(S:LGPIF) as displayed in Figure \@ref(fig:IntroPlot) below. We would like to know whether the distribution of ${\tt Coverage}$ depends on the distribution of ${\tt Claim}$ or whether they are statistically independent. We would also want to know how the ${\tt Claim}$ distribution depends on the ${\tt EntityType}$ variable. Because the  ${\tt EntityType}$ variable belongs to a different class of variables, modeling the dependence between ${\tt Claim}$ and ${\tt Coverage}$ may require a different technique from that of ${\tt Claim}$ and ${\tt EntityType}$. 
-
-(ref:IntroPlot) **Scatter Plot of *(Coverage,Claim)* from LGPIF Data**
-
-```{r IntroPlot, fig.cap='(ref:IntroPlot)',echo=FALSE, warning=FALSE, out.width='80%', fig.asp=.75, fig.align='center'}
+```{r IntroPlot, fig.cap='(ref:IntroPlot)',echo=FALSE, warning=FALSE, out.width='80%', fig.asp=.75, fig.align='center',message=FALSE}
 library(ggplot2)
-Insample <- read.csv("Data/Insample.csv", header=T, na.strings=c("."), stringsAsFactors=FALSE)
+#Insample <- read.csv("/Users/okinean/Dropbox/Phd/Frees/DependenceModelingChapter/Book2edition/Loss-Data-Analytics-Ed1-master/Data/Insample.csv", header=T,na.strings=c("."), stringsAsFactors=FALSE)
+Insample <- read.csv("Data/Insample.csv", header=T,na.strings=c("."), stringsAsFactors=FALSE)
+
 Claim <- Insample$y
 Coverage <- Insample$BCcov/1000000
 NoClaimCredit <- Insample$NoClaimCredit
@@ -77,25 +21,11 @@ EntityType <- ifelse(Insample$TypeCity == 1, "City",
                                  ifelse(Insample$TypeSchool == 1, "School",
                                         ifelse(Insample$TypeTown == 1, "Town",
                                                ifelse(Insample$TypeVillage == 1, "Village", 0))))))
-qplot(Coverage,Claim,colour=EntityType, ylim = c(0,3000000), xlab = "Coverage (Millions)")
+#qplot(Coverage,Claim,colour=EntityType, ylim = c(0,3000000), xlab = "Coverage (Millions)")
 ```
 
 
 
-`r Gloss('Circular data')` represent an interesting category typically not analyzed by `r Gloss('insurers')`. As an example of circular data, suppose that you monitor calls to your customer service center and would like to know when is the peak time of the day for calls to arrive. In this context, one can think about the time of the day as a variable with realizations on a circle, e.g., imagine an analog picture of a clock. For circular data, the distance between observations at 00:15 and 00:45 are just as close as observations 23:45 and 00:15 (the convention *HH:MM* means hours and minutes).
-
-
-
-Insurance data typically are `r Gloss('multivariate')` in the sense that we can take many measurements on a single entity. For example, when studying losses associated with a firm's `r Gloss("workers' compensation")` plan, we might want to know the location of its manufacturing plants, the industry in which it operates, the number of employees, and so forth. The usual strategy for analyzing multivariate data is to begin by examining each variable in isolation of the others. This is known as a `r Gloss('univariate')` approach. 
-
-In contrast, for some variables, it makes little sense to only look at one dimensional aspect. For example, insurers typically organize `r Gloss('spatial data')` by longitude and latitude to analyze the location of weather related insurance claims due to hailstorms. Having only a single number, either longitude or latitude, provides little information in understanding geographic location.
-
-Another special case of a multivariate variable, less obvious, involves coding for `r Gloss('missing data')`. Historically, some statistical packages used a -99 to report when a variable, such as policyholder's age, was not available or not reported. This led to many unsuspecting analysts providing strange statistics when summarizing a set of data. When data are missing, it is better to think about the variable as having two dimensions, one to indicate whether or not the variable is reported and the second providing the age (if reported). In the same way, insurance data are commonly `r Gloss('censored')` and `r Gloss('truncated')`. We refer you to Section \@ref(S:MS:ModifiedData) for more on censored and truncated data. `r Gloss('Aggregate claims')`, described in Chapter \@ref(ChapAggLossModels), can also be coded as another special type of multivariate variable.
-
-Perhaps the most complicated type of multivariate variable is a realization of a `r Gloss('stochastic process')`. You will recall that a stochastic process is little more than a collection of random variables. For example, in insurance, we might think about the times that claims arrive to an insurance company in a one-year time horizon. This is a high dimensional variable that theoretically is infinite dimensional. Special techniques are required to understand realizations of stochastic processes that will not be addressed here.
-
-```{r child = './Quizzes/Quiz141.html', eval = QUIZ}
-```
 
 ## Classic Measures of Scalar Associations {#S:Measures}
 
@@ -105,10 +35,78 @@ In this section, you learn how to:
 
 - Estimate correlation using the Pearson method 
 - Use rank based measures like Spearman, Kendall to estimate correlation
-- Measure dependence using the odds ratio, Pearson chi-square, and likelihood ratio test statistics 
-- Use normal-based correlations to quantify associations involving ordinal variables
+- Measure tail dependency
 
 ***
+
+
+
+
+In this chapter, we consider the first two variables from an insurance dataset of sample size ($n = 1500$) introduced in @frees1998understanding and is now readily available in the `copula` package; *losses* and *expenses*.
+
+*  ${\tt LOSS}$, general liability claims from the Insurance Services Office, Inc. (ISO)
+*  ${\tt ALAE}$, specifically attributable to the settlement of individual claims (e.g. lawyer's fees, claims investigation expenses)
+
+We would like to know whether the distribution of ${\tt LOSS}$ depends on the distribution of ${\tt ALAE}$ or whether they are statistically independent. To visualize the relationship between losses and expenses, the scatterplots in Figure \@ref(fig:Scatter) are created on dollar and log dollar scales. It is difficult to see any relationship between the two variables in the left-hand panel. Their dependence is more evident when viewed on the log scale, as in the right-hand panel. This sections elaborates basic measures for modeling the dependence between variables. 
+
+(ref:Scatter) **Scatter Plot of LOSS and ALAE**
+
+```{r  Scatter, message=FALSE, warning=FALSE, echo=FALSE, out.width='80%', fig.align='center',fig.cap='(ref:Scatter)', fig.height=5.5, fig.width=9}
+library(copula)
+data(loss) # loss data from copula library
+LOSS <- loss$loss
+ALAE <- loss$alae
+par(mfrow=c(1, 2))
+plot(LOSS, ALAE, cex=.5, ann = FALSE,xaxt='n',yaxt='n', xlim=c(0,2200000), ylim=c(0, 520000)) # dollar scale
+
+
+#summary(LOSS)
+#summary(ALAE)
+
+
+
+mtext(side = 1, text = "LOSS", line = 1.8,cex=0.9)
+xtick<-c(10000, 400000,800000,1200000,1600000, 2000000)
+xticklab<-c("10K","400K","800K","1.2M","1.6M","2.0M")
+axis(side=1, at=xtick, labels = FALSE)
+text(x=xtick, -35000,labels = xticklab,pos=1, xpd = TRUE, line=2)
+
+
+mtext(side = 2, text = "ALAE", line = 3.5, cex=0.9)
+ytick<-c(5000, 100000, 200000, 300000, 400000, 500000)
+yticklab<-c("5K", "100K","200K","300K", "400K","500K")
+axis(side=2, at=ytick, labels = FALSE)
+text(x=-400000,y= ytick,labels = yticklab, xpd = TRUE, line=2)
+
+
+plot(log(LOSS), log(ALAE),cex=.5, ann = FALSE,xaxt='n',yaxt='n', xlim=c(2,14.60397), ylim=c(2, 14.60397)) # log scale
+
+
+mtext(side = 1, text = "log(LOSS)", line = 1.8,cex=0.9)
+xtick<-c(2,4,6,8,10,12,14)
+xticklab<-c("2","4","6","8","10","12","14")
+axis(side=1, at=xtick, labels = FALSE)
+text(x=xtick, 1.2,labels = xticklab,pos=1, xpd = TRUE, line=2)
+
+
+mtext(side = 2, text = "log(ALAE)", line = 3.0, cex=0.9)
+ytick<-c(2,4,6,8,10,12, 14)
+yticklab<-c("2","4","6","8","10","12", "14")
+axis(side=2, at=ytick, labels = FALSE)
+text(x=0.25,y= ytick,labels = yticklab, xpd = TRUE, line=2)
+
+```
+
+
+`r HideRCode('ScaHis.1',"R Code for Loss versus Expense Scatterplots")`
+
+```{r, echo=SHOW_PDF, ref.label = 'Scatter', eval=FALSE}
+```
+
+</div>  
+
+
+
 
 
 ### Association Measures for Quantitative Variables
@@ -130,46 +128,48 @@ This statistic has several important features. Unlike regression estimators, it 
 
 Further, in the case of independence, the correlation coefficient $r$ is 0. However, it is well known that zero correlation does not in general imply independence, one exception is the case of normally distributed random variables. The correlation statistic $r$ is also a (maximum likelihood) estimator of the association parameter for the bivariate normal distribution. So, for normally distributed data, the correlation statistic $r$ can be used to assess independence. For additional interpretations of this well-known statistic, readers will enjoy @lee1988thirteen.
 
-You can obtain the `r Gloss('Pearson correlation')` statistic $r$ using the `cor()` function in `R` and selecting the `pearson` method. This is demonstrated below by using the ${\tt Coverage}$ rating variable in millions of dollars and ${\tt Claim}$ amount variable in dollars from the LGPIF data introduced in chapter 1. 
+You can obtain the `r Gloss('Pearson correlation')` statistic $r$ using the `cor()` function in `R` and selecting the `pearson` method. This is demonstrated below by using the ${\tt LOSS}$ rating variable in millions of dollars and ${\tt ALAE}$ amount variable in dollars from the dataset in Figure \@ref(fig:Scatter). 
 
 
 
 ```{r include=FALSE}
-r<-cor(Claim,Coverage, method = c("pearson"))
+r<-cor(LOSS,ALAE, method = c("pearson"))
 round(r,2)
 
-r<-cor(Claim,log(Coverage), method = c("pearson"))
+
+r<-cor(LOSS,log(ALAE), method = c("pearson"))
 round(r,2)
+
 ```
 
 `r HideRCode('pearson.1','R Code for Pearson Correlation Statistic')`
 
 ```{r, echo=SHOW_PDF, eval=FALSE}
-### Pearson correlation between Claim and Coverage
-r<-cor(Claim,Coverage, method = c("pearson"))
+### Pearson correlation between LOSS and ALAE
+r<-cor(LOSS,ALAE, method = c("pearson"))
 round(r,2)
 
 Output:
-[1] 0.31
+[1] 0.4
 
-### Pearson correlation between Claim and log(Coverage)
-r<-cor(Claim,log(Coverage), method = c("pearson"))
+### Pearson correlation between log(LOSS) and log(ALAE)
+r<-cor(LOSS,log(ALAE), method = c("pearson"))
 round(r,2)
 
 Output:
-[1] 0.1
+[1] 0.33
 ```
 </div>  
   
 
-From the `R` output above, $r=0.31$, which indicates a positive association between ${\tt Claim}$ and ${\tt Coverage}$. This means that as the coverage amount of a policy increases we expect claims to increase. 
+From the `R` output above, $r=0.4$, which indicates a positive association between ${\tt LOSS}$ and ${\tt ALAE}$. This means that as the loss amount of a claim increases we expect expenses to increase. 
 
 
 ### Rank Based Measures
 
 #### Spearman's Rho {#Sec:Spearman}
 
-The Pearson correlation coefficient does have the drawback that it is not invariant to nonlinear transforms of the data. For example, the correlation between $X$ and $\log Y$ can be quite different from the correlation between $X$ and $Y$. As we see from the `R` code for the Pearson correlation statistic above, the correlation statistic $r$ between the ${\tt Coverage}$ rating variable in logarithmic millions of dollars and the ${\tt Claim}$ amounts variable in dollars is $0.1$ as compared to $0.31$ when we calculate the correlation between the ${\tt Coverage}$ rating variable in millions of dollars and the ${\tt Claim}$ amounts variable in dollars. This limitation is one reason for considering alternative statistics.
+The Pearson correlation coefficient does have the drawback that it is not invariant to nonlinear transforms of the data. For example, the correlation between $X$ and $\log Y$ can be quite different from the correlation between $X$ and $Y$. As we see from the `R` code for the Pearson correlation statistic above, the correlation statistic $r$ between the ${\tt ALAE}$ variable in logarithmic dollars and the ${\tt LOSS}$ amounts variable in dollars is $0.33$ as compared to $0.4$ when we calculate the correlation between the ${\tt ALAE}$ variable in dollars and the ${\tt LOSS}$ amounts variable in dollars. This limitation is one reason for considering alternative statistics.
 
 Alternative measures of correlation are based on ranks of the data. Let $R(X_j)$ denote the rank of $X_j$ from the sample $X_1, \ldots, X_n$ and similarly for $R(Y_j)$. Let $R(X) = \left(R(X_1), \ldots, R(X_n)\right)'$ denote the vector of ranks, and similarly for $R(Y)$. For example, if $n=3$ and $X=(24, 13, 109)$, then $R(X)=(2,1,3)$. A comprehensive introduction of rank statistics can be found in, for example, @hettmansperger1984statistical. Also, ranks can be used to obtain the empirical distribution function, refer to Section \@ref(S:MS:NonParEst) for more on the empirical distribution function.
 
@@ -180,36 +180,108 @@ r_S = \frac{\widehat{Cov}(R(X),R(Y))}{\sqrt{\widehat{Cov}(R(X),R(X))\widehat{Cov
 = \frac{\widehat{Cov}(R(X),R(Y))}{(n^2-1)/12} .
 $$
 
-You can obtain the Spearman correlation statistic $r_S$ using the `cor()` function in `R` and selecting the `spearman` method. From below, the Spearman correlation between the ${\tt Coverage}$ rating variable in millions of dollars and ${\tt Claim}$ amount variable in dollars is $0.41$.
+You can obtain the Spearman correlation statistic $r_S$ using the `cor()` function in `R` and selecting the `spearman` method. From below, the Spearman correlation between the ${\tt LOSS}$ variable and ${\tt ALAE}$ variable is $0.45$.
 
 ```{r comment="" , include=FALSE}
-rs<-cor(Claim,Coverage, method = c("spearman"))
+rs<-cor(LOSS,ALAE, method = c("spearman"))
 round(rs,2)
 
-rs<-cor(Claim,log(Coverage), method = c("spearman"))
+rs<-cor(LOSS,log(ALAE), method = c("spearman"))
 round(rs,2)
 ```
 
 `r HideRCode('spearman.1','R Code for Spearman Correlation Statistic')`
 
 ```{r echo=SHOW_PDF, eval=FALSE}
-### Spearman correlation between Claim and Coverage ###
-rs<-cor(Claim,Coverage, method = c("spearman"))
+### Spearman correlation between LOSS and ALAE ###
+rs<-cor(LOSS,ALAE, method = c("spearman"))
 round(rs,2)
 
 Output:
-[1] 0.41
+[1] 0.45
 
-### Spearman correlation between Claim and log(Coverage) ###
-rs<-cor(Claim,log(Coverage), method = c("spearman"))
+### Spearman correlation between LOSS and log(ALAE) ###
+rs<-cor(LOSS,log(ALAE), method = c("spearman"))
 round(rs,2)
 
 Output:
-[1] 0.41
+[1] 0.45
 ```
 </div>  
 
-We can show that the Spearman correlation statistic is invariant under strictly increasing transformations. From the `R` Code for the Spearman correlation statistic above, $r_S=0.41$ between the ${\tt Coverage}$ rating variable in logarithmic millions of dollars and ${\tt Claim}$ amount variable in dollars. 
+We can show that the Spearman correlation statistic is invariant under strictly increasing transformations. From the `R` Code for the Spearman correlation statistic above, $r_S=0.45$ between the ${\tt ALAE}$ variable in logarithmic dollars and ${\tt LOSS}$ amount variable in dollars. 
+
+
+
+
+**Example `r chapnum`.1.1. Calculation by Hand.**
+
+You are given the following six observations:
+
+
+$$\begin{array}{|c|c|c|}
+\hline \textbf{Observation} & x \textbf{ value} & y \textbf{ value}\\
+\hline 1 & 15 & 19  \\
+\hline 2 & 9 & 7  \\
+\hline 3 & 5 & 13   \\
+\hline 4 & 3 & 15   \\
+\hline 5 & 21 & 17   \\
+\hline 6 & 12 & 11   \\
+\hline
+\end{array}$$
+
+
+
+Calculate the sample Spearman's $\rho$. 
+
+
+`r HideExample('16.1.1','Show Example Solution')`
+
+**Solution.**
+
+The Spearman correlation is simply the product-moment correlation computed on the ranks:
+
+$$
+r_S = \frac{\widehat{Cov}(R(X),R(Y))}{\sqrt{\widehat{Cov}(R(X),R(X))\widehat{Cov}(R(Y),R(Y))}}
+= \frac{\widehat{Cov}(R(X),R(Y))}{(n^2-1)/12} .
+$$
+where $\widehat{Cov}(X,Y) = \frac{1}{n} \sum_{i=1}^n (X_i - \bar{X})(Y_i - \bar{Y})$. 
+
+
+The we have: 
+
+
+
+$$\tiny \begin{array}{|c|c|c|c|c|c|c|c|}
+\hline \textbf{Observation} & x \textbf{ value} & y  \textbf{ value} &\textbf{Rank of} & \textbf{Rank of}  & (R(X)_i - \bar{R(X)})& (R(Y)_i - \bar{R(Y)}) &(R(X)_i - \bar{R(X)})(R(Y)_i - \bar{R(Y)}) \\
+   & &  & x_i\quad (R(x)) & y_i  \quad (R(Y)) & & &\\
+\hline 1 & 15 & 19. & 2 & 1    & 2-3.5=-1.5 & 1-3.5=-2.5 & 3.75\\
+\hline 2 & 9 & 7  & 4 & 6     &  4-3.5=0.5 &  6-3.5= 2.5 & 1.25\\
+\hline 3 & 5 & 13  & 5 &4     & 5-3.5=1.5  &  4-3.5= 0.5& 0.75\\
+\hline 4 & 3 & 15  & 6 & 3    & 6-3.5=2.5 &  3-3.5= -0.5&-1.25\\
+\hline 5 & 21 & 17  & 1 & 2   & 1-3.5=-2.5  & 2-3.5= -1.5& 3.75\\
+\hline 6 & 12 & 11  & 3 & 5   & 3-3.5=-0.5 & 5-3.5= 1.5& -0.75\\
+\hline Total &  &  &  &   & & & 7.5\\
+\hline
+\end{array}$$
+
+
+Note that: $\bar{R(X)}=\bar{R(Y)}=\frac{1+2+3+4+5+6}{6}=3.5$. 
+
+Then, 
+$$\widehat{Cov}(R(X),R(Y))=\frac{1}{n} \sum_{i=1}^n (R(X)_i - \bar{R(X)})(R(Y)_i - \bar{R(Y)})=\frac{7.5}{6}=1.25$$
+
+Applying the formula
+
+
+$$
+r_S = \frac{\widehat{Cov}(R(X),R(Y))}{(n^2-1)/12}=\frac{1.25}{(6^2-1)/12}=0.42857 .
+$$
+
+
+</div>
+
+*** 
 
 
 #### Kendall's Tau {#Sec:Kendall}
@@ -235,28 +307,28 @@ $$
 
 Interestingly, @hougaard2000analysis, page 137, attributes the original discovery of this statistic to @fechnerkollektivmasslehre, noting that Kendall's discovery was independent and more complete than the original work.
 
-You can obtain Kendall's tau using the `cor()` function in `R` and selecting the `kendall` method. From below, $\hat{\tau}=0.32$ between the ${\tt Coverage}$ rating variable in millions of dollars and the ${\tt Claim}$ amount variable in dollars. When there are ties in the data, the `cor()` function computes *Kendall's tau_b* as proposed by @kendall1945. 
+You can obtain Kendall's tau using the `cor()` function in `R` and selecting the `kendall` method. From below, $\hat{\tau}=0.32$ between the ${\tt LOSS}$ variable in dollars and the ${\tt ALAE}$ variable in dollars. When there are ties in the data, the `cor()` function computes *Kendall's tau_b* as proposed by @kendall1945. 
 
 ```{r include=FALSE}
-tau<-cor(Claim,Coverage, method = c("kendall"))
+tau<-cor(LOSS,ALAE, method = c("kendall"))
 round(tau,2)
 
-tau<-cor(Claim,log(Coverage), method = c("kendall"))
+tau<-cor(LOSS,log(ALAE), method = c("kendall"))
 round(tau,2)
 ```
 
 `r HideRCode('kendall.1',"R Code for Kendall's Tau")`
 
 ```{r echo=SHOW_PDF, eval=FALSE}
-### Kendall's tau correlation between Claim and Coverage ###
-tau<-cor(Claim,Coverage, method = c("kendall"))
+### Kendall's tau correlation between LOSS and ALAE ###
+tau<-cor(LOSS,ALAE, method = c("kendall"))
 round(tau,2)
 
 Output:
 [1]  0.32
 
-### Kendall's tau correlation between Claim and log(Coverage) ###
-tau<-cor(Claim,log(Coverage), method = c("kendall"))
+### Kendall's tau correlation between LOSS and log(ALAE) ###
+tau<-cor(LOSS,log(ALAE), method = c("kendall"))
 round(tau,2)
 
 Output:
@@ -264,161 +336,259 @@ Output:
 ```
 </div>  
 
-Also, to show that the Kendall's tau is invariant under strictly increasing transformations, we see that $\hat{\tau}=0.32$ between the ${\tt Coverage}$ rating variable in logarithmic millions of dollars and the ${\tt Claim}$ amount variable in dollars. 
+Also, to show that the Kendall's tau is invariant under strictly increasing transformations, we see that $\hat{\tau}=0.32$ between the ${\tt ALAE}$ variable in logarithmic dollars and the ${\tt LOSS}$ amount variable in dollars. 
 
 
-### Nominal Variables
 
-#### Bernoulli Variables
+**Example `r chapnum`.1.2. Calculation by Hand.**
 
-To see why dependence measures for continuous variables may not be the best for discrete variables, let us focus on the case of Bernoulli variables that take on simple binary outcomes, 0 and 1. For notation, let $\pi_{jk} = \Pr(X=j, Y=k)$ for $j,k=0,1$ and let $\pi_X=\Pr(X=1)$ and similarly for $\pi_Y$. Then, the population version of the product-moment (Pearson) correlation can be easily seen to be
+You are given the following six observations:
+
 
 $$
-\rho = \frac{\pi_{11} - \pi_X \pi_Y}{\sqrt{\pi_X(1-\pi_X)\pi_Y(1-\pi_Y)}} .
-$$
-
-Unlike the case for continuous data, it is not possible for this measure to achieve the limiting boundaries of the interval $[-1,1]$. To see this, students of probability may recall the Fr&eacute;chet-H&ouml;effding bounds for a joint distribution that turn out to be $\max\{0, \pi_X+\pi_Y-1\} \le \pi_{11} \le \min\{\pi_X,\pi_Y\}$ for this joint probability. (More discussion of these bounds is in Section \@ref(S:Dep:Bounds).) This limit on the joint probability imposes an additional restriction on the Pearson correlation. As an illustration, assume equal probabilities $\pi_X =\pi_Y = \pi > 1/2$. Then, the lower bound is
-\begin{eqnarray*}
-\frac{2\pi - 1 - \pi^2}{\pi(1-\pi)} = -\frac{1-\pi}{\pi} .
-\end{eqnarray*}
-For example, if $\pi=0.8$, then the smallest that the Pearson correlation could be is -0.25. More generally, there are bounds on $\rho$ that depend on $\pi_X$ and $\pi_Y$ that make it difficult to interpret this measure.
-
-As noted by @bishop1975discrete (page 382), squaring this correlation coefficient yields the Pearson chi-square statistic (introduced in Section \@ref(S:goodness-of-fit)). Despite the boundary problems described above, this feature makes the Pearson correlation coefficient a good choice for describing dependence with binary data. 
-
-As an alternative measure for Bernoulli variables, the `r Gloss('odds ratio')` is given by
-\begin{eqnarray*}
-OR(\pi_{11}) = \frac{\pi_{11} \pi_{00}}{\pi_{01} \pi_{10}} = \frac{\pi_{11} \left( 1+\pi_{11}-\pi_X -\pi_Y\right)}{(\pi_X-\pi_{11})(\pi_Y- \pi_{11})} .
-\end{eqnarray*}
-Pleasant calculations show that $OR(z)$ is $0$ at the lower Fr&eacute;chet-H&ouml;effding bound $z= \max\{0, \pi_X+\pi_Y-1\}$ and is $\infty$ at the upper bound $z=\min\{\pi_X,\pi_Y\}$. Thus, the bounds on this measure do not depend on the marginal probabilities $\pi_X$ and $\pi_Y$, making it easier to interpret this measure.
-
-As noted by @yule1900association, odds ratios are invariant to the labeling of 0 and 1. Further, they are invariant to the marginals in the sense that one can rescale $\pi_X$ and $\pi_Y$ by positive constants and the odds ratio remains unchanged. Specifically, suppose that $a_i$, $b_j$ are sets of positive constants and that
-
-\begin{eqnarray*}
-\pi_{ij}^{new} &=& a_i b_j \pi_{ij}
-\end{eqnarray*}
-and $\sum_{ij} \pi_{ij}^{new}=1.$ Then,
-\begin{eqnarray*}
-OR^{new} = \frac{(a_1 b_1 \pi_{11})( a_0 b_0 \pi_{00})}{(a_0 b_1 \pi_{01})( a_1 b_0\pi_{10})}
-= \frac{\pi_{11} \pi_{00}}{\pi_{01} \pi_{10}} =OR^{old} .
-\end{eqnarray*}
-
-For additional help with interpretation, Yule proposed two transforms for the odds ratio, the first in @yule1900association,
-\begin{eqnarray*}
-\frac{OR-1}{OR+1},
-\end{eqnarray*}
-and the second in @yule1912methods,
-\begin{eqnarray*}
-\frac{\sqrt{OR}-1}{\sqrt{OR}+1}.
-\end{eqnarray*}
-Although these statistics provide the same information as is the original odds ratio $OR$, they have the advantage of taking values in the interval $[-1,1]$, making them easier to interpret.
-
-In a later section, we will also see that the marginal distributions have no effect on the Fr&eacute;chet-H&ouml;effding of the `r Gloss('tetrachoric correlation')`, another measure of association, see also, @joe2014dependence, page 48. 
-
-From [Table 15.2], $OR(\pi_{11})=\frac{1611(956)}{897(2175)}=0.79$. You can obtain the $OR(\pi_{11})$, using the `oddsratio()` function from the `epitools` library in `R`. From the output below, $OR(\pi_{11})=0.79$ for the binary variables ${\tt NoClaimCredit}$  and ${\tt Fire5}$ from the LGPIF data.
-
-<a id=tab:15.2></a>
-
-[Table 15.2]:\#tab:15.2
-
-Table 15.2. **2 $\times$ 2 Table of Counts for ${\tt Fire5}$ and ${\tt NoClaimCredit}$**
-
-$$
-{\small \begin{matrix}
-\begin{array}{l|rr|r} 
-    \hline
-                  & \text{Fire5} & & \\
-\text{NoClaimCredit} & 0     & 1     & \text{Total} \\
-  \hline
-           0  & 1611  & 2175  & 3786 \\
-           1  & 897   & 956   & 1853 \\
-    \hline
-    \text{Total}    & 2508  & 3131  & 5639 \\
-   \hline
+\begin{array}{|c|c|c|}
+\hline \textbf{Observation} & x \textbf{ value} & y \textbf{ value}\\
+\hline 1 & 15 & 19  \\
+\hline 2 & 9 & 7  \\
+\hline 3 & 5 & 13   \\
+\hline 4 & 3 & 15   \\
+\hline 5 & 21 & 17   \\
+\hline 6 & 12 & 11   \\
+\hline
 \end{array}
-\end{matrix}}
 $$
 
 
+
+Calculate the sample Kendall's $\tau$.
+
+
+`r HideExample('16.1.2','Show Example Solution')`
+
+**Solution.**
+
+We can obtain the Kendall's tau using:
+
+$$
+\hat{\tau} = \frac{2}{n(n-1)} \sum_{i<j} ~sgn(X_j-X_i) \times sgn(Y_j-Y_i)
+$$
+
+Here, $sgn(x)=1,0,-1$ as $x>0$, $x=0$, $x<0$, respectively. For each pair of observations $i,j$ so that $i<j$, the pairs $(X_i,Y_i)$ and $(X_j,Y_j)$ are said to be concordant if the product $sgn(X_j-X_i)sgn(Y_j-Y_i)$ equals 1 and discordant if the product equals -1. This is summarized in the table below, where a 1 indicates concordance, -1 sign indicates discordance. Note: The pairs compared are in the upper triangle.
+
+
+
+$$
+\small \begin{array}{|c|c|c|c|c|c|c|}
+\hline i/ j & j=1 & j=2 & j=3 & j=4 & j=5 & j=6\\
+\hline i=1    &       & 1     & 1         & 1     & -1        & 1\\
+\hline i=2    &       &       & -1        &-1     & 1        &1 \\
+\hline i=3    &       &       &           &-1     & 1        & -1\\
+\hline i=4    &       &       &           &       & 1        & -1 \\
+\hline i=5    &       &       &           &       &           & 1\\
+\hline i=6    &       &       &           &       &           &  \\
+\hline
+\end{array}
+$$
+
+
+There are 9 concordant pairs and 6 discordant pairs. Applying the formula
+
+$$
+\hat{\tau} = \frac{2}{n(n-1)} \sum_{i<j} ~sgn(X_j-X_i) \times sgn(Y_j-Y_i)=\frac{2}{6(6-1)}(3)=0.2
+$$
+
+
+</div>
+
+*** 
+
+
+### Tail Dependence Coefficients {#Sec:tdc}
+
+
+Tail dependence is a statistical concept that measures the strength of the dependence between two variables in the tails of their distribution. Specifically, tail dependence measures the correlation or dependence between the extreme values of two variables beyond a certain threshold, that is, the dependence in the corner of the lower-left quadrant or upper-right quadrant of the bivariate distribution. Tail dependence is essential in many areas of finance, economics, and risk management. For example, it is relevant in analyzing extreme events, such as financial crashes, natural disasters, and pandemics. In these situations, tail dependence can help to determine the likelihood of joint extreme events occurring and to develop strategies to manage the associated risks.
+
+In Figure \@ref(fig:tdcplot1), the concept of tail dependence is demonstrated through an example. The figure showcases two randomly generated variables with a Kendall's Tau of 0.7. On the left side of Figure \@ref(fig:tdcplot1), the variables ($X$ and $Y$) are simulated using the bivariate normal distribution, while on the right side, they are generated using the bivariate t-distribution. Although both sides display a Kendall's Tau of 0.7, there is a difference in the upper right quadrant (above the dashed lines) on each panel. In the left panel, the values in the upper right quadrant (upper tails of $X$ and $Y$) are independent, while in the right panel, the upper tail values appear to be correlated (the upper right corners of the right panel contain 4 points). This suggests that the probability of $Y$ occurring above a high threshold (e.g., the dashed line in the figure) when $X$ exceeds the same threshold is higher in the right panel than in the left panel of Figure \@ref(fig:tdcplot1).
+
+
+
+(ref:tdcplot1) **Left Panel: Upper tails of $X$ and $Y$ are independent. Right Panel: Upper tails of $X$ and $Y$ appear to be dependent.**
+
+```{r tdcplot1, message=FALSE, echo=FALSE, warning=FALSE,out.width='90%',fig.align='center',fig.cap='(ref:tdcplot1)'}
+
+library(copula)
+tau_use<-0.7
+theta.n<-iTau(normalCopula(), tau = tau_use)
+theta.t<-iTau(tCopula(df=2), tau= tau_use)
+
+
+##Samples from corresponding mvdc objects 
+set.seed(271)
+n<-400
+N01marg<-list(list(mean=0.2, sd=0.7), list(mean=0.2, sd=0.7))
+## For the normal copula 
+h.n<-mvdc(normalCopula(theta.n), c("norm", "norm"), N01marg)
+X.n<-rMvdc(n, mvdc = h.n)
+
+
+#cor(X.n[,1],X.n[,2], method = "spearman")
+
+## For the t copula 
+h.t<-mvdc(tCopula(theta.t, df=2), c("norm", "norm"), N01marg)
+X.t<-rMvdc(n, mvdc = h.t)
+
+#cor(X.t[,1],X.t[,2],method = "spearman")
+
+## Plotting information for scatter plots 
+qstar<-0.03
+q<-qnorm(c(qstar,1-qstar)) 
+lim<-range(q, X.n, X.t)
+#lim<-c(floor(lim[1]), ceiling(lim[2]))
+lim<-c(floor(lim[1]), ceiling(lim[2]))
+
+par(mfrow=c(1,2))
+plot(X.n, xlim=lim, ylim=lim, xlab= "X", ylab="Y",cex=0.4,col = alpha(1, 0.6), ann = FALSE,xaxt='n',yaxt='n') 
+abline(h=q[2], v=q[2], lty=2)
+ll<-sum(apply(X.n<=q[1], 1, all))
+ur<-sum(apply(X.n>=q[2], 1, all))
+mtext(sprintf("upper right:%X", ur),cex=0.8, side = 1, line = -1.5)
+
+mtext(side = 1, text = "X", line = 1.4,cex=0.9)
+xtick<-c(-3, -2, -1, 0, 1, 2, 3)
+xticklab<-c("-3","-2","-1", "0","1", "2","3")
+axis(side=1, at=xtick, labels = FALSE)
+text(x=xtick, -3.4,labels = xticklab,pos=1, xpd = TRUE, line=2)
+
+
+mtext(side = 2, text = "Y", line = 1.4, cex=0.9)
+ytick<-c(-3, -2, -1, 0, 1, 2, 3)
+yticklab<-c("-3","-2","-1", "0","1", "2","3")
+axis(side=2, at=ytick, labels = FALSE)
+text(x=-3.8,y= ytick,labels = yticklab, xpd = TRUE, line=2)
+
+plot(X.t, xlim=lim, ylim=lim, xlab= "X", ylab="Y",cex=0.4,col = alpha(1, 0.6), ann = FALSE,xaxt='n',yaxt='n') 
+abline(h=q[2], v=q[2], lty=2)
+ll<-sum(apply(X.t<=q[1], 1, all))
+ur<-sum(apply(X.t>=q[2], 1, all))
+mtext(sprintf("upper right:%X", ur),cex=0.8, side = 1, line = -1.5)
+
+
+mtext(side = 1, text = "X", line = 1.4,cex=0.9)
+xtick<-c(-3, -2, -1, 0, 1, 2, 3)
+xticklab<-c("-3","-2","-1", "0","1", "2","3")
+axis(side=1, at=xtick, labels = FALSE)
+text(x=xtick, -3.4,labels = xticklab,pos=1, xpd = TRUE, line=2)
+
+
+mtext(side = 2, text = "Y", line = 1.4, cex=0.9)
+ytick<-c(-3, -2, -1, 0, 1, 2, 3)
+yticklab<-c("-3","-2","-1", "0","1", "2","3")
+axis(side=2, at=ytick, labels = FALSE)
+text(x=-3.8,y= ytick,labels = yticklab, xpd = TRUE, line=2)
+
+```
+
+
+
+Consider a pair of random variables $(X,Y)$, from definitions provided in Joe (1997), the upper tail dependent coefficient denoted by $\lambda_{\text{up}}$ is given by:
+
+$$
+\lambda_\text{up} {=} \lim _{u \rightarrow 1^-} \mathrm{Pr}\left\{X>F_X^{-1}(u) \mid Y>F_Y^{-1}(u)\right\},
+$$
+in case the limit exists. Here, $F_X^{-1}(u)$ and $F_Y^{-1}(u)$ denote the quantiles of $X$ and $Y$ at the level $u$. Then, $X$ and $Y$ are said to be upper tail-dependent if $\lambda_\text{up}\in(0,1]$ and upper tail-independent if $\lambda_\text{up}=0$. When a variable reaches an extreme high value, the upper tail-dependent condition indicates that the other variable also reaches an extremely high value. On the other hand, the upper tail-independent suggests that the extreme values of the two variables are not related to each other. Similarly, the lower tail dependence coefficient, $\lambda_{\text{lo}}$, is defined as:
+
+$$
+\lambda_{\text{lo}} {=} \lim _{u \rightarrow 0^+} \mathrm{Pr}\left\{X \leq F_X^{-1}(u) \mid Y \leq Y^{-1}(u)\right\} .
+$$
+
+Let $R(X_j)$  and $R(Y_j)$ denote the rank of $X_j$ and $Y_j$, $j=1,\ldots, n$, respectively. From @Schmidt05, non-parametric estimates of $\lambda_\text{up}$ and $\lambda_\text{lo}$ are given by:
+
+$$
+\hat{\lambda}_{\text{lo}}=\frac{1}{k} \sum_{j=1}^n I\left\{R(X_j)\leq k, R(Y_j) \leq k\right\},
+$$
+and
+
+$$
+\begin{aligned}
+\hat{\lambda}_{\text{up}} & =\frac{1}{k} \sum_{j=1}^n I\left\{R(X_j)>n-k, R(Y_j)>n-k\right\},
+\end{aligned}
+$$
+
+
+where $k \in {1, . . .,n}$ is the threshold rank and a parameter to be chosen by the analyst, $k=k(n) \rightarrow \infty \text { and } k / n \rightarrow 0 \text { as } n \rightarrow \infty \text {, }$. Here, $n$ is the sample size, and $I\{\cdot\}$ takes the value of 1 if the condition is satisfied, and 0 otherwise. 
+
+Figure \@ref(fig:ScatterR) shows the scatter plot of the ranks of the ${\tt LOSS}$ variable and the ${\tt ALAE}$ variable. You can obtain the upper and lower tail dependent coefficient using the `tdc()` function from the `FRAPO` package in `R`. From below, $\hat{\lambda}_{\text{up}}=0.39$, at $k=75$ (note that $n=1500$), between the ${\tt LOSS}$ variable and the ${\tt ALAE}$ variable and $\hat{\lambda}_{\text{lo}}=0.13$. The results implies the losses and expenses variables appear to be more upper-tailed dependent. 
+
+(ref:ScatterR) **Scatter Plot of Ranks of LOSS and ALAE**
+
+```{r ScatterR, message=FALSE, echo=FALSE, warning=FALSE,fig.height=3.9, fig.width=3.9,fig.align='center',fig.cap='(ref:ScatterR)'}
+## Claim , Closed
+#set.seed(10)
+#summary(rank(Claim))
+#summary(rank(Coverage))
+#rankdat<-as.data.frame(cbind(rank(Claim),rank(Coverage)))
+#colnames(rankdat)<-c("ClaimR","CoverageR")
+#rankdat$l_up<-ifelse(rankdat$ClaimR>1139&rankdat$CoverageR>1139, 1,0)
+#sum(rankdat$l_up)/4500
+#table(rankdat$l_up)
+#View(rankdat)
+plot(rank(LOSS),rank(ALAE), ylab='LOSS',xlab='ALAE',xlim=c(0,1500),ylim=c(0,1500),main = "",cex=0.5,ann = FALSE,xaxt='n',yaxt='n',col = alpha(1, 0.4))
+#abline(0,1)
+#abline(h=1300)
+#abline(v=1300)
+abline(h=1425, v=1425, lty=2, col=adjustcolor("black", 0.6))
+abline(h=75, v=75, lty=2, col=adjustcolor("black", 0.6))
+
+title(list("", font = 2, cex=1), adj = 0.5, line = 0.5, font.main=2)
+#summary(lnClaim10)
+#summary(lnPremiumCAllT)
+mtext(side = 1, text = "LOSS (ranks)", line = 1.5,cex=0.9)
+xtick<-c(10, 300, 600, 900, 1200,1500)
+#xtick<-c(0,1.386294,2.079442,2.484907,2.772589,2.995732,3.178054)
+xticklab<-c("10","300","600","900", "1200","1500")
+axis(side=1, at=xtick, labels = FALSE)
+text(x=xtick, -100,labels = xticklab,pos=1, xpd = TRUE, line=2)
+
+
+mtext(side = 2, text = "ALAE (ranks)", line = 2.5, cex=0.9)
+ytick<-c(10, 300, 600, 900, 1200,1500)
+yticklab<-c("10","300","600","900", "1200","1500")
+axis(side=2, at=ytick, labels = FALSE)
+text(x=-250,y= ytick,labels = yticklab, xpd = TRUE, line=2)
+
+```
+
+
+
+`r HideRCode('TDC.1',"R Code for Tail Dependence Coefficient")`
+
+```{r echo=SHOW_PDF, eval=FALSE}
+library(FRAPO)
+Lambda_up<-tdc(as.data.frame(cbind(LOSS,ALAE)),lower = F, k=75)
+round(Lambda_up,2)
+
+Output:
+    LOSS ALAE
+LOSS 1.00 0.39
+ALAE 0.39 1.00
+
+
+Lambda_lo<-tdc(as.data.frame(cbind(LOSS,ALAE)),lower = T, k=75)
+round(Lambda_lo,2)
+
+Output:
+     LOSS ALAE
+LOSS 1.00 0.13
+ALAE 0.13 1.00
+
+
+```
+</div>  
 
 
 ```{r echo=FALSE,warning=FALSE}
 NoClaimCredit<-Insample$NoClaimCredit
 Fire5<-Insample$Fire5
-```
-
-```{r include=FALSE, comment=""}
-library(epitools)
-oddsratio(NoClaimCredit, Fire5,method = c("wald"))$measure
-```
-
-
-`r HideRCode('wald.1',"R Code for Odds Ratios")`
-
-```{r echo=SHOW_PDF, eval=FALSE}
-library(epitools)
-oddsratio(NoClaimCredit, Fire5,method = c("wald"))$measure
-
-Output:
-[1]  0.79
-```
-</div>  
-
-
-
-#### Categorical Variables
-
-
-More generally, let $(X,Y)$ be a bivariate pair having $ncat_X$ and $ncat_Y$ numbers of categories, respectively. For a two-way table of counts, let $n_{jk}$ be the number in the $j$th row, $k$th column. Let $n_{j\centerdot}$ be the row margin total, $n_{\centerdot k}$ be the column margin total and $n=\sum_{j,k} n_{j,k}$. Define the `r Gloss('Pearson chi-square statistic')` as
-\begin{eqnarray*}
-\chi^2 = \sum_{jk} \frac{(n_{jk}- n_{j\centerdot}n_{\centerdot k}/n)^2}{n_{j\centerdot}n_{\centerdot k}/n} .
-\end{eqnarray*}
-The `r Gloss('likelihood ratio test')` statistic is
-\begin{eqnarray*}
-G^2 = 2 \sum_{jk} n_{jk} \log\frac{n_{jk}}{n_{j\centerdot}n_{\centerdot k}/n} .
-\end{eqnarray*}
-Under the assumption of independence, both $\chi^2$ and $G^2$ have an asymptotic chi-square distribution with $(ncat_X-1)(ncat_Y-1)$ degrees of freedom.
-
-To help see what these statistics are estimating, let $\pi_{jk} = \Pr(X=j, Y=k)$ and let $\pi_{X,j}=\Pr(X=j)$ and similarly for $\pi_{Y,k}$. Assuming that $n_{jk}/n \approx \pi_{jk}$ for large $n$ and similarly for the marginal probabilities, we have
-\begin{eqnarray*}
-\frac{\chi^2}{n} \approx \sum_{jk} \frac{(\pi_{jk}- \pi_{X,j}\pi_{Y,k})^2}{\pi_{X,j}\pi_{Y,k}}
-\end{eqnarray*}
-and
-\begin{eqnarray*}
-\frac{G^2}{n} \approx 2 \sum_{jk} \pi_{jk} \log\frac{\pi_{jk}}{\pi_{X,j}\pi_{Y,k}} .
-\end{eqnarray*}
-Under the null hypothesis of independence, we have $\pi_{jk} =\pi_{X,j}\pi_{Y,k}$ and it is clear from these approximations that we anticipate that these statistics will be small under this hypothesis.
-
-Classical approaches, as described in @bishop1975discrete (page 374), distinguish between tests of independence and measures of associations. The former are designed to detect whether a relationship exists whereas the latter are meant to assess the type and extent of a relationship. We acknowledge these differing purposes but also less concerned with this distinction for actuarial applications.
-
-<a id=tab:15.3></a>
-
-[Table 15.3]:\#tab:15.3
-
-Table 15.3.  **Two-way Table of Counts for ${\tt EntityType}$ and ${\tt NoClaimCredit}$**
-
-$$
-{\small \begin{matrix}
-\begin{array}{l|rr} 
-    \hline
-                  & \text{NoClaimCredit} &  \\
-       \text{EntityType} & 0     & 1      \\
-  \hline
-            \text{City}    & 644  & 149 \\
-          \text{County}    & 310  &  18 \\
-            \text{Misc}    & 336  & 273 \\
-          \text{School}    & 1103 & 494 \\
-           \text{Town}     & 492  & 479 \\
-         \text{Village}    & 901  & 440 \\
-   \hline
-\end{array}
-\end{matrix}}
-$$
-
-
-You can obtain the Pearson chi-square statistic, using the `chisq.test()` function from the `MASS` library in `R`. Here, we test whether the  ${\tt EntityType}$  variable is independent of the ${\tt NoClaimCredit}$ variable using [Table 15.3].
-
-```{r include=FALSE}
-library(pander)
 NoClaimCredit<-Insample$NoClaimCredit
 EntityType<-ifelse(Insample$TypeCity==1,"City",
                    ifelse(Insample$TypeCounty==1,"County",
@@ -426,221 +596,17 @@ EntityType<-ifelse(Insample$TypeCity==1,"City",
                                  ifelse(Insample$TypeSchool==1,"School",
                                         ifelse(Insample$TypeTown==1,"Town",
                                                ifelse(Insample$TypeVillage==1,"Village",0))))))
-```
 
-```{r include=FALSE, comment=""}
-library(MASS)
-
-table = table(EntityType, NoClaimCredit)
-pander(chisq.test(table))
-
-```
-
-`r HideRCode('chi.1',"R Code for Pearson Chi-square Statistic")`
-
-```{r echo=SHOW_PDF, eval=FALSE}
-library(MASS)
-table = table(EntityType, NoClaimCredit)
-chisq.test(table)
-
-
-Output:
-------------------------------------
- Test statistic   df     P value    
----------------- ---- --------------
-     344.2        5   3.15e-72 * * *
-------------------------------------
-
-Table: Pearson's Chi-squared test
-```
-</div>  
-
-As the p-value is less than the .05 significance level, we reject the null hypothesis that ${\tt EntityType}$ is independent of ${\tt NoClaimCredit}$.
-
-Furthermore, you can obtain the likelihood ratio test statistic, using the `likelihood.test()` function from the `Deducer` library in `R`. From below, we test whether ${\tt EntityType}$ is independent of ${\tt NoClaimCredit}$ from the LGPIF data. The same conclusion is drawn as the Pearson chi-square test.
-
-```{r include=FALSE, comment=""}
-# library(Deducer)
-# pander(likelihood.test(EntityType, NoClaimCredit))
-
-```
-
-`r HideRCode('lik.1',"R Code for Likelihood Ratio Test Statistic")`
-
-```{r echo=SHOW_PDF, eval=FALSE}
-library(Deducer)
-likelihood.test(EntityType, NoClaimCredit)
-
-Output:
------------------------------------------
- Test statistic   X-squared df   P value 
----------------- -------------- ---------
-     378.7             5         0 * * * 
------------------------------------------
-
-Table: Log likelihood ratio (G-test) test of independence without correction
-
-```
-</div>  
-
-### Ordinal Variables
-
-As the analyst moves from the continuous to the nominal scale, there are two main sources of loss of information @bishop1975discrete (page 343). The first is breaking the precise continuous measurements into groups. The second is losing the ordering of the groups. So, it is sensible to describe what we can do with variables that are in discrete groups but where the ordering is known.
-
-As described in Section \@ref(S:QuaVar), ordinal variables provide a clear ordering of levels of a variable but distances between levels are unknown. Associations have traditionally been quantified parametrically using normal-based correlations and nonparametrically using Spearman correlations with tied ranks.
-
-
-#### Parametric Approach Using Normal Based Correlations
-
-Refer to page 60, Section 2.12.7 of @joe2014dependence. Let $(y_1,y_2)$ be a bivariate pair with discrete values on $m_1, \ldots, m_2$. For a two-way table of ordinal counts, let $n_{st}$ be the number in the $s$th row, $t$ column. Let $(n_{m_1\centerdot}, \ldots, n_{m_2\centerdot})$ be the row margin total, $(n_{\centerdot m_1}, \ldots, n_{\centerdot m_2})$ be the column margin total and $n=\sum_{s,t} n_{s,t}$.
-
-Let $\hat{\xi}_{1s} = \Phi^{-1}((n_{m_1}+\cdots+n_{s\centerdot})/n)$ for $s=m_1, \ldots, m_2$ be a cutpoint and similarly for $\hat{\xi}_{2t}$. The `r Gloss('polychoric correlation')`, based on a two-step estimation procedure, is
-
-
-$$
-\begin{array}{cr}
-  \hat{\rho_N} &=\text{argmax}_{\rho}
-  \sum_{s=m_1}^{m_2} \sum_{t=m_1}^{m_2} n_{st} \log\left\{
-    \Phi_2(\hat{\xi}_{1s}, \hat{\xi}_{2t};\rho)
-    -\Phi_2(\hat{\xi}_{1,s-1}, \hat{\xi}_{2t};\rho) \right.\\
-   & \left. -\Phi_2(\hat{\xi}_{1s}, \hat{\xi}_{2,t-1};\rho)
-    +\Phi_2(\hat{\xi}_{1,s-1}, \hat{\xi}_{2,t-1};\rho)
-    \right\} .
-\end{array}
-$$
-
-It is called a *tetrachoric* correlation for binary variables.
-
-<a id=tab:15.4></a>
-
-[Table 15.4]:\#tab:15.4
-
-Table 15.4.  **Two-way Table of Counts for ${\tt AlarmCredit}$ and ${\tt NoClaimCredit}$**
-
-$$
-{\small \begin{matrix}
-\begin{array}{c|rr} 
-    \hline
-                  & \text{NoClaimCredit} &  \\
-\text{AlarmCredit} & 0     & 1      \\
-  \hline
-          1  & 1669  &  942   \\
-          2  &    121 &  118 \\
-          3  &  195  &   132 \\
-          4 &  1801  &   661 \\
-   \hline
-\end{array}
-\end{matrix}}
-$$
-
-You can obtain the polychoric or tetrachoric correlation using the `polychoric()` or `tetrachoric()` function from the `psych` library in `R`. The polychoric correlation is illustrated using [Table 15.4]. Here, $\hat{\rho}_N=-0.14$, which means that there is a negative relationship between ${\tt AlarmCredit}$ and ${\tt NoClaimCredit}$.
-
-```{r include=FALSE}
 NoClaimCredit<-as.numeric(Insample$NoClaimCredit)
 AlarmCredit<-as.numeric(ifelse(Insample$AC00==1,"1",
                    ifelse(Insample$AC05==1,"2",
                           ifelse(Insample$AC10==1,"3",
                                  ifelse(Insample$AC15==1,"4",0)))))
-```
 
-```{r include=FALSE, comment=""}
-library(psych)
-AlarmCredit<-as.numeric(ifelse(Insample$AC00==1,"1",
-                   ifelse(Insample$AC05==1,"2",
-                          ifelse(Insample$AC10==1,"3",
-                                 ifelse(Insample$AC15==1,"4",0)))))
-x <- table(AlarmCredit,NoClaimCredit)
-rhoN<-polychoric(x,correct=FALSE)$rho
-round(rhoN,2)
 ```
 
 
-`r HideRCode('poly.1',"R Code for Polychoric Correlation")`
-
-```{r echo=SHOW_PDF, eval=FALSE}
-library(psych)
-AlarmCredit<-as.numeric(ifelse(Insample$AC00==1,"1",
-                   ifelse(Insample$AC05==1,"2",
-                          ifelse(Insample$AC10==1,"3",
-                                 ifelse(Insample$AC15==1,"4",0)))))
-x <- table(AlarmCredit,NoClaimCredit)
-rhoN<-polychoric(x,correct=FALSE)$rho
-round(rhoN,2)
-
-Output:
-[1] -0.14
-```
-</div>  
-
-
-
-### Interval Variables
-
-As described in Section \@ref(S:QuanVar), interval variables provide a clear ordering of levels of a variable and the numerical distance between any two levels of the scale can be readily interpretable. For example, driver's age group variable is an interval variable.
-
-For measuring association, both the continuous variable and ordinal variable approaches make sense. The former takes advantage of knowledge of the ordering although assumes continuity. The latter does not rely on continuity but also does not make use of the information given by the distance between scales.
-
-
-### Discrete and Continuous Variables
-
-The `r Gloss('polyserial correlation')` is defined similarly, when one variable ($y_1$) is continuous and the other ($y_2$) ordinal. Define $z$ to be the `r Gloss('normal score')` of $y_1$. The polyserial correlation is
-
-$$
-\hat{\rho_N} = \text{argmax}_{\rho}
-\sum_{i=1}^n \log\left\{ \phi(z_{i1})\left[
-\Phi\left(\frac{\hat{\xi}_{2,y_{i2}} - \rho z_{i1}}
-{(1-\rho^2)^{1/2}}\right)
--\Phi\left(\frac{\hat{\xi}_{2,y_{i2-1}} - \rho z_{i1}}
-{(1-\rho^2)^{1/2}}\right)
-\right]
-\right\} .
-$$
-
-The `r Gloss('biserial correlation')` is defined similarly, when one variable is continuous and the other binary.
-
-<a id=tab:15.5></a>
-
-[Table 15.5]:\#tab:15.5
-
-Table 15.5. **Summary of ${\tt Claim}$ by ${\tt NoClaimCredit}$**
-
-$$
-{\small \begin{matrix}
-\begin{array}{l|r|r} 
-    \hline
-\text{NoClaimCredit} & \text{Mean}     &\text{Total}       \\
- & \text{Claim}     &\text{Claim}       \\
-  \hline
-          0  & 22,505  &  85,200,483   \\
-          1  &    6,629 &  12,282,618 \\
-   \hline
-\end{array}
-\end{matrix}}
-$$
-
-You can obtain the polyserial or biserial correlation using the `polyserial()` or `biserial()` function, respectively, from the `psych` library in `R`. [Table 15.5] gives the summary of ${\tt Claim}$ by ${\tt NoClaimCredit}$ and  the biserial correlation is illustrated using `R` code below. The $\hat{\rho}_N=-0.04$ which means that there is a negative correlation between ${\tt Claim}$ and ${\tt NoClaimCredit}$.
-
-
-```{r include=FALSE, comment=""}
-library(psych)
-rhoN<-biserial(Claim,NoClaimCredit)
-round(rhoN,2)
-```
-
-`r HideRCode('bis.1',"R Code for Biserial Correlation")`
-
-```{r echo=SHOW_PDF, eval=FALSE}
-library(psych)
-rhoN<-biserial(Claim,NoClaimCredit)
-round(rhoN,2)
-
-Output:
-[1] -0.04
-```
-</div>  
-
-
-```{r child = './Quizzes/Quiz142.html', eval = QUIZ}
+```{r child = './Quizzes/Quiz161.html', eval = QUIZ}
 ```
 
 
@@ -654,7 +620,23 @@ In this section, you learn how to:
 
 ***
 
-Copulas are widely used in insurance and many other fields to model the dependence among multivariate outcomes. A `r Gloss('copula')` is a multivariate distribution function with uniform marginals. Specifically, let $\{U_1, \ldots, U_p\}$ be $p$ uniform random variables on $(0,1)$. Their distribution function $${C}(u_1, \ldots, u_p) = \Pr(U_1 \leq u_1, \ldots, U_p \leq u_p),$$
+### Definition of a Copula
+
+Copulas are widely used in insurance and many other fields to model the dependence among multivariate outcomes as they expresses the dependence between the variables explicitly. Recall the joint cumulative distribution function ($cdf$) for two variables $Y_1$ and $Y_2$ is given by: 
+
+$$
+{F}(y_1, y_2)= {\Pr}(Y_1 \leq y_1, Y_2 \leq y_2)
+$$
+
+For the the multivariate case in $p$ dimensions, we have:
+
+$$
+{F}(y_1,\ldots, y_p)= {\Pr}(Y_1 \leq y_1,\ldots ,Y_p \leq y_p)
+$$
+
+The joint distribution considers both the marginal distributions and how the variables are related to each other. However, it expresses this dependence implicitly. Copulas offer a different method that allows us to break down the joint distribution of variables into individual components (the marginal distributions and a copula) that can be adjusted separately.
+
+A `r Gloss('copula')` is a multivariate distribution function with uniform marginals. Specifically, let $\{U_1, \ldots, U_p\}$ be $p$ uniform random variables on $(0,1)$. Their distribution function $${C}(u_1, \ldots, u_p) = \Pr(U_1 \leq u_1, \ldots, U_p \leq u_p),$$
 
 is a copula. We seek to use copulas in applications that are based on more than just uniformly distributed data. Thus, consider arbitrary marginal distribution functions ${F}_1(y_1)$,...,${F}_p(y_p)$. Then, we can define a multivariate distribution function using the copula such that 
 
@@ -663,11 +645,15 @@ is a copula. We seek to use copulas in applications that are based on more than 
 (\#eq:DFDefined)
 \end{equation}
 
-Here, $F$ is a multivariate distribution function. @sklar1959fonctions showed that $any$ multivariate distribution function $F$, can be written in the form of equation \@ref(eq:DFDefined), that is, using a copula representation.
+Here, $F$ is a multivariate distribution function, and the resulting value from the copula function is limited to a range of $[0,1]$ as it relates to probabilities. @sklar1959fonctions showed that $any$ multivariate distribution function $F$, can be written in the form of equation \@ref(eq:DFDefined), that is, using a copula representation.
 
-Sklar also showed that, if the marginal distributions are continuous, then there is a unique copula representation. In this chapter we focus on copula modeling with  continuous variables. For discrete case, readers can see @joe2014dependence and @genest2007methods.
+Sklar also showed that, if the marginal distributions are continuous, then there is a unique copula representation. Hence, copulas can be used instead of joint distribution functions. In order to be considered valid, they must meet the necessary requirements of a valid joint cumulative distribution function. In this chapter we focus on copula modeling with  continuous variables. A copula $C$ is considered to be **absolutely continuous** if the **density** 
 
-For the bivariate case where $p=2$, we can write a copula and the distribution function of two random variables as 
+$$
+c(u_1, \ldots, u_p)=\frac{\partial^p}{\partial_{u_p}\ldots \partial_{u_1}}C(u_1, \ldots, u_p),
+$$
+
+exists. For discrete case, readers can see @joe2014dependence and @genest2007methods. For the bivariate case where $p=2$, we can write a copula and the distribution function of two random variables as 
 
 $$
 {C}(u_1, \, u_2) = \Pr(U_1 \leq u_1, \, U_2 \leq u_2)
@@ -679,7 +665,56 @@ $$
 {F}(y_1, \, y_2)= {C}({F}_1(y_1),  {F}_p(y_2)).
 $$
 
-As an example, we can look to the copula due to @frank1979simultaneous. The copula (distribution function) is
+
+One example of a bivariate copula is the product copula, also called the independence copula, as it captures the property of independence of the two variables $Y_1$ and $Y_2$. The copula (distribution function) is
+
+$$
+{F}(y_1, \, y_2)= {C}({F}_1(y_1),  {F}_p(y_2))={F}_1(y_1){F}_p(y_2)=u_1u_2=\Pi(u).
+$$
+
+In Figure \@ref(fig:IndCop), both the distribution function and scatter plot of observations generated from the independence copula are displayed. The scatter plot indicates that there is no correlation between the two components, $U_1$ and $U_2$.
+
+
+(ref:IndCop) Left: Scatterplot of observations from Independence Copula. Right: Plot for distribution function for Independence Copula.
+
+```{r IndCop, message=FALSE, warning=FALSE, comment="", echo=FALSE, fig.align='center', fig.height=4, fig.width=8, fig.cap='(ref:IndCop)'}
+par(mfrow=c(1,2))
+d<-2
+ic<-indepCopula(dim=d)
+set.seed(100)
+U<-rCopula(1000, copula = ic) # generate a sample
+plot(U, xlab=quote(U[1]), ylab=quote(U[2]), ann = FALSE,xaxt='n',yaxt='n')
+
+mtext(side = 1, text = quote(U[1]), line = 2.0,cex=0.9)
+xtick<-c(0.0, 0.2, 0.4, 0.6, 0.8, 1.0)
+#xtick<-c(0,1.386294,2.079442,2.484907,2.772589,2.995732,3.178054)
+xticklab<-c("0.0","0.2","0.4","0.6", "0.8","1.0")
+axis(side=1, at=xtick, labels = FALSE)
+text(x=xtick, -0.08,labels = xticklab,pos=1, xpd = TRUE, line=2)
+
+
+mtext(side = 2, text = quote(U[2]), line = 2.5, cex=0.9)
+ytick<-c(0.0, 0.2, 0.4, 0.6, 0.8,1.0)
+yticklab<-c("0.0","0.2","0.4","0.6", "0.8","1.0")
+axis(side=2, at=ytick, labels = FALSE)
+text(x=-0.15,y= ytick,labels = yticklab, xpd = TRUE, line=2)
+
+
+persp(ic, pCopula, zlab="C(u,v)", theta=50, cex.lab=0.9, cex.axis = 0.5)
+
+```
+
+
+`r HideRCode('IndPlot.1',"R Code for Independence Copula Plots")`
+
+```{r, echo=SHOW_PDF, ref.label = 'IndCop', eval=FALSE}
+```
+
+</div>
+
+
+
+There is another type of copula that is frequently utilized, known as Frank's Copula [@frank1979simultaneous]. This copula can represent both positive and negative dependence and has a straightforward analytic structure. The copula (distribution function) is
 
 \begin{equation}
 {C}(u_1,u_2) = \frac{1}{\gamma} \log \left( 1+ \frac{ (\exp(\gamma
@@ -687,10 +722,164 @@ u_1) -1)(\exp(\gamma u_2) -1)} {\exp(\gamma) -1} \right).
 (\#eq:FrankCopula)
 \end{equation}
 
-This is a bivariate distribution function with its domain on the unit square $[0,1]^2.$ Here $\gamma$ is dependence parameter, that is, the range of dependence is controlled by the parameter $\gamma$. Positive association increases as $\gamma$ increases. As we will see, this positive association can be summarized with `r Gloss("Spearman's rho")` ($\rho_S$) and Kendall's tau ($\tau$). Frank's copula is commonly used. We will see other copula functions in Section \@ref(S:CopTyp).
+This is a bivariate distribution function with its domain on the unit square $[0,1]^2.$ Here $\gamma$ is the dependence parameter, that is, the range of dependence is controlled by the parameter $\gamma$. Positive association increases as $\gamma$ increases. As we will see, this positive association can be summarized with `r Gloss("Spearman's rho")` ($\rho_S$) and Kendall's tau ($\tau$). 
 
-```{r child = './Quizzes/Quiz143.html', eval = QUIZ}
+
+In Figure \@ref(fig:FrankCop1), we can see scatterplots of data generated from the Frank's copula. As $\gamma$ value changes, we observe that components $U_1$ and $U_2$ become positively or negatively dependent. When $\theta$ approaches 0, \@ref(eq:FrankCopula)) transforms into an independence copula. Also,  Figure \@ref(fig:FrankCop2) provides the distribution and density functions for Frank's copula when $\gamma=12$. In Section \@ref(S:CopTyp), we will explore copula functions other than the commonly used Frank's copula.
+
+(ref:FrankCop1) **Scatterplot of Observations from Frank's Copula**. $\gamma=12$ (left), $\gamma=0$ (middle) and $\gamma=-12$ (right). 
+
+```{r FrankCop1, message=FALSE, warning=FALSE, comment="", echo=FALSE, fig.height=3.2, ,fig.align='center', fig.cap='(ref:FrankCop1)'}
+par(mfrow=c(1,3))
+d<-2
+gamma_par<-12
+fc<-frankCopula(gamma_par, dim=d)
+set.seed(100)
+n<-1000
+U<-rCopula(n, copula = fc) # generate a sample with gamma=5
+U0<-rCopula(n, copula = setTheta(fc,value = 0)) # generate a sample with gamma=0
+U12<-rCopula(n, copula = setTheta(fc,value = -12)) # generate a sample with gamma=-5
+plot(U, xlab=quote(U[1]), ylab=quote(U[2]))
+plot(U0, xlab=quote(U[1]), ylab=quote(U[2]))
+plot(U12, xlab=quote(U[1]), ylab=quote(U[2]))
+
 ```
+
+
+
+(ref:FrankCop2) Left: Plot for distribution function for Frank's Copula ($\gamma=12$). Right: Plot for the density function for Frank's Copula ($\gamma=12$).
+
+```{r FrankCop2, message=FALSE, warning=FALSE, comment="", echo=FALSE, fig.align='center', fig.cap='(ref:FrankCop2)'}
+par(mfrow=c(1,2))
+d<-2
+gamma_par<-12
+fc<-frankCopula(gamma_par, dim=d)
+persp(fc, pCopula, zlab="C(u,v)", theta=50, cex.lab=0.9, cex.axis = 0.5)
+persp(fc, dCopula, zlab="c(u,v)", theta=50, cex.lab=0.9, cex.axis = 0.5)
+```
+
+`r HideRCode('CopPlot.1',"R Code for Frank Copula Plots")`
+
+```{r echo=SHOW_PDF, eval=FALSE}
+
+## Scatterplots
+par(mfrow=c(1,3))
+d<-2
+gamma_par<-12
+fc<-frankCopula(gamma_par, dim=d)
+set.seed(100)
+n<-1000
+U<-rCopula(n, copula = fc) # generate a sample with gamma=5
+U0<-rCopula(n, copula = setTheta(fc,value = 0)) # generate a sample with gamma=0
+U12<-rCopula(n, copula = setTheta(fc,value = -12)) # generate a sample with gamma=-5
+plot(U, xlab=quote(U[1]), ylab=quote(U[2]))
+plot(U0, xlab=quote(U[1]), ylab=quote(U[2]))
+plot(U12, xlab=quote(U[1]), ylab=quote(U[2]))
+
+
+## Distribution and density functions
+par(mfrow=c(1,2))
+d<-2
+gamma_par<-12
+fc<-frankCopula(gamma_par, dim=d)
+persp(fc, pCopula, zlab="C(u,v)", theta=50, cex.lab=0.9, cex.axis = 0.5)
+persp(fc, dCopula, zlab="c(u,v)", theta=50, cex.lab=0.9, cex.axis = 0.5)
+
+```
+
+</div>  
+
+
+**Example `r chapnum`.2.1. Copula Representation Example**
+
+Suppose we have a variable $X$ that follows a Pareto distribution with a scale parameter of $\theta=10$ and a shape parameter of $\alpha=1.6$. Additionally, let $Y$ be an exponential variable with a mean value of 8. Write $F_{X,Y}(7.2, 4.1)$ in the form $C(u,v)$. 
+
+Note: $F_{X,Y}(x,y)$  is the joint distribution function and $C(u,v)$ is the copula that links $X$ and $Y$. 
+
+
+`r HideExample('16.2.1','Show Example Solution')`
+
+**Solution.**
+
+Denote the marginal distribution functions of $X$ and $Y$ as $F_X(x)$ and $F_Y(y)$, respectively. Since $F_{X,Y}(7.2,4.1)=C[F_X(7.2),F_Y(4.1)]$, we can use the marginal distribution functions to obtain the arguments of the copula function:
+
+For the Pareto variable, $X$:
+
+$$
+F_X(7.2)=1- \left(  \frac{10}{7.2+ 10} \right) ^{1.6} =0.58;
+$$
+
+For the Exponential variable, $Y$:
+
+$$
+F_Y(4.1)=1-e^{-0.125\times 4.1}=0.40.
+$$
+
+Hence, $F_{X,Y}(7.2,4.1)=C[0.58,0.40]$.
+
+</div>
+
+*** 
+
+### Sklar’s Theorem
+
+
+In @sklar1959fonctions, Sklar showcased how copulas can capture the dependence structure of a group of random variables. This principle has since been referred to as Sklar's Theorem and serves as the cornerstone of copula theory. Dependence modeling with copulas for continuous multivariate distributions allows for the separation of modeling the univariate marginals and the dependence structure, where a copula can represent the dependence structure.
+
+
+1. For a $p$-variate distribution $F$, with marginal cumulative distribution functions $F_1, \ldots, F_p$, the copula associated with $F$ is a distribution function $C: [0,1]^p  \rightarrow [0,1]$ with $U(0,1)$ margins that satisfies:
+
+\begin{equation}
+{F}\left(\mathbf{y}\right)= {C}\left({F}_1\left(y_1\right), \ldots, {F}_p\left(y_p\right)\right), \quad \mathbf{y}=\{y_1 \ldots y_p\} \in \mathbb{R}^p.
+(\#eq:DFDefined2)
+\end{equation} 
+
+If $F$ is a continuous $p$-variate distribution function with univariate margins $F_1, \ldots, F_p$ and quantile functions $F_1^{-1}, \ldots, F_p^{-1}$, then:
+
+$$
+C\left(\mathbf{u}\right) =F\left(F_1^{-1}\left(u_1\right), \ldots, F_p^{-1}\left(u_p\right)\right), \quad \mathbf{u} \in [0,1]^p.
+$$
+
+is the unique choice. 
+
+2. The converse also holds: If $C$ is a copula and $F_1, \ldots, F_p$ are univariate cumulative distribution functions, then the function $F$ defined by \@ref(eq:DFDefined2) is a joint cumulative distribution function with marginal cumulative distribution functions $F_1, \ldots, F_p$.
+
+
+
+`r HideProofTheory('Copula.1',"Proof of Sklar's Theorem")`
+
+***
+
+Suppose we have $y_1, \ldots, y_p \sim F$, $U\sim \text{U}(0,1)$ and assume $y_1, \ldots, y_p$ is continuous, which implies $F_1^{-1}(U_i)=Y_i$. Then, the random variables have a multivariate distribution function $C$, given by: 
+
+$$
+\begin{array}{cl}
+{C}\left(u_1, \ldots, u_p\right)&=\Pr\left( U_1 \leq u_1, \ldots U_p \leq u_p\right)\\
+&=\Pr\left( {F}_1\left(Y_1\right) \leq u_1, \ldots {F}_p\left(Y_p\right) \leq u_p\right)\\
+&=\Pr\left( Y_1 \leq {F}_1^{-1}(u_1), \ldots Y_p \leq {F}_p^{-1}(u_p)\right)\\
+&=F\left(F_1^{-1}\left(u_1\right), \ldots, F_p^{-1}\left(u_p\right)\right)\\
+&=F\left(y_1, \ldots, y_p\right) .\\
+\end{array}
+$$
+
+
+Hence: 
+
+$$
+{C}\left(F_1(y_1), \ldots, F_p(y_p)\right)=F\left(y_1, \ldots, y_p\right) .
+$$
+
+
+***
+
+</div>
+
+
+According to the first part of Sklar's theorem, there is a unique underlying copula that is unknown, and it can be estimated from the data available. After estimating the margins and copula, they are usually combined using  \@ref(eq:DFDefined2) to give the estimated multivariate distribution function. Also, Sklar's theorem's second part enables the construction of adaptable multivariate distribution functions with specified univariate margins. These functions are useful in more intricate models, like pricing models.
+
+```{r child = './Quizzes/Quiz162.html', eval = QUIZ}
+```
+
 
 
 ## Application Using Copulas  {#S:CopAppl}
@@ -704,37 +893,7 @@ In this section, you learn how to:
 
 ***
 
-This section analyzes the insurance losses and expenses data with the statistical program `R`. The data set was introduced in @frees1998understanding and is now readily available in the `copula` package. The model fitting process is started by marginal modeling of each of the two variables, ${\tt LOSS}$ and ${\tt ALAE}$. Then we model the joint distribution of these marginal outcomes.
-
-### Data Description
-
-We start with a sample ($n = 1500$) from the whole data. We consider first two variables of the data; *losses* and *expenses*.
-
-*  ${\tt LOSS}$, general liability claims from the Insurance Services Office, Inc. (ISO)
-*  ${\tt ALAE}$, specifically attributable to the settlement of individual claims (e.g. lawyer's fees, claims investigation expenses)
-
-To visualize the relationship between losses and expenses, the scatterplots in Figure \@ref(fig:Scatter) are created on dollar and log dollar scales. It is difficult to see any relationship between the two variables in the left-hand panel. Their dependence is more evident when viewed on the log scale, as in the right-hand panel.
-
-(ref:Scatter) **Scatter Plot of LOSS and ALAE**
-
-```{r  Scatter, message=FALSE, echo=FALSE, out.width='80%', fig.align='center',fig.cap='(ref:Scatter)'}
-library(copula)
-data(loss) # loss data from copula library
-LOSS <- loss$loss
-ALAE <- loss$alae
-par(mfrow=c(1, 2))
-plot(LOSS, ALAE, cex=.5) # dollar scale
-plot(log(LOSS), log(ALAE),cex=.5) # log scale
-```
-
-
-`r HideRCode('ScaHis.1',"R Code for Loss versus Expense Scatterplots")`
-
-```{r, echo=SHOW_PDF, ref.label = 'Scatter', eval=FALSE}
-```
-
-</div>  
-
+This section analyzes the insurance losses and expenses data with the statistical program `R`. The data set is visualized in Figure \@ref(fig:Scatter). The model fitting process is started by marginal modeling of each of the two variables, ${\tt LOSS}$ and ${\tt ALAE}$. Then we model the joint distribution of these marginal outcomes.
 
 
 ### Marginal Models
@@ -742,12 +901,12 @@ plot(log(LOSS), log(ALAE),cex=.5) # log scale
 We first examine the `r Gloss('marginal distributions')` of losses and expenses before going through the joint modeling. The histograms show that both  ${\tt LOSS}$ and ${\tt ALAE}$ are right-skewed and `r Gloss("fat-tailed")`. Because of these features, for both marginal distributions of losses and expenses, we consider a Pareto distribution, distribution function of the form
 
 $$
-F(y)=1- \left( 1 + \frac{\theta}{y+ \theta} \right) ^{\alpha}.
+F(y)=1- \left(  \frac{\theta}{y+ \theta} \right) ^{\alpha}.
 $$
 
 Here, $\theta$ is a scale parameter and $\alpha$ is a shape parameter. Section \@ref(S:ContinuousDistributions) provides details of this distribution.
 
-The marginal distributions of losses and expenses are fit using the method of maximum likelihood. Specifically, we use the `vglm` function from the `R VGAM` package. Firstly, we fit the marginal distribution of ${\tt ALAE}$. Parameters are summarized in [Table 15.6].
+The marginal distributions of losses and expenses are fit using the method of maximum likelihood. Specifically, we use the `vglm` function from the `R VGAM` package. Firstly, we fit the marginal distribution of ${\tt ALAE}$. Parameters are summarized in [Table 16.6].
 
 ```{r include=FALSE, comment=""}
 library(VGAM)
@@ -791,11 +950,11 @@ Output:
 ```
 </div>  
 
-<a id=tab:15.6></a>
+<a id=tab:16.6></a>
 
-[Table 15.6]:\#tab:15.6
+[Table 16.6]:\#tab:16.6
 
-Table 15.6.  **Summary of Pareto Maximum Likelihood Fitted Parameters from the LGPIF Data**
+Table 16.6.  **Summary of Pareto Maximum Likelihood Fitted Parameters from the LGPIF Data**
 
 $$
 {\small \begin{matrix}
@@ -813,7 +972,7 @@ $$
 To visualize the fitted distribution of  ${\tt LOSS}$ and ${\tt ALAE}$ variables, one can use the estimated parameters and plot the corresponding distribution function and density function. For more details on the selection of marginal models, see Chapter \@ref(ChapModelSelection).
 
 
-### Probability Integral Transformation
+### Probability Integral Transformation {#S:PIT}
 
 When studying simulation, in Section \@ref(S:InverseTransform) we learned about the `r Gloss('inverse transform method')`. This is a way of mapping a $U(0,1)$ random variable into a random variable $X$ with distribution function $F$ via the inverse of the distribution, that is, $X = F^{-1}(U)$. The `r Gloss('probability integral transformation')` goes in the other direction, it states that $F(X) = U$. Although the inverse transform result is available when the underlying random variable is continuous, discrete or a hybrid combination of the two, the probability integral transform is mainly useful when the distribution is continuous. That is the focus of this chapter.
 
@@ -822,7 +981,7 @@ We use the probability integral transform for two purposes: (1) for diagnostic p
 For the first purpose, we can check to see whether the Pareto is a reasonable distribution to model our marginal distributions. Given the fitted Pareto distribution, the variable ${\tt ALAE}$ is transformed to the variable $u_1$, which follows a uniform distribution on $[0,1]$:
 
 $$
-u_1 = \hat{F}_{1}^{-1}(ALAE) = 1 - \left( 1 + \frac{ALAE}{\hat{\theta}} \right)^{-\hat{\alpha}}.
+u_1 = \hat{F}_{1}(ALAE) = 1 - \left( \frac{\hat{\theta}}{\hat{\theta}+ALAE} \right)^{\hat{\alpha}}.
 $$
 
 ```{r message=FALSE, warning=FALSE, comment="", echo=FALSE}
@@ -929,6 +1088,7 @@ To visualize the fitted Frank's copula, the distribution function and density fu
 
 ```{r FrankCop, message=FALSE, warning=FALSE, comment="", echo=FALSE, fig.align='center', fig.cap='(ref:FrankCop)'}
 #par(mfrow=c(1,2))
+frank.cop <- archmCopula("frank", param= c(3.114), dim = 2) 
 par(mar=c(3.2,3,.2,.2),mfrow=c(1,2))
 persp(frank.cop, pCopula, theta=50, zlab="C(u,v)", xlab ="u", ylab="v", cex.lab=0.9, cex.axis = 0.5)
 persp(frank.cop, dCopula, theta=0, zlab="c(u,v)",  xlab ="u", ylab="v", cex.lab=0.9, cex.axis = 0.5)
@@ -945,16 +1105,53 @@ persp(frank.cop, dCopula, theta=0, zlab="c(u,v)",  xlab ="u", ylab="v", cex.lab=
 
 
 
+
+We can estimate the anticipated expenses when losses surpass a specific threshold by utilizing the fitted Frank copula based on the data on losses and expenses. For instance, according to the data, the mean expense when losses exceed $\$200,000$ is $\$58,807$. However, when we apply the fitted Frank copula, the projected expenses when losses exceed $\$200,000$ is $\$26,767$. This indicates that the Frank copula doesn't provide an accurate estimate and may not be suitable for this dataset. We will now explore other copula types.
+
+
+`r HideRCode('ExpectedExp.1','R Code for using the fitted Frank copula to calculate the expected level of expenses')`
+
+```{r echo=SHOW_PDF, eval=FALSE}
+library(copula)
+library(VGAM)
+## From data
+lossData_Ori<-as.data.frame(cbind(loss$alae,loss$loss))
+colnames(lossData_Ori)<-c("alae","loss")
+Threshold<-200000
+sum(lossData_Ori$alae*(lossData_Ori$loss>Threshold))/sum((lossData_Ori$loss>Threshold)) 
+
+Output:
+[1] 58806.75
+
+
+### Using fitted Frank copula
+set.seed(2010)
+nSim <- 10000
+frank.cop <- archmCopula("frank", param= c(3.114), dim = 2)
+mcc <- mvdc(frank.cop, margins = c("paretoII","paretoII"), 
+            paramMargins = list(list(scale = theta.ALAE, shape=alpha.ALAE),
+                                list(scale = theta.LOSS, shape=alpha.LOSS)))
+
+LossData_Sim <- as.data.frame(rMvdc(nSim, mvdc = mcc))
+Threshold<-200000
+sum(LossData_Sim$alae*(LossData_Sim$loss>Threshold))/sum((LossData_Sim$loss>Threshold)) 
+
+
+Output:
+[1] 26766.84
+```
+</div> 
+
+
 ## Types of Copulas {#S:CopTyp}
 
 ***
 
 In this section, you learn how to:
 
--  Define the basic types of copulas, including the normal, $t$-, elliptical, and Archimedean copulas
--  Interpret bounds that limit copula distribution functions as the amount of dependence varies
--  Calculate measures of association for different copulas and interpret their properties
--  Interpret tail dependency for different copulas
+-  Define the basic types of elliptical copulas, including the normal, $t$
+-  Define basic types of Archimedean copulas
+
 
 ***
 
@@ -1023,7 +1220,7 @@ g_p \left( \frac{1}{2} (\mathbf{z}- \boldsymbol \mu)^{\prime}
 \boldsymbol \Sigma^{-1}(\mathbf{z}- \boldsymbol \mu) \right) ,
 $$
 
-for $\mathbf{z} \in R^p$ and $k_p$ is a constant, determined so the density integrates to one. The function $g_p(\cdot)$ is called a *generator* because it can be used to produce different distributions. [Table 15.7] summarizes a few choices used in actuarial practice. The choice $g_p(x) = \exp(-x)$ gives rises to the normal *pdf* in equation \@ref(eq:Normalpdf). The choice $g_p(x) = \exp(-(1+2x/r)^{-(p+r)/2})$ gives rise to a multivariate $t$- distribution with $r$ degrees of freedom with *pdf*
+for $\mathbf{z} \in R^p$ and $k_p$ is a constant, determined so the density integrates to one. The function $g_p(\cdot)$ is called a *generator* because it can be used to produce different distributions. [Table 16.7] summarizes a few choices used in actuarial practice. The choice $g_p(x) = \exp(-x)$ gives rises to the normal *pdf* in equation \@ref(eq:Normalpdf). The choice $g_p(x) = \exp(-(1+2x/r)^{-(p+r)/2})$ gives rise to a multivariate $t$- distribution with $r$ degrees of freedom with *pdf*
 
 $$
 h_{t_r} (\mathbf{z})= \frac{k_p}{\sqrt{\det \boldsymbol \Sigma}}
@@ -1031,11 +1228,11 @@ h_{t_r} (\mathbf{z})= \frac{k_p}{\sqrt{\det \boldsymbol \Sigma}}
 $$
 
 
-<a id=tab:15.7></a>  
+<a id=tab:16.7></a>  
 
-[Table 15.7]: \#tab:15.7
+[Table 16.7]: \#tab:16.7
 
-Table 15.7. **Generator Functions ($g_p(\cdot)$) for Selected Elliptical Distributions**
+Table 16.7. **Generator Functions ($g_p(\cdot)$) for Selected Elliptical Distributions**
 
 $$
 \small\begin{array}{lc}
@@ -1064,6 +1261,74 @@ $$
 As noted above, most empirical work focuses on the normal copula and $t$-copula. Specifically, $t$-copulas are useful for modeling  the dependency in the tails of bivariate distributions, especially in financial risk analysis applications. The $t$-copulas with same  association parameter in varying the degrees of freedom parameter show us different tail dependency structures. For more information on about $t$-copulas readers can see @joe2014dependence and @hofertelements.
 
 
+
+We used the same approach as with the fitted Frank copula to fit the Normal and $t$ copula. The `R` code below fits the Normal and $t$ copula and estimates the expected level of expenses when losses exceed $\$200,000$. The results show that the estimated expenses using the fitted Normal copula when losses exceed $\$200,000$ is $\$35,411$. However, this is not a good fit compared to the mean expense of $\$58,807$ from the losses and expenses data. When losses exceed $\$200,000$, the fitted $t$ copula estimates expenses to be $\$47,354$, making it a better fit than the Normal copula.
+
+
+
+`r HideRCode('ExpectedExp.2','R Code for using the fitted Normal and t copula to calculate the expected level of expenses')`
+
+```{r echo=SHOW_PDF, eval=FALSE}
+
+## Fit Gaussian Copula and Calculate Expenses. 
+uu = cbind(u1,u2) 
+# Normal copula object with arbitrary parameter value
+normal.cop <- ellipCopula("normal", param=c(0.04), dim = 2)
+# fit copula using ML method, starting value 0.4
+fit.mlnc <- fitCopula(normal.cop, uu, method="ml", start=c(0.4))
+
+normal.cop <- ellipCopula("normal", param=c(0.4783), dim = 2)
+
+set.seed(2010)
+nSim <- 10000
+normal.cop <- ellipCopula("normal", param=c(0.4783), dim = 2)
+mcc <- mvdc(normal.cop, margins = c("paretoII","paretoII"), 
+            paramMargins = list(list(scale = theta.ALAE, shape=alpha.ALAE),
+                                list(scale = theta.LOSS, shape=alpha.LOSS)))
+
+LossData_Sim <- as.data.frame(rMvdc(nSim, mvdc = mcc))
+colnames(LossData_Sim)<-c("alae","loss")
+Threshold<-200000
+sum(LossData_Sim$alae*(LossData_Sim$loss>Threshold))/sum((LossData_Sim$loss>Threshold)) 
+
+
+Output:
+[1]  35410.6
+
+
+## Fit t Copula and Calculate Expenses. 
+uu = cbind(u1,u2) 
+# t copula object with arbitrary parameter value
+t.cop <- ellipCopula("t", param=c(0.04), dim = 2)
+# fit copula using ML method, starting value 0.4
+fit.mlt <- fitCopula(t.cop, uu, method="ml", start=c(0.4,2))
+
+
+t.cop <- ellipCopula("t", param=c(0.4816), dim = 2,df = 9.6474)
+
+set.seed(2010)
+nSim <- 10000
+t.cop <- ellipCopula("t", param=c(0.4816), dim = 2,df = 9.6474)
+mcc <- mvdc(t.cop, margins = c("paretoII","paretoII"), 
+            paramMargins = list(list(scale = theta.ALAE, shape=alpha.ALAE),
+                                list(scale = theta.LOSS, shape=alpha.LOSS)))
+
+LossData_Sim <- as.data.frame(rMvdc(nSim, mvdc = mcc))
+colnames(LossData_Sim)<-c("alae","loss")
+Threshold<-200000
+sum(LossData_Sim$alae*(LossData_Sim$loss>Threshold))/sum((LossData_Sim$loss>Threshold)) 
+
+
+Output:
+[1]  47353.78
+```
+
+</div> 
+
+
+
+
+
 ### Archimedean Copulas
 
 This class of copulas is also constructed from a *generator* function. For Archimedean copulas, we assume that $g(\cdot)$ is a convex, decreasing function with domain [0,1] and range $[0, \infty)$ such that $g(0)=0$. Use $g^{-1}$ for the inverse function of $g$. Then the function
@@ -1084,7 +1349,7 @@ Some important special cases of Archimedean copulas include the Frank, Clayton/C
 
 #### Clayton Copula {-}
 
-For $p=2$, the Clayton copula is parameterized by $\gamma \in [-1,\infty)$ is defined by
+For $p=2$, the Clayton copula is defined by $\gamma \in [-1,\infty)$ is defined by
 
 $$
 C_{\gamma}^C(u)=\max\{u_1^{-\gamma}+u_2^{-\gamma}-1,0\}^{1/\gamma}, \quad u \in [0,1]^2.
@@ -1102,16 +1367,97 @@ $$
 
 For more information on Archimedean copulas, see @joe2014dependence, @frees1998understanding, and @genest1986bivariate.
 
-### Properties of Copulas
+We used the same approach to fit the Clayton and Gumbel-Hougaard copulas as we did for the fitted Frank copula. The `R` code below fits these two copulas and determines the expected expense level for losses higher than $\$200,000$. Our analysis shows that the estimated expenses for losses exceeding $\$200,000$ using the fitted Clayton copula are $\$14,209$, while the fitted Gumbel-Hougaard copula predicts $\$58,554$. Of all the copula types considered, the Gumbel-Hougaard copula provides the best fit for this data. For more on Goodness-of-fit tests, see @hofertelements. 
+
+
+
+`r HideRCode('ExpectedExp.3','R Code for using the fitted Clayton and Gumbel-Hougaard copula to calculate the expected level of expenses')`
+
+```{r echo=SHOW_PDF, eval=FALSE}
+## Fit Clayton Copula and Calculate Expenses. 
+uu = cbind(u1,u2) 
+# Clayton's copula object with arbitrary parameter value
+clayton.cop <- archmCopula("clayton", param= c(5), dim = 2) 
+# fit copula using ML method, starting value 0.4
+fitclayton.ml <- fitCopula(clayton.cop, uu, method="ml", start=c(0.4))
+summary(fitclayton.ml)
+
+clayton.cop <- archmCopula("clayton", param= c(0.5678), dim = 2) 
+
+set.seed(2010)
+nSim <- 10000
+clayton.cop <- archmCopula("clayton", param= c(0.5678), dim = 2) 
+mcc <- mvdc(clayton.cop, margins = c("paretoII","paretoII"), 
+            paramMargins = list(list(scale = theta.ALAE, shape=alpha.ALAE),
+                                list(scale = theta.LOSS, shape=alpha.LOSS)))
+
+LossData_Sim <- as.data.frame(rMvdc(nSim, mvdc = mcc))
+colnames(LossData_Sim)<-c("alae","loss")
+Threshold<-200000
+sum(LossData_Sim$alae*(LossData_Sim$loss>Threshold))/sum((LossData_Sim$loss>Threshold)) 
+
+
+Output:
+[1]  14208.16
+
+## Fit Gumbel-Hougaard Copula and Calculate Expenses. 
+uu = cbind(u1,u2) 
+# gumbel's copula object with arbitrary parameter value
+gumbel.cop <- archmCopula("gumbel", param= c(5), dim = 2) 
+# fit copula using ML method, starting value 0.4
+fitgumbel.ml <- fitCopula(gumbel.cop, uu, method="ml", start=c(0.4))
+summary(fitgumbel.ml)
+
+gumbel.cop <- archmCopula("gumbel", param= c(1.444), dim = 2) 
+
+set.seed(2010)
+nSim <- 10000
+gumbel.cop <- archmCopula("gumbel", param= c(1.444), dim = 2) 
+mcc <- mvdc(gumbel.cop, margins = c("paretoII","paretoII"), 
+            paramMargins = list(list(scale = theta.ALAE, shape=alpha.ALAE),
+                                list(scale = theta.LOSS, shape=alpha.LOSS)))
+
+LossData_Sim <- as.data.frame(rMvdc(nSim, mvdc = mcc))
+colnames(LossData_Sim)<-c("alae","loss")
+Threshold<-200000
+sum(LossData_Sim$alae*(LossData_Sim$loss>Threshold))/sum((LossData_Sim$loss>Threshold)) 
+
+
+Output:
+[1]  58554.37
+
+```
+
+</div> 
+
+
+*** 
+
+```{r child = './Quizzes/Quiz164.html', eval = QUIZ}
+```
+
+
+
+## Properties of Copulas
+
+***
+
+In this section, you learn how to:
+
+-   Interpret bounds that limit copula distribution functions as the amount of dependence varies
+-  Calculate measures of association for different copulas and interpret their properties
+-  Interpret tail dependency for different copulas
+
+***
 
 With many choices of copulas available, it is helpful for analysts to understand general features of how these alternatives behave.
 
-#### Bounds on Association {#S:Dep:Bounds}
+### Bounds on Association {#S:Dep:Bounds}
 
 Any distribution function is bounded below by zero and from above by one. Additional types of bounds are available in multivariate contexts. These bounds are useful when studying dependencies. That is, as an analyst thinks about variables as being extremely dependent, one has available bounds that cannot be exceeded, regardless of the dependence. The most widely used bounds in dependence modeling are known as the *Fr&eacute;chet-H&ouml;effding* bounds, given as
 
 $$
-\max( u_1 +\cdots+ u_p + p -1, 0) \leq  C(u_1,  \ldots, u_p) \leq \min (u_1,  \ldots,u_p).
+\max( u_1 +\cdots+ u_p - p +1, 0) \leq  C(u_1,  \ldots, u_p) \leq \min (u_1,  \ldots,u_p).
 $$
 
 To see the right-hand side of this equation, note that 
@@ -1121,10 +1467,11 @@ C(u_1,\ldots, u_p) = \Pr(U_1 \leq u_1, \ldots, U_p \leq u_p) \leq  \Pr(U_j \leq 
 $$
 
 for $j=1,\ldots,p$. The bound is achieved when $U_1 = \cdots = U_p$. To see the left-hand side when $p=2$, consider $U_2=1-U_1$. In this case, if $1-u_2 < u_1$ then 
+
 $$
 \Pr(U_1 \leq u_1, U_2 \leq u_2) = \Pr ( 1-u_2 \leq U_1 < u_1) =u_1+u_2-1.
 $$
-See, for example, @nelsen1997introduction for additional discussion.
+See, for example, @nelsen1997introduction for additional discussion. 
 
 To see how these bounds relate to the concept of dependence, consider the case of $p=2$. As a benchmark, first note that the product copula is $C(u_1,u_2)=u_1 \cdot u_2$ is the result of assuming independence between random variables. Now, from the above discussion, we see that the lower bound is achieved when the two random variables are perfectly negatively related ($U_2=1-U_1$). Further, it is clear that the upper bound is achieved when they are perfectly positively related ($U_2=U_1$). To emphasize this, the `r Gloss('Frechet-Hoeffding bounds')` for two random variables appear in Figure \@ref(fig:Bounds).
 
@@ -1145,11 +1492,41 @@ plot (cbind(U,U), xlab=quote(U[1]),ylab=quote(U[2]),main="Perfect Positive Depen
 
 </div>  
 
-#### Measures of Association {#Sec:MeasuresAssociation}
+
+Let's assign the Fr&eacute;chet-H&ouml;effding lower bound as $W$ and the upper bound as $M$. That is, $W=\max(u_1+\cdots+u_p-p+1, 0)$ and $M=\min(u_1,\ldots,u_p)$. It's important to note that $W$ is a copula only if $p=2$, while $M$ is a copula for all $p\geq2$. In dimension two, $W=\max(u_1+u_2-1, 0)$ is known as the **Counter-monotone copula**. It captures the inverse relationship between two variables, that is, two random variables that are perfectly negatively related. On the other hand, $M=\min(u_1,u_2)$ in dimension two is known as the **Co-monotone copula**. It captures the relationship between two variables where one is related to the other by a strictly increasing function, that is, two random variables that are perfectly positively dependent. The co-monotonic copulas can be extended to the multivariate case. However, it's not possible to extend the counter-monotonic copula because it's not possible to have three or more variables where each pair has a direct inverse relationship.
+
+
+**Example `r chapnum`.5.1. Largest Possible Value Example**
+
+Suppose we have a variable $X$ that follows a Pareto distribution with a scale parameter of $\theta=10$ and a shape parameter of $\alpha=1.6$. Additionally, let $Y$ be an exponential variable with a mean value of 8. Let $F_{X,Y}(x,y)$ be the joint distribution function. What is the largest possible value of $F_{X,Y}(7.2,4.1)$? 
+
+
+`r HideExample('16.5.1','Show Example Solution')`
+
+**Solution.**
+
+Let $C(u,v)$ is the copula that links $X$ and $Y$. Denote the marginal distribution functions of $X$ and $Y$ as $F_X(x)$ and $F_Y(y)$, respectively. Since $F_{X,Y}(7.2,4.1)=C[F_X(7.2),F_Y(4.1)]$, we can use the marginal distribution functions to obtain the arguments of the copula function:
+
+For the Pareto variable, $X$:
+$$ F_X(7.2)=1- \left(  \frac{10}{7.2+ 10} \right) ^{1.6} =0.58.$$
+For the Exponential variable, $Y$:
+
+$$F_Y(4.1)=1-e^{-0.125\times 4.1}=0.40.$$
+
+Hence, $F_{X,Y}(7.2,4.1)=C[0.58,0.40]$. Now:
+
+The largest value of the joint distribution function is obtained when the dependence structure is comonotonic, or $C(u, v)=\min (u, v)$. Hence, the answer required is $\min (0.58,0.40)=0.40$.
+
+</div>
+
+*** 
+
+
+### Measures of Association {#Sec:MeasuresAssociation}
 
 Empirical versions of Spearman's rho and Kendall's tau were introduced in Sections \@ref(Sec:Spearman) and \@ref(Sec:Kendall), respectively. The interesting thing about these expressions is that these summary measures of association are based **only** on the ranks of each variable. Thus, any strictly increasing transform does not affect these measures of association. Specifically, consider two random variables, $Y_1$ and $Y_2$, and let m$_1$ and m$_2$ be strictly increasing functions. Then, the association, when measured by Spearman's rho or Kendall's tau, between $m_1(Y_1)$ and $m_2(Y_2)$ does not change regardless of the choice of m$_1$ and m$_2$. For example, this allows analysts to consider dollars, Euros, or log dollars, and still retain the same essential dependence. As we have seen in Section \@ref(S:Measures), this is not the case with the Pearson's measure of correlation.
 
-@schweizer1981nonparametric established that the copula accounts for all the dependence in the sense that they way $Y_1$ and $Y_2$ "move together" is captured by the copula, regardless of the scale in which each variable is measured. They also showed that (population versions of) the two standard nonparametric measures of association could be expressed solely in terms of the copula function. Spearman's correlation coefficient is given by
+@schweizer1981nonparametric established that the copula accounts for all the dependence in the sense that the way $Y_1$ and $Y_2$ "move together" is captured by the copula, regardless of the scale in which each variable is measured. They also showed that (population versions of) the two standard nonparametric measures of association could be expressed solely in terms of the copula function. Spearman's correlation coefficient is given by
 
 \begin{equation}
 \rho_S = 12 \int_0^1 \int_0^1  \left\{C(u,v) - uv \right\} du dv.
@@ -1164,12 +1541,13 @@ $$
 
 For these expressions, we assume that $Y_1$ and $Y_2$ have a jointly continuous distribution function. 
 
-**Example. Loss versus Expenses**. Earlier, in Section \@ref(S:CopAppl), we saw that the Spearman's correlation was 0.452, calculated with the `rho` function. Then, we fit Frank's copula to these data, and estimated the dependence parameter to be $\hat{\gamma} = 0.452$. As an alternative, the following code shows how to use the empirical version of equation \@ref(eq:TheorySpearman). In this case, the Spearman's correlation coefficient is 0.462, which is close to the sample Spearman's correlation coefficient, 0.452.
+**Example. Loss versus Expenses**. Earlier, in Section \@ref(S:CopAppl), we saw that the Spearman's correlation was 0.452, calculated with the `rho` function. Then, we fit Frank's copula to these data, and estimated the dependence parameter to be $\hat{\gamma} = 3.114$. As an alternative, the following code shows how to use the empirical version of equation \@ref(eq:TheorySpearman). In this case, the Spearman's correlation coefficient is 0.462, which is close to the sample Spearman's correlation coefficient, 0.452.
 
 ```{r message=FALSE, warning=FALSE, comment="", echo=FALSE}
 param = fit.ml@estimate # fitted copula parameter
 frank.cop <- archmCopula("frank", param= param, dim = 2)
 #rho(frank.cop) # Spearman's correlation
+
 ```
 
 `r HideRCode('fittedCop.1',"R Code for Spearman's Correlation Using Frank's Copula")`
@@ -1185,9 +1563,10 @@ Output :
 ```
 </div> 
 
-#### Tail Dependency
+### Tail Dependency
 
-There are applications in which it is useful to distinguish the part of the distribution in which the association is strongest. For example, in insurance it is helpful to understand association among the largest losses, that is, association in the right tails of the data. 
+As discussed in Section \@ref(Sec:tdc), there are applications in which it is useful to distinguish the part of the distribution in which the association is strongest. For example, in insurance it is helpful to understand association among the largest losses, that is, association in the right tails of the data. This subsection defines upper and lower tail dependency in terms of copulas.   
+
 
 To capture this type of dependency, we use the *right-tail concentration* function, defined as
 
@@ -1205,14 +1584,14 @@ $$
 
 with the lower tail dependence parameter $L = \lim_{z \rightarrow 0} L(z)$. A `r Gloss('tail dependency')` concentration function captures the probability of two random variables simultaneously having extreme values.
 
-It is of interest to see how well a given copula can capture tail dependence. To this end, we calculate the left and right tail concentration functions for four different types of copulas; Normal, Frank, Gumbel and $t$- copulas. The results are summarized for concentration function values for these four copulas in  [Table 15.8]. As in @venter2002tails, we show $L(z)$ for $z\leq 0.5$ and $R(z)$ for $z>0.5$ in the tail dependence plot in Figure \@ref(fig:DepTails). We interpret the tail dependence plot to mean that both the Frank and Normal copula exhibit no tail dependence whereas the $t$- and the Gumbel do so. The $t$- copula is symmetric in its treatment of upper and lower tails.
+It is of interest to see how well a given copula can capture tail dependence. To this end, we calculate the left and right tail concentration functions for four different types of copulas; Normal, Frank, Gumbel and $t$- copulas. The results are summarized for concentration function values for these four copulas in  [Table 16.8]. As in @venter2002tails, we show $L(z)$ for $z\leq 0.5$ and $R(z)$ for $z>0.5$ in the tail dependence plot in Figure \@ref(fig:DepTails). We interpret the tail dependence plot to mean that both the Frank and Normal copula exhibit no tail dependence whereas the $t$- and the Gumbel do so. The $t$- copula is symmetric in its treatment of upper and lower tails.
 
 
-<a id=tab:15.8></a>
+<a id=tab:16.8></a>
 
-[Table 15.8]:\#tab:15.8
+[Table 16.8]:\#tab:16.8
 
-Table 15.8.  **Tail Dependence Parameters for Four Copulas**
+Table 16.8.  **Tail Dependence Parameters for Four Copulas**
 
 $$
 {\small \begin{matrix}
@@ -1281,23 +1660,57 @@ text(0.9, 0.4, "t with 5 df", cex=1.3)   #4
 
 </div>
 
-```{r child = './Quizzes/Quiz145.html', eval = QUIZ}
+
+
+**Example `r chapnum`.5.2. Lower Tail Dependence Coefficient Example**
+
+The bivariate distribution function $C(u,v)=uv$. What is the lower tail dependence coefficient of this copula?
+
+
+`r HideExample('16.5.2','Show Example Solution')`
+
+**Solution.**
+
+$$
+\begin{aligned}
+\lambda_{lo} & =\lim _{u \rightarrow 0^{+}} \frac{C(u, u)}{u}=\lim _{u \rightarrow 0^{+}} \frac{u^2}{u} =\lim _{u \rightarrow 0^{+}} u=0
+\end{aligned}
+$$
+
+</div>
+
+*** 
+
+```{r child = './Quizzes/Quiz165.html', eval = QUIZ}
 ```
 
 
-## Why is Dependence Modeling Important? {#S:CopImp}
+## Importance of Dependence Modeling {#S:CopImp}
+
+
+***
+
+In this section, you learn how to:
+
+-  Explain the importance of dependence modeling
+-  Explain the importance of copulas for regression applications 
+
+***
+
+
+### Why is Dependence Modeling Important?
 
 Dependence modeling is important because it enables us to understand the dependence structure by defining the relationship between variables in a dataset. In insurance, ignoring dependence modeling may not impact pricing but could lead to misestimation of required capital to cover losses. For instance, from Section  \@ref(S:CopAppl) , it is seen that there was a positive relationship between ${\tt LOSS}$ and ${\tt ALAE}$. This means that, if there is a large loss then we expect expenses to be large as well and ignoring this relationship could lead to mis-estimation of reserves.
 
 
-To illustrate the importance of dependence modeling, we refer you back to portfolio management example in Section \@ref(S:PortMgtExample) that assumed that the property and liability risks are independent. Now, we incorporate dependence by allowing the four lines of business to depend on one another through a Gaussian copula. In [Table 15.9], we show that dependence affects the portfolio quantiles ($VaR_q$), although not the expected values. For instance, the $VaR_{0.99}$ for total risk which is the amount of capital required to ensure, with a $99\%$ degree of certainty that the firm does not become technically insolvent is higher when we incorporate dependence. This leads to less capital being allocated when dependence is ignored and can cause unexpected solvency problems. 
+To illustrate the importance of dependence modeling, we refer you back to portfolio management example in Section \@ref(S:PortMgtExample) that assumed that the property and liability risks are independent. Now, we incorporate dependence by allowing the four lines of business to depend on one another through a Gaussian copula. In [Table 16.9], we show that dependence affects the portfolio quantiles ($VaR_q$), although not the expected values. For instance, the $VaR_{0.99}$ for total risk which is the amount of capital required to ensure, with a $99\%$ degree of certainty that the firm does not become technically insolvent is higher when we incorporate dependence. This leads to less capital being allocated when dependence is ignored and can cause unexpected solvency problems. 
 
 
-<a id=tab:15.9></a>  
+<a id=tab:16.9></a>  
 
-[Table 15.9]: \#tab:15.9
+[Table 16.9]: \#tab:16.9
 
-Table 15.9.  **Results for Portfolio Expected Value and Quantiles ($VaR_q$)**
+Table 16.9.  **Results for Portfolio Expected Value and Quantiles ($VaR_q$)**
 
 $$
 {\small \begin{matrix}
@@ -1406,6 +1819,7 @@ round(quantMat,digits=2)
 
 ```
 
+
 `r HideRCode('SimG.1',"R Code for Simulation Using Gaussian Copula")`
 
 ```{r echo=SHOW_PDF, eval=FALSE}
@@ -1491,9 +1905,30 @@ round(quantMat,digits=2)
 plot(density(S), main="Density of Total Portfolio Risk S", xlab="S")
 
 ```
+
+
 </div>  
 
-```{r child = './Quizzes/Quiz146.html', eval = QUIZ}
+
+It should be noted that there are various methods of conducting dependence modeling, but copulas are effective for many actuarial applications. It's important to stress that each copula function captures a distinct dependency structure based on its functional form and dependence parameters. Therefore, utilizing copulas without comprehending their limitations and properties can lead to biased and statistically incorrect results. Since selecting the right copula involves extensive effort, here are some general tips that can assist:
+
+1. When analyzing data, diagnostic and exploratory analysis can provide insight into the dependence structure of the data, which can help determine suitable copula functions. For Archimedean Copulas specifically, understanding the dependence structure can narrow down the appropriate type of copula function. For instance, the Gumbel-Hougaard copula is not suitable for negative dependency, but the Frank Copula can effectively capture three distinct types of dependency in the data.
+
+2. Researchers cannot rely on Normal copula or Frank copula functions to capture the upper and lower tail dependency in data. Instead, a $t$ copula with low degrees of freedom works well for both tails. The Gumbel-Hougaard copula shows some upper tail dependence but less or no lower tail dependence, while the Clayton copula exhibits strong lower tail dependence.
+
+
+
+### Copula Regression
+
+
+In regression studies, the response variable is determined by a group of explanatory variables. This is often one of the initial statistical methods used to understand the connection between the response and explanatory variables. However, Linear Models and Generalized Linear Models can impose constraints on the selection of distributions for the response variables, which can be restrictive for practical data scenarios. For example, insurance claim amounts and financial asset returns typically exhibit heavy-tailed and skewed distributions, and may not adhere to normality patterns, with the possibility of having extreme values.
+
+The use of copulas in regression is gaining attention in the field of actuarial science. Copula regression separates the dependency structure from the selection of marginal distributions, allowing for greater flexibility in choosing distributions for actuarial applications. The parameters for the marginal distributions and the copula distribution can be estimated either separately or together. The maximum likelihood method is often effective for estimating the parameters. However, for copula regression parameter estimation, the inference for margins method (IFM) is commonly used. Copula functions preserve the marginals and make predictions using the dependent variable's conditional mean given the covariates. See  @kramer2013total, @parsa2011copula; for detailed  examples on copula regression. 
+
+
+
+
+```{r child = './Quizzes/Quiz166.html', eval = QUIZ}
 ```
 
 
@@ -1502,8 +1937,9 @@ plot(density(S), main="Density of Total Portfolio Risk S", xlab="S")
 
 #### Contributors {-}
 
-- **Edward W. (Jed) Frees** and **Nii-Armah Okine**, University of Wisconsin-Madison, and **Emine Selin Sarıdaş**, Mimar Sinan University, are the principal authors of the initial version of this chapter. Email: jfrees@bus.wisc.edu for chapter comments and suggested improvements.
-- Chapter reviewers include: Runhuan Feng, Fei Huang, Himchan Jeong, Min Ji, and Toby White.
+-  **Edward W. (Jed) Frees** and **Nii-Armah Okine**, University of Wisconsin-Madison, and **Emine Selin Sarıdaş**, Mimar Sinan University, are the principal authors of the initial version of this chapter. 
+   - Chapter reviewers include: Runhuan Feng, Fei Huang, Himchan Jeong, Min Ji, and Toby White.
+-  **Nii-Armah Okine**, Appalachian State University, and **Emine Selin Sarıdaş**, Mimar Sinan University, are the principal authors of the second edition of this chapter. Email: okinean@appstate.edu and selin.saridas@msgsu.edu.tr for chapter comments and suggested improvements.
 
 
 ### TS `r chapnum`.A. Other Classic Measures of Scalar Associations {-}
@@ -1578,51 +2014,55 @@ In addition, to show that the Blomqvist's beta is invariant under strictly incre
 For the first variable, the average rank of observations in the $s$th row is
 
 \begin{equation*}
-r_{1s} = n_{m_1\centerdot}+ \cdots+ n_{s-1,\centerdot}+ \frac{1}{2} \left(1+ n_{s\centerdot}\right)
+r_{1s} = n_{m_1\bullet}+ \cdots+ n_{s-1,\bullet}+ \frac{1}{2} \left(1+ n_{s\bullet}\right)
 \end{equation*}
-and similarly $r_{2t} = \frac{1}{2} \left[(n_{\centerdot m_1}+ \cdots+ n_{\centerdot,s-1}+1)+ (n_{\centerdot m_1}+ \cdots+ n_{\centerdot s})\right]$. With this, we have Spearman's rho with tied rank is
+
+and similarly $r_{2t} = \frac{1}{2} \left[(n_{\bullet m_1}+ \cdots+ n_{\bullet,s-1}+1)+ (n_{\bullet m_1}+ \cdots+ n_{\bullet s})\right]$. With this, we have Spearman's rho with tied rank is
+
 \begin{equation*}
 \hat{\rho}_S = \frac{\sum_{s=m_1}^{m_2} \sum_{t=m_1}^{m_2} n_{st}(r_{1s} - \bar{r})(r_{2t} - \bar{r})}
-{\left[\sum_{s=m_1}^{m_2}n_{s \centerdot}(r_{1s} - \bar{r})^2 \sum_{t=m_1}^{m_2} n_{\centerdot t}(r_{2t} - \bar{r})^2
+{\left[\sum_{s=m_1}^{m_2}n_{s \bullet}(r_{1s} - \bar{r})^2 \sum_{t=m_1}^{m_2} n_{\bullet t}(r_{2t} - \bar{r})^2
 \right]^2}
 \end{equation*}
 
 where the average rank is $\bar{r} = (n+1)/2$.
 
+
+
 `r HideRCode('Thry.1',"Click to Show Proof for Special Case: Binary Data.")`
 
-Special Case: Binary Data.  Here, $m_1=0$ and $m_2=1$. For the first variable ranks, we have $r_{10} = (1+n_{0\centerdot})/2$ and $r_{11} = (n_{0\centerdot}+1+n)/2$. Thus, $r_{10} -\bar{r}= (n_{0\centerdot}-n)/2$ and $r_{11}-\bar{r} = n_{0\centerdot}/2$.
-This means that we have $\sum_{s=0}^{1}n_{s\centerdot}(r_{1s} - \bar{r})^2 = n (n-n_{0\centerdot})n_{0\centerdot}/4$ and similarly for the second variable. For the numerator, we have
+Special Case: Binary Data.  Here, $m_1=0$ and $m_2=1$. For the first variable ranks, we have $r_{10} = (1+n_{0\bullet})/2$ and $r_{11} = (n_{0\bullet}+1+n)/2$. Thus, $r_{10} -\bar{r}= (n_{0\bullet}-n)/2$ and $r_{11}-\bar{r} = n_{0\bullet}/2$.
+This means that we have $\sum_{s=0}^{1}n_{s\bullet}(r_{1s} - \bar{r})^2 = n (n-n_{0\bullet})n_{0\bullet}/4$ and similarly for the second variable. For the numerator, we have
 \begin{eqnarray*}
 \sum_{s=0}^{1}  \sum_{t=0}^{1} && n_{st}(r_{1s} - \bar{r})(r_{2t} - \bar{r})\\
-&=& n_{00} \frac{n_{0\centerdot}-n}{2} \frac{n_{\centerdot 0}-n}{2}
-+n_{01} \frac{n_{0\centerdot}-n}{2} \frac{n_{\centerdot 0}}{2}
-+n_{10} \frac{n_{0\centerdot}}{2} \frac{n_{\centerdot 0}-n}{2}
-+n_{11} \frac{n_{0\centerdot}}{2} \frac{n_{\centerdot 0}}{2} \\
-&=& \frac{1}{4}(n_{00} (n_{0\centerdot}-n) (n_{\centerdot 0}-n)
-+(n_{0\centerdot}-n_{00}) (n_{0\centerdot}-n)n_{\centerdot 0} \\
-&&  ~ ~ ~ +(n_{\centerdot 0}-n_{00})  n_{0\centerdot}(n_{\centerdot 0}-n)
-+(n-n_{\centerdot 0}-n_{0\centerdot}+n_{00}) n_{0\centerdot}n_{\centerdot 0} ) \\
+&=& n_{00} \frac{n_{0\bullet}-n}{2} \frac{n_{\bullet 0}-n}{2}
++n_{01} \frac{n_{0\bullet}-n}{2} \frac{n_{\bullet 0}}{2}
++n_{10} \frac{n_{0\bullet}}{2} \frac{n_{\bullet 0}-n}{2}
++n_{11} \frac{n_{0\bullet}}{2} \frac{n_{\bullet 0}}{2} \\
+&=& \frac{1}{4}(n_{00} (n_{0\bullet}-n) (n_{\bullet 0}-n)
++(n_{0\bullet}-n_{00}) (n_{0\bullet}-n)n_{\bullet 0} \\
+&&  ~ ~ ~ +(n_{\bullet 0}-n_{00})  n_{0\bullet}(n_{\bullet 0}-n)
++(n-n_{\bullet 0}-n_{0\bullet}+n_{00}) n_{0\bullet}n_{\bullet 0} ) \\
 &=& \frac{1}{4}(n_{00} n^2
-- n_{0\centerdot} (n_{0\centerdot}-n)n_{\centerdot 0} \\
-&& ~ ~ ~ +n_{\centerdot 0}  n_{0\centerdot}(n_{\centerdot 0}-n)
-+(n-n_{\centerdot 0}-n_{0\centerdot}) n_{0\centerdot}n_{\centerdot 0} ) \\
+- n_{0\bullet} (n_{0\bullet}-n)n_{\bullet 0} \\
+&& ~ ~ ~ +n_{\bullet 0}  n_{0\bullet}(n_{\bullet 0}-n)
++(n-n_{\bullet 0}-n_{0\bullet}) n_{0\bullet}n_{\bullet 0} ) \\
 &=& \frac{1}{4}(n_{00} n^2
-- n_{0\centerdot}n_{\centerdot 0} (n_{0\centerdot}-n +n_{\centerdot 0}-n
-+n-n_{\centerdot 0}-n_{0\centerdot}) \\
-&=& \frac{n}{4}(n n_{00} - n_{0\centerdot}n_{\centerdot 0}) .
+- n_{0\bullet}n_{\bullet 0} (n_{0\bullet}-n +n_{\bullet 0}-n
++n-n_{\bullet 0}-n_{0\bullet}) \\
+&=& \frac{n}{4}(n n_{00} - n_{0\bullet}n_{\bullet 0}) .
 \end{eqnarray*}
 
 This yields
 \begin{eqnarray*}
-\hat{\rho}_S &=& \frac{n(n n_{00} - n_{0\centerdot}n_{\centerdot 0})}
-{4\sqrt{(n (n-n_{0\centerdot})n_{0\centerdot}/4)(n (n-n_{\centerdot 0})n_{\centerdot 0}/4)}} \\
-&=& \frac{n n_{00} - n_{0\centerdot}n_{\centerdot 0}}
-{\sqrt{ n_{0\centerdot} n_{\centerdot 0}(n-n_{0\centerdot}) (n-n_{\centerdot 0})}} \\
+\hat{\rho}_S &=& \frac{n(n n_{00} - n_{0\bullet}n_{\bullet 0})}
+{4\sqrt{(n (n-n_{0\bullet})n_{0\bullet}/4)(n (n-n_{\bullet 0})n_{\bullet 0}/4)}} \\
+&=& \frac{n n_{00} - n_{0\bullet}n_{\bullet 0}}
+{\sqrt{ n_{0\bullet} n_{\bullet 0}(n-n_{0\bullet}) (n-n_{\bullet 0})}} \\
 &=& \frac{n_{00} - n (1-\hat{\pi}_X)(1- \hat{\pi}_Y)}
 {\sqrt{\hat{\pi}_X(1-\hat{\pi}_X)\hat{\pi}_Y(1-\hat{\pi}_Y) }}
 \end{eqnarray*}
-where $\hat{\pi}_X = (n-n_{0\centerdot})/n$ and similarly for $\hat{\pi}_Y$. Note that this is same form as the Pearson measure. From this, we see that the joint count $n_{00}$ drives this association measure.
+where $\hat{\pi}_X = (n-n_{0\bullet})/n$ and similarly for $\hat{\pi}_Y$. Note that this is same form as the Pearson measure. From this, we see that the joint count $n_{00}$ drives this association measure.
 
 
 </div>  

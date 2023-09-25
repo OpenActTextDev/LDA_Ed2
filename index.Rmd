@@ -6,7 +6,7 @@ output:
   bookdown::gitbook
 documentclass: book
 #documentclass: Format/krantz
-bibliography: ["References/LDAReference2023.bib"]
+bibliography: ["References/LDAReference2023.bib","References/LDAReference2020A.bib"]
 biblio-style: Format/econPeriod
 link-citations: yes
 github-repo: https://github.com/openacttexts/Loss-Data-Analytics

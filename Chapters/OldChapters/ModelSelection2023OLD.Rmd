@@ -1,21 +1,32 @@
-# Model Selection {#ChapModelSelection}
+# Model Selection and Estimation {#ChapModelSelection}
 
-*Chapter Preview*. Model selection is a fundamental
-aspect of statistical modeling. In this chapter, the process of model selection is summarized, including tools for model comparisons and diagnostics. In addition to nonparametric tools for model selection based on marginal distributions of outcomes ignoring explanatory variables, this chapter underscores the idea that model selection is an iterative process in which models are cyclically (re)formulated and tested for
-appropriateness before using them for inference. After an overview, we
-describe the `r Gloss('model selection')` process based on:
-
--   an `r Gloss("in-sample")` or training dataset,
--   an `r Gloss("out-of-sample")` or test dataset, and
--   a method that combines these approaches known as
-    `r Gloss("cross-validation")`.
-
-Although our focus is on data from continuous distributions, the same process can be used for discrete versions or data that come from a hybrid combination of discrete and
+*Chapter Preview*. Model selection and estimation are fundamental
+aspects of statistical modeling. Chapters \@ref(ChapFrequency-Modeling)
+and \@ref(ChapSeverity) have described how to fit parametric models to
+frequency and severity data, respectively. This chapter begins with
+nonparametric estimation. To compare alternative parametric models, it
+is helpful to summarize data without reference to a specific parametric
+distribution. Section \@ref(S:MS:NonParInf) describes nonparametric
+estimation, and how it can be used to provide starting values for
+parametric procedures.To provide a flavor as to how they can be adapted
+to alternative sampling schemes, Section \@ref(S:MS:ModifiedData)
+describes estimation for modified data including grouped, censored and
+truncated data (following the Section \@ref(S:MaxLikeEstimation)
+introduction). The process of model selection is then summarized in
+Section \@ref(S:MS:ModelSelection), including tools for model
+comparisons and diagnostics. Although our focus is on data from
+continuous distributions, the same process can be used for discrete
+versions or data that come from a hybrid combination of discrete and
 continuous distributions.
+
 
 ------------------------------------------------------------------------
 
-In this chapter, you learn how to:
+## Model Selection {#S:MS:ModelSelection}
+
+------------------------------------------------------------------------
+
+In this section, you learn how to:
 
 -   Determine measures that summarize deviations of a parametric from a nonparametric fit 
 -   Describe the iterative model selection specification process 
@@ -24,9 +35,22 @@ In this chapter, you learn how to:
 
 ------------------------------------------------------------------------
 
+In addition to nonparametric tools for model selection based on marginal
+distributions of outcomes ignoring explanatory variables, this section
+underscores the idea that model selection is an iterative process in
+which models are cyclically (re)formulated and tested for
+appropriateness before using them for inference. After an overview, we
+describe the `r Gloss('model selection')` process from Section
+\@ref(S:Process) based on:
+
+-   an `r Gloss("in-sample")` or training dataset,
+-   an `r Gloss("out-of-sample")` or test dataset, and
+-   a method that combines these approaches known as
+    `r Gloss("cross-validation")`.
+
 ## Tools for Model Selection and Diagnostics {#S:MS:ToolsModelSelection}
 
-Section \@ref(S:MS:NonParEst) introduced nonparametric estimators in
+Section \@ref(S:MS:NonParInf) introduced nonparametric estimators in
 which there was no parametric form assumed about the underlying
 distributions. However, in many actuarial applications, analysts seek to
 employ a parametric fit of a distribution for ease of explanation and
@@ -141,7 +165,7 @@ abline(0,1)
 A $pp$ plot is useful in part because no artificial scaling is required,
 such as with the overlaying of densities in Figure
 \@ref(fig:ComparisonCDFPDF), in which we switched to the log scale to
-better visualize the data. The Chapter 6 *Technical Supplement A.1*
+better visualize the data. The Chapter 5 *Technical Supplement A.1*
 introduces a variation of the $pp$ plot known as a
 `r Gloss('Lorenz curve')`; this is an important tool for assessing
 income inequality. Furthermore, $pp$ plots are available in multivariate
@@ -191,7 +215,7 @@ abline(0,1)
 
 ------------------------------------------------------------------------
 
-**Example 6.1.1. Actuarial Exam Question.** The graph below shows a $pp$
+**Example 5.3.1. Actuarial Exam Question.** The graph below shows a $pp$
 plot of a fitted distribution compared to a sample.
 
 ```{r, echo=FALSE, warning=FALSE, message=FALSE, fig.cap='', out.width='40%', fig.asp=1, fig.align='center'}
@@ -208,7 +232,7 @@ abline(0,1)
 Comment on the two distributions with respect to left tail, right tail,
 and median probabilities.
 
-`r HideExample('6.1.1', 'Show Example Solution')`
+`r HideExample('5.3.1', 'Show Example Solution')`
 
 **Solution.** The tail of the fitted distribution is too thick on the
 left, too thin on the right, and the fitted distribution has less
@@ -235,14 +259,14 @@ that the model puts only about 10% of the probability in this range.
 When selecting a model, it is helpful to make the graphical displays
 presented. However, for reporting results, it can be effective to
 supplement the graphical displays with selected statistics that
-summarize model goodness of fit. [Table 6.1](#tab:6.1) provides three
+summarize model goodness of fit. [Table 5.2](#tab:5.2) provides three
 commonly used `r Gloss('goodness of fit statistics')`. In this table,
 $F_n$ is the empirical distribution, $F$ is the fitted or hypothesized
 distribution, and $F_i^* = F(x_i)$.
 
-<a id=tab:6.1></a>
+<a id=tab:5.2></a>
 
-Table 6.1. **Three Goodness of Fit Statistics**
+Table 5.2. **Three Goodness of Fit Statistics**
 
 $$
 {\small
@@ -274,7 +298,7 @@ distribution (i.e when $F(x)$ or $1-F(x)=S(x)$ is small).
 
 ------------------------------------------------------------------------
 
-**Example 6.1.2. Actuarial Exam Question (modified).** A sample of claim
+**Example 5.3.2. Actuarial Exam Question (modified).** A sample of claim
 payments is:
 
 $$
@@ -287,7 +311,7 @@ Compare the empirical claims distribution to an exponential distribution
 with mean $100$ by calculating the value of the Kolmogorov-Smirnov test
 statistic.
 
-`r HideExample('6.1.2', 'Show Example Solution')`
+`r HideExample('5.3.2', 'Show Example Solution')`
 
 **Solution.** For an exponential distribution with mean $100$, the
 cumulative distribution function is $F(x)=1-e^{-x/100}$. Thus,
@@ -366,7 +390,7 @@ although the principles are the same.
 
 **Graphical and other Basic Summary Measures.** Begin by summarizing the
 data graphically and with statistics that do not rely on a specific
-parametric form, as summarized in Section \@ref(S:MS:NonParEst).
+parametric form, as summarized in Section \@ref(S:MS:NonParInf) above.
 Specifically, you will want to graph both the empirical distribution and
 density functions. Particularly for loss data that contain many zeros
 and that can be skewed, deciding on the appropriate scale (e.g.,
@@ -407,7 +431,8 @@ generalized to multivariate settings. Appendix Section
 For selecting the appropriate distribution, statistics that compare a
 parametric fit to a nonparametric alternative, summarized in Section
 \@ref(S:MS:Tools:Stats), are useful for model comparison. For discrete
-data, a *goodness of fit* statistic is generally preferred as it is more intuitive
+data, a *goodness of fit* statistic (as described in Section
+\@ref(S:goodness-of-fit)) is generally preferred as it is more intuitive
 and simpler to explain.
 
 ## Model Selection Based on a Test Dataset
@@ -504,7 +529,7 @@ model as possible but no simpler."
 
 ------------------------------------------------------------------------
 
-**Example 6.4.1. Wisconsin Property Fund.** For the 2010 property fund
+**Example 5.3.3. Wisconsin Property Fund.** For the 2010 property fund
 data from Section \@ref(S:LGPIF), we may try to select a severity
 distribution based on out-of-sample prediction. In particular, we may
 randomly select 1,000 observations as our training data, and use the
@@ -601,9 +626,8 @@ Euclidean distance $\mathrm{d}(y_i,\mathrm{g}) = |y_i-\mathrm{g}|$ may
 be preferred because of the skewed nature of loss data. For right-skewed
 outcomes, it may require a larger sample size for the validation
 statistics to pickup the correct model when large outlying values of $y$
-can have a large effect on the measures. 
-
-Following Example 2.3.1, we use simulated data in Examples 6.4.2 through 6.4.4 to compare the AIC
+can have a large effect on the measures. Following Example 2.3.1, we use
+simulated data in Examples 5.3.4 through 5.3.7 to compare the AIC
 information criteria from Appendix Chapter \@ref(S:AppA:HT:IC) with
 out-of-sample MSE and MAE criterion for selecting the distribution and
 input variables for outcomes that are respectively from normal and
@@ -621,7 +645,7 @@ data generating mechanism.
 
 ------------------------------------------------------------------------
 
-**Example 6.4.2. In-sample AIC and out-of-sample MSE for normal
+**Example 5.3.4. In-sample AIC and out-of-sample MSE for normal
 outcomes**. Example 2.3.1 assumes that there is a set of claims that
 potentially varies by a single categorical variable with six levels. To
 illustrating in-sample over-fitting, it also assumes that two of the six
@@ -688,7 +712,7 @@ knitr::kable(OutMat, caption = "**Model Selection based on MSE and AIC for norma
 
 ------------------------------------------------------------------------
 
-**Example 6.4.3. MSE and MAE for right-skewed outcomes - lognormal
+**Example 5.3.5. MSE and MAE for right-skewed outcomes - lognormal
 claims**. For claims modeling, one may wonder how the MSE and MAE types
 of criterion may perform for right-skewed data. Using the same data
 generating procedure, we may generate lognormal claim amounts by
@@ -794,7 +818,7 @@ knitr::kable(OutMat, caption = "**Model Selection based on in-sample AIC and out
 
 ------------------------------------------------------------------------
 
-**Example 6.4.4. MSE and MAE for right-skewed outcomes - gamma claims**.
+**Example 5.3.6. MSE and MAE for right-skewed outcomes - gamma claims**.
 For right-skewed outcomes, we may be interested in studying how the MSE
 and MAE types of measures work for another loss severity distribution,
 the gamma distribution, that is widely used in ratemaking and claims
@@ -947,7 +971,7 @@ with the lowest overall cross-validation statistic.
 In Example 2.3.1, you have seen that the MSE criteria seems to work with
 k-fold cross-validation in selecting the correct mean structure for
 claims outcome data generated from linear models with constant variance.
-From Examples 6.4.3 and 6.4.4, however, the out-of-sample MSE and MAE
+From Examples 5.3.5 and 5.3.6, however, the out-of-sample MSE and MAE
 criterion does not seem to provide consistent performance for selecting
 the distributional form and the mean structure under right-skewed claims
 distributions. Thus, we may use the k-folder cross-validation instead of
@@ -957,9 +981,9 @@ gamma regression with a log link function.
 
 ------------------------------------------------------------------------
 
-**Example 6.5.1. Cross-validation in right-skewed outcomes - lognormal
+**Example 5.3.7. Cross-validation in right-skewed outcomes - lognormal
 claims** For lognormal claims, we use the data generating mechanism from
-Example 6.4.3 to generate a total of 100 samples, and use the k-fold
+Example 5.3.5 to generate a total of 100 samples, and use the k-fold
 cross validation procedure in Example 2.3.1 to select the distributional
 form and mean structure. Using cross-validation, we note that both AIC
 and out-of-sample MSE and MAE seem to be working for selecting the model
@@ -1049,9 +1073,9 @@ knitr::kable(OutMat, caption = "**Cross-validation based on in-sample AIC, and o
 
 ------------------------------------------------------------------------
 
-**Example 6.5.2. Cross-validation in right-skewed outcomes - gamma
+**Example 5.3.8. Cross-validation in right-skewed outcomes - gamma
 claims** For gamma claims, we use the data generating mechanism from
-Example 6.4.4 to generate a total of 100 samples, and use the k-fold
+Example 5.3.6 to generate a total of 100 samples, and use the k-fold
 cross validation procedure to select the distributional form and mean
 structure. Using cross-validation, we note that in-sample AIC seems to
 be working for selecting the model with the correct distribution and
@@ -1146,20 +1170,20 @@ knitr::kable(OutMat, caption = "**Cross-validation based on in-sample AIC, and o
 Cross-validation is widely used because it retains the predictive flavor
 of the out-of-sample model validation process but, due to the re-use of
 the data, is more stable over random samples. In addition, Example
-8.3.1 in Chapter \@ref(ChapSimulation) uses the Wisconsin Property Fund to
+7.3.1. in Chapter \@ref(ChapSimulation) uses the Wisconsin Property Fund to
 perform k-fold cross-validation of the gamma and Pareto models based on
 the Kolmogorov-Smirnov goodness of fit statistic. Additional information
 and examples regarding re-sampling procedures including leave-one-out
 cross-validation and bootstrap can also be found in Chapter
-\@ref(ChapSimulation).
+\ref@(ChapSimulation).
 
 ## Model Selection for Modified Data {#S:MS:Modified-Data}
 
 So far, you have learned covered model selection using unmodified data.
 For modified data including grouped, censored and truncated data, you
 have learned parametric and nonparametric estimation of distribution
-functions in Section \@ref(S:MS:ModifiedData1). For model selection, the
-tools from Section \@ref(S:MS:ToolsModelSelection) can be extended to cases
+functions in Section \@ref(S:MS:ModifiedData). For model selection, the
+tools from Section \@ref(S:MS:ModelSelection) can be extended to cases
 of modified data.
 
 For selection of distributions, the nonparametric tools introduced in
@@ -1181,8 +1205,8 @@ package `GofCens`.
 
 ------------------------------------------------------------------------
 
-**Example 6.6.1. Bodily Injury Claims.** For the Boston auto bodily
-injury claims data from Example 5.3.2, we include the full dataset with
+**Example 5.4.1. Bodily Injury Claims.** For the Boston auto bodily
+injury claims data from Example 5.1.6, we include the full dataset with
 right-censoring, and use the $qq$-plot to compare the estimated
 quantiles from lognormal, normal and exponential distributions with
 those from the nonparametric Kaplan-Meier method. From the $qq$-plots in
@@ -1203,11 +1227,12 @@ probPlot(BIData$AmountPaid, cens = UnCensored, distr = "lognormal", plots = "QQ"
 probPlot(BIData$AmountPaid, cens = UnCensored, distr = "normal", plots = "QQ")
 ## qq-plot for exponential distribution
 probPlot(BIData$AmountPaid, cens = UnCensored, distr = "exponential", plots = "QQ")
+
 ```
 
 `r HideRCode('qqCensored.4f', 'Show R Code')`
 
-```{r warning = FALSE, message = FALSE, comment = "",  echo=SHOW_PDF}
+```{r, echo=SHOW_PDF, ref.label = 'qq-plot censored', eval=FALSE}
 ```
 
 </div>
@@ -1222,10 +1247,10 @@ functions calculating the three goodness of fit statistics from Section
 calculating the three goodness of fit statistics for left-truncated
 data.
 
-**Example 6.6.2. Bodily Injury Claims.** For the Boston auto bodily
+**Example 5.4.2. Bodily Injury Claims.** For the Boston auto bodily
 injury claims with right-censoring, we may use the goodness of fit
 statistics to evaluate the fitted lognormal, normal and exponential
-distributions. For the Kolmogorov-Smirnov, Cramer-von
+distributions from Example 5.4.1. For the Kolmogorov-Smirnov, Cramer-von
 Mises and Anderson-Darling statistics, the lognormal distribution gives
 values that are much lower than those from normal and exponential
 distributions. The conclusion from the goodness of fit statistics is
@@ -1258,7 +1283,7 @@ knitr::kable(OutMat, caption = "**Nonparametric goodness of fit statistics for r
 
 `r HideRCode('KsCensored.4f', 'Show R Code')`
 
-```{r warning = FALSE, message = FALSE, comment = "",  echo=SHOW_PDF}
+```{r, echo=SHOW_PDF, ref.label = 'KS test censored', eval=FALSE}
 ```
 
 </div>
@@ -1298,8 +1323,10 @@ Tutorials](http://www.ssc.wisc.edu/~jfrees/loss-data-analytics/loss-data-analyti
 
 #### Contributors {.unnumbered}
 
--   **Lei (Larry) Hua** and **Michelle Xia*, Northern Illinois University, are the principal authors of the second edition of this chapter. 
--   **Edward W. (Jed) Frees** and **Lisa Gao**, University of Wisconsin-Madison, are the principal authors of the initial version of this chapter. Email:[jfrees\@bus.wisc.edu](mailto:jfrees@bus.wisc.edu){.email} for
+-   **Edward W. (Jed) Frees** and **Lisa Gao**, University of
+    Wisconsin-Madison, are the principal authors of the initial version
+    of this chapter. Email:
+    [jfrees\@bus.wisc.edu](mailto:jfrees@bus.wisc.edu){.email} for
     chapter comments and suggested improvements.
 -   Chapter reviewers include: Vytaras Brazauskas, Yvonne Chueh, Eren
     Dodd, Hirokazu (Iwahiro) Iwasawa, Joseph Kim, Andrew Kwon-Nakamura,

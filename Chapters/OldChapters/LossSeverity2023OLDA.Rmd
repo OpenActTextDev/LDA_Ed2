@@ -1861,7 +1861,7 @@ Generally, maximum likelihood is the preferred technique for parameter estimatio
 ## Further Resources and Contributors {#LM-further-reading-and-resources}
 #### Contributors {-}
 
-- **Zeinab Amin**, The American University in Cairo, is the principal author of the initial version and also the second edition of this chapter. Email: zeinabha@aucegypt.edu for chapter comments and suggested improvements.
+- **Zeinab Amin**, The American University in Cairo, is the principal author of this chapter. Email: zeinabha@aucegypt.edu for chapter comments and suggested improvements.
 -  Many helpful comments have been provided by Hirokazu (Iwahiro) Iwasawa,  <iwahiro@bb.mbn.or.jp> .
 -  Other chapter reviewers include: Rob Erhardt, Samuel Kolins, Tatjana Miljkovic, Michelle Xia, and Jorge Yslas.
 

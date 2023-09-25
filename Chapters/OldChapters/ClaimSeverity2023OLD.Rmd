@@ -1,22 +1,10 @@
 
 # Modeling Claim Severity {#ChapClaimSeverity}
 
-*Chapter Preview*. In Chapter \@ref(ChapSeverity) we explored the use of continuous as well as mixture distributions to model the random size of loss. Often the risk of loss is shared between the policyholder (the insured) and the insurer. Sharing risk can take the form of a deductible that is paid out-of-pocket of the insured before the insurer contributes to the loss, the form of a limit that caps the insured’s liability for loss to a certain amount, or the form of a portion of the loss the insurer is responsible for covering after the insured covers his/her share of the cost, among other forms of cost-sharing. In Sections \@ref(S:PolicyDeduct) to \@ref(S:CoinsInf) we introduce the policy deductible feature of the insurance contract, the limited policy, and the co-insurance cost-sharing arrangement. In Section \@ref(S:Chap5Reinsurance) we explore how insurance companies transfer part of the underlying insured risk by securing coverage from a reinsurer. Section \@ref(S:MS:ModifiedData1) covers parametric estimation methods for modified data including grouped, censored and truncated data. In Section \@ref(S:MS:NonParModified) we apply some non-parametric estimation tools like the ogive estimator, the plug-in principle, the Kaplan-Meier product-limit estimator, and the Nelson Aalon estimator on the modified data.
+*Chapter Preview*. Claims as modified losses ...          
+
 
 ## Coverage Modifications {#S:CoverageModifications}
-
-*** 
-
-In this section, you learn how to:
-
--   Describe the policy deductible feature of the insurance contract, the limited policy, and the coinsurance factor.
--   Describe the distinction between the loss incurred to the insured and the amount of paid claim by the insurer under different policy modifications.
--   Derive the distribution functions and raw moments for the amount of paid claim by the insurer for the different insurance contracts.
--   Calculate the percentage decrease in the expected payment of the insurer as a result of imposing the deductible.
--   Describe the insurance mechanism for insurance companies (reinsurance).
--   Calculate the raw moments of the amount retained by the primary insurer in the reinsurance agreement.
-
-*** 
 
 In this section we evaluate the impacts of coverage modifications: a) deductibles, b) policy limit, c) coinsurance and d) inflation on insurer's costs.
 
@@ -108,10 +96,10 @@ X & X > d, \\
 \end{matrix} \right.\ $$
 respectively.
 
-**Example 5.1.1. Actuarial Exam Question.**
+**Example 5.4.1. Actuarial Exam Question.**
 A claim severity distribution is exponential with mean 1000. An insurance company will pay the amount of each claim in excess of a deductible of 100. Calculate the variance of the amount paid by the insurance company for one claim, including the possibility that the amount paid is 0.
 
-`r HideExample('5.1.1','Show Example Solution')`
+`r HideExample('4.4.1','Show Example Solution')`
 
 **Solution.**
 
@@ -141,7 +129,7 @@ The relationship between $X$ and $Y^P$ can also be used when dealing with the un
 
 *** 
 
-**Example 5.1.2. Actuarial Exam Question.**
+**Example 5.4.2. Actuarial Exam Question.**
 For an insurance:
 
 *  Losses have a density function
@@ -154,7 +142,7 @@ For an insurance:
 
 Calculate $\mathrm{E}\left( Y^{P} \right)$.
 
-`r HideExample('5.1.2','Show Example Solution')`
+`r HideExample('4.4.2','Show Example Solution')`
 
 **Solution.**
 
@@ -178,7 +166,7 @@ Note that we divide by $S_X(4)=1-F_X(4)$, as this is the probability where the v
 
 
 
-**Example 5.1.3. Actuarial Exam Question.**
+**Example 5.4.3. Actuarial Exam Question.**
 You are given:
 
 *  Losses follow an exponential distribution with the same mean in all
@@ -189,7 +177,7 @@ You are given:
     
 Compute the loss elimination ratio for the coming year.
 
-`r HideExample('5.1.3','Show Example Solution')`
+`r HideExample('4.4.3','Show Example Solution')`
 
 **Solution.**
 
@@ -297,7 +285,7 @@ This approach uses the Fubini-Tonelli theorem to exchange the expectation and in
 
 
 
-**Example 5.1.4. Actuarial Exam Question.**
+**Example 5.4.4. Actuarial Exam Question.**
 Under a `r Gloss('group insurance')` policy, an insurer agrees to pay 100% of the medical bills incurred during the year by employees of a small company, up to a maximum total of one million dollars. The total amount of bills incurred, $X$, has *pdf*
 
 $$
@@ -309,7 +297,7 @@ $$
 
 where $x$ is measured in millions. Calculate the total amount, in millions of dollars, the insurer would expect to pay under this policy.
 
-`r HideExample('5.1.4','Show Example Solution')`
+`r HideExample('4.4.4','Show Example Solution')`
 
 **Solution.**
 
@@ -326,7 +314,7 @@ $\mathrm{E}\left( Y \right) = \mathrm{E}\left( X \land 1 \right) = \int_{0}^{1}\
 
 *** 
 
-### Coinsurance and Inflation {#S:CoinsInf}
+### Coinsurance and Inflation
 
 As we have seen in Section \@ref(S:PolicyDeduct), the amount of loss retained by the policyholder can be losses up to the deductible $d$. The retained loss can also be a percentage of the claim. The percentage $\alpha$, often referred to as the coinsurance factor, is the percentage of claim the insurance company is required to cover. If the policy is subject to an ordinary deductible and policy limit, coinsurance refers to the percentage of claim the insurer is required to cover, after imposing the ordinary deductible and policy limit. The payment per loss variable, $Y^{L}$, is defined as
 $$
@@ -376,10 +364,10 @@ respectively.
 The formulas given for the first and second moments of $Y^{L}$ are general. Under full coverage, $\alpha = 1$, $r = 0$, $u = \infty$, $d = 0$ and $\mathrm{E}\left( Y^{L} \right)$ reduces to $\mathrm{E}\left( X \right)$. If only an ordinary deductible is imposed, $\alpha = 1$, $r = 0$, $u = \infty$ and $\mathrm{E}\left( Y^{L} \right)$ reduces to $\mathrm{E}\left( X \right) - \mathrm{E}\left( X \land d \right)$. If only a policy limit is imposed $\alpha = 1$, $r = 0$, $d = 0$ and $\mathrm{E}\left( Y^{L} \right)$ reduces to $\mathrm{E}\left( X \land u \right)$.
 
 
-**Example 5.1.5. Actuarial Exam Question.**
+**Example 5.4.5. Actuarial Exam Question.**
 The ground up loss random variable for a health insurance policy in 2006 is modeled with $X$, a random variable with an exponential distribution having mean 1000. An insurance policy pays the loss above an ordinary deductible of 100, with a maximum annual payment of 500. The ground up loss random variable is expected to be 5% larger in 2007, but the insurance in 2007 has the same deductible and maximum payment as in 2006. Find the percentage increase in the expected cost per payment from 2006 to 2007.
 
-`r HideExample('5.1.5','Show Example Solution')`
+`r HideExample('4.4.5','Show Example Solution')`
 
 **Solution.**
 
@@ -434,21 +422,21 @@ Because $\frac{E\left( Y_{2007}^{P} \right)}{E\left( Y_{2006}^{P} \right)} -1 = 
 *** 
 
 
-### Reinsurance {#S:Chap5Reinsurance}
+### Reinsurance {#S:Chap3Reinsurance}
 
-In Section \@ref(S:PolicyDeduct) we introduced the policy deductible feature of the insurance contract. In this feature, there is a contractual arrangement under which an insured transfers part of the risk by securing coverage from an insurer in return for an insurance premium. Under that policy, the insured must pay all losses up to the deductible, and the insurer only pays the amount (if any) above the deductible. We now introduce `r Gloss('reinsurance', '3.4')`, a mechanism of insurance for insurance companies. Reinsurance is a contractual arrangement under which an insurer transfers part of the underlying insured risk by securing coverage from another insurer (referred to as a reinsurer) in return for a reinsurance premium. Although reinsurance involves a relationship between three parties: the original insured, the insurer (often referred to as `r Gloss('cedent')` or cedant) and the reinsurer, the parties of the reinsurance agreement are only the primary insurer and the reinsurer. There is no contractual agreement between the original insured and the reinsurer. Though many different types of reinsurance contracts exist, a common form is `r Gloss('excess of loss coverage')`. In such contracts, the primary insurer must make all required payments to the insured until the primary insurer's total payments reach a fixed reinsurance deductible. The reinsurer is then only responsible for paying losses above the reinsurance deductible. The maximum amount retained by the primary insurer in the reinsurance agreement (the reinsurance deductible) is called `r Gloss('retention')`.  
+In Section \@ref(S:PolicyDeduct) we introduced the policy deductible feature of the insurance contract. In this feature, there is a contractual arrangement under which an insured transfers part of the risk by securing coverage from an insurer in return for an insurance premium. Under that policy, the insured must pay all losses up to the deductible, and the insurer only pays the amount (if any) above the deductible. We now introduce `r Gloss('reinsurance', '3.4')`, a mechanism of insurance for insurance companies. Reinsurance is a contractual arrangement under which an insurer transfers part of the underlying insured risk by securing coverage from another insurer (referred to as a reinsurer) in return for a reinsurance premium. Although reinsurance involves a relationship between three parties: the original insured, the insurer (often referred to as `r Gloss('cedent')` or cedent) and the reinsurer, the parties of the reinsurance agreement are only the primary insurer and the reinsurer. There is no contractual agreement between the original insured and the reinsurer. Though many different types of reinsurance contracts exist, a common form is `r Gloss('excess of loss coverage')`. In such contracts, the primary insurer must make all required payments to the insured until the primary insurer's total payments reach a fixed reinsurance deducible. The reinsurer is then only responsible for paying losses above the reinsurance deductible. The maximum amount retained by the primary insurer in the reinsurance agreement (the reinsurance deductible) is called `r Gloss('retention')`.  
 
 Reinsurance arrangements allow insurers with limited financial resources to increase the capacity to write insurance and meet client requests for larger insurance coverage while reducing the impact of potential losses and protecting the insurance company against catastrophic losses. Reinsurance also allows the primary insurer to benefit from underwriting skills, expertise and proficient complex claim file handling of the larger reinsurance companies.
 
 
-**Example 5.1.6. Actuarial Exam Question.**
+**Example 5.4.6. Actuarial Exam Question.**
 Losses arising in a certain portfolio have a two-parameter Pareto distribution with  $\alpha=5$ and $\theta=3,600$. A reinsurance arrangement has been made, under which (a) the reinsurer accepts 15% of losses up to $u=5,000$ and all amounts in excess of 5,000 and (b) the insurer pays for the remaining losses. 
 
 a)	Express the random variables for the reinsurer's and the insurer's payments as a function of $X$, the portfolio losses. 
 b)	Calculate the mean amount paid on a single claim by the insurer. 
 c)	By assuming that the upper limit is $u = \infty$, calculate an upper bound on the standard deviation of the amount paid on a single claim by the insurer (retaining the 15% copayment).
 
-`r HideExample('5.1.6','Show Example Solution')`
+`r HideExample('4.4.6','Show Example Solution')`
 
 **Solution.**
 
@@ -532,7 +520,7 @@ In this section, you learn how to:
 
 
 
-Basic theory and many applications are based on *individual* observations that are "*complete*" and "*unmodified*," as we have seen in the previous section.  Section \@ref(S:PolicyDeduct) introduced the concept of observations that are "*modified*" due to two common types of limitations: **censoring** and **truncation**. For example, it is common to think about an insurance deductible as producing data that are truncated (from the left) or policy limits as yielding data that are censored (from the right). This viewpoint is from the primary insurer (the seller of the insurance). Another viewpoint is that of a reinsurer (an insurer of an insurance company) that will be discussed more in Chapter \@ref(ChapPortMgt).
+Basic theory and many applications are based on *individual* observations that are "*complete*" and "*unmodified*," as we have seen in the previous section.  Section \@ref(S:MaxLikeEstimation) introduced the concept of observations that are "*modified*" due to two common types of limitations: **censoring** and **truncation**. For example, it is common to think about an insurance deductible as producing data that are truncated (from the left) or policy limits as yielding data that are censored (from the right). This viewpoint is from the primary insurer (the seller of the insurance). Another viewpoint is that of a reinsurer (an insurer of an insurance company) that will be discussed more in Chapter \@ref(ChapPortMgt).
 A reinsurer may not observe a claim smaller than an amount, only that a claim exists; this is an example of censoring from the left. So, in this section, we cover the full gamut of alternatives. Specifically, this section will address parametric estimation methods for three alternatives to individual, complete, and unmodified data: **interval-censored** data available only in groups, data that are limited or **censored**, and data that may not be observed due to **truncation**. 
 
 
@@ -577,7 +565,7 @@ $$
 Maximizing the likelihood function (or equivalently, maximizing the log-likelihood function) would then produce the maximum likelihood estimates for grouped data.
 
 
-**Example 5.2.1. Actuarial Exam Question.** 
+**Example 5.3.1. Actuarial Exam Question.** 
 You are given:
 
 (i) Losses follow an exponential distribution with mean $\theta$.
@@ -599,7 +587,7 @@ $$
 
 Calculate the maximum likelihood estimate of $\theta$.
 
-`r HideExample('5.2.1', 'Show Example Solution')`
+`r HideExample('5.3.1', 'Show Example Solution')`
 
 **Solution.**
 $$
@@ -853,7 +841,7 @@ where $n_u = \sum_i (1-\delta_i)$ is the number of uncensored observations.
 ***
 
 
-**Example 5.2.2. Actuarial Exam Question.**
+**Example 5.3.2. Actuarial Exam Question.**
 You are given:
 
 (i) A sample of losses is: 600 700 900
@@ -862,7 +850,7 @@ You are given:
 
 Calculate the maximum likelihood estimate of $\theta$.
 
-`r HideExample('5.2.2', 'Show Example Solution')`
+`r HideExample('5.3.2', 'Show Example Solution')`
 
 **Solution.**
 These observations are truncated at 500. The contribution of each observation to the likelihood function is $$\frac{f(x)}{1-F(500)} = \frac{\theta^{-1}e^{-x/\theta}}{e^{-500/\theta}}$$
@@ -887,7 +875,7 @@ $$
 
 ***
 
-**Example 5.2.3. Actuarial Exam Question.**
+**Example 5.3.3. Actuarial Exam Question.**
 You are given the following information about a random sample:
 
 (i)  The sample size equals five.
@@ -896,7 +884,7 @@ You are given the following information about a random sample:
 
 Calculate the maximum likelihood estimate of $\theta$.
 
-`r HideExample('5.2.3', 'Show Example Solution')`
+`r HideExample('5.3.3', 'Show Example Solution')`
 
 **Solution.** The likelihood function is
 
@@ -916,18 +904,7 @@ $$\frac{-6}{\theta} + \frac{16650}{\theta^3} = 0 \ \Rightarrow \ \hat{\theta} = 
 
 ***
 
-## Nonparametric Estimation using Modified Data {#S:MS:NonParModified}
-
-*** 
-
-In this section, you learn how to:
-
--   Estimate the distribution function for grouped data using the ogive. 
--   Create a nonparametric estimator of the loss elimination ratio using the plug-in principle.
--   Apply the Kaplan-Meier product-limit and the Nelson Aalon estimators to estimate the distribution function in the presence of censoring.
--   Apply Greenwood's formula to estimate the variance of the product-limit estimator.
-
-*** 
+## Nonparametric Estimation using Modified Data
 
 Nonparametric estimators provide useful benchmarks, so it is helpful to understand the estimation procedures for grouped, censored, and truncated data.
 
@@ -951,7 +928,7 @@ $$
 ***
 
 
-**Example 5.3.1. Actuarial Exam Question.** 
+**Example 5.3.4. Actuarial Exam Question.** 
 You are given the following information regarding claim sizes for 100 claims:
 
 $$
@@ -975,7 +952,7 @@ $$
 
 Using the ogive, calculate the estimate of the probability that a randomly chosen claim is between 2000 and 6000.
 
-`r HideExample('5.3.1', 'Show Example Solution')`
+`r HideExample('5.3.4', 'Show Example Solution')`
 
 **Solution.**
 At the boundaries, the empirical distribution function is defined in the usual way, so we have
@@ -1006,7 +983,7 @@ LER(d) = \frac{\mathrm{E~}[X - (X-d)_+]}{\mathrm{E~}[X]} =\frac{\mathrm{E~}[\min
 $$
 for a fixed deductible $d$. 
 
-**Example. 5.3.2. Bodily Injury Claims and Loss Elimination Ratios** 
+**Example. 5.1.6. Bodily Injury Claims and Loss Elimination Ratios** 
 
 ```{r comment="", warning=FALSE, echo = FALSE}
 # Example from Derrig et al
@@ -1101,7 +1078,7 @@ As usual, the corresponding estimate of the survival function is $\hat{S}(x) = 1
 ***
 
 
-**Example 5.3.3. Actuarial Exam Question.**
+**Example 5.3.5. Actuarial Exam Question.**
 The following is a sample of 10 payments: 
 
 
@@ -1115,7 +1092,7 @@ where $+$ indicates that a loss has exceeded the policy limit.
 
 Using the Kaplan-Meier product-limit estimator, calculate the probability that the loss on a policy exceeds 11, $\hat{S}(11)$.
 
-`r HideExample('5.3.3', 'Show Example Solution')`
+`r HideExample('5.3.5', 'Show Example Solution')`
 
 **Solution.**
 There are four event times (non-censored observations). For each time $t_j$, we can calculate the number of events $s_j$ and the risk set $R_j$ as the following:
@@ -1145,7 +1122,7 @@ $$
 
 ***
 
-**Example. 5.3.4. Bodily Injury Claims.** We consider again the Boston auto bodily injury claims data from @derrig2001applications that was introduced in Example 5.1.11. In that example, we omitted the `r sum(BIData$Censored)` claims that were censored by policy limits. Now, we include the full dataset and use the Kaplan-Meier product limit to estimate the survival function. This is given in Figure \@ref(fig:KMSurvival).
+**Example. 5.3.6. Bodily Injury Claims.** We consider again the Boston auto bodily injury claims data from @derrig2001applications that was introduced in Example 5.1.11. In that example, we omitted the `r sum(BIData$Censored)` claims that were censored by policy limits. Now, we include the full dataset and use the Kaplan-Meier product limit to estimate the survival function. This is given in Figure \@ref(fig:KMSurvival).
 
 (ref:KMSurvival) **Kaplan-Meier Estimate of the Survival Function for Bodily Injury Claims**
 
@@ -1200,7 +1177,7 @@ and the relationship between the survival function and cumulative hazard functio
 
 ***
 
-**Example 5.3.5. Actuarial Exam Question.** 
+**Example 5.3.7. Actuarial Exam Question.** 
 
 For observation $i$ of a survival study:
 
@@ -1228,7 +1205,7 @@ $$
 Calculate the Kaplan-Meier product-limit estimate, $\hat{S}(1.6)$
 
 
-`r HideExample('5.3.5', 'Show Example Solution')`
+`r HideExample('5.3.7', 'Show Example Solution')`
 
 **Solution.** Recall the risk set $R_j = \sum_{i=1}^n \left\{ I(x_i \geq t_{j}) + I(u_i \geq t_{j}) - I(d_i \geq t_{j}) \right\}$. Then
 
@@ -1252,13 +1229,13 @@ The Kaplan-Meier estimate is therefore $\hat{S}(1.6) = \frac{5}{7}$.
 
 ***
 
-**Example 5.3.6. Actuarial Exam Question. - Continued.** 
+**Example 5.3.8. Actuarial Exam Question. - Continued.** 
 
 
 a) Using the Nelson-&Auml;alen estimator, calculate the probability that the loss on a policy exceeds 11, $\hat{S}_{NA}(11)$.
 b) Calculate Greenwood's approximation to the variance of the product-limit estimate $\hat{S}(11)$.
 
-`r HideExample('5.3.6', 'Show Example Solution')`
+`r HideExample('5.3.8', 'Show Example Solution')`
 
 **Solution.**
 As before, there are four event times (non-censored observations). For each time $t_j$, we can calculate the number of events $s_j$ and the risk set $R_j$ as the following:
@@ -1316,6 +1293,5 @@ Here are a set of exercises that guide the viewer through some of the theoretica
 
 #### Contributors {-}
 
-- **Zeinab Amin**, The American University in Cairo, is the principal author of this chapter. Email: zeinabha@aucegypt.edu for chapter comments and suggested improvements.
-- **Edward W. (Jed) Frees** and **Lisa Gao**, University of Wisconsin-Madison, are the principal authors of the sections on estimation using modified data which appeared in chapter 4 of the first edition of the text.  
+- **Edward W. (Jed) Frees** and **Lisa Gao**, University of Wisconsin-Madison, are the principal authors of the initial version of this chapter. Email: jfrees@bus.wisc.edu for chapter comments and suggested improvements.
 - Chapter reviewers include: Vytaras Brazauskas, Yvonne Chueh, Eren Dodd, Hirokazu (Iwahiro) Iwasawa, Joseph Kim, Andrew Kwon-Nakamura, Jiandong Ren, and Di (Cindy) Xu.

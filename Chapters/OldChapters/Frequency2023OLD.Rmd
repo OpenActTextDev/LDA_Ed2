@@ -1199,7 +1199,7 @@ Appendix Chapter \@ref(CAppA) gives a general introduction to maximum likelihood
 
 #### Contributors {-}
 
-- **N.D. Shyamalkumar**, The University of Iowa, and **Krupa Viswanathan**, Temple University, are the principal authors of the initial version and also the second edition of this chapter. Email: shyamal-kumar@uiowa.edu for chapter comments and suggested improvements.
+- **N.D. Shyamalkumar**, The University of Iowa, and **Krupa Viswanathan**, Temple University, are the principal authors of the initial version of this chapter. Email: shyamal-kumar@uiowa.edu for chapter comments and suggested improvements.
 - Chapter reviewers include: Chunsheng Ban, Paul Johnson, Hirokazu (Iwahiro) Iwasawa, Dalia Khalil, Tatjana Miljkovic, Rajesh Sahasrabuddhe, and Michelle Xia.
 
 
