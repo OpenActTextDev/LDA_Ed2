@@ -383,7 +383,7 @@ See @frees2021dependence  for more information about this dataset. The larger da
 Guillen, Montserrat; Bolancé, Catalina; Frees, Edward W.; Valdez, Emiliano A. (2021), "Insurance data for homeowners and motor insurance customers monitored over five years”, Mendeley Data, V1, DOI https://doi.org/10.17632/vfchtm5y7j.1
 
 
-## 'R' Package CASdatasets
+## 'R' Package CASdatasets {#S:CASDatasets}
 
 The `R` package `CASdatasets` provides a convenient way to access many well-known insurance datasets. This package was originally created to support the book *Computational Actuarial Science with R*, edited by Arthur Charpentier, @charpentier2014computational. 
 
@@ -401,8 +401,8 @@ Note that this package assumes that you have already installed a few other packa
 
 To illustrate, 
 
-*  in Chapter 4 we use the Singapore data (referred to as `sgautonb` in the package) and 
-*  in Chapter 15 we use the loss and expense data (referred to as `lossalae` in the package).
+*  in Chapter \@ref(ChapFrequency-Modeling) we use the Singapore data (referred to as `sgautonb` in the package) and 
+*  in Chapter \@ref(ChapDependenceModel) we use the loss and expense data (referred to as `lossalae` in the package).
     
 
 ## Other Data Sources

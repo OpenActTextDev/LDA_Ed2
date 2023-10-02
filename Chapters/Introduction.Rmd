@@ -831,6 +831,9 @@ much longer to develop. Chapter \@ref(ChapLossReserves) introduces this concern 
 These exercises ask you to work with data using statistical software, such as `R` code. If you would like some practice with `R` code, please visit the [first chapter of a *Short Course on Loss Data Analytics*](
 https://openacttexts.github.io/LDACourse1/introduction-to-loss-data-analytics.html). As another method of learning, you can also get practice executing 'R' code at our [Online Version R Code Site](https://openacttexts.github.io/LDARcode/).
 
+<a id=Exer:1.1></a> 
+
+[Exercise 1.1]: ../docs/ChapIntro.html#Exer:1.1
 
 **Exercise 1.1. Corporate Travel.** Universities purchase corporate travel policies to cover employees and students traveling on official university business for a wide variety of accidents and incidents while away from the campus or primary workplace. This broad coverage includes medical care and evacuation, loss of personal property, extraction for political and weather related reasons, and more. These data represent experience from the Australian National University (ANU) and additional details can be found in [ANU's corporate travel policy](https://services.anu.edu.au/files/document-collection/TRAVEL%20INFORMATION%20-%20Travel%20Information%20Kit_July%202018.pdf). You can also learn more about this line of business from ANU's insurer, [Chubb Travel](https://www.chubb.com/au-en/business/business-travel-group-travel-insurance.html). The data provided are maintained by the insurer, Chubb, and were accessed on 29 July 2022. You can retrieve the data by going to Appendix Section \@ref(Sec:DataTravel).
 
@@ -906,6 +909,9 @@ knitr::kable(sumTravelClaims , align = "cccccccc", caption = "**Travel Claims Su
 
 </div>
 
+<a id=Exer:1.2></a> 
+
+[Exercise 1.2]: ../docs/ChapIntro.html#Exer:1.2
 
 **Exercise 1.2. Group Personal Accident.** Group personal accident insurance offers financial protection in case of injury or death resulting from an incident that occurs on the job. Group personal accident offers insurance coverage and liability insurance protection against accidental death or injury. The insurance covers students and ANU's voluntary workers; ANU workers are covered through another system known as "workers' compensation."
 
@@ -1136,7 +1142,7 @@ knitr::kable(sumAuto, align = "cccccccc", caption = "**Motor Vehicle Incurred Lo
 
 ## Further Resources and Contributors {#Intro-further-reading-and-resources}
 
-
+If you would like additional practice with `R` coding, please visit our companion [LDA Short Course](https://openacttexts.github.io/LDACourse1). In particular, see the [Introduction to Loss Data Analytics Chapter](https://openacttexts.github.io/LDACourse1/introduction-to-loss-data-analytics.html).
 
 
 #### Contributor {-}

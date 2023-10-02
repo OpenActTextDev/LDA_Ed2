@@ -34,6 +34,7 @@ eq:Likelihood
 eq:Loglikelihood
 fig:LoglikeOnePareto
 fig:MLEComparea
+fig:GPALossFit43
 fig:CensorTrunc
 fig:Mortality
 eq:EXPloglik
@@ -47,11 +48,11 @@ fig:QQPlot
 fig:Iterative
 fig:ModelValidation
 eq:OutSampleCriter
-tab:unnamed-chunk-59
-tab:unnamed-chunk-60
-tab:unnamed-chunk-61
-tab:unnamed-chunk-62
-tab:unnamed-chunk-63
+tab:unnamed-chunk-67
+tab:unnamed-chunk-68
+tab:unnamed-chunk-69
+tab:unnamed-chunk-70
+tab:unnamed-chunk-71
 fig:qqCensored-1
 fig:qqCensored-2
 fig:qqCensored-3
@@ -157,8 +158,8 @@ fig:tikz-cum-triangle-cl3
 fig:tikz-cum-triangle-cl3b
 fig:tikz-cum-triangle-cl4
 fig:tikz-cum-triangle-cl5
-fig:unnamed-chunk-112
-fig:unnamed-chunk-114
+fig:unnamed-chunk-120
+fig:unnamed-chunk-122
 fig:TransitionSwitz
 fig:PremEvolution
 fig:Scatter
@@ -185,8 +186,8 @@ eq:LawIterExp
 eq:LawTotVar
 eq:AppBEV1
 eq:AppBVE2
-tab:unnamed-chunk-177
-tab:unnamed-chunk-178
+tab:unnamed-chunk-185
+tab:unnamed-chunk-186
 tab:DescribeTravel
 tab:PrintNumTravel
 tab:DescribeGPA
@@ -296,6 +297,7 @@ method-of-moments
 percentile-matching
 S:Maxlike
 starting-values
+S:LossExercises
 LM-further-reading-and-resources
 ChapClaimSeverity
 S:CoverageModifications
@@ -341,7 +343,7 @@ impact-of-exposure-on-frequency
 S:MS:DedImpactClmFreq
 impact-of-policy-modifications-on-aggregate-claims
 AL-further-reading-and-resources
-exercises-4
+exercises-3
 ChapSimulation
 S:SimulationFundamentals
 generating-independent-uniform-observations
@@ -424,7 +426,7 @@ S:RC:PoissonRegression
 S:RC:Need.Poi.reg
 poisson-regression
 incorporating-exposure
-exercises-5
+exercises-4
 S:CatVarMultiTarriff
 rating-factors-and-tariff
 multiplicative-tariff-model
@@ -479,7 +481,7 @@ surplus-share-proportional-treaty
 layers-of-coverage
 S:PortMgtExample
 Sec:PortfolioFurtherReadings
-exercises-7
+exercises-6
 ChapLossReserves
 S:motivation
 S:claim-types
@@ -615,5 +617,5 @@ Sec:DataTravel
 Sec:DataGPA
 Sec:DataAuto
 spanish-personal-insurance-data
-r-package-casdatasets
+S:CASDatasets
 other-data-sources

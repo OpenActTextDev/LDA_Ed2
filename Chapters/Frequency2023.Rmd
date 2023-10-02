@@ -123,7 +123,7 @@ We note that while $M_N(\cdot)$ is well defined as it is the expectation of a no
 
 <a id=thm:3.1></a> 
 
-[Theorem 3.1]: \#thm:3.1
+[Theorem 3.1]: ../docs/ChapFrequency-Modeling.html#thm:3.1
 
 **Theorem 3.1.**  
 Let $N$ be a count random variable such that $\mathrm{E}~{[e^{t^\ast N}]}$ is finite for some $t^\ast>0$. We have the following:
@@ -162,7 +162,7 @@ Moreover, if the *pgf* exists on an interval $[0,s^\ast)$ with $s^\ast>1$, then 
 
 <a id=thm:3.2></a> 
 
-[Theorem 3.2]: \#thm:3.2
+[Theorem 3.2]: ../docs/ChapFrequency-Modeling.html#thm:3.2
 
 **Theorem 3.2.** 
 Let $N$ be a count random variable such that $\mathrm{E}~{(s^{\ast})^N}$ is finite for some $s^\ast>1$. We have the following:
@@ -743,7 +743,7 @@ To summarize our discussion of `r Gloss('MLE')` for the $(a,b,0)$ class of distr
 
 <a id=tab:3.1></a>  
 
-[Table 3.1]: \#tab:3.1
+[Table 3.1]: ../docs/ChapFrequency-Modeling.html#tab:3.1
 
 Table 3.1. **Three Samples of Size 5**
 
@@ -839,7 +839,7 @@ version with \((p_0^M=0.6)\).
 
 <a id=tab:3.2></a>  
 
-[Table 3.2]: \#tab:3.2
+[Table 3.2]: ../docs/ChapFrequency-Modeling.html#tab:3.2
 
 Table 3.2. **Calculation of Probabilities for** $k\leq 3$ 
 
@@ -920,7 +920,7 @@ In a certain town the number of common colds an individual will get in a year fo
 
 <a id=tab:3.3></a>  
 
-[Table 3.3]: \#tab:3.3
+[Table 3.3]: ../docs/ChapFrequency-Modeling.html#tab:3.3
 
 Table 3.3. **The Distribution of the Population and the Mean Number of Colds**
 
@@ -1028,8 +1028,7 @@ Now, one can directly use the above result to conclude that $N$ is distributed a
 
 In this section, you learn how to:
 
-- Calculate a goodness of fit statistic to compare a hypothesized discrete distribution to a sample of discrete observations
-- Compare the statistic to a reference distribution to assess the adequacy of the fit
+- Compare a fitted distribution to empirical data to assess the adequacy of the fit
 
 ***
 
@@ -1041,7 +1040,7 @@ In $1993$, a portfolio of $n=7,483$ automobile insurance policies from a major S
 
 <a id=tab:3.4></a>  
 
-[Table 3.4]: \#tab:3.4
+[Table 3.4]: ../docs/ChapFrequency-Modeling.html#tab:3.4
 
 Table 3.4. **Singaporean Automobile Accident Data**
 
@@ -1066,7 +1065,7 @@ Now if we use Poisson ($\hat{\lambda}_{MLE}$) as the fitted distribution, then a
 
 <a id=tab:3.5></a>  
 
-[Table 3.5]: \#tab:3.5
+[Table 3.5]: ../docs/ChapFrequency-Modeling.html#tab:3.5
 
 Table 3.5. **Comparison of Observed to Fitted Counts: Singaporean Auto Data**
 
@@ -1152,49 +1151,131 @@ where $\phi(\cdot)$ represents the standard normal density.
 
 **Exercise 3.11.** (** **) Using the development of Section 3.3 rigorously show that not only does the recurrence \@ref(eq:ab0) tie the binomial, the Poisson and the negative binomial distributions together, but that it also characterizes them. 
 
-
-#### Exercises with a Practical Focus {-}
   
 **Exercise 3.12. Actuarial Exam Question.** You are given:
 
-<!-- \def\labelenumi{\arabic{enumi}.} -->
-1.  \(p_k\) denotes the probability that the number of claims equals \(k\)
-  for \(k=0,1,2,\ldots\)
-2. \(\frac{p_n}{p_m}=\frac{m!}{n!}, m\ge 0, n\ge 0\)
+1.  \(p_k\) denotes the probability that the number of claims equals \(k\) for \(k=0,1,2,\ldots\)
+2.  \(\frac{p_n}{p_m}=\frac{m!}{n!}, m\ge 0, n\ge 0\)
 
-Using the corresponding zero-modified claim count distribution with
-\(p_0^M=0.1\), calculate \(p_1^M\).  
-
-**Exercise 3.13. Actuarial Exam Question.** During a one-year period, the number of accidents per day was distributed as follows:
-
-<!-- \label{tabsing3} -->
-$$
-\begin{matrix}
-\begin{array}{c|c|c|c|c|c|c}
-\hline
-\text{No. of Accidents} & 0 & 1 & 2 & 3 & 4 & 5\\
-\hline
-\text{No. of Days} & 209 & 111 & 33 & 7 & 5 & 2\\
-\hline
-\end{array}
-\end{matrix}
-$$
-
-You use a chi-square test to measure the fit of a Poisson distribution with mean 0.60. The minimum expected number of observations in any group should be 5. The maximum number of groups should be used. Determine the value of the chi-square statistic. 
+Using the corresponding zero-modified claim count distribution with \(p_0^M=0.1\), calculate \(p_1^M\).  
 
 
-#### Additional Exercises {-}
+#### Exercises with a Practical Focus {-}
 
-Here are a set of exercises that guide the viewer through some of the theoretical foundations of **Loss Data Analytics**. Each tutorial is based on one or more questions from the professional actuarial examinations – typically the Society of Actuaries Exam C/STAM.
+**Exercise 3.13. Singaporean Automobile Accident.** In this exercise, we replicate and extend the real-data example introduced in Section \@ref(S:freq-real-example) using `R`.
 
-<p style="text-align: center;">
-[Frequency Distribution Guided Tutorials](https://www.ssc.wisc.edu/~jfrees/loss-data-analytics/loss-data-analytics-problems/)
-</p>
+*  **a**.  From the package `CASdatasets`, retrieve the data `sgautonb` in order to work with the variable `Clm_Count` which is a count of claims. Refer to Section \@ref(S:CASDatasets) for a description of this package. Verify that the mean claim count is 0.
+*  **b**. Compute the fitted Poisson distribution and reproduce [Table 3.5].
+*  **c**. Compute the maximum likelihood estimates for the negative binomial distribution. One way to do this is to create a negative logarithmic likelihood function and use the `R` function `optim` for minimization. Use the resulting maximum likelihood estimates to create a fitted distribution and augment the Table in part (b) with this alternative distribution.
+
+In part (c), you learn that the more complex negative binomial distribution produces roughly the same fits as the simpler Poisson distribution. As a result of this analysis, an analyst would typically prefer the simpler Poisson distribution.
+
+
+`r HideRCode('Singapore.1',"Solutions for Exercise 3.13")`
+
+```{r  echo=SHOW_PDF}
+# Part a.
+library(CASdatasets)
+data(sgautonb)
+Clm_Count <- as.numeric(table(sgautonb$Clm_Count))
+lambdahat <- mean(sgautonb$Clm_Count)
+
+# Part b.
+perc.edf    <- cumsum(Clm_Count)/sum(Clm_Count)
+perc.Pois   <- ppois(0:3, lambda = lambdahat)  
+tableout.b  <- data.frame( Clm_Count, perc.edf,perc.Pois)
+names(tableout.b) <- c("Claim Count", "Empirical Percentile", "Poisson Perc")
+round(tableout.b,digits = 4)
+
+# Part c.
+loglikNB <- function (parms){ 
+  r    <-  parms[1]
+  beta <-  parms[2]
+  nloglike  <- -sum(log(dnbinom(sgautonb$Clm_Count, size=r, mu=r*beta)))
+  return(nloglike)
+  } 
+ini.NB <- c(1,1)
+#zop.NB <- nlminb(ini.NB, loglikNB, lower = c(1e-6, 1e-6), upper = c(Inf, Inf))
+zop.NB     <- optim(ini.NB, loglikNB)
+rhat.NB    <- zop.NB$par[1]
+betahat.NB <- zop.NB$par[2]
+perc.NB    <- pnbinom(0:3, size=rhat.NB, mu=rhat.NB*betahat.NB) 
+tableout.c <- data.frame( Clm_Count, perc.edf,perc.Pois,perc.NB)
+names(tableout.c) <- c("Claim Count", "Empirical Percentile", "Poisson Perc", "Neg Binom Perc")
+round(tableout.c,digits = 4)
+
+```
+
+</div>
+
+```{r include = FALSE}
+TravelClaims <- read.csv("Data\\ANUTravelClaims2022.csv",header=T)
+Clm_Count <- as.numeric(table(TravelClaims$UW.Year))
+N         <- sum(Clm_Count)
+lambdahat <- sum(Clm_Count)/length(Clm_Count)
+```
+
+<a id=Exer:3.14></a>  
+
+[Exercise 3.14]: ../docs/ChapFrequency-Modeling.html#Exer:3.14
+
+
+**Exercise 3.14. Corporate Travel** This exercise is based on the data set introduced in [Exercise 1.1] where now the focus is on frequency modeling. For corporate travel, the number of claims are sufficient that a separate frequency model could be considered. For the frequency of claims, there are `r N` claims over the 2006-2021 period that amounts to `r round(lambdahat,digits=2)` per year. One might assume that annual claims can be fit using a single distribution to the entire period, such as a Poisson or a negative binomial. Another option is to fit a distribution starting in years 2009, where this is an increase in the amount of claims from prior years. A third option is to omit experience from underwriting year 2019 and on where the number of claims fluctuated dramatically, in part due to the Covid epidemic. In this exercise, we pursue the first option.
+
+*  **a**. Fit a Poisson distribution and a negative binomial distribution to all claims. 
+*  **b**. Fit a negative binomial distribution to all claims using the strategy introduced in part (c) of Exercise 3.13.
+*  **c**. To check your work, use the `fitdist` function from the package `fitdistrplus`, with the negative binomial (`nbinom`) option. 
+*  **d**. Use the `ecdf` function in `R` to produce empirical cumulative probabilities. Produce a table that compares the empirical percentiles to those under the Poisson and negative binomial. 
+
+From part (d), you learn that both fitted distributions did well and neither outperformed the other.
+
+`r HideRCode('Travel.1',"Solutions for Exercise 3.14")`
+
+```{r echo=SHOW_PDF}
+# Part a.
+TravelClaims <- read.csv("Data\\ANUTravelClaims2022.csv",header=T)
+#TravelClaims <- subset(TravelClaims, UW.Year < 2020)
+Clm_Count    <- as.numeric(table(TravelClaims$UW.Year))
+lambdahat    <- sum(Clm_Count)/length(Clm_Count)
+
+# Part b.
+loglikNB <- function (parms){ 
+  r      <-  parms[1]
+  beta   <-  parms[2]
+  nloglike <- -sum(log(dnbinom(Clm_Count, size=r, mu=r*beta)))
+  return(nloglike)
+  }  
+ini.NB     <- c(10, 5)
+#zop.NB     <- nlminb(ini.NB, loglikNB, lower = c(1e-6, 1e-6), upper = c(Inf, Inf))
+zop.NB     <- optim(ini.NB, loglikNB )
+rhat.NB    <- zop.NB$par[1]
+betahat.NB <- zop.NB$par[2]
+
+# Part c.
+fit.nb <- fitdistrplus::fitdist(Clm_Count, "nbinom")
+fit.nb$estimate[1]
+fit.nb$estimate[2]/fit.nb$estimate[1]
+
+# Part d.
+Clm_Count <- Clm_Count[order(Clm_Count)]
+temp      <- ecdf(Clm_Count)
+perc.edf  <- temp(Clm_Count)
+perc.NB   <-  pnbinom(Clm_Count, size=rhat.NB, mu=rhat.NB*betahat.NB) 
+perc.Pois <-  ppois(Clm_Count, lambda = lambdahat)  
+tableout  <- data.frame( Clm_Count, perc.edf,perc.Pois,perc.NB)
+names(tableout) <- c("Claim Count", "Empirical Percentile", "Poisson Perc", "Neg Binom Perc")
+round(tableout,digits = 4)
+
+```
+
+</div>
 
 
 ## Further Resources and Contributors {#Freq-further-reading-and-resources}
 
 Appendix Chapter \@ref(CAppA) gives a general introduction to maximum likelihood theory regarding estimation of parameters from a parametric family. Appendix Chapter \@ref(CAppC) gives more specific examples and expands some of the concepts.
+
+If you would like additional practice with `R` coding, please visit our companion [LDA Short Course](https://openacttexts.github.io/LDACourse1). In particular, see the [Frequency Modeling Chapter](https://openacttexts.github.io/LDACourse1/frequency-modeling.html).
 
 
 #### Contributors {-}

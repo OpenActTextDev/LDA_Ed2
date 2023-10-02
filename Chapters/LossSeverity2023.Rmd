@@ -1142,9 +1142,11 @@ f_n(x) = \frac{1}{nb} \sum_{i=1}^n w\left(\frac{x-X_i}{b}\right) ,
 
 where $w$ is a probability density function centered about 0. Note that equation \@ref(eq:KDF) is a special case of the kernel density estimator where $w(x) = \frac{1}{2}I(-1 < x \le 1)$, also known as the *uniform kernel*. Other popular choices are shown in [Table 4.1].
 
-[Table 4.1]:\#tab:4.1
 
 <a id=tab:4.1></a>
+
+[Table 4.1]: ../docs/ChapSeverity.html#tab:4.1
+
 
 Table 4.1. **Popular Kernel Choices**
 
@@ -1856,9 +1858,130 @@ Generally, maximum likelihood is the preferred technique for parameter estimatio
 ```{r child = './Quizzes/Quiz41.html', eval = QUIZ}
 ```
 
+## Exercises with a Practical Focus  {#S:LossExercises}
+
+**Exercise 4.1. Corporate Travel** This exercise is based on the data set introduced in [Exercise 1.1] where now the focus is on severity modeling. As in [Exercise 3.14], we fit data for the period 2006-2021  but restrict claims to be greater than or equal to 10 (Australian dollars).
+
+*  **a**. Using the `R` function `density`, provide a nonparametric density estimate of the claims on both the original and logarithmic scale over the range of the data. Use this display to verify that the display is more interpretable on the logarithmic scale.
+*  **b**. Fit a normal distribution to logarithmic claims and compare the fitted distribution to the nonparametric (empirical) distribution. Interpret this comparison to mean that the lognormal distribution is an excellent candidate to represent these data.
+*  **c**. As an alternative, fit a Pareto distribution to the claims data using maximum likelihood. To check your work, do this in two ways. A basic approach is to create a log likelihood function and minimize it (using the function `optim`). A second approach is to the the `vglm` function from the `VGAM` package.
+*  **d**. We have fit $X$ to be a Pareto distribution but wish to plot $Y=\ln(X)$. From Section 4.3.1.3, we saw that $F_Y(y) = F_X(e^y)$ and $f_Y(y) = e^y f_X(e^y)$. Use this transformation to augment the plot in part (b) to include the Pareto distribution.
+
+From this analysis, you learn that the lognormal and Pareto distribution fit the data approximately the same with the lognormal as a slight favorite.
+
+`r HideRCode('Travel.2',"Solutions for Exercise 4.1")`
+
+```{r  echo=SHOW_PDF}
+# Part a.
+TravelClaims <- read.csv("Data\\ANUTravelClaims2022.csv",header=T)
+TravelClaimsGT10 <- subset(TravelClaims, Incurred.Loss  >= 10)
+X <- TravelClaimsGT10$Incurred.Loss
+par(mfrow=c(1, 2))
+plot(density(X), main = "", xlab = "Claims")
+plot(density(log(X)), main = "", xlab = "Log Claims")
+
+```
+
+```{r echo=SHOW_PDF}
+# Part b.
+y <- seq(0, 15, by = 0.01)
+plot(density(log(X)), main = "", xlab = "Log Claims") 
+fit.norm <- dnorm(y, mean = mean(log(X)), sd = sd(log(X)) )
+lines(y, fit.norm, col = "green", lty =7)
+
+fit.norm <- dnorm(y, mean = mean(log(X)), sd = sd(log(X)) )
+
+```
+
+
+```{r echo=SHOW_PDF}
+# Part c.
+library(VGAM)
+#Pareto
+fit.pareto <- vglm(X ~ 1, paretoII, loc = 0 )
+coef(fit.pareto)
+loglikPareto <- function (parms){ 
+  r    <-  parms[1]
+  beta <-  parms[2]
+  nloglike  <- -sum(log(VGAM::dparetoII(X, loc = 0, shape = exp(parms[2]), scale = exp(parms[1])) ))
+  return(nloglike)
+} 
+Pareto.exp     <- optim(par = c(1,1), loglikPareto)
+Pareto.exp$par
+
+```
+
+```{r echo=SHOW_PDF}
+# Part d.
+fpareto_ex <- VGAM::dparetoII(exp(y), loc = 0, shape = exp(coef(fit.pareto)[2]), scale = exp(coef(fit.pareto)[1])) * exp(y)
+plot(density(log(X)), main = "", xlab = "Log Claims") 
+lines(y, fit.norm, col = "green", lty =7)
+lines(y, fpareto_ex, col = "purple", lty =7)
+```
+
+
+</div>
+
+
+**Exercise 4.2. Wisconsin Property Fund.** Replicate the real-data example introduced in [Example 4.4.12] using the techniques demonstrated in Exercise 4.1.
+
+
+**Exercise 4.3. Group Personal Accident.** This exercise is based on the data set introduced in [Exercise 1.2]. We use incurred claims for all available years, still omitting those less than 10.
+
+One can fit a distribution to the losses. An analysis, summarized in Figure \@ref(fig:GPALossFit43), shows the results from fitting  via maximum likelihood the gamma, Pareto, and lognormal distributions to incurred losses. This figure suggests that the lognormal distribution appears to be the best fit.
+
+Following the outlines in Exercises 4.1 and 4.2, fit these data via maximum likelihood and reproduce the figure that summarizes the results.
+
+```{r GPALossFit43, fig.cap='**Distribution of Group Personal Accident Losses with Superimposed Fitted Distributions**', out.width='80%', fig.asp=.6, echo = FALSE}
+GPAClaims <- read.csv("Data\\ANUGroupPersonalAccidentClaims2022.csv",header=T)
+GPAClaimsGT10 <- subset(GPAClaims, Incurred.Loss >=10)
+
+library(VGAM)
+x <- seq(0, 15, by = 0.01)
+
+# Inference assuming a gamma distribution
+fit.gamma <- vglm(Incurred.Loss ~ 1, family = gamma2, data = GPAClaimsGT10)
+theta <- exp(coef(fit.gamma)[1]) / exp(coef(fit.gamma)[2])  # theta = mu / alpha
+alpha <- exp(coef(fit.gamma)[2]) 
+fgamma_ex <- dgamma(exp(x), shape = alpha, scale = theta) * exp(x)
+
+#Pareto
+fit.pareto <- vglm(Incurred.Loss ~ 1, paretoII, loc = 0, data = GPAClaimsGT10)
+fpareto_ex <- dparetoII(exp(x), loc = 0, shape = exp(coef(fit.pareto)[2]), 
+                        scale = exp(coef(fit.pareto)[1])) * exp(x)
+
+# Lognormal
+fit.LN <- vglm(Incurred.Loss ~ 1, family = lognormal, data = GPAClaimsGT10)
+flnorm_ex <- dlnorm(exp(x), mean = coef(fit.LN)[1],
+                    sd = exp(coef(fit.LN)[2])) * exp(x)
+
+plot(density(log(GPAClaimsGT10$Incurred.Loss)), main = "", xlab = "Log Claims", 
+           ylim = c(0,0.4)) 
+
+lines(x, fgamma_ex, col = "blue", lty =2)
+lines(x, fpareto_ex, col = "purple", lty =3)
+lines(x, flnorm_ex, col = "green", lty =3)
+legend("topleft", c("log(Claim)", "Gamma", "Pareto", 
+                    "Lognormal"), cex=0.8,
+       lty = c(1,2,3,4,1,1),
+       col = c("black","blue","purple","green")) 
+```
+
+
+`r HideRCode('GPA.2',"Solutions for Exercise 4.3")`
+
+
+```{r echo=SHOW_PDF, ref.label = 'GPALossFit43', eval = FALSE}
+
+```
+
+</div>
+
+
 
 
 ## Further Resources and Contributors {#LM-further-reading-and-resources}
+
 #### Contributors {-}
 
 - **Zeinab Amin**, The American University in Cairo, is the principal author of the initial version and also the second edition of this chapter. Email: zeinabha@aucegypt.edu for chapter comments and suggested improvements.
@@ -1866,14 +1989,8 @@ Generally, maximum likelihood is the preferred technique for parameter estimatio
 -  Other chapter reviewers include: Rob Erhardt, Samuel Kolins, Tatjana Miljkovic, Michelle Xia, and Jorge Yslas.
 
 
-#### Exercises {-}
-
-Here are a set of exercises that guide the viewer through some of the theoretical foundations of **Loss Data Analytics**. Each tutorial is based on one or more questions from the professional actuarial examinations – typically the Society of Actuaries Exam C/STAM.
-
-<p style="text-align: center;">
-[Severity Distribution Guided Tutorials](http://www.ssc.wisc.edu/~jfrees/loss-data-analytics/chapter-3-modeling-loss-severity/loss-data-analytics-severity-problems/)
-</p>
-
 #### Further Readings and References {-}
 
 Notable contributions include: @cummins1991managing, @frees2008hierarchical, @klugman2012, @kreer2015goodness, @mcdonald1984some, @mcdonald1995generalization, @tevet2016applying, and @venter1983transformed.
+
+If you would like additional practice with `R` coding, please visit our companion [LDA Short Course](https://openacttexts.github.io/LDACourse1). In particular, see the [Modeling Loss Severity Chapter](https://openacttexts.github.io/LDACourse1/modeling-loss-severity.html).
