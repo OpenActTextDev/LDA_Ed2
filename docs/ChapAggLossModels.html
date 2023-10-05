@@ -6,7 +6,7 @@
   <meta http-equiv="X-UA-Compatible" content="IE=edge" />
   <title>Chapter 7 Aggregate Loss Models | Loss Data Analytics</title>
   <meta name="description" content="Chapter 7 Aggregate Loss Models | Loss Data Analytics is an interactive, online, freely available text. - The online version will contain many interactive objects (quizzes, computer demonstrations, interactive graphs, video, and the like) to promote deeper learning. - A subset of the book will be available in pdf format for low-cost printing. - The online text will be available in multiple languages to promote access to a worldwide audience." />
-  <meta name="generator" content="bookdown 0.27 and GitBook 2.6.7" />
+  <meta name="generator" content="bookdown 0.32 and GitBook 2.6.7" />
 
   <meta property="og:title" content="Chapter 7 Aggregate Loss Models | Loss Data Analytics" />
   <meta property="og:type" content="book" />
@@ -515,7 +515,7 @@ code span.al { color: #ff0000; font-weight: bold; } /* Alert */
 code span.an { color: #60a0b0; font-weight: bold; font-style: italic; } /* Annotation */
 code span.at { color: #7d9029; } /* Attribute */
 code span.bn { color: #40a070; } /* BaseN */
-code span.bu { } /* BuiltIn */
+code span.bu { color: #008000; } /* BuiltIn */
 code span.cf { color: #007020; font-weight: bold; } /* ControlFlow */
 code span.ch { color: #4070a0; } /* Char */
 code span.cn { color: #880000; } /* Constant */
@@ -528,7 +528,7 @@ code span.er { color: #ff0000; font-weight: bold; } /* Error */
 code span.ex { } /* Extension */
 code span.fl { color: #40a070; } /* Float */
 code span.fu { color: #06287e; } /* Function */
-code span.im { } /* Import */
+code span.im { color: #008000; font-weight: bold; } /* Import */
 code span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Information */
 code span.kw { color: #007020; font-weight: bold; } /* Keyword */
 code span.op { color: #666666; } /* Operator */
@@ -1001,14 +1001,15 @@ div.csl-indent {
 <li class="chapter" data-level="15" data-path="ChapBonusMalus.html"><a href="ChapBonusMalus.html"><i class="fa fa-check"></i><b>15</b> Experience Rating using Bonus-Malus</a>
 <ul>
 <li class="chapter" data-level="15.1" data-path="ChapBonusMalus.html"><a href="ChapBonusMalus.html#S:ERBM:Intro"><i class="fa fa-check"></i><b>15.1</b> Introduction</a></li>
-<li class="chapter" data-level="15.2" data-path="ChapBonusMalus.html"><a href="ChapBonusMalus.html#S:ERBM:NCD"><i class="fa fa-check"></i><b>15.2</b> <em>NCD</em> System in Several Countries</a>
+<li class="chapter" data-level="15.2" data-path="ChapBonusMalus.html"><a href="ChapBonusMalus.html#S:ERBM:NCD"><i class="fa fa-check"></i><b>15.2</b> <em>BMS</em> in Several Countries</a>
 <ul>
-<li class="chapter" data-level="15.2.1" data-path="ChapBonusMalus.html"><a href="ChapBonusMalus.html#ncd-system-in-malaysia"><i class="fa fa-check"></i><b>15.2.1</b> <em>NCD</em> System in Malaysia</a></li>
-<li class="chapter" data-level="15.2.2" data-path="ChapBonusMalus.html"><a href="ChapBonusMalus.html#ncd-systems-in-other-countries"><i class="fa fa-check"></i><b>15.2.2</b> NCD Systems in Other Countries</a></li>
+<li class="chapter" data-level="15.2.1" data-path="ChapBonusMalus.html"><a href="ChapBonusMalus.html#bms-in-malaysia"><i class="fa fa-check"></i><b>15.2.1</b> <em>BMS</em> in Malaysia</a></li>
+<li class="chapter" data-level="15.2.2" data-path="ChapBonusMalus.html"><a href="ChapBonusMalus.html#bms-in-other-countries"><i class="fa fa-check"></i><b>15.2.2</b> <em>BMS</em> in Other Countries</a></li>
 </ul></li>
 <li class="chapter" data-level="15.3" data-path="ChapBonusMalus.html"><a href="ChapBonusMalus.html#S:ERBM:BMS"><i class="fa fa-check"></i><b>15.3</b> <em>BMS</em> and Markov Chain Model</a>
 <ul>
 <li class="chapter" data-level="15.3.1" data-path="ChapBonusMalus.html"><a href="ChapBonusMalus.html#transition-probability"><i class="fa fa-check"></i><b>15.3.1</b> Transition Probability</a></li>
+<li class="chapter" data-level="15.3.2" data-path="ChapBonusMalus.html"><a href="ChapBonusMalus.html#some-applications"><i class="fa fa-check"></i><b>15.3.2</b> Some Applications</a></li>
 </ul></li>
 <li class="chapter" data-level="15.4" data-path="ChapBonusMalus.html"><a href="ChapBonusMalus.html#S:ERBM:StatDist"><i class="fa fa-check"></i><b>15.4</b> <em>BMS</em> and Stationary Distribution</a>
 <ul>
@@ -1265,7 +1266,7 @@ S_n=X_1 +X_2 +\cdots+X_n ,
 \begin{aligned}
     {\rm Var}(S_n) &amp;= \sum_{i=1}^{n} {\rm Var}(X_i) \\
     P_{S_n}(z) &amp;= \prod_{i=1}^{n}P_{X_i}(z) \\
-    M_{S_n}(t) &amp;= \prod_{i=1}^{n}M_{X_i}(t), 
+    M_{S_n}(t) &amp;= \prod_{i=1}^{n}M_{X_i}(t),
 \end{aligned}
 \]</span></p>
 <p>where <span class="math inline">\(P_{S_n}(\cdot)\)</span> and <span class="math inline">\(M_{S_n}(\cdot)\)</span> are the probability generating function (<em>pgf</em>) and the moment generating function (<em>mgf</em>) of <span class="math inline">\(S_n\)</span>, respectively. The distribution of each <span class="math inline">\(X_i\)</span> contains a probability mass at zero, corresponding to the event of no claims from the <span class="math inline">\(i\)</span>th contract. One strategy to incorporate the zero mass in the distribution is to use the two-part framework:
@@ -1289,11 +1290,11 @@ A special case of the above model is when <span class="math inline">\(B_i\)</spa
 <p><strong>Example 7.2.1. Actuarial Exam Question.</strong>
 An insurance company sold 300 fire insurance policies as follows:</p>
 <p><span class="math display">\[
-{\small 
+{\small
 \begin{matrix}
     \begin{array}{c c c} \hline
         \text{Number of} &amp; \text{Policy} &amp; \text{Probability of}\\
-        \text{Policies} &amp;  \text{Maximum} &amp;  \text{Claim Per Policy}\\ 
+        \text{Policies} &amp;  \text{Maximum} &amp;  \text{Claim Per Policy}\\
         &amp; (M_i) &amp; (q_i) \\ \hline
         100 &amp; 400 &amp; 0.05\\
         200 &amp; 300 &amp; 0.06\\ \hline
@@ -1313,7 +1314,7 @@ An insurance company sold 300 fire insurance policies as follows:</p>
 <p><strong>Solution.</strong>
 The aggregate claims are <span class="math inline">\(S_{300} = X_1+\cdots+X_{300}\)</span>, where <span class="math inline">\(X_1, \ldots, X_{300}\)</span> are independent but not identically distributed. Policy claims amounts are uniformly distributed on <span class="math inline">\((0,M_i)\)</span>, so the mean claim amount is <span class="math inline">\(M_i/2\)</span> and the variance is <span class="math inline">\(M_i^2/12\)</span>. Thus, for policy <span class="math inline">\(i=1,\ldots,300\)</span>, we have
 <span class="math display">\[
-{\small 
+{\small
 \begin{matrix}
     \begin{array}{ccccc} \hline
         \text{Number of} &amp; \text{Policy} &amp; \text{Probability of} &amp; \text{Mean} &amp; \text{Variance}\\
@@ -1372,7 +1373,7 @@ we can write <span class="math inline">\(X_i=I_i\times B_i\)</span> with <span c
 <p><strong>Example 7.2.2.</strong>
 An insurance company sold a portfolio of 100 independent homeowners insurance policies, each of which has claim frequency following a zero-modified Poisson distribution, as follows:</p>
 <p><span class="math display">\[
-{\small 
+{\small
 \begin{matrix}
     \begin{array}{cccc} \hline
         \text{Type of} &amp; \text{Number of}  &amp; \text{Probability of} &amp; \lambda \\
@@ -1424,8 +1425,8 @@ Note that equivalently, we could have calculated the mean and variance of an ind
 <h3><span class="header-section-number">7.2.2</span> Aggregate Loss Distribution<a href="ChapAggLossModels.html#aggregate-loss-distribution" class="anchor-section" aria-label="Anchor link to header"></a></h3>
 <p>To understand the distribution of the aggregate loss, one could use the <a href="#" class="tooltip" style="color:green"><em>central limit theorem</em><span style="font-size:8pt">Given certain conditions, the arithmetic mean of a large number of replications of independent random variables, each with a finite mean and variance, will be approximately normally distributed, regardless of the underlying distribution.</span></a> to approximate the distribution of <span class="math inline">\(S_n\)</span> for large <span class="math inline">\(n\)</span>. Denote <span class="math inline">\(\mu_{S_n}={\rm E}(S_n)\)</span> and <span class="math inline">\(\sigma^2_{S_n}={\rm Var}(S_n)\)</span> and let <span class="math inline">\(Z\sim N(0,1)\)</span>, a standard normal random variable with <a href="#" class="tooltip" style="color:green"><em>cdf</em><span style="font-size:8pt">Cumulative distribution function</span></a> <span class="math inline">\(\Phi\)</span>. Then the <em>cdf</em> of <span class="math inline">\(S_n\)</span> can be approximated as follows:
 <span class="math display">\[\begin{aligned}
- F_{S_n}(s) &amp;= {\rm Pr}({S_n}\leq s) = \Pr \left( \frac{S_n - \mu_{S_n}}{\sigma_{S_n}} \leq \frac{s-\mu_{S_n}}{\sigma_{S_n}} \right) \\
- &amp;\approx \Pr\left( Z \leq \frac{s-\mu_{S_n}}{\sigma_{S_n}} \right) = \Phi \left(\frac{s-\mu_{S_n}}{\sigma_{S_n}}\right) .
+F_{S_n}(s) &amp;= {\rm Pr}({S_n}\leq s) = \Pr \left( \frac{S_n - \mu_{S_n}}{\sigma_{S_n}} \leq \frac{s-\mu_{S_n}}{\sigma_{S_n}} \right) \\
+&amp;\approx \Pr\left( Z \leq \frac{s-\mu_{S_n}}{\sigma_{S_n}} \right) = \Phi \left(\frac{s-\mu_{S_n}}{\sigma_{S_n}}\right) .
 \end{aligned}\]</span></p>
 <hr />
 <p><strong>Example 7.2.3. Actuarial Exam Question - Follow-Up.</strong>
@@ -1468,7 +1469,7 @@ F_X^{\ast 2} \left(x \right) &amp;=&amp; \Pr(X_1 + X_2 \le x) = \mathrm{E}_{X_2}
 F^{\ast n}\left(x\right) &amp;=&amp; \Pr(S_n \le x) = \Pr(S_{n-1} + X_n \le x)\\
 &amp;=&amp;\mathrm{E}_{X_n} \left[ \Pr(S_{n-1} \le x - X_n|X_n) \right] \\
 &amp;=&amp;\mathrm{E}_X \left[ F^{\ast(n-1)}(x - X) \right] \\
-&amp;=&amp; 
+&amp;=&amp;
 \left\{\begin{array}{ll}
 \int_{0}^{x} F^{\ast(n-1)}(x-y)f(y)dy &amp; \text{for continuous } X_i \text{&#39;s} \\
 \sum_{y \le x} F^{\ast(n-1)}(x-y)f(y) &amp; \text{for discrete } X_i \text{&#39;s} \\
@@ -1598,7 +1599,7 @@ The number of accidents follows a Poisson distribution with mean 12. Each accide
 </h5>
 <div id="toggleExample.5.3.1" style="display: none">
 <p><strong>Solution.</strong>
-<span class="math display">\[\begin{aligned} 
+<span class="math display">\[\begin{aligned}
 &amp; \mathrm{E}(X^2) = 1^2 \left( \frac{1}{2}\right) + 2^2\left(\frac{1}{3} \right) + 3^2\left(\frac{1}{6}\right)
 = \frac{10}{3} \\
 \Rightarrow &amp;\mathrm{Var}(S_N) = \lambda \ \mathrm{E}(X^2) = 12\left(\frac{10}{3}\right) = 40 .
@@ -1619,7 +1620,7 @@ The number of accidents follows a Poisson distribution with mean 12. Each accide
 <p>In general, the moments of <span class="math inline">\(S_N\)</span> can be derived from its moment generating function (<em>mgf</em>). Because <span class="math inline">\(X_i\)</span>’s are <em>iid</em>, we denote the <em>mgf</em> of <span class="math inline">\(X\)</span> as <span class="math inline">\(M_{X}(t) = \mathrm{E~}(e^{tX})\)</span>. Using the law of iterated expectations, the <em>mgf</em> of <span class="math inline">\(S_N\)</span> is</p>
 <p><span class="math display">\[\begin{aligned}
 M_{S_N}(t) &amp;= \mathrm{E}(e^{t S_N})=\mathrm{E}_N[~\mathrm{E}(e^{tS_N}|N)~]\\
-&amp;= \mathrm{E}_N \left[ ~\mathrm{E}\left( e^{t(X_1+\cdots+X_N)}\right) ~\right] = 
+&amp;= \mathrm{E}_N \left[ ~\mathrm{E}\left( e^{t(X_1+\cdots+X_N)}\right) ~\right] =
 \mathrm{E}_N \left[ \mathrm{E}(e^{tX_1})\cdots\mathrm{E}(e^{tX_N}) \right] ~~~~ \text{since } X_i \text{&#39;s are independent} \\
 &amp;= \mathrm{E}_N[~(M_{X}(t))^N~] .
 \end{aligned}\]</span></p>
@@ -1649,7 +1650,7 @@ M_{S_N}(t) &amp;= P_N[M_X(t)] = e^{\lambda(M_{X}(t) - 1)}.
 <p>Taking derivatives yields
 <span class="math display">\[\begin{aligned}
 M_{S_N}&#39;(t) &amp;= e^{\lambda(M_{X}(t) - 1)}~ \lambda~ M_{X}&#39;(t) = M_{S_N}(t) ~\lambda ~M_{X}&#39;(t)\\
-M_{S_N}&#39;&#39;(t) &amp;= M_{S_N}(t) ~\lambda~ M_{X}&#39;&#39;(t) + [~M_{S_N}(t)~\lambda~ M_{X}&#39;(t)~] ~\lambda~ M_{X}&#39;(t) . 
+M_{S_N}&#39;&#39;(t) &amp;= M_{S_N}(t) ~\lambda~ M_{X}&#39;&#39;(t) + [~M_{S_N}(t)~\lambda~ M_{X}&#39;(t)~] ~\lambda~ M_{X}&#39;(t) .
 \end{aligned}\]</span></p>
 <p>Evaluating these at <span class="math inline">\(t=0\)</span> yields
 <span class="math display">\[\begin{aligned}
@@ -1662,7 +1663,7 @@ M_{S_N}&#39;&#39;(t) &amp;= M_{S_N}(t) ~\lambda~ M_{X}&#39;&#39;(t) + [~M_{S_N}(
 <p><strong>Example 7.3.2. Actuarial Exam Question.</strong>
 You are the producer of a television quiz show that gives cash prizes. The number of prizes, <span class="math inline">\(N\)</span>, and prize amount, <span class="math inline">\(X\)</span>, have the following distributions:</p>
 <p><span class="math display">\[
-{\small 
+{\small
 \begin{matrix}
 \begin{array}{ccccc}\hline
     n &amp; \Pr(N=n) &amp; &amp; x &amp; \Pr(X=x)\\ \hline
@@ -1830,7 +1831,7 @@ Figure 7.1: <strong>Aggregate Loss Distribution for Wisconsin Property Fund Buil
 <p><strong>Example 7.3.5. Actuarial Exam Question.</strong>
 You are given:</p>
 <p><span class="math display">\[
-{\small 
+{\small
 \begin{matrix}
   \begin{array}{ c | c  c }
     \hline
@@ -1906,19 +1907,19 @@ We have claim frequency <span class="math inline">\(N \sim Poi(\lambda = 25)\)</
 is known as the <em>net stop-loss premium</em>.</p>
 <p>To calculate the net stop-loss premium, we have</p>
 <p><span class="math display">\[\begin{eqnarray*}
-\mathrm{E}(S_N-d)_+ 
+\mathrm{E}(S_N-d)_+
 &amp;=&amp;
 \left\{\begin{array}{ll}
 \int_{d}^{\infty}(s-d) f_{S_N}(s) ds&amp; \text{for continuous } S_N\\
- \sum_{s&gt;d}(s-d) f_{S_N}(s) &amp; \text{for discrete } S_N\\
- \end{array}\right.\\
+\sum_{s&gt;d}(s-d) f_{S_N}(s) &amp; \text{for discrete } S_N\\
+\end{array}\right.\\
 &amp;=&amp; \mathrm{E}(S_N) - \mathrm{E}(S_N\wedge d)\\
 \end{eqnarray*}\]</span></p>
 <hr />
 <p><strong>Example 7.3.7. Actuarial Exam Question.</strong>
 In a given week, the number of projects that require you to work overtime has a geometric distribution with <span class="math inline">\(\beta=2\)</span>. For each project, the distribution of the number of overtime hours in the week, <span class="math inline">\(X\)</span>, is as follows:</p>
 <p><span class="math display">\[
-{\small 
+{\small
 \begin{matrix}
 \begin{array}{ccc} \hline
     x &amp;  &amp; f(x)\\ \hline
@@ -1978,7 +1979,7 @@ This assumes that the support of <span class="math inline">\(S_N\)</span> is equ
 \end{aligned}\]</span></p>
 <p>Thus,
 <span class="math display">\[\begin{aligned}
-\mathrm{E}\left[ \left(S_N-(j+1) \right) _{+}\right] - \mathrm{E}\left[ ( S_N-j )_{+} \right] 
+\mathrm{E}\left[ \left(S_N-(j+1) \right) _{+}\right] - \mathrm{E}\left[ ( S_N-j )_{+} \right]
 &amp;= \left\{\mathrm{E}(S_N) - \mathrm{E}(S_N\wedge (j+1)) \right\}   -  \left\{\mathrm{E}(S_N) - \mathrm{E}(S_N\wedge j) \right\} \\
 &amp;= \mathrm{E}\left(S_N \wedge j \right) - \mathrm{E}\left[ S \wedge (j+1) \right]
 \end{aligned}\]</span></p>
@@ -2363,7 +2364,7 @@ So <span class="math inline">\(S\sim NB(\beta,nr)\)</span>.</p>
 <p><strong>Example 7.5.1.</strong>
 Assume that the number of claims for each vehicle is Poisson with mean <span class="math inline">\(\lambda\)</span>. Given the following data on the observed number of claims for each household, calculate the <a href="#" class="tooltip" style="color:green"><em>MLE</em><span style="font-size:8pt">Maximum likelihood estimate</span></a> of <span class="math inline">\(\lambda\)</span>.</p>
 <p><span class="math display">\[
-{\small 
+{\small
 \begin{matrix}
 \begin{array}{c|c|c}
   \hline
@@ -2577,7 +2578,7 @@ S &amp;= Y^L_1 + \cdots + Y^L_{N^L} \\
 <p><strong>Example 7.5.5. Actuarial Exam Question.</strong>
 A group dental policy has a negative binomial claim count distribution with mean 300 and variance 800. Ground-up severity is given by the following table:</p>
 <p><span class="math display">\[
-{\small 
+{\small
 \begin{matrix}
   \begin{array}{ c | c }
     \hline
@@ -2749,7 +2750,7 @@ Putting this together, we produce the same answer using the per payment basis as
 <p>To see this, note that
 <span class="math display">\[\begin{aligned}
 \mathrm{E}\left[ \mathrm{Var}(X_i | I_i) \right] &amp;= \mathrm{Var}(X_i|I_i=0) ~ \Pr(I_i=0) + \mathrm{Var}(X_i|I_i=1) ~ \Pr(I_i=1) \\
-&amp;= q_i ~ \sigma_i^2 + (1-q_i) ~ (0) = q_i ~ \sigma_i^2, 
+&amp;= q_i ~ \sigma_i^2 + (1-q_i) ~ (0) = q_i ~ \sigma_i^2,
 \end{aligned}\]</span></p>
 <p>and
 <span class="math display">\[\begin{aligned}
@@ -2781,7 +2782,7 @@ M_{S_n}(t) &amp;= \prod_{i=1}^n ~ M_{X_i}(t) ~~~~ \text{from the independence of
 <h3>TS 7.A.2. Relationship Between Probability Generating Functions of <span class="math inline">\(X_i\)</span> and <span class="math inline">\(X_i^T\)</span><a href="ChapAggLossModels.html#ts-7.a.2.-relationship-between-probability-generating-functions-of-x_i-and-x_it" class="anchor-section" aria-label="Anchor link to header"></a></h3>
 <p>Let <span class="math inline">\(X_i\)</span> belong to the <span class="math inline">\((a,b,0)\)</span> class with <em>pmf</em> <span class="math inline">\(p_{ik} = \Pr(X_i = k)\)</span> for <span class="math inline">\(k=0,1,\ldots\)</span> and <span class="math inline">\(X_i^T\)</span> be the associated zero-truncated distribution in the <span class="math inline">\((a,b,1)\)</span> class with <em>pmf</em> <span class="math inline">\(p_{ik}^T = p_{ik}/(1-p_{i0})\)</span> for <span class="math inline">\(k=1,2,\ldots\)</span>. Then the relationship between the <em>pgf</em> of <span class="math inline">\(X_i\)</span> and the <em>pgf</em> of <span class="math inline">\(X_i^T\)</span> is shown by</p>
 <p><span class="math display">\[\begin{aligned}
-P_{X_i}(z) &amp;= \mathrm{E~}(z^{X_i}) = \mathrm{E}\left[  \mathrm{E}\left( z^{X_i} | X_i \right) \right] ~~~~ \text{from the law of iterated expectations} \\ 
+P_{X_i}(z) &amp;= \mathrm{E~}(z^{X_i}) = \mathrm{E}\left[  \mathrm{E}\left( z^{X_i} | X_i \right) \right] ~~~~ \text{from the law of iterated expectations} \\
 &amp;= \mathrm{E}\left( z^{X_i} | X_i=0 \right)~ \Pr(X_i=0) + \mathrm{E}\left( z^{X_i} | X_i&gt;0 \right) ~ \Pr(X_i&gt;0) \\
 &amp;= (1)~ p_{i0} + \mathrm{E}(z^{X_i^T}) ~ (1-p_{i0}) ~~~~ \text{since } (X_i | X_i&gt;0) \text{ is the zero-truncated random variable } X_i^T \\
 &amp;= p_{i0} +(1-p_{i0}) P_{X_i^{T}}(z) .
@@ -2801,7 +2802,7 @@ M_{X}(t) &amp;=\frac{1}{1-\theta t} .
 <p><span class="math display">\[
 \begin{aligned}
 M_{S_N}(t) &amp;= P_N [M_{X}(t)] = \frac{1}{1 - \beta \left( \frac{1}{1-\theta t} - 1\right)} \\
-&amp;= \frac{1}{1 - \beta \left( \frac{\theta t}{1-\theta t} \right)} + 1 - 1 
+&amp;= \frac{1}{1 - \beta \left( \frac{\theta t}{1-\theta t} \right)} + 1 - 1
 = 1+ \frac{\beta \left( \frac{\theta t}{1-\theta t} \right)}{1 - \beta \left( \frac{\theta t}{1-\theta t} \right)} \\
 &amp;= 1 + \frac{\beta \theta t}{(1-\theta t) - \beta \theta t} = 1+ \frac{\beta \theta t}{1-\theta t (1+\beta)} \cdot \frac{1+\beta}{1+\beta} \\
 &amp;= 1 + \frac{\beta}{1+\beta} \left[ \frac{\theta (1+\beta) t}{1-\theta(1+\beta)t} \right] \\
@@ -2888,7 +2889,7 @@ gitbook.start({
     var script = document.createElement("script");
     script.type = "text/javascript";
     var src = "true";
-    if (src === "" || src === "true") src = "https://mathjax.rstudio.com/latest/MathJax.js?config=TeX-MML-AM_CHTML";
+    if (src === "" || src === "true") src = "https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.9/latest.js?config=TeX-MML-AM_CHTML";
     if (location.protocol !== "file:")
       if (/^https?:/.test(src))
         src = src.replace(/^https?:/, '');

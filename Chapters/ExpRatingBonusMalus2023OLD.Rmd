@@ -1,0 +1,606 @@
+`r chapnum = 15`
+
+# Experience Rating using Bonus-Malus {#ChapBonusMalus}
+
+***
+
+*Chapter Preview.* This chapter introduces bonus-malus system used in motor insurance ratemaking. In particular, the chapter discusses the features of bonus-malus system and studies its modelling and properties via basic statistical techniques. Section \@ref(S:ERBM:Intro) introduces the use of bonus-malus system as an experience rating scheme, followed by Section \@ref(S:ERBM:NCD) which describes its practical implementation in several countries. Section \@ref(S:ERBM:BMS) covers its modelling setup by a discrete time Markov Chain. Next, Section \@ref(S:ERBM:StatDist) studies a number of simple relevant properties associated with the stationary distribution of bonus-malus system. Section \@ref(S:PremRtg) focuses on the determination of *a posteriori* premium rating to complement *a priori* ratemaking.
+
+***
+
+## Introduction {#S:ERBM:Intro}
+
+***
+
+In this section, you learn how to:
+
+-   Use bonus-malus system as an experience rating scheme.
+
+-   Compare bonus-malus system with risk classification (Chapter 8) and credibility premium (Chapter 9).
+
+***
+
+`r Gloss('Bonus-malus system')`, which is used interchangeably as "no-fault discount", "merit rating", "experience rating" or "no-claim discount" in different countries, is based on penalizing insureds who are responsible for one or more claims by a premium surcharge (malus), and rewarding insureds with a premium discount (bonus) if they do not have any claims. Insurers use bonus-malus system (*BMS*) for two main purposes: to encourage drivers to drive more carefully in a policy year without any claims, and to ensure insureds to pay premiums proportional to their risks based on their claims experience via an experience rating mechanism.
+
+*BMS* is an experience rating system commonly used in motor insurance. It represents an attempt to categorize insureds into homogeneous groups who pay premiums based on their claims experience. Depending on the rules in the scheme, new policyholders may be required to pay full premium initially, and obtain discounts in the future years as a result of claim-free years. *BMS* rewards policyholders for not making any claims during a policy year. In other words, it grants a bonus to a careful driver. This bonus principle may affect policy holders' decisions whether to claim or not to claim, especially when involving accidents with slight damages, which is known as the '`r Gloss('hunger for bonus')`' phenomenon. The 'hunger for bonus' under a *BMS* may reduce insurers' claim costs, and may be able to offset the expected decrease in premium income.
+
+In motor insurance, *BMS* is a form of *a posteriori* rating to complement the use of *a priori* risk classification described in Chapter \@ref(ChapRiskClass). The *a priori* risk classification divides portfolio of drivers into a number of homogeneous risk classes based on rating factors, such that policyholders in the same risk class pay the same premium. The ideal *a posteriori* mechanism is the credibility premium developed in Chapter \@ref(ChapCredibility), whereby premiums are derived on an individual basis for each policyholder by incorporating both the *a priori* and *a posteriori* information. However, such individual premium determination is overly complex from a commercial standpoint for practical implementations by motor insurers. For this reason, *BMS* is the preferred solution and it consists of three elements: bonus-malus classes, transition rules, and premium levels (also known as premium relativities). The advantage of using *BMS* is that the bonus-malus classes and the transition rules are pre-specified in advance by insurers. The bonus-malus classes and transition rules will be discussed in the next section.
+
+## *BMS* in Several Countries {#S:ERBM:NCD}
+
+***
+
+In this section, you learn how to:
+
+-   Use *BMS* in Malaysia and other countries.
+
+-   Determine transition rule.
+
+***
+
+Many countries around the world have adopted some form of *BMS* in their automobile insurance. The specifics of these systems can vary from country to country, but the general idea is to reward safe driving behavior by reducing premiums for policyholders who do not make claims, and increasing premiums for those who do. Some of the countries that have implemented or adopted the *BMS* are France, Germany, Italy, Spain and United Kingdom from Europe, and Malaysia, Hong Kong, Taiwan, Singapore and Korea from Asia. Please refer to Lemaire and Hongmin (1994), Lemaire (1998) and Park et. al (2010) for implementation of other *BMS* around the world.
+
+### *BMS* in Malaysia
+
+Before the liberalization of Motor Tariff on 1st July 2017, the rating of motor insurance in Malaysia was governed by the Motor Tariff. Under the tariff, the rate charged should not be lower than the rates specified under the classes of risks. The basic risk classes considered were scope of insurance, cubic capacity of vehicle and estimated value of vehicle (or sum insured, whichever is lower). The final premium to be paid is adjusted by the policyholder's claim experience, or equivalently, his bonus-malus entitlement.
+
+Effective on 1st July 2017, the premium rates for motor insurance are liberalized, or de-tariffed. The pricing of premium is now determined by individual insurers and `r Gloss('takaful')` operators, and the consumers are able to enjoy a wider choice of motor insurance products at competitive prices. Since tariff liberalization encourages innovation and competition among insurers and takaful operators, the premiums are based on broader risk factors other than the risk classes specified in the Motor Tariff. Other rating factors may be defined in the risk profile of an insured, such as age of vehicle, age of driver, safety and security features of vehicle, geographical location of vehicle and traffic offences of driver. However, the bonus-malus entitlement from the Motor Tariff remains 'unchanged' and continue to exist, and is 'transferable' from one insurer, or from one takaful operator, to another.
+
+The discounts in the Malaysian *BMS* are divided into six classes, starting from the initial class of 0% discount, followed by classes of 25%, 30%, 38.3%, 45% and 55% discounts. A claim-free policy year indicates that a policyholder is entitled to move one-step forward to the next discount class, such as from a 0% discount to a 25% discount in the renewal year. If a policyholder is already at the highest class, which is at a 55% discount, a claim-free policy year indicates that the policyholder remains in the same class. On the other hand, if one or more claims are made within the policy year, the discount will be forfeited and the policyholder has to start at 0% discount in the renewal year. This set of transition rules can also be summarized as a rule of -1/Top, that is, a class of bonus for a claim-free year, and moving to the highest class after having one or more claims. For an illustration purpose, [Figure 15.1](#fig:15.1) <!-- @ref(fig:TransitionMsia)  --> shows the classes and the transition diagram for the Malaysian *BMS*.
+
+|    Classes    | Discounts (%) |
+|:-------------:|:-------------:|
+|       0       |       0       |
+|       1       |      25       |
+|       2       |      30       |
+|       3       |     38.33     |
+|       4       |      45       |
+| 5 (and above) |      55       |
+
+<a id=fig:15.1></a>
+
+(ref:TranMalaysia) **Transition diagram for bonus-malus classes (Malaysia)**
+
+```{r fig.cap = '(ref:TranMalaysia)', fig.show="hold", out.width="45%", echo=FALSE}
+knitr::include_graphics("Figures/FigureTransitionMsia.png")
+knitr::include_graphics("Figures/gridMalayTable.png")
+```
+
+***
+
+### *BMS* in Other Countries
+
+The *BMS* in Brazil are subdivided into seven classes, with the following premium levels [@LemaireZi94]: 100, 90, 85, 80, 75, 70, and 65. These premium levels are entitled to the following discounts: 0%, 10%, 15%, 20%, 25%, 30% and 35%. New policyholders have to start at 0% discount, or at premium level 100. A claim-free policy year indicates that a policyholder can move forward at a one-class discount. If one or more claims incurred within the policy year, the policyholder has to move one-class backward for each claim. [Figure 15.2](#fig:15.2) <!-- \ref{fig:TransitionBrazil} --> shows the classes and the transition diagram for the *BMS* in Brazil. This set of transition rules can also be summarized as a rule of -1/+1, that is, a class of bonus for a claim-free policy year, and a class of malus for each claim reported.
+
+|    Classes    | Discounts (%) |
+|:-------------:|:-------------:|
+|       0       |       0       |
+|       1       |      10       |
+|       2       |      15       |
+|       3       |      20       |
+|       4       |      25       |
+|       5       |      30       |
+| 6 (and above) |      35       |
+
+<a id=fig:15.2></a>
+
+(ref:TransitionBrazil) **Transition diagram for bonus-malus classes (Brazil)**
+
+```{r fig.cap = '(ref:TransitionBrazil)', fig.show="hold", out.width="45%", echo=FALSE}
+knitr::include_graphics("Figures/FigureTransitionBrazil.png")
+knitr::include_graphics("Figures/gridBrazilTable.png")
+```
+
+***
+
+The *BMS* in Switzerland are subdivided into twenty-two classes, with the following premium levels: 270, 250, 230, 215, 200, 185, 170, 155, 140, 130, 120, 110, 100, 90, 80, 75, 70, 65, 60, 55, 50 and 45 [@LemaireZi94]. The premium levels 270, 250, 230, 215, 200, 185, 170, 155, 140, 130, 120 and 110 are the premiums with the following loadings (malus): 170%, 150%, 130%, 115%, 100%, 85%, 70%, 55%, 40%, 30%, 20%, and 10%. On the other hand, the premium levels 100, 90, 80, 75, 70, 65, 60, 55, 50 and 45 are the premiums with the following discounts (bonus): 0%, 10%, 20%, 25%, 30%, 35%, 40%, 45%, 50% and 55%. New policyholders have to start at 0% discount, or at premium level 100, and a claim-free policy year indicates that a policyholder can move one-class forward. If one or more claims incurred within the policy year, the policyholder has to move four-classes backward for each claim. [Table 15.1](#tab:15.3) and Figure \@ref(fig:TransitionSwitz) respectively show the classes and the transition diagram for the *BMS* in Switzerland. This set of transition rule can be summarized as a rule of -1/+4. It should be noted that the entry level is at class 12, which is at premium level 100 (or 0% discount).
+
+<a id=tab:15.3></a>
+
+**Table 15.1 Bonus-malus classes (Switzerland)**
+
+$$
+\small{
+\begin{array}{*{20}c}
+\hline
+\text{Classes} & \text{Loadings } (\%) & \text{Classes} & \text{Discounts } (\%)\\
+\hline
+{0} & {170} & {12} & {0}\\
+{1} & {150} & {13} & {10}\\
+{2} & {130} & {14} & {20}\\
+{3} & {115} & {15} & {25}\\
+{4} & {100} & {16} & {30}\\
+{5} & {85} & {17} & {35}\\
+{6} & {70} & {18} & {40}\\
+{7} & {55} & {19} & {45}\\
+{8} & {40} & {20} & {50}\\
+{9} & {30} & {21} & {55}\\
+{10} & {20} && \\
+{11} & {10} && \\
+\hline
+\end{array}
+}
+$$
+
+(ref:TransitionSwitz) **Transition diagram for bonus-malus classes (Switzerland)**
+
+```{r TransitionSwitz, echo=FALSE, fig.cap='(ref:TransitionSwitz)', out.width='60%', fig.align='center'}
+knitr::include_graphics("Figures/FigureTransitionSwitz.png")
+```
+
+## *BMS* and Markov Chain Model {#S:ERBM:BMS}
+
+***
+
+In this section, you learn how to:
+
+-   Represent bonus-malus classes using transition probabilities.
+
+-   Use transition matrix.
+
+***
+
+A *BMS* can be represented by a discrete time `r Gloss('Markov chain')`. A stochastic process is said to possess the Markov property if the evolution of the process in the future depends only on the present state but not the past. A discrete time Markov Chain is a Markov process with discrete state space.
+
+### Transition Probability
+
+A Markov Chain is determined by its transition probabilities. The ***transition probability*** from state $i$ (at time $n$) to state $j$ (at time $n + 1$) is called a one-step transition probability, and is denoted by $p_{ij}(n,n+1) = Pr (X_{n + 1} = j|X_n = i)$, $i = 1,2,\ldots,k$, $j = 1,2,\ldots,k$. For general transition from time $m$ to time $n$, for $m<n$, by conditioning on $X_{o}$ for $m\le o\le n$, we have the Chapman-Kolmogorov equation of
+
+$$
+p_{ij}(m,n)=\sum_{l\in S} p_{il}(m,o)p_{lj}(o,n).
+$$
+
+A time-homogeneous Markov Chain satisfies the property of $p_{ij}(n,n+t)=p_{ij}^{(t)}$ for all $n$. For instance, we have $p_{ij}(n,n+1)=p_{ij}^{(1)}\equiv p_{ij}$. In this case, the Chapman-Kolmogorov equation can be written as
+
+$$
+p_{ij}(0,m+n)=\sum_{l\in S} p_{il}(0,m)p_{lj}(m,m+n)=\sum_{l\in S}p_{il}^{(m)}p_{lj}^{(n)}.
+$$
+
+In the context of *BMS*, the transition of the bonus-malus classes is governed by the transition probability in a given policy year. The transition of the bonus-malus classes is also a time-homogeneous Markov Chain since the set of transition rules is fixed and independent of time. We can represent the one-step transition probabilities by a $k \times k$ *transition matrix* ${\bf P}=(p_{ij})$ that corresponds to bonus-malus classes $0,1,2,\ldots,k-1$.
+
+$$
+\small{
+{\bf P} = 
+\left[ {\begin{array}{*{20}c}
+p_{00} & p_{01} & \ldots & & & p_{0k-1} \\
+p_{10} & p_{11} & \ldots & & & p_{1k-1} \\ 
+\vdots & \ddots & & & & \vdots \\
+p_{k-10} & p_{k-11} & \cdots & & & p_{k-1k-1}   
+\end{array} } \right]
+}
+$$
+
+Here, its $(i,j)$-th element is the transition probability from state $i$ to state $j$. In other words, each row of the `r Gloss('transition matrix')` represents the transition of flowing out of state, whereas each column represents the transition of flowing into the state. The summation of transition probabilities of flowing out of state must equal to 1, or each row of the matrix must sum to 1, i.e. $\sum_j p_{ij} = 1$. All probabilities must be non-negative, i.e. $p_{ij} \ge 0$.
+
+### Some Applications
+
+Consider the Malaysian *BMS*. Let $\{X_{t}:t=0,1,2,\ldots\}$ be the bonus-malus class occupied by a policyholder at time $t$ with state space $S=\{0,1,2,3,4,5\}$. Therefore, the transition probability in a no-claim policy year is equal to the probability of transition from state $i$ to state $i+1$, i.e. $p_{ii+1}$. If an insured has one or more claims within the policy year, the probability of transitioning back to state 0 is represented by $p_{i0}=1-p_{ii+1}$. Hence, the Malaysian *BMS* can be represented by the following $6\times 6$ transition matrix:
+
+$$
+\small{
+{\bf P} = 
+\left[ {\begin{array}{*{20}c}
+p_{00}&p_{01}&0&0&0&0\\
+p_{10}&0&p_{12}&0&0&0\\
+p_{20}&0&0&p_{23}&0&0\\
+p_{30}&0&0&0&p_{34}&0\\
+p_{40}&0&0&0&0&p_{45}\\
+p_{50}&0&0&0&0&p_{55}
+\end{array} }\right] = 
+\left[ {\begin{array}{*{20}c}
+{1 - p_{01}}&p_{01}&0&0&0&0\\
+{1 - p_{12}}&0&p_{12}&0&0&0\\
+{1 - p_{23}}&0&0&p_{23}&0&0\\
+{1 - p_{34}}&0&0&0&p_{34}&0\\
+{1 - p_{45}}&0&0&0&0&p_{45}\\
+{1 - p_{55}}&0&0&0&0&p_{55}
+\end{array} }\right]
+}
+$$
+
+**Example `r chapnum`.3.1.** Provide the transition matrix for the *BMS* in Brazil.
+
+`r HideExample('15.3.1','Show Example Solution')`
+
+**Solution**
+
+Based on the bonus-malus classes and the transition diagram shown in [Figure 15.2](#fig:15.2) <!-- @ref(fig:TransitionBrazil) --> , the probability of a no-claim policy year is equal to the probability of moving one-class forward, whereas the probability of having one or more claims within the policy year is equal to the probability of moving one-class backward for each claim. Therefore, each row can contain two or more transition probabilities; one probability for advancing to the next state, and one or more probabilities for moving one-class backward. The transition matrix is:
+
+$$
+\small{
+{\bf P} = 
+\left[ {\begin{array}{*{20}{c}}
+{1 - p_{01}}&p_{01}&0&0&0&0&0\\
+{1 - p_{12}}&0&p_{12}&0&0&0&0\\
+{1 - \sum_j p_{2j}}&p_{21}&0&p_{23}&0&0&0\\
+{1 - \sum_j p_{3j}}&p_{31}&p_{32}&0&p_{34}&0&0\\\
+{1 - \sum_j p_{4j}}&p_{41}&p_{42}&p_{43}&0&p_{45}&0\\
+{1 - \sum_j p_{5j}}&p_{51}&p_{52}&p_{53}&p_{54}&0&p_{56}\\
+{1 - \sum_j p_{6j}}&p_{61}&p_{62}&p_{63}&p_{64}&p_{65}&p_{66}
+\end{array} } \right]
+}
+$$
+
+***
+
+</div>
+
+**Example `r chapnum`.3.2.** Provide the transition matrix for the *BMS* in Switzerland.
+
+`r HideExample('15.3.2','Show Example Solution')`
+
+**Solution.**
+
+From [Table 15.1](#tab:15.3) and Figure \@ref(fig:TransitionSwitz), the probability of a no-claim policy year is equal to the probability of moving one-class forward, whereas the probability of having one or more claims within the policy year is equal to the probability of moving four-classes backward for each claim. The transition matrix is:
+
+$$
+\small{
+{\bf P} = 
+\left[
+{\begin{array}{*{12}{c}}
+1 - {p_{01}} & p_{01} & 0 & 0 & 0 & 0 & 0 & 0 & 0 & 0 & 0 & \cdots\\
+1 - {p_{12}} & 0 & p_{12} & 0 & 0 & 0 & 0 & 0 & 0 & 0 & 0 & \cdots\\
+1 - {p_{23}} & 0 & 0 & p_{23} & 0 & 0 & 0 & 0 & 0 & 0 & 0 & \cdots\\
+1 - {p_{34}} & 0 & 0 & 0 & p_{34} & 0 & 0 & 0 & 0 & 0 & 0 & \cdots\\
+1 - {p_{45}} & 0 & 0 & 0 & 0 & p_{45} & 0 & 0 & 0 & 0 & 0 & \cdots\\
+1 - \sum\limits_j {p_{5j}} & p_{51} & 0 & 0 & 0 & 0 & p_{56} & 0 & 0 & 0 & 0 & \cdots\\
+1 - \sum\limits_j {p_{6j}} & 0 & p_{62} & 0 & 0 & 0 & 0 & p_{67} & 0 & 0 & 0 & \cdots\\
+1 - \sum\limits_j {p_{7j}} & 0 & 0 & p_{73} & 0 & 0 & 0 & 0 & p_{78} & 0 & 0 & \cdots\\
+\vdots & \vdots & \vdots & \vdots & \vdots & \vdots & \vdots & \vdots & \vdots & \vdots & \vdots & \ddots\\
+1 - \sum\limits_j {p_{19,j}} & 0 & 0 & p_{19,3} & 0 & 0 & 0 & p_{19,7} & 0 & 0 & 0 & \cdots\\
+1 - \sum\limits_j {p_{20,j}} & 0 & 0 & 0 & p_{20,4} & 0 & 0 & 0 & p_{20,8} & 0 & 0 & \cdots\\
+1 - \sum\limits_j {p_{21,j}} & p_{21,1} & 0 & 0 & 0 & p_{21,5} & 0 & 0 & 0 & p_{21,9} & 0 & \cdots
+\end{array} } \right]
+}
+$$
+
+***
+
+</div>
+
+## *BMS* and Stationary Distribution {#S:ERBM:StatDist}
+
+***
+
+In this section, you learn how to:
+
+-   Calculate stationary probabilities.
+
+-   Observe premium evolution.
+
+-   Measure convergence rate.
+
+***
+
+### Stationary Distribution
+
+A stationary probability, which is also known as a steady-state probability, is a probability of being in a state at equilibrium or in the long run. In a Markov chain, each state has a corresponding stationary probability. These probabilities do not change over time once the Markov chain has achieved its steady state. Stationary probability is important for understanding the long-term behavior, equilibrium states, and predictive aspects of a system (such as *BMS*) which are modeled using a Markov chain. In this section, we introduce a stationary probability because it offers some practical applications of the *BMS*.
+
+Stationary probabilities can be represented by a row vector $\boldsymbol \pi =(\pi_{1},\pi_{2},\ldots,\pi_{k})$ with the following properties:
+
+$$
+\begin{align}0\le \pi_{j}\le 1,\notag\\\sum\limits_{j}\pi_{j}=1,\notag\\\pi_{j}=\sum\limits_{i}\pi_{i}p_{ij}.\end{align}
+$$
+
+The last equation can be written in terms of matrix and vector, which is $\boldsymbol\pi \bf P=\boldsymbol\pi$, where $\boldsymbol\pi$ is the stationary probability vector and $\bf P$ is the transition matrix. The first two conditions are necessary for the probability distribution, whereas the last property indicates that $\boldsymbol\pi$ is invariant (i.e. unchanged) by the one-step transition matrix. In other words, once the Markov Chain has reached stationary state, its probability distribution will stay stationary over time. Mathematically, the stationary vector $\boldsymbol\pi$ can also be obtained by finding the left eigenvector of the one-step transition matrix.
+
+**Example `r chapnum`.4.1.** Find the stationary distribution for the *BMS* in Malaysia assuming that the probability of a no-claim policy year for all bonus-malus classes are equal, and it is equivalent to ${p_0}$.
+
+`r HideExample('15.4.1','Show Example Solution')`
+
+**Solution.** The transition matrix can be re-written as:
+
+$$
+\small{
+{\bf P} = 
+\left[ {\begin{array}{*{20}c}
+{1 - p_{0}}&p_{0}&0&0&0&0\\
+{1 - p_{0}}&0&p_{0}&0&0&0\\
+{1 - p_{0}}&0&0&p_{0}&0&0\\
+{1 - p_{0}}&0&0&0&p_{0}&0\\
+{1 - p_{0}}&0&0&0&0&p_{0}\\
+{1 - p_{0}}&0&0&0&0&p_0
+\end{array} }\right]
+}
+$$
+
+The stationary distribution can be calculated using $\pi_{j}=\sum\limits_{i}\pi_{i}p_{ij}$ or $\boldsymbol\pi \bf P=\boldsymbol\pi$, where $\boldsymbol \pi =(\pi_{0},\pi_{1},\ldots,\pi_{5}.)$ The solutions are:
+
+$$
+\small{
+\begin{array}{lll}
+{\pi _0} = \sum\limits_i {\pi_i}p_{i0} = (1 - {p_0})\sum\limits_i {{\pi _i}} = 1 - {p_0}\\
+{\pi _1} = \sum\limits_i {\pi _i}p_{i1} = {\pi_0}{p_{01}} = (1 - {p_0}){p_0}\\
+{\pi _2} = \sum\limits_i {\pi _i}p_{i2} = {\pi _1}{p_{12}} = (1 - {p_0}){p_0}^2\\
+{\pi _3} = \sum\limits_i {\pi _i}p_{i3} = {\pi _2}{p_{23}} = (1 - {p_0}){p_0}^3\\
+{\pi _4} = \sum\limits_i {\pi _i}p_{i4} = {\pi _3}{p_{34}} = (1 - {p_0}){p_0}^4\\
+{\pi _5} = \sum\limits_i {\pi _i}p_{i5} = {\pi _4}{p_{45}} + {\pi _5}{p_{55}} = (1 - {p_0}){p_0}^5 + {\pi _5}{p_0}\\
+\therefore {\pi _5} = \frac{(1 - {p_0}){p_0}^5}{{(1 - {p_0})}} = {p_0}^5
+\end{array}
+}
+$$
+
+***
+
+</div>
+
+The stationary distribution shown in Example `r chapnum`.4.1 represents the asymptotic distribution of the *BMS*, or the distribution in the long run. As an example, assuming that the probability of a no-claim policy year is $p_0 = 0.90,$ the ***stationary probabilities*** are:
+
+$$
+\small{
+\begin{array}{l}
+{\pi _0} = 1 - {p_0} = 0.1000\\
+{\pi _1} = (1 - {p_0}){p_0} = 0.0900\\
+{\pi _2} = (1 - {p_0}){p_0}^2 = 0.0810\\
+{\pi _3} = (1 - {p_0}){p_0}^3 = 0.0729\\
+{\pi _4} = (1 - {p_0}){p_0}^4 = 0.0656\\
+{\pi _5} = {p_0}^5 = 0.5905
+\end{array}
+}
+$$
+
+In other words, ${\pi_0} = 0.10$ indicates that 10% of insureds will eventually belong to class 0, ${\pi _1} = 0.09$ indicates that 9% of insureds will eventually belong to class 1, and so forth, until ${\pi _5} = 0.59$, which indicates that 59% of insureds will eventually belong to class 5.
+
+### R Code for a Stationary Distribution
+
+We can use the left eigenvector of a transition matrix to calculate a stationary distribution. The following `R` code can be used to calculate a stationary distribution:
+
+**1. Create a Transition Matrix**
+
+    #create transition matrix for Malaysian data
+    P=matrix(data=0,nrow=6,ncol=6)
+    P[1,2]=P[2,3]=P[3,4]=P[4,5]=P[5,6]=P[6,6]=0.9
+    P[,1]=0.1
+    P
+
+    #output
+         [,1] [,2] [,3] [,4] [,5] [,6]
+    [1,]  0.1  0.9  0.0  0.0  0.0  0.0
+    [2,]  0.1  0.0  0.9  0.0  0.0  0.0
+    [3,]  0.1  0.0  0.0  0.9  0.0  0.0
+    [4,]  0.1  0.0  0.0  0.0  0.9  0.0
+    [5,]  0.1  0.0  0.0  0.0  0.0  0.9
+    [6,]  0.1  0.0  0.0  0.0  0.0  0.9
+
+</div>
+
+**2. Find a stationary distribution using left eigenvector**
+
+```{r eval = FALSE}
+    #for left eigenvector, use eigenvector of transpose of transition matrix
+    #then divide entry of 1st column by sum of 1st column so that all entries sum to 1 
+    #provide stationary distribution in terms of a row vector (use transpose)
+    #provide stationary distribution with numeric/real values (use function Re())
+
+    Re(t(eigen(t(P))$vectors[,1]/sum(eigen(t(P))$vectors[,1])))
+
+    #output
+         [,1] [,2]  [,3]   [,4]    [,5]    [,6]
+    [1,]  0.1 0.09 0.081 0.0729 0.06561 0.59049
+
+```
+
+</div>
+
+***
+
+**Example `r chapnum`.4.2.** Consider the *BMS* in Brazil where the transition rule is -1/+1. Let the probability of a no-claim policy year (probability of one-class forward) equal to $p_0$, the probability of one or more claims in a policy year (probability of one-class backward) equal to $p_1$, the probability of one or more claims in the next policy year (probability of two-classes backward) equal to $p_2$, and so on and so forth. Find the stationary distribution assuming that $p_k$ is distributed as Poisson with probability 
+
+$$
+p_k = \frac{e^{ - 0.1}{(0.1)}^k}{{k!}},{\rm{ }}k = 0,1,2,\ldots
+$$
+
+`r HideExample('15.4.2','Show Example Solution')`
+
+**Solution.** The transition matrix for the *BMS* in Brazil can be written as:
+
+$$
+{\small 
+{\bf{P}} = \left[ {\begin{array}{*{20}{c}}
+{1 - {p_0}}&{{p_0}}&0&0&0&0&0\\
+{1 - {p_0}}&0&{{p_0}}&0&0&0&0\\
+{1 -\sum_i {{p_i}} }&{{p_1}}&0&{{p_0}}&0&0&0\\
+{1 -\sum_i {{p_i}} }&{{p_2}}&{{p_1}}&0&{{p_0}}&0&0\\
+{1 - \sum_i {{p_i}}}&{{p_3}}&{{p_2}}&{{p_1}}&0&{{p_0}}&0\\
+{1 - \sum_i{{p_i}} }&{{p_4}}&{{p_3}}&{{p_2}}&{{p_1}}&0&{{p_0}}\\
+{1 - \sum_i {{p_i}}}&{{p_5}}&{{p_4}}&{{p_3}}&{{p_2}}&{{p_1}}&{{p_0}}
+\end{array}} \right] = 
+\left[ {\begin{array}{*{20}{c}}
+{0.0952}&{0.9048}&0&0&0&0&0\\
+{0.0952}&0&{0.9048}&0&0&0&0\\
+{0.0047}&{0.0905}&0&{0.9048}&0&0&0\\
+{0.0002}&{0.0045}&{0.0905}&0&{0.9048}&0&0\\
+{0.0000}&{0.0002}&{0.0045}&{0.0905}&0&{0.9048}&0\\
+{0.0000}&{0.0000}&{0.0002}&{0.0045}&{0.0905}&0&{0.9048}\\
+{0.0000}&{0.0000}&{0.0000}&{0.0002}&{0.0045}&{0.0905}&{0.9048}
+\end{array}}\right]
+}
+$$
+
+Using the earlier `R` codes on this transition matrix ${\bf P}$, the stationary probabilities are obtained as:
+
+$$
+\left[ {\begin{array}{*{20}{c}}
+{{\pi _0}}\\
+{{\pi_1}}\\
+{{\pi _2}}\\
+{{\pi _3}}\\
+{{\pi _4}}\\
+{{\pi_5}}\\
+{{\pi _6}}
+\end{array}} \right] = 
+\left[ {\begin{array}{*{20}{c}}
+{0.0000}\\
+{0.0000}\\
+{0.0003}\\
+{0.0022}\\
+{0.0145}\\
+{0.0936}\\
+{0.8894}
+\end{array}} \right] .
+$$
+
+The probabilities indicate that 89% of insureds will eventually belong to class 6, 9% of insureds will eventually belong to class 5, and 1.5% of insureds will eventually belong to class 4. Other classes would have less than 1% of insureds in the long run.
+
+***
+
+
+
+**Example `r chapnum`.4.3.** Using the results from Example `r chapnum`.4.2, find the mean premium under the steady state condition assuming that the premium prior to implementing the bonus-malus discount is 1000.
+
+`r HideExample('15.4.3','Show Example Solution')`
+
+**Solution.** After using the discount, the premium for each class is
+
+$$
+=  \ ($1000)\times \text{(1 - % of discount})\\ 
+$$
+
+Using stationary probabilities from Example `r chapnum`.4.2, the mean premium under steady state condition is:
+
+$$
+\begin{array}{l} = 
+\sum\limits_j 
+\text{(proportion in class } j \text{ in the long run)} \times ($1000) \times \text{(1 - % of discount})\\ 
+= $1000\times[{\pi _0}(1) + {\pi _1}(1 - 0.1) + {\pi _2}(1 - 0.15) + \ldots + {\pi _6}(1 - 0.35)]\\ 
+= $1000\times[0 + 0 + (0.0003)(0.85) + \ldots + (0.8894)(0.65)]\\
+= $656.5 
+\end{array}
+$$
+
+***
+
+</div>
+
+The results indicate that the final premium reduce from 1000 to 656.5 in the long run under stationary condition if the discount is considered. From a financial standpoint, this implies that the collected premium is insufficient to cover the expected claim cost of 1000. This result is not surprising because none of the *BMS* classes in Brazil impose a malus loading for the policyholders. More importantly, it indicates that the *BMS* will only be financially balanced if there are both bonus and malus classes and the premium levels are re-calculated such that the expected premium under the stationary distribution equals to 1000.
+
+### Premium Evolution
+
+We may be interested to find out the evolution of the mean premium after $n$ years (or $n$ steps). Under the *BMS*, the n-step transition probability, $p_{ij}^{(n)}=\Pr(X_{n}=j|X_{0}=i)$, can be used to calculate the evolution of the mean premium. The probability $p_{ij}^{(n)}$ can be obtained as the $(i,j)$-th element of the $n$-th power of transition matrix ${\bf P}$, that is, ${\bf P}^{n}$.
+
+**Example `r chapnum`.4.4.** Consider the *BMS* in Malaysia where the transition rule is -1/Top. Let the probability of a no-claim policy year equal to $p_0$ (probability of one-class forward) and the probability of one or more claims in the policy year equal to $1-p_0$ (probability of moving back to class 1). Observe the mean premiums in 20 years assuming that $p_k$ is distributed as Poisson with probability $p_k = \frac{e^{ - 0.1}{(0.1)}^k}{{k!}},{\rm{ }}k = 0$. Let the mean premium prior to implementing the bonus-malus discount equals to 1000.
+
+`r HideExample('15.4.4','Show Example Solution')`
+
+**Solution.** Under the Malaysian *BMS*, the transition matrix in the first year is:
+
+$$
+\small{
+{\bf{P}^{(1)}} = 
+\left[{\begin{array}{*{20}{c}}
+{0.0952}&{0.9048}&0&0&0&0\\
+{0.0952}&0&{0.9048}&0&0&0\\
+{0.0952}&0&0&{0.9048}&0&0\\
+{0.0952}&0&0&0&{0.9048}&0\\
+{0.0952}&0&0&0&0&{0.9048}\\
+{0.0952}&0&0&0&0&{0.9048}
+\end{array}} \right]
+}
+$$
+
+The mean premium in the first year, after implementing the discount, is:
+
+$$
+\begin{aligned} 
+&= \sum\limits_j ($1000) \times 
+\text{(average proportion in class } j) \times \text{(1 - % of discount}) \\
+&= $1000\times\left[ \frac{\sum\limits_i {p_{i0}}}{6}{(1)} +
+\frac{\sum\limits_i {p_{i1}}}{6}{(1 - 0.25)} + \ldots +
+\frac{\sum\limits_i {p_{i5}}}{6}{(1 - 0.55)} \right]\\
+&=
+$1000\times[0.0952(1) + 0.1508(0.75) + \cdots + 0.3016(0.45)]\\
+&= $625.5
+\end{aligned}
+$$
+
+Using similar steps, the mean premium in the $n$-th year for $n = 2,...,20$ can be observed. From `R`, the mean premiums in 20 years are:
+
+625.5, 598.7, 580.6, 570.6, 565.8, 565.8, 565.8, 565.8, 565.8, 565.8,
+
+565.8, 565.8, 565.8, 565.8, 565.8, 565.8, 565.8, 565.8, 565.8, 565.8.
+
+***
+
+</div>
+
+### R Program for Premium Evolution
+
+The following `R` code can be used to find the premium in the *n-*th year and the premiums in 20 years under the *BMS* in Malaysia (to find the solution in Example `r chapnum`.4.4). A function for transition matrix is created so that it can be used in the later sections (Section `r chapnum`.5).
+
+**1. Create a function for transition matrix**
+
+```{r eval = FALSE}
+    #create transition probability using function of lamda
+    TP=function(lamda)
+    { P=matrix(data=0,nrow=6,ncol=6)
+      P[1,2]=P[2,3]=P[3,4]=P[4,5]=P[5,6]=P[6,6]=exp(-lamda)
+      P[,1]=1-exp(-lamda)
+      P}
+    TP(0.1)
+
+    #output
+               [,1]      [,2]      [,3]      [,4]      [,5]      [,6]
+    [1,] 0.09516258 0.9048374 0.0000000 0.0000000 0.0000000 0.0000000
+    [2,] 0.09516258 0.0000000 0.9048374 0.0000000 0.0000000 0.0000000
+    [3,] 0.09516258 0.0000000 0.0000000 0.9048374 0.0000000 0.0000000
+    [4,] 0.09516258 0.0000000 0.0000000 0.0000000 0.9048374 0.0000000
+    [5,] 0.09516258 0.0000000 0.0000000 0.0000000 0.0000000 0.9048374
+    [6,] 0.09516258 0.0000000 0.0000000 0.0000000 0.0000000 0.9048374
+    
+```
+
+
+
+**2. Create a function for the** ***n-*****th power of a square matrix**
+
+```{r eval = FALSE}
+    #create function for nth power of square matrix
+    powA = function(n,lamda)
+    { if (n==1)  return (TP(lamda))
+      if (n==2)  return (TP(lamda)%*%TP(lamda))
+      if (n>2) return (TP(lamda)%*%powA(n-1,lamda))}
+    powA(3,0.1)
+
+    #output
+               [,1]       [,2]       [,3]      [,4]      [,5]      [,6]
+    [1,] 0.09516258 0.08610666 0.07791253 0.7408182 0.0000000 0.0000000
+    [2,] 0.09516258 0.08610666 0.07791253 0.0000000 0.7408182 0.0000000
+    [3,] 0.09516258 0.08610666 0.07791253 0.0000000 0.0000000 0.7408182
+    [4,] 0.09516258 0.08610666 0.07791253 0.0000000 0.0000000 0.7408182
+    [5,] 0.09516258 0.08610666 0.07791253 0.0000000 0.0000000 0.7408182
+    [6,] 0.09516258 0.08610666 0.07791253 0.0000000 0.0000000 0.7408182
+    
+```
+
+
+
+**3. Create a function for premium in *n-*th year**
+
+```{r eval = FALSE}
+    #define BMS discount for Malaysia
+    BMS=c(1,0.75,0.7,0.6167,0.55,0.45)
+
+    #create function for mean premium in nth year, when prior premium is $1000
+    prem=function(n,lamda)
+    { p=numeric(0)
+      for (i in 1:length(BMS))
+      p[i]=mean(powA(n,lamda)[,i])
+      1000*sum(p*BMS)}
+
+    #example for premium in 3rd year
+    prem(3,0.1)
+
+    #output
+    [1] 580.5789
+```
+
+
+
+
+***
+
+
+**Example `r chapnum`.4.5.** Using the results from Example `r chapnum`.4.2, observe the mean premiums in 20 years under the *BMS* in Brazil, assuming that the premium prior to implementing the bonus-malus discount is 1000.
+
+
+

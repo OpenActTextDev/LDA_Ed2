@@ -6,7 +6,7 @@
   <meta http-equiv="X-UA-Compatible" content="IE=edge" />
   <title>Chapter 12 Experience Rating Using Credibility Theory | Loss Data Analytics</title>
   <meta name="description" content="Chapter 12 Experience Rating Using Credibility Theory | Loss Data Analytics is an interactive, online, freely available text. - The online version will contain many interactive objects (quizzes, computer demonstrations, interactive graphs, video, and the like) to promote deeper learning. - A subset of the book will be available in pdf format for low-cost printing. - The online text will be available in multiple languages to promote access to a worldwide audience." />
-  <meta name="generator" content="bookdown 0.27 and GitBook 2.6.7" />
+  <meta name="generator" content="bookdown 0.32 and GitBook 2.6.7" />
 
   <meta property="og:title" content="Chapter 12 Experience Rating Using Credibility Theory | Loss Data Analytics" />
   <meta property="og:type" content="book" />
@@ -515,7 +515,7 @@ code span.al { color: #ff0000; font-weight: bold; } /* Alert */
 code span.an { color: #60a0b0; font-weight: bold; font-style: italic; } /* Annotation */
 code span.at { color: #7d9029; } /* Attribute */
 code span.bn { color: #40a070; } /* BaseN */
-code span.bu { } /* BuiltIn */
+code span.bu { color: #008000; } /* BuiltIn */
 code span.cf { color: #007020; font-weight: bold; } /* ControlFlow */
 code span.ch { color: #4070a0; } /* Char */
 code span.cn { color: #880000; } /* Constant */
@@ -528,7 +528,7 @@ code span.er { color: #ff0000; font-weight: bold; } /* Error */
 code span.ex { } /* Extension */
 code span.fl { color: #40a070; } /* Float */
 code span.fu { color: #06287e; } /* Function */
-code span.im { } /* Import */
+code span.im { color: #008000; font-weight: bold; } /* Import */
 code span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Information */
 code span.kw { color: #007020; font-weight: bold; } /* Keyword */
 code span.op { color: #666666; } /* Operator */
@@ -1001,14 +1001,15 @@ div.csl-indent {
 <li class="chapter" data-level="15" data-path="ChapBonusMalus.html"><a href="ChapBonusMalus.html"><i class="fa fa-check"></i><b>15</b> Experience Rating using Bonus-Malus</a>
 <ul>
 <li class="chapter" data-level="15.1" data-path="ChapBonusMalus.html"><a href="ChapBonusMalus.html#S:ERBM:Intro"><i class="fa fa-check"></i><b>15.1</b> Introduction</a></li>
-<li class="chapter" data-level="15.2" data-path="ChapBonusMalus.html"><a href="ChapBonusMalus.html#S:ERBM:NCD"><i class="fa fa-check"></i><b>15.2</b> <em>NCD</em> System in Several Countries</a>
+<li class="chapter" data-level="15.2" data-path="ChapBonusMalus.html"><a href="ChapBonusMalus.html#S:ERBM:NCD"><i class="fa fa-check"></i><b>15.2</b> <em>BMS</em> in Several Countries</a>
 <ul>
-<li class="chapter" data-level="15.2.1" data-path="ChapBonusMalus.html"><a href="ChapBonusMalus.html#ncd-system-in-malaysia"><i class="fa fa-check"></i><b>15.2.1</b> <em>NCD</em> System in Malaysia</a></li>
-<li class="chapter" data-level="15.2.2" data-path="ChapBonusMalus.html"><a href="ChapBonusMalus.html#ncd-systems-in-other-countries"><i class="fa fa-check"></i><b>15.2.2</b> NCD Systems in Other Countries</a></li>
+<li class="chapter" data-level="15.2.1" data-path="ChapBonusMalus.html"><a href="ChapBonusMalus.html#bms-in-malaysia"><i class="fa fa-check"></i><b>15.2.1</b> <em>BMS</em> in Malaysia</a></li>
+<li class="chapter" data-level="15.2.2" data-path="ChapBonusMalus.html"><a href="ChapBonusMalus.html#bms-in-other-countries"><i class="fa fa-check"></i><b>15.2.2</b> <em>BMS</em> in Other Countries</a></li>
 </ul></li>
 <li class="chapter" data-level="15.3" data-path="ChapBonusMalus.html"><a href="ChapBonusMalus.html#S:ERBM:BMS"><i class="fa fa-check"></i><b>15.3</b> <em>BMS</em> and Markov Chain Model</a>
 <ul>
 <li class="chapter" data-level="15.3.1" data-path="ChapBonusMalus.html"><a href="ChapBonusMalus.html#transition-probability"><i class="fa fa-check"></i><b>15.3.1</b> Transition Probability</a></li>
+<li class="chapter" data-level="15.3.2" data-path="ChapBonusMalus.html"><a href="ChapBonusMalus.html#some-applications"><i class="fa fa-check"></i><b>15.3.2</b> Some Applications</a></li>
 </ul></li>
 <li class="chapter" data-level="15.4" data-path="ChapBonusMalus.html"><a href="ChapBonusMalus.html#S:ERBM:StatDist"><i class="fa fa-check"></i><b>15.4</b> <em>BMS</em> and Stationary Distribution</a>
 <ul>
@@ -1303,17 +1304,17 @@ G(a,b)=\mathrm{E}_{X}([\mathrm{E}_{\Theta}(\mu(\theta)|X_1,\ldots,X_n)-(a+b\bar{
 <p>hence the alternative name <a href="#" class="tooltip" style="color:green"><em>least-squares credibility</em><span style="font-size:8pt"></span></a>. Minimizing the expectation yields <span class="math inline">\(b=n/(n+K)\)</span> and <span class="math inline">\(a=(1-b)\mu\)</span>. Quantity <span class="math inline">\(n\)</span> is the number of observations and <span class="math inline">\(\mu=\mathrm{E}_{\Theta}(\mu(\theta))\)</span> is the population mean. For the moment we will assign <span class="math inline">\(K\)</span> the mysterious equation <span class="math inline">\(K\)</span> = (Expected Value of the Process Variance) / (Variance of the Hypothetical Means)=<span class="math inline">\(EPV/VHM\)</span> and will clarify the meaning at the beginning of the next section. More details about this model and calculation of <span class="math inline">\(a\)</span> and <span class="math inline">\(b\)</span> can be found in references <span class="citation">(<a href="#ref-Buhlmann1967" role="doc-biblioref">Bühlmann 1967</a>)</span>, <span class="citation">(<a href="#ref-BuhlmannGisler2005" role="doc-biblioref">Bühlmann and Gisler 2005</a>)</span>, <span class="citation">(<a href="#ref-klugman2012" role="doc-biblioref">Klugman, Panjer, and Willmot 2012</a>)</span>, and <span class="citation">(<a href="#ref-Tse2009" role="doc-biblioref">Tse 2009</a>)</span>.</p>
 <p>The Bühlmann credibility-weighted estimate for <span class="math inline">\(\mathrm{E}_{\Theta}(\mu(\theta)|x_1,\ldots, x_n)\)</span> for the policyholder is</p>
 <p><span class="math display" id="eq:buhlcred">\[\begin{equation}
-\hat{\mu}(\theta)=Z\bar{x}+(1-Z)\mu 
+\hat{\mu}(\theta)=Z\bar{x}+(1-Z)\mu
 \tag{12.1}
 \end{equation}\]</span></p>
 <p>with</p>
-<p><span class="math display">\[\begin{eqnarray*} 
+<p><span class="math display">\[\begin{eqnarray*}
 \theta&amp;=&amp;\textrm{a risk parameter that identifies a policyholder&#39;s risk level}\\
 \hat{\mu}(\theta)&amp;=&amp;\textrm{estimated expected loss for a policyholder with parameter }\theta\\
- &amp; &amp; \textrm{and loss experience } \bar{x}\\
+&amp; &amp; \textrm{and loss experience } \bar{x}\\
 \bar{x}&amp;=&amp;(x_1+\cdots+x_n)/n \textrm{ is the average of $n$ observations of the policyholder } \\
- Z&amp;=&amp;\textrm{credibility assigned to $n$ observations } = n/(n+K) \\
- K&amp;=&amp;EPV/VHM  \\
+Z&amp;=&amp;\textrm{credibility assigned to $n$ observations } = n/(n+K) \\
+K&amp;=&amp;EPV/VHM  \\
 \mu&amp;=&amp;\textrm{the expected loss for a randomly chosen policyholder in the class.}\\
 \end{eqnarray*}\]</span></p>
 <p>For a selected policyholder, random variables <span class="math inline">\(X_j\)</span> are assumed to be iid for <span class="math inline">\(j=1,\ldots,n\)</span> because it is assumed that the policyholder’s exposure to loss is not changing through time and <span class="math inline">\(\mathrm{E}_{X}(\bar{X}|\theta)=\mathrm{E}_{X}(X_j|\theta)=\mu(\theta)\)</span>.</p>
@@ -1327,14 +1328,14 @@ G(a,b)=\mathrm{E}_{X}([\mathrm{E}_{\Theta}(\mu(\theta)|X_1,\ldots,X_n)-(a+b\bar{
 <li>How much variation is there in a single observation <span class="math inline">\(X_j\)</span> for a selected risk? With <span class="math inline">\(\bar{X}=(X_1+\cdots+X_n)/n\)</span> and assuming that the observations are iid conditional on <span class="math inline">\(\theta\)</span>, it follows that <span class="math inline">\(\mathrm{Var}_{X}(\bar{X}|\theta)\)</span> = <span class="math inline">\(\mathrm{Var}_{X}(X_j|\theta)/n\)</span>. For larger <span class="math inline">\(\mathrm{Var}_{X}(\bar{X}|\theta)\)</span> less credibility weight <span class="math inline">\(Z\)</span> should be given to experience <span class="math inline">\(\bar{X}\)</span>. The <a href="#" class="tooltip" style="color:green"><em>Expected Value of the Process Variance</em><span style="font-size:8pt">Average of the natural variability of observations from within each risk</span></a>, abbreviated <span class="math inline">\(EPV\)</span>, is the expected value of <span class="math inline">\(\mathrm{Var}_{X}(X_j|\theta\)</span>) across all risks:</li>
 </ol>
 <p><span class="math display">\[
-EPV = \mathrm{E}_{\Theta}(\mathrm{Var}_{X}(X_j|\theta)). 
+EPV = \mathrm{E}_{\Theta}(\mathrm{Var}_{X}(X_j|\theta)).
 \]</span></p>
 <p>Because <span class="math inline">\(\mathrm{Var}_{X}(\bar{X}|\theta)\)</span> = <span class="math inline">\(\mathrm{Var}_{X}(X_j|\theta)/n\)</span> it follows that <span class="math inline">\(\mathrm{E}_{\Theta}(\mathrm{Var}_{X}(\bar{X}|\theta))=EPV/n\)</span>.</p>
 <ol start="2" style="list-style-type: decimal">
 <li>How homogeneous is the population of risks whose experience was combined to compute the overall mean <span class="math inline">\(\mu\)</span>? If all the risks are similar in loss potential then more weight <span class="math inline">\((1-Z)\)</span> would be given to the overall mean <span class="math inline">\(\mu\)</span> because <span class="math inline">\(\mu\)</span> is the average for a group of similar risks whose means <span class="math inline">\(\mu(\theta)\)</span> are not far apart. The homogeneity or heterogeneity of the population is measured by the <a href="#" class="tooltip" style="color:green"><em>Variance of the Hypothetical Means</em><span style="font-size:8pt">Variance of the means across different classes, used to determine how similar or different the classes are from one another</span></a> with abbreviation <span class="math inline">\(VHM\)</span>:</li>
 </ol>
 <p><span class="math display">\[
-VHM=\mathrm{Var}_{\Theta}(\mathrm{E}_{X}(X_j|\theta))=\mathrm{Var}_{\Theta}(\mathrm{E}_{X}(\bar{X}|\theta)). 
+VHM=\mathrm{Var}_{\Theta}(\mathrm{E}_{X}(X_j|\theta))=\mathrm{Var}_{\Theta}(\mathrm{E}_{X}(\bar{X}|\theta)).
 \]</span></p>
 <p>Note that we used <span class="math inline">\(\mathrm{E}_{X}(\bar{X}|\theta)=\mathrm{E}_{X}(X_j|\theta)\)</span> for the second equality.</p>
 <ol start="3" style="list-style-type: decimal">
@@ -1350,13 +1351,13 @@ VHM=\mathrm{Var}_{\Theta}(\mathrm{E}_{X}(X_j|\theta))=\mathrm{Var}_{\Theta}(\mat
 <hr />
 <p>The Bühlmann credibility formula includes values for <span class="math inline">\(n\)</span>, <span class="math inline">\(EPV\)</span>, and <span class="math inline">\(VHM\)</span>:</p>
 <p><span class="math display" id="eq:buhlZ">\[\begin{equation}
-Z=\frac{n}{n+K} \quad , \quad K =\frac{EPV}{VHM}. 
-\tag{12.2} 
+Z=\frac{n}{n+K} \quad , \quad K =\frac{EPV}{VHM}.
+\tag{12.2}
 \end{equation}\]</span></p>
 <p>If the <span class="math inline">\(VHM\)</span> increases then <span class="math inline">\(Z\)</span> increases. If the <span class="math inline">\(EPV\)</span> increases then <span class="math inline">\(Z\)</span> gets smaller. Credibility <span class="math inline">\(Z\)</span> asymptotically approaches 1 as the number of observations <span class="math inline">\(n\)</span> goes to infinity.</p>
 <p>If you multiply the numerator and denominator of the <span class="math inline">\(Z\)</span> formula by (<span class="math inline">\(VHM\)</span>/<span class="math inline">\(n\)</span>) then <span class="math inline">\(Z\)</span> can be rewritten as</p>
 <p><span class="math display">\[
-Z=\frac{VHM}{VHM+(EPV/n)} . 
+Z=\frac{VHM}{VHM+(EPV/n)} .
 \]</span></p>
 <p>The number of observations <span class="math inline">\(n\)</span> is captured in the term (<span class="math inline">\(EPV/n\)</span>).</p>
 <p><strong>Example 12.2.4.</strong>
@@ -1367,7 +1368,7 @@ The <a href="#" class="tooltip" style="color:green"><em>law of total variance</e
 <div id="toggleExample.12.2.4" style="display: none">
 <p><strong>Solution</strong> The quantity <span class="math inline">\(\mathrm{Var}(\bar{X})\)</span> is called the unconditional variance or the total variance of <span class="math inline">\(\bar{X}\)</span>. The law of total variance says</p>
 <p><span class="math display">\[
-\mathrm{Var}(\bar{X})=\mathrm{E}_{\Theta}(\mathrm{Var}_{X}(\bar{X}|\theta))+\mathrm{Var}_{\Theta}(\mathrm{E}_{X}(\bar{X}|\theta)). 
+\mathrm{Var}(\bar{X})=\mathrm{E}_{\Theta}(\mathrm{Var}_{X}(\bar{X}|\theta))+\mathrm{Var}_{\Theta}(\mathrm{E}_{X}(\bar{X}|\theta)).
 \]</span></p>
 <p>In bullet (1) at the beginning of this section we showed <span class="math inline">\(\mathrm{E}_{\Theta}(\mathrm{Var}_{X}(\bar{X}|\theta))\)</span> = <span class="math inline">\(EPV/n\)</span>. In bullet (2), <span class="math inline">\(\mathrm{Var}_{\Theta}(\mathrm{E}_{X}(\bar{X}|\theta))=VHM\)</span>. Reordering the right hand side gives <span class="math inline">\(\mathrm{Var}(\bar{X})\)</span> = <span class="math inline">\(VHM +(EPV/n)\)</span>. Another way to write the formula for credibility <span class="math inline">\(Z\)</span> is <span class="math inline">\(Z=\mathrm{Var}_{\Theta}(\mathrm{E}_{X}(\bar{X}|\theta))/\mathrm{Var}(\bar{X})\)</span>. This implies <span class="math inline">\((1-Z)=\mathrm{E}_{\Theta}(\mathrm{Var}_{X}(\bar{X}|\theta))/\mathrm{Var}(\bar{X})\)</span>.</p>
 </div>
@@ -1441,7 +1442,7 @@ C &amp; 20\% &amp; \lambda=2.0 &amp; \beta=2000 \\
 \mathrm{E}_{\Theta}(\mu(\theta)|\mathbf{x})&amp;=&amp;\int \mu(\theta) f_{\Theta|\mathbf{X}=\mathbf{x}}(\theta|\mathbf{x}) d\theta.
 \end{eqnarray*}\]</span></p>
 <p>The integrations are over the support of the distributions. The posterior distribution comes from <a href="#" class="tooltip" style="color:green"><em>Bayes theorem</em><span style="font-size:8pt">A probability law that expresses conditional probability of the event a given the event b in terms of the conditional probability of the event b given the event a and the unconditional probability of a</span></a></p>
-<p><span class="math display">\[\begin{equation*} 
+<p><span class="math display">\[\begin{equation*}
 f_{\Theta|\mathbf{X}=\mathbf{x}}(\theta) = \frac{f_{\mathbf{X}|\Theta=\theta}(\mathbf{x})\, f_{\Theta}(\theta)}{f_{\mathbf{X}}(\mathbf{x})}.
 \end{equation*}\]</span></p>
 <p>The first function <span class="math inline">\(f_{\mathbf{X}|\Theta=\theta}(\mathbf{x})\)</span> in the numerator is the likelihood function and the second term <span class="math inline">\(f_{\Theta}(\theta)\)</span> is the prior distribution. The denominator <span class="math inline">\(f_{\mathbf{X}}(\mathbf{x})\)</span> is the joint density function for <span class="math inline">\(n\)</span> losses <span class="math inline">\(\mathbf{x}=(x_1,\ldots,x_n)\)</span>.</p>
@@ -1458,7 +1459,7 @@ Using <span class="math inline">\(n\)</span>, conditional density function <span
 \mu=\int \int x f_{X|\Theta=\theta}(x|\theta) f_{\Theta}(\theta) dx d\theta.
 \end{equation*}\]</span></p>
 <p>The Variance of the Hypothetical Means (VHM) is calculated as follows</p>
-<p><span class="math display">\[\begin{eqnarray*} 
+<p><span class="math display">\[\begin{eqnarray*}
 \mu(\theta) &amp;=&amp;\int x f_{X|\Theta=\theta}(x|\theta) dx , \\
 \mathrm{VHM}&amp;=&amp;\int (\mu(\theta)-\mu)^{2} f_{\Theta}(\theta) d\theta.
 \end{eqnarray*}\]</span></p>
@@ -1487,7 +1488,7 @@ f_{Q|X=x}(q) = \frac{\Gamma(a+b+m)}{\Gamma(a+x)\Gamma(b+m-x)} q^{a+x-1} (1-q)^{b
 \]</span></p>
 <p>which is a beta distribution with parameters <span class="math inline">\(a+x\)</span> and <span class="math inline">\(b+m-x\)</span>.</p>
 <p>The mean for the beta distribution with parameters <span class="math inline">\(a\)</span> and <span class="math inline">\(b\)</span> is <span class="math inline">\(\mathrm{E}(Q)=a/(a+b)\)</span>. Given <span class="math inline">\(x\)</span> successes in <span class="math inline">\(m\)</span> trials in the beta-binomial model the mean of the posterior distribution is</p>
-<p><span class="math display">\[\begin{equation*} 
+<p><span class="math display">\[\begin{equation*}
 \mathrm{E}_{Q}(Q|x)=\frac{a+x}{a+b+m}.  
 \end{equation*}\]</span></p>
 <p>The Bühlmann credibility estimate for <span class="math inline">\(\mathrm{E}_{Q}(Q|x)\)</span> exactly matches the Bayesian estimate as demonstrated in the following example.</p>
@@ -1498,7 +1499,7 @@ The probability that a coin toss will yield heads is <span class="math inline">\
 </h5>
 <div id="toggleExample.12.3.2" style="display: none">
 <p><strong>Solution</strong> Define random variables <span class="math inline">\(Y_j\)</span> such that <span class="math inline">\(Y_j=1\)</span> if the <span class="math inline">\(j^{th}\)</span> coin toss is heads and <span class="math inline">\(Y_j=0\)</span> if tails for <span class="math inline">\(j=1,\ldots, m\)</span>. Random variables <span class="math inline">\(Y_j\)</span> are iid conditional on <span class="math inline">\(q\)</span> with Pr<span class="math inline">\((Y=1|q)=q\)</span> and Pr<span class="math inline">\((Y=0|q)=1-q\)</span> The number of heads in <span class="math inline">\(m\)</span> tosses can be represented by the random variable <span class="math inline">\(X=Y_1+\cdots+Y_m\)</span>. We want to estimate <span class="math inline">\(q=E(Y_j|X=x)\)</span> using Bühlmann credibility: <span class="math inline">\(\hat{q} = Z\bar{x} +(1-Z)\mu\)</span>. The overall mean is <span class="math inline">\(\mu=\mathrm{E}(\mathrm{E}(Y_j|Q))\)</span> = <span class="math inline">\(\mathrm{E}(Q)=a/(a+b)\)</span>. The sample mean is <span class="math inline">\(\bar{x}=x/m\)</span>. The credibility is <span class="math inline">\(Z=m/(m+K)\)</span> and <span class="math inline">\(K=EPV/VHM\)</span>. With <span class="math inline">\(\mathrm{Var}(Y_j|q)=q(1-q)\)</span> it follows that <span class="math inline">\(EPV = \mathrm{E}(\mathrm{Var}[Y_j|Q])\)</span> = <span class="math inline">\(\mathrm{E}(Q(1-Q)\)</span>). Because <span class="math inline">\(\mathrm{E}(Y_j|q)=q\)</span> then <span class="math inline">\(VHM=\mathrm{Var}((\mathrm{E}(Y_j|Q))=\mathrm{Var}(Q)\)</span>. For the beta distribution</p>
-<p><span class="math display">\[ 
+<p><span class="math display">\[
 \mathrm{E}(Q)=\frac{a}{a+b}, \mathrm{E}(Q^2)=\frac{a(a+1)}{(a+b)(a+b+1)}, \textrm{ and } \mathrm{Var}(Q)=\frac{ab}{(a+b)^2(a+b+1)}.
 \]</span></p>
 <p>Parameter <span class="math inline">\(K=EPV/VHM\)</span>=<span class="math inline">\([\mathrm{E}(Q)-\mathrm{E}(Q^2)]/\mathrm{Var}(Q)\)</span>. With some algebra this reduces to <span class="math inline">\(K=a+b\)</span>. The Bühlmann credibility-weighted estimate is</p>
@@ -1544,7 +1545,7 @@ The number of claims X each year for a risk has a Poisson distribution <span cla
 <p><strong>Solution</strong></p>
 <p>The variance for a Poisson distribution with parameter <span class="math inline">\(\lambda\)</span> is <span class="math inline">\(\lambda\)</span> so <span class="math inline">\(EPV=\mathrm{E}(\mathrm{Var}(X|\lambda))=\mathrm{E}(\lambda)=\alpha/\beta\)</span>. The mean number of claims per year for the risk is <span class="math inline">\(\lambda\)</span> so <span class="math inline">\(VHM=\mathrm{Var}(\mathrm{E}(X|\lambda))\)</span> = <span class="math inline">\(\mathrm{Var}(\lambda)=\alpha/\beta^2\)</span>. The credibility parameter is <span class="math inline">\(K=EPV/VHM\)</span> = <span class="math inline">\((\alpha/\beta)/(\alpha/\beta^2)=\beta\)</span>. The overall mean is <span class="math inline">\(\mathrm{E}(\mathrm{E}(X|\lambda))=\mathrm{E}(\lambda)=\alpha/\beta\)</span>. Letting <span class="math inline">\(x=\sum_{j=1}^{n}x_j\)</span>, the sample mean is <span class="math inline">\(\bar{x}=x/n\)</span>. The credibility-weighted estimate for the expected number of claims for the risk is</p>
 <p><span class="math display">\[
-\hat{\mu}=\frac{n}{n+\beta}\bar{x} +\left(1-\frac{n}{n+\beta}\right)\frac{\alpha}{\beta}=\frac{\alpha+x}{\beta+n}. 
+\hat{\mu}=\frac{n}{n+\beta}\bar{x} +\left(1-\frac{n}{n+\beta}\right)\frac{\alpha}{\beta}=\frac{\alpha+x}{\beta+n}.
 \]</span></p>
 </div>
 <p>We will leave it to the reader to compare the Bayesian and Bühlmann models for the normal-normal conjugate family.</p>
@@ -1572,7 +1573,7 @@ The number of claims X each year for a risk has a Poisson distribution <span cla
 <p>Define <span class="math inline">\(Y_{jk}\)</span> to be the loss for the <span class="math inline">\(k^{th}\)</span> vehicle in the fleet for year <span class="math inline">\(j\)</span>. Then, the total losses for the fleet in year <span class="math inline">\(j\)</span> are <span class="math inline">\(Y_{j1}+\cdots+Y_{jm_j}\)</span> where we are adding up the losses for each of the <span class="math inline">\(m_j\)</span> vehicles. In the Bühlmann-Straub model it is assumed that random variables <span class="math inline">\(Y_{jk}\)</span> are iid across all vehicles and years for the policyholder. With this assumption the means <span class="math inline">\(\mathrm{E}_{Y}(Y_{jk}|\theta)=\mu(\theta)\)</span> and variances <span class="math inline">\(\mathrm{Var}_{Y}(Y_{jk}|\theta)=\sigma^2(\theta)\)</span> are the same for all vehicles and years. The quantity <span class="math inline">\(\mu(\theta)\)</span> is the expected loss and <span class="math inline">\(\sigma^2(\theta)\)</span> is the variance in the loss for one year for one vehicle for a policyholder with risk parameter <span class="math inline">\(\theta\)</span>.</p>
 <p>If <span class="math inline">\(X_j\)</span> is the average loss per unit of exposure in year <span class="math inline">\(j\)</span>, <span class="math inline">\(X_j=(Y_{j1}+\cdots+Y_{jm_j})/m_j\)</span>, then <span class="math inline">\(\mathrm{E}_{Y}(X_j|\theta)=\mu(\theta)\)</span> and <span class="math inline">\(\mathrm{Var}_{Y}(X_j|\theta)=\sigma^2(\theta)/m_j\)</span> for a policyholder with risk parameter <span class="math inline">\(\theta\)</span>. Note that we used the fact that the <span class="math inline">\(Y_{jk}\)</span> are iid for a given policyholder. The average loss per vehicle for the entire <span class="math inline">\(n\)</span>-year period is</p>
 <p><span class="math display">\[\begin{equation*}
-\bar{X}= \frac{1}{m} \sum_{j=1}^{n} m_j X_{j} \quad , \quad  m=\sum_{j=1}^{n}  m_j. 
+\bar{X}= \frac{1}{m} \sum_{j=1}^{n} m_j X_{j} \quad , \quad  m=\sum_{j=1}^{n}  m_j.
 \end{equation*}\]</span></p>
 <p>It follows that <span class="math inline">\(\mathrm{E}_{Y}(\bar{X}|\theta)=\mu(\theta)\)</span> and <span class="math inline">\(\mathrm{Var}_{Y}(\bar{X}|\theta)=\sigma^2(\theta)/m\)</span> where <span class="math inline">\(\mu(\theta)\)</span> and <span class="math inline">\(\sigma^2(\theta)\)</span> are the mean and variance for a single vehicle for one year for the policyholder.</p>
 <p><strong>Example 12.4.1.</strong>
@@ -1590,31 +1591,31 @@ Prove that <span class="math inline">\(\mathrm{Var}_{Y}(\bar{X}|\theta)=\sigma^2
 </div>
 <hr />
 <p>The <a href="#" class="tooltip" style="color:green"><em>Buhlmann-Straub credibility</em><span style="font-size:8pt">An extension of the buhlmann credibility model that allows for varying exposure by year</span></a> estimate is:</p>
-<p><span class="math display" id="eq:bscred">\[\begin{equation}\hat{\mu}(\theta)=Z\bar{x}+(1-Z)\mu 
-\tag{12.3} 
+<p><span class="math display" id="eq:bscred">\[\begin{equation}\hat{\mu}(\theta)=Z\bar{x}+(1-Z)\mu
+\tag{12.3}
 \end{equation}\]</span></p>
 <p>with</p>
-<p><span class="math display">\[\begin{eqnarray*} 
+<p><span class="math display">\[\begin{eqnarray*}
 \theta&amp;=&amp;\textrm{a risk parameter that identifies a policyholder&#39;s risk level}\\
 \hat{\mu}(\theta)&amp;=&amp;\textrm{estimated expected loss for one exposure for the policyholder}\\
- &amp; &amp; \textrm{with loss experience } \bar{X}\\
+&amp; &amp; \textrm{with loss experience } \bar{X}\\
 \bar{x}&amp;=&amp; \frac{1}{m} \sum_{j=1}^{n} m_j x_j \textrm{ is the average loss per exposure for $m$ exposures.}\\
- &amp; &amp; \textrm{$x_j$ is the average loss per exposure and $m_j$ is the number of exposures in year $j$.} \\
+&amp; &amp; \textrm{$x_j$ is the average loss per exposure and $m_j$ is the number of exposures in year $j$.} \\
 Z&amp;=&amp;\textrm{credibility assigned to $m$ exposures } \\
- \mu&amp;=&amp;\textrm{expected loss for one exposure for randomly chosen}\\
- &amp; &amp; \textrm{ policyholder from population.}\\
+\mu&amp;=&amp;\textrm{expected loss for one exposure for randomly chosen}\\
+&amp; &amp; \textrm{ policyholder from population.}\\
 \end{eqnarray*}\]</span></p>
 <p>Note that <span class="math inline">\(\hat{\mu}(\theta)\)</span> is the estimator for the expected loss for one exposure. If the policyholder has <span class="math inline">\(m_j\)</span> exposures then the expected loss is <span class="math inline">\(m_j\hat{\mu}(\theta)\)</span>.</p>
 <p>In Example 12.2.4, it was shown that <span class="math inline">\(Z=\mathrm{Var}_{\Theta}(\mathrm{E}_{X}(\bar{X}|\theta))/\mathrm{Var}(\bar{X})\)</span> where <span class="math inline">\(\bar{X}\)</span> is the average loss for <span class="math inline">\(n\)</span> observations. In equation <a href="ChapCredibility.html#eq:bscred">(12.3)</a> the <span class="math inline">\(\bar{X}\)</span> is the average loss for <span class="math inline">\(m\)</span> exposures and the same <span class="math inline">\(Z\)</span> formula can be used:</p>
 <p><span class="math display">\[
 Z=\frac{\mathrm{Var}_{\Theta}(\mathrm{E}_{Y}(\bar{X}|\theta))}{\mathrm{Var}(\bar{X})}=
-\frac{\mathrm{Var}_{\Theta}(\mathrm{E}_{Y}(\bar{X}|\theta))}{\mathrm{E}_{\Theta}(\mathrm{Var}_{Y}(\bar{X}|\theta))+\mathrm{Var}_{\Theta}(\mathrm{E}_{Y}(\bar{X}|\theta))}. 
+\frac{\mathrm{Var}_{\Theta}(\mathrm{E}_{Y}(\bar{X}|\theta))}{\mathrm{E}_{\Theta}(\mathrm{Var}_{Y}(\bar{X}|\theta))+\mathrm{Var}_{\Theta}(\mathrm{E}_{Y}(\bar{X}|\theta))}.
 \]</span></p>
 <p>(Note that <span class="math inline">\(X_{j}\)</span> is a sum of <span class="math inline">\(Y_{jk}\)</span>’s and <span class="math inline">\(\bar{X}\)</span> is an average of <span class="math inline">\(Y_{jk}\)</span>’s.) The denominator was expanded using the <a href="#" class="tooltip" style="color:green"><em>law of total variance</em><span style="font-size:8pt">A decomposition of the variance of a random variable into conditional components. specifically, for random variables x and y on the same probability space, var(x) = e[var(y|x)] + var[e(x|y)].</span></a>. As noted above <span class="math inline">\(\mathrm{E}_{Y}(\bar{X}|\theta)=\mu(\theta)\)</span> so <span class="math inline">\(\mathrm{Var}_{\Theta}(\mathrm{E}_{Y}(\bar{X}|\theta))=\mathrm{Var}_{\Theta}(\mu(\theta))=VHM\)</span>.
 Because <span class="math inline">\(\mathrm{Var}_{Y}(\bar{X}|\theta)=\sigma^2(\theta)/m\)</span> it follows that <span class="math inline">\(\mathrm{E}_{\Theta}(\mathrm{Var}_{Y}(\bar{X}|\theta))=\mathrm{E}_{\Theta}(\sigma^2(\theta))/m\)</span> = <span class="math inline">\(EPV/m\)</span>. Making these substitutions and using a little algebra gives</p>
 <p><span class="math display" id="eq:bsZ">\[\begin{equation}
-Z=\frac{m}{m+K} \quad , \quad K =\frac{EPV}{VHM}. 
-\tag{12.4} 
+Z=\frac{m}{m+K} \quad , \quad K =\frac{EPV}{VHM}.
+\tag{12.4}
 \end{equation}\]</span></p>
 <p>This is the same <span class="math inline">\(Z\)</span> as for Bühlmann credibility except number of exposures <span class="math inline">\(m\)</span> replaces number of years or observations <span class="math inline">\(n\)</span>.</p>
 <p><strong>Example 12.4.2.</strong> A commercial automobile policyholder had the following exposures and claims over a three-year period:</p>
@@ -1664,19 +1665,19 @@ Z=\frac{m}{m+K} \quad , \quad K =\frac{EPV}{VHM}.
 \tag{12.5}
 \end{equation}\]</span></p>
 <p>The individual risk means <span class="math inline">\(\bar{X}_i\)</span> for <span class="math inline">\(i=1,\ldots, r\)</span> can be used to estimate the <span class="math inline">\(VHM\)</span>. An unbiased estimator of Var(<span class="math inline">\(\bar{X}_i\)</span>) is</p>
-<p><span class="math display">\[\begin{equation*} 
+<p><span class="math display">\[\begin{equation*}
 \widehat{\mathrm{Var}}(\bar{X}_i)=\frac{1}{r-1} \sum_{i=1}^{r}(\bar{X}_i-\bar{X})^2 \textrm{  and  }  \bar{X}=\frac{1}{r}\sum_{i=1}^{r} \bar{X}_i,
 \end{equation*}\]</span></p>
 <p>but Var(<span class="math inline">\(\bar{X}_i\)</span>) is not the <span class="math inline">\(VHM\)</span>. The total variance formula or <em>unconditional variance</em> formula is</p>
-<p><span class="math display">\[ 
+<p><span class="math display">\[
 \mathrm{Var}(\bar{X}_i)=\mathrm{E}_{X}(\mathrm{Var}_{\Theta}(\bar{X}_i|\theta_i))+\mathrm{Var}_{\Theta}(\mathrm{E}_{X}(\bar{X}_i|\theta_i)).
 \]</span></p>
 <p>The <span class="math inline">\(VHM\)</span> is the second term on the right because <span class="math inline">\(\mu(\theta_i)=\mathrm{E}_{X}(\bar{X}_i|\theta_i)\)</span> is the hypothetical mean for risk <span class="math inline">\(i\)</span>. So,</p>
-<p><span class="math display">\[\begin{equation*} 
+<p><span class="math display">\[\begin{equation*}
 VHM= \mathrm{Var}(\bar{X}_i) - \mathrm{E}_{\Theta}(\mathrm{Var}_{X}(\bar{X}_i|\theta_i)).
 \end{equation*}\]</span></p>
 <p>As discussed previously in Section <a href="ChapCredibility.html#S:EPV-VHM-Z">12.2.2</a>, <span class="math inline">\(EPV/n\)</span> = <span class="math inline">\(\mathrm{E}_{\Theta}(\mathrm{Var}_{X}[\bar{X}_i|\theta_i])\)</span> and using the above estimators gives an estimator for the <span class="math inline">\(VHM\)</span>:</p>
-<p><span class="math display" id="eq:VHM-estimate">\[\begin{equation} 
+<p><span class="math display" id="eq:VHM-estimate">\[\begin{equation}
 \widehat{VHM} = \frac{1}{r-1} \sum_{i=1}^{r}(\bar{X}_i-\bar{X})^2 - \frac{\widehat{EPV}}{n} .
 \tag{12.6}
 \end{equation}\]</span></p>
@@ -1778,10 +1779,10 @@ Two policyholders had claims shown in the table below. Estimate the expected num
 \hline
 \text{A} &amp; \text{Insured vehicles} &amp;  1 &amp; 2 &amp; 2 &amp; 2\\  
 \hline
- &amp; &amp; &amp; &amp; &amp; \\
+&amp; &amp; &amp; &amp; &amp; \\
 \hline
 \text{B} &amp; \text{Number of claims} &amp; 0 &amp; 0 &amp; 1 &amp; 2\\    
-\hline 
+\hline
 \text{B} &amp; \text{Insured vehicles} &amp;  0 &amp; 2 &amp; 3 &amp; 4\\      
 \hline
 \end{array}
@@ -1852,12 +1853,12 @@ A portfolio of 2,000 policyholders generated the following claims profile during
 \text{Number of Claims} &amp;   \\
 \text{In 5 Years}           &amp;  \text{Number of policies}\\
 \hline
- 0 &amp;  923 \\
- 1 &amp;  682 \\  
- 2 &amp;  249 \\  
- 3 &amp;  70   \\
- 4 &amp;  51   \\  
- 5 &amp;  25   \\     
+0 &amp;  923 \\
+1 &amp;  682 \\  
+2 &amp;  249 \\  
+3 &amp;  70   \\
+4 &amp;  51   \\  
+5 &amp;  25   \\     
 \hline
 \end{array}
 }
@@ -1897,7 +1898,7 @@ A portfolio of 2,000 policyholders generated the following claims profile during
 <p><a href="#" class="tooltip" style="color:green"><em>Limited fluctuation credibility</em><span style="font-size:8pt">A credibility method that attempts to limit fluctuations in its estimates</span></a>, also called “classical credibility” and “American credibility,” was given this name because the method explicitly attempts to limit fluctuations in estimates for claim frequencies, severities, or losses. For example, suppose that you want to estimate the expected number of claims <span class="math inline">\(N\)</span> for a group of risks in an insurance rating class. How many risks are needed in the class to ensure that a specified level of accuracy is attained in the estimate? First the question will be considered from the perspective of how many claims are needed.</p>
 <div id="S:frequency" class="section level3 hasAnchor" number="12.6.1">
 <h3><span class="header-section-number">12.6.1</span> Full Credibility for Claim Frequency<a href="ChapCredibility.html#S:frequency" class="anchor-section" aria-label="Anchor link to header"></a></h3>
-<p>Let <span class="math inline">\(N\)</span> be a random variable representing the number of claims for a group of risks, for example, risks within a particular rating classification. The observed number of claims will be used to estimate <span class="math inline">\(\mu_N=\mathrm{E}[N]\)</span>, the expected number of claims. How big does <span class="math inline">\(\mu_N\)</span> need to be to get a good estimate? One way to quantify the accuracy of the estimate would be with a statement like: ``The observed value of <span class="math inline">\(N\)</span> should be within 5<span class="math inline">\(\%\)</span> of <span class="math inline">\(\mu_N\)</span> at least 90<span class="math inline">\(\%\)</span> of the time." Writing this as a mathematical expression would give <span class="math inline">\(\Pr[0.95 \mu_N \leq N \leq 1.05 \mu_N] \geq 0.90\)</span>. Generalizing this statement by letting the range parameter <span class="math inline">\(k\)</span> replace 5<span class="math inline">\(\%\)</span> and probability level <span class="math inline">\(p\)</span> replace 0.90 gives the equation</p>
+<p>Let <span class="math inline">\(N\)</span> be a random variable representing the number of claims for a group of risks, for example, risks within a particular rating classification. The observed number of claims will be used to estimate <span class="math inline">\(\mu_N=\mathrm{E}[N]\)</span>, the expected number of claims. How big does <span class="math inline">\(\mu_N\)</span> need to be to get a good estimate? One way to quantify the accuracy of the estimate would be with a statement like: ``The observed value of <span class="math inline">\(N\)</span> should be within 5<span class="math inline">\(\%\)</span> of <span class="math inline">\(\mu_N\)</span> at least 90<span class="math inline">\(\%\)</span> of the time.” Writing this as a mathematical expression would give <span class="math inline">\(\Pr[0.95 \mu_N \leq N \leq 1.05 \mu_N] \geq 0.90\)</span>. Generalizing this statement by letting the range parameter <span class="math inline">\(k\)</span> replace 5<span class="math inline">\(\%\)</span> and probability level <span class="math inline">\(p\)</span> replace 0.90 gives the equation</p>
 <p><span class="math display" id="eq:kpercent-interval">\[\begin{equation}
 \Pr[(1-k) \mu_N \leq N \leq (1+k) \mu_N] \geq p .
 \tag{12.7}
@@ -2082,11 +2083,11 @@ Individual loss amounts are independently and identically distributed with a Typ
 <!-- $$  -->
 <!-- Z=\quad \sqrt{\frac{n}{n_{0}}} \quad \textrm{if} \quad   n < n_{0} \quad \textrm{and}  \quad Z=\quad 1 \quad \textrm{for} \quad   n \geq n_{0} , -->
 <!-- $$ -->
-<p><span class="math display">\[ 
+<p><span class="math display">\[
 Z=
 \left\{
 \begin{array}{ll}
-\sqrt{n /n_{0}} &amp;\textrm{if }   n &lt; n_{0} \\ 
+\sqrt{n /n_{0}} &amp;\textrm{if }   n &lt; n_{0} \\
 1 &amp; \textrm{if }   n \ge n_{0} ,
 \end{array}
 \right.
@@ -2183,7 +2184,7 @@ m_i(1-Z_i)=m_i\left(1-\frac{m_i}{m_i+K}\right)=m_i\left(\frac{(m_i+K)-m_i}{m_i+K
 \]</span></p>
 <p>Therefore, an amount when applied to the complement of credibility that will bring the credibility-weighed estimators into balance with the overall mean loss per exposure is</p>
 <p><span class="math display">\[  
-\hat{M}_X=\frac{\sum_{i=1}^r  Z_i \bar{X}_i}{\sum_{i=1}^r  Z_i}. 
+\hat{M}_X=\frac{\sum_{i=1}^r  Z_i \bar{X}_i}{\sum_{i=1}^r  Z_i}.
 \]</span></p>
 <p><strong>Example 12.7.1.</strong>
 An example from the nonparametric Bühlmann-Straub section had the following data for two risks. Find an amount for the complement of credibility <span class="math inline">\(\hat{M}_X\)</span> that will produce credibility-weighted estimates that are in balance.</p>
@@ -2197,10 +2198,10 @@ An example from the nonparametric Bühlmann-Straub section had the following dat
 \hline
 \text{A} &amp; \text{Insured vehicles} &amp;  1 &amp; 2 &amp; 2 &amp; 2\\  
 \hline
- &amp; &amp; &amp; &amp; &amp; \\
+&amp; &amp; &amp; &amp; &amp; \\
 \hline
 \text{B} &amp; \text{Number of claims} &amp; 0 &amp; 0 &amp; 1 &amp; 2\\    
-\hline 
+\hline
 \text{B} &amp; \text{Insured vehicles} &amp;  0 &amp; 2 &amp; 3 &amp; 4\\      
 \hline
 \end{array}
@@ -2335,7 +2336,7 @@ gitbook.start({
     var script = document.createElement("script");
     script.type = "text/javascript";
     var src = "true";
-    if (src === "" || src === "true") src = "https://mathjax.rstudio.com/latest/MathJax.js?config=TeX-MML-AM_CHTML";
+    if (src === "" || src === "true") src = "https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.9/latest.js?config=TeX-MML-AM_CHTML";
     if (location.protocol !== "file:")
       if (/^https?:/.test(src))
         src = src.replace(/^https?:/, '');

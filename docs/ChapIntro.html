@@ -6,7 +6,7 @@
   <meta http-equiv="X-UA-Compatible" content="IE=edge" />
   <title>Chapter 1 Loss Data and Insurance Activities | Loss Data Analytics</title>
   <meta name="description" content="Chapter 1 Loss Data and Insurance Activities | Loss Data Analytics is an interactive, online, freely available text. - The online version will contain many interactive objects (quizzes, computer demonstrations, interactive graphs, video, and the like) to promote deeper learning. - A subset of the book will be available in pdf format for low-cost printing. - The online text will be available in multiple languages to promote access to a worldwide audience." />
-  <meta name="generator" content="bookdown 0.27 and GitBook 2.6.7" />
+  <meta name="generator" content="bookdown 0.32 and GitBook 2.6.7" />
 
   <meta property="og:title" content="Chapter 1 Loss Data and Insurance Activities | Loss Data Analytics" />
   <meta property="og:type" content="book" />
@@ -515,7 +515,7 @@ code span.al { color: #ff0000; font-weight: bold; } /* Alert */
 code span.an { color: #60a0b0; font-weight: bold; font-style: italic; } /* Annotation */
 code span.at { color: #7d9029; } /* Attribute */
 code span.bn { color: #40a070; } /* BaseN */
-code span.bu { } /* BuiltIn */
+code span.bu { color: #008000; } /* BuiltIn */
 code span.cf { color: #007020; font-weight: bold; } /* ControlFlow */
 code span.ch { color: #4070a0; } /* Char */
 code span.cn { color: #880000; } /* Constant */
@@ -528,7 +528,7 @@ code span.er { color: #ff0000; font-weight: bold; } /* Error */
 code span.ex { } /* Extension */
 code span.fl { color: #40a070; } /* Float */
 code span.fu { color: #06287e; } /* Function */
-code span.im { } /* Import */
+code span.im { color: #008000; font-weight: bold; } /* Import */
 code span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Information */
 code span.kw { color: #007020; font-weight: bold; } /* Keyword */
 code span.op { color: #666666; } /* Operator */
@@ -1001,14 +1001,15 @@ div.csl-indent {
 <li class="chapter" data-level="15" data-path="ChapBonusMalus.html"><a href="ChapBonusMalus.html"><i class="fa fa-check"></i><b>15</b> Experience Rating using Bonus-Malus</a>
 <ul>
 <li class="chapter" data-level="15.1" data-path="ChapBonusMalus.html"><a href="ChapBonusMalus.html#S:ERBM:Intro"><i class="fa fa-check"></i><b>15.1</b> Introduction</a></li>
-<li class="chapter" data-level="15.2" data-path="ChapBonusMalus.html"><a href="ChapBonusMalus.html#S:ERBM:NCD"><i class="fa fa-check"></i><b>15.2</b> <em>NCD</em> System in Several Countries</a>
+<li class="chapter" data-level="15.2" data-path="ChapBonusMalus.html"><a href="ChapBonusMalus.html#S:ERBM:NCD"><i class="fa fa-check"></i><b>15.2</b> <em>BMS</em> in Several Countries</a>
 <ul>
-<li class="chapter" data-level="15.2.1" data-path="ChapBonusMalus.html"><a href="ChapBonusMalus.html#ncd-system-in-malaysia"><i class="fa fa-check"></i><b>15.2.1</b> <em>NCD</em> System in Malaysia</a></li>
-<li class="chapter" data-level="15.2.2" data-path="ChapBonusMalus.html"><a href="ChapBonusMalus.html#ncd-systems-in-other-countries"><i class="fa fa-check"></i><b>15.2.2</b> NCD Systems in Other Countries</a></li>
+<li class="chapter" data-level="15.2.1" data-path="ChapBonusMalus.html"><a href="ChapBonusMalus.html#bms-in-malaysia"><i class="fa fa-check"></i><b>15.2.1</b> <em>BMS</em> in Malaysia</a></li>
+<li class="chapter" data-level="15.2.2" data-path="ChapBonusMalus.html"><a href="ChapBonusMalus.html#bms-in-other-countries"><i class="fa fa-check"></i><b>15.2.2</b> <em>BMS</em> in Other Countries</a></li>
 </ul></li>
 <li class="chapter" data-level="15.3" data-path="ChapBonusMalus.html"><a href="ChapBonusMalus.html#S:ERBM:BMS"><i class="fa fa-check"></i><b>15.3</b> <em>BMS</em> and Markov Chain Model</a>
 <ul>
 <li class="chapter" data-level="15.3.1" data-path="ChapBonusMalus.html"><a href="ChapBonusMalus.html#transition-probability"><i class="fa fa-check"></i><b>15.3.1</b> Transition Probability</a></li>
+<li class="chapter" data-level="15.3.2" data-path="ChapBonusMalus.html"><a href="ChapBonusMalus.html#some-applications"><i class="fa fa-check"></i><b>15.3.2</b> Some Applications</a></li>
 </ul></li>
 <li class="chapter" data-level="15.4" data-path="ChapBonusMalus.html"><a href="ChapBonusMalus.html#S:ERBM:StatDist"><i class="fa fa-check"></i><b>15.4</b> <em>BMS</em> and Stationary Distribution</a>
 <ul>
@@ -1216,7 +1217,7 @@ div.csl-indent {
 <p>One way to think about the nature of insurance is who buys it. Renters, homeowners, and auto insurance are examples of <a href="#" class="tooltip" style="color:green"><em>personal insurance</em><span style="font-size:8pt">Insurance purchased by a person</span></a> in that these are policies issued to people. Businesses also buy insurance, such as coverage on their properties, and this is known as <a href="#" class="tooltip" style="color:green"><em>commercial insurance</em><span style="font-size:8pt"></span></a>. The seller, an insurance company, is also known as an insurer. Even insurance companies need insurance; this is known as <a href="#" class="tooltip" style="color:green"><em>reinsurance</em><span style="font-size:8pt">Insurance purchased by an insurer</span></a>.</p>
 <p>Another way to think about the nature of insurance is the type of risk being covered. In the U.S., policies such as renters and homeowners are known as
 <a href="#" class="tooltip" style="color:green"><em>property insurance</em><span style="font-size:8pt">Property insurance is a policy that protects the insured against loss or damage to real or personal property. the cause of loss might be fire, lightening, business interruption, loss of rents, glass breakage, tornado, windstorm, hail, water damage, explosion, riot, civil commotion, rain, or damage from aircraft or vehicles.</span></a> whereas a policy such as auto that covers medical damages to people is known as <a href="#" class="tooltip" style="color:green"><em>casualty insurance</em><span style="font-size:8pt">Causalty insurance is a form of liability insurance providing coverage for negligent acts and omissions. examples include workers compensation, errors and omissions, fidelity, crime, glass, boiler, and various malpractice coverages.</span></a>. In the rest of the world, these are both known as <a href="#" class="tooltip" style="color:green"><em>non-life</em><span style="font-size:8pt">Non-life insurance is any type of insurance where payments are not based on the death (or survivorship) of a named insured. examples include automobile, homeowners, and so on. also known as property and casualty or general insurance.</span></a> or general insurance, to distinguish them from <a href="#" class="tooltip" style="color:green"><em>life insurance</em><span style="font-size:8pt">Life insurance is a contract where the insurer promises to pay upon the death of an insured person. the person being paid is the beneficiary. </span></a>.</p>
-<p>Both life and non-life insurances are important components of the world economy. The <span class="citation"><a href="#ref-OECD2022" role="doc-biblioref">The Organization for Economic Cooperation and Development (OECD)</a> (<a href="#ref-OECD2022" role="doc-biblioref">2021</a>)</span> estimates that direct insurance premiums in the OECD (Organization for Economic Cooperation and Development) countries for 2020 was 2,520,220 for life and 2,704,799 for non-life; these figures are in <em>millions of U.S. dollars</em>. The total represents 9.447% of the OECD gross domestic product (GDP). As examples, premiums accounted for 30.9% of GDP in Luxembourg and 17.0% of GDP in Chinese Taipei (the two highest in the study) and represented 12.5% of GDP in the United States. Both life and non-life insurances represent important economic activities.</p>
+<p>Both life and non-life insurances are important components of the world economy. The <span class="citation">The Organization for Economic Cooperation and Development (OECD) (<a href="#ref-OECD2022" role="doc-biblioref">2021</a>)</span> estimates that direct insurance premiums in the OECD (Organization for Economic Cooperation and Development) countries for 2020 was 2,520,220 for life and 2,704,799 for non-life; these figures are in <em>millions of U.S. dollars</em>. The total represents 9.447% of the OECD gross domestic product (GDP). As examples, premiums accounted for 30.9% of GDP in Luxembourg and 17.0% of GDP in Chinese Taipei (the two highest in the study) and represented 12.5% of GDP in the United States. Both life and non-life insurances represent important economic activities.</p>
 <p>Insurance affects the financial livelihoods of many and, by almost any measure, insurance is a major economic activity. As noted earlier, on a global level insurance premiums comprised nearly 9.5% of GDP in 2020. On a personal level, almost everyone owning a home has insurance to protect themselves in the event of a fire, hailstorm, or some other calamitous event. Almost every country requires insurance for those driving a car. In sum, insurance plays an important role in the economies of nations and the lives of individuals.</p>
 </div>
 <div id="S:DataDriven" class="section level3 hasAnchor" number="1.1.2">
@@ -1351,7 +1352,7 @@ for a market-consistent pricing structure of products. However, for many lines o
 place to start for a price. (If you have studied finance, then you will recall that an expectation is the optimal price for a risk-neutral insurer.) It has been traditional in insurance pricing to begin with the expected cost. Insurers then add margins to this, to account for the product’s riskiness,
 expenses incurred in servicing the product, and an allowance for profit/surplus of the company.</p>
 <p>Use of expected costs as a foundation for pricing is prevalent in some lines of the insurance business. These include automobile and homeowners insurance. For these lines, analytics has served to sharpen the market by making the
-calculation of the product’s expected cost more precise. The increasing availability of the internet to consumers has also promoted transparency in pricing; in today’s marketplace, consumers have ready access to competing quotes from a host of insurers. Insurers seek to increase their market share by refining their <a href="#" class="tooltip" style="color:green"><em>risk classification</em><span style="font-size:8pt">Risk classification is the process of grouping policyholders into categories, or classes, where each insured in the class has a risk profile that is similar to others in the class.</span></a> systems, thus achieving a better approximation of the products’ prices and enabling cream-skimming underwriting strategies (“cream-skimming” is a phrase used when the insurer underwrites only the best risks). Surveys (e.g., <span class="citation"><a href="#ref-survey2013" role="doc-biblioref">Earnix</a> (<a href="#ref-survey2013" role="doc-biblioref">2013</a>)</span>) indicate that pricing is the most common use of analytics among insurers.</p>
+calculation of the product’s expected cost more precise. The increasing availability of the internet to consumers has also promoted transparency in pricing; in today’s marketplace, consumers have ready access to competing quotes from a host of insurers. Insurers seek to increase their market share by refining their <a href="#" class="tooltip" style="color:green"><em>risk classification</em><span style="font-size:8pt">Risk classification is the process of grouping policyholders into categories, or classes, where each insured in the class has a risk profile that is similar to others in the class.</span></a> systems, thus achieving a better approximation of the products’ prices and enabling cream-skimming underwriting strategies (“cream-skimming” is a phrase used when the insurer underwrites only the best risks). Surveys (e.g., <span class="citation">Earnix (<a href="#ref-survey2013" role="doc-biblioref">2013</a>)</span>) indicate that pricing is the most common use of analytics among insurers.</p>
 <p><em>Underwriting</em>, the process of classifying risks into homogeneous
 categories and assigning policyholders to these categories, lies at the
 core of ratemaking. Policyholders within a class (category) have similar risk
@@ -1391,7 +1392,7 @@ premium is provided to the policyholder in the event of favorable (to the insure
 <h3><span class="header-section-number">1.2.3</span> Claims and Product Management<a href="ChapIntro.html#claims-and-product-management" class="anchor-section" aria-label="Anchor link to header"></a></h3>
 <p>In some of types of insurance, the process of paying claims for insured events is relatively straightforward. For example, in life insurance, a simple death certificate is all that is needed to pay the benefit amount as provided in the contract. However, in non-life areas such as property and casualty insurance, the process can be much more complex. Think about a relatively simple insured event such as an automobile accident. Here, it is often required to determine which party is at fault and then one needs to assess damage to all of the vehicles and people involved in the incident, both insured and non-insured. Further, the expenses incurred in assessing the damages must be assessed, and so forth. The process of determining coverage, legal liability, and settling claims is known as <a href="#" class="tooltip" style="color:green"><em>claims adjustment</em><span style="font-size:8pt">Claims adjustment is the process of determining coverage, legal liability, and settling claims.</span></a>.</p>
 <p>Insurance managers sometimes use the phrase <a href="#" class="tooltip" style="color:green"><em>claims leakage</em><span style="font-size:8pt">Claims leakage respresents money lost through claims management inefficiencies.</span></a> to mean dollars lost through claims management inefficiencies. There are many
-ways in which analytics can help manage the claims process, c.f., <span class="citation"><a href="#ref-SASsurvey" role="doc-biblioref">Gorman and Swenson</a> (<a href="#ref-SASsurvey" role="doc-biblioref">2013</a>)</span>. Historically, the most important has been fraud detection.
+ways in which analytics can help manage the claims process, c.f., <span class="citation">Gorman and Swenson (<a href="#ref-SASsurvey" role="doc-biblioref">2013</a>)</span>. Historically, the most important has been fraud detection.
 The claim adjusting process involves reducing information asymmetry (the claimant knows what happened; the company knows some of what happened). Mitigating fraud is an important part of the claims management process.</p>
 <p>Fraud detection is only one aspect of managing claims. More broadly, one can think about claims management as consisting of the following components:</p>
 <ul>
@@ -1415,7 +1416,7 @@ the need for analytics in underwriting, that is, risk classification at the init
 <li>In addition to regulators, other stakeholders such as insurance company management, investors, and customers make decisions that depend on company loss reserves. Whereas regulators and customers appreciate conservative estimates of unpaid claims, managers and investors seek more unbiased estimates to represent the true financial health of the company.</li>
 </ol>
 <p>Loss reserving is a topic where there are substantive differences between life and general (also known as property and casualty, or non-life) insurance. In life insurance, the severity (amount of loss) is often not a source of uncertainty as payouts are specified in the contract. The frequency, driven by mortality of the insured, is a concern. However, because of the lengthy time for settlement of life insurance contracts, the time value of money uncertainty as measured
-from issue to date of payment can dominate frequency concerns. For example, for an insured who purchases a life contract at age 20, it would not be unusual for the contract to still be open in 60 years time, when the insured celebrates his or her 80th birthday. See, for example, <span class="citation"><a href="#ref-bowers1986actuarial" role="doc-biblioref">Bowers et al.</a> (<a href="#ref-bowers1986actuarial" role="doc-biblioref">1986</a>)</span> or <span class="citation"><a href="#ref-dickson2013actuarial" role="doc-biblioref">Dickson, Hardy, and Waters</a> (<a href="#ref-dickson2013actuarial" role="doc-biblioref">2013</a>)</span> for introductions to reserving for life insurance. In contrast, for most lines of non-life business, severity is a major source of uncertainty and contract durations tend to be shorter.</p>
+from issue to date of payment can dominate frequency concerns. For example, for an insured who purchases a life contract at age 20, it would not be unusual for the contract to still be open in 60 years time, when the insured celebrates his or her 80th birthday. See, for example, <span class="citation">Bowers et al. (<a href="#ref-bowers1986actuarial" role="doc-biblioref">1986</a>)</span> or <span class="citation">Dickson, Hardy, and Waters (<a href="#ref-dickson2013actuarial" role="doc-biblioref">2013</a>)</span> for introductions to reserving for life insurance. In contrast, for most lines of non-life business, severity is a major source of uncertainty and contract durations tend to be shorter.</p>
 <div id="surveyElement12">
 
 </div>
@@ -1800,7 +1801,7 @@ right-skewed distributions.</p>
 <span id="cb5-22"><a href="ChapIntro.html#cb5-22" aria-hidden="true" tabindex="-1"></a>Table2aa <span class="ot">&lt;-</span> <span class="fu">cbind</span>(Rowlable, <span class="fu">as.matrix</span>(Table2a))</span>
 <span id="cb5-23"><a href="ChapIntro.html#cb5-23" aria-hidden="true" tabindex="-1"></a>Table2aa</span></code></pre></div>
 </div>
-<p><a href="../docs/ChapIntro.html#tab:1.5">Table 1.5</a> describes the rating variables considered in this chapter. Hopefully, these are variables that you think might naturally be related to claims outcomes. You can learn more about them in <span class="citation"><a href="#ref-frees2016multivariate" role="doc-biblioref">Frees, Lee, and Yang</a> (<a href="#ref-frees2016multivariate" role="doc-biblioref">2016a</a>)</span>. To handle the skewness, we henceforth focus on logarithmic transformations of coverage and deductibles.</p>
+<p><a href="../docs/ChapIntro.html#tab:1.5">Table 1.5</a> describes the rating variables considered in this chapter. Hopefully, these are variables that you think might naturally be related to claims outcomes. You can learn more about them in <span class="citation">Frees, Lee, and Yang (<a href="#ref-frees2016multivariate" role="doc-biblioref">2016a</a>)</span>. To handle the skewness, we henceforth focus on logarithmic transformations of coverage and deductibles.</p>
 <p><a id=tab:1.5></a></p>
 <p>Table 1.5. <strong>Description of Rating Variables</strong></p>
 <p><span class="math display">\[{\small \begin{matrix}
@@ -1813,7 +1814,7 @@ Variable    &amp; Description \\
 \text{LnCoverage}   &amp; \text{Total building and content coverage, in logarithmic millions of dollars}\\
 \text{LnDeduct}     &amp; \text{Deductible, in logarithmic dollars} \\
 \text{AlarmCredit}  &amp; \text{Categorical variable that is one of four types:  (0, 5, 10, or 15)} \\
- &amp;  ~~~~   \text{for automatic smoke alarms in main rooms} \\
+&amp;  ~~~~   \text{for automatic smoke alarms in main rooms} \\
 \text{NoClaimCredit}    &amp; \text{Binary variable to indicate no claims in the past two years} \\
 \text{Fire5 }           &amp; \text{Binary variable to indicate the fire class is below 5} \\
 &amp; ~~~~ \text{(The range of fire class is 1 to 10)} \\
@@ -3911,7 +3912,7 @@ NA
 <li>Chapter reviewers include: Yair Babad, Chunsheng Ban, Aaron Bruhn, Gordon Enderle, Hirokazu (Iwahiro) Iwasawa, Dalia Khalil, Bell Ouelega, Michelle Xia.</li>
 <li><strong>Edward (Jed) Frees</strong>, University of Wisconsin-Madison and Australian National University, is the author of the second edition of this chapter. Email: <a href="mailto:jfrees@bus.wisc.edu" class="email">jfrees@bus.wisc.edu</a> for chapter comments and suggested improvements.</li>
 </ul>
-<p>This book introduces loss data analytic tools that are most relevant to actuaries and other financial risk analysts. We have also introduced you to many new insurance terms; more terms can be found at the <span class="citation"><a href="#ref-NAICGlossary" role="doc-biblioref">NAIC Glossary</a> (<a href="#ref-NAICGlossary" role="doc-biblioref">2018</a>)</span>. Here are a few references cited in the chapter.</p>
+<p>This book introduces loss data analytic tools that are most relevant to actuaries and other financial risk analysts. We have also introduced you to many new insurance terms; more terms can be found at the <span class="citation">NAIC Glossary (<a href="#ref-NAICGlossary" role="doc-biblioref">2018</a>)</span>. Here are a few references cited in the chapter.</p>
 <hr />
 <p><a rel="license" href="http://creativecommons.org/licenses/by/4.0/"><img alt="Creative Commons License" style="border-width:0" src="https://i.creativecommons.org/l/by/4.0/88x31.png" /></a><br />This work is licensed under a <a rel="license" href="http://creativecommons.org/licenses/by/4.0/">Creative Commons Attribution 4.0 International License</a>.</p>
 
@@ -4017,7 +4018,7 @@ gitbook.start({
     var script = document.createElement("script");
     script.type = "text/javascript";
     var src = "true";
-    if (src === "" || src === "true") src = "https://mathjax.rstudio.com/latest/MathJax.js?config=TeX-MML-AM_CHTML";
+    if (src === "" || src === "true") src = "https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.9/latest.js?config=TeX-MML-AM_CHTML";
     if (location.protocol !== "file:")
       if (/^https?:/.test(src))
         src = src.replace(/^https?:/, '');

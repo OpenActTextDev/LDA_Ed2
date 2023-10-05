@@ -6,7 +6,7 @@
   <meta http-equiv="X-UA-Compatible" content="IE=edge" />
   <title>Chapter 5 Modeling Claim Severity | Loss Data Analytics</title>
   <meta name="description" content="Chapter 5 Modeling Claim Severity | Loss Data Analytics is an interactive, online, freely available text. - The online version will contain many interactive objects (quizzes, computer demonstrations, interactive graphs, video, and the like) to promote deeper learning. - A subset of the book will be available in pdf format for low-cost printing. - The online text will be available in multiple languages to promote access to a worldwide audience." />
-  <meta name="generator" content="bookdown 0.27 and GitBook 2.6.7" />
+  <meta name="generator" content="bookdown 0.32 and GitBook 2.6.7" />
 
   <meta property="og:title" content="Chapter 5 Modeling Claim Severity | Loss Data Analytics" />
   <meta property="og:type" content="book" />
@@ -515,7 +515,7 @@ code span.al { color: #ff0000; font-weight: bold; } /* Alert */
 code span.an { color: #60a0b0; font-weight: bold; font-style: italic; } /* Annotation */
 code span.at { color: #7d9029; } /* Attribute */
 code span.bn { color: #40a070; } /* BaseN */
-code span.bu { } /* BuiltIn */
+code span.bu { color: #008000; } /* BuiltIn */
 code span.cf { color: #007020; font-weight: bold; } /* ControlFlow */
 code span.ch { color: #4070a0; } /* Char */
 code span.cn { color: #880000; } /* Constant */
@@ -528,7 +528,7 @@ code span.er { color: #ff0000; font-weight: bold; } /* Error */
 code span.ex { } /* Extension */
 code span.fl { color: #40a070; } /* Float */
 code span.fu { color: #06287e; } /* Function */
-code span.im { } /* Import */
+code span.im { color: #008000; font-weight: bold; } /* Import */
 code span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Information */
 code span.kw { color: #007020; font-weight: bold; } /* Keyword */
 code span.op { color: #666666; } /* Operator */
@@ -1001,14 +1001,15 @@ div.csl-indent {
 <li class="chapter" data-level="15" data-path="ChapBonusMalus.html"><a href="ChapBonusMalus.html"><i class="fa fa-check"></i><b>15</b> Experience Rating using Bonus-Malus</a>
 <ul>
 <li class="chapter" data-level="15.1" data-path="ChapBonusMalus.html"><a href="ChapBonusMalus.html#S:ERBM:Intro"><i class="fa fa-check"></i><b>15.1</b> Introduction</a></li>
-<li class="chapter" data-level="15.2" data-path="ChapBonusMalus.html"><a href="ChapBonusMalus.html#S:ERBM:NCD"><i class="fa fa-check"></i><b>15.2</b> <em>NCD</em> System in Several Countries</a>
+<li class="chapter" data-level="15.2" data-path="ChapBonusMalus.html"><a href="ChapBonusMalus.html#S:ERBM:NCD"><i class="fa fa-check"></i><b>15.2</b> <em>BMS</em> in Several Countries</a>
 <ul>
-<li class="chapter" data-level="15.2.1" data-path="ChapBonusMalus.html"><a href="ChapBonusMalus.html#ncd-system-in-malaysia"><i class="fa fa-check"></i><b>15.2.1</b> <em>NCD</em> System in Malaysia</a></li>
-<li class="chapter" data-level="15.2.2" data-path="ChapBonusMalus.html"><a href="ChapBonusMalus.html#ncd-systems-in-other-countries"><i class="fa fa-check"></i><b>15.2.2</b> NCD Systems in Other Countries</a></li>
+<li class="chapter" data-level="15.2.1" data-path="ChapBonusMalus.html"><a href="ChapBonusMalus.html#bms-in-malaysia"><i class="fa fa-check"></i><b>15.2.1</b> <em>BMS</em> in Malaysia</a></li>
+<li class="chapter" data-level="15.2.2" data-path="ChapBonusMalus.html"><a href="ChapBonusMalus.html#bms-in-other-countries"><i class="fa fa-check"></i><b>15.2.2</b> <em>BMS</em> in Other Countries</a></li>
 </ul></li>
 <li class="chapter" data-level="15.3" data-path="ChapBonusMalus.html"><a href="ChapBonusMalus.html#S:ERBM:BMS"><i class="fa fa-check"></i><b>15.3</b> <em>BMS</em> and Markov Chain Model</a>
 <ul>
 <li class="chapter" data-level="15.3.1" data-path="ChapBonusMalus.html"><a href="ChapBonusMalus.html#transition-probability"><i class="fa fa-check"></i><b>15.3.1</b> Transition Probability</a></li>
+<li class="chapter" data-level="15.3.2" data-path="ChapBonusMalus.html"><a href="ChapBonusMalus.html#some-applications"><i class="fa fa-check"></i><b>15.3.2</b> Some Applications</a></li>
 </ul></li>
 <li class="chapter" data-level="15.4" data-path="ChapBonusMalus.html"><a href="ChapBonusMalus.html#S:ERBM:StatDist"><i class="fa fa-check"></i><b>15.4</b> <em>BMS</em> and Stationary Distribution</a>
 <ul>
@@ -1219,7 +1220,7 @@ div.csl-indent {
 <p>Deductibles reduce premiums for the policyholders by eliminating a large number of small claims, the costs associated with handling these claims, and the potential <a href="#" class="tooltip" style="color:green"><em>moral hazard</em><span style="font-size:8pt">Situation where an insured is more likely to be risk seeking if they do not bear sufficient consequences for a loss</span></a> arising from having insurance. Moral hazard occurs when the insured takes more risks, increasing the chances of loss due to perils insured against, knowing that the insurer will incur the cost (e.g. a policyholder with collision insurance may be encouraged to drive recklessly). The larger the deductible, the less the insured pays in premiums for an insurance policy.</p>
 <p>Let <span class="math inline">\(X\)</span> denote the loss incurred to the insured and <span class="math inline">\(Y\)</span> denote the amount of paid claim by the insurer. Speaking of the benefit paid to the policyholder, we differentiate between two variables: The payment per loss and the payment per payment. The <a href="#" class="tooltip" style="color:green"><em>payment per loss</em><span style="font-size:8pt">Amount insurer pays when a loss occurs and can be 0</span></a> variable, denoted by <span class="math inline">\(Y^{L}\)</span> or <span class="math inline">\((X-d)_+\)</span> is <a href="#" class="tooltip" style="color:green"><em>left censored</em><span style="font-size:8pt">Values below a threshold d are not ignored but converted to 0</span></a> because values of <span class="math inline">\(X\)</span> that are less than <span class="math inline">\(d\)</span> are set equal to zero. This variable is defined as</p>
 <p><span class="math display">\[
-Y^{L} = \left( X - d \right)_{+} 
+Y^{L} = \left( X - d \right)_{+}
 = \left\{ \begin{array}{cc}
 0 &amp; X \le d, \\
 X - d &amp; X &gt; d  
@@ -1231,7 +1232,7 @@ X - d &amp; X &gt; d
 Y^{P} = \left\{ \begin{matrix}
 \text{Undefined} &amp; X \le d \\
 X - d &amp; X &gt; d .
-\end{matrix}  \right. 
+\end{matrix}  \right.
 \]</span></p>
 <p>Here, <span class="math inline">\(Y^{P}\)</span> is often referred to as <a href="#" class="tooltip" style="color:green"><em>left truncated</em><span style="font-size:8pt">Values below a threshold d are not reported and unknown</span></a> and shifted variable or excess loss variable because the claims smaller than <span class="math inline">\(d\)</span> are not reported and values above <span class="math inline">\(d\)</span> are shifted by <span class="math inline">\(d\)</span>.</p>
 <p>Even when the distribution of <span class="math inline">\(X\)</span> is continuous, the distribution of <span class="math inline">\(Y^{L}\)</span> is a hybrid combination of discrete and continuous components. The discrete part of the distribution is concentrated at <span class="math inline">\(Y = 0\)</span> (when <span class="math inline">\(X \leq d\)</span>) and the continuous part is spread over the interval <span class="math inline">\(Y &gt; 0\)</span> (when <span class="math inline">\(X &gt; d\)</span>). For the discrete part, the probability that no payment is made is the probability that losses fall below the deductible; that is,
@@ -1241,7 +1242,7 @@ distribution, we can find the <em>pdf</em> of <span class="math inline">\(Y^{L}\
 f_{Y^{L}}\left( y \right) = \left\{ \begin{matrix}
 F_{X}\left( d \right) &amp; y = 0 \\
 f_{X}\left( y + d \right) &amp; y &gt; 0 .
-\end{matrix} \right. 
+\end{matrix} \right.
 \]</span></p>
 <p>We can see that the payment per payment variable is the payment per loss variable (<span class="math inline">\(Y^P= Y^L\)</span>) conditional on the loss exceeding the deductible (<span class="math inline">\(X &gt; d\)</span>); that is, <span class="math inline">\(Y^{P} = \left. \ Y^{L} \right|X &gt; d\)</span>.. Alternatively, it can be expressed as <span class="math inline">\(Y^P = (X - d)|X &gt; d\)</span>, that is, <span class="math inline">\(Y^P\)</span> is the loss in excess of the deductible given that the loss exceeds the deductible. Hence, the <em>pdf</em> of <span class="math inline">\(Y^{P}\)</span> is given by</p>
 <p><span class="math display">\[
@@ -1252,7 +1253,7 @@ f_{Y^{P}}\left( y \right) = \frac{f_{X}\left( y + d \right)}{1 - F_{X}\left( d \
 F_{Y^{L}}\left( y \right) = \left\{ \begin{matrix}
 F_{X}\left( d \right) &amp; y = 0 \\
 F_{X}\left( y + d \right) &amp; y &gt; 0, \\
-\end{matrix} \right.\ 
+\end{matrix} \right.\
 \]</span></p>
 <p>and</p>
 <p><span class="math display">\[
@@ -1316,9 +1317,9 @@ For an insurance:</p>
 <ul>
 <li>Losses have a density function
 <span class="math display">\[f_{X}\left( x \right) = \left\{ \begin{matrix}
- 0.02x &amp; 0 &lt; x  &lt; 10, \\
- 0 &amp; \text{elsewhere.} \\
- \end{matrix} \right. \]</span></li>
+0.02x &amp; 0 &lt; x  &lt; 10, \\
+0 &amp; \text{elsewhere.} \\
+\end{matrix} \right. \]</span></li>
 <li>The insurance has an ordinary deductible of 4 per loss.</li>
 <li><span class="math inline">\(Y^{P}\)</span> is the claim payment per payment random variable.</li>
 </ul>
@@ -1333,7 +1334,7 @@ For an insurance:</p>
 Y^{P} = \left\{ \begin{matrix}
 \text{Undefined} &amp; X \leq 4, \\
 X - 4 &amp; X &gt; 4. \\
-\end{matrix} \right.\ 
+\end{matrix} \right.\
 \]</span></p>
 <p>So,
 <span class="math inline">\(E\left( Y^{P} \right) = \frac{\int_{4}^{10}\left( x - 4 \right)0.02xdx}{{1 - F}_{X}\left( 4 \right)} = \frac{2.88}{0.84} = 3.43\)</span>.</p>
@@ -1376,7 +1377,7 @@ Then, <span class="math inline">\(e^{- d / \theta} = 0.3\)</span>.</p>
 Y = X \land u = \left\{ \begin{matrix}
 X &amp; X \leq u \\
 u &amp; X &gt; u. \\
-\end{matrix} \right.\ 
+\end{matrix} \right.\
 \]</span></p>
 <p>It can be seen that the distinction between <span class="math inline">\(Y^{L}\)</span> and <span class="math inline">\(Y^{P}\)</span> is not needed under limited policy as the insurer will always make a payment.</p>
 <p>Using the definitions of <span class="math inline">\(\left(X-u\right)_+ \text{ and } \left(X\land u\right)\)</span>, it can be easily seen that the expected payment without any coverage modification, <span class="math inline">\(X\)</span>, is equal to the sum of the expected payments with deductible <span class="math inline">\(u\)</span> and limit <span class="math inline">\(u\)</span>. That is, <span class="math inline">\({X=\left(X-u\right)}_++ \left(X\land u\right)\)</span>.</p>
@@ -1385,8 +1386,8 @@ u &amp; X &gt; u. \\
 Y^{L} = \left\{ \begin{matrix}
 0 &amp; X \leq d \\
 X - d  &amp; d &lt;  X \leq u \\
- u - d  &amp; X &gt; u. \\
-\end{matrix} \right.\ 
+u - d  &amp; X &gt; u. \\
+\end{matrix} \right.\
 \]</span>
 Hence, <span class="math inline">\(Y^L\)</span> can be expressed as <span class="math inline">\(Y^L=\left(X\land u\right)-\left(X\land d\right)\)</span>.</p>
 <p>Even when the distribution of <span class="math inline">\(X\)</span> is continuous, the distribution of <span class="math inline">\(Y\)</span> is a hybrid combination of discrete and continuous components. The discrete part of the distribution is concentrated at <span class="math inline">\(Y = u\)</span> (when <span class="math inline">\(X &gt; u\)</span>), while the continuous part is spread over the interval <span class="math inline">\(Y &lt; u\)</span> (when <span class="math inline">\(X \leq u\)</span>). For the discrete part, the probability that the benefit paid is <span class="math inline">\(u\)</span>, is the probability that the loss exceeds the policy limit <span class="math inline">\(u\)</span>; that is,
@@ -1396,18 +1397,18 @@ For the continuous part of the distribution <span class="math inline">\(Y = X\)<
 f_{Y}\left( y \right) = \left\{ \begin{matrix}
 f_{X}\left( y \right) &amp; 0 &lt; y &lt; u \\
 1 - F_{X}\left( u \right) &amp; y = u. \\
-\end{matrix} \right.\ 
+\end{matrix} \right.\
 \]</span></p>
 <p>Accordingly, the distribution function of <span class="math inline">\(Y\)</span> is given by</p>
 <p><span class="math display">\[
 F_{Y}\left( y \right) = \left\{ \begin{matrix}
 F_{X}\left( x \right) &amp; 0 &lt; y &lt; u \\
 1 &amp; y \geq u. \\
-\end{matrix} \right.\ 
+\end{matrix} \right.\
 \]</span></p>
 <p>The raw moments of <span class="math inline">\(Y\)</span> can be found directly using the <em>pdf</em> of <span class="math inline">\(X\)</span> as follows
 <span class="math display">\[
-\mathrm{E}\left( Y^{k} \right) = \mathrm{E}\left\lbrack \left( X \land u \right)^{k} \right\rbrack = \int_{0}^{u}x^{k}f_{X}\left( x \right)dx + \int_{u}^{\infty}{u^{k}f_{X}\left( x \right)} dx \\ 
+\mathrm{E}\left( Y^{k} \right) = \mathrm{E}\left\lbrack \left( X \land u \right)^{k} \right\rbrack = \int_{0}^{u}x^{k}f_{X}\left( x \right)dx + \int_{u}^{\infty}{u^{k}f_{X}\left( x \right)} dx \\
 = \int_{0}^{u}x^{k}f_{X}\left( x \right)dx + u^{k}\left\lbrack {1 - F}_{X}\left( u \right) \right\rbrack .
 \]</span></p>
 <p>An alternative expression using the survival function is</p>
@@ -1416,7 +1417,7 @@ F_{X}\left( x \right) &amp; 0 &lt; y &lt; u \\
 \]</span></p>
 <p>In particular, for <span class="math inline">\(k=1\)</span>, this is</p>
 <p><span class="math display">\[
-\mathrm{E}\left( Y \right) = \mathrm{E}\left( X \land u  \right) 
+\mathrm{E}\left( Y \right) = \mathrm{E}\left( X \land u  \right)
 = \int_{0}^{u} [1-F_{X}(x) ]dx .
 \]</span>
 This could be easily proved if we start with the initial definition of <span class="math inline">\(\mathrm{E}\left( Y \right)\)</span> and use integration by parts. Alternatively, see the following justification of this limited expectation result.</p>
@@ -1426,7 +1427,7 @@ This could be easily proved if we start with the initial definition of <span cla
 <div id="toggleTheory.proof" style="display: none">
 <p><span class="math display">\[
 \begin{array}{ll}
-\mathrm{E}\left[ \left( X \wedge u \right)^{k} \right] 
+\mathrm{E}\left[ \left( X \wedge u \right)^{k} \right]
 &amp; = \mathrm{E}\left[  \int_{0}^{X \wedge u} k x^{k-1} dx \right] \\
 &amp; = \mathrm{E}\left[  \int_{0}^{u} k x^{k-1} I(X &gt; x) dx \right] \\
 &amp; =  \int_{0}^{u} k x^{k-1} \mathrm{E} I(X &gt; x) dx \\
@@ -1442,7 +1443,7 @@ Under a <a href="#" class="tooltip" style="color:green"><em>group insurance</em>
 f_{X}\left( x \right) = \left\{ \begin{matrix}
 \frac{x\left( 4 - x \right)}{9} &amp; 0 &lt; x &lt; 3 \\
 0 &amp; \text{elsewhere.} \\
-\end{matrix} \right.\ 
+\end{matrix} \right.\
 \]</span></p>
 <p>where <span class="math inline">\(x\)</span> is measured in millions. Calculate the total amount, in millions of dollars, the insurer would expect to pay under this policy.</p>
 <h5 style="text-align: center;">
@@ -1456,7 +1457,7 @@ f_{X}\left( x \right) = \left\{ \begin{matrix}
 Y = X \land 1 = \left\{ \begin{matrix}
 X &amp; X \leq 1 \\
 1 &amp; X &gt; 1. \\
-\end{matrix} \right.\ 
+\end{matrix} \right.\
 \]</span></p>
 <p>So
 <span class="math inline">\(\mathrm{E}\left( Y \right) = \mathrm{E}\left( X \land 1 \right) = \int_{0}^{1}\frac{x^{2}(4 - x)}{9}dx + 1 \cdot \int_{1}^{3}\frac{x\left( 4 - x \right)}{9}dx = 0.935\)</span>.</p>
@@ -1470,14 +1471,14 @@ Y^{L} = \left\{ \begin{matrix}
 0 &amp; X \leq d, \\
 \alpha\left( X - d \right) &amp; d &lt;  X \leq u, \\
 \alpha\left( u - d \right) &amp; X &gt; u. \\
-\end{matrix} \right.\ 
+\end{matrix} \right.\
 \]</span>
 The maximum amount paid by the insurer in this case is <span class="math inline">\(\alpha\left( u - d \right)\)</span>, while <span class="math inline">\(u\)</span> is the maximum covered loss.</p>
 <p>We have seen in Section <a href="ChapClaimSeverity.html#S:PolicyLimits">5.1.2</a> that when a loss is subject to both a deductible <span class="math inline">\(d\)</span> and a limit <span class="math inline">\(u\)</span> the per-loss variable <span class="math inline">\(Y^L\)</span> can be expressed as <span class="math inline">\(Y^L=\left(X\land u\right)-\left(X\land d\right)\)</span>. With coinsurance, this becomes <span class="math inline">\(Y^L\)</span> can be expressed as <span class="math inline">\(Y^L=\alpha\left[(X\land u)-(X\land d)\right]\)</span>.</p>
 <p>The <span class="math inline">\(k\)</span>-th raw moment of <span class="math inline">\(Y^{L}\)</span> is given by
 <span class="math display">\[
-\mathrm{E}\left\lbrack \left( Y^{L} \right)^{k} \right\rbrack 
-= \int_{d}^{u}\left\lbrack \alpha\left( x - d \right) \right\rbrack^{k}f_{X}\left( x \right)dx 
+\mathrm{E}\left\lbrack \left( Y^{L} \right)^{k} \right\rbrack
+= \int_{d}^{u}\left\lbrack \alpha\left( x - d \right) \right\rbrack^{k}f_{X}\left( x \right)dx
 + \left\lbrack \alpha\left( u - d \right) \right\rbrack^{k} [1-F_{X}\left( u \right)] .
 \]</span></p>
 <p>A <a href="#" class="tooltip" style="color:green"><em>growth factor</em><span style="font-size:8pt">Multiplicative factor applied to a distribution to account for the impact of inflation, typically (1+rate)</span></a> <span class="math inline">\(\left( 1 + r \right)\)</span> may be applied to <span class="math inline">\(X\)</span> resulting in an inflated loss random variable <span class="math inline">\(\left( 1 + r \right)X\)</span> (the prespecified <span class="math inline">\(d\)</span> and <span class="math inline">\(u\)</span> remain unchanged). The resulting per loss variable can be written as</p>
@@ -1486,7 +1487,7 @@ Y^{L} = \left\{ \begin{matrix}
 0 &amp; X \leq \frac{d}{1 + r} \\
 \alpha\left\lbrack \left( 1 + r \right)X - d \right\rbrack &amp; \frac{d}{1 + r} &lt;  X \leq \frac{u}{1 + r} \\
 \alpha\left( u - d \right) &amp; X &gt; \frac{u}{1 + r}. \\
-\end{matrix} \right.\ 
+\end{matrix} \right.\
 \]</span></p>
 <p>The first and second moments of <span class="math inline">\(Y^{L}\)</span> can be expressed as</p>
 <p><span class="math display">\[
@@ -1494,7 +1495,7 @@ Y^{L} = \left\{ \begin{matrix}
 \]</span></p>
 <p>and</p>
 <p><span class="math display">\[
-\mathrm{E}\left\lbrack \left( Y^{L} \right)^{2} 
+\mathrm{E}\left\lbrack \left( Y^{L} \right)^{2}
 \right\rbrack = \alpha^{2}\left( 1 + r \right)^{2}  \left\{ \mathrm{E}\left\lbrack \left( X \land \frac{u}{1 + r} \right)^{2} \right\rbrack - \mathrm{E}\left\lbrack \left( X \land \frac{d}{1 + r} \right)^{2} \right\rbrack  \right. \\
 \left. \ \ \ \ \ \ \ \ \ - 2\left( \frac{d}{1 + r} \right)\left\lbrack \mathrm{E}\left( X \land \frac{u}{1 + r} \right) - \mathrm{E}\left( X \land \frac{d}{1 + r} \right) \right\rbrack \right\} ,
 \]</span></p>
@@ -1519,7 +1520,7 @@ Y_{2007}^{L} &amp;= \left\{ \begin{matrix}
 0 &amp; X \leq 95.24, \\
 1.05X - 100 &amp; 95.24 &lt;  X \leq 571.43, \\
 500 &amp; X &gt; 571.43. \\
-\end{matrix} \right.\ 
+\end{matrix} \right.\
 \end{array}
 \]</span></p>
 <p>So,</p>
@@ -1532,7 +1533,7 @@ E\left( Y_{2006}^{L} \right) &amp; = E\left( X \land 600 \right) - E\left( X \la
 <p>Further,</p>
 <p><span class="math display">\[
 \begin{array}{ll}
-E\left( Y_{2007}^{L} \right) 
+E\left( Y_{2007}^{L} \right)
 &amp;= 1.05\left\lbrack E\left( X \land 571.43 \right) - E\left( X \land 95.24 \right) \right\rbrack \\
 &amp;= 1.05\left\lbrack 1000\left( {1 - e}^{- \frac{571.43}{1000}} \right) - 1000\left( {1 - e}^{- \frac{95.24}{1000}} \right) \right\rbrack \\
 &amp;=361.659 .
@@ -1592,7 +1593,7 @@ b) Using the limited expected value tables for the Pareto distribution, we have<
 <li>The unlimited variable is <span class="math inline">\(0.85 X\)</span>. For the first moment, we have</li>
 </ol>
 <p><span class="math display">\[
-0.85~\mathrm{E}~X = 0.85~\frac{\theta}{\alpha-1} = 0.85~\frac{3600}{5-1}  = 765. 
+0.85~\mathrm{E}~X = 0.85~\frac{\theta}{\alpha-1} = 0.85~\frac{3600}{5-1}  = 765.
 \]</span>
 For the second moment of the unlimited variable, we use the table of distributions to get</p>
 <p><span class="math display">\[
@@ -1601,7 +1602,7 @@ For the second moment of the unlimited variable, we use the table of distributio
 \]</span></p>
 <p>Thus, the variance is <span class="math inline">\(1560600-765^2 =975375.\)</span> Alternatively, you can use the formula</p>
 <p><span class="math display">\[
- 0.85^2~\mathrm{Var}~X = 0.85^2~\frac{\alpha \theta^2}{(\alpha-1)^2(\alpha-2)} \\
+0.85^2~\mathrm{Var}~X = 0.85^2~\frac{\alpha \theta^2}{(\alpha-1)^2(\alpha-2)} \\
 = 0.85^2~\frac{5(3600^2)}{(5-1)^2(5-2)} = 975375 .
 \]</span></p>
 <p>Taking square roots, the standard deviation is <span class="math inline">\(\sqrt{975375} \approx 987.6108\)</span>.</p>
@@ -1732,7 +1733,7 @@ X &amp; X &gt; C_L
 <span class="math display">\[
 Y^{P} = \left\{ \begin{matrix}
 \text{Undefined} &amp; X \le d \\
-X - d &amp; X &gt; d 
+X - d &amp; X &gt; d
 \end{matrix} \right. ,
 \]</span>
 so that if a loss exceeds a deductible, we record the excess amount <span class="math inline">\(X-d\)</span>. This is very important when considering amounts that the insurer will pay. However, for estimation purposes of this section, it matters little if we subtract a known constant such as <span class="math inline">\(C_L=d\)</span>. So, for our truncated variable <span class="math inline">\(Y\)</span>, we use the simpler convention and do not subtract <span class="math inline">\(d\)</span>.</p>
@@ -1825,14 +1826,14 @@ Figure 5.2: <strong>Timeline for Several Subjects on Test in a Mortality Study</
 \left\{
 \begin{array}{ll}
 1-F(C_U) &amp; \text{if }\delta=0 \\
-f(x) &amp; \text{if } \delta = 1 
+f(x) &amp; \text{if } \delta = 1
 \end{array}
 \right. = \left\{ f(x)\right\}^{\delta} \left\{1-F(C_U)\right\}^{1-\delta} .
 \end{aligned}
 \]</span></p>
 <p>The right-hand expression allows us to present the likelihood more compactly. Now, for an <em>iid</em> sample of size <span class="math inline">\(n\)</span>, the likelihood is</p>
 <p><span class="math display">\[
-L(\theta) = 
+L(\theta) =
 \prod_{i=1}^n \left\{ f(x_i)\right\}^{\delta_i} \left\{1-F(C_{Ui})\right\}^{1-\delta_i} = \prod_{\delta_i=1} f(x_i) \prod_{\delta_i=0} \{1-F(C_{Ui})\},
 \]</span></p>
 <p>with potential censoring times <span class="math inline">\(\{ C_{U1}, \ldots,C_{Un} \}\)</span>. Here, the notation “<span class="math inline">\(\prod_{\delta_i=1}\)</span>” means to take the product over uncensored observations, and similarly for “<span class="math inline">\(\prod_{\delta_i=0}\)</span>.”</p>
@@ -1925,7 +1926,7 @@ You are given the following information about a random sample:</p>
 <div id="toggleExample.5.2.3" style="display: none">
 <p><strong>Solution.</strong> The likelihood function is</p>
 <p><span class="math display">\[
-\begin{aligned} 
+\begin{aligned}
 L(\theta) &amp;= f(20) f(30) f(45) [1-F(50)]^2 \\
 &amp;= \frac{2(20/\theta)^2 e^{-(20/\theta)^2}}{20} \frac{2(30/\theta)^2 e^{-(30/\theta)^2}}{30} \frac{2(45/\theta)^2 e^{-(45/\theta)^2}}{45}(e^{-(50/\theta)^2})^2 \\
 &amp;\propto \frac{1}{\theta^6} e^{-8325/\theta^2}
@@ -2010,7 +2011,7 @@ LER(d) = \frac{\mathrm{E~}[X - (X-d)_+]}{\mathrm{E~}[X]} =\frac{\mathrm{E~}[\min
 \]</span>
 for a fixed deductible <span class="math inline">\(d\)</span>.</p>
 <p><strong>Example. 5.3.2. Bodily Injury Claims and Loss Elimination Ratios</strong></p>
-<p>We use a sample of 432 closed auto claims from Boston from <span class="citation"><a href="#ref-derrig2001applications" role="doc-biblioref">Derrig, Ostaszewski, and Rempala</a> (<a href="#ref-derrig2001applications" role="doc-biblioref">2001</a>)</span>. Losses are recorded for payments due to bodily injuries in auto accidents. Losses are not subject to deductibles but are limited by various maximum coverage amounts that are also available in the data. It turns out that only 17 out of 432 (<span class="math inline">\(\approx\)</span> 4%) were subject to these policy limits and so we ignore these data for this illustration.</p>
+<p>We use a sample of 432 closed auto claims from Boston from <span class="citation">Derrig, Ostaszewski, and Rempala (<a href="#ref-derrig2001applications" role="doc-biblioref">2001</a>)</span>. Losses are recorded for payments due to bodily injuries in auto accidents. Losses are not subject to deductibles but are limited by various maximum coverage amounts that are also available in the data. It turns out that only 17 out of 432 (<span class="math inline">\(\approx\)</span> 4%) were subject to these policy limits and so we ignore these data for this illustration.</p>
 <p>The average loss paid is 6906 in U.S. dollars. Figure <a href="ChapClaimSeverity.html#fig:BIClaims">5.3</a> shows other aspects of the distribution. Specifically, the left-hand panel shows the empirical distribution function, the right-hand panel gives a nonparametric density plot.</p>
 
 <div class="figure" style="text-align: center"><span style="display:block;" id="fig:BIClaims"></span>
@@ -2048,7 +2049,7 @@ Figure 5.4: <strong>LER for Bodily Injury Claims.</strong> The figure presents t
 \left\{
 \begin{array}{ll}
 0 &amp; x&lt;t_{1} \\
-1-\prod_{j:t_{j} \leq x}\left( 1-\frac{s_j}{R_{j}}\right) &amp; x \geq t_{1} 
+1-\prod_{j:t_{j} \leq x}\left( 1-\frac{s_j}{R_{j}}\right) &amp; x \geq t_{1}
 \end{array}
 \right. .
 \tag{5.2}
@@ -2092,7 +2093,7 @@ j &amp; t_j &amp; s_j &amp; R_j \\
 \]</span></p>
 </div>
 <hr />
-<p><strong>Example. 5.3.4. Bodily Injury Claims.</strong> We consider again the Boston auto bodily injury claims data from <span class="citation"><a href="#ref-derrig2001applications" role="doc-biblioref">Derrig, Ostaszewski, and Rempala</a> (<a href="#ref-derrig2001applications" role="doc-biblioref">2001</a>)</span> that was introduced in Example 5.1.11. In that example, we omitted the 17 claims that were censored by policy limits. Now, we include the full dataset and use the Kaplan-Meier product limit to estimate the survival function. This is given in Figure <a href="ChapClaimSeverity.html#fig:KMSurvival">5.5</a>.</p>
+<p><strong>Example. 5.3.4. Bodily Injury Claims.</strong> We consider again the Boston auto bodily injury claims data from <span class="citation">Derrig, Ostaszewski, and Rempala (<a href="#ref-derrig2001applications" role="doc-biblioref">2001</a>)</span> that was introduced in Example 5.1.11. In that example, we omitted the 17 claims that were censored by policy limits. Now, we include the full dataset and use the Kaplan-Meier product limit to estimate the survival function. This is given in Figure <a href="ChapClaimSeverity.html#fig:KMSurvival">5.5</a>.</p>
 
 <div class="figure" style="text-align: center"><span style="display:block;" id="fig:KMSurvival"></span>
 <img src="LossDataAnalytics_files/figure-html/KMSurvival-1.png" alt="Kaplan-Meier Estimate of the Survival Function for Bodily Injury Claims" width="672" />
@@ -2128,7 +2129,7 @@ In addition to right-censoring, we now extend the framework to allow for left-tr
 \left\{
 \begin{array}{ll}
 0 &amp; x&lt;t_{1} \\
-1- \exp \left(-\sum_{j:t_{j} \leq x}\frac{s_j}{R_j} \right) &amp; x \geq t_{1} 
+1- \exp \left(-\sum_{j:t_{j} \leq x}\frac{s_j}{R_j} \right) &amp; x \geq t_{1}
 \end{array}
 \right. .\end{aligned}
 \]</span></p>
@@ -2336,7 +2337,7 @@ gitbook.start({
     var script = document.createElement("script");
     script.type = "text/javascript";
     var src = "true";
-    if (src === "" || src === "true") src = "https://mathjax.rstudio.com/latest/MathJax.js?config=TeX-MML-AM_CHTML";
+    if (src === "" || src === "true") src = "https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.9/latest.js?config=TeX-MML-AM_CHTML";
     if (location.protocol !== "file:")
       if (/^https?:/.test(src))
         src = src.replace(/^https?:/, '');
