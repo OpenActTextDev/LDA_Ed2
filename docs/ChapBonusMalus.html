@@ -6,7 +6,7 @@
   <meta http-equiv="X-UA-Compatible" content="IE=edge" />
   <title>Chapter 15 Experience Rating using Bonus-Malus | Loss Data Analytics</title>
   <meta name="description" content="Chapter 15 Experience Rating using Bonus-Malus | Loss Data Analytics is an interactive, online, freely available text. - The online version will contain many interactive objects (quizzes, computer demonstrations, interactive graphs, video, and the like) to promote deeper learning. - A subset of the book will be available in pdf format for low-cost printing. - The online text will be available in multiple languages to promote access to a worldwide audience." />
-  <meta name="generator" content="bookdown 0.32 and GitBook 2.6.7" />
+  <meta name="generator" content="bookdown 0.27 and GitBook 2.6.7" />
 
   <meta property="og:title" content="Chapter 15 Experience Rating using Bonus-Malus | Loss Data Analytics" />
   <meta property="og:type" content="book" />
@@ -515,7 +515,7 @@ code span.al { color: #ff0000; font-weight: bold; } /* Alert */
 code span.an { color: #60a0b0; font-weight: bold; font-style: italic; } /* Annotation */
 code span.at { color: #7d9029; } /* Attribute */
 code span.bn { color: #40a070; } /* BaseN */
-code span.bu { color: #008000; } /* BuiltIn */
+code span.bu { } /* BuiltIn */
 code span.cf { color: #007020; font-weight: bold; } /* ControlFlow */
 code span.ch { color: #4070a0; } /* Char */
 code span.cn { color: #880000; } /* Constant */
@@ -528,7 +528,7 @@ code span.er { color: #ff0000; font-weight: bold; } /* Error */
 code span.ex { } /* Extension */
 code span.fl { color: #40a070; } /* Float */
 code span.fu { color: #06287e; } /* Function */
-code span.im { color: #008000; font-weight: bold; } /* Import */
+code span.im { } /* Import */
 code span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Information */
 code span.kw { color: #007020; font-weight: bold; } /* Keyword */
 code span.op { color: #666666; } /* Operator */
@@ -1211,7 +1211,7 @@ div.csl-indent {
 <li><p>Compare bonus-malus system with risk classification (Chapter 8) and credibility premium (Chapter 9).</p></li>
 </ul>
 <hr />
-<p><a href="#" class="tooltip" style="color:green"><em>Bonus-malus system</em><span style="font-size:8pt">A type of rating mechanism where insured premiums are adjusted based on their individual loss experience history</span></a>, which is used interchangeably as “no-fault discount”, “merit rating”, “experience rating” or “no-claim discount” in different countries, is based on penalizing insureds who are responsible for one or more claims by a premium surcharge (malus), and rewarding insureds with a premium discount (bonus) if they do not have any claims. Insurers use bonus-malus system (<em>BMS</em>) for two main purposes: to encourage drivers to drive more carefully in a policy year without any claims, and to ensure insureds to pay premiums proportional to their risks based on their claims experience via an experience rating mechanism.</p>
+<p><a href="#" class="tooltip" style="color:green"><em>Bonus-malus system</em><span style="font-size:8pt">A type of rating mechanism where insured premiums are adjusted based on their individual loss experience history</span></a>, which is used interchangeably as “no-fault discount,” “merit rating,” “experience rating” or “no-claim discount” in different countries, is based on penalizing insureds who are responsible for one or more claims by a premium surcharge (malus), and rewarding insureds with a premium discount (bonus) if they do not have any claims. Insurers use bonus-malus system (<em>BMS</em>) for two main purposes: to encourage drivers to drive more carefully in a policy year without any claims, and to ensure insureds to pay premiums proportional to their risks based on their claims experience via an experience rating mechanism.</p>
 <p><em>BMS</em> is an experience rating system commonly used in motor insurance. It represents an attempt to categorize insureds into homogeneous groups who pay premiums based on their claims experience. Depending on the rules in the scheme, new policyholders may be required to pay full premium initially, and obtain discounts in the future years as a result of claim-free years. <em>BMS</em> rewards policyholders for not making any claims during a policy year. In other words, it grants a bonus to a careful driver. This bonus principle may affect policy holders’ decisions whether to claim or not to claim, especially when involving accidents with slight damages, which is known as the ‘<a href="#" class="tooltip" style="color:green"><em>hunger for bonus</em><span style="font-size:8pt">Phenomenon where insureds under an experience rating system are dissuaded from filing minor claims in order to keep their no-claims discount</span></a>’ phenomenon. The ‘hunger for bonus’ under a <em>BMS</em> may reduce insurers’ claim costs, and may be able to offset the expected decrease in premium income.</p>
 <p>In motor insurance, <em>BMS</em> is a form of <em>a posteriori</em> rating to complement the use of <em>a priori</em> risk classification described in Chapter <a href="ChapRiskClass.html#ChapRiskClass">11</a>. The <em>a priori</em> risk classification divides portfolio of drivers into a number of homogeneous risk classes based on rating factors, such that policyholders in the same risk class pay the same premium. The ideal <em>a posteriori</em> mechanism is the credibility premium developed in Chapter <a href="ChapCredibility.html#ChapCredibility">12</a>, whereby premiums are derived on an individual basis for each policyholder by incorporating both the <em>a priori</em> and <em>a posteriori</em> information. However, such individual premium determination is overly complex from a commercial standpoint for practical implementations by motor insurers. For this reason, <em>BMS</em> is the preferred solution and it consists of three elements: bonus-malus classes, transition rules, and premium levels (also known as premium relativities). The advantage of using <em>BMS</em> is that the bonus-malus classes and the transition rules are pre-specified in advance by insurers. The bonus-malus classes and transition rules will be discussed in the next section.</p>
 </div>
@@ -1381,10 +1381,10 @@ p_{ij}(0,m+n)=\sum_{l\in S} p_{il}(0,m)p_{lj}(m,m+n)=\sum_{l\in S}p_{il}^{(m)}p_
 <p>In the context of <em>BMS</em>, the transition of the bonus-malus classes is governed by the transition probability in a given policy year. The transition of the bonus-malus classes is also a time-homogeneous Markov Chain since the set of transition rules is fixed and independent of time. We can represent the one-step transition probabilities by a <span class="math inline">\(k \times k\)</span> <em>transition matrix</em> <span class="math inline">\({\bf P}=(p_{ij})\)</span> that corresponds to bonus-malus classes <span class="math inline">\(0,1,2,\ldots,k-1\)</span>.</p>
 <p><span class="math display">\[
 \small{
-{\bf P} =
+{\bf P} = 
 \left[ {\begin{array}{*{20}c}
 p_{00} &amp; p_{01} &amp; \ldots &amp; &amp; &amp; p_{0k-1} \\
-p_{10} &amp; p_{11} &amp; \ldots &amp; &amp; &amp; p_{1k-1} \\
+p_{10} &amp; p_{11} &amp; \ldots &amp; &amp; &amp; p_{1k-1} \\ 
 \vdots &amp; \ddots &amp; &amp; &amp; &amp; \vdots \\
 p_{k-10} &amp; p_{k-11} &amp; \cdots &amp; &amp; &amp; p_{k-1k-1}   
 \end{array} } \right]
@@ -1397,7 +1397,7 @@ p_{k-10} &amp; p_{k-11} &amp; \cdots &amp; &amp; &amp; p_{k-1k-1}
 <p>Consider the Malaysian <em>BMS</em>. Let <span class="math inline">\(\{X_{t}:t=0,1,2,\ldots\}\)</span> be the bonus-malus class occupied by a policyholder at time <span class="math inline">\(t\)</span> with state space <span class="math inline">\(S=\{0,1,2,3,4,5\}\)</span>. Therefore, the transition probability in a no-claim policy year is equal to the probability of transition from state <span class="math inline">\(i\)</span> to state <span class="math inline">\(i+1\)</span>, i.e. <span class="math inline">\(p_{ii+1}\)</span>. If an insured has one or more claims within the policy year, the probability of transitioning back to state 0 is represented by <span class="math inline">\(p_{i0}=1-p_{ii+1}\)</span>. Hence, the Malaysian <em>BMS</em> can be represented by the following <span class="math inline">\(6\times 6\)</span> transition matrix:</p>
 <p><span class="math display">\[
 \small{
-{\bf P} =
+{\bf P} = 
 \left[ {\begin{array}{*{20}c}
 p_{00}&amp;p_{01}&amp;0&amp;0&amp;0&amp;0\\
 p_{10}&amp;0&amp;p_{12}&amp;0&amp;0&amp;0\\
@@ -1405,7 +1405,7 @@ p_{20}&amp;0&amp;0&amp;p_{23}&amp;0&amp;0\\
 p_{30}&amp;0&amp;0&amp;0&amp;p_{34}&amp;0\\
 p_{40}&amp;0&amp;0&amp;0&amp;0&amp;p_{45}\\
 p_{50}&amp;0&amp;0&amp;0&amp;0&amp;p_{55}
-\end{array} }\right] =
+\end{array} }\right] = 
 \left[ {\begin{array}{*{20}c}
 {1 - p_{01}}&amp;p_{01}&amp;0&amp;0&amp;0&amp;0\\
 {1 - p_{12}}&amp;0&amp;p_{12}&amp;0&amp;0&amp;0\\
@@ -1425,7 +1425,7 @@ p_{50}&amp;0&amp;0&amp;0&amp;0&amp;p_{55}
 <p>Based on the bonus-malus classes and the transition diagram shown in <a href="#fig:15.2">Figure 15.2</a> <!-- <a href="#fig:TransitionBrazil"><strong>??</strong></a> --> , the probability of a no-claim policy year is equal to the probability of moving one-class forward, whereas the probability of having one or more claims within the policy year is equal to the probability of moving one-class backward for each claim. Therefore, each row can contain two or more transition probabilities; one probability for advancing to the next state, and one or more probabilities for moving one-class backward. The transition matrix is:</p>
 <p><span class="math display">\[
 \small{
-{\bf P} =
+{\bf P} = 
 \left[ {\begin{array}{*{20}{c}}
 {1 - p_{01}}&amp;p_{01}&amp;0&amp;0&amp;0&amp;0&amp;0\\
 {1 - p_{12}}&amp;0&amp;p_{12}&amp;0&amp;0&amp;0&amp;0\\
@@ -1448,7 +1448,7 @@ p_{50}&amp;0&amp;0&amp;0&amp;0&amp;p_{55}
 <p>From <a href="#tab:15.3">Table 15.1</a> and Figure <a href="ChapBonusMalus.html#fig:TransitionSwitz">15.3</a>, the probability of a no-claim policy year is equal to the probability of moving one-class forward, whereas the probability of having one or more claims within the policy year is equal to the probability of moving four-classes backward for each claim. The transition matrix is:</p>
 <p><span class="math display">\[
 \small{
-{\bf P} =
+{\bf P} = 
 \left[
 {\begin{array}{*{12}{c}}
 1 - {p_{01}} &amp; p_{01} &amp; 0 &amp; 0 &amp; 0 &amp; 0 &amp; 0 &amp; 0 &amp; 0 &amp; 0 &amp; 0 &amp; \cdots\\
@@ -1496,7 +1496,7 @@ p_{50}&amp;0&amp;0&amp;0&amp;0&amp;p_{55}
 <p><strong>Solution.</strong> The transition matrix can be re-written as:</p>
 <p><span class="math display">\[
 \small{
-{\bf P} =
+{\bf P} = 
 \left[ {\begin{array}{*{20}c}
 {1 - p_{0}}&amp;p_{0}&amp;0&amp;0&amp;0&amp;0\\
 {1 - p_{0}}&amp;0&amp;p_{0}&amp;0&amp;0&amp;0\\
@@ -1578,7 +1578,7 @@ p_k = \frac{e^{ - 0.1}{(0.1)}^k}{{k!}},{\rm{ }}k = 0,1,2,\ldots
 <div id="toggleExample.15.4.2" style="display: none">
 <p><strong>Solution.</strong> The transition matrix for the <em>BMS</em> in Brazil can be written as:</p>
 <p><span class="math display">\[
-{\small
+{\small 
 {\bf{P}} = \left[ {\begin{array}{*{20}{c}}
 {1 - {p_0}}&amp;{{p_0}}&amp;0&amp;0&amp;0&amp;0&amp;0\\
 {1 - {p_0}}&amp;0&amp;{{p_0}}&amp;0&amp;0&amp;0&amp;0\\
@@ -1587,7 +1587,7 @@ p_k = \frac{e^{ - 0.1}{(0.1)}^k}{{k!}},{\rm{ }}k = 0,1,2,\ldots
 {1 - \sum_i {{p_i}}}&amp;{{p_3}}&amp;{{p_2}}&amp;{{p_1}}&amp;0&amp;{{p_0}}&amp;0\\
 {1 - \sum_i{{p_i}} }&amp;{{p_4}}&amp;{{p_3}}&amp;{{p_2}}&amp;{{p_1}}&amp;0&amp;{{p_0}}\\
 {1 - \sum_i {{p_i}}}&amp;{{p_5}}&amp;{{p_4}}&amp;{{p_3}}&amp;{{p_2}}&amp;{{p_1}}&amp;{{p_0}}
-\end{array}} \right] =
+\end{array}} \right] = 
 \left[ {\begin{array}{*{20}{c}}
 {0.0952}&amp;{0.9048}&amp;0&amp;0&amp;0&amp;0&amp;0\\
 {0.0952}&amp;0&amp;{0.9048}&amp;0&amp;0&amp;0&amp;0\\
@@ -1609,7 +1609,7 @@ p_k = \frac{e^{ - 0.1}{(0.1)}^k}{{k!}},{\rm{ }}k = 0,1,2,\ldots
 {{\pi _4}}\\
 {{\pi_5}}\\
 {{\pi _6}}
-\end{array}} \right] =
+\end{array}} \right] = 
 \left[ {\begin{array}{*{20}{c}}
 {0.0000}\\
 {0.0000}\\
@@ -1630,16 +1630,16 @@ p_k = \frac{e^{ - 0.1}{(0.1)}^k}{{k!}},{\rm{ }}k = 0,1,2,\ldots
 <div id="toggleExample.15.4.3" style="display: none">
 <p><strong>Solution.</strong> After using the discount, the premium for each class is</p>
 <p><span class="math display">\[
-=  \ ($1000)\times \text{(1 - % of discount})\\
+=  \ ($1000)\times \text{(1 - % of discount})\\ 
 \]</span></p>
 <p>Using stationary probabilities from Example 15.4.2, the mean premium under steady state condition is:</p>
 <p><span class="math display">\[
-\begin{array}{l} =
-\sum\limits_j
-\text{(proportion in class } j \text{ in the long run)} \times ($1000) \times \text{(1 - % of discount})\\
-= $1000\times[{\pi _0}(1) + {\pi _1}(1 - 0.1) + {\pi _2}(1 - 0.15) + \ldots + {\pi _6}(1 - 0.35)]\\
+\begin{array}{l} = 
+\sum\limits_j 
+\text{(proportion in class } j \text{ in the long run)} \times ($1000) \times \text{(1 - % of discount})\\ 
+= $1000\times[{\pi _0}(1) + {\pi _1}(1 - 0.1) + {\pi _2}(1 - 0.15) + \ldots + {\pi _6}(1 - 0.35)]\\ 
 = $1000\times[0 + 0 + (0.0003)(0.85) + \ldots + (0.8894)(0.65)]\\
-= $656.5
+= $656.5 
 \end{array}
 \]</span></p>
 <hr />
@@ -1657,7 +1657,7 @@ p_k = \frac{e^{ - 0.1}{(0.1)}^k}{{k!}},{\rm{ }}k = 0,1,2,\ldots
 <p><strong>Solution.</strong> Under the Malaysian <em>BMS</em>, the transition matrix in the first year is:</p>
 <p><span class="math display">\[
 \small{
-{\bf{P}^{(1)}} =
+{\bf{P}^{(1)}} = 
 \left[{\begin{array}{*{20}{c}}
 {0.0952}&amp;{0.9048}&amp;0&amp;0&amp;0&amp;0\\
 {0.0952}&amp;0&amp;{0.9048}&amp;0&amp;0&amp;0\\
@@ -1670,8 +1670,8 @@ p_k = \frac{e^{ - 0.1}{(0.1)}^k}{{k!}},{\rm{ }}k = 0,1,2,\ldots
 \]</span></p>
 <p>The mean premium in the first year, after implementing the discount, is:</p>
 <p><span class="math display">\[
-\begin{aligned}
-&amp;= \sum\limits_j ($1000) \times
+\begin{aligned} 
+&amp;= \sum\limits_j ($1000) \times 
 \text{(average proportion in class } j) \times \text{(1 - % of discount}) \\
 &amp;= $1000\times\left[ \frac{\sum\limits_i {p_{i0}}}{6}{(1)} +
 \frac{\sum\limits_i {p_{i1}}}{6}{(1 - 0.25)} + \ldots +
@@ -1801,7 +1801,7 @@ $1000\times[0.0952(1) + 0.1508(0.75) + \cdots + 0.3016(0.45)]\\
 \]</span></p>
 
 <div class="figure" style="text-align: center"><span style="display:block;" id="fig:PremEvolution"></span>
-<img src="Figures/FigureEvolution.png" alt="Evolution of Premium (Malaysia and Brazil)" width="60%" />
+<img src="Figures/FigureEvolution.PNG" alt="Evolution of Premium (Malaysia and Brazil)" width="60%" />
 <p class="caption">
 Figure 15.4: <strong>Evolution of Premium (Malaysia and Brazil)</strong>
 </p>
@@ -1985,7 +1985,7 @@ Figure 15.4: <strong>Evolution of Premium (Malaysia and Brazil)</strong>
 <p>0.0145, 0.0071, 0.0043, 0.0021, 0.0013, 0.0006, 0.0004, 0.0002, 0.0001, 0.0001.</p>
 <hr />
 </div>
-<p>Examples 15.4.6-15.4.7 provide the degree of convergence for two different <em>BMS</em> (two different countries). The Malaysian <em>BMS</em> reaches full stationary only after five years, while the <em>BMS</em> in Brazil takes a longer period. As mentioned in <span class="citation">Lemaire (<a href="#ref-Lemaire98" role="doc-biblioref">1998</a>)</span>, a more sophisticated <em>BMS</em> would converge more slowly, and is considered as a drawback as it takes a longer period to stabilize. The main objective of a <em>BMS</em> is to separate the good drivers from the bad drivers, and thus, it is desirable to have a classification process that can be finalized (or stabilized) as soon as possible.</p>
+<p>Examples 15.4.6-15.4.7 provide the degree of convergence for two different <em>BMS</em> (two different countries). The Malaysian <em>BMS</em> reaches full stationary only after five years, while the <em>BMS</em> in Brazil takes a longer period. As mentioned in <span class="citation"><a href="#ref-Lemaire98" role="doc-biblioref">Lemaire</a> (<a href="#ref-Lemaire98" role="doc-biblioref">1998</a>)</span>, a more sophisticated <em>BMS</em> would converge more slowly, and is considered as a drawback as it takes a longer period to stabilize. The main objective of a <em>BMS</em> is to separate the good drivers from the bad drivers, and thus, it is desirable to have a classification process that can be finalized (or stabilized) as soon as possible.</p>
 </div>
 </div>
 <div id="S:PremRtg" class="section level2 hasAnchor" number="15.5">
@@ -2002,12 +2002,12 @@ Figure 15.4: <strong>Evolution of Premium (Malaysia and Brazil)</strong>
 <div id="premium-rating" class="section level3 hasAnchor" number="15.5.1">
 <h3><span class="header-section-number">15.5.1</span> Premium Rating<a href="ChapBonusMalus.html#premium-rating" class="anchor-section" aria-label="Anchor link to header"></a></h3>
 <p>In motor insurance ratemaking, BMS is a form of <em>a posteriori</em> rating mechanism to complement the use of <em>a priori</em> risk classification as described in Chapter <a href="ChapRiskClass.html#ChapRiskClass">11</a>. The <em>a priori</em> <strong><em>risk segmentation</em></strong> introduced in Section <a href="ChapRiskClass.html#S:RC:Introduction">11.1</a> divides portfolio of drivers into a number of homogeneous risk classes based on observable rating factors (see Section <a href="#S:RatingFactors"><strong>??</strong></a>), such that policyholders in the same risk class pay the same <em>a priori</em> premium. The underlying reason for utilizing BMS that relies on claims experience information is to deal with the <em>residual heterogeneity</em> within each homogeneous risk class (e.g., see the discussion before Example 2.6.2) since the observable variables are far from perfect in predicting the riskiness of driving behaviors.</p>
-<p>The ideal <em>a posteriori</em> mechanism is the credibility premium framework developed in Chapter <a href="ChapCredibility.html#ChapCredibility">12</a> and in particular Section <a href="ChapCredibility.html#S:Cred:BayesInf">12.3</a> (see also <span class="citation">Dionne and Vanasse (<a href="#ref-DionneVanasse89" role="doc-biblioref">1989</a>)</span>), whereby premiums are derived on an individual basis for each policyholder by incorporating both the <em>a priori</em> and <em>a posteriori</em> information. However, such individual premium determination is overly complex from a commercial standpoint for practical implementations by motor insurers. For this reason, <em>BMS</em> is the preferred solution and it consists of the following three building blocks: (a) <em>BMS</em> classes; (b) transition rules; (c) premium levels (also known as premium relativities or premium adjustment coefficients).</p>
-<p>The first two building blocks are pre-specified in advance and have been discussed in previous sections, whereas the determination (instead of pre-determined as discussed in the cases of Malaysian, Brazilian and Swiss systems) of premium relativities are important for motor insurers precisely because of its complementary and correction nature to account for the imperfection or inaccuracies in the <em>a priori</em> risk classification. Note that the premium relativities under BMS are different from the relativity measure defined in Section <a href="#S:RatingFactors"><strong>??</strong></a>, which is the ratio between the expected risk of a given risk class to a baseline risk class, both of which are calculated from observable rating factors. In the following subsections, we briefly introduce the required modelling setup to study the determination of optimal relativities. We refer interested reader to <span class="citation">Denuit et al. (<a href="#ref-Denuit07" role="doc-biblioref">2007</a>)</span> for a fuller discussion on the technical details.</p>
+<p>The ideal <em>a posteriori</em> mechanism is the credibility premium framework developed in Chapter <a href="ChapCredibility.html#ChapCredibility">12</a> and in particular Section <a href="ChapCredibility.html#S:Cred:BayesInf">12.3</a> (see also <span class="citation"><a href="#ref-DionneVanasse89" role="doc-biblioref">Dionne and Vanasse</a> (<a href="#ref-DionneVanasse89" role="doc-biblioref">1989</a>)</span>), whereby premiums are derived on an individual basis for each policyholder by incorporating both the <em>a priori</em> and <em>a posteriori</em> information. However, such individual premium determination is overly complex from a commercial standpoint for practical implementations by motor insurers. For this reason, <em>BMS</em> is the preferred solution and it consists of the following three building blocks: (a) <em>BMS</em> classes; (b) transition rules; (c) premium levels (also known as premium relativities or premium adjustment coefficients).</p>
+<p>The first two building blocks are pre-specified in advance and have been discussed in previous sections, whereas the determination (instead of pre-determined as discussed in the cases of Malaysian, Brazilian and Swiss systems) of premium relativities are important for motor insurers precisely because of its complementary and correction nature to account for the imperfection or inaccuracies in the <em>a priori</em> risk classification. Note that the premium relativities under BMS are different from the relativity measure defined in Section <a href="#S:RatingFactors"><strong>??</strong></a>, which is the ratio between the expected risk of a given risk class to a baseline risk class, both of which are calculated from observable rating factors. In the following subsections, we briefly introduce the required modelling setup to study the determination of optimal relativities. We refer interested reader to <span class="citation"><a href="#ref-Denuit07" role="doc-biblioref">Denuit et al.</a> (<a href="#ref-Denuit07" role="doc-biblioref">2007</a>)</span> for a fuller discussion on the technical details.</p>
 </div>
 <div id="a-priori-risk-classification" class="section level3 hasAnchor" number="15.5.2">
 <h3><span class="header-section-number">15.5.2</span> A Priori Risk Classification<a href="ChapBonusMalus.html#a-priori-risk-classification" class="anchor-section" aria-label="Anchor link to header"></a></h3>
-<p>Let us consider a portfolio of <span class="math inline">\(n\)</span> policies, where the risk exposure (see Section <a href="ChapPremiumFoundations.html#S:ExposureToRisk">10.3.7</a>) of driver <span class="math inline">\(i\)</span> is denoted as <span class="math inline">\(m_{i}\)</span> and the number of claims reported is represented by <span class="math inline">\(Y_{i}\)</span>, following from the notations used in Section <a href="ChapRiskClass.html#S:RC:PoissonRegression">11.2</a>. Let <span class="math inline">\({\bf x}_{i}^{T}=(x_{i1},x_{i2},\ldots, x_{iq})\)</span> be the vector of observable variables for <span class="math inline">\(i=1,2,\ldots, n\)</span>. The Poisson regression as developed in Section <a href="ChapRiskClass.html#S:RC:PoissonRegression">11.2</a> is commonly chosen to model <span class="math inline">\(Y_{i}\)</span> under the generalized linear models (GLM) framework, see Section 13.3.2.2 and also <span class="citation">McCullagh and Nelder (<a href="#ref-McCullaghNelder89" role="doc-biblioref">1989</a>)</span>.</p>
+<p>Let us consider a portfolio of <span class="math inline">\(n\)</span> policies, where the risk exposure (see Section <a href="ChapPremiumFoundations.html#S:ExposureToRisk">10.3.7</a>) of driver <span class="math inline">\(i\)</span> is denoted as <span class="math inline">\(m_{i}\)</span> and the number of claims reported is represented by <span class="math inline">\(Y_{i}\)</span>, following from the notations used in Section <a href="ChapRiskClass.html#S:RC:PoissonRegression">11.2</a>. Let <span class="math inline">\({\bf x}_{i}^{T}=(x_{i1},x_{i2},\ldots, x_{iq})\)</span> be the vector of observable variables for <span class="math inline">\(i=1,2,\ldots, n\)</span>. The Poisson regression as developed in Section <a href="ChapRiskClass.html#S:RC:PoissonRegression">11.2</a> is commonly chosen to model <span class="math inline">\(Y_{i}\)</span> under the generalized linear models (GLM) framework, see Section 13.3.2.2 and also <span class="citation"><a href="#ref-McCullaghNelder89" role="doc-biblioref">McCullagh and Nelder</a> (<a href="#ref-McCullaghNelder89" role="doc-biblioref">1989</a>)</span>.</p>
 <p>We can then express the predicted <em>a priori</em> expected claim frequency for policyholder <span class="math inline">\(i\)</span> as</p>
 <p><span class="math display">\[
 \mu_{i}=m_{i}\lambda_{i}=m_{i}\exp\left(\hat{\beta}_{0}+\sum\limits_{m=1}^{q}\hat{\beta}_{m}x_{im}\right) ,
@@ -2112,12 +2112,12 @@ Figure 15.4: <strong>Evolution of Premium (Malaysia and Brazil)</strong>
 </div>
 <div id="determination-of-optimal-relativities" class="section level3 hasAnchor" number="15.5.5">
 <h3><span class="header-section-number">15.5.5</span> Determination of Optimal Relativities<a href="ChapBonusMalus.html#determination-of-optimal-relativities" class="anchor-section" aria-label="Anchor link to header"></a></h3>
-<p>The <strong><em>optimal relativity</em></strong> for each <em>BMS</em> level was first derived by <span class="citation">Norberg (<a href="#ref-Norberg76" role="doc-biblioref">1976</a>)</span> through the minimization of the following objective function, which is more commonly known as the Norberg’s criterion:</p>
+<p>The <strong><em>optimal relativity</em></strong> for each <em>BMS</em> level was first derived by <span class="citation"><a href="#ref-Norberg76" role="doc-biblioref">Norberg</a> (<a href="#ref-Norberg76" role="doc-biblioref">1976</a>)</span> through the minimization of the following objective function, which is more commonly known as the Norberg’s criterion:</p>
 <p><span class="math inline">\(min\mathrm{E}((\bar{\lambda}\Theta-\bar{\lambda}r_{L})^2)=min\mathrm{E}((\Theta-r_{L})^2),\)</span></p>
 <p>where <span class="math inline">\(\bar{\lambda}\)</span> is the constant expected claim frequency for all policyholders in the absence of <em>a priori</em> risk classification and <span class="math inline">\(r_{L}\)</span> is the premium relativity for BMS level <span class="math inline">\(L\)</span>. It should be noted that when there is no risk classification, all <span class="math inline">\(\lambda\)</span>’s are equal and they are represented by a constant <span class="math inline">\(\bar{\lambda}\)</span>.</p>
-<p><span class="citation">Pitrebois, Denuit, and Walhin (<a href="#ref-Pitrebois03" role="doc-biblioref">2003</a>)</span> then incorporated the information of <em>a priori</em> risk classification into the optimization of the same objective function of</p>
+<p><span class="citation"><a href="#ref-Pitrebois03" role="doc-biblioref">Pitrebois, Denuit, and Walhin</a> (<a href="#ref-Pitrebois03" role="doc-biblioref">2003</a>)</span> then incorporated the information of <em>a priori</em> risk classification into the optimization of the same objective function of</p>
 <p><span class="math inline">\(min\mathrm{E}((\Theta-r_{L})^2)\)</span></p>
-<p>to derive <span class="math inline">\(r_{L}\)</span> analytically. <span class="citation">Tan et al. (<a href="#ref-Tan15" role="doc-biblioref">2015</a>)</span> further proposed the minimization of the following objective function</p>
+<p>to derive <span class="math inline">\(r_{L}\)</span> analytically. <span class="citation"><a href="#ref-Tan15" role="doc-biblioref">Tan et al.</a> (<a href="#ref-Tan15" role="doc-biblioref">2015</a>)</span> further proposed the minimization of the following objective function</p>
 <p><span class="math inline">\(min\mathrm{E}((\Lambda\Theta-\Lambda r_{L})^2),\text{  subject to }\mathrm{E}(r_{L})=1\)</span></p>
 <p>under a financial balanced constraint (that is, the expected premium relativity equals 1) to determine the optimal relativities of a <em>BMS</em> given pre-specified <em>BMS</em> levels and transition rules, where</p>
 <p><span class="math inline">\(\min\mathrm{E((\Lambda\Theta-\Lambda r_{L})^2)}\)</span></p>
@@ -2126,7 +2126,7 @@ Figure 15.4: <strong>Evolution of Premium (Malaysia and Brazil)</strong>
 <p><span class="math inline">\(=\sum\limits_{\ell=0}^{k-1}\sum\limits_{g-1}^{h}E((\Lambda\Theta-\Lambda r_{L})^2|L=\ell,\Lambda=\lambda_{g})Pr(\Lambda=\lambda_{g}|L=\ell)Pr(L=\ell)\)</span></p>
 <p><span class="math inline">\(=\sum\limits_{\ell=0}^{k-1}\sum\limits_{g=1}^{h}\int_{0}^{\infty}(\lambda_{g}\theta-\lambda_{g} r_{\ell})^2\pi_{\ell}(\lambda_{g}\theta)w_{g}f(\theta)d\theta\)</span></p>
 <p><span class="math inline">\(=\sum\limits_{g=1}^{h}w_{g}\int_{0}^{\infty}\sum\limits_{\ell=0}^{k-1}(\lambda_{g}\theta-\lambda_{g}r_{\ell})^2\pi_{\ell}(\lambda_{g}\theta)f(\theta)d\theta.\)</span></p>
-<p>It is crucially important that the optimal relativity has an average of 100%, so that the bonuses and maluses exactly offset each other to result in a financial equilibrium condition. Note that the approach considered by <span class="citation">Pitrebois, Denuit, and Walhin (<a href="#ref-Pitrebois03" role="doc-biblioref">2003</a>)</span> does not require the financial balanced constraint because the analytical solution to its objective function is given by <span class="math inline">\(r_{\ell}=\mathrm{E}(\Theta|L=\ell)\)</span>, so it follows that <span class="math inline">\(\mathrm{E}(r_{L})=\mathrm{E}\left(\mathrm{E}(\Theta|L)\right)=\mathrm{E}(\Theta)=1\)</span> with the specific choice of gamma <span class="math inline">\((a,a)\)</span> distribution for the random effect component <span class="math inline">\(\Theta\)</span>.</p>
+<p>It is crucially important that the optimal relativity has an average of 100%, so that the bonuses and maluses exactly offset each other to result in a financial equilibrium condition. Note that the approach considered by <span class="citation"><a href="#ref-Pitrebois03" role="doc-biblioref">Pitrebois, Denuit, and Walhin</a> (<a href="#ref-Pitrebois03" role="doc-biblioref">2003</a>)</span> does not require the financial balanced constraint because the analytical solution to its objective function is given by <span class="math inline">\(r_{\ell}=\mathrm{E}(\Theta|L=\ell)\)</span>, so it follows that <span class="math inline">\(\mathrm{E}(r_{L})=\mathrm{E}\left(\mathrm{E}(\Theta|L)\right)=\mathrm{E}(\Theta)=1\)</span> with the specific choice of gamma <span class="math inline">\((a,a)\)</span> distribution for the random effect component <span class="math inline">\(\Theta\)</span>.</p>
 <p>In this case, the optimization problem can be solved by specifying the Lagrangian as</p>
 <p><span class="math inline">\(\mathcal{L}({\bf r},\alpha)\)</span></p>
 <p><span class="math inline">\(=\mathrm{E}((\Lambda\Theta-\Lambda r_{L})^2)+\alpha(\mathrm{E}(r_{L})-1)\)</span></p>
@@ -2237,7 +2237,7 @@ Figure 15.4: <strong>Evolution of Premium (Malaysia and Brazil)</strong>
 <p><span class="math display">\[
 \Pr(\Lambda=\lambda_{1})=0.6, \Pr(\Lambda=\lambda_{2})=0.3, \Pr(\Lambda=\lambda_{3})=0.1.
 \]</span></p>
-<p>The gamma parameter is fixed at <span class="math inline">\(a=1.5\)</span>. Note that while these modelling assumptions are simple, the purpose here is to demonstrate the determination of optimal relativities under a relatively simple setup, and that the optimization procedure for the <em>BMS</em> remains the same even if the <em>a priori</em> risk classification is performed extensively. We refer interested readers to the motor vehicle claims data as documented in <span class="citation">De Jong and Heller (<a href="#ref-Dejong08" role="doc-biblioref">2008</a>)</span> to conduct the <em>a priori</em> risk segmentation before proceeding to the determination of optimal relativities.</p>
+<p>The gamma parameter is fixed at <span class="math inline">\(a=1.5\)</span>. Note that while these modelling assumptions are simple, the purpose here is to demonstrate the determination of optimal relativities under a relatively simple setup, and that the optimization procedure for the <em>BMS</em> remains the same even if the <em>a priori</em> risk classification is performed extensively. We refer interested readers to the motor vehicle claims data as documented in <span class="citation"><a href="#ref-Dejong08" role="doc-biblioref">De Jong and Heller</a> (<a href="#ref-Dejong08" role="doc-biblioref">2008</a>)</span> to conduct the <em>a priori</em> risk segmentation before proceeding to the determination of optimal relativities.</p>
 <p>For the Malaysian <em>BMS</em> with 6 levels and the transition rule of -1/Top, the obtained numerical values of optimal relativities are presented in <a href="#tab:15.5">Table 15.5</a> together with the stationary probabilities. We find that around half of the policyholders will occupy the highest <em>BMS</em> level with the lowest premium relativity over the long run when the stationary state has been reached. We also observe that the constrained optimal relativities are higher than the unconstrained counterparts because of the need to satisfy the financial balanced constraint <span class="math inline">\((\mathrm{E}(r_{L})=100\%).\)</span></p>
 <p><a id=tab:15.5></a></p>
 <p>Table 15.5. <strong>Optimal Relativities with</strong> <span class="math inline">\(k=6\)</span> levels and transition rule of -1/Top</p>
@@ -2285,15 +2285,15 @@ Figure 15.4: <strong>Evolution of Premium (Malaysia and Brazil)</strong>
 \min\mathrm{E}\left((\Lambda\Theta-\Lambda a-\Lambda bL)^{2}\right) \text{ subject to }
 a+b\mathrm{E}(L)\ge 1.
 \]</span></p>
-<p>We refer interested readers to <span class="citation">Tan (<a href="#ref-Tan16" role="doc-biblioref">2016</a>)</span> for a discussion on how to incorporate further commercial constraints and also on the solution to this optimization problem involving Kuhn-Tucker conditions.</p>
+<p>We refer interested readers to <span class="citation"><a href="#ref-Tan16" role="doc-biblioref">Tan</a> (<a href="#ref-Tan16" role="doc-biblioref">2016</a>)</span> for a discussion on how to incorporate further commercial constraints and also on the solution to this optimization problem involving Kuhn-Tucker conditions.</p>
 </div>
 </div>
 <div id="S:Further" class="section level2 hasAnchor" number="15.6">
 <h2><span class="header-section-number">15.6</span> Further Resources and Contributors<a href="ChapBonusMalus.html#S:Further" class="anchor-section" aria-label="Anchor link to header"></a></h2>
 <div id="further-reading-and-references-1" class="section level3 hasAnchor" number="15.6.1">
 <h3><span class="header-section-number">15.6.1</span> Further Reading and References<a href="ChapBonusMalus.html#further-reading-and-references-1" class="anchor-section" aria-label="Anchor link to header"></a></h3>
-<p>Note that our discussions in Section <a href="ChapBonusMalus.html#S:PremRtg">15.5</a> focus on the classical frequency-driven BMS, which implicitly assume that the information of frequency and severity are independent, consistent with the collective risk model as discussed in Section <a href="ChapAggLossModels.html#S:AggLoss:CRM">7.3</a>. However, a number of recent empirical studies (<span class="citation">Frees, Lee, and Yang (<a href="#ref-Frees2016" role="doc-biblioref">2016b</a>)</span>; <span class="citation">Garrido, Genest, and Schulz (<a href="#ref-Garrido2016" role="doc-biblioref">2016</a>)</span>) point towards the need due to their significant dependence structure. In this regard, <span class="citation">Oh, Kim, and Ahn (<a href="#ref-Oh20b" role="doc-biblioref">2020</a>)</span> and <span class="citation">Oh, Shi, and Ahn (<a href="#ref-Oh20a" role="doc-biblioref">2020</a>)</span> propose recent BMS framework that allows for such frequency-severity dependence based on the bivariate random effect model, where the former utilize both frequency and severity information in the specification of transition rule.</p>
-<p>On the other hand, the framework presented in Section <a href="ChapBonusMalus.html#S:PremRtg">15.5</a> is found to suffer from a double-counting problem, which results in biased premiums due to the dual role of the <em>a priori</em> rating factors in affecting both the <em>a priori</em> risk classification as well as <em>a posteriori</em> experience rating. We refer interested readers to <span class="citation">Oh et al. (<a href="#ref-Oh20c" role="doc-biblioref">2020</a>)</span> who propose to incorporate the estimation of <em>a priori</em> rate (in addition to the <em>a posteriori</em> rate) under a full optimization process to resolve the double-counting problem.</p>
+<p>Note that our discussions in Section <a href="ChapBonusMalus.html#S:PremRtg">15.5</a> focus on the classical frequency-driven BMS, which implicitly assume that the information of frequency and severity are independent, consistent with the collective risk model as discussed in Section <a href="ChapAggLossModels.html#S:AggLoss:CRM">7.3</a>. However, a number of recent empirical studies (<span class="citation"><a href="#ref-Frees2016" role="doc-biblioref">Frees, Lee, and Yang</a> (<a href="#ref-Frees2016" role="doc-biblioref">2016b</a>)</span>; <span class="citation"><a href="#ref-Garrido2016" role="doc-biblioref">Garrido, Genest, and Schulz</a> (<a href="#ref-Garrido2016" role="doc-biblioref">2016</a>)</span>) point towards the need due to their significant dependence structure. In this regard, <span class="citation"><a href="#ref-Oh20b" role="doc-biblioref">Oh, Kim, and Ahn</a> (<a href="#ref-Oh20b" role="doc-biblioref">2020</a>)</span> and <span class="citation"><a href="#ref-Oh20a" role="doc-biblioref">Oh, Shi, and Ahn</a> (<a href="#ref-Oh20a" role="doc-biblioref">2020</a>)</span> propose recent BMS framework that allows for such frequency-severity dependence based on the bivariate random effect model, where the former utilize both frequency and severity information in the specification of transition rule.</p>
+<p>On the other hand, the framework presented in Section <a href="ChapBonusMalus.html#S:PremRtg">15.5</a> is found to suffer from a double-counting problem, which results in biased premiums due to the dual role of the <em>a priori</em> rating factors in affecting both the <em>a priori</em> risk classification as well as <em>a posteriori</em> experience rating. We refer interested readers to <span class="citation"><a href="#ref-Oh20c" role="doc-biblioref">Oh et al.</a> (<a href="#ref-Oh20c" role="doc-biblioref">2020</a>)</span> who propose to incorporate the estimation of <em>a priori</em> rate (in addition to the <em>a posteriori</em> rate) under a full optimization process to resolve the double-counting problem.</p>
 <div id="contributors-11" class="section level4 unnumbered hasAnchor">
 <h4>Contributors<a href="ChapBonusMalus.html#contributors-11" class="anchor-section" aria-label="Anchor link to header"></a></h4>
 <ul>
@@ -2419,7 +2419,7 @@ gitbook.start({
     var script = document.createElement("script");
     script.type = "text/javascript";
     var src = "true";
-    if (src === "" || src === "true") src = "https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.9/latest.js?config=TeX-MML-AM_CHTML";
+    if (src === "" || src === "true") src = "https://mathjax.rstudio.com/latest/MathJax.js?config=TeX-MML-AM_CHTML";
     if (location.protocol !== "file:")
       if (/^https?:/.test(src))
         src = src.replace(/^https?:/, '');

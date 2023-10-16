@@ -6,7 +6,7 @@
   <meta http-equiv="X-UA-Compatible" content="IE=edge" />
   <title>Chapter 4 Modeling Loss Severity | Loss Data Analytics</title>
   <meta name="description" content="Chapter 4 Modeling Loss Severity | Loss Data Analytics is an interactive, online, freely available text. - The online version will contain many interactive objects (quizzes, computer demonstrations, interactive graphs, video, and the like) to promote deeper learning. - A subset of the book will be available in pdf format for low-cost printing. - The online text will be available in multiple languages to promote access to a worldwide audience." />
-  <meta name="generator" content="bookdown 0.32 and GitBook 2.6.7" />
+  <meta name="generator" content="bookdown 0.27 and GitBook 2.6.7" />
 
   <meta property="og:title" content="Chapter 4 Modeling Loss Severity | Loss Data Analytics" />
   <meta property="og:type" content="book" />
@@ -515,7 +515,7 @@ code span.al { color: #ff0000; font-weight: bold; } /* Alert */
 code span.an { color: #60a0b0; font-weight: bold; font-style: italic; } /* Annotation */
 code span.at { color: #7d9029; } /* Attribute */
 code span.bn { color: #40a070; } /* BaseN */
-code span.bu { color: #008000; } /* BuiltIn */
+code span.bu { } /* BuiltIn */
 code span.cf { color: #007020; font-weight: bold; } /* ControlFlow */
 code span.ch { color: #4070a0; } /* Char */
 code span.cn { color: #880000; } /* Constant */
@@ -528,7 +528,7 @@ code span.er { color: #ff0000; font-weight: bold; } /* Error */
 code span.ex { } /* Extension */
 code span.fl { color: #40a070; } /* Float */
 code span.fu { color: #06287e; } /* Function */
-code span.im { color: #008000; font-weight: bold; } /* Import */
+code span.im { } /* Import */
 code span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Information */
 code span.kw { color: #007020; font-weight: bold; } /* Keyword */
 code span.op { color: #666666; } /* Operator */
@@ -1247,9 +1247,9 @@ Given <span class="math inline">\(\Gamma\left( r + 1 \right) = r\Gamma\left( r \
 <p><span class="math display">\[
 \begin{array}{ll}
 \text{Skewness}  &amp;= \frac{\mathrm{E}\left\lbrack {(X - \mu_{1}^{\prime})}^{3} \right\rbrack}{{\left( \mathrm{Var}X \right)}^{3/2}} = \frac{\mu_{3}^{\prime} - 3\mu_{2}^{\prime}\mu_{1}^{\prime} + 2{\mu_{1}^{\prime}}^{3}}{{\left(\mathrm{Var} X \right)}^{3/2}} \\
-&amp;= \frac{\left( \alpha + 2 \right)\left( \alpha + 1 \right)\alpha\theta^{3} - 3\left( \alpha + 1 \right)\alpha^{2}\theta^{3} + 2\alpha^{3}\theta^{3}}{\left( \alpha\theta^{2} \right)^{3/2}} \\
-&amp;= \frac{2}{\alpha^{1/2}} = 1.
-\end{array}
+ &amp;= \frac{\left( \alpha + 2 \right)\left( \alpha + 1 \right)\alpha\theta^{3} - 3\left( \alpha + 1 \right)\alpha^{2}\theta^{3} + 2\alpha^{3}\theta^{3}}{\left( \alpha\theta^{2} \right)^{3/2}} \\
+ &amp;= \frac{2}{\alpha^{1/2}} = 1.
+ \end{array}
 \]</span></p>
 <p>Hence, <span class="math inline">\(\alpha = 4\)</span>. Since, <span class="math inline">\(\mathrm{E}\left( X \right) = \alpha\theta = 8\)</span>, then <span class="math inline">\(\theta = 2\)</span> and finally, <span class="math inline">\(\mathrm{Var}\left( X \right) = \alpha\theta^{2} = 16\)</span>.</p>
 </div>
@@ -1289,7 +1289,7 @@ Let <span class="math inline">\(X_{1}, \ldots, X_{n}\)</span> be <a href="#" cla
 <p><strong>Solution.</strong></p>
 <p>The <em>mgf</em> of <span class="math inline">\(S\)</span> is
 <span class="math display">\[
-M_{S}(t) = \text{E}\left( e^{\text{tS}} \right) = \mathrm{E}\left( e^{t\sum_{i = 1}^{n}X_{i}} \right)
+M_{S}(t) = \text{E}\left( e^{\text{tS}} \right) = \mathrm{E}\left( e^{t\sum_{i = 1}^{n}X_{i}} \right) 
 = \mathrm{E}\left( \prod_{i = 1}^{n}e^{tX_{i}} \right) .
 \]</span>
 Using independence, we get<br />
@@ -1298,7 +1298,7 @@ M_{S}(t) = \prod_{i = 1}^{n}{\mathrm{E}\left( e^{tX_{i}} \right) = \prod_{i = 1}
 \]</span></p>
 <p>The moment generating function of the gamma distribution <span class="math inline">\(X_i\)</span> is <span class="math inline">\(M_{X_i}(t) = (1-\theta t)^{\alpha_i}\)</span>. Then,
 <span class="math display">\[
-M_{S}(t) = \prod_{i = 1}^{n}\left( 1 - \theta t \right)^{- \alpha_{i}} = \left( 1 - \theta t \right)^{- \sum_{i = 1}^{n}\alpha_{i}} .
+M_{S}(t) = \prod_{i = 1}^{n}\left( 1 - \theta t \right)^{- \alpha_{i}} = \left( 1 - \theta t \right)^{- \sum_{i = 1}^{n}\alpha_{i}} . 
 \]</span>
 This indicates that the distribution of <span class="math inline">\(S\)</span> is gamma with parameters <span class="math inline">\(\sum_{i = 1}^{n}\alpha_{i}\)</span> and <span class="math inline">\(\theta\)</span>.</p>
 <p>This is a demonstration of how we can use the uniqueness property of the moment generating function to determine the probability distribution of a function of random variables.</p>
@@ -1311,7 +1311,7 @@ Hence, <span class="math inline">\(\mathrm{Var}\left( S \right) = \alpha\theta^{
 <hr />
 <p>One can also use the moment generating function to compute the probability generating function</p>
 <p><span class="math display">\[
-P_{X}(z) = \mathrm{E}\left( z^{X} \right) = M_{X}\left( \log z \right) .
+P_{X}(z) = \mathrm{E}\left( z^{X} \right) = M_{X}\left( \log z \right) . 
 \]</span></p>
 <p>As introduced in Section <a href="ChapFrequency-Modeling.html#S:generating-functions">3.2.2</a>, the probability generating function is more useful for discrete random variables.</p>
 <hr />
@@ -1586,7 +1586,7 @@ Solving for <span class="math inline">\(\pi_{0.99}\)</span>, we get <span class=
 </div>
 <div id="the-generalized-beta-distribution-of-the-second-kind" class="section level3 hasAnchor" number="4.2.4">
 <h3><span class="header-section-number">4.2.4</span> The Generalized Beta Distribution of the Second Kind<a href="ChapSeverity.html#the-generalized-beta-distribution-of-the-second-kind" class="anchor-section" aria-label="Anchor link to header"></a></h3>
-<p>The <a href="#" class="tooltip" style="color:green"><em>Generalized Beta Distribution of the Second Kind</em><span style="font-size:8pt">A 4-parameter flexible distribution that encompasses many common distributions</span></a> (<em>GB2</em>) was introduced by <span class="citation">G. Venter (<a href="#ref-venter1983transformed" role="doc-biblioref">1983</a>)</span> in the context of insurance loss modeling and by <span class="citation">McDonald (<a href="#ref-mcdonald1984some" role="doc-biblioref">1984</a>)</span> as an income and wealth distribution. It is a four-parameter, very flexible, distribution that can model positively as well as negatively skewed distributions.</p>
+<p>The <a href="#" class="tooltip" style="color:green"><em>Generalized Beta Distribution of the Second Kind</em><span style="font-size:8pt">A 4-parameter flexible distribution that encompasses many common distributions</span></a> (<em>GB2</em>) was introduced by <span class="citation"><a href="#ref-venter1983transformed" role="doc-biblioref">G. Venter</a> (<a href="#ref-venter1983transformed" role="doc-biblioref">1983</a>)</span> in the context of insurance loss modeling and by <span class="citation"><a href="#ref-mcdonald1984some" role="doc-biblioref">McDonald</a> (<a href="#ref-mcdonald1984some" role="doc-biblioref">1984</a>)</span> as an income and wealth distribution. It is a four-parameter, very flexible, distribution that can model positively as well as negatively skewed distributions.</p>
 <p>The continuous variable <span class="math inline">\(X\)</span> is said to have the <em>GB2</em> distribution with parameters <span class="math inline">\(\sigma\)</span>, <span class="math inline">\(\theta\)</span>, <span class="math inline">\(\alpha_1\)</span> and <span class="math inline">\(\alpha_2\)</span> if its <em>pdf</em> is given by</p>
 <p><span class="math display" id="eq:GB2Distn">\[\begin{equation}
 f_{X}\left( x \right) = \frac{(x/\theta)^{\alpha_2/\sigma}}{x \sigma~\mathrm{B}\left( \alpha_1,\alpha_2\right)\left\lbrack 1 + \left( x/\theta \right)^{1/\sigma} \right\rbrack^{\alpha_1 + \alpha_2}} \ \ \ \text{for } x &gt; 0,
@@ -1706,7 +1706,7 @@ f_{Y}(y) = \frac{1}{\tau} y^{(1/ \tau) - 1} f_{X}\left( y^{1/ \tau} \right).
 \]</span>
 On the other hand, if <span class="math inline">\(\tau &lt; 0\)</span>, then the distribution function of <span class="math inline">\(Y\)</span> is given by
 <span class="math display">\[
-F_{Y}\left( y \right) = \Pr\left( Y \leq y \right) = \Pr\left( X^{\tau} \leq y \right) = \Pr\left( X \geq y^{1/ \tau} \right) = 1 - F_{X}\left( y^{1/ \tau} \right),
+F_{Y}\left( y \right) = \Pr\left( Y \leq y \right) = \Pr\left( X^{\tau} \leq y \right) = \Pr\left( X \geq y^{1/ \tau} \right) = 1 - F_{X}\left( y^{1/ \tau} \right), 
 \]</span>
 and</p>
 <p><span class="math display">\[
@@ -1745,7 +1745,7 @@ where <span class="math inline">\(\alpha = \frac{1}{\tau}\)</span> and <span cla
 <p><span class="math display">\[
 \frac{G_1}{G_2} = \frac{0.5G_1}{0.5G_2}  = F
 \]</span></p>
-<p>has an <span class="math inline">\(F\)</span>-distribution with numerator degrees of freedom <span class="math inline">\(2\alpha_1\)</span> and denominator degrees of freedom <span class="math inline">\(2\alpha_2\)</span>. Thus, a random variable <span class="math inline">\(X\)</span> with a <em>GB2</em> distribution can be expressed as <span class="math inline">\(X = \theta \left(\frac{G_1}{G_2}\right)^{\sigma}= \theta ~ F^{\sigma}\)</span>. With this, you can think of a <em>GB2</em> as a “power <span class="math inline">\(F\)</span>” or a “generalized <span class="math inline">\(F\)</span>”, as it is sometimes known in the literature.</p>
+<p>has an <span class="math inline">\(F\)</span>-distribution with numerator degrees of freedom <span class="math inline">\(2\alpha_1\)</span> and denominator degrees of freedom <span class="math inline">\(2\alpha_2\)</span>. Thus, a random variable <span class="math inline">\(X\)</span> with a <em>GB2</em> distribution can be expressed as <span class="math inline">\(X = \theta \left(\frac{G_1}{G_2}\right)^{\sigma}= \theta ~ F^{\sigma}\)</span>. With this, you can think of a <em>GB2</em> as a “power <span class="math inline">\(F\)</span>” or a “generalized <span class="math inline">\(F\)</span>,” as it is sometimes known in the literature.</p>
 <p>Simulation, discussed in Chapter <a href="ChapSimulation.html#ChapSimulation">8</a>, provides a direct application of this result. Suppose we know how to simulate an outcome with an <span class="math inline">\(F-distribution\)</span> (that is easy to do using, for example, the <code>R</code> function <code>rf(n,df1,df2)</code>), say <span class="math inline">\(F\)</span>. Then we raise it to the power <span class="math inline">\(\sigma\)</span> and multiply it by <span class="math inline">\(\theta\)</span> so that <span class="math inline">\(\theta ~ F^{\sigma}\)</span> is an outcome that has a <em>GB2</em> distribution.</p>
 <p>Residual analysis provides another direct application. Suppose we have an outcome, say <span class="math inline">\(X\)</span>, that we think comes from a <em>GB2</em> distribution. Then we can examine the transformed version <span class="math inline">\(X^{\ast} = \left(X/\theta\right)^{1/\sigma}\)</span>. If the original specification is correct, then <span class="math inline">\(X^{\ast}\)</span> has an <span class="math inline">\(F-\)</span> distribution and there are many well-known techniques, some described in Chapter <a href="ChapModelSelection.html#ChapModelSelection">6</a>, for verifying this assertion.</p>
 <hr />
@@ -1765,7 +1765,7 @@ f_{Y}(y) = \frac{1}{y}f_{X}\left( \log y \right).
 As an important special case, suppose that <span class="math inline">\(X\)</span> is normally distributed with mean <span class="math inline">\(\mu\)</span> and variance <span class="math inline">\(\sigma^2\)</span>. Then, the distribution of <span class="math inline">\(Y = e^X\)</span> is</p>
 <p><span class="math display">\[
 f_{Y}(y) = \frac{1}{y}f_{X}\left( \log y \right)
-= \frac{1}{y \sigma \sqrt{2 \pi}} \exp \left\{-\frac{1}{2}\left(\frac{ \log y - \mu}{\sigma}\right)^2\right\}.
+= \frac{1}{y \sigma \sqrt{2 \pi}} \exp \left\{-\frac{1}{2}\left(\frac{ \log y - \mu}{\sigma}\right)^2\right\}. 
 \]</span>
 This is known as a <em>lognormal</em> distribution.</p>
 <p><strong>Example 4.3.4. Actuarial Exam Question.</strong>
@@ -1861,7 +1861,7 @@ F_{X}\left( x \right) = \int_{-\infty}^{\infty}{F_{X}\left(x \left| \theta \righ
 \mathrm{E}\left( X^{k} \right) = \int_{-\infty}^{\infty}{\mathrm{E}\left( X^{k}\left| \theta \right.  \right)g_{\Theta}(\theta)}d \theta,
 \]</span>
 <span class="math display">\[
-M_{X}(t) = \mathrm{E}\left( e^{t X} \right) = \int_{-\infty}^{\infty}{\mathrm{E}\left( e^{ tx}\left| \theta \right.  \right)g_{\Theta}(\theta)}d \theta,
+M_{X}(t) = \mathrm{E}\left( e^{t X} \right) = \int_{-\infty}^{\infty}{\mathrm{E}\left( e^{ tx}\left| \theta \right.  \right)g_{\Theta}(\theta)}d \theta, 
 \]</span>
 respectively.</p>
 <p>The <span class="math inline">\(k\)</span>-th raw moment of the mixture distribution can be rewritten as
@@ -1907,7 +1907,7 @@ f_{X}\left( x \right) = \int f_{X}\left( x |\theta \right) ~g_{\Theta}(\theta) d
 f_{X}\left( x \right) = \left\{ \begin{matrix}
 \int_{0}^{x}{\frac{1}{50}e^{- \frac{\theta}{5}}d\theta = \frac{1}{10}\left( 1 - e^{- \frac{x}{5}} \right)} &amp; 0 \leq x \leq 10, \\
 \int_{x - 10}^{x}{\frac{1}{50}e^{- \frac{\theta}{5}} d\theta} = \frac{1}{10}\left( e^{- \frac{\left( x - 10 \right)}{5}} - e^{- \frac{x}{5}} \right) &amp; 10 &lt; x &lt; \infty. \\
-\end{matrix} \right.\
+\end{matrix} \right.\ 
 \]</span></p>
 <p>One can use this to derive the mean and variance of the unconditional distribution. Alternatively, start with the conditional mean and variance of <span class="math inline">\(X\)</span>, given by</p>
 <p><span class="math display">\[
@@ -1915,7 +1915,7 @@ f_{X}\left( x \right) = \left\{ \begin{matrix}
 \]</span>
 and
 <span class="math display">\[
-\mathrm{Var}\left(  X | \theta \right)= \frac{\left\lbrack \left( \theta + 10 \right) - \theta \right\rbrack^{2}}{12} = \frac{100}{12},
+\mathrm{Var}\left(  X | \theta \right)= \frac{\left\lbrack \left( \theta + 10 \right) - \theta \right\rbrack^{2}}{12} = \frac{100}{12}, 
 \]</span>
 respectively. With these, the unconditional mean and variance of <span class="math inline">\(X\)</span> are given by</p>
 <p><span class="math display">\[
@@ -1924,7 +1924,7 @@ respectively. With these, the unconditional mean and variance of <span class="ma
 <p>and</p>
 <p><span class="math display">\[
 \mathrm{Var}\left( X \right) = \mathrm{E}\left\lbrack V\left( X\left| \Theta \right.  \right) \right\rbrack + \mathrm{Var}\left\lbrack \mathrm{E}\left( X\left| \Theta \right.  \right) \right\rbrack \\
-= \mathrm{E}\left( \frac{100}{12} \right) + \mathrm{Var}\left( \Theta + 5 \right) = 8.33 + \mathrm{Var}\left( \Theta \right) = 33.33.
+= \mathrm{E}\left( \frac{100}{12} \right) + \mathrm{Var}\left( \Theta + 5 \right) = 8.33 + \mathrm{Var}\left( \Theta \right) = 33.33. 
 \]</span></p>
 </div>
 <hr />
@@ -1997,7 +1997,7 @@ s^2 = \frac{1}{n-1} \sum_{i=1}^n \left(X_i - \overline{X}\right)^2.
 \begin{aligned}
 F_n(x)
 &amp;=  \frac{1}{n} \sum_{i=1}^n I\left(X_i \le x\right) \\
-&amp;=  \frac{\text{number of observations less than or equal to }x}{n} .
+&amp;=  \frac{\text{number of observations less than or equal to }x}{n} . 
 \end{aligned}
 \]</span>
 As <span class="math inline">\(F_n(\cdot)\)</span> is based on only observations and does not assume a parametric family for the distribution, it is nonparametric and also known as the <a href="#" class="tooltip" style="color:green"><em>empirical distribution function</em><span style="font-size:8pt">The empirical distribution is a non-parametric estimate of the underlying distribution of a random variable. it directly uses the data observations to construct the distribution, with each observed data point in a size-n sample having probability 1/n. </span></a>. It is also known as the <em>empirical cumulative distribution function</em> and, in <code>R</code>, one can use the <code>ecdf(.)</code> function to compute it.</p>
@@ -2140,7 +2140,7 @@ f_n(x) = \frac{1}{2nb} \sum_{i=1}^n I(x-b &lt; X_i \le x + b)
 <hr />
 </div>
 <p>More generally, define the <a href="#" class="tooltip" style="color:green"><em>kernel density estimator</em><span style="font-size:8pt">A nonparametric estimator of the density function of a random variable.</span></a> of the <a href="#" class="tooltip" style="color:green"><em>pdf</em><span style="font-size:8pt">Probability density function</span></a> at <span class="math inline">\(x\)</span> as</p>
-<p><span class="math display" id="eq:kernelDens">\[\begin{equation}
+<p><span class="math display" id="eq:kernelDens">\[\begin{equation} 
 f_n(x) = \frac{1}{nb} \sum_{i=1}^n w\left(\frac{x-X_i}{b}\right) ,
 \tag{4.5}
 \end{equation}\]</span></p>
@@ -2252,7 +2252,7 @@ X_i &amp; \frac{x-X_i}{b} &amp; w\left(\frac{x-X_i}{b} \right) \\
 For the 2010 property fund, there are <span class="math inline">\(n=1,377\)</span> individual claims (in thousands of dollars) with</p>
 <p><span class="math display">\[m_1 = \frac{1}{n} \sum_{i=1}^n X_i = 26.62259 \ \ \ \
 \text{and} \ \ \ \
-m_2 = \frac{1}{n} \sum_{i=1}^n X_i^2 = 136154.6 .\]</span>
+ m_2 = \frac{1}{n} \sum_{i=1}^n X_i^2 = 136154.6 .\]</span>
 Fit the parameters of the gamma and Pareto distributions using the method of moments.</p>
 <h5 style="text-align: center;">
 <a id="displayExample.4.4.6" href="javascript:toggleEX('toggleExample.4.4.6','displayExample.4.4.6');"><i><strong>Show Example Solution</strong></i></a>
@@ -2272,7 +2272,7 @@ To fit a gamma distribution, we have <span class="math inline">\(\mu_1 = \alpha 
 <p>In contrast, now assume a Pareto distribution so that <span class="math inline">\(\mu_1 = \theta/(\alpha -1)\)</span> and <span class="math inline">\(\mu_2^{\prime} = 2\theta^2/((\alpha-1)(\alpha-2) )\)</span>. Note that this expression for <span class="math inline">\(\mu_2^{\prime}\)</span> is only valid for <span class="math inline">\(\alpha&gt;2\)</span>. Easy algebra shows</p>
 <p><span class="math display">\[\alpha = 1+ \frac{\mu_2^{\prime}}{\mu_2^{\prime}-\mu_1^2} \ \ \ \
 \text{and} \ \ \ \ \
-\theta = (\alpha-1)\mu_1.\]</span></p>
+ \theta = (\alpha-1)\mu_1.\]</span></p>
 <p>Thus, the method of moment estimators are</p>
 <p><span class="math display">\[
 \begin{aligned}
@@ -2378,7 +2378,7 @@ This yields
 \begin{array}{ll}
 \frac{ \partial}{\partial \alpha } l(\alpha ) &amp;=    5  \log 500 + 5 / \alpha -  \sum_{i=1}^5 \log x_i
 =_{set} 0 \Rightarrow \\
-\hat{\alpha}_{MLE} &amp;= \frac{5}{\sum_{i=1}^5 \log x_i - 5  \log 500 } = 2.453 .
+ \hat{\alpha}_{MLE} &amp;= \frac{5}{\sum_{i=1}^5 \log x_i - 5  \log 500 } = 2.453 .
 \end{array}
 \]</span></p>
 <p>Naturally, there are many problems where it is not practical to use hand calculations for optimization. Fortunately there are many statistical routines available such as the <code>R</code> function <code>optim</code>.</p>
@@ -2453,7 +2453,7 @@ L\left( \mu,\sigma \right) = \prod_{i = 1}^{6}{f_{X_{i}}\left( x_{i} \right)} = 
 \]</span></p>
 <p>Taking a logarithm yields the loglikelihood function, <span class="math inline">\(\log L \left( \mu,\sigma \right)\)</span>, which is the sum of the individual logarithms.</p>
 <p><span class="math display">\[
-\log L\left( \mu,\sigma \right)
+\log L\left( \mu,\sigma \right) 
 = - 6 \log \sigma - 3 \log \left( 2\pi \right) - \sum_{i = 1}^{6}\log x_{i} - \frac{1}{2}\sum_{i = 1}^{6}\left( \frac{\log x_{i} - \mu}{\sigma} \right)^{2}.
 \]</span></p>
 <p>The first partial derivatives are</p>
@@ -2472,12 +2472,12 @@ L\left( \mu,\sigma \right) = \prod_{i = 1}^{6}{f_{X_{i}}\left( x_{i} \right)} = 
 \]</span></p>
 <p>These yield the estimates</p>
 <p><span class="math display">\[
-\hat{\mu} = \frac{\sum_{i = 1}^{6}{\log x_{i}}}{6} = 9.38 \ \ \ \text{and} \ \ \
+\hat{\mu} = \frac{\sum_{i = 1}^{6}{\log x_{i}}}{6} = 9.38 \ \ \ \text{and} \ \ \ 
 {\hat{\sigma}}^{2} = \frac{\sum_{i = 1}^{6}\left( \log x_{i} - \hat{\mu} \right)^{2}}{6} = 5.12 .
 \]</span></p>
 <p>To check that these estimates maximize, and do not minimize, the likelihood, you may also wish to compute the second partial derivatives. These are</p>
 <p><span class="math display">\[
-\frac{\partial^{2}\log L\left( \mu,\sigma \right)}{\partial\mu^{2}} = \frac{- 6}{\sigma^{2}}, \ \ \ \
+\frac{\partial^{2}\log L\left( \mu,\sigma \right)}{\partial\mu^{2}} = \frac{- 6}{\sigma^{2}}, \ \ \ \ 
 \frac{\partial^{2}\log L\left( \mu,\sigma \right)}{\partial\mu\partial\sigma} = \frac{- 2}{\sigma^{3}}\sum_{i = 1}^{6}\left( \log x_{i} - \mu \right)
 \]</span></p>
 <p>and</p>
@@ -2816,7 +2816,7 @@ Figure 4.10: <strong>Distribution of Group Personal Accident Losses with Superim
 </div>
 <div id="further-readings-and-references-1" class="section level4 unnumbered hasAnchor">
 <h4>Further Readings and References<a href="ChapSeverity.html#further-readings-and-references-1" class="anchor-section" aria-label="Anchor link to header"></a></h4>
-<p>Notable contributions include: <span class="citation">Cummins and Derrig (<a href="#ref-cummins1991managing" role="doc-biblioref">2012</a>)</span>, <span class="citation">Frees and Valdez (<a href="#ref-frees2008hierarchical" role="doc-biblioref">2008</a>)</span>, <span class="citation">Klugman, Panjer, and Willmot (<a href="#ref-klugman2012" role="doc-biblioref">2012</a>)</span>, <span class="citation">Kreer et al. (<a href="#ref-kreer2015goodness" role="doc-biblioref">2015</a>)</span>, <span class="citation">McDonald (<a href="#ref-mcdonald1984some" role="doc-biblioref">1984</a>)</span>, <span class="citation">McDonald and Xu (<a href="#ref-mcdonald1995generalization" role="doc-biblioref">1995</a>)</span>, <span class="citation">Tevet (<a href="#ref-tevet2016applying" role="doc-biblioref">2016</a>)</span>, and <span class="citation">G. Venter (<a href="#ref-venter1983transformed" role="doc-biblioref">1983</a>)</span>.</p>
+<p>Notable contributions include: <span class="citation"><a href="#ref-cummins1991managing" role="doc-biblioref">Cummins and Derrig</a> (<a href="#ref-cummins1991managing" role="doc-biblioref">2012</a>)</span>, <span class="citation"><a href="#ref-frees2008hierarchical" role="doc-biblioref">Frees and Valdez</a> (<a href="#ref-frees2008hierarchical" role="doc-biblioref">2008</a>)</span>, <span class="citation"><a href="#ref-klugman2012" role="doc-biblioref">Klugman, Panjer, and Willmot</a> (<a href="#ref-klugman2012" role="doc-biblioref">2012</a>)</span>, <span class="citation"><a href="#ref-kreer2015goodness" role="doc-biblioref">Kreer et al.</a> (<a href="#ref-kreer2015goodness" role="doc-biblioref">2015</a>)</span>, <span class="citation"><a href="#ref-mcdonald1984some" role="doc-biblioref">McDonald</a> (<a href="#ref-mcdonald1984some" role="doc-biblioref">1984</a>)</span>, <span class="citation"><a href="#ref-mcdonald1995generalization" role="doc-biblioref">McDonald and Xu</a> (<a href="#ref-mcdonald1995generalization" role="doc-biblioref">1995</a>)</span>, <span class="citation"><a href="#ref-tevet2016applying" role="doc-biblioref">Tevet</a> (<a href="#ref-tevet2016applying" role="doc-biblioref">2016</a>)</span>, and <span class="citation"><a href="#ref-venter1983transformed" role="doc-biblioref">G. Venter</a> (<a href="#ref-venter1983transformed" role="doc-biblioref">1983</a>)</span>.</p>
 <p>If you would like additional practice with <code>R</code> coding, please visit our companion <a href="https://openacttexts.github.io/LDACourse1">LDA Short Course</a>. In particular, see the <a href="https://openacttexts.github.io/LDACourse1/modeling-loss-severity.html">Modeling Loss Severity Chapter</a>.</p>
 
 </div>
@@ -2915,7 +2915,7 @@ gitbook.start({
     var script = document.createElement("script");
     script.type = "text/javascript";
     var src = "true";
-    if (src === "" || src === "true") src = "https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.9/latest.js?config=TeX-MML-AM_CHTML";
+    if (src === "" || src === "true") src = "https://mathjax.rstudio.com/latest/MathJax.js?config=TeX-MML-AM_CHTML";
     if (location.protocol !== "file:")
       if (/^https?:/.test(src))
         src = src.replace(/^https?:/, '');

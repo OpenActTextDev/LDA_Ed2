@@ -6,7 +6,7 @@
   <meta http-equiv="X-UA-Compatible" content="IE=edge" />
   <title>Chapter 11 Risk Classification | Loss Data Analytics</title>
   <meta name="description" content="Chapter 11 Risk Classification | Loss Data Analytics is an interactive, online, freely available text. - The online version will contain many interactive objects (quizzes, computer demonstrations, interactive graphs, video, and the like) to promote deeper learning. - A subset of the book will be available in pdf format for low-cost printing. - The online text will be available in multiple languages to promote access to a worldwide audience." />
-  <meta name="generator" content="bookdown 0.32 and GitBook 2.6.7" />
+  <meta name="generator" content="bookdown 0.27 and GitBook 2.6.7" />
 
   <meta property="og:title" content="Chapter 11 Risk Classification | Loss Data Analytics" />
   <meta property="og:type" content="book" />
@@ -515,7 +515,7 @@ code span.al { color: #ff0000; font-weight: bold; } /* Alert */
 code span.an { color: #60a0b0; font-weight: bold; font-style: italic; } /* Annotation */
 code span.at { color: #7d9029; } /* Attribute */
 code span.bn { color: #40a070; } /* BaseN */
-code span.bu { color: #008000; } /* BuiltIn */
+code span.bu { } /* BuiltIn */
 code span.cf { color: #007020; font-weight: bold; } /* ControlFlow */
 code span.ch { color: #4070a0; } /* Char */
 code span.cn { color: #880000; } /* Constant */
@@ -528,7 +528,7 @@ code span.er { color: #ff0000; font-weight: bold; } /* Error */
 code span.ex { } /* Extension */
 code span.fl { color: #40a070; } /* Float */
 code span.fu { color: #06287e; } /* Function */
-code span.im { color: #008000; font-weight: bold; } /* Import */
+code span.im { } /* Import */
 code span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Information */
 code span.kw { color: #007020; font-weight: bold; } /* Keyword */
 code span.op { color: #666666; } /* Operator */
@@ -1222,7 +1222,7 @@ div.csl-indent {
 <p>For example, consider a health insurance where smoking status is an important risk factor for mortality and morbidity. Most health insurers in the market require different premiums depending on smoking status, so smokers pay higher premiums than non-smokers, with other characteristics being identical. Now suppose that there is an insurer, we will call EquitabAll, that offers the same premium to all insureds regardless of smoking status, unlike other competitors. The net premium of EquitabAll is naturally an average mortality loss accounting for both smokers and non-smokers. That is, the net premium is a weighted average of the losses with the weights being the proportions of smokers and non-smokers, respectively. Thus it is easy to see that that a smoker would have a good incentive to purchase insurance from EquitabAll than from other insurers as the offered premium by EquitabAll is relatively lower. At the same time non-smokers would prefer buying insurance from somewhere else where lower premiums, computed from the non-smoker group only, are offered. As a result, there will be more smokers and less non-smokers in the EquitabAll’s portfolio, which leads to larger-than-expected losses and hence a higher premium for insureds in the next period to cover the higher costs. With the raised new premium in the next period, non-smokers in EquitabAll will have even greater incentives to switch insurers. As this cycle continues over time, EquitabAll would gradually retain more smokers and less non-smokers in its portfolio with the premium continually raised, eventually leading to business collapse.</p>
 <p>In the literature, this phenomenon is known as the <a href="#" class="tooltip" style="color:green"><em>adverse selection spiral</em><span style="font-size:8pt">Phenomenon where a book of business deteriorates as it attracts ever-riskier individuals when forced to increase premiums due to losses</span></a> or death spiral. Therefore, incorporating and differentiating important risk characteristics of individuals in the insurance pricing process are a pertinent component for both the determination of fair premium for individual policyholders and the long term sustainability of insurers.</p>
 <p><strong>Rating Factors</strong>. In order to incorporate relevant risk characteristics of policyholders in the pricing process, insurers maintain some classification system that assigns each policyholder to one of the risk classes based on a relatively small number of risk characteristics that are deemed most relevant. These characteristics used in the classification system are called <a href="#" class="tooltip" style="color:green"><em>rating factors</em><span style="font-size:8pt">Characteristics of a risk that help price the insurance contract</span></a>, which are <a href="#" class="tooltip" style="color:green"><em>a priori variables</em><span style="font-size:8pt">Variables which the insurer has prior knowledge of before the policy inception</span></a> in the sense that they are known before the contract begins (e.g., sex, health status, vehicle type, etc, are known during underwriting). All policyholders sharing identical risk factors thus are assigned to the same risk class, and are considered homogeneous from a pricing viewpoint; the insurer consequently charges them the same premium or rate.</p>
-<p>Regarding the risk factors and premiums, the <em>Actuarial Standard of Practice</em> (ASOP) No. 12 of the <span class="citation">Actuarial Standards Board (<a href="#ref-ASBStandards" role="doc-biblioref">2018</a>)</span> states that the actuary should select risk characteristics that are related to expected outcomes, and that rates within a risk classification system would be considered equitable if differences in rates reflect material differences in expected cost for risk characteristics. In the process of choosing risk factors, ASOP also requires the actuary to consider the following: relationship of risk characteristics and expected outcomes, causality, objectivity, practicality, applicable law, industry practices, and business practices. Technical Supplement <strong>TS 10.B</strong> provides additional discussion of selection of rating factors.</p>
+<p>Regarding the risk factors and premiums, the <em>Actuarial Standard of Practice</em> (ASOP) No. 12 of the <span class="citation"><a href="#ref-ASBStandards" role="doc-biblioref">Actuarial Standards Board</a> (<a href="#ref-ASBStandards" role="doc-biblioref">2018</a>)</span> states that the actuary should select risk characteristics that are related to expected outcomes, and that rates within a risk classification system would be considered equitable if differences in rates reflect material differences in expected cost for risk characteristics. In the process of choosing risk factors, ASOP also requires the actuary to consider the following: relationship of risk characteristics and expected outcomes, causality, objectivity, practicality, applicable law, industry practices, and business practices. Technical Supplement <strong>TS 10.B</strong> provides additional discussion of selection of rating factors.</p>
 <p>On the quantitative side, an important task for the actuary in building a risk classification framework is to construct a statistical model that can determine the expected loss given various rating factors of a policyholder. The standard approach is to adopt a regression model which produces the expected loss as the output when the relevant risk factors are given as the inputs. In this chapter we learn about Poisson regression, which can be used when the loss is a <a href="#" class="tooltip" style="color:green"><em>count variable</em><span style="font-size:8pt">A count variable is a discrete variable with values on nonnegative integers.</span></a>, as a prominent example of an insurance pricing tool.</p>
 <!-- %\subsection{Fundamental concept of insurance pricing} -->
 <!-- %================================ -->
@@ -1320,12 +1320,12 @@ x_1=
 \log \mu=
 \begin{cases}
      \beta_0+\beta_1 \\
-     \beta_0
+     \beta_0 
 \end{cases}
 \quad \text{or equivalently,}\qquad \mu= \begin{cases}
      e^{\beta_0+\beta_1} &amp; \text{if smoker (level 1)}, \\
      e^{\beta_0} &amp; \text{if non-smoker (level 2)} .
-\end{cases}
+\end{cases} 
 \tag{11.6}
 \end{equation}\]</span></p>
 <p>This is the simplest form of Poisson regression. Note that we require a single indicator variable to model two levels in this case. Alternatively, it is also possible to use two indicator variables through a different coding scheme. This scheme requires dropping the intercept term so that <a href="ChapRiskClass.html#eq:log-lin-mu">(11.4)</a> is modified to</p>
@@ -1346,7 +1346,7 @@ x_2=
 \log \mu=
 \begin{cases}
      \beta_1 \\
-     \beta_2
+     \beta_2 
 \end{cases}
 \quad \text{or}\qquad \mu= \begin{cases}
      e^{\beta_1} &amp; \text{if smoker (level 1)}, \\
@@ -1368,7 +1368,7 @@ We can readily extend the two-level case to a multi-level one where <span class=
 \end{equation}\]</span></p>
 <p>where <span class="math inline">\(x_k\)</span> is an indicator variable that equals 1 if the policy belongs to level <span class="math inline">\(k\)</span> and 0 otherwise, for <span class="math inline">\(k=1,2, \ldots, l-1\)</span>. By omitting the indicator variable associated with the last level in <a href="ChapRiskClass.html#eq:log-lin-mu-1">(11.9)</a> we effectively chose level <span class="math inline">\(l\)</span> as the <a href="#" class="tooltip" style="color:green"><em>base case</em><span style="font-size:8pt">The categorical level chosen as the default with all dummy variable indicators of 0</span></a>, or reference level, but this choice is arbitrary and does not matter numerically. The resulting Poisson parameter for policies in level <span class="math inline">\(k\)</span> then becomes, from <a href="ChapRiskClass.html#eq:log-lin-mu-1">(11.9)</a>,</p>
 <p><span class="math display">\[
-\mu=
+\mu= 
 \begin{cases}
      e^{\beta_0+\beta_k} &amp; \text{if the policy belongs to level } k, (k=1,2, ..., l-1), \\
      e^{\beta_0} &amp; \text{if the policy belongs to level } l.
@@ -1497,7 +1497,7 @@ Clearly, <a href="ChapRiskClass.html#eq:Pois-pmf-2">(11.13)</a> reduces to <a hr
 {\small
 \begin{matrix}
 \begin{array}{ccrrc}
-\hline
+ \hline
 \text{Rating} &amp;\text{factors}  &amp;   \text{Exposure} &amp; \text{Claim count} \\
 \text{Type }(j) &amp; \text{Age }(k) &amp;  \text{in year} &amp; \text{observed}\\
 \hline \hline
@@ -1532,7 +1532,7 @@ z_{jk}= \frac{y_{jk}}{ m_{jk}}, \qquad j=1,2;\, k=1, 2,3.
 <p>Dropping an existing rating factor or adding a new one is also transparent with this multiplicative structure. In addition, the insurer may adjust the overall premium for all policyholders by controlling the base value <span class="math inline">\(f_0\)</span> without changing individual relativities. However, by adopting the multiplicative form, we implicitly assume that there is no serious interaction among the risk factors.</p>
 <p>When the multiplicative form is used we need to address an identification issue. That is, for any <span class="math inline">\(c&gt;0\)</span>, we can write</p>
 <p><span class="math display">\[
-\lambda_{jk}= f_0 \times \frac{f_{1j}}{c} \times c\,f_{2k}.
+\lambda_{jk}= f_0 \times \frac{f_{1j}}{c} \times c\,f_{2k}. 
 \]</span></p>
 <p>By comparing with <a href="ChapRiskClass.html#eq:multiplicative-tarrif">(11.16)</a>, we see that the identical rate parameter <span class="math inline">\(\lambda_{jk}\)</span> can be obtained for very different individual relativities. This over-parametrization, meaning that many different sets of parameters arrive at an identical model, obviously calls for some restriction on <span class="math inline">\(f_{1j}\)</span> and <span class="math inline">\(f_{2k}\)</span>. The standard practice is to make one relativity in each rating factor equal to one. This can be made arbitrarily in theory, but the standard practice is to make the relativity of most common class (base class) equal to one. We will assume that <em>type A vehicles</em> and <em>young drivers</em> to be the most common classes, that is, <span class="math inline">\(f_{11} = 1\)</span> and <span class="math inline">\(f_{21} = 1\)</span>. This way all other relativities are uniquely determined. The tariff cell <span class="math inline">\((j,k)=(1,1)\)</span> is then called the <a href="#" class="tooltip" style="color:green"><em>base tariff cell</em><span style="font-size:8pt">The chosen set of rating categories where the rate equals the intercept of the model (the base value)</span></a>, where the rate simply becomes <span class="math inline">\(\lambda_{11}=f_0\)</span>, corresponding to the base value according to <a href="ChapRiskClass.html#eq:multiplicative-tarrif">(11.16)</a>. Thus the base value <span class="math inline">\(f_0\)</span> is generally interpreted as the Poisson rate of the base tariff cell.</p>
 <p>Again, <a href="ChapRiskClass.html#eq:multiplicative-tarrif">(11.16)</a> is log-transformed and rewritten as</p>
@@ -1605,7 +1605,7 @@ We then recognize <a href="ChapRiskClass.html#eq:log-linear-tariff-3">(11.19)</a
 <p><span class="math display">\[
 \begin{array}{ll}
 \log \mu_i &amp;=\log \lambda_{i}+\log m_i= \log m_i+ \beta_0+ \beta_1 \, x_{i1} + \beta_{2} \, x_{i2} +\beta_3  \, x_{i3}\\
-&amp;=\log m_i+\mathbf{ x}^{\prime}_i \boldsymbol \beta,
+&amp;=\log m_i+\mathbf{ x}^{\prime}_i \boldsymbol \beta, 
 \end{array}
 \]</span></p>
 <p>for <span class="math inline">\(i=1, \ldots, n\)</span>.
@@ -1654,7 +1654,7 @@ As a result, the relativities are given by</p>
 </div>
 <hr />
 <p><strong>Example 10.2. Poisson regression for Singapore insurance claims data</strong></p>
-<p>This actual dataset is a subset of the data used by <span class="citation">Frees and Valdez (<a href="#ref-frees2008hierarchical" role="doc-biblioref">2008</a>)</span>. The data are from the General Insurance Association of Singapore, an organization consisting of non-life insurers in Singapore. These data contains the number of car accidents for <span class="math inline">\(n=7,483\)</span> auto insurance policies with several categorical explanatory variables and the exposure for each policy. The explanatory variables include four risk factors: the type of the vehicle insured (either automobile (A) or other (O), denoted by <code>Vtype</code>), the age of the vehicle in years (<code>Vage</code>), gender of the policyholder (<code>Sex</code>) and the age of the policyholder (in years, grouped into seven categories, denoted <code>Age</code>).</p>
+<p>This actual dataset is a subset of the data used by <span class="citation"><a href="#ref-frees2008hierarchical" role="doc-biblioref">Frees and Valdez</a> (<a href="#ref-frees2008hierarchical" role="doc-biblioref">2008</a>)</span>. The data are from the General Insurance Association of Singapore, an organization consisting of non-life insurers in Singapore. These data contains the number of car accidents for <span class="math inline">\(n=7,483\)</span> auto insurance policies with several categorical explanatory variables and the exposure for each policy. The explanatory variables include four risk factors: the type of the vehicle insured (either automobile (A) or other (O), denoted by <code>Vtype</code>), the age of the vehicle in years (<code>Vage</code>), gender of the policyholder (<code>Sex</code>) and the age of the policyholder (in years, grouped into seven categories, denoted <code>Age</code>).</p>
 <p>Based on the data description, there are several things to consider before constructing a model. First, there are 3,842 policies with vehicle type A (automobile) and 3,641 policies with other vehicle types. However, age and sex information is available for the policies of vehicle type A only; the drivers of all other types of vehicles are recorded to be aged 21 or less with sex unspecified, except for one policy, indicating that no driver information has been collected for <a href="#" class="tooltip" style="color:green"><em>non-automobile vehicles</em><span style="font-size:8pt">Motorized vehicles which are not autos, such as atvs, off-road vehicles, go-carts, etc.</span></a>. Second, type A vehicles are all classified as private vehicles and all the other types are not.</p>
 <p>When we include these risk factors, we assume all unspecified sex to be male. As the age information is only applicable to type A vehicles, we set the model accordingly. That is, we apply the age variable only to vehicles of type A. Also we used five vehicle age bands, simplifying the original seven bands, by combining vehicle ages 0,1 and 2; the combined band is marked as level 2<a href="#fn22" class="footnote-ref" id="fnref22"><sup>22</sup></a> in the data file. Thus our Poisson model has the following explicit form:</p>
 <p><span class="math display">\[\begin{align*}
@@ -1673,22 +1673,22 @@ As a result, the relativities are given by</p>
 <p><a id=tab:10.3></a></p>
 <p>Table 10.3. <strong>Singapore Insurance Claims Data</strong></p>
 <p><span class="math display">\[
-{\small
+{\small 
 \begin{matrix}
 \begin{array}{clcc}
 \hline
 \text{Rating factor} &amp; \text{Level} &amp; \text{Relativity in the tariff} &amp; \text{Note}\\ \hline\hline
 \text{Base value}  &amp;  &amp; 0.167 &amp; f_0\\ \hline
 \text{Sex} &amp; 1 (F) &amp; 1.000 &amp; \text{Base level}\\
-&amp; 2 (M) &amp; 1.173 &amp;\\\hline
-\text{Vehicle age} &amp; 2 (0-2\text{ yrs}) &amp; 1.000 &amp; \text{Base level}\\
+ &amp; 2 (M) &amp; 1.173 &amp;\\\hline
+ \text{Vehicle age} &amp; 2 (0-2\text{ yrs}) &amp; 1.000 &amp; \text{Base level}\\
   &amp; 3 (3-5\text{ yrs}) &amp; 0.843 \\
   &amp; 4 (6-10\text{ yrs}) &amp; 0.553 \\
   &amp; 5 (11-15\text{ yrs}) &amp; 0.269 \\
   &amp; 6 (16+\text{ yrs}) &amp; 0.189 &amp;\\\hline
   \text{Policyholder age} &amp; 0 (0-21) &amp; \text{N/A} &amp; \text{No policy} \\
   \text{(Only applicable to} &amp; 1 (22-25) &amp; 0.918 \\
-\text{vehicle type A)}  &amp; 2 (26-35) &amp; 0.917 \\
+ \text{vehicle type A)}  &amp; 2 (26-35) &amp; 0.917 \\
   &amp; 3 (36-45) &amp; 0.758 \\
   &amp; 4 (46-55) &amp; 0.632 \\
   &amp; 5 (56-65) &amp;  1.102\\
@@ -1823,7 +1823,7 @@ Different jurisdictions maintain different standards on the strictness of rate r
 <h2><span class="header-section-number">11.5</span> Further Resources and Contributors<a href="ChapRiskClass.html#RC:further-reading-and-resources" class="anchor-section" aria-label="Anchor link to header"></a></h2>
 <div id="further-reading-and-references" class="section level4 unnumbered hasAnchor">
 <h4>Further Reading and References<a href="ChapRiskClass.html#further-reading-and-references" class="anchor-section" aria-label="Anchor link to header"></a></h4>
-<p>Poisson regression is a special member of a more general regression model class known as the generalized linear model (GLM). The GLM develops a unified regression framework for datasets when the response variables are continuous, binary or discrete. The classical linear regression model with a normally distributed error is also a member of the GLM. There are many standard statistical texts dealing with the GLM, including <span class="citation">McCullagh and Nelder (<a href="#ref-McCullaghNelder89" role="doc-biblioref">1989</a>)</span>. More accessible texts are <span class="citation">Dobson and Barnett (<a href="#ref-dobson2008introduction" role="doc-biblioref">2008</a>)</span>, <span class="citation">Agresti (<a href="#ref-agresti1996introduction" role="doc-biblioref">1996</a>)</span> and <span class="citation">Faraway (<a href="#ref-faraway2016extending" role="doc-biblioref">2016</a>)</span>. For actuarial and insurance GLM applications, see <span class="citation">Frees (<a href="#ref-frees2009regression" role="doc-biblioref">2009</a>)</span>, <span class="citation">De Jong and Heller (<a href="#ref-Dejong08" role="doc-biblioref">2008</a>)</span>. Also, <span class="citation">Ohlsson and Johansson (<a href="#ref-ohlsson2010non" role="doc-biblioref">2010</a>)</span> discusses GLM in non-life insurance pricing context with tariff analyses.</p>
+<p>Poisson regression is a special member of a more general regression model class known as the generalized linear model (GLM). The GLM develops a unified regression framework for datasets when the response variables are continuous, binary or discrete. The classical linear regression model with a normally distributed error is also a member of the GLM. There are many standard statistical texts dealing with the GLM, including <span class="citation"><a href="#ref-McCullaghNelder89" role="doc-biblioref">McCullagh and Nelder</a> (<a href="#ref-McCullaghNelder89" role="doc-biblioref">1989</a>)</span>. More accessible texts are <span class="citation"><a href="#ref-dobson2008introduction" role="doc-biblioref">Dobson and Barnett</a> (<a href="#ref-dobson2008introduction" role="doc-biblioref">2008</a>)</span>, <span class="citation"><a href="#ref-agresti1996introduction" role="doc-biblioref">Agresti</a> (<a href="#ref-agresti1996introduction" role="doc-biblioref">1996</a>)</span> and <span class="citation"><a href="#ref-faraway2016extending" role="doc-biblioref">Faraway</a> (<a href="#ref-faraway2016extending" role="doc-biblioref">2016</a>)</span>. For actuarial and insurance GLM applications, see <span class="citation"><a href="#ref-frees2009regression" role="doc-biblioref">Frees</a> (<a href="#ref-frees2009regression" role="doc-biblioref">2009</a>)</span>, <span class="citation"><a href="#ref-Dejong08" role="doc-biblioref">De Jong and Heller</a> (<a href="#ref-Dejong08" role="doc-biblioref">2008</a>)</span>. Also, <span class="citation"><a href="#ref-ohlsson2010non" role="doc-biblioref">Ohlsson and Johansson</a> (<a href="#ref-ohlsson2010non" role="doc-biblioref">2010</a>)</span> discusses GLM in non-life insurance pricing context with tariff analyses.</p>
 <p>In fact there is a notable historical connection between the GLM and an influential actuarial model. In 1960s the actuarial community has developed an auto ratemaking model that produces coherent and consistent rates across subgroups in both additive and multiplicative form. This method, known as Bailey minimum bias method (Bailey and Simon, 1960 and Bailey, 1963), turned out to be equivalent to the solution of a statistical model known as the GLM which made its first appearance in 1970s by Nelder and Wedderburn (1972). This strong connection has helped actuaries use and adopt the GLM models in a wide range of actuarial problems; see Frees, Derrig, Meyers (2014) and references therein for a more detailed historical note on this.</p>
 </div>
 <div id="contributor-1" class="section level4 unnumbered hasAnchor">
@@ -1917,7 +1917,7 @@ On the one hand, free market competition dictates rating factors that insurers u
 <h4>Societal Effects of Rating Factors<a href="ChapRiskClass.html#societal-effects-of-rating-factors" class="anchor-section" aria-label="Anchor link to header"></a></h4>
 <p>With public discussions of rating factors, it is also important to think about the societal effects of classification.</p>
 <p>For example, does a rating variable encourage “good” behavior? As an example, we return to the use of distance driven as a rating factor. Many people advocate for including this variable as a factor. The motivation is that if insurance, like fuel, is priced based on distance driven, this will induce consumers to reduce the amount driven, thereby benefiting society.</p>
-<p>One can consider other aspects of societal effects of classification, see, for example, <span class="citation">Niehaus and Harrington (<a href="#ref-niehaus2003risk" role="doc-biblioref">2003</a>)</span>:</p>
+<p>One can consider other aspects of societal effects of classification, see, for example, <span class="citation"><a href="#ref-niehaus2003risk" role="doc-biblioref">Niehaus and Harrington</a> (<a href="#ref-niehaus2003risk" role="doc-biblioref">2003</a>)</span>:</p>
 <ul>
 <li>Re-distributive Effects - provide a cross-subsidy from e.g., high risks to low risks</li>
 <li>Classification Costs - Money spent by society, insurers, to classify people appropriately.</li>
@@ -1926,7 +1926,7 @@ On the one hand, free market competition dictates rating factors that insurers u
 <div id="legal-criteria" class="section level4 unnumbered hasAnchor">
 <h4>Legal Criteria<a href="ChapRiskClass.html#legal-criteria" class="anchor-section" aria-label="Anchor link to header"></a></h4>
 <p>For example, some states have statutes prohibiting the use of gender in rating insurance while others permit it as a rating variable. As a result, an insurer writing in multiple states may include gender as a rating variable in those states where it is permitted, but not include it in a state that prohibits its use for rating.</p>
-<p>If allowed by law, the company may continue to charge the average rate but utilize the characteristic to identify, attract, and select the lower-risk insureds that exist in the insured population; this is called <em>skimming the cream.</em> See <span class="citation">Frees and Huang (<a href="#ref-frees2020discriminating" role="doc-biblioref">2020</a>)</span> for a broad discussion of the discrimination in pricing.</p>
+<p>If allowed by law, the company may continue to charge the average rate but utilize the characteristic to identify, attract, and select the lower-risk insureds that exist in the insured population; this is called <em>skimming the cream.</em> See <span class="citation"><a href="#ref-frees2020discriminating" role="doc-biblioref">Frees and Huang</a> (<a href="#ref-frees2020discriminating" role="doc-biblioref">2020</a>)</span> for a broad discussion of the discrimination in pricing.</p>
 
 </div>
 </div>
@@ -2043,7 +2043,7 @@ gitbook.start({
     var script = document.createElement("script");
     script.type = "text/javascript";
     var src = "true";
-    if (src === "" || src === "true") src = "https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.9/latest.js?config=TeX-MML-AM_CHTML";
+    if (src === "" || src === "true") src = "https://mathjax.rstudio.com/latest/MathJax.js?config=TeX-MML-AM_CHTML";
     if (location.protocol !== "file:")
       if (/^https?:/.test(src))
         src = src.replace(/^https?:/, '');
