@@ -11,7 +11,7 @@ html:
 {questions: [{type: "radiogroup",
 name: "<b>Question 1</b>",
 choicesOrder: "random",
-title: `"Which of the following is not a feature of quota share?`,
+title: `Which of the following is not a feature of quota share?`,
 cellType: "html",
 choices: [
 "It is a type of proportional insurance",
@@ -62,17 +62,17 @@ json = Object.assign(json, jsonHeader);
 let jsonSum = jsonSummary3EWF(json);
 // Use "5" for five questions, "4" for four questions, and so on...
 
-document.getElementById("Quiz103Soln").innerHTML = jsonSum.completedHtml; 
+document.getElementById("Quiz13A4Soln").innerHTML = jsonSum.completedHtml; 
 window.survey = new Survey.Model(json);
 survey
     .onComplete
     .add(function (result) {
         document
-            .querySelector('#surveyResult103');
+            .querySelector('#surveyResult13A4');
            // .innerHTML = "Result" + JSON.stringify(result.data);
     });
 markdownConverterEWF();
-$("#surveyElement103").Survey({model: survey});
+$("#surveyElement13A4").Survey({model: survey});
 }  // ends init() function
 if (!window["%hammerhead%"]) {
 init(); 

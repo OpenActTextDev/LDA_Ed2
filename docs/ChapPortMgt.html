@@ -967,8 +967,8 @@ div.csl-indent {
 <li class="chapter" data-level="13.4.2" data-path="ChapPortMgt.html"><a href="ChapPortMgt.html#S:NonProportionalRe"><i class="fa fa-check"></i><b>13.4.2</b> Non-Proportional Reinsurance</a></li>
 <li class="chapter" data-level="13.4.3" data-path="ChapPortMgt.html"><a href="ChapPortMgt.html#S:AdditionalRe"><i class="fa fa-check"></i><b>13.4.3</b> Additional Reinsurance Treaties</a></li>
 </ul></li>
-<li class="chapter" data-level="13.5" data-path="ChapPortMgt.html"><a href="ChapPortMgt.html#Sec:PortfolioFurtherReadings"><i class="fa fa-check"></i><b>13.5</b> Further Resources and Contributors</a></li>
-<li class="chapter" data-level="13.6" data-path="ChapPortMgt.html"><a href="ChapPortMgt.html#exercises-6"><i class="fa fa-check"></i><b>13.6</b> Exercises</a></li>
+<li class="chapter" data-level="13.5" data-path="ChapPortMgt.html"><a href="ChapPortMgt.html#exercises-6"><i class="fa fa-check"></i><b>13.5</b> Exercises</a></li>
+<li class="chapter" data-level="13.6" data-path="ChapPortMgt.html"><a href="ChapPortMgt.html#Sec:PortfolioFurtherReadings"><i class="fa fa-check"></i><b>13.6</b> Further Resources and Contributors</a></li>
 </ul></li>
 <li class="chapter" data-level="14" data-path="ChapLossReserves.html"><a href="ChapLossReserves.html"><i class="fa fa-check"></i><b>14</b> Loss Reserving</a>
 <ul>
@@ -1207,26 +1207,27 @@ div.csl-indent {
 </ul>
 <div id="introduction-to-insurance-portfolios" class="section level2 hasAnchor" number="13.1">
 <h2><span class="header-section-number">13.1</span> Introduction to Insurance Portfolios<a href="ChapPortMgt.html#introduction-to-insurance-portfolios" class="anchor-section" aria-label="Anchor link to header"></a></h2>
-<p>In previous chapters, our analyses primarily focused on the contract level, which represents agreements between policyholders and insurers. Insurers maintain and manage <a href="#" class="tooltip" style="color:green"><em>portfolios</em><span style="font-size:8pt">A collection of contracts</span></a>, which are essentially collections of these individual contracts. Conceptually, one can liken an insurance company to nothing more than a collection, or portfolio, of insurance contracts. Similar to banking and investments, there are management decisions that are made exclusively at the portfolio level. In Chapter <a href="ChapAggLossModels.html#ChapAggLossModels">7</a>, we delved into modeling the distribution of insurance portfolios as the sum of individual contracts. Due to their significance, this chapter is dedicated to the direct exploration of portfolio distributions. Within this chapter, we address three crucial actuarial tasks: quantifying the impact of extreme events, determining overall portfolio risk, and managing insurance portfolios through reinsurance.</p>
+<p>In previous chapters, our analyses primarily focused on the contract level, which represents agreements between policyholders and insurers. Insurers maintain and manage <a href="#" class="tooltip" style="color:green"><em>portfolios</em><span style="font-size:8pt">A collection of contracts</span></a>, which are essentially collections of these individual contracts. Conceptually, one can liken an insurance company to nothing more than a collection, or portfolio, of insurance contracts. Similar to banking and investments, there are management decisions that are made exclusively at the portfolio level. Within this chapter, we address three crucial actuarial tasks: quantifying the impact of extreme events, determining overall portfolio risk, and managing insurance portfolios through reinsurance.</p>
 <p><a href="#" class="tooltip" style="color:green"><em>Insurance portfolios</em><span style="font-size:8pt">A collection, or aggregation, of insurance contracts</span></a>, representing the obligations of insurers, pique our interest primarily due to the probabilities associated with significant outcomes. These outcomes often translate to unusually large obligations, frequently stemming from unforeseen consequences of <strong>climate-related risks</strong>. For instance, consider the freezing rain event of 1998 that swept through eastern Ontario and southwestern Quebec, lasting six days. This calamity resulted in double the typical precipitation for the region during an ice storm and gave rise to a catastrophe, triggering over 840,000 insurance claims. Astonishingly, this number exceeded the claims filed in the wake of Hurricane Andrew, one of North America’s most extensive natural disasters. The catastrophe led to insurance settlements exceeding 1.44 billion Canadian dollars, marking the highest loss burden in Canada’s history. Such incidents are not isolated; similar catastrophic events, like Hurricane Harvey, Superstorm Sandy, the 2011 Japanese earthquake and tsunami, have also caused extreme insurance losses. In our exploration of extreme events in insurance, we introduce the concept of heavy-tailed distributions in Section <a href="ChapPortMgt.html#S:Tails">13.2</a>.</p>
-<p>Insurance companies engage in the buying and selling of risks as if they were commodities. As we explored in Chapter <a href="ChapPremiumFoundations.html#ChapPremiumFoundations">10</a>, greater uncertainty associated with risks typically translates into higher prices. Pricing principles were introduced to quantify the magnitude of these risks. Furthermore, insurance portfolios represent the obligations of a company and, although they are not traded on a marketplace, they require careful management. One crucial aspect of this management is aligning the size of the obligations with an equivalent amount of assets. The subsequent Chapter <a href="ChapLossReserves.html#ChapLossReserves">14</a> on loss reserves offers practical methods for achieving this alignment. Additionally, insurers need to assess the extent of their obligations for purposes such as capacity planning, policy formulation, and maintaining a balanced product portfolio that fosters revenue growth while managing volatility. To facilitate these tasks, Section <a href="ChapPortMgt.html#S:RiskMeasure">13.3</a> introduces risk measures that succinctly capture the uncertainty inherent in the distribution of an insurance portfolio.</p>
+<p>Insurance companies engage in the buying and selling of risks as if they were commodities. As we explored in Chapter <a href="ChapPremiumFoundations.html#ChapPremiumFoundations">10</a>, greater uncertainty associated with risks typically translates into higher prices. In that chapter, pricing principles were introduced to quantify the magnitude of these risks. Furthermore, insurance portfolios represent the obligations of a company and, although they are not traded on a marketplace, they require careful management. One crucial aspect of this management is aligning the size of the obligations with an equivalent amount of assets. The subsequent Chapter <a href="ChapLossReserves.html#ChapLossReserves">14</a> on loss reserves offers practical methods for achieving this alignment. Additionally, insurers need to assess the extent of their obligations for purposes such as capacity planning, policy formulation, and maintaining a balanced product portfolio that fosters revenue growth while managing volatility. To facilitate these tasks, Section <a href="ChapPortMgt.html#S:RiskMeasure">13.3</a> introduces risk measures that succinctly capture the uncertainty inherent in the distribution of an insurance portfolio.</p>
 <p>Similar to individuals, insurance companies manage their risk portfolios by acquiring insurance, in this case, risk protection from <a href="#" class="tooltip" style="color:green"><em>reinsurers</em><span style="font-size:8pt">A company that sells reinsurance</span></a>, which are insurance companies serving insurers. Just as individuals can structure the amount of risk they retain through mechanisms like deductibles and policy limits, insurers employ similar strategies to structure their risk portfolios. This practice of sharing insurance portfolio risk is detailed in Section <a href="ChapPortMgt.html#S:Reinsurance">13.4</a>, where we delve into the concept of reinsurance.</p>
-<div id="surveyElement101">
+<p>These three actuarial tasks, quantifying the impact of extreme events, determining overall portfolio risk, and managing insurance portfolios through reinsurance, are based on the distribution of insurance portfolios. In Chapter <a href="ChapAggLossModels.html#ChapAggLossModels">7</a>, we delved into modeling the distribution of insurance portfolios as the sum of individual contracts where we used <span class="math inline">\(S\)</span> for aggregate losses. Now, this chapter is dedicated to the direct exploration of portfolio distributions and so we revert to the traditional <span class="math inline">\(X\)</span> notation.</p>
+<div id="surveyElement13A1">
 
 </div>
-<div id="surveyResult101">
+<div id="surveyResult13A1">
 
 </div>
 <h5 style="text-align: center;">
-<a id="display.Quiz101.1" href="javascript:toggleQuiz
-('display.Quiz101.2','display.Quiz101.1');"><i><strong>Show Quiz Solution</strong></i></a>
+<a id="display.Quiz13A1.1" href="javascript:toggleQuiz
+('display.Quiz13A1.2','display.Quiz13A1.1');"><i><strong>Show Quiz Solution</strong></i></a>
 </h5>
-<div id="display.Quiz101.2" style="display: none">
-<p id="Quiz101Soln">
+<div id="display.Quiz13A1.2" style="display: none">
+<p id="Quiz13A1Soln">
 </p>
 <hr />
 </div>
-<script type="text/javascript" src="./Quizzes/QuizJavascript/Quiz101.js">
+<script type="text/javascript" src="./Quizzes/QuizJavascript/Quiz13A1.js">
 </script>
 </div>
 <div id="S:Tails" class="section level2 hasAnchor" number="13.2">
@@ -1239,17 +1240,17 @@ div.csl-indent {
 <li>Compare the tails of two distributions.</li>
 </ul>
 <hr />
-<p>For extreme events such as those due to climate risks, a few large losses hitting a portfolio and then converting into claims usually represent the greatest part of the indemnities paid by insurance companies. The aforementioned losses, also called ‘extremes,’ are quantitatively modeled by the tails of the associated probability distributions. From the quantitative modeling standpoint, relying on probabilistic models with improper tails is rather daunting. For instance, periods of financial stress may appear with a higher frequency than expected, and insurance losses may occur with worse severity. Therefore, the study of probabilistic behavior in the tail portion of actuarial models is of utmost importance in the modern framework of quantitative risk management. For this reason, this section is devoted to the introduction of a few mathematical notions that characterize the tail weight of random variables. The applications of these notions will benefit us in the construction and selection of appropriate models with desired mathematical properties in the tail portion, that are suitable for a given task.</p>
-<p>Formally, define <span class="math inline">\(X\)</span> to be the (random) obligations that arise from a collection (portfolio) of insurance contracts. (In earlier chapters, we used <span class="math inline">\(S\)</span> for aggregate losses. Now, the focus is on distributional aspects of only the collective and so we revert to the traditional <span class="math inline">\(X\)</span> notation.) We are particularly interested in studying the right tail of the distribution of <span class="math inline">\(X\)</span>, which represents the occurrence of large losses. Informally, <em>a random variable is said to be heavy-tailed if high probabilities are assigned to large values.</em> Note that this by no mean implies the probability density/mass functions are increasing as the value of <span class="math inline">\(X\)</span> goes to infinity. Indeed for a real-valued random variable, the <a href="#" class="tooltip" style="color:green"><em>pdf</em><span style="font-size:8pt">Probability density function</span></a>/<a href="#" class="tooltip" style="color:green"><em>pmf</em><span style="font-size:8pt">Probability mass function</span></a> must diminish at infinity in order to guarantee the total probability to be equal to one. Instead, what we are concerned about is the rate of decay of the pdf/pmf. Unwelcome outcomes are more likely to occur for an insurance portfolio that is described by a loss random variable possessing a heavier (right) tail. Tail weight can be an absolute or a relative concept. Specifically, for the former, we may consider a random variable to be heavy-tailed if certain mathematical properties of the probability distribution are met. For the latter, we can say the tail of one distribution is heavier/lighter than the other if some tail measures are larger/smaller.</p>
-<p>Several quantitative approaches have been proposed to classify and compare tail weight. Among most of these approaches, the <a href="#" class="tooltip" style="color:green"><em>survival function</em><span style="font-size:8pt">One minus the distribution function. it gives the probability that a rv exceeds a specific value.</span></a> serves as the building block. In what follows, we introduce two simple yet useful tail classification methods both of which are based on the behavior of the survival function of <span class="math inline">\(X\)</span>.</p>
+<p>For extreme events such as those due to climate risks, a few major events hitting a portfolio and then converting into losses usually represent the greatest part of the indemnities paid by insurance companies. The aforementioned losses, also called ‘extremes,’ are quantitatively modeled by the tails of the associated probability distributions. From the quantitative modeling standpoint, relying on probabilistic models having lengthy tails can be daunting. For instance, periods of financial stress may appear with a higher frequency than expected, and insurance losses may occur with worse severity. Therefore, the study of probabilistic behavior in the tail portion of actuarial models is important in quantitative risk management. For this reason, this section introduces a few mathematical notions that describe the tail weight of random variables. These notions will benefit us in the construction and selection of appropriate models with desired mathematical properties in the tail portion.</p>
+<p>Formally, define <span class="math inline">\(X\)</span> to be the random obligations that arise from a collection (portfolio) of insurance contracts. At the portfolio level, we are particularly interested in studying the right tail of the distribution of <span class="math inline">\(X\)</span> which represents the occurrence of large losses. Informally, <em>a random variable is said to be heavy-tailed if high probabilities are assigned to large values.</em> This does not imply that the probability density/mass function increases as the value of <span class="math inline">\(X\)</span> goes to infinity. Indeed, for a real-valued random variable, the <a href="#" class="tooltip" style="color:green"><em>pdf</em><span style="font-size:8pt">Probability density function</span></a>/<a href="#" class="tooltip" style="color:green"><em>pmf</em><span style="font-size:8pt">Probability mass function</span></a> must diminish at infinity in order to guarantee the total probability to be equal to one. Instead, what we are concerned about is the <em>rate</em> of decay of the pdf/pmf. Unwelcome outcomes are more likely to occur for an insurance portfolio that is described by a loss random variable possessing a heavier (right) tail. Tail weight can be an absolute or a relative concept. Specifically, for the former, we may consider a random variable to be heavy-tailed if certain mathematical properties of the probability distribution are met. For the latter, we can say the tail of one distribution is heavier/lighter than the other if some tail measures are larger/smaller.</p>
+<p>Several quantitative approaches have been proposed to classify and compare tail weights. For most of these approaches, the <a href="#" class="tooltip" style="color:green"><em>survival function</em><span style="font-size:8pt">One minus the distribution function. it gives the probability that a rv exceeds a specific value.</span></a> serves as the building block. In what follows, we introduce two simple yet useful tail classification methods both of which are based on the behavior of the survival function of <span class="math inline">\(X\)</span>.</p>
 <div id="classification-based-on-moments" class="section level3 hasAnchor" number="13.2.1">
 <h3><span class="header-section-number">13.2.1</span> Classification Based on Moments<a href="ChapPortMgt.html#classification-based-on-moments" class="anchor-section" aria-label="Anchor link to header"></a></h3>
-<p>One way of classifying the tail weight of a distribution is by assessing the existence of raw moments. Since our major interest lies in the right tails of distributions, we henceforth assume the obligation or loss random variable <span class="math inline">\(X\)</span> to be positive. At the outset, the <span class="math inline">\(k-\)</span>th raw moment of a continuous random variable <span class="math inline">\(X\)</span>, introduced in Section <a href="ChapSeverity.html#S:BasicQuantities">4.1</a>, can be computed as</p>
+<p>One way of classifying the tail weight of a distribution is by determining whether or not a raw moment is finite. Because our major interest lies in the right tail of a distribution, we henceforth assume the obligation or loss random variable <span class="math inline">\(X\)</span> to be non-negative. At the outset, the <span class="math inline">\(k-\)</span>th raw moment of a continuous random variable <span class="math inline">\(X\)</span>, introduced in Section <a href="ChapSeverity.html#S:BasicQuantities">4.1</a>, can be expressed as</p>
 <p><span class="math display">\[
 \mu_k&#39; =  \int_0^{\infty} x^k f(x) ~dx = k \int_0^{\infty} x^{k-1} S(x) ~dx, \\
 \]</span></p>
-<p>where <span class="math inline">\(S(\cdot)\)</span> denotes the survival function of <span class="math inline">\(X\)</span>. This expression emphasizes that the existence of the raw moments depends on the asymptotic behavior of the survival function at infinity. Namely, the faster the survival function decays to zero, the higher the order of finite moment (<span class="math inline">\(k\)</span>) the associated random variable possesses. You may interpret <span class="math inline">\(k^{\ast}\)</span> to be the largest value of <span class="math inline">\(k\)</span> so that the moment is finite. Formally, define <span class="math inline">\(k^{\ast}=\sup\{k &gt; 0:\mu_k&#39;&lt;\infty \}\)</span>, where <span class="math inline">\(sup\)</span> represents the supremum operator. This observation leads us to the moment-based tail weight classification method, which is defined formally next.</p>
-<!-- \label{def:moment-base} -->
+<p>where <span class="math inline">\(S(\cdot)\)</span> denotes the survival function of <span class="math inline">\(X\)</span>. This expression emphasizes that the finiteness of the raw moments depends on the asymptotic behavior of the survival function at infinity. Namely, the faster the survival function decays to zero, the higher is the order (<span class="math inline">\(k\)</span>) is which the associated random variable may be finite. To capture this idea, we can formally define <span class="math inline">\(k^{\ast}=\sup\{k &gt; 0:\mu_k&#39;&lt;\infty \}\)</span>, where <span class="math inline">\(sup\)</span> represents the supremum operator. You may interpret <span class="math inline">\(k^{\ast}\)</span> to be the largest value of <span class="math inline">\(k\)</span> so that the moment is finite.</p>
+<p>This definition leads us to a moment-based tail weight classification method which is defined as follows.</p>
 <p><strong>Definition 13.1.</strong> Consider a non-negative loss random variable <span class="math inline">\(X\)</span>.</p>
 <ul>
 <li>If all the positive raw moments exist, namely the maximal order of finite moment <span class="math inline">\(k^{\ast}=\infty\)</span>, then <span class="math inline">\(X\)</span> is said to be <strong>light tailed</strong> based on the moment method.</li>
@@ -1257,29 +1258,28 @@ div.csl-indent {
 <li>Moreover, for two positive loss random variables <span class="math inline">\(X_1\)</span> and <span class="math inline">\(X_2\)</span> with maximal orders of moment <span class="math inline">\(k^{\ast}_1\)</span> and <span class="math inline">\(k^{\ast}_2\)</span> respectively, we say <span class="math inline">\(X_1\)</span> has a <strong>heavier (right) tail</strong> than <span class="math inline">\(X_2\)</span> if <span class="math inline">\(k^{\ast}_1\leq k^{\ast}_2\)</span>.</li>
 </ul>
 <p>The first part of Definition 13.1 is an absolute concept of tail weight, while the second part is a relative concept of tail weight which compares the (right) tails between two distributions. Next, we present a few examples that illustrate the applications of the moment-based method for comparing tail weight.</p>
-<!-- \label{exm:gamma}   -->
 <p><strong>Example 13.2.1. Light tail nature of the gamma distribution.</strong>
-Let <span class="math inline">\(X\sim gamma(\alpha,\theta)\)</span>, with <span class="math inline">\(\alpha&gt;0\)</span> and <span class="math inline">\(\theta&gt;0\)</span>, then for all <span class="math inline">\(k&gt;0\)</span>, show that <span class="math inline">\(\mu_k&#39; &lt; \infty\)</span>.</p>
+Let <span class="math inline">\(X\sim gamma(\alpha,\theta)\)</span>, with <span class="math inline">\(\alpha&gt;0\)</span> and <span class="math inline">\(\theta&gt;0\)</span>. Show that <span class="math inline">\(\mu_k&#39; &lt; \infty\)</span> for all <span class="math inline">\(k&gt;0\)</span>.</p>
 <h5 style="text-align: center;">
 <a id="displayExample.12.2.1" href="javascript:toggleEX('toggleExample.12.2.1','displayExample.12.2.1');"><i><strong>Show Example Solution</strong></i></a>
 </h5>
 <div id="toggleExample.12.2.1" style="display: none">
-<p><strong>Solution.</strong></p>
+<p><strong>Solution.</strong> From the probability density functions expression in Section <a href="ChapSummaryDistributions.html#S:ContinuousDistributions">20.2</a>, the <span class="math inline">\(k\)</span>th raw moment is</p>
 <p><span class="math display">\[\begin{eqnarray*}
     \mu_k&#39; &amp;=&amp; \int_0^{\infty} x^k \frac{x^{\alpha-1} e^{-x/\theta}}{\Gamma(\alpha) \theta^{\alpha}} dx \\
     &amp;=&amp; \int_0^{\infty} (y\theta)^k  \frac{(y\theta)^{\alpha-1} e^{-y}}{\Gamma(\alpha) \theta^{\alpha}} \theta dy \\
     &amp;=&amp; \frac{\theta^k}{\Gamma(\alpha)} \Gamma(\alpha+k) &lt; \infty.
 \end{eqnarray*}\]</span></p>
-<p>Since all the positive moments exist, i.e., <span class="math inline">\(k^{\ast}=\infty\)</span>, in accordance with the moment-based classification method in Definition 13.1, the gamma distribution is light-tailed.</p>
+<p>Because all the positive moments exist, we have <span class="math inline">\(k^{\ast}=\infty\)</span>. Thus, in accordance with the moment-based classification method in Definition 13.1, the gamma distribution is light-tailed.</p>
 </div>
 <hr />
 <p><strong>Example 13.2.2. Light tail nature of the Weibull distribution.</strong>
-Let <span class="math inline">\(X\sim Weibull(\theta,\tau)\)</span>, with <span class="math inline">\(\theta&gt;0\)</span> and <span class="math inline">\(\tau&gt;0\)</span>, then for all <span class="math inline">\(k&gt;0\)</span>, show that <span class="math inline">\(\mu_k&#39; &lt; \infty\)</span>.</p>
+Let <span class="math inline">\(X\sim Weibull(\theta,\tau)\)</span>, with <span class="math inline">\(\theta&gt;0\)</span> and <span class="math inline">\(\tau&gt;0\)</span>. Show that <span class="math inline">\(\mu_k&#39; &lt; \infty\)</span> for all <span class="math inline">\(k&gt;0\)</span>.</p>
 <h5 style="text-align: center;">
 <a id="displayExample.12.2.2" href="javascript:toggleEX('toggleExample.12.2.2','displayExample.12.2.2');"><i><strong>Show Example Solution</strong></i></a>
 </h5>
 <div id="toggleExample.12.2.2" style="display: none">
-<p><strong>Solution.</strong></p>
+<p><strong>Solution.</strong> From the probability density functions expression in Section <a href="ChapSummaryDistributions.html#S:ContinuousDistributions">20.2</a>, the <span class="math inline">\(k\)</span>th raw moment is</p>
 <p><span class="math display">\[\begin{eqnarray*}
     \mu_k&#39; &amp;=&amp; \int_0^{\infty} x^k \frac{\tau x^{\tau-1} }{\theta^{\tau}} e^{-(x/\theta)^{\tau}}dx \\
     &amp;=&amp; \int_0^{\infty}  \frac{ y^{k/\tau} }{\theta^{\tau}} e^{-y/\theta^{\tau}}dy \\
@@ -1290,27 +1290,40 @@ Let <span class="math inline">\(X\sim Weibull(\theta,\tau)\)</span>, with <span 
 <hr />
 <p>The gamma and Weibull distributions are used extensively in the actuarial practice. Applications of these two distributions are vast which include, but are not limited to, insurance claim severity modeling, solvency assessment, loss reserving, aggregate risk approximation, reliability engineering and failure analysis. We have thus far seen two examples of using the moment-based method to analyze light-tailed distributions. We document a heavy-tailed example in what follows.</p>
 <p><strong>Example 13.2.3. Heavy tail nature of the Pareto distribution.</strong>
-Let <span class="math inline">\(X\sim Pareto(\alpha,\theta)\)</span>, with <span class="math inline">\(\alpha&gt;0\)</span> and <span class="math inline">\(\theta&gt;0\)</span>, then for <span class="math inline">\(k&gt;0\)</span></p>
+Let <span class="math inline">\(X\sim Pareto(\alpha,\theta)\)</span>, with <span class="math inline">\(\alpha&gt;0\)</span> and <span class="math inline">\(\theta&gt;0\)</span>. Then, for <span class="math inline">\(k&gt;0\)</span>,</p>
 <p><span class="math display">\[\begin{eqnarray*}
     \mu_k^{&#39;} &amp;=&amp; \int_0^{\infty} x^k \frac{\alpha \theta^{\alpha}}{(x+\theta)^{\alpha+1}} dx \\
     &amp;=&amp; \alpha \theta^{\alpha} \int_{\theta}^{\infty} (y-\theta)^k {y^{-(\alpha+1)}} dy.
 \end{eqnarray*}\]</span></p>
-<p>Consider a similar integration:</p>
+<p>From basic calculus, recall that</p>
 <p><span class="math display">\[\begin{eqnarray*}
-  g_k=\int_{\theta}^{\infty} {y^{k-\alpha-1}} dy=\left\{
+INT_k= \int_{\theta}^{\infty} {y^{k-\alpha-1}} dy=\left\{
   \begin{array}{ll}
     &lt;\infty, &amp; \hbox{for } k&lt;\alpha;\\
     =\infty, &amp; \hbox{for } k\geq \alpha.
   \end{array}
 \right.
 \end{eqnarray*}\]</span></p>
-<p>Meanwhile,</p>
+<p>Also note that:</p>
 <p><span class="math display">\[\lim_{y\rightarrow \infty} \frac{(y-\theta)^k {y^{-(\alpha+1)}}}{y^{k-\alpha-1}}=\lim_{y\rightarrow \infty}
 (1-\theta/y)^{k}=1.\]</span></p>
-<p>Application of the limit comparison theorem for improper integrals yields <span class="math inline">\(\mu_k&#39;\)</span> is finite if and only if <span class="math inline">\(g_k\)</span> is finite. Hence we can conclude that the raw moments of Pareto random variables exist only up to <span class="math inline">\(k&lt;\alpha\)</span>, i.e., <span class="math inline">\(k^{\ast}=\alpha\)</span>, and thus the distribution is heavy-tailed. What is more, the maximal order of finite moment depends only on the shape parameter <span class="math inline">\(\alpha\)</span> and it is an increasing function of <span class="math inline">\(\alpha\)</span>.
+<p>Application of the limit comparison theorem for improper integrals yields <span class="math inline">\(\mu_k&#39;\)</span> is finite if and only if <span class="math inline">\(INT_k\)</span> is finite. Hence we can conclude that the raw moments of Pareto random variables exist only up to <span class="math inline">\(k&lt;\alpha\)</span>, i.e., <span class="math inline">\(k^{\ast}=\alpha\)</span>, and thus the distribution is heavy-tailed.</p>
+<p>What is more, the maximal order of finite moment depends only on the shape parameter <span class="math inline">\(\alpha\)</span> and it is an increasing function of <span class="math inline">\(\alpha\)</span>.
 In other words, based on the moment method, the tail weight of Pareto random variables is solely manipulated by <span class="math inline">\(\alpha\)</span> – the smaller the value of <span class="math inline">\(\alpha\)</span>, the heavier the tail weight becomes. Since <span class="math inline">\(k^{\ast}&lt;\infty\)</span>, the tail of Pareto distribution is heavier than those of the gamma and Weibull distributions.</p>
 <hr />
-<p>We conclude this section with an open discussion on the limitations of the moment-based method. Despite its simple implementation and intuitive interpretation, there are certain circumstances in which the application of the moment-based method is not suitable. First, for more complicated probabilistic models, the <span class="math inline">\(k\)</span>-th raw moment may not be simple to derive, and thus the identification of the maximal order of finite moment can be challenging. Second, the moment-based method does not well comply with main body of the well established heavy tail theory in the literature. Specifically, the existence of moment generating functions is arguably the most popular method for classifying heavy tail versus light tail within the community of academic actuaries. However, for some random variables such as the lognormal random variables, their moment generating functions do not exist even that all the positive moments are finite. In these cases, applications of the moment-based methods can lead to different tail weight assessment. Third, when we need to compare the tail weight between two light-tailed distributions both having all positive moments exist, the moment-based method is no longer informative (see, e.g., Examples 13.2.1 and 13.2.2).</p>
+<p>Despite its simple implementation and intuitive interpretation, there are certain circumstances in which the application of the moment-based method is not suitable.</p>
+<ul>
+<li><ol style="list-style-type: decimal">
+<li>For more complicated probabilistic models, the <span class="math inline">\(k\)</span>-th raw moment may not be simple to derive, and thus the identification of the maximal order of finite moment can be challenging.<br />
+</li>
+</ol></li>
+<li><ol start="2" style="list-style-type: decimal">
+<li>The moment-based method does not well comply with main body of the well established heavy tail theory in the literature. Specifically, the existence of moment generating functions is arguably the most popular method for classifying heavy tail versus light tail within the community of academic actuaries. However, for some random variables such as the lognormal random variables, their moment generating functions do not exist even though all the positive moments are finite. In these cases, applications of the moment-based methods can lead to different tail weight assessment.</li>
+</ol></li>
+<li><ol start="3" style="list-style-type: decimal">
+<li>When we need to compare the tail weight between two light-tailed distributions (where both have all finite positive moments), the moment-based method is no longer informative (see, e.g., Examples 13.2.1 and 13.2.2).</li>
+</ol></li>
+</ul>
 </div>
 <div id="comparison-based-on-limiting-tail-behavior" class="section level3 hasAnchor" number="13.2.2">
 <h3><span class="header-section-number">13.2.2</span> Comparison Based on Limiting Tail Behavior<a href="ChapPortMgt.html#comparison-based-on-limiting-tail-behavior" class="anchor-section" aria-label="Anchor link to header"></a></h3>
@@ -1321,9 +1334,8 @@ In other words, based on the moment method, the tail weight of Pareto random var
 \]</span>
 We say that</p>
 <ul>
-<li><span class="math inline">\(X\)</span> has a <strong>heavier right tail</strong> than <span class="math inline">\(Y\)</span> if <span class="math inline">\(\gamma=\infty\)</span>;<br />
-</li>
-<li><span class="math inline">\(X\)</span> and <span class="math inline">\(Y\)</span> are <strong>proportionally equivalent in the right tail</strong> if <span class="math inline">\(\gamma =c \in (0, \infty)\)</span>;</li>
+<li><span class="math inline">\(X\)</span> has a <strong>heavier right tail</strong> than <span class="math inline">\(Y\)</span> if <span class="math inline">\(\gamma=\infty\)</span>,</li>
+<li><span class="math inline">\(X\)</span> and <span class="math inline">\(Y\)</span> are <strong>proportionally equivalent in the right tail</strong> if <span class="math inline">\(\gamma =c \in (0, \infty)\)</span>, and</li>
 <li><span class="math inline">\(X\)</span> has a <strong>lighter right tail</strong> than <span class="math inline">\(Y\)</span> if <span class="math inline">\(\gamma=0\)</span>.</li>
 </ul>
 <p><strong>Example 13.2.4. Comparison of Pareto to Weibull distributions.</strong>
@@ -1365,22 +1377,22 @@ Let <span class="math inline">\(X\sim Pareto(\alpha, \theta)\)</span> and <span 
 <p>as exponentials go to infinity faster than polynomials.</p>
 </div>
 <hr />
-<div id="surveyElement102">
+<div id="surveyElement13A2">
 
 </div>
-<div id="surveyResult102">
+<div id="surveyResult13A2">
 
 </div>
 <h5 style="text-align: center;">
-<a id="display.Quiz102.1" href="javascript:toggleQuiz
-('display.Quiz102.2','display.Quiz102.1');"><i><strong>Show Quiz Solution</strong></i></a>
+<a id="display.Quiz13A2.1" href="javascript:toggleQuiz
+('display.Quiz13A2.2','display.Quiz13A2.1');"><i><strong>Show Quiz Solution</strong></i></a>
 </h5>
-<div id="display.Quiz102.2" style="display: none">
-<p id="Quiz102Soln">
+<div id="display.Quiz13A2.2" style="display: none">
+<p id="Quiz13A2Soln">
 </p>
 <hr />
 </div>
-<script type="text/javascript" src="./Quizzes/QuizJavascript/Quiz102.js">
+<script type="text/javascript" src="./Quizzes/QuizJavascript/Quiz13A2.js">
 </script>
 </div>
 </div>
@@ -1394,8 +1406,8 @@ Let <span class="math inline">\(X\sim Pareto(\alpha, \theta)\)</span> and <span 
 <li>Define the idea of <em>coherence</em> and determine whether or not a risk measure is coherent.</li>
 </ul>
 <hr />
-<p>In the previous section, we studied two methods for classifying the weight of distribution tails. We may claim that the risk associated with one distribution is more dangerous (asymptotically) than the others if the tail is heavier. However, knowing one risk is more dangerous (asymptotically) than the others may not provide sufficient information for a sophisticated risk management purpose, and in addition, one is also interested in quantifying how much more. In fact, the magnitude of risk associated with a given loss distribution is an essential input for many insurance applications, such as actuarial pricing, reserving, hedging, insurance regulatory oversight, and so forth.</p>
-<p>The literature on risk measures has been growing rapidly in popularity and importance. In the succeeding two subsections, we introduce two indices which have recently earned an unprecedented amount of interest among theoreticians, practitioners, and regulators. They are namely the <em>Value-at-Risk</em> (<span class="math inline">\(VaR\)</span>) and the <em>Expected Shortfall</em> (<span class="math inline">\(ES\)</span>) measures. The economic rationale behind these two popular risk measures is similar to that for the tail classification methods introduced in the previous section, with which we hope to capture the risk of extremal losses represented by the distribution tails.</p>
+<p>In the previous section, we studied two methods for classifying the weight of distribution tails. We may claim that the risk associated with one distribution is more dangerous (asymptotically) than the other if the tail is heavier. However, knowing that one risk is more dangerous than the other may not provide sufficient information for risk management purposes and, in addition, one is also interested in quantifying how much more. In fact, the magnitude of risk associated with a given loss distribution is an essential input for many insurance applications, such as actuarial pricing, reserving, hedging, insurance regulatory oversight, and so forth.</p>
+<p>The literature on risk measures has been growing rapidly in popularity and importance. In the next two subsections, we introduce two indices which have earned interest among theoreticians, practitioners, and regulators. They are namely the <em>Value-at-Risk</em> (<span class="math inline">\(VaR\)</span>) and the <em>Expected Shortfall</em> (<span class="math inline">\(ES\)</span>) measures. The rationale underpinning these two risk measures is similar to that for the tail classification methods – we hope to capture the uncertainty of extreme losses.</p>
 <div id="value-at-risk" class="section level3 hasAnchor" number="13.3.1">
 <h3><span class="header-section-number">13.3.1</span> Value-at-Risk<a href="ChapPortMgt.html#value-at-risk" class="anchor-section" aria-label="Anchor link to header"></a></h3>
 <p>In Section <a href="ChapSeverity.html#S:MS:QuantileEstimator">4.4.1.3</a>, we defined the quantile of a distribution. We now look to a special case of this and offer the formal definition of the <a href="#" class="tooltip" style="color:green"><em>value-at-risk</em><span style="font-size:8pt">A risk measure based on a quantile function</span></a>, or <em>VaR</em>.</p>
@@ -1405,9 +1417,9 @@ Consider an insurance loss random variable <span class="math inline">\(X\)</span
 VaR_q[X]=\inf\{x:F_X(x)\geq q\}.
 \tag{13.1}
 \end{eqnarray}\]</span></p>
-<p>Here, <span class="math inline">\(inf\)</span> is the infimum operator so that the <span class="math inline">\(VaR\)</span> measure outputs the smallest value of <span class="math inline">\(X\)</span> such that the associated <a href="#" class="tooltip" style="color:green"><em>cdf</em><span style="font-size:8pt">Cumulative distribution function</span></a> first exceeds or equates to <span class="math inline">\(q\)</span>. This is simply the <a href="#" class="tooltip" style="color:green"><em>quantile</em><span style="font-size:8pt">The q-th quantile is the point(s) at which the distribution function is equal to q, i.e. the inverse of the cumulative distribution function.</span></a> that was introduced in Section <a href="ChapSeverity.html#S:LS:Quantiles">4.1.2</a> and further developed in Section <a href="ChapSeverity.html#S:MS:QuantileEstimator">4.4.1.3</a>.</p>
-<p>Here is how we should interpret <span class="math inline">\(VaR\)</span> in the context of actuarial applications. The <span class="math inline">\(VaR\)</span> is a measure of the ‘maximal’ probable loss for an insurance product/portfolio or a risky investment occurring <span class="math inline">\(q \times 100\%\)</span> of times, over a specific time horizon (typically, one year). For instance, let <span class="math inline">\(X\)</span> be the annual loss random variable of an insurance product, <span class="math inline">\(VaR_{0.95}[X]=100\)</span> million means that there is no more than a <span class="math inline">\(5 \%\)</span> chance that the loss will exceed 100 million over a given year. Owing to this meaningful interpretation, <span class="math inline">\(VaR\)</span> has become the industrial standard to measuring financial and insurance risks since 1990’s. Financial conglomerates, regulators, and academics often utilize <span class="math inline">\(VaR\)</span> to measure risk capital, ensure the compliance with regulatory rules, and disclose the financial positions.</p>
-<p>Next, we present a few examples about the computation of <span class="math inline">\(VaR\)</span>.</p>
+<p>Here, <span class="math inline">\(inf\)</span> is the infimum operator so that the <span class="math inline">\(VaR\)</span> measure outputs the smallest value of <span class="math inline">\(x\)</span> such that the associated <a href="#" class="tooltip" style="color:green"><em>cdf</em><span style="font-size:8pt">Cumulative distribution function</span></a> exceeds or equates to <span class="math inline">\(q\)</span>. This is simply the <a href="#" class="tooltip" style="color:green"><em>quantile</em><span style="font-size:8pt">The q-th quantile is the point(s) at which the distribution function is equal to q, i.e. the inverse of the cumulative distribution function.</span></a> that was introduced in Section <a href="ChapSeverity.html#S:LS:Quantiles">4.1.2</a> and further developed in Section <a href="ChapSeverity.html#S:MS:QuantileEstimator">4.4.1.3</a>.</p>
+<p>Here is how we should interpret <span class="math inline">\(VaR\)</span> in the context of actuarial applications. The <span class="math inline">\(VaR\)</span> is a measure of the ‘maximal’ probable loss for an insurance product/portfolio or a risky investment occurring <span class="math inline">\(q \times 100\%\)</span> of times, over a specific time horizon (typically, one year). For instance, if we let <span class="math inline">\(X\)</span> be the annual loss random variable of an insurance product, then <span class="math inline">\(VaR_{0.95}[X]=100\)</span> million means that there is no more than a <span class="math inline">\(5 \%\)</span> chance that the loss will exceed 100 million over a given year. Owing to this meaningful interpretation, <span class="math inline">\(VaR\)</span> has become the industry standard for measuring financial and insurance risks since the 1990’s. Financial conglomerates, regulators, and academics often utilize <span class="math inline">\(VaR\)</span> to measure risk capital, ensure the compliance with regulatory rules, and disclose the financial positions.</p>
+<p>Next, we present a few examples concerning the computation of <span class="math inline">\(VaR\)</span>.</p>
 <!-- \label{exm:exponential}-->
 <p><strong>Example 13.3.1. <span class="math inline">\(VaR\)</span> for the exponential distribution.</strong>
 Consider an insurance loss random variable <span class="math inline">\(X\)</span> with an exponential distribution having parameter <span class="math inline">\(\theta\)</span> for <span class="math inline">\(\theta&gt;0\)</span>, then the <em>cdf</em> of <span class="math inline">\(X\)</span> is given by
@@ -1507,8 +1519,8 @@ By the definition of <span class="math inline">\(VaR\)</span>, we thus have then
 <hr />
 <p>Let us now conclude the current subsection by an open discussion of the <span class="math inline">\(VaR\)</span> measure. Some advantages of utilizing <span class="math inline">\(VaR\)</span> include</p>
 <ul>
-<li>possessing a practically meaningful interpretation;</li>
-<li>relatively simple to compute for many distributions with closed-form distribution functions;</li>
+<li>possessing a practically meaningful interpretation,</li>
+<li>relatively simple to compute for many distributions with closed-form distribution functions, and</li>
 <li>no additional assumption is required for the computation of <span class="math inline">\(VaR\)</span>.</li>
 </ul>
 <p>On the other hand, the limitations of <span class="math inline">\(VaR\)</span> can be particularly pronounced for some risk management practices. We report some of them herein:</p>
@@ -1542,14 +1554,14 @@ ES_q[X] \geq VaR_q[X].
 \begin{array}{ll}
 ES_{q}(X) &amp;= \frac{1}{1-q} \int_{q}^{1} VaR_{a}(X) d a &amp; \text{Expected Shortfall}\\
 &amp;= \pi_q  + \frac{1}{1- q} 
-\left\{ \mathrm{E} X - \mathrm{E} [X \wedge \pi_q ] \right\} &amp; \text{Tail VaR}\\
+\left\{ \mathrm{E} [X] - \mathrm{E} [X \wedge \pi_q ] \right\} &amp; \text{Tail VaR}\\
 &amp; = \mathrm{E} (X | X &gt; \pi_q ) &amp; \text{Conditional VaR} .
 \end{array}
 \tag{13.3}  
 \end{equation}\]</span></p>
 <p>The equalities in Display <a href="ChapPortMgt.html#eq:ESExpressions">(13.3)</a> hold under some additional (mild) assumptions on the continuity of the distribution function. As we are interested in applications to portfolios, we employ such assumptions in this chapter which allows us to describe alternative ways of thinking about these measures. For example, from the third expression, we see that <span class="math inline">\(ES\)</span> can also be interpreted to be the expected amount given that the loss exceeds the <span class="math inline">\(VaR_{q}\)</span>.</p>
 <p>Naturally, analysts may work with distributions where the assumptions of continuity do not hold, such as discrete distributions (see the examples Chapter 3). For these distributions,
-Display <a href="ChapPortMgt.html#eq:ESExpressions">(13.3)</a> provides a definition for some alternative risk measures, the <em>Tail value-at-risk</em> and the <em>Conditional value-at-risk</em>. You can learn more about these alternative risk measures in the references given in Section <a href="ChapPortMgt.html#Sec:PortfolioFurtherReadings">13.5</a>.</p>
+Display <a href="ChapPortMgt.html#eq:ESExpressions">(13.3)</a> provides a definition for some alternative risk measures, the <em>Tail value-at-risk</em> and the <em>Conditional value-at-risk</em>. You can learn more about these alternative risk measures in the references given in Section <a href="ChapPortMgt.html#Sec:PortfolioFurtherReadings">13.6</a>.</p>
 <h5 style="text-align: center;">
 <a id="displayTheory.Section21ES.Hide" href="javascript:toggleTheory('toggleTheory.Section21ES.Hide','displayCode.Section21ES.Hide');"><i><strong>Show Development of the ES</strong></i></a>
 </h5>
@@ -1693,7 +1705,8 @@ ES_q[X] &amp;=&amp; \pi_q+\frac{\theta}{\alpha-1} \frac{[\theta/(\theta+\pi_q)]^
 </div>
 <div id="Sec:CoherentRiskMeasure" class="section level3 hasAnchor" number="13.3.3">
 <h3><span class="header-section-number">13.3.3</span> Coherent Risk Measures<a href="ChapPortMgt.html#Sec:CoherentRiskMeasure" class="anchor-section" aria-label="Anchor link to header"></a></h3>
-<p>The <span class="math inline">\(VaR\)</span> and <span class="math inline">\(ES\)</span> are widely use risk measures in practice but what are desirable attributes of a risk measure? To compare the magnitude of risk in a practically convenient manner, we seek a function that maps the loss random variable of interest to a numerical value indicating the level of riskiness, which is termed the <a href="#" class="tooltip" style="color:green"><em>risk measure</em><span style="font-size:8pt">A measure that summarizes the riskiness, or uncertainty, of a distribution</span></a>. Put mathematically, the risk measure simply summarizes the distribution function of a random variable as a single number. Two simple risk measures are the mean <span class="math inline">\(\mathrm{E}[X]\)</span> and the standard deviation <span class="math inline">\(\mathrm{SD}(X)\)</span> <span class="math inline">\(=\sqrt{\mathrm{Var}(X)}\)</span>. Other classical special cases include the <em>standard deviation principle</em></p>
+<p>The <span class="math inline">\(VaR\)</span> and <span class="math inline">\(ES\)</span> are widely used risk measures but how does the analyst know which one to employ? Broadly speaking, we seek a function that maps the loss random variable of interest to a numerical value indicating the level of riskiness, which is termed the <a href="#" class="tooltip" style="color:green"><em>risk measure</em><span style="font-size:8pt">A measure that summarizes the riskiness, or uncertainty, of a distribution</span></a>. Put mathematically, the risk measure simply summarizes the distribution function of a random variable as a single number.</p>
+<p>The <span class="math inline">\(VaR\)</span> and <span class="math inline">\(ES\)</span> are risk measures but one might also consider two simpler alternatives, the mean <span class="math inline">\(\mathrm{E}[X]\)</span> and the standard deviation <span class="math inline">\(\mathrm{SD}(X)\)</span> <span class="math inline">\(=\sqrt{\mathrm{Var}(X)}\)</span>. In addition, other classical special cases include the <em>standard deviation principle</em></p>
 <p><span class="math display" id="eq:SD-principle">\[\begin{equation}
 H_{\mathrm{SD}}(X)=\mathrm{E}[X]+\alpha \mathrm{SD}(X),\text{ for } \alpha\geq 0,
 \tag{13.7} 
@@ -1702,27 +1715,39 @@ H_{\mathrm{SD}}(X)=\mathrm{E}[X]+\alpha \mathrm{SD}(X),\text{ for } \alpha\geq 0
 <p><span class="math display">\[
 H_{\mathrm{Var}}(X)=\mathrm{E}[X]+\alpha \mathrm{Var}(X),\text{ for } \alpha\geq 0.
 \]</span></p>
-<p>One can check that all the aforementioned functions are risk measures in which we input the loss random variable and the functions output a numerical value. On a different note, the function <span class="math inline">\(H^{\ast}(X)=\alpha X^{\beta}\)</span> for any real-valued <span class="math inline">\(\alpha,\beta\neq 0\)</span>, is not a risk measure because <span class="math inline">\(H^{\ast}\)</span> produces another random variable rather than a single numerical value.</p>
-<p>Since risk measures are scalar measures which aim to use a single numerical value to describe the stochastic nature of loss random variables, it should not be surprising to us that there is no risk measure which can capture all the risk information of the associated random variables. Therefore, when seeking useful risk measures, it is important for us to keep in mind that the measures should be at least</p>
+<p>One can check that all the aforementioned functions are risk measures in which we input the loss random variable and the functions output a numerical value. In contrast, the function <span class="math inline">\(H^{\ast}(X)=\alpha X^{\beta}\)</span> for any real-valued <span class="math inline">\(\alpha,\beta\neq 0\)</span>, is not a risk measure because <span class="math inline">\(H^{\ast}\)</span> produces another random variable rather than a single numerical value.</p>
+<p>Because risk measures are scalar measures which aim to describe the stochastic uncertainty of loss random variables distributions, it is not surprising that no risk measure can capture all the risk information of the associated random variables. Therefore, when seeking useful risk measures, it is important for us to keep in mind that the measures should be:</p>
 <ul>
-<li>interpretable practically;<br />
+<li>interpretable practically,<br />
 </li>
-<li>computable conveniently; and<br />
+<li>computable conveniently, and<br />
 </li>
 <li>able to reflect the most critical information of risk underpinning the loss distribution.</li>
 </ul>
-<p>Several risk measures have been developed in the literature. Unfortunately, there is no best risk measure that can outperform the others, and the selection of appropriate risk measure depends mainly on the application questions at hand. In this respect, it is imperative to emphasize that <em>risk</em> is a subjective concept, and thus even given the same problem, there are multifarious approaches to assess risk. However, for many risk management applications, there is a wide agreement that economically sounded risk measures should satisfy four major axioms which we are going to describe in detail next. Risk measures that satisfy these axioms are termed coherent risk measures.</p>
+<p>Several risk measures have been developed in the literature. Unfortunately, there is no best risk measure that can outperform the others, and the selection of appropriate risk measure depends on the application questions at hand. In this respect, there are multiple approaches to assess the uncertainty. However, for many risk management applications, there is a wide agreement that economically grounded risk measures should satisfy four major axioms, described as follows.</p>
 <p>Consider a risk measure <span class="math inline">\(H(\cdot)\)</span>. It is said to be a <a href="#" class="tooltip" style="color:green"><em>coherent risk measure</em><span style="font-size:8pt">A risk measure that is is subadditive, monontonic, has positive homogeneity, and is translation invariant.</span></a> for two random variables <span class="math inline">\(X\)</span> and <span class="math inline">\(Y\)</span> if the following axioms are satisfied.</p>
 <ul>
-<li><strong>Axiom 1.</strong> <em>Subadditivity:</em> <span class="math inline">\(H(X+Y)\leq H(X)+H(Y)\)</span>. The economic implication of this axiom is that diversification benefits exist if different risks are combined.<br />
+<li><strong>Axiom 1.</strong> <em>Subadditivity:</em> <span class="math inline">\(H(X+Y)\leq H(X)+H(Y)\)</span>.
+<ul>
+<li>The economic implication of this axiom is that diversification benefits exist if different risks are combined.<br />
 </li>
-<li><strong>Axiom 2.</strong> <em>Monotonicity:</em> if <span class="math inline">\(\Pr[X\leq Y]=1\)</span>, then <span class="math inline">\(H(X)\leq H(Y)\)</span>. Recall that <span class="math inline">\(X\)</span> and <span class="math inline">\(Y\)</span> are random variables representing losses, the underlying economic implication is that higher losses essentially leads to a higher level of risk.<br />
+</ul></li>
+<li><strong>Axiom 2.</strong> <em>Monotonicity:</em> if <span class="math inline">\(\Pr[X\leq Y]=1\)</span>, then <span class="math inline">\(H(X)\leq H(Y)\)</span>.
+<ul>
+<li>Recall that <span class="math inline">\(X\)</span> and <span class="math inline">\(Y\)</span> are random variables representing losses, the underlying economic implication is that higher losses essentially leads to a higher level of risk.<br />
 </li>
-<li><strong>Axiom 3.</strong> <em>Positive homogeneity:</em> <span class="math inline">\(H(cX)=cH(X)\)</span> for any positive constant <span class="math inline">\(c\)</span>. A potential economic implication about this axiom is that risk measure should be independent of the monetary units in which the risk is measured. For example, let <span class="math inline">\(c\)</span> be the currency exchange rate between the US and Canadian dollars, then the risk of random losses measured in terms of US dollars (i.e., <span class="math inline">\(X\)</span>) and Canadian dollars (i.e., <span class="math inline">\(cX\)</span>) should be different only up to the exchange rate <span class="math inline">\(c\)</span> (i.e., <span class="math inline">\(cH(x)=H(cX)\)</span>).<br />
+</ul></li>
+<li><strong>Axiom 3.</strong> <em>Positive homogeneity:</em> <span class="math inline">\(H(cX)=cH(X)\)</span> for any positive constant <span class="math inline">\(c\)</span>.
+<ul>
+<li>A potential economic implication about this axiom is that risk measure should be independent of the monetary units in which the risk is measured. For example, let <span class="math inline">\(c\)</span> be the currency exchange rate between the US and Canadian dollars, then the risk of random losses measured in terms of US dollars (i.e., <span class="math inline">\(X\)</span>) and Canadian dollars (i.e., <span class="math inline">\(cX\)</span>) should be different only up to the exchange rate <span class="math inline">\(c\)</span> (i.e., <span class="math inline">\(cH(x)=H(cX)\)</span>).<br />
 </li>
-<li><strong>Axiom 4.</strong> <em>Translation invariance:</em> <span class="math inline">\(H(X+c)=H(X)+c\)</span> for any positive constant <span class="math inline">\(c\)</span>. If the constant <span class="math inline">\(c\)</span> is interpreted as risk-free cash and <span class="math inline">\(X\)</span> is an insurance portfolio, then adding cash to a portfolio only increases the portfolio risk by the amount of cash.</li>
+</ul></li>
+<li><strong>Axiom 4.</strong> <em>Translation invariance:</em> <span class="math inline">\(H(X+c)=H(X)+c\)</span> for any positive constant <span class="math inline">\(c\)</span>.
+<ul>
+<li>If the constant <span class="math inline">\(c\)</span> is interpreted as risk-free cash and <span class="math inline">\(X\)</span> is an insurance portfolio, then adding cash to a portfolio only increases the portfolio risk by the amount of cash.</li>
+</ul></li>
 </ul>
-<p>Verifying the coherent properties for some risk measures can be quite straightforward, but it can be very challenging sometimes. For example, it is a simple matter to check that the mean is a coherent risk measure.</p>
+<p>Verifying these properties can be straightforward but can be also be challenging at times. For example, it is a simple matter to check that the mean is a coherent risk measure.</p>
 <p><strong>Special Case. The Mean is a Coherent Risk Measure.</strong></p>
 <p>For any pair of random variables <span class="math inline">\(X\)</span> and <span class="math inline">\(Y\)</span> having finite means and constant <span class="math inline">\(c&gt;0\)</span>,</p>
 <ul>
@@ -1766,8 +1791,7 @@ X=\left\{
   \right.
 \tag{13.8}
 \end{eqnarray}\]</span></p>
-<p>and <span class="math inline">\(Y\)</span> is a degenerate random variable such that
-<!-- \label{eqn:special_y} --></p>
+<p>and <span class="math inline">\(Y\)</span> is a degenerate random variable such that</p>
 <p><span class="math display" id="eq:special-y">\[\begin{eqnarray}
 \Pr[Y = 4] = 1.
 \tag{13.9}
@@ -1775,23 +1799,23 @@ X=\left\{
 <p>You can check that <span class="math inline">\(\Pr[X\leq Y]=1\)</span>, but <span class="math inline">\(\mathrm{SD}(X)=\sqrt{4^2\cdot 0.25\cdot 0.75}=\sqrt{3}&gt;\mathrm{SD}(Y)=0\)</span>.</p>
 </div>
 <hr />
-<p>We have so far checked that <span class="math inline">\(\mathrm{E}[\cdot]\)</span> is a coherent risk measure and that <span class="math inline">\(\mathrm{SD}(\cdot)\)</span> is not. The exercises ask you to study the coherent property for the standard deviation principle <a href="ChapPortMgt.html#eq:SD-principle">(13.7)</a> which is a linear combination of coherent and incoherent risk measures.</p>
-<div id="surveyElement103">
+<p>We have so far checked that <span class="math inline">\(\mathrm{E}[\cdot]\)</span> is a coherent risk measure and that <span class="math inline">\(\mathrm{SD}(\cdot)\)</span> is not. <a href="../docs/ChapPortMgt.html#Exer:13.1%3E">Exercise 13.1</a> asks you to study the coherent property for the standard deviation principle <a href="ChapPortMgt.html#eq:SD-principle">(13.7)</a> which is a linear combination of coherent and incoherent risk measures.</p>
+<div id="surveyElement13A3">
 
 </div>
-<div id="surveyResult103">
+<div id="surveyResult13A3">
 
 </div>
 <h5 style="text-align: center;">
-<a id="display.Quiz103.1" href="javascript:toggleQuiz
-('display.Quiz103.2','display.Quiz103.1');"><i><strong>Show Quiz Solution</strong></i></a>
+<a id="display.Quiz13A3.1" href="javascript:toggleQuiz
+('display.Quiz13A3.2','display.Quiz13A3.1');"><i><strong>Show Quiz Solution</strong></i></a>
 </h5>
-<div id="display.Quiz103.2" style="display: none">
-<p id="Quiz103Soln">
+<div id="display.Quiz13A3.2" style="display: none">
+<p id="Quiz13A3Soln">
 </p>
 <hr />
 </div>
-<script type="text/javascript" src="./Quizzes/QuizJavascript/Quiz103.js">
+<script type="text/javascript" src="./Quizzes/QuizJavascript/Quiz13A3.js">
 </script>
 </div>
 </div>
@@ -1806,17 +1830,17 @@ X=\left\{
 <li>Interpret and calculate optimal excess of loss retention limits.</li>
 </ul>
 <hr />
-<p>Recall that <a href="#" class="tooltip" style="color:green"><em>reinsurance</em><span style="font-size:8pt">Insurance purchased by an insurer</span></a> is simply insurance purchased by an insurer. Insurance purchased by non-insurers is sometimes known as <a href="#" class="tooltip" style="color:green"><em>primary insurance</em><span style="font-size:8pt">Insurance purchased by a non-insurer</span></a> to distinguish it from reinsurance. Reinsurance differs from personal insurance purchased by individuals, such as auto and homeowners insurance, in contract flexibility. Like insurance purchased by major corporations, reinsurance programs are generally tailored more closely to the buyer. For contrast, in personal insurance buyers typically cannot negotiate on the contract terms although they may have a variety of different options (contracts) from which to choose.</p>
+<p>Recall from Section <a href="ChapClaimSeverity.html#S:Chap5Reinsurance">5.1.4</a> that <a href="#" class="tooltip" style="color:green"><em>reinsurance</em><span style="font-size:8pt">Insurance purchased by an insurer</span></a> is simply insurance purchased by an insurer. Insurance purchased by non-insurers is sometimes known as <a href="#" class="tooltip" style="color:green"><em>primary insurance</em><span style="font-size:8pt">Insurance purchased by a non-insurer</span></a> to distinguish it from reinsurance. Reinsurance differs from personal insurance purchased by individuals, such as auto and homeowners insurance, in contract flexibility. Like insurance purchased by major corporations, reinsurance programs are generally tailored more closely to the buyer. For contrast, in personal insurance buyers typically cannot negotiate on the contract terms although they may have a variety of different options (contracts) from which to choose.</p>
 <p>The two broad types are proportional and non-proportional reinsurance. A
 <a href="#" class="tooltip" style="color:green"><em>proportional reinsurance</em><span style="font-size:8pt">An agreement between a reinsurer and a ceding company (also known as the reinsured) in which the reinsurer assumes a given percent of losses and premium</span></a> contract is an agreement between a reinsurer and a <a href="#" class="tooltip" style="color:green"><em>ceding company</em><span style="font-size:8pt">A company that purchases reinsurance (also known as the reinsured)</span></a> (also known as the <a href="#" class="tooltip" style="color:green"><em>reinsured</em><span style="font-size:8pt">A company that purchases reinsurance (also known as the ceding company)</span></a>) in which the reinsurer assumes a given percent of losses and premium. A reinsurance contract is also known as a <a href="#" class="tooltip" style="color:green"><em>treaty</em><span style="font-size:8pt">A reinsurance contract that applies to a designated book of business or exposures.</span></a>. Non-proportional agreements are simply everything else. As examples of non-proportional agreements, this chapter focuses on stop-loss and excess of loss contracts. For all types of agreements, we split the total risk <span class="math inline">\(X\)</span> into the portion taken on by the reinsurer, <span class="math inline">\(Y_{reinsurer}\)</span>, and that retained by the insurer, <span class="math inline">\(Y_{insurer}\)</span>, that is, <span class="math inline">\(X= Y_{insurer}+Y_{reinsurer}\)</span>.</p>
-<p>The mathematical structure of a basic reinsurance treaty is the same as the coverage modifications of personal insurance introduced in Chapter 3. For a proportional reinsurance, the transformation <span class="math inline">\(Y_{insurer} = c X\)</span> is identical to a coinsurance adjustment in personal insurance. For stop-loss reinsurance, the transformation <span class="math inline">\(Y_{reinsurer} = \max(0,X-M)\)</span> is the same as an insurer’s payment with deductible <span class="math inline">\(M\)</span> and <span class="math inline">\(Y_{insurer} = \min(X,M) = X \wedge M\)</span> is equivalent to what a policyholder pays with deductible <span class="math inline">\(M\)</span>. For practical applications of the mathematics, in personal insurance the focus is generally upon the expectation as this is a key ingredient used in pricing. In contrast, for reinsurance the focus is on the entire distribution of the risk, as the extreme events are a primary concern of the financial stability of the insurer and reinsurer.</p>
+<p>The mathematical structure of a basic reinsurance treaty is the same as the coverage modifications of personal insurance introduced in Chapter <a href="ChapClaimSeverity.html#ChapClaimSeverity">5</a>. For a proportional reinsurance, the transformation <span class="math inline">\(Y_{insurer} = c X\)</span> is identical to a coinsurance adjustment in personal insurance. For stop-loss reinsurance, the transformation <span class="math inline">\(Y_{reinsurer} = \max(0,X-M)\)</span> is the same as an insurer’s payment with deductible <span class="math inline">\(M\)</span> and <span class="math inline">\(Y_{insurer} = \min(X,M) = X \wedge M\)</span> is equivalent to what a policyholder pays with deductible <span class="math inline">\(M\)</span>. For practical applications of the mathematics, in personal insurance the focus is generally upon the expectation as this is a key ingredient used in pricing. In contrast, for reinsurance the focus is on the entire distribution of the risk, as the extreme events are a primary concern of the financial stability of the insurer and reinsurer.</p>
 <p>This section describes the foundational and most basic of reinsurance treaties: Section <a href="ChapPortMgt.html#S:ProportionalRe">13.4.1</a> for proportional and Section <a href="ChapPortMgt.html#S:NonProportionalRe">13.4.2</a> for non-proportional reinsurance. Section <a href="ChapPortMgt.html#S:AdditionalRe">13.4.3</a> gives a flavor of more complex contracts.</p>
 <div id="S:ProportionalRe" class="section level3 hasAnchor" number="13.4.1">
 <h3><span class="header-section-number">13.4.1</span> Proportional Reinsurance<a href="ChapPortMgt.html#S:ProportionalRe" class="anchor-section" aria-label="Anchor link to header"></a></h3>
 <p>The simplest example of a proportional treaty is called <a href="#" class="tooltip" style="color:green"><em>quota share</em><span style="font-size:8pt">A proportional treaty where the reinsurer receives a flat percent of the premium for the book of business reinsured and pays a percentage of losses, including allocated loss adjustment expenses. the reinsurer may also pays the ceding company a ceding commission which is designed to reflect the differences in underwriting expenses incurred.</span></a>.</p>
 <ul>
 <li>In a quota share treaty, the reinsurer receives a flat percent, say 50%, of the premium for the book of business reinsured.</li>
-<li>In exchange, the reinsurer pays 50% of losses, including allocated loss adjustment expenses</li>
+<li>In exchange, the reinsurer pays 50% of losses, including allocated loss adjustment expenses.</li>
 <li>The reinsurer also pays the ceding company a ceding commission which is designed to reflect the differences in underwriting expenses incurred.</li>
 </ul>
 <p>The amounts paid by the primary insurer and the reinsurer are summarized as
@@ -1869,7 +1893,7 @@ Y_{insurer}=g(X) \ \ \ \text{and} \ \ \ \ Y_{reinsurer}=X-g(X),
 <p>In this expression, we see that <span class="math inline">\(Q\)</span> and <span class="math inline">\(\mathrm{Var}(X)\)</span> do not change with the choice of the retention function <span class="math inline">\(g\)</span>. Thus, we can minimize <span class="math inline">\(\mathrm{Var} (Y_{reinsurer})\)</span> by maximizing the correlation <span class="math inline">\(Corr (X,Y_{insurer})\)</span>. If we use a quota share reinsurance agreement, then <span class="math inline">\(Corr (X,Y_{insurer})=Corr (X,c X)=1\)</span>, the maximum possible correlation. This establishes the proposition.</p>
 </div>
 <hr />
-<p>The proposition is intuitively appealing - with quota share insurance, the reinsurer shares the responsibility for very large claims in the tail of the distribution. This is in contrast to non-proportional agreements where reinsurers take responsibility for the very large claims.</p>
+<p>The proposition is intuitively appealing - with quota share insurance, the insurer and reinsurer share the responsibility for very large claims in the tail of the distribution. This is in contrast to non-proportional agreements where reinsurers take responsibility for the very large claims.</p>
 </div>
 <div id="optimizing-quota-share-agreements-for-insurers" class="section level4 hasAnchor" number="13.4.1.2">
 <h4><span class="header-section-number">13.4.1.2</span> Optimizing Quota Share Agreements for Insurers<a href="ChapPortMgt.html#optimizing-quota-share-agreements-for-insurers" class="anchor-section" aria-label="Anchor link to header"></a></h4>
@@ -1904,8 +1928,8 @@ K &amp;= \sum_{i=1}^3 c_i \mathrm{E}(X_i) \\
 \end{array}
 \]</span></p>
 <p>and use this value of <span class="math inline">\(\lambda\)</span> to determine the proportions.</p>
-</div>
 <hr />
+</div>
 <p>From the math, it turns out that the constant for the <span class="math inline">\(i\)</span>th risk, <span class="math inline">\(c_i\)</span> is proportional to <span class="math inline">\(\frac{\mathrm{E}(X_i)}{\mathrm{Var} (X_i)}\)</span>. This is intuitively appealing. Other things being equal, a higher revenue as measured by <span class="math inline">\(\mathrm{E} (X_i)\)</span> means a higher value of <span class="math inline">\(c_i\)</span>. In the same way, a higher value of uncertainty as measured by <span class="math inline">\(\mathrm{Var}(X_i)\)</span> means a lower value of <span class="math inline">\(c_i\)</span>. The proportional scaling factor is determined by the revenue requirement <span class="math inline">\(\mathrm{E}(Y_{insurer}) = K\)</span>. The following example helps to develop a feel for this relationship.</p>
 <p><strong>Example 13.4.2. Three Pareto risks.</strong> Consider three risks that have a Pareto distribution, each having a different set of parameters (so they are independent but non-identical). Specifically, use the parameters:</p>
 <ul>
@@ -1960,7 +1984,7 @@ K &amp;= \sum_{i=1}^3 c_i \mathrm{E}(X_i) \\
 <h3><span class="header-section-number">13.4.2</span> Non-Proportional Reinsurance<a href="ChapPortMgt.html#S:NonProportionalRe" class="anchor-section" aria-label="Anchor link to header"></a></h3>
 <div id="the-optimality-of-stop-loss-insurance" class="section level4 hasAnchor" number="13.4.2.1">
 <h4><span class="header-section-number">13.4.2.1</span> The Optimality of Stop-Loss Insurance<a href="ChapPortMgt.html#the-optimality-of-stop-loss-insurance" class="anchor-section" aria-label="Anchor link to header"></a></h4>
-<p>Under a <a href="#" class="tooltip" style="color:green"><em>stop-loss</em><span style="font-size:8pt">Under a stop-loss arrangement, the insurer sets a retention level and pays in full total claims less than the level with the reinsurer paying the excess.</span></a> arrangement, the insurer sets a retention level <span class="math inline">\(M (&gt;0)\)</span> and pays in full total claims for which <span class="math inline">\(X \le M\)</span>. Further, for claims for which <span class="math inline">\(X &gt; M\)</span>, the primary insurer pays <span class="math inline">\(M\)</span> and the reinsurer pays the remaining amount <span class="math inline">\(X-M\)</span>. Thus, the insurer retains an amount <span class="math inline">\(M\)</span> of the risk. Summarizing, the amounts paid by the primary insurer and the reinsurer are</p>
+<p>Under a <a href="#" class="tooltip" style="color:green"><em>stop-loss</em><span style="font-size:8pt">Under a stop-loss arrangement, the insurer sets a retention level and pays in full total claims less than the level with the reinsurer paying the excess.</span></a> arrangement, the insurer sets a retention level <span class="math inline">\(M (&gt;0)\)</span> and pays in full total claims for which <span class="math inline">\(X \le M\)</span>. Further, for claims for which <span class="math inline">\(X &gt; M\)</span>, the primary insurer pays <span class="math inline">\(M\)</span> and the reinsurer pays the remaining amount <span class="math inline">\(X-M\)</span>. That is, the insurer retains an amount <span class="math inline">\(M\)</span> of the risk and the reinsurer pays the excess. Summarizing this mathematically, the amounts paid by the primary insurer and the reinsurer are</p>
 <p><span class="math display">\[
 Y_{insurer} =
 \begin{cases}
@@ -1977,8 +2001,8 @@ X- M &amp;  \text{for } X &gt;M \\
 \end{cases} \ \ \ \  = \max(0,X-M) .
 \]</span></p>
 <p>As before, note that <span class="math inline">\(Y_{insurer}+Y_{reinsurer}=X\)</span>.</p>
-<p>The stop-loss type of contract is particularly desirable for the insurer. Similar to earlier, suppose that an insurer and reinsurer wish to enter a contract so that <span class="math inline">\(Y_{insurer}=g(X)\)</span> and <span class="math inline">\(Y_{reinsurer}=X-g(X)\)</span> for some generic <a href="#" class="tooltip" style="color:green"><em>retention function</em><span style="font-size:8pt">A function that maps the insurer portfolio loss into the amount of loss retained by the insurer.</span></a> <span class="math inline">\(g(\cdot)\)</span>. Suppose further that the insurer only cares about the variability of retained claims and is indifferent to the choice of <span class="math inline">\(g\)</span> as long as <span class="math inline">\(\mathrm{Var}(Y_{insurer})\)</span> can be minimized. Again, we impose the constraint that <span class="math inline">\(\mathrm{E}(Y_{insurer}) = K\)</span>; the insurer needs to retain a revenue <span class="math inline">\(K\)</span>. Subject to this revenue constraint, the insurer wishes to minimize uncertainty of the retained risks (as measured by the variance). Then, the following result shows that the stop-loss reinsurance treaty minimizes the reinsurer’s uncertainty as measured by <span class="math inline">\(\mathrm{Var}(Y_{reinsurer})\)</span>.</p>
-<p><strong>Proposition</strong>. Suppose that <span class="math inline">\(\mathrm{E}(Y_{insurer})=K.\)</span> Then, <span class="math inline">\(\mathrm{Var} (X \wedge M) \le \mathrm{Var}[g(X)]\)</span> for all <span class="math inline">\(g(.)\)</span>, where <span class="math inline">\(M\)</span> is such that <span class="math inline">\(\mathrm{E}(X \wedge M)=K\)</span>.</p>
+<p>The stop-loss type of contract is particularly desirable for the insurer. Similar to earlier, suppose that an insurer and reinsurer wish to enter a contract so that <span class="math inline">\(Y_{insurer}=g(X)\)</span> and <span class="math inline">\(Y_{reinsurer}=X-g(X)\)</span> for some generic <a href="#" class="tooltip" style="color:green"><em>retention function</em><span style="font-size:8pt">A function that maps the insurer portfolio loss into the amount of loss retained by the insurer.</span></a> <span class="math inline">\(g(\cdot)\)</span>. Suppose further that the insurer only cares about the variability of retained claims and is indifferent to the choice of <span class="math inline">\(g\)</span> as long as <span class="math inline">\(\mathrm{Var}(Y_{insurer})\)</span> can be minimized. Again, we impose the constraint that <span class="math inline">\(\mathrm{E}(Y_{insurer}) = K\)</span>; the insurer needs to retain a revenue <span class="math inline">\(K\)</span>. Subject to this revenue constraint, the insurer wishes to minimize uncertainty of the retained risks (as measured by the variance). Then, the following result shows that the stop-loss reinsurance treaty minimizes the insurer’s uncertainty.</p>
+<p><strong>Proposition</strong>. Suppose that <span class="math inline">\(\mathrm{E}(Y_{insurer})=K\)</span> and choose <span class="math inline">\(M\)</span> such that <span class="math inline">\(\mathrm{E}(X \wedge M)=K\)</span>. Then, <span class="math inline">\(\mathrm{Var} (X \wedge M) \le \mathrm{Var}[g(X)]\)</span> for all <span class="math inline">\(g(.)\)</span> such that <span class="math inline">\(\mathrm{E}[g(X)]= K\)</span>.</p>
 <h5 style="text-align: center;">
 <a id="displayTheory.ProofStopLoss" href="javascript:toggleTheory('toggleTheory.ProofStopLoss','displayCode.ProofStopLoss');"><i><strong>Show the Justification of the Proposition</strong></i></a>
 </h5>
@@ -2304,8 +2328,211 @@ Total    6351.35 7675.04 9464.20 15159.02</code></pre>
 </div>
 </div>
 </div>
-<div id="Sec:PortfolioFurtherReadings" class="section level2 hasAnchor" number="13.5">
-<h2><span class="header-section-number">13.5</span> Further Resources and Contributors<a href="ChapPortMgt.html#Sec:PortfolioFurtherReadings" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<div id="exercises-6" class="section level2 hasAnchor" number="13.5">
+<h2><span class="header-section-number">13.5</span> Exercises<a href="ChapPortMgt.html#exercises-6" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<div id="theoretical-exercise" class="section level4 unnumbered hasAnchor">
+<h4>Theoretical Exercise<a href="ChapPortMgt.html#theoretical-exercise" class="anchor-section" aria-label="Anchor link to header"></a></h4>
+<p><a id=Exer:13.1></a></p>
+<p><strong>Exercise 13.1.</strong> In this exercise, you will demonstrate that only under specific circumstances can the standard deviation principle <a href="ChapPortMgt.html#eq:SD-principle">(13.7)</a> be considered a coherent risk measure.</p>
+<ul>
+<li><strong>a.</strong> Show that subadditivity, positive homogeneity, and translation invariance, hold for the standard deviation principle.</li>
+<li><strong>b.</strong> Assume that <span class="math inline">\(0 \leq \alpha \leq 1/\sqrt{3}\)</span>. Show that for these values of <span class="math inline">\(\alpha\)</span> that monotonicity holds for standard deviation principle. Thus, for these values of <span class="math inline">\(\alpha\)</span>, the standard deviation principle is coherent.</li>
+<li><strong>c.</strong> For <span class="math inline">\(\alpha &gt; 1/\sqrt{3}\)</span>, show that monotonicity does not hold and so the standard deviation principle can not be considered coherent in general.</li>
+</ul>
+<h5 style="text-align: center;">
+<a id="displayExample.PortMgt.13.1" href="javascript:toggleEX('toggleExample.PortMgt.13.1','displayExample.PortMgt.13.1');"><i><strong>Show Exercise 13.1 Solution</strong></i></a>
+</h5>
+<div id="toggleExample.PortMgt.13.1" style="display: none">
+<p><strong>Verification of the Special Case</strong>. To this end, for a given <span class="math inline">\(\alpha&gt;0\)</span>, we check the four axioms for <span class="math inline">\(H_{\mathrm{SD}}(X+Y)\)</span> one by one:</p>
+<p><strong>a1.</strong> <em>validation of subadditivity:</em></p>
+<p><span class="math display">\[
+\begin{array}{ll}
+  H_{\mathrm{SD}}(X+Y) &amp;=&amp; \mathrm{E}[X+Y]+\alpha \mathrm{SD}(X+Y) \\
+  &amp;\leq&amp; \mathrm{E}[X]+\mathrm{E}[Y]+\alpha [\mathrm{SD}(X) +\mathrm{SD}(Y)]\\
+  &amp;=&amp; H_{\mathrm{SD}}(X)+ H_{\mathrm{SD}}(Y);
+\end{array}
+\]</span></p>
+<p><strong>a2.</strong> <em>validation of positive homogeneity:</em>
+<span class="math display">\[
+H_{\mathrm{SD}}(cX) = c ~\mathrm{E}[X] + c~\alpha~\mathrm{SD}(X)=c~H_{\mathrm{SD}}(X);
+\]</span></p>
+<p><strong>a3.</strong> <em>validation of translation invariance:</em></p>
+<p><span class="math display">\[
+H_{\mathrm{SD}}(X+c)=\mathrm{E}[X]+c+\alpha~\mathrm{SD}(X)=H_{\mathrm{SD}}(X)+c.
+\]</span></p>
+<p><strong>b/c.</strong> <em>validation of monotonicity</em></p>
+<p>It only remains to verify the monotonicity property, which may or may not be satisfied depending on the value of <span class="math inline">\(\alpha\)</span>. To see this, consider again the setup of <a href="ChapPortMgt.html#eq:special-x">(13.8)</a> and <a href="ChapPortMgt.html#eq:special-y">(13.9)</a> in which <span class="math inline">\(\Pr[X\leq Y]=1\)</span>. Let <span class="math inline">\(\alpha=0.1\cdot \sqrt{3}\)</span>, then <span class="math inline">\(H_{\mathrm{SD}}(X)=3+0.3=3.3&lt; H_{\mathrm{SD}}(Y)=4\)</span> and the monotonicity condition is met. On the other hand, let <span class="math inline">\(\alpha=\sqrt{3}\)</span>, then <span class="math inline">\(H_{\mathrm{SD}}(X)=3+3=6&gt; H_{\mathrm{SD}}(Y)=4\)</span> and the monotonicity condition is not satisfied. More precisely, by setting</p>
+<p><span class="math display">\[
+  H_{\mathrm{SD}}(X) = 3+\alpha\sqrt{3} \leq4= H_{\mathrm{SD}}(Y),
+\]</span></p>
+<p>we find that the monotonicity condition is only satisfied for <span class="math inline">\(0\leq\alpha\leq 1/\sqrt{3}\)</span>, and thus the standard deviation principle <span class="math inline">\(H_{\mathrm{SD}}\)</span> is coherent.</p>
+<p>This result appears to be very intuitive since the standard deviation principle <span class="math inline">\(H_{\mathrm{SD}}\)</span> is a linear combination of two risk measures of which one is coherent and the other is incoherent. If <span class="math inline">\(\alpha\leq 1/\sqrt{3}\)</span>, then the coherent measure dominates the incoherent one, thus the resulting measure <span class="math inline">\(H_{\mathrm{SD}}\)</span> is coherent and vice versa. Note that the aforementioned conclusion may not be generalized to any pair of random variables <span class="math inline">\(X\)</span> and <span class="math inline">\(Y\)</span>.</p>
+<hr />
+</div>
+</div>
+<div id="exercises-with-a-practical-focus-1" class="section level4 unnumbered hasAnchor">
+<h4>Exercises with a Practical Focus<a href="ChapPortMgt.html#exercises-with-a-practical-focus-1" class="anchor-section" aria-label="Anchor link to header"></a></h4>
+<p><strong>Exercise 13.2. Property Fund</strong>. Consider commercial property claims from the Wisconsin Property Fund, introduced in Section <a href="ChapIntro.html#S:LGPIF">1.3</a>. This exercise is based on 1,377 claims from 2010 for damages to state government properties and their building contents. You will use these data to estimate an empirical distribution function, without reference to a parametric model.</p>
+<ul>
+<li><strong>a.</strong> Use the empirical distribution function to estimate <span class="math inline">\(VaR\)</span> over several confidence levels. Produce a graph similar to the left-hand panel of Figure <a href="ChapPortMgt.html#fig:Exercise132">13.1</a>.</li>
+<li><strong>b.</strong> Use the empirical distribution function to estimate <span class="math inline">\(ES\)</span> over several confidence levels. Produce a graph similar to the middle panel of Figure <a href="ChapPortMgt.html#fig:Exercise132">13.1</a>.</li>
+<li><strong>c.</strong> Compare the two measures from parts (a) and (b) to produce a graph similar to the right-hand panel of Figure <a href="ChapPortMgt.html#fig:Exercise132">13.1</a>. This comparison shows, for any given level of confidence, that the <span class="math inline">\(ES\)</span> measure far exceeds the <span class="math inline">\(VaR\)</span>.</li>
+</ul>
+
+<div class="figure" style="text-align: center"><span style="display:block;" id="fig:Exercise132"></span>
+<img src="LossDataAnalytics_files/figure-html/Exercise132-1.png" alt="Property Fund VaR and ES Plots. The left-hand panel shows the value at risk \(VaR\) for several confidence levels and the middle panel gives similar information for the expected shortfall (\(ES\)). The confidence level \(\alpha = 0.80\) is marked with a blue dashed vertical line. Note that the vertical axes differ. This is emphasized by direct comparison in the right-hand panel where the 45 degree solid line falls below the empirical values." width="672" />
+<p class="caption">
+Figure 13.1: <strong>Property Fund VaR and ES Plots.</strong> The left-hand panel shows the value at risk <span class="math inline">\(VaR\)</span> for several confidence levels and the middle panel gives similar information for the expected shortfall (<span class="math inline">\(ES\)</span>). The confidence level <span class="math inline">\(\alpha = 0.80\)</span> is marked with a blue dashed vertical line. Note that the vertical axes differ. This is emphasized by direct comparison in the right-hand panel where the 45 degree solid line falls below the empirical values.
+</p>
+</div>
+<h5 style="text-align: center;">
+<a id="displayCode.PortMgt.13.2" href="javascript:togglecode('toggleCode.PortMgt.13.2','displayCode.PortMgt.13.2');"><i><strong>Solutions for Exercise 13.2</strong></i></a>
+</h5>
+<div id="toggleCode.PortMgt.13.2" style="display: none">
+<div class="sourceCode" id="cb201"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb201-1"><a href="ChapPortMgt.html#cb201-1" aria-hidden="true" tabindex="-1"></a>ClaimLev  <span class="ot">&lt;-</span> <span class="fu">read.csv</span>(<span class="st">&quot;Data/CLAIMLEVEL.csv&quot;</span>, <span class="at">header=</span><span class="cn">TRUE</span>)</span>
+<span id="cb201-2"><a href="ChapPortMgt.html#cb201-2" aria-hidden="true" tabindex="-1"></a>ClaimData <span class="ot">&lt;-</span><span class="fu">subset</span>(ClaimLev,Year<span class="sc">==</span><span class="dv">2010</span>);     <span class="co">#2010 subset</span></span>
+<span id="cb201-3"><a href="ChapPortMgt.html#cb201-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb201-4"><a href="ChapPortMgt.html#cb201-4" aria-hidden="true" tabindex="-1"></a>ClaimsBC  <span class="ot">&lt;-</span> ClaimData<span class="sc">$</span>Claim</span>
+<span id="cb201-5"><a href="ChapPortMgt.html#cb201-5" aria-hidden="true" tabindex="-1"></a>prob.seq <span class="ot">=</span> <span class="fu">seq</span>(<span class="fl">0.50</span>, <span class="fl">0.99</span>, <span class="at">by=</span><span class="fl">0.001</span>)</span>
+<span id="cb201-6"><a href="ChapPortMgt.html#cb201-6" aria-hidden="true" tabindex="-1"></a>VaR <span class="ot">=</span> <span class="fu">quantile</span>(ClaimsBC, prob.seq)</span>
+<span id="cb201-7"><a href="ChapPortMgt.html#cb201-7" aria-hidden="true" tabindex="-1"></a>CTE <span class="ot">&lt;-</span> VaR</span>
+<span id="cb201-8"><a href="ChapPortMgt.html#cb201-8" aria-hidden="true" tabindex="-1"></a><span class="cf">for</span> (i <span class="cf">in</span> (<span class="dv">1</span><span class="sc">:</span><span class="fu">length</span>(prob.seq)))</span>
+<span id="cb201-9"><a href="ChapPortMgt.html#cb201-9" aria-hidden="true" tabindex="-1"></a>   {CTE[i] <span class="ot">=</span> <span class="fu">sum</span>(ClaimsBC<span class="sc">*</span>(ClaimsBC<span class="sc">&gt;</span>VaR[i]))<span class="sc">/</span><span class="fu">sum</span>(ClaimsBC<span class="sc">&gt;</span>VaR[i])</span>
+<span id="cb201-10"><a href="ChapPortMgt.html#cb201-10" aria-hidden="true" tabindex="-1"></a>}</span>
+<span id="cb201-11"><a href="ChapPortMgt.html#cb201-11" aria-hidden="true" tabindex="-1"></a><span class="fu">par</span>(<span class="at">mfrow=</span><span class="fu">c</span>(<span class="dv">1</span>, <span class="dv">3</span>))</span>
+<span id="cb201-12"><a href="ChapPortMgt.html#cb201-12" aria-hidden="true" tabindex="-1"></a><span class="fu">options</span>(<span class="at">scipen=</span><span class="dv">10</span>)</span>
+<span id="cb201-13"><a href="ChapPortMgt.html#cb201-13" aria-hidden="true" tabindex="-1"></a><span class="fu">plot</span>(prob.seq, VaR, <span class="at">log =</span> <span class="st">&quot;y&quot;</span>, <span class="at">xlab =</span> <span class="st">&#39;Confidence Level&#39;</span>)</span>
+<span id="cb201-14"><a href="ChapPortMgt.html#cb201-14" aria-hidden="true" tabindex="-1"></a><span class="fu">abline</span>(<span class="at">v =</span> <span class="fl">0.8</span>, <span class="at">col =</span> <span class="st">&quot;blue&quot;</span>, <span class="at">lty =</span> <span class="dv">2</span>)</span>
+<span id="cb201-15"><a href="ChapPortMgt.html#cb201-15" aria-hidden="true" tabindex="-1"></a><span class="fu">plot</span>(prob.seq, CTE, <span class="at">log =</span> <span class="st">&quot;y&quot;</span>, <span class="at">xlab =</span> <span class="st">&#39;Confidence Level&#39;</span>, <span class="at">ylab =</span> <span class="st">&#39;ES&#39;</span>)</span>
+<span id="cb201-16"><a href="ChapPortMgt.html#cb201-16" aria-hidden="true" tabindex="-1"></a><span class="fu">abline</span>(<span class="at">v =</span> <span class="fl">0.8</span>, <span class="at">col =</span> <span class="st">&quot;blue&quot;</span>, <span class="at">lty =</span> <span class="dv">2</span>)</span>
+<span id="cb201-17"><a href="ChapPortMgt.html#cb201-17" aria-hidden="true" tabindex="-1"></a><span class="fu">plot</span>(VaR, CTE, <span class="at">log =</span> <span class="st">&quot;xy&quot;</span>, <span class="at">ylab =</span> <span class="st">&#39;ES&#39;</span>)</span>
+<span id="cb201-18"><a href="ChapPortMgt.html#cb201-18" aria-hidden="true" tabindex="-1"></a><span class="fu">abline</span>(<span class="dv">0</span>,<span class="dv">1</span>)</span></code></pre></div>
+<hr />
+</div>
+<p><strong>Exercise 13.3. Risk Measures with Stop-Loss</strong>. Consider the stop-loss arrangement with retention level <span class="math inline">\(M\)</span> described in Section <a href="ChapPortMgt.html#S:NonProportionalRe">13.4.2</a>.</p>
+<p><strong>a.</strong> Show that the value at risk for the retained portion can be expressed as</p>
+<p><span class="math display">\[
+VaR_{\alpha}[X \wedge M]  =\left\{
+\begin{array}{cl}
+  F^{-1}_{\alpha}  &amp; \text{if } \alpha &lt; F(M) \\
+ M                 &amp; \text{if } \alpha \ge F(M)
+\end{array} \right. ,
+\]</span></p>
+<p>where <span class="math inline">\(F^{-1}_{\alpha}=VaR_{\alpha}(X)\)</span> is a quantile for a random variable <span class="math inline">\(X\)</span>.</p>
+<p><strong>b.</strong> Show that the expected shortfall for the retained portion can be expressed as</p>
+<p><span class="math display">\[
+{\small
+ES_{\alpha}[X \wedge M]=\left\{
+\begin{array}{cl}
+F_{\alpha}^{-1}+\frac{1}{1-\alpha} \left\{ \mathrm{E} (X \wedge M)- \mathrm{E} (X \wedge F_{\alpha}^{-1}) \right\} 
+&amp;  \text{if }  \alpha &lt; F(M)  \\ 
+M &amp; \text{if } \alpha \ge F(M)\\
+\end{array} \right. .
+}
+\]</span></p>
+<p><strong>c.</strong> Let us continue Exercise 13.2 where we examined empirical estimates of the distribution using 1,377 property damage claims. We now impose an upper limit <span class="math inline">\(M\)</span>. A confidence level of <span class="math inline">\(\alpha = 0.99\)</span> is used for this illustration. Provide a plot of the value at risk for retained losses under the stop-loss arrangement versus the upper limit <span class="math inline">\(M\)</span>. The plot should be comparable to the left-hand panel of Figure <a href="ChapPortMgt.html#fig:Exercise133">13.2</a> where a blue dashed vertical line marks the <span class="math inline">\(\widehat{VaR}_{0.99} =\)</span> 236427.</p>
+<p><strong>d</strong>. Provide a plot of the expected shortfall for retained losses under the stop-loss arrangement versus the upper limit <span class="math inline">\(M\)</span>
+The plot should be comparable to the right-hand panel of Figure <a href="ChapPortMgt.html#fig:Exercise133">13.2</a>.</p>
+<p>By displaying the figures side-by-side in Figure <a href="ChapPortMgt.html#fig:Exercise133">13.2</a>, we learn that the <span class="math inline">\(ES\)</span> is smoother at this point when compared to the <span class="math inline">\(VaR\)</span>.</p>
+
+<div class="figure" style="text-align: center"><span style="display:block;" id="fig:Exercise133"></span>
+<img src="LossDataAnalytics_files/figure-html/Exercise133-1.png" alt="Property Fund VaR and ES Plots for Various Upper Limits. The left-hand panel shows the retained risk \(VaR\) over different upper limits and the right-hand panel gives similar information for the expected shortfall (\(ES\)). The blue dashed vertical line marks \(\widehat{VaR}_{\alpha}\)." width="80%" />
+<p class="caption">
+Figure 13.2: <strong>Property Fund VaR and ES Plots for Various Upper Limits.</strong> The left-hand panel shows the retained risk <span class="math inline">\(VaR\)</span> over different upper limits and the right-hand panel gives similar information for the expected shortfall (<span class="math inline">\(ES\)</span>). The blue dashed vertical line marks <span class="math inline">\(\widehat{VaR}_{\alpha}\)</span>.
+</p>
+</div>
+<h5 style="text-align: center;">
+<a id="displayCode.PortMgt.13.3" href="javascript:togglecode('toggleCode.PortMgt.13.3','displayCode.PortMgt.13.3');"><i><strong>Solutions for Exercise 13.3</strong></i></a>
+</h5>
+<div id="toggleCode.PortMgt.13.3" style="display: none">
+<p><strong>a.</strong> The distribution function for the limited random variable <span class="math inline">\(X \wedge M\)</span> is</p>
+<p><span class="math display">\[
+\Pr[X \wedge M \le z ]=F_{X \wedge M}(z) = \left\{
+\begin{array}{cl}
+F(z) &amp;  \text{if }  z &lt; M  \\ 
+1 &amp; \text{if } z \ge M\\
+\end{array} \right. .
+\]</span></p>
+<p>(Draw a graph of this function.) From this, if <span class="math inline">\(\alpha \ge F(M)\)</span>, then <span class="math inline">\(F_{X \wedge M}^{-1}(\alpha) = M\)</span>. In the same way, if <span class="math inline">\(\alpha &lt; F(M)\)</span>, then <span class="math inline">\(F_{X \wedge M}^{-1}(\alpha) = F_{\alpha}^{-1}\)</span>. This is sufficient for part (a).</p>
+<p><strong>b.</strong> From equation <a href="ChapPortMgt.html#eq:ESExpressions">(13.3)</a>, the expected shortfall for retained risks can be expressed as</p>
+<p><span class="math display">\[
+\begin{array}{ll}
+ES_{\alpha}[X \wedge M]
+&amp; = F_{X \wedge M}^{-1}(\alpha) + \frac{1}{1-\alpha} \left\{
+\mathrm{E}[X \wedge M] - \mathrm{E} [X \wedge M \wedge F_{X \wedge M}^{-1}(\alpha)]
+\right\} \\
+&amp;=\left\{
+\begin{array}{cl}
+F^{-1}_{\alpha} + \frac{1}{1-\alpha} \left\{
+\mathrm{E}[X \wedge M] - \mathrm{E} [X \wedge M \wedge F^{-1}_{\alpha}]
+\right\} 
+&amp;  \text{if }  \alpha &lt; F(M)  \\ 
+M + \frac{1}{1-\alpha} \left\{
+\mathrm{E}[X \wedge M] - \mathrm{E} [X \wedge M \wedge M]
+\right\}  &amp; \text{if } \alpha \ge F(M)\\
+\end{array} \right. .\\
+&amp;=\left\{
+\begin{array}{cl}
+F^{-1}_{\alpha} + \frac{1}{1-\alpha} \left\{
+\mathrm{E}[X \wedge M] - \mathrm{E} [X  \wedge F^{-1}_{\alpha}]
+\right\} 
+&amp;  \text{if }  \alpha &lt; F(M)  \\ 
+M   &amp; \text{if } \alpha \ge F(M)\\
+\end{array} \right. ,
+ \end{array}
+\]</span></p>
+<p>as desired.</p>
+<p><strong>c/d.</strong></p>
+<div class="sourceCode" id="cb202"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb202-1"><a href="ChapPortMgt.html#cb202-1" aria-hidden="true" tabindex="-1"></a>ClaimsBC <span class="ot">&lt;-</span> ClaimData<span class="sc">$</span>Claim</span>
+<span id="cb202-2"><a href="ChapPortMgt.html#cb202-2" aria-hidden="true" tabindex="-1"></a>alpha <span class="ot">=</span> <span class="fl">0.99</span></span>
+<span id="cb202-3"><a href="ChapPortMgt.html#cb202-3" aria-hidden="true" tabindex="-1"></a>VaR.alpha <span class="ot">=</span> <span class="fu">quantile</span>(ClaimsBC, alpha)</span>
+<span id="cb202-4"><a href="ChapPortMgt.html#cb202-4" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb202-5"><a href="ChapPortMgt.html#cb202-5" aria-hidden="true" tabindex="-1"></a>maxClaim <span class="ot">&lt;-</span> <span class="fu">max</span>(ClaimsBC)</span>
+<span id="cb202-6"><a href="ChapPortMgt.html#cb202-6" aria-hidden="true" tabindex="-1"></a>sortClaims <span class="ot">&lt;-</span> <span class="fu">sort</span>(ClaimsBC, <span class="at">decreasing =</span> <span class="cn">TRUE</span>)</span>
+<span id="cb202-7"><a href="ChapPortMgt.html#cb202-7" aria-hidden="true" tabindex="-1"></a>maxClaimN <span class="ot">&lt;-</span> sortClaims[<span class="dv">1</span>]</span>
+<span id="cb202-8"><a href="ChapPortMgt.html#cb202-8" aria-hidden="true" tabindex="-1"></a>maxClaimN<span class="fl">.1</span> <span class="ot">&lt;-</span> sortClaims[<span class="dv">2</span>]</span>
+<span id="cb202-9"><a href="ChapPortMgt.html#cb202-9" aria-hidden="true" tabindex="-1"></a>u.seq <span class="ot">=</span> <span class="fu">seq</span>(<span class="fl">0.01</span> <span class="sc">*</span> maxClaimN<span class="fl">.1</span>, <span class="fl">0.25</span> <span class="sc">*</span> maxClaimN<span class="fl">.1</span>, <span class="at">length.out =</span> <span class="dv">110</span>)</span>
+<span id="cb202-10"><a href="ChapPortMgt.html#cb202-10" aria-hidden="true" tabindex="-1"></a>VaR.u <span class="ot">&lt;-</span> <span class="fu">pmin</span>(VaR.alpha, u.seq)</span>
+<span id="cb202-11"><a href="ChapPortMgt.html#cb202-11" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb202-12"><a href="ChapPortMgt.html#cb202-12" aria-hidden="true" tabindex="-1"></a>LEV <span class="ot">&lt;-</span> <span class="fu">mean</span>(<span class="fu">pmin</span>(ClaimsBC, VaR.alpha))</span>
+<span id="cb202-13"><a href="ChapPortMgt.html#cb202-13" aria-hidden="true" tabindex="-1"></a>CTE.u <span class="ot">&lt;-</span> VaR.u</span>
+<span id="cb202-14"><a href="ChapPortMgt.html#cb202-14" aria-hidden="true" tabindex="-1"></a><span class="cf">for</span> (i <span class="cf">in</span> (<span class="dv">1</span><span class="sc">:</span><span class="fu">length</span>(u.seq))) {</span>
+<span id="cb202-15"><a href="ChapPortMgt.html#cb202-15" aria-hidden="true" tabindex="-1"></a>    LEVi <span class="ot">&lt;-</span> <span class="fu">mean</span>(<span class="fu">pmin</span>(ClaimsBC, u.seq[i]))</span>
+<span id="cb202-16"><a href="ChapPortMgt.html#cb202-16" aria-hidden="true" tabindex="-1"></a>    CTE.u[i] <span class="ot">&lt;-</span> ((LEVi <span class="sc">-</span> LEV <span class="sc">+</span> (<span class="dv">1</span> <span class="sc">-</span> alpha) <span class="sc">*</span> VaR.alpha)<span class="sc">/</span>(<span class="dv">1</span> <span class="sc">-</span> alpha)) <span class="sc">*</span> (u.seq[i] <span class="sc">&gt;=</span></span>
+<span id="cb202-17"><a href="ChapPortMgt.html#cb202-17" aria-hidden="true" tabindex="-1"></a>        VaR.alpha) <span class="sc">+</span> u.seq[i] <span class="sc">*</span> (u.seq[i] <span class="sc">&lt;</span> VaR.alpha)</span>
+<span id="cb202-18"><a href="ChapPortMgt.html#cb202-18" aria-hidden="true" tabindex="-1"></a>}</span>
+<span id="cb202-19"><a href="ChapPortMgt.html#cb202-19" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb202-20"><a href="ChapPortMgt.html#cb202-20" aria-hidden="true" tabindex="-1"></a><span class="fu">par</span>(<span class="at">mfrow =</span> <span class="fu">c</span>(<span class="dv">1</span>, <span class="dv">2</span>))</span>
+<span id="cb202-21"><a href="ChapPortMgt.html#cb202-21" aria-hidden="true" tabindex="-1"></a><span class="fu">options</span>(<span class="at">scipen =</span> <span class="dv">10</span>)</span>
+<span id="cb202-22"><a href="ChapPortMgt.html#cb202-22" aria-hidden="true" tabindex="-1"></a><span class="fu">plot</span>(u.seq, VaR.u, <span class="at">xlab =</span> <span class="st">&quot;Upper Limit&quot;</span>, <span class="at">ylab =</span> <span class="st">&quot;VaR&quot;</span>, <span class="at">type =</span> <span class="st">&quot;l&quot;</span>, <span class="at">ylim =</span> <span class="fu">c</span>(<span class="dv">40000</span>,</span>
+<span id="cb202-23"><a href="ChapPortMgt.html#cb202-23" aria-hidden="true" tabindex="-1"></a>    <span class="dv">600000</span>))</span>
+<span id="cb202-24"><a href="ChapPortMgt.html#cb202-24" aria-hidden="true" tabindex="-1"></a><span class="fu">abline</span>(<span class="at">v =</span> VaR.alpha, <span class="at">col =</span> <span class="st">&quot;blue&quot;</span>, <span class="at">lty =</span> <span class="dv">2</span>)</span>
+<span id="cb202-25"><a href="ChapPortMgt.html#cb202-25" aria-hidden="true" tabindex="-1"></a><span class="fu">plot</span>(u.seq, CTE.u, <span class="at">xlab =</span> <span class="st">&quot;Upper Limit&quot;</span>, <span class="at">ylab =</span> <span class="st">&quot;ES&quot;</span>, <span class="at">type =</span> <span class="st">&quot;l&quot;</span>, <span class="at">ylim =</span> <span class="fu">c</span>(<span class="dv">40000</span>,</span>
+<span id="cb202-26"><a href="ChapPortMgt.html#cb202-26" aria-hidden="true" tabindex="-1"></a>    <span class="dv">600000</span>))</span>
+<span id="cb202-27"><a href="ChapPortMgt.html#cb202-27" aria-hidden="true" tabindex="-1"></a><span class="fu">abline</span>(<span class="at">v =</span> VaR.alpha, <span class="at">col =</span> <span class="st">&quot;blue&quot;</span>, <span class="at">lty =</span> <span class="dv">2</span>)</span></code></pre></div>
+<hr />
+</div>
+<div id="surveyElement13A4">
+
+</div>
+<div id="surveyResult13A4">
+
+</div>
+<h5 style="text-align: center;">
+<a id="display.Quiz13A4.1" href="javascript:toggleQuiz
+('display.Quiz13A4.2','display.Quiz13A4.1');"><i><strong>Show Quiz Solution</strong></i></a>
+</h5>
+<div id="display.Quiz13A4.2" style="display: none">
+<p id="Quiz13A4Soln">
+</p>
+<hr />
+</div>
+<script type="text/javascript" src="./Quizzes/QuizJavascript/Quiz13A4.js">
+</script>
+</div>
+</div>
+<div id="Sec:PortfolioFurtherReadings" class="section level2 hasAnchor" number="13.6">
+<h2><span class="header-section-number">13.6</span> Further Resources and Contributors<a href="ChapPortMgt.html#Sec:PortfolioFurtherReadings" class="anchor-section" aria-label="Anchor link to header"></a></h2>
 <p>We refer the interested reader to <span class="citation"><a href="#ref-denuit2006actuarial" role="doc-biblioref">Denuit et al.</a> (<a href="#ref-denuit2006actuarial" role="doc-biblioref">2006</a>)</span> and <span class="citation"><a href="#ref-hardy2006" role="doc-biblioref">Hardy</a> (<a href="#ref-hardy2006" role="doc-biblioref">2006</a>)</span> for more comprehensive discussions of alternative risk measures for both discrete and continuous random variables. Note, however, that the definition in <span class="citation"><a href="#ref-denuit2006actuarial" role="doc-biblioref">Denuit et al.</a> (<a href="#ref-denuit2006actuarial" role="doc-biblioref">2006</a>)</span> of “expected shortfall” differs from the one in this text. We use the definition of expected shortfall from <span class="citation"><a href="#ref-Wang2022" role="doc-biblioref">Wang and Zitikis</a> (<a href="#ref-Wang2022" role="doc-biblioref">2022</a>)</span>.</p>
 <p>As summarized in <span class="citation"><a href="#ref-Wang2022" role="doc-biblioref">Wang and Zitikis</a> (<a href="#ref-Wang2022" role="doc-biblioref">2022</a>)</span>, both <span class="math inline">\(VaR\)</span> and <span class="math inline">\(ES\)</span> have solid axiomatic foundations and “appear in the banking regulation frameworks of Basel III/IV, as well as in the insurance regulation frameworks of Solvency II and the Swiss Solvency Test.” In addition to the coherence properties introduced in Section <a href="ChapPortMgt.html#Sec:CoherentRiskMeasure">13.3.3</a>, this paper introduces economic axioms to motivate the use of <span class="math inline">\(ES\)</span>. Thus, their usefulness in determining adequate solvency for banks and insurers motivates our emphasis in Section <a href="ChapPortMgt.html#S:RiskMeasure">13.3</a> of these measures.</p>
 <p>Concepts of pricing individual risks were introduced in Chapter <a href="ChapPremiumFoundations.html#ChapPremiumFoundations">10</a>. For a comprehensive treatment of pricing portfolios, we refer to <span class="citation"><a href="#ref-Mildenhall2022" role="doc-biblioref">Mildenhall and Major</a> (<a href="#ref-Mildenhall2022" role="doc-biblioref">2022</a>)</span>.</p>
@@ -2318,40 +2545,6 @@ Total    6351.35 7675.04 9464.20 15159.02</code></pre>
 </ul></li>
 <li><strong>Edward (Jed) Frees</strong>, University of Wisconsin-Madison and Australian National University, is the author of the second edition of this chapter. Email: <a href="mailto:jfrees@bus.wisc.edu" class="email">jfrees@bus.wisc.edu</a> for chapter comments and suggested improvements.</li>
 </ul>
-</div>
-<div id="exercises-6" class="section level2 hasAnchor" number="13.6">
-<h2><span class="header-section-number">13.6</span> Exercises<a href="ChapPortMgt.html#exercises-6" class="anchor-section" aria-label="Anchor link to header"></a></h2>
-<p><strong>Special Case. The Standard Deviation Principle <a href="ChapPortMgt.html#eq:SD-principle">(13.7)</a> is a Coherent Risk Measure.</strong></p>
-<h5 style="text-align: center;">
-<a id="displayExample.PortMgt.3.2" href="javascript:toggleEX('toggleExample.PortMgt.3.2','displayExample.PortMgt.3.2');"><i><strong>Show Verification of the Special Case</strong></i></a>
-</h5>
-<div id="toggleExample.PortMgt.3.2" style="display: none">
-<p><strong>Verification of the Special Case</strong>. To this end, for a given <span class="math inline">\(\alpha&gt;0\)</span>, we check the four axioms for <span class="math inline">\(H_{\mathrm{SD}}(X+Y)\)</span> one by one:</p>
-<ul>
-<li>validation of <em>subadditivity:</em></li>
-</ul>
-<p><span class="math display">\[\begin{eqnarray*}
-  H_{\mathrm{SD}}(X+Y) &amp;=&amp; \mathrm{E}[X+Y]+\alpha \mathrm{SD}(X+Y) \\
-  &amp;\leq&amp; \mathrm{E}[X]+\mathrm{E}[Y]+\alpha [\mathrm{SD}(X) +\mathrm{SD}(Y)]\\
-  &amp;=&amp; H_{\mathrm{SD}}(X)+ H_{\mathrm{SD}}(Y);
-\end{eqnarray*}\]</span></p>
-<ul>
-<li>validation of <em>positive homogeneity:</em>
-<span class="math display">\[
-H_{\mathrm{SD}}(cX)=c\mathrm{E}[X]+c\alpha\mathrm{SD}(X)=cH_{\mathrm{SD}}(X);
-\]</span></li>
-<li>validation of <em>translation invariance:</em>
-<span class="math display">\[
-H_{\mathrm{SD}}(X+c)=\mathrm{E}[X]+c+\alpha\mathrm{SD}(X)=H_{\mathrm{SD}}(X)+c.
-\]</span></li>
-</ul>
-<p>It only remains to verify the monotonicity property, which may or may not be satisfied depending on the value of <span class="math inline">\(\alpha\)</span>. To see this, consider again the setup of <a href="ChapPortMgt.html#eq:special-x">(13.8)</a> and <a href="ChapPortMgt.html#eq:special-y">(13.9)</a> in which <span class="math inline">\(\Pr[X\leq Y]=1\)</span>. Let <span class="math inline">\(\alpha=0.1\cdot \sqrt{3}\)</span>, then <span class="math inline">\(H_{\mathrm{SD}}(X)=3+0.3=3.3&lt; H_{\mathrm{SD}}(Y)=4\)</span> and the monotonicity condition is met. On the other hand, let <span class="math inline">\(\alpha=\sqrt{3}\)</span>, then <span class="math inline">\(H_{\mathrm{SD}}(X)=3+3=6&gt; H_{\mathrm{SD}}(Y)=4\)</span> and the monotonicity condition is not satisfied. More precisely, by setting</p>
-<p><span class="math display">\[
-  H_{\mathrm{SD}}(X) = 3+\alpha\sqrt{3} \leq4= H_{\mathrm{SD}}(Y),
-\]</span></p>
-<p>we find that the monotonicity condition is only satisfied for <span class="math inline">\(0\leq\alpha\leq 1/\sqrt{3}\)</span>, and thus the standard deviation principle <span class="math inline">\(H_{\mathrm{SD}}\)</span> is coherent. This result appears to be very intuitive to us since the standard deviation principle <span class="math inline">\(H_{\mathrm{SD}}\)</span> is a linear combination of two risk measures of which one is coherent and the other is incoherent. If <span class="math inline">\(\alpha\leq 1/\sqrt{3}\)</span>, then the coherent measure dominates the incoherent one, thus the resulting measure <span class="math inline">\(H_{\mathrm{SD}}\)</span> is coherent and vice versa. Note that the aforementioned conclusion may not be generalized to any pair of random variables <span class="math inline">\(X\)</span> and <span class="math inline">\(Y\)</span>.</p>
-</div>
-<hr />
 <script type="text/javascript">
 function togglecode(id1,id2) {
    var ele = document.getElementById(id1); var text = document.getElementById(id2);

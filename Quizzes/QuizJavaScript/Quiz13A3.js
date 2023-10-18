@@ -67,16 +67,16 @@ correctAnswer: "It does not provide a practically meaningful interpretation"
 {questions: [{type: "radiogroup",
 name: "<b>Question 5</b>",
 choicesOrder: "random",
-title: `Which of the following is the definition of $TVaR\\_q$?`,
+title: `Which of the following is the definition of $ES$?`,
 cellType: "html",
 choices: [
 "It is the variance of the loss scaled by a factor of $q$",
 "It is a measure of the tail length of the distribution",
 "It is the maximum probable loss occurring $q\\times 100$ perent of times",
-"It is the expected value of the probable loss occurring beyond the $q\\times 100$ percent chance worst scenario",
+"It is the average value of value at risks with confidence levels exceeding a fixed $q$",
 "It is a measure of the skewness of the distribution"
 ],
-correctAnswer: "It is the expected value of the probable loss occurring beyond the $q\\times 100$ percent chance worst scenario"
+correctAnswer: "It is the average value of value at risks with confidence levels exceeding a fixed $q$"
 }]}
 ],
 completedHtml: 
@@ -90,17 +90,17 @@ json = Object.assign(json, jsonHeader);
 let jsonSum = jsonSummary5EWF(json);
 // Use "5" for five questions, "4" for four questions, and so on...
 
-document.getElementById("Quiz102Soln").innerHTML = jsonSum.completedHtml; 
+document.getElementById("Quiz13A3Soln").innerHTML = jsonSum.completedHtml; 
 window.survey = new Survey.Model(json);
 survey
     .onComplete
     .add(function (result) {
         document
-            .querySelector('#surveyResult102');
+            .querySelector('#surveyResult13A3');
            // .innerHTML = "Result" + JSON.stringify(result.data);
     });
 markdownConverterEWF();
-$("#surveyElement102").Survey({model: survey});
+$("#surveyElement13A3").Survey({model: survey});
 }  // ends init() function
 if (!window["%hammerhead%"]) {
 init(); 

@@ -967,8 +967,8 @@ div.csl-indent {
 <li class="chapter" data-level="13.4.2" data-path="ChapPortMgt.html"><a href="ChapPortMgt.html#S:NonProportionalRe"><i class="fa fa-check"></i><b>13.4.2</b> Non-Proportional Reinsurance</a></li>
 <li class="chapter" data-level="13.4.3" data-path="ChapPortMgt.html"><a href="ChapPortMgt.html#S:AdditionalRe"><i class="fa fa-check"></i><b>13.4.3</b> Additional Reinsurance Treaties</a></li>
 </ul></li>
-<li class="chapter" data-level="13.5" data-path="ChapPortMgt.html"><a href="ChapPortMgt.html#Sec:PortfolioFurtherReadings"><i class="fa fa-check"></i><b>13.5</b> Further Resources and Contributors</a></li>
-<li class="chapter" data-level="13.6" data-path="ChapPortMgt.html"><a href="ChapPortMgt.html#exercises-6"><i class="fa fa-check"></i><b>13.6</b> Exercises</a></li>
+<li class="chapter" data-level="13.5" data-path="ChapPortMgt.html"><a href="ChapPortMgt.html#exercises-6"><i class="fa fa-check"></i><b>13.5</b> Exercises</a></li>
+<li class="chapter" data-level="13.6" data-path="ChapPortMgt.html"><a href="ChapPortMgt.html#Sec:PortfolioFurtherReadings"><i class="fa fa-check"></i><b>13.6</b> Further Resources and Contributors</a></li>
 </ul></li>
 <li class="chapter" data-level="14" data-path="ChapLossReserves.html"><a href="ChapLossReserves.html"><i class="fa fa-check"></i><b>14</b> Loss Reserving</a>
 <ul>
@@ -2601,6 +2601,7 @@ and
 <p>Since the mean of the lognormal distribution cannot be negative, we should replace the negative lower limit in the previous interval by a zero.</p>
 </div>
 <hr />
+<p><a id=Ex:44.12></a></p>
 <p><strong>Example 4.4.12. Wisconsin Property Fund.</strong> To see how maximum likelihood estimators work with real data, we return to the 2010 claims data introduced in Section <a href="ChapIntro.html#S:LGPIF">1.3</a>.</p>
 <p>The following snippet of code shows how to fit the exponential, gamma, Pareto, lognormal, and <span class="math inline">\(GB2\)</span> models. For consistency, the code employs the <code>R</code> package <code>VGAM</code>. The acronym stands for <em>Vector Generalized Linear and Additive Models</em>; as suggested by the name, this package can do far more than fit these models although it suffices for our purposes. The one exception is the <span class="math inline">\(GB2\)</span> density which is not widely used outside of insurance applications; however, we can code this density and compute maximum likelihood estimators using the <code>optim</code> general purpose optimizer.</p>
 <h5 style="text-align: center;">
@@ -2758,7 +2759,7 @@ Figure 4.9: <strong>Density Comparisons for the Wisconsin Property Fund</strong>
 <span id="cb60-6"><a href="ChapSeverity.html#cb60-6" aria-hidden="true" tabindex="-1"></a><span class="fu">lines</span>(y, fpareto_ex, <span class="at">col =</span> <span class="st">&quot;purple&quot;</span>, <span class="at">lty =</span> <span class="dv">7</span>)</span></code></pre></div>
 <p><img src="LossDataAnalytics_files/figure-html/unnamed-chunk-57-1.png" width="672" style="display: block; margin: auto;" /></p>
 </div>
-<p><strong>Exercise 4.2. Wisconsin Property Fund.</strong> Replicate the real-data example introduced in [Example 4.4.12] using the techniques demonstrated in Exercise 4.1.</p>
+<p><strong>Exercise 4.2. Wisconsin Property Fund.</strong> Replicate the real-data example introduced in <a href="../docs/ChapSeverity.html#Ex:44.12">Example 4.4.12</a> using the techniques demonstrated in Exercise 4.1.</p>
 <p><strong>Exercise 4.3. Group Personal Accident.</strong> This exercise is based on the data set introduced in <a href="../docs/ChapIntro.html#Exer:1.2">Exercise 1.2</a>. We use incurred claims for all available years, still omitting those less than 10.</p>
 <p>One can fit a distribution to the losses. An analysis, summarized in Figure <a href="ChapSeverity.html#fig:GPALossFit43">4.10</a>, shows the results from fitting via maximum likelihood the gamma, Pareto, and lognormal distributions to incurred losses. This figure suggests that the lognormal distribution appears to be the best fit.</p>
 <p>Following the outlines in Exercises 4.1 and 4.2, fit these data via maximum likelihood and reproduce the figure that summarizes the results.</p>

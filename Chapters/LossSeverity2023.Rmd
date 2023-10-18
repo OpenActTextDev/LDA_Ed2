@@ -1758,7 +1758,9 @@ Since the mean of the lognormal distribution cannot be negative, we should repla
 
 *** 
 
+<a id=Ex:44.12></a>  
 
+[Example 4.4.12]: ../docs/ChapSeverity.html#Ex:44.12
 
 **Example 4.4.12. Wisconsin Property Fund.** To see how maximum likelihood estimators work with real data, we return to the 2010 claims data introduced in Section \@ref(S:LGPIF). 
 

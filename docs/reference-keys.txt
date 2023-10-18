@@ -143,6 +143,8 @@ eq:var-pareto
 eq:SD-principle
 eq:special-x
 eq:special-y
+fig:Exercise132
+fig:Exercise133
 fig:tikz-run-off
 fig:tikz-closed
 fig:tikz-RBNS
@@ -158,8 +160,8 @@ fig:tikz-cum-triangle-cl3
 fig:tikz-cum-triangle-cl3b
 fig:tikz-cum-triangle-cl4
 fig:tikz-cum-triangle-cl5
-fig:unnamed-chunk-119
-fig:unnamed-chunk-120
+fig:unnamed-chunk-123
+fig:unnamed-chunk-124
 fig:TransitionSwitz
 fig:PremEvolution
 fig:Scatter
@@ -186,8 +188,8 @@ eq:LawIterExp
 eq:LawTotVar
 eq:AppBEV1
 eq:AppBVE2
-tab:unnamed-chunk-197
-tab:unnamed-chunk-198
+tab:unnamed-chunk-201
+tab:unnamed-chunk-202
 tab:DescribeTravel
 tab:PrintNumTravel
 tab:DescribeGPA
@@ -480,8 +482,8 @@ S:AdditionalRe
 surplus-share-proportional-treaty
 layers-of-coverage
 S:PortMgtExample
-Sec:PortfolioFurtherReadings
 exercises-6
+Sec:PortfolioFurtherReadings
 ChapLossReserves
 S:motivation
 S:claim-types

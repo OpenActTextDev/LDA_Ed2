@@ -11,20 +11,6 @@ html:
 {questions: [{type: "radiogroup",
 name: "<b>Question 1</b>",
 choicesOrder: "random",
-title: `The generalised price setting can be described as:`,
-cellType: "html",
-choices: [
-"To maximise profitability of the insurer",
-"To lower the premium for policyholders",
-"To manage risk (especially due to large losses) adequately",
-"To enhance actuarial modeling efficiency",
-"All choices are correct"
-],
-correctAnswer: "To manage risk (especially due to large losses) adequately" 
-}]}, 
-{questions: [{type: "radiogroup",
-name: "<b>Question 2</b>",
-choicesOrder: "random",
 title: `Which of the following describes a "heavy tailed distribution"?`,
 cellType: "html",
 choices: [
@@ -37,18 +23,32 @@ choices: [
 correctAnswer: "A distribution which assigns high probabilities to large values of a random variable"
 }]}, 
 {questions: [{type: "radiogroup",
-name: "<b>Question 3</b>",
+name: "<b>Question 2</b>",
 choicesOrder: "random",
 title: `Which of the following is not a limitation of the moment-based method?`,
 cellType: "html",
 choices: [
 "The $k$-th raw moment of some distributions can be challenging or impossible to derive",
-"It does not well comply with main body of the well established heavy tail theory in the literature, and in some cases different results regarding the tail weight can be obtained",
+"It does not well comply with main body of the well established heavy tail theory in the literature",
 "The results from the moment-based method are usually not intuitive",
 "The comparison of tail weights between two light tailed distributions is not informative",
 "Moment generating functions cannot always be used to calculate moments for tail weight assessment"
 ],
 correctAnswer: "The results from the moment-based method are usually not intuitive"
+}]},
+{questions: [{type: "radiogroup",
+name: "<b>Question 3</b>",
+choicesOrder: "random",
+title: `Which of the following is true of comparisons based on limiting tail behavior?`,
+cellType: "html",
+choices: [
+"The comparison is based on the asymptotic value of the ratio of survival curves",
+"The comparison is based on the asymptotic value of the ratio of conditional means",
+"The comparison is based on the asymptotic value of the ratio of cumulative distribution functions",
+"The comparison is based on the asymptotic value of the ratio of variances",
+"All choices are correct"
+],
+correctAnswer: "The comparison is based on the asymptotic value of the ratio of survival curves" 
 }]}
 ],
 completedHtml: 
@@ -62,17 +62,17 @@ json = Object.assign(json, jsonHeader);
 let jsonSum = jsonSummary3EWF(json);
 // Use "5" for five questions, "4" for four questions, and so on...
 
-document.getElementById("Quiz101Soln").innerHTML = jsonSum.completedHtml; 
+document.getElementById("Quiz13A2Soln").innerHTML = jsonSum.completedHtml; 
 window.survey = new Survey.Model(json);
 survey
     .onComplete
     .add(function (result) {
         document
-            .querySelector('#surveyResult101');
+            .querySelector('#surveyResult13A2');
            // .innerHTML = "Result" + JSON.stringify(result.data);
     });
 markdownConverterEWF();
-$("#surveyElement101").Survey({model: survey});
+$("#surveyElement13A2").Survey({model: survey});
 }  // ends init() function
 if (!window["%hammerhead%"]) {
 init(); 
