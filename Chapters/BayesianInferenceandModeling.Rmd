@@ -330,7 +330,7 @@ Then,
 
 ### An Introductory Example of Bayes' Rule
 
-The example above illustrates how to use Bayes' rule in an academic context; the focus of this book is, nonetheless, data analytics. We therefore also wish to illustrate Bayes' rule by using *real* data. In this introductory example, we use the Singapore auto data `sgautonb` of the R package `CASdatasets` that was already used in Chapter \@ref(ChapFrequency-Modeling) (see also Section \@ref(S:data-CASdatasets) for more details).
+The example above illustrates how to use Bayes' rule in an academic context; the focus of this book is, nonetheless, data analytics. We therefore also wish to illustrate Bayes' rule by using *real* data. In this introductory example, we use the Singapore auto data `sgautonb` of the R package `CASdatasets` that was already used in Chapter \@ref(ChapFrequency-Modeling).
 
 ```{r ChBayesLoadSingaporeData, echo = TRUE, eval = TRUE}
 library('CASdatasets')
