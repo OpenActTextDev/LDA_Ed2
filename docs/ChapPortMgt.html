@@ -804,10 +804,7 @@ div.csl-indent {
 <li class="chapter" data-level="8.3.3" data-path="ChapSimulation.html"><a href="ChapSimulation.html#cross-validation-and-bootstrap"><i class="fa fa-check"></i><b>8.3.3</b> Cross-Validation and Bootstrap</a></li>
 </ul></li>
 <li class="chapter" data-level="8.4" data-path="ChapSimulation.html"><a href="ChapSimulation.html#S:ImportanceSampling"><i class="fa fa-check"></i><b>8.4</b> Importance Sampling</a></li>
-<li class="chapter" data-level="8.5" data-path="ChapSimulation.html"><a href="ChapSimulation.html#Simulation:further-reading-and-resources"><i class="fa fa-check"></i><b>8.5</b> Further Resources and Contributors</a>
-<ul>
-<li class="chapter" data-level="8.5.1" data-path="ChapSimulation.html"><a href="ChapSimulation.html#ts-7.a.-bootstrap-applications-in-predictive-modeling"><i class="fa fa-check"></i><b>8.5.1</b> TS 7.A. Bootstrap Applications in Predictive Modeling</a></li>
-</ul></li>
+<li class="chapter" data-level="8.5" data-path="ChapSimulation.html"><a href="ChapSimulation.html#Simulation:further-reading-and-resources"><i class="fa fa-check"></i><b>8.5</b> Further Resources and Contributors</a></li>
 </ul></li>
 <li class="chapter" data-level="9" data-path="ChBayes.html"><a href="ChBayes.html"><i class="fa fa-check"></i><b>9</b> Bayesian Inference and Modeling</a>
 <ul>
@@ -1850,7 +1847,7 @@ Y_{insurer} = c X \ \ \text{and} \ \ \ Y_{reinsurer} = (1-c) X,
 where <span class="math inline">\(c\in (0,1)\)</span> denotes the proportion retained by the insurer.
 Note that <span class="math inline">\(Y_{insurer}+Y_{reinsurer}=X\)</span>.</p>
 <p><strong>Example 13.4.1. Distribution of losses under quota share.</strong> To develop an intuition for the effect of quota-share agreement on the distribution of losses, the following is a short <code>R</code> demonstration using simulation. The accompanying figure provides the relative shapes of the distributions of total losses, the retained portion (of the insurer), and the reinsurer’s portion.</p>
-<p><img src="LossDataAnalytics_files/figure-html/unnamed-chunk-106-1.png" width="960" style="display: block; margin: auto;" /></p>
+<p><img src="LossDataAnalytics_files/figure-html/unnamed-chunk-155-1.png" width="960" style="display: block; margin: auto;" /></p>
 <h5 style="text-align: center;">
 <a id="displayCode.QuotaShare" href="javascript:togglecode('toggleCode.QuotaShare','displayCode.QuotaShare');"><i><strong>Show the R Code</strong></i></a>
 </h5>
@@ -1976,7 +1973,7 @@ K &amp;= \sum_{i=1}^3 c_i \mathrm{E}(X_i) \\
 <span id="cb185-31"><a href="ChapPortMgt.html#cb185-31" aria-hidden="true" tabindex="-1"></a><span class="fu">text</span>(<span class="dv">1200</span>, <span class="fl">0.8</span>, <span class="fu">expression</span>(c[<span class="dv">1</span>]))</span>
 <span id="cb185-32"><a href="ChapPortMgt.html#cb185-32" aria-hidden="true" tabindex="-1"></a><span class="fu">text</span>(<span class="dv">2000</span>, <span class="fl">0.75</span>, <span class="fu">expression</span>(c[<span class="dv">2</span>]))</span>
 <span id="cb185-33"><a href="ChapPortMgt.html#cb185-33" aria-hidden="true" tabindex="-1"></a><span class="fu">text</span>(<span class="dv">1500</span>, <span class="fl">0.3</span>, <span class="fu">expression</span>(c[<span class="dv">3</span>]))</span></code></pre></div>
-<p><img src="LossDataAnalytics_files/figure-html/unnamed-chunk-108-1.png" width="768" style="display: block; margin: auto;" /></p>
+<p><img src="LossDataAnalytics_files/figure-html/unnamed-chunk-157-1.png" width="768" style="display: block; margin: auto;" /></p>
 </div>
 </div>
 </div>
@@ -2156,7 +2153,7 @@ and</p>
 <span id="cb193-12"><a href="ChapPortMgt.html#cb193-12" aria-hidden="true" tabindex="-1"></a><span class="fu">plot</span>(<span class="fu">density</span>(YTotal), <span class="at">xlim =</span> <span class="fu">c</span>(<span class="dv">0</span>, <span class="dv">10000</span>), <span class="at">main =</span> <span class="st">&quot;Total Loss&quot;</span>, <span class="at">xlab =</span> <span class="st">&quot;Losses&quot;</span>)</span>
 <span id="cb193-13"><a href="ChapPortMgt.html#cb193-13" aria-hidden="true" tabindex="-1"></a><span class="fu">plot</span>(<span class="fu">density</span>(Yinsur), <span class="at">xlim =</span> <span class="fu">c</span>(<span class="dv">0</span>, <span class="dv">10000</span>), <span class="at">main =</span> <span class="st">&quot;Insurer&quot;</span>, <span class="at">xlab =</span> <span class="st">&quot;Losses&quot;</span>)</span>
 <span id="cb193-14"><a href="ChapPortMgt.html#cb193-14" aria-hidden="true" tabindex="-1"></a><span class="fu">plot</span>(<span class="fu">density</span>(Yreinsur), <span class="at">xlim =</span> <span class="fu">c</span>(<span class="dv">0</span>, <span class="dv">10000</span>), <span class="at">main =</span> <span class="st">&quot;Reinsurer&quot;</span>, <span class="at">xlab =</span> <span class="st">&quot;Losses&quot;</span>)</span></code></pre></div>
-<p><img src="LossDataAnalytics_files/figure-html/unnamed-chunk-111-1.png" width="768" style="display: block; margin: auto;" /></p>
+<p><img src="LossDataAnalytics_files/figure-html/unnamed-chunk-160-1.png" width="768" style="display: block; margin: auto;" /></p>
 </div>
 <hr />
 </div>
@@ -2323,7 +2320,7 @@ Total    6351.35 7675.04 9464.20 15159.02</code></pre>
 <span id="cb200-3"><a href="ChapPortMgt.html#cb200-3" aria-hidden="true" tabindex="-1"></a>    <span class="at">ylab =</span> <span class="st">&quot;Density (Note different vertical scale)&quot;</span>)</span>
 <span id="cb200-4"><a href="ChapPortMgt.html#cb200-4" aria-hidden="true" tabindex="-1"></a><span class="fu">plot</span>(<span class="fu">density</span>(Yinsurer), <span class="at">xlim =</span> <span class="fu">c</span>(<span class="dv">0</span>, <span class="dv">15000</span>), <span class="at">main =</span> <span class="st">&quot;Insurer Portfolio Risk&quot;</span>, <span class="at">xlab =</span> <span class="st">&quot;Loss&quot;</span>)</span>
 <span id="cb200-5"><a href="ChapPortMgt.html#cb200-5" aria-hidden="true" tabindex="-1"></a><span class="fu">plot</span>(<span class="fu">density</span>(X), <span class="at">xlim =</span> <span class="fu">c</span>(<span class="dv">0</span>, <span class="dv">15000</span>), <span class="at">main =</span> <span class="st">&quot;Total Portfolio Risk&quot;</span>, <span class="at">xlab =</span> <span class="st">&quot;Loss&quot;</span>)</span></code></pre></div>
-<p><img src="LossDataAnalytics_files/figure-html/unnamed-chunk-117-1.png" width="768" style="display: block; margin: auto;" /></p>
+<p><img src="LossDataAnalytics_files/figure-html/unnamed-chunk-166-1.png" width="768" style="display: block; margin: auto;" /></p>
 </div>
 </div>
 </div>

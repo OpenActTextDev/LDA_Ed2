@@ -804,10 +804,7 @@ div.csl-indent {
 <li class="chapter" data-level="8.3.3" data-path="ChapSimulation.html"><a href="ChapSimulation.html#cross-validation-and-bootstrap"><i class="fa fa-check"></i><b>8.3.3</b> Cross-Validation and Bootstrap</a></li>
 </ul></li>
 <li class="chapter" data-level="8.4" data-path="ChapSimulation.html"><a href="ChapSimulation.html#S:ImportanceSampling"><i class="fa fa-check"></i><b>8.4</b> Importance Sampling</a></li>
-<li class="chapter" data-level="8.5" data-path="ChapSimulation.html"><a href="ChapSimulation.html#Simulation:further-reading-and-resources"><i class="fa fa-check"></i><b>8.5</b> Further Resources and Contributors</a>
-<ul>
-<li class="chapter" data-level="8.5.1" data-path="ChapSimulation.html"><a href="ChapSimulation.html#ts-7.a.-bootstrap-applications-in-predictive-modeling"><i class="fa fa-check"></i><b>8.5.1</b> TS 7.A. Bootstrap Applications in Predictive Modeling</a></li>
-</ul></li>
+<li class="chapter" data-level="8.5" data-path="ChapSimulation.html"><a href="ChapSimulation.html#Simulation:further-reading-and-resources"><i class="fa fa-check"></i><b>8.5</b> Further Resources and Contributors</a></li>
 </ul></li>
 <li class="chapter" data-level="9" data-path="ChBayes.html"><a href="ChBayes.html"><i class="fa fa-check"></i><b>9</b> Bayesian Inference and Modeling</a>
 <ul>
@@ -1200,8 +1197,7 @@ div.csl-indent {
 <div id="ChapSimulation" class="section level1 hasAnchor" number="8">
 <h1><span class="header-section-number">Chapter 8</span> Simulation and Resampling<a href="ChapSimulation.html#ChapSimulation" class="anchor-section" aria-label="Anchor link to header"></a></h1>
 <p><em>Chapter Preview.</em> Simulation is a computationally intensive method used to solve difficult problems. Instead of creating physical processes and experimenting with them in order to understand their operational characteristics, a simulation study is based on a computer representation - it considers various hypothetical conditions as inputs and summarizes the results. Through simulation, a vast number of hypothetical conditions can be quickly and inexpensively examined. Section <a href="ChapSimulation.html#S:SimulationFundamentals">8.1</a> introduces simulation, a wonderful computational tool that is especially useful in complex, multivariate settings.</p>
-<p>We can also use simulation to draw from an empirical distribution - this process is known as resampling. Resampling allows us to assess the uncertainty of estimates in complex models. Section <a href="ChapSimulation.html#S:Bootstrap">8.2</a> introduces resampling in the context of bootstrapping to determine the precision of estimators.</p>
-<p>Subsequent sections introduce other topics in resampling. Section <a href="ChapSimulation.html#S:CrossValidation">8.3</a> on cross-validation shows how to use it for model selection and validation. Section <a href="ChapSimulation.html#S:ImportanceSampling">8.4</a> on importance sampling describes resampling in specific regions of interest, such as long-tailed actuarial applications. Section <a href="#S:MCMC"><strong>??</strong></a> on Monte Carlo Markov Chain (MCMC) introduces the simulation and resampling engine underpinning much of modern Bayesian analysis.</p>
+<p>We can also use simulation to draw from an empirical distribution - this process is known as <em>resampling</em>. Resampling allows us to assess the uncertainty of estimates in complex models. Section <a href="ChapSimulation.html#S:Bootstrap">8.2</a> introduces resampling in the context of bootstrapping to determine the precision of estimators. Section <a href="ChapSimulation.html#S:CrossValidation">8.3</a> on cross-validation shows how to use it for model selection and validation. Section <a href="ChapSimulation.html#S:ImportanceSampling">8.4</a> on importance sampling describes resampling in specific regions of interest, such as long-tailed actuarial applications.</p>
 <div id="S:SimulationFundamentals" class="section level2 hasAnchor" number="8.1">
 <h2><span class="header-section-number">8.1</span> Simulation Fundamentals<a href="ChapSimulation.html#S:SimulationFundamentals" class="anchor-section" aria-label="Anchor link to header"></a></h2>
 <hr />
@@ -1213,7 +1209,6 @@ from a probability distribution of interest</li>
 <li>Calculate quantities of interest and determine the precision of the calculated quantities</li>
 </ul>
 <hr />
-<!-- ## Simulation Fundamentals -->
 <div id="generating-independent-uniform-observations" class="section level3 hasAnchor" number="8.1.1">
 <h3><span class="header-section-number">8.1.1</span> Generating Independent Uniform Observations<a href="ChapSimulation.html#generating-independent-uniform-observations" class="anchor-section" aria-label="Anchor link to header"></a></h3>
 <p>The <a href="#" class="tooltip" style="color:green"><em>simulations</em><span style="font-size:8pt">A computer generation of various hypothetical conditions and outputs, based on the model structure provided</span></a> that we consider are generated by computers. A major strength of this approach is that they can be replicated, allowing us to check and improve our work. Naturally, this also means that they are not really random. Nonetheless, algorithms have been produced so that results appear to be random for all practical purposes. Specifically, they pass sophisticated tests of independence and can be designed so that they come from a single distribution - our <a href="#" class="tooltip" style="color:green"><em>iid</em><span style="font-size:8pt">Independent and identically distributed</span></a> assumption, identically and independently distributed.</p>
@@ -1231,7 +1226,7 @@ the random number generation in Microsoft’s Excel program.</p>
 may interpret the sequence {<span class="math inline">\(U_{i}\)</span>} to be (approximately) identically
 and independently uniformly distributed on the interval (0,1). To
 illustrate the algorithm, consider the following.</p>
-<p><strong>Example 7.1.1. Illustrative Sequence.</strong>
+<p><strong>Example 8.1.1. Illustrative Sequence.</strong>
 Take <span class="math inline">\(m=15\)</span>, <span class="math inline">\(a=3\)</span>, <span class="math inline">\(c=2\)</span> and <span class="math inline">\(B_0=1\)</span>. Then we have:</p>
 <table>
 <thead>
@@ -1273,7 +1268,7 @@ Take <span class="math inline">\(m=15\)</span>, <span class="math inline">\(a=3\
 replicated. That is, despite the fact that {<span class="math inline">\(U_{i}\)</span>} appears to be
 i.i.d, it can be reproduced by using the same seed number (and the same
 algorithm).</p>
-<p><strong>Example 7.1.2. Generating Uniform Random Numbers in <code>R</code>.</strong>
+<p><strong>Example 8.1.2. Generating Uniform Random Numbers in <code>R</code>.</strong>
 The following code shows how to generate three uniform (0,1) numbers in <code>R</code> using the <code>runif</code> command. The <code>set.seed()</code> function sets the initial seed. In many computer packages, the initial seed is set using the system clock unless specified otherwise.</p>
 <div id="three-uniform-random-variates" class="section level5 unnumbered hasAnchor">
 <h5>Three Uniform Random Variates<a href="ChapSimulation.html#three-uniform-random-variates" class="anchor-section" aria-label="Anchor link to header"></a></h5>
@@ -1330,7 +1325,7 @@ F^{-1}(y) = \inf_x ~ \{ F(x) \ge y \} .
 <p>Recall that <span class="math inline">\(\inf\)</span> stands for <em>infimum</em> or the <a href="#" class="tooltip" style="color:green"><em>greatest lower bound</em><span style="font-size:8pt">Largest value that is less than or equal to a specified subset of values/elements</span></a>. It is essentially the smallest value of <em>x</em> that satisfies the inequality <span class="math inline">\(\{F(x) \ge y\}\)</span>.
 The result is that the sequence {<span class="math inline">\(X_{i}\)</span>} is approximately <em>iid</em> with distribution function <span class="math inline">\(F\)</span> if the {<span class="math inline">\(U_i\)</span>} are <em>iid</em> with uniform on <span class="math inline">\((0,1)\)</span> distribution function.</p>
 <p>The inverse transform result is available when the underlying random variable is continuous, discrete or a hybrid combination of the two. We now present a series of examples to illustrate its scope of applications.</p>
-<p><strong>Example 7.1.3. Generating Exponential Random Numbers.</strong>
+<p><strong>Example 8.1.3. Generating Exponential Random Numbers.</strong>
 Suppose that we would like to generate observations from an exponential distribution with scale
 parameter <span class="math inline">\(\theta\)</span> so that <span class="math inline">\(F(x) = 1 - e^{-x/\theta}\)</span>. To compute the
 inverse transform, we can use the following steps:
@@ -1341,7 +1336,7 @@ inverse transform, we can use the following steps:
 \end{aligned}
 \]</span></p>
 <p>Thus, if <span class="math inline">\(U\)</span> has a uniform (0,1) distribution, then <span class="math inline">\(X = -\theta \ln(1-U)\)</span> has an exponential distribution with parameter <span class="math inline">\(\theta\)</span>.</p>
-<p>The following <code>R</code> code shows how we can start with the same three uniform random numbers as in <em>Example 7.1.2</em> and transform them to independent exponentially distributed random variables with a mean of 10. Alternatively, you can directly use the <code>rexp</code> function in <code>R</code> to generate random numbers from the exponential distribution. The algorithm built into this routine is different so even with the same starting seed number, individual realizations will differ.</p>
+<p>The following <code>R</code> code shows how we can start with the same three uniform random numbers as in <em>Example 8.1.2</em> and transform them to independent exponentially distributed random variables with a mean of 10. Alternatively, you can directly use the <code>rexp</code> function in <code>R</code> to generate random numbers from the exponential distribution. The algorithm built into this routine is different so even with the same starting seed number, individual realizations will differ.</p>
 <div class="sourceCode" id="cb94"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb94-1"><a href="ChapSimulation.html#cb94-1" aria-hidden="true" tabindex="-1"></a><span class="fu">set.seed</span>(<span class="dv">2017</span>)</span>
 <span id="cb94-2"><a href="ChapSimulation.html#cb94-2" aria-hidden="true" tabindex="-1"></a>U <span class="ot">&lt;-</span> <span class="fu">runif</span>(<span class="dv">3</span>)</span>
 <span id="cb94-3"><a href="ChapSimulation.html#cb94-3" aria-hidden="true" tabindex="-1"></a>X1 <span class="ot">&lt;-</span> <span class="sc">-</span><span class="dv">10</span> <span class="sc">*</span> <span class="fu">log</span>(<span class="dv">1</span> <span class="sc">-</span> U)</span>
@@ -1400,7 +1395,7 @@ Exponential 2
 </tbody>
 </table>
 <hr />
-<p><strong>Example 7.1.4. Generating Pareto Random Numbers.</strong>
+<p><strong>Example 8.1.4. Generating Pareto Random Numbers.</strong>
 Suppose that we would like to generate observations from a Pareto distribution with parameters <span class="math inline">\(\alpha\)</span> and
 <span class="math inline">\(\theta\)</span> so that <span class="math inline">\(F(x) = 1 - \left(\frac{\theta}{x+\theta} \right)^{\alpha}\)</span>. To compute
 the inverse transform, we can use the following steps:</p>
@@ -1430,7 +1425,7 @@ the inverse transform, we can use the following steps:</p>
 <hr />
 </div>
 <p>We now consider some discrete examples.</p>
-<p><strong>Example 7.1.5. Generating Bernoulli Random Numbers.</strong>
+<p><strong>Example 8.1.5. Generating Bernoulli Random Numbers.</strong>
 Suppose that we wish to simulate random variables from a Bernoulli distribution with parameter <span class="math inline">\(q=0.85\)</span>.</p>
 
 <div class="figure" style="text-align: center"><span style="display:block;" id="fig:BinaryDF"></span>
@@ -1502,7 +1497,7 @@ Binary X
 </tr>
 </tbody>
 </table>
-<p><strong>Example 7.1.6. Generating Random Numbers from a Discrete Distribution.</strong>
+<p><strong>Example 8.1.6. Generating Random Numbers from a Discrete Distribution.</strong>
 Consider the time of a machine failure in the first five years. The distribution of failure times is
 given as:</p>
 <div id="discrete-distribution" class="section level5 unnumbered hasAnchor">
@@ -1641,7 +1636,7 @@ X = \left\{ \begin{array}{cc}
 }
 \]</span></p>
 <p>Both algorithms produce (in the long-run) the same probabilities, e.g., <span class="math inline">\(\Pr(\textrm{whole life})=0.1\)</span>, and so forth. So, neither is incorrect. You should be aware that there is more than one way to accomplish a goal. Similarly, you could use an alternative algorithm for ordered outcomes (such as failure times 1, 2, 3, 4, or 5, above).</p>
-<p><strong>Example 7.1.7. Generating Random Numbers from a Hybrid Distribution.</strong>
+<p><strong>Example 8.1.7. Generating Random Numbers from a Hybrid Distribution.</strong>
 Consider a random variable that is 0
 with probability 70% and is exponentially distributed with parameter
 <span class="math inline">\(\theta= 10,000\)</span> with probability 30%. In an insurance application, this might correspond to a 70% chance of having no insurance claims and a 30%
@@ -1688,7 +1683,7 @@ s_{h,R}^2 = \frac{1}{R-1} \sum_{i=1}^{R}\left( h(X_i) -\overline{h}_R
 \right) ^2.
 \]</span></p>
 <p>From the independence, the standard error of the estimate is <span class="math inline">\(s_{h,R}/\sqrt{R}\)</span>. This can be made as small as we like by increasing the number of replications <span class="math inline">\(R\)</span>.</p>
-<p><strong>Example 7.1.8. Portfolio Management.</strong>
+<p><strong>Example 8.1.8. Portfolio Management.</strong>
 In Section <a href="ChapClaimSeverity.html#S:CoverageModifications">5.1</a>, we learned how to calculate the expected value of policies with deductibles. For an example of something that cannot be done with closed form expressions, we now consider two risks. This is a variation of a more complex example that will be covered as <em>Example 10.3.6</em>.</p>
 <p>We consider two property risks of a telecommunications firm:</p>
 <ul>
@@ -1782,10 +1777,10 @@ R \geq 38,416\frac{s_{h,R}^2}{\overline{h}_R^2}.
 \end{equation}\]</span></p>
 <p>This criterion is a direct application of the approximate normality. Note that <span class="math inline">\(\overline{h}_R\)</span> and <span class="math inline">\(s_{h,R}\)</span> are not known in
 advance, so you will have to come up with estimates, either by doing a small pilot study in advance or by interrupting your procedure intermittently to see if the criterion is satisfied.</p>
-<p><strong>Example 7.1.8. Portfolio Management - continued</strong></p>
+<p><strong>Example 8.1.8. Portfolio Management - continued</strong></p>
 <p>For our example, the average insurance claim is 235.011 and the corresponding standard deviation is 280.862. Using equation <a href="ChapSimulation.html#eq:NumSimulations">(8.1)</a>, to be within 10% of the mean, we would only require at least 54.87 thousand simulations. However, to be within 1% we would want at least 5.49 million simulations.</p>
 <hr />
-<p><strong>Example 7.1.9. Approximation Choices.</strong>
+<p><strong>Example 8.1.9. Approximation Choices.</strong>
 An important application of simulation is the approximation of <span class="math inline">\(\mathrm{E~}[h(X)]\)</span>. In this example, we show that the choice of the <span class="math inline">\(h(\cdot)\)</span> function and the distribution of <span class="math inline">\(X\)</span> can play a role.</p>
 <p>Consider the following question : what is <span class="math inline">\(\Pr[X&gt;2]\)</span> when <span class="math inline">\(X\)</span> has a <a href="#" class="tooltip" style="color:green"><em>Cauchy distribution</em><span style="font-size:8pt">A continuous distribution that represents the distribution of the ratio of two independent normally random variables, where the denominator distribution has mean zero</span></a>, with density <span class="math inline">\(f(x) =\left(\pi(1+x^2)\right)^{-1}\)</span>, on the real line? The true value is</p>
 <p><span class="math display">\[
@@ -1843,9 +1838,9 @@ p_4 = \frac{1}{R}\sum_{i=1}^R h_4(U_i/2),~~~~~\text{where}~h_4(x)=\frac{1}{2\pi(
 The expression seems rather similar to the previous one.</p>
 <p>With one million simulations, we obtain an estimate of 0.14759 with standard error 0.01 (divided by 1000). One can prove that the variance of <span class="math inline">\(p_4\)</span> is of order <span class="math inline">\(0.00009/R\)</span>, which is much smaller than what we had so far!</p>
 <!--It can be visualized below -->
-<p><a href="#tab:7.1">Table 7.1</a> summarizes the four choices of <span class="math inline">\(h(\cdot)\)</span> and <span class="math inline">\(F(\cdot)\)</span> to approximate <span class="math inline">\(\Pr[X&gt;2] =\)</span> 0.14758. The standard error varies dramatically. Thus, if we have a desired degree of accuracy, then the <em>number of simulations</em> depends strongly on how we write the integrals we try to approximate.</p>
-<p><a id=tab:7.1></a></p>
-<p>Table 7.1. <strong>Summary of Four Choices to Approximate</strong> <span class="math inline">\(\Pr[X&gt;2]\)</span></p>
+<p><a href="#tab:8.1">Table 8.1</a> summarizes the four choices of <span class="math inline">\(h(\cdot)\)</span> and <span class="math inline">\(F(\cdot)\)</span> to approximate <span class="math inline">\(\Pr[X&gt;2] =\)</span> 0.14758. The standard error varies dramatically. Thus, if we have a desired degree of accuracy, then the <em>number of simulations</em> depends strongly on how we write the integrals we try to approximate.</p>
+<p><a id=tab:8.1></a></p>
+<p>Table 8.1. <strong>Summary of Four Choices to Approximate</strong> <span class="math inline">\(\Pr[X&gt;2]\)</span></p>
 <div align="center">
 <table>
 <thead>
@@ -1945,7 +1940,7 @@ Error
 <div id="S:SimulationStatInference" class="section level3 hasAnchor" number="8.1.4">
 <h3><span class="header-section-number">8.1.4</span> Simulation and Statistical Inference<a href="ChapSimulation.html#S:SimulationStatInference" class="anchor-section" aria-label="Anchor link to header"></a></h3>
 <p>Simulations not only help us approximate expected values but are also useful in calculating other aspects of distribution functions. In particular, they are very useful when distributions of test statistics are too complicated to derive; in this case, one can use simulations to approximate the reference distribution. We now illustrate this with the <a href="#" class="tooltip" style="color:green"><em>Kolmogorov-Smirnov test</em><span style="font-size:8pt">A nonparametric statistical test used to determine if a data sample could come from a hypothesized continuous probability distribution</span></a> that we learned about in Section <a href="ChapModelSelection.html#S:MS:Tools:Stats">6.1.2</a>.</p>
-<p><strong>Example 7.1.10. Kolmogorov-Smirnov Test of Distribution.</strong>
+<p><strong>Example 8.1.10. Kolmogorov-Smirnov Test of Distribution.</strong>
 Suppose that we have available <span class="math inline">\(n=100\)</span> observations <span class="math inline">\(\{x_1,\cdots,x_n\}\)</span> that, unknown to the analyst, were generated from a gamma distribution with parameters <span class="math inline">\(\alpha = 6\)</span> and <span class="math inline">\(\theta=2\)</span>. The analyst believes that the data come from a lognormal distribution with parameters 1 and 0.4 and would like to test this assumption.</p>
 <p>The first step is to visualize the data.</p>
 <h5 style="text-align: center;">
@@ -2042,7 +2037,6 @@ Figure 8.6: <strong>Simulated Distribution of the Kolmogorov-Smirnov Test Statis
 <li>Perform bootstrap analyses for parametric distributions</li>
 </ul>
 <hr />
-<!--  Bootstrap -->
 <div id="bootstrap-foundations" class="section level3 hasAnchor" number="8.2.1">
 <h3><span class="header-section-number">8.2.1</span> Bootstrap Foundations<a href="ChapSimulation.html#bootstrap-foundations" class="anchor-section" aria-label="Anchor link to header"></a></h3>
 <p>Simulation presented up to now is based on sampling from a <strong>known</strong> distribution. Section <a href="ChapSimulation.html#S:SimulationFundamentals">8.1</a> showed how to use simulation techniques to sample and compute quantities from known distributions. However, statistical science is dedicated to providing inferences about distributions that are <em>unknown</em>. We gather summary statistics based on this unknown population distribution. But how do we sample from an unknown distribution?</p>
@@ -2097,9 +2091,9 @@ Figure 8.8: <strong>Inverse of an Empirical Distribution Function</strong>
 <li>Repeat this <span class="math inline">\(b=1, \ldots, B\)</span> times to get a sample of statistics, <span class="math inline">\(\hat{\theta}_1^*, \ldots,\hat{\theta}_B^*\)</span>.</li>
 <li>From the sample of statistics in Step 2, <span class="math inline">\(\{\hat{\theta}_1^*, \ldots, \hat{\theta}_B^*\}\)</span>, compute a summary measure of interest.</li>
 </ol>
-<p>In this section, we focus on three summary measures, the <a href="#" class="tooltip" style="color:green"><em>bias</em><span style="font-size:8pt">The difference between the expected value of an estimator and the parameter being estimated. bias is an estimation error that does not become smaller as one observes larger sample sizes.</span></a>, the standard deviation, and the mean square error (<em>MSE</em>). <a href="#tab:7.2">Table 7.2</a> summarizes these three measures. Here, <span class="math inline">\(\overline{\hat{\theta^*}}\)</span> is the average of <span class="math inline">\(\{\hat{\theta}_1^*, \ldots,\hat{\theta}_B^*\}\)</span>.</p>
-<p><a id=tab:7.2></a></p>
-<p>Table 7.2. <strong>Bootstrap Summary Measures</strong></p>
+<p>In this section, we focus on three summary measures, the <a href="#" class="tooltip" style="color:green"><em>bias</em><span style="font-size:8pt">The difference between the expected value of an estimator and the parameter being estimated. bias is an estimation error that does not become smaller as one observes larger sample sizes.</span></a>, the standard deviation, and the mean square error (<em>MSE</em>). <a href="#tab:8.2">Table 8.2</a> summarizes these three measures. Here, <span class="math inline">\(\overline{\hat{\theta^*}}\)</span> is the average of <span class="math inline">\(\{\hat{\theta}_1^*, \ldots,\hat{\theta}_B^*\}\)</span>.</p>
+<p><a id=tab:8.2></a></p>
+<p>Table 8.2. <strong>Bootstrap Summary Measures</strong></p>
 <p><span class="math display">\[
 {\small
 \begin{matrix}
@@ -2117,14 +2111,14 @@ Figure 8.8: <strong>Inverse of an Empirical Distribution Function</strong>
 }
 \]</span></p>
 <hr />
-<p><strong>Example 7.2.1. Bodily Injury Claims and Loss Elimination Ratios.</strong> To show how the bootstrap can be used to quantify the precision of estimators, we return to the Section <a href="ChapClaimSeverity.html#S:MS:PlugIn">5.3.2</a> Example 4.1.6 bodily injury claims data where we introduced a nonparametric estimator of the loss elimination ratio.</p>
-<p><a href="#tab:7.3">Table 7.3</a> summarizes the results of the bootstrap estimation. For example, at <span class="math inline">\(d=14000\)</span>, the nonparametric estimate of <em>LER</em> is 0.97678. This has an estimated bias of 0.00018 with a standard deviation of 0.00701. For some applications, you may wish to apply the estimated bias to the original estimate to give a <a href="#" class="tooltip" style="color:green"><em>bias-corrected estimator</em><span style="font-size:8pt">If an estimator is known to be consistently biased in a manner, it can be corrected using a factor to be come less biased or unbiased</span></a>. This is the focus of the next example. For this illustration, the bias is small and so such a correction is not relevant.</p>
+<p><strong>Example 8.2.1. Bodily Injury Claims and Loss Elimination Ratios.</strong> To show how the bootstrap can be used to quantify the precision of estimators, we return to the Section <a href="ChapClaimSeverity.html#S:MS:PlugIn">5.3.2</a> Example 4.1.6 bodily injury claims data where we introduced a nonparametric estimator of the loss elimination ratio.</p>
+<p><a href="#tab:8.3">Table 8.3</a> summarizes the results of the bootstrap estimation. For example, at <span class="math inline">\(d=14000\)</span>, the nonparametric estimate of <em>LER</em> is 0.97678. This has an estimated bias of 0.00018 with a standard deviation of 0.00701. For some applications, you may wish to apply the estimated bias to the original estimate to give a <a href="#" class="tooltip" style="color:green"><em>bias-corrected estimator</em><span style="font-size:8pt">If an estimator is known to be consistently biased in a manner, it can be corrected using a factor to be come less biased or unbiased</span></a>. This is the focus of the next example. For this illustration, the bias is small and so such a correction is not relevant.</p>
 <h5 style="text-align: center;">
-<a id="displayCode.LER7.2.1" href="javascript:togglecode('toggleCode.LER7.2.1','displayCode.LER7.2.1');"><i><strong>Show R Code For Bootstrap Estimates of LER</strong></i></a>
+<a id="displayCode.LER8.2.1" href="javascript:togglecode('toggleCode.LER8.2.1','displayCode.LER8.2.1');"><i><strong>Show R Code For Bootstrap Estimates of LER</strong></i></a>
 </h5>
-<div id="toggleCode.LER7.2.1" style="display: none">
+<div id="toggleCode.LER8.2.1" style="display: none">
 <div class="sourceCode" id="cb119"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb119-1"><a href="ChapSimulation.html#cb119-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Example from Derrig et al</span></span>
-<span id="cb119-2"><a href="ChapSimulation.html#cb119-2" aria-hidden="true" tabindex="-1"></a>BIData <span class="ot">&lt;-</span> <span class="fu">read.csv</span>(<span class="st">&quot;../../Data/DerrigResampling.csv&quot;</span>, <span class="at">header =</span> T)</span>
+<span id="cb119-2"><a href="ChapSimulation.html#cb119-2" aria-hidden="true" tabindex="-1"></a>BIData <span class="ot">&lt;-</span> <span class="fu">read.csv</span>(<span class="st">&quot;Data/DerrigResampling.csv&quot;</span>, <span class="at">header =</span> T)</span>
 <span id="cb119-3"><a href="ChapSimulation.html#cb119-3" aria-hidden="true" tabindex="-1"></a>BIData<span class="sc">$</span>Censored <span class="ot">&lt;-</span> <span class="dv">1</span> <span class="sc">*</span> (BIData<span class="sc">$</span>AmountPaid <span class="sc">&gt;=</span> BIData<span class="sc">$</span>PolicyLimit)</span>
 <span id="cb119-4"><a href="ChapSimulation.html#cb119-4" aria-hidden="true" tabindex="-1"></a>BIDataUncensored <span class="ot">&lt;-</span> <span class="fu">subset</span>(BIData, Censored <span class="sc">==</span> <span class="dv">0</span>)</span>
 <span id="cb119-5"><a href="ChapSimulation.html#cb119-5" aria-hidden="true" tabindex="-1"></a>LER.boot <span class="ot">&lt;-</span> <span class="cf">function</span>(ded, data, indices) {</span>
@@ -2150,8 +2144,8 @@ Figure 8.8: <strong>Inverse of an Empirical Distribution Function</strong>
 <span id="cb119-25"><a href="ChapSimulation.html#cb119-25" aria-hidden="true" tabindex="-1"></a>    OutBoot[i, <span class="dv">6</span>] <span class="ot">&lt;-</span> temp<span class="sc">$</span>normal[<span class="dv">3</span>]</span>
 <span id="cb119-26"><a href="ChapSimulation.html#cb119-26" aria-hidden="true" tabindex="-1"></a>}</span></code></pre></div>
 </div>
-<p><a id=tab:7.3></a></p>
-<p>Table 7.3. <strong>Bootstrap Estimates of LER at Selected Deductibles</strong></p>
+<p><a id=tab:8.3></a></p>
+<p>Table 8.3. <strong>Bootstrap Estimates of LER at Selected Deductibles</strong></p>
 <table>
 <thead>
 <tr>
@@ -2300,7 +2294,7 @@ Upper Normal 95% CI
 </table>
 <p>The bootstrap standard deviation gives a measure of precision. For one application of standard deviations, we can use the normal approximation to create a confidence interval. For example, the <code>R</code> function <code>boot.ci</code> produces the normal confidence intervals at 95%. These are produced by creating an interval of twice the length of 1.95994 bootstrap standard deviations, centered about the bias-corrected estimator (1.95994 is the 97.5th quantile of the standard normal distribution). For example, the lower normal 95% CI at <span class="math inline">\(d=14000\)</span> is <span class="math inline">\((0.97678-0.00018)- 1.95994*0.00701\)</span> <span class="math inline">\(= 0.96286\)</span>. We further discuss bootstrap confidence intervals in the next section.</p>
 <hr />
-<p><strong>Example 7.2.2. Estimating <span class="math inline">\(\exp(\mu)\)</span>.</strong>
+<p><strong>Example 8.2.2. Estimating <span class="math inline">\(\exp(\mu)\)</span>.</strong>
 The bootstrap can be used to quantify the bias of an estimator, for instance. Consider here a sample <span class="math inline">\(\mathbf{x}=\{x_1,\cdots,x_n\}\)</span> that is <a href="#" class="tooltip" style="color:green"><em>iid</em><span style="font-size:8pt">Independent and identically distributed</span></a> with mean <span class="math inline">\(\mu\)</span>.</p>
 <div class="sourceCode" id="cb120"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb120-1"><a href="ChapSimulation.html#cb120-1" aria-hidden="true" tabindex="-1"></a>sample_x <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="fl">2.46</span>, <span class="fl">2.8</span>, <span class="fl">3.28</span>, <span class="fl">3.86</span>, <span class="fl">2.85</span>, <span class="fl">3.67</span>, <span class="fl">3.37</span>, <span class="fl">3.4</span>, <span class="fl">5.22</span>, <span class="fl">2.55</span>, <span class="fl">2.79</span>, <span class="fl">4.5</span>,</span>
 <span id="cb120-2"><a href="ChapSimulation.html#cb120-2" aria-hidden="true" tabindex="-1"></a>    <span class="fl">3.37</span>, <span class="fl">2.88</span>, <span class="fl">1.44</span>, <span class="fl">2.56</span>, <span class="dv">2</span>, <span class="fl">2.07</span>, <span class="fl">2.19</span>, <span class="fl">1.77</span>)</span></code></pre></div>
@@ -2384,25 +2378,28 @@ t1* 19.13463 0.2536551    3.909725</code></pre>
 <span id="cb127-15"><a href="ChapSimulation.html#cb127-15" aria-hidden="true" tabindex="-1"></a>    <span class="fu">apply</span>(V, <span class="dv">1</span>, median)</span>
 <span id="cb127-16"><a href="ChapSimulation.html#cb127-16" aria-hidden="true" tabindex="-1"></a>}</span>
 <span id="cb127-17"><a href="ChapSimulation.html#cb127-17" aria-hidden="true" tabindex="-1"></a>VN <span class="ot">=</span> <span class="fu">seq</span>(<span class="dv">15</span>, <span class="dv">100</span>, <span class="at">by =</span> <span class="dv">5</span>)</span>
-<span id="cb127-18"><a href="ChapSimulation.html#cb127-18" aria-hidden="true" tabindex="-1"></a>Est <span class="ot">&lt;-</span> <span class="fu">Vectorize</span>(est)(VN)</span></code></pre></div>
+<span id="cb127-18"><a href="ChapSimulation.html#cb127-18" aria-hidden="true" tabindex="-1"></a>Est <span class="ot">&lt;-</span> <span class="fu">Vectorize</span>(est)(VN)</span>
+<span id="cb127-19"><a href="ChapSimulation.html#cb127-19" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb127-20"><a href="ChapSimulation.html#cb127-20" aria-hidden="true" tabindex="-1"></a><span class="fu">save</span>(VN, Est, <span class="at">file =</span> <span class="st">&quot;../IntermediateCalcs/SimulationChapter/Section812Bootstrap.Rdata&quot;</span>)</span></code></pre></div>
 </div>
 <p>The results of the comparison are summarized in Figure <a href="ChapSimulation.html#fig:BootstrapCompare">8.10</a>. This figure shows that the bootstrap estimator is closer to the true parameter value for almost all sample sizes. The bias of all three estimators decreases as the sample size increases.</p>
 
-<div class="sourceCode" id="cb128"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb128-1"><a href="ChapSimulation.html#cb128-1" aria-hidden="true" tabindex="-1"></a><span class="fu">matplot</span>(VN, <span class="fu">t</span>(Est), <span class="at">type =</span> <span class="st">&quot;l&quot;</span>, <span class="at">col =</span> <span class="dv">2</span><span class="sc">:</span><span class="dv">4</span>, <span class="at">lty =</span> <span class="dv">2</span><span class="sc">:</span><span class="dv">4</span>, <span class="at">ylim =</span> <span class="fu">exp</span>(<span class="fu">exp</span>(<span class="dv">1</span><span class="sc">/</span><span class="dv">2</span>)) <span class="sc">+</span> <span class="fu">c</span>(<span class="sc">-</span><span class="dv">1</span>,</span>
-<span id="cb128-2"><a href="ChapSimulation.html#cb128-2" aria-hidden="true" tabindex="-1"></a>    <span class="dv">1</span>), <span class="at">xlab =</span> <span class="st">&quot;sample size (n)&quot;</span>, <span class="at">ylab =</span> <span class="st">&quot;estimator&quot;</span>)</span>
-<span id="cb128-3"><a href="ChapSimulation.html#cb128-3" aria-hidden="true" tabindex="-1"></a><span class="fu">abline</span>(<span class="at">h =</span> <span class="fu">exp</span>(<span class="fu">exp</span>(<span class="dv">1</span><span class="sc">/</span><span class="dv">2</span>)), <span class="at">lty =</span> <span class="dv">1</span>, <span class="at">col =</span> <span class="dv">1</span>)</span>
-<span id="cb128-4"><a href="ChapSimulation.html#cb128-4" aria-hidden="true" tabindex="-1"></a><span class="fu">legend</span>(<span class="st">&quot;topleft&quot;</span>, <span class="fu">c</span>(<span class="st">&quot;raw estimator&quot;</span>, <span class="st">&quot;second order correction&quot;</span>, <span class="st">&quot;bootstrap&quot;</span>), <span class="at">col =</span> <span class="dv">2</span><span class="sc">:</span><span class="dv">4</span>,</span>
-<span id="cb128-5"><a href="ChapSimulation.html#cb128-5" aria-hidden="true" tabindex="-1"></a>    <span class="at">lty =</span> <span class="dv">2</span><span class="sc">:</span><span class="dv">4</span>, <span class="at">bty =</span> <span class="st">&quot;n&quot;</span>)</span></code></pre></div>
+<div class="sourceCode" id="cb128"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb128-1"><a href="ChapSimulation.html#cb128-1" aria-hidden="true" tabindex="-1"></a><span class="fu">load</span>(<span class="at">file =</span> <span class="st">&quot;IntermediateCalcs/SimulationChapter/Section812Bootstrap.Rdata&quot;</span>)</span>
+<span id="cb128-2"><a href="ChapSimulation.html#cb128-2" aria-hidden="true" tabindex="-1"></a><span class="fu">matplot</span>(VN, <span class="fu">t</span>(Est), <span class="at">type =</span> <span class="st">&quot;l&quot;</span>, <span class="at">col =</span> <span class="dv">2</span><span class="sc">:</span><span class="dv">4</span>, <span class="at">lty =</span> <span class="dv">2</span><span class="sc">:</span><span class="dv">4</span>, <span class="at">ylim =</span> <span class="fu">exp</span>(<span class="fu">exp</span>(<span class="dv">1</span><span class="sc">/</span><span class="dv">2</span>)) <span class="sc">+</span> <span class="fu">c</span>(<span class="sc">-</span><span class="dv">1</span>,</span>
+<span id="cb128-3"><a href="ChapSimulation.html#cb128-3" aria-hidden="true" tabindex="-1"></a>    <span class="dv">1</span>), <span class="at">xlab =</span> <span class="st">&quot;sample size (n)&quot;</span>, <span class="at">ylab =</span> <span class="st">&quot;estimator&quot;</span>)</span>
+<span id="cb128-4"><a href="ChapSimulation.html#cb128-4" aria-hidden="true" tabindex="-1"></a><span class="fu">abline</span>(<span class="at">h =</span> <span class="fu">exp</span>(<span class="fu">exp</span>(<span class="dv">1</span><span class="sc">/</span><span class="dv">2</span>)), <span class="at">lty =</span> <span class="dv">1</span>, <span class="at">col =</span> <span class="dv">1</span>)</span>
+<span id="cb128-5"><a href="ChapSimulation.html#cb128-5" aria-hidden="true" tabindex="-1"></a><span class="fu">legend</span>(<span class="st">&quot;topleft&quot;</span>, <span class="fu">c</span>(<span class="st">&quot;raw estimator&quot;</span>, <span class="st">&quot;second order correction&quot;</span>, <span class="st">&quot;bootstrap&quot;</span>), <span class="at">col =</span> <span class="dv">2</span><span class="sc">:</span><span class="dv">4</span>,</span>
+<span id="cb128-6"><a href="ChapSimulation.html#cb128-6" aria-hidden="true" tabindex="-1"></a>    <span class="at">lty =</span> <span class="dv">2</span><span class="sc">:</span><span class="dv">4</span>, <span class="at">bty =</span> <span class="st">&quot;n&quot;</span>)</span></code></pre></div>
 <div class="figure" style="text-align: center"><span style="display:block;" id="fig:BootstrapCompare"></span>
-<img src="LossDataAnalytics_files/figure-html/BootstrapCompare-1.png" alt="Comparision of Estimates. True value of the parameter is given by the solid horizontal line at 5.20." width="672" />
+<img src="LossDataAnalytics_files/figure-html/BootstrapCompare-1.png" alt="Comparison of Estimates. True value of the parameter is given by the solid horizontal line at 5.20." width="672" />
 <p class="caption">
-Figure 8.10: <strong>Comparision of Estimates.</strong> True value of the parameter is given by the solid horizontal line at 5.20.
+Figure 8.10: <strong>Comparison of Estimates.</strong> True value of the parameter is given by the solid horizontal line at 5.20.
 </p>
 </div>
 </div>
 <div id="confidence-intervals" class="section level3 hasAnchor" number="8.2.3">
 <h3><span class="header-section-number">8.2.3</span> Confidence Intervals<a href="ChapSimulation.html#confidence-intervals" class="anchor-section" aria-label="Anchor link to header"></a></h3>
-<p>The bootstrap procedure generates <em>B</em> replicates <span class="math inline">\(\hat{\theta}_1^*, \ldots,\hat{\theta}_B^*\)</span> of the estimator <span class="math inline">\(\hat{\theta}\)</span>. In <em>Example 7.2.1,</em> we saw how to use standard normal approximations to create a confidence interval for parameters of interest. However, given that a major point is to use bootstrapping to avoid relying on assumptions of approximate normality, it is not surprising that there are alternative confidence intervals available.</p>
+<p>The bootstrap procedure generates <em>B</em> replicates <span class="math inline">\(\hat{\theta}_1^*, \ldots,\hat{\theta}_B^*\)</span> of the estimator <span class="math inline">\(\hat{\theta}\)</span>. In <em>Example 8.2.1,</em> we saw how to use standard normal approximations to create a confidence interval for parameters of interest. However, given that a major point is to use bootstrapping to avoid relying on assumptions of approximate normality, it is not surprising that there are alternative confidence intervals available.</p>
 <p>For an estimator <span class="math inline">\(\hat{\theta}\)</span>, the <em>basic</em> bootstrap confidence interval is</p>
 <p><span class="math display" id="eq:basicBootCI">\[\begin{equation} 
   \left(2 \hat{\theta} - q_U, 2 \hat{\theta} - q_L \right) ,
@@ -2415,7 +2412,7 @@ Figure 8.10: <strong>Comparision of Estimates.</strong> True value of the parame
 \]</span>
 So, <span class="math inline">\(\left( \hat{\theta}-q_U, \hat{\theta} -q_L\right)\)</span> is an 95% interval for <span class="math inline">\(\hat{\theta} - \hat{\theta}_b^*\)</span>. The bootstrap approximation idea says that this is also a 95% interval for <span class="math inline">\(\theta - \hat{\theta}\)</span>. Adding <span class="math inline">\(\hat{\theta}\)</span> to each side gives the 95% interval in equation <a href="ChapSimulation.html#eq:basicBootCI">(8.2)</a>.</p>
 <p>Many alternative bootstrap intervals are available. The easiest to explain is the <a href="#" class="tooltip" style="color:green"><em>percentile bootstrap interval</em><span style="font-size:8pt">Confidence interval for the parameter estimates determined using the actual percentile results from the bootstrap sampling approach, as every bootstrap sample has an associated parameter estimate(s) that can be ranked against the others</span></a> which is defined as <span class="math inline">\(\left(q_L, q_U\right)\)</span>. However, this has the drawback of potentially poor behavior in the tails which can be of concern in some actuarial problems of interest.</p>
-<p><strong>Example 7.2.3. Bodily Injury Claims and Risk Measures.</strong> To see how the bootstrap confidence intervals work, we return to the bodily injury auto claims considered in <em>Example 7.2.1</em>. Instead of the loss elimination ratio, suppose we wish to estimate the 95th percentile <span class="math inline">\(F^{-1}(0.95)\)</span> and a measure defined as
+<p><strong>Example 8.2.3. Bodily Injury Claims and Risk Measures.</strong> To see how the bootstrap confidence intervals work, we return to the bodily injury auto claims considered in <em>Example 8.2.1</em>. Instead of the loss elimination ratio, suppose we wish to estimate the 95th percentile <span class="math inline">\(F^{-1}(0.95)\)</span> and a measure defined as
 <span class="math display">\[
 TVaR_{0.95}[X] = \mathrm{E}[X | X &gt; F^{-1}(0.95)] .
 \]</span>
@@ -2423,7 +2420,7 @@ This measure is called the <a href="#" class="tooltip" style="color:green"><em>t
 <p><span class="math display">\[
 TVaR_{n,0.95}[X] = \frac{\sum_{i=1}^n X_i I(X_i &gt; F^{-1}_n(0.95))}{\sum_{i=1}^n I(X_i &gt; F^{-1}_n(0.95))} ~.
 \]</span>
-In this expression, the denominator counts the number of observations that exceed the 95th percentile <span class="math inline">\(F^{-1}_n(0.95)\)</span>. The numerator adds up losses for those observations that exceed <span class="math inline">\(F^{-1}_n(0.95)\)</span>. <a href="#tab:7.4">Table 7.4</a> summarizes the estimator for selected fractions.</p>
+In this expression, the denominator counts the number of observations that exceed the 95th percentile <span class="math inline">\(F^{-1}_n(0.95)\)</span>. The numerator adds up losses for those observations that exceed <span class="math inline">\(F^{-1}_n(0.95)\)</span>. <a href="#tab:8.4">Table 8.4</a> summarizes the estimator for selected fractions.</p>
 <h5 style="text-align: center;">
 <a id="displayCode.bootstrapquantiles.1" href="javascript:togglecode('toggleCode.bootstrapquantiles.1','displayCode.bootstrapquantiles.1');"><i><strong>Show R Code for Creating Quantile Bootstrap Samples</strong></i></a>
 </h5>
@@ -2455,8 +2452,8 @@ In this expression, the denominator counts the number of observations that excee
 <span id="cb129-25"><a href="ChapSimulation.html#cb129-25" aria-hidden="true" tabindex="-1"></a>    OutBoot1[i, <span class="dv">10</span>] <span class="ot">&lt;-</span> temp<span class="sc">$</span>percent[<span class="dv">5</span>]</span>
 <span id="cb129-26"><a href="ChapSimulation.html#cb129-26" aria-hidden="true" tabindex="-1"></a>}</span></code></pre></div>
 </div>
-<p><a id=tab:7.4></a></p>
-<p>Table 7.4. <strong>Bootstrap Estimates of Quantiles at Selected Fractions</strong></p>
+<p><a id=tab:8.4></a></p>
+<p>Table 8.4. <strong>Bootstrap Estimates of Quantiles at Selected Fractions</strong></p>
 <table>
 <thead>
 <tr>
@@ -2656,8 +2653,8 @@ Upper Percentile 95% CI
 </tbody>
 </table>
 <p>For example, when the fraction is 0.50, we see that lower and upper 2.5th quantiles of the bootstrap simulations are <span class="math inline">\(q_L=\)</span> 6000 and <span class="math inline">\(q_u=\)</span> 6700, respectively. These form the percentile bootstrap confidence interval. With the nonparametric estimator 6500, these yield the lower and upper bounds of the basic confidence interval 6300
-and 7000, respectively. <a href="#tab:7.4">Table 7.4</a> also shows bootstrap estimates of the bias, standard deviation, and a normal confidence interval, concepts introduced in Section <a href="ChapSimulation.html#S:Sim:Precision">8.2.2</a>.</p>
-<p><a href="#tab:7.5">Table 7.5</a> shows similar calculations for the tail value-at-risk. In each case, we see that the bootstrap standard deviation increases as the fraction increases. This is because there are fewer observations to estimate quantiles as the fraction increases, leading to greater imprecision. Confidence intervals also become wider. Interestingly, there does not seem to be the same pattern in the estimates of the bias.</p>
+and 7000, respectively. <a href="#tab:8.4">Table 8.4</a> also shows bootstrap estimates of the bias, standard deviation, and a normal confidence interval, concepts introduced in Section <a href="ChapSimulation.html#S:Sim:Precision">8.2.2</a>.</p>
+<p><a href="#tab:8.5">Table 8.5</a> shows similar calculations for the tail value-at-risk. In each case, we see that the bootstrap standard deviation increases as the fraction increases. This is because there are fewer observations to estimate quantiles as the fraction increases, leading to greater imprecision. Confidence intervals also become wider. Interestingly, there does not seem to be the same pattern in the estimates of the bias.</p>
 <h5 style="text-align: center;">
 <a id="displayCode.bootstrapquantiles.2" href="javascript:togglecode('toggleCode.bootstrapquantiles.2','displayCode.bootstrapquantiles.2');"><i><strong>Show R Code for Creating TVar Bootstrap Samples</strong></i></a>
 </h5>
@@ -2688,8 +2685,8 @@ and 7000, respectively. <a href="#tab:7.4">Table 7.4</a> also shows bootstrap es
 <span id="cb130-24"><a href="ChapSimulation.html#cb130-24" aria-hidden="true" tabindex="-1"></a>    OutBoot1[i, <span class="dv">10</span>] <span class="ot">&lt;-</span> temp<span class="sc">$</span>percent[<span class="dv">5</span>]</span>
 <span id="cb130-25"><a href="ChapSimulation.html#cb130-25" aria-hidden="true" tabindex="-1"></a>}</span></code></pre></div>
 </div>
-<p><a id=tab:7.5></a></p>
-<p>Table 7.5. <strong>Bootstrap Estimates of TVaR at Selected Risk Levels</strong></p>
+<p><a id=tab:8.5></a></p>
+<p>Table 8.5. <strong>Bootstrap Estimates of TVaR at Selected Risk Levels</strong></p>
 <table>
 <thead>
 <tr>
@@ -2892,7 +2889,7 @@ Upper Percentile 95% CI
 <div id="S:ParametricBootStrap" class="section level3 hasAnchor" number="8.2.4">
 <h3><span class="header-section-number">8.2.4</span> Parametric Bootstrap<a href="ChapSimulation.html#S:ParametricBootStrap" class="anchor-section" aria-label="Anchor link to header"></a></h3>
 <p>The idea of the nonparametric bootstrap is to resample by drawing independent variables from the empirical cumulative distribution function <span class="math inline">\(F_n\)</span>. In contrast, with parametric bootstrap, we draw independent variables from <span class="math inline">\(F_{\widehat{\theta}}\)</span> where the underlying distribution is assumed to be in a parametric family <span class="math inline">\(\mathcal{F}=\{F_{\theta},\theta\in\Theta\}\)</span>. Typically, parameters from this distribution are estimated based on a sample and denoted as <span class="math inline">\(\hat{\theta}\)</span>.</p>
-<p><strong>Example 7.2.4. Lognormal distribution.</strong> Consider again the dataset</p>
+<p><strong>Example 8.2.4. Lognormal distribution.</strong> Consider again the dataset</p>
 <div class="sourceCode" id="cb131"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb131-1"><a href="ChapSimulation.html#cb131-1" aria-hidden="true" tabindex="-1"></a>sample_x <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="fl">2.46</span>, <span class="fl">2.8</span>, <span class="fl">3.28</span>, <span class="fl">3.86</span>, <span class="fl">2.85</span>, <span class="fl">3.67</span>, <span class="fl">3.37</span>, <span class="fl">3.4</span>, <span class="fl">5.22</span>, <span class="fl">2.55</span>, <span class="fl">2.79</span>, <span class="fl">4.5</span>,</span>
 <span id="cb131-2"><a href="ChapSimulation.html#cb131-2" aria-hidden="true" tabindex="-1"></a>    <span class="fl">3.37</span>, <span class="fl">2.88</span>, <span class="fl">1.44</span>, <span class="fl">2.56</span>, <span class="dv">2</span>, <span class="fl">2.07</span>, <span class="fl">2.19</span>, <span class="fl">1.77</span>)</span></code></pre></div>
 <p>The classical (nonparametric) bootstrap was based on the following samples.</p>
@@ -2927,14 +2924,14 @@ Upper Percentile 95% CI
 <span id="cb137-5"><a href="ChapSimulation.html#cb137-5" aria-hidden="true" tabindex="-1"></a><span class="fu">legend</span>(<span class="st">&quot;topright&quot;</span>, <span class="fu">c</span>(<span class="st">&quot;nonparametric&quot;</span>, <span class="st">&quot;parametric(LN)&quot;</span>), <span class="at">col =</span> <span class="fu">c</span>(<span class="st">&quot;red&quot;</span>, <span class="st">&quot;blue&quot;</span>),</span>
 <span id="cb137-6"><a href="ChapSimulation.html#cb137-6" aria-hidden="true" tabindex="-1"></a>    <span class="at">lty =</span> <span class="dv">1</span><span class="sc">:</span><span class="dv">2</span>, <span class="at">bty =</span> <span class="st">&quot;n&quot;</span>)</span></code></pre></div>
 <div class="figure" style="text-align: center"><span style="display:block;" id="fig:CoefVarCompare"></span>
-<img src="LossDataAnalytics_files/figure-html/CoefVarCompare-1.png" alt="Comparision of Nonparametric and Parametric Bootstrap Distributions for the Coefficient of Variation" width="672" />
+<img src="LossDataAnalytics_files/figure-html/CoefVarCompare-1.png" alt="Comparison of Nonparametric and Parametric Bootstrap Distributions for the Coefficient of Variation" width="672" />
 <p class="caption">
-Figure 8.11: <strong>Comparision of Nonparametric and Parametric Bootstrap Distributions for the Coefficient of Variation</strong>
+Figure 8.11: <strong>Comparison of Nonparametric and Parametric Bootstrap Distributions for the Coefficient of Variation</strong>
 </p>
 </div>
 <hr />
-<p><strong>Example 7.2.5. Bootstrapping Censored Observations.</strong> The parametric bootstrap draws simulated realizations from a parametric estimate of the distribution function. In the same way, we can draw simulated realizations from estimates of a distribution function. As one example, we might draw from smoothed estimates of a distribution function introduced in Section <a href="ChapSeverity.html#S:MS:Density">4.4.1.4</a>. Another special case, considered here, is to draw an estimate from the Kaplan-Meier estimator introduced in Section <a href="ChapClaimSeverity.html#S:MS:RightCensored">5.3.3</a>. In this way, we can handle observations that are censored.</p>
-<p>Specifically, return to the bodily injury data in Examples 7.2.1 and 7.2.3 but now we include the 17 claims that were censored by policy limits. In Example 4.3.6, we used this full dataset to estimate the Kaplan-Meier estimator of the survival function introduced in Section <a href="ChapClaimSeverity.html#S:MS:RightCensored">5.3.3</a>. <a href="#tab:7.6">Table 7.6</a> presents bootstrap estimates of the quantiles from the Kaplan-Meier survival function estimator. These include the bootstrap precision estimates, bias and standard deviation, as well as the basic 95% confidence interval.</p>
+<p><strong>Example 8.2.5. Bootstrapping Censored Observations.</strong> The parametric bootstrap draws simulated realizations from a parametric estimate of the distribution function. In the same way, we can draw simulated realizations from estimates of a distribution function. As one example, we might draw from smoothed estimates of a distribution function introduced in Section <a href="ChapSeverity.html#S:MS:Density">4.4.1.4</a>. Another special case, considered here, is to draw an estimate from the Kaplan-Meier estimator introduced in Section <a href="ChapClaimSeverity.html#S:MS:RightCensored">5.3.3</a>. In this way, we can handle observations that are censored.</p>
+<p>Specifically, return to the bodily injury data in Examples 8.2.1 and 8.2.3 but now we include the 17 claims that were censored by policy limits. In Example 4.3.6, we used this full dataset to estimate the Kaplan-Meier estimator of the survival function introduced in Section <a href="ChapClaimSeverity.html#S:MS:RightCensored">5.3.3</a>. <a href="#tab:8.6">Table 8.6</a> presents bootstrap estimates of the quantiles from the Kaplan-Meier survival function estimator. These include the bootstrap precision estimates, bias and standard deviation, as well as the basic 95% confidence interval.</p>
 <h5 style="text-align: center;">
 <a id="displayCode.KMCode.1" href="javascript:togglecode('toggleCode.KMCode.1','displayCode.KMCode.1');"><i><strong>Show R Code For Bootstrap Kaplan-Meier Estimates</strong></i></a>
 </h5>
@@ -2963,8 +2960,8 @@ Figure 8.11: <strong>Comparision of Nonparametric and Parametric Bootstrap Distr
 <span id="cb138-22"><a href="ChapSimulation.html#cb138-22" aria-hidden="true" tabindex="-1"></a>    OutBoot1[i, <span class="dv">6</span>] <span class="ot">&lt;-</span> <span class="dv">2</span> <span class="sc">*</span> OutBoot1[i, <span class="dv">2</span>] <span class="sc">-</span> <span class="fu">quantile</span>(results, <span class="fl">0.025</span>, <span class="at">type =</span> <span class="dv">6</span>)</span>
 <span id="cb138-23"><a href="ChapSimulation.html#cb138-23" aria-hidden="true" tabindex="-1"></a>}</span></code></pre></div>
 </div>
-<p><a id=tab:7.6></a></p>
-<p>Table 7.6. <strong>Bootstrap Kaplan-Meier Estimates of Quantiles at Selected Fractions</strong></p>
+<p><a id=tab:8.6></a></p>
+<p>Table 8.6. <strong>Bootstrap Kaplan-Meier Estimates of Quantiles at Selected Fractions</strong></p>
 <table>
 <thead>
 <tr>
@@ -3091,7 +3088,7 @@ NaN
 </tr>
 </tbody>
 </table>
-<p>Results in <a href="#tab:7.6">Table 7.6</a> are consistent with the results for the uncensored subsample in <a href="#tab:7.4">Table 7.4</a>. In <a href="#tab:7.6">Table 7.6</a>, we note the difficulty in estimating quantiles at large fractions due to the censoring. However, for moderate size fractions (0.50, 0.80, and 0.90), the Kaplan-Meier nonparametric (KM NP) estimates of the quantile are consistent with those <a href="#tab:7.4">Table 7.4</a>. The bootstrap standard deviation is smaller at the 0.50 (corresponding to the median) but larger at the 0.80 and 0.90 levels. The censored data analysis summarized in <a href="#tab:7.6">Table 7.6</a> uses more data than the uncensored subsample analysis in <a href="#tab:7.4">Table 7.4</a> but also has difficulty extracting information for large quantiles.</p>
+<p>Results in <a href="#tab:8.6">Table 8.6</a> are consistent with the results for the uncensored subsample in <a href="#tab:8.4">Table 8.4</a>. In <a href="#tab:8.6">Table 8.6</a>, we note the difficulty in estimating quantiles at large fractions due to the censoring. However, for moderate size fractions (0.50, 0.80, and 0.90), the Kaplan-Meier nonparametric (KM NP) estimates of the quantile are consistent with those <a href="#tab:8.4">Table 8.4</a>. The bootstrap standard deviation is smaller at the 0.50 (corresponding to the median) but larger at the 0.80 and 0.90 levels. The censored data analysis summarized in <a href="#tab:8.6">Table 8.6</a> uses more data than the uncensored subsample analysis in <a href="#tab:8.4">Table 8.4</a> but also has difficulty extracting information for large quantiles.</p>
 </div>
 </div>
 <div id="S:CrossValidation" class="section level2 hasAnchor" number="8.3">
@@ -3103,7 +3100,6 @@ NaN
 <li>Explain the jackknife method as a special case of cross-validation and calculate jackknife estimates of bias and standard errors</li>
 </ul>
 <hr />
-<!-- ## Cross-Validation -->
 <p>Cross-validation, briefly introduced in Section <a href="ChapModelSelection.html#S:MS:Cross-Validation">6.5</a>, is a technique based on simulated outcomes. We now compare and contrast cross-validation to other simulation techniques already introduced in this chapter."</p>
 <ul>
 <li>Simulation, or Monte-Carlo, introduced in Section <a href="ChapSimulation.html#S:SimulationFundamentals">8.1</a>, allows us to compute expected values and other summaries of statistical distributions, such as <span class="math inline">\(p\)</span>-values, readily.</li>
@@ -3118,7 +3114,7 @@ Cross-validation techniques are used to avoid the basic two part split. Note tha
 <div id="k-fold-cross-validation" class="section level3 hasAnchor" number="8.3.1">
 <h3><span class="header-section-number">8.3.1</span> k-Fold Cross-Validation<a href="ChapSimulation.html#k-fold-cross-validation" class="anchor-section" aria-label="Anchor link to header"></a></h3>
 <p>To mitigate this difficulty, it is common to use a cross-validation approach as introduced in Section 4.2.4. The key idea is to emulate the basic test/training approach to model validation by repeating it many times through averaging over different splits of the data. A key advantage is that the validation statistic is not tied to a specific parametric (or nonparametric) model - one can use a nonparametric statistic or a statistic that has economic interpretations - and so this can be used to compare models that are not nested (unlike likelihood ratio procedures).</p>
-<p><strong>Example 7.3.1. Wisconsin Property Fund.</strong> For the 2010 property fund data introduced in Section <a href="ChapIntro.html#S:LGPIF">1.3</a>, we fit gamma and Pareto distributions to the 1,377 claims data. For details of the related goodness of fit, see Appendix Section 15.4.4. We now consider the Kolmogorov-Smirnov statistic introduced in Section <a href="ChapModelSelection.html#S:MS:Tools:Stats">6.1.2</a>. When the entire dataset was fit, the Kolmogorov-Smirnov goodness of fit statistic for the gamma distribution turns out to be 0.2639 and for the Pareto distribution is 0.0478. The lower value for the Pareto distribution indicates that this distribution is a better fit than the gamma.</p>
+<p><strong>Example 8.3.1. Wisconsin Property Fund.</strong> For the 2010 property fund data introduced in Section <a href="ChapIntro.html#S:LGPIF">1.3</a>, we fit gamma and Pareto distributions to the 1,377 claims data. For details of the related goodness of fit, see Appendix Section 15.4.4. We now consider the Kolmogorov-Smirnov statistic introduced in Section <a href="ChapModelSelection.html#S:MS:Tools:Stats">6.1.2</a>. When the entire dataset was fit, the Kolmogorov-Smirnov goodness of fit statistic for the gamma distribution turns out to be 0.2639 and for the Pareto distribution is 0.0478. The lower value for the Pareto distribution indicates that this distribution is a better fit than the gamma.</p>
 <p>To see how <a href="#" class="tooltip" style="color:green"><em>k-fold cross-validation</em><span style="font-size:8pt">A type of validation method where the data is randomly split into k groups, and each of the k groups is held out as a test dataset in turn, while the other k-1 gropus are used for distribution or model fitting, with the process repeated k times in total</span></a> works, we randomly split the data into <span class="math inline">\(k=8\)</span> groups, or folds, each having about <span class="math inline">\(1377/8 \approx 172\)</span> observations. Then, we fit gamma and Pareto models to a data set with the first seven folds (about <span class="math inline">\(172 \cdot 7 = 1204\)</span> observations), determine estimated parameters, and then used these fitted models with the held-out data to determine the Kolmogorov-Smirnov statistic.</p>
 <h5 style="text-align: center;">
 <a id="displayCode.KFoldCV.1" href="javascript:togglecode('toggleCode.KFoldCV.1','displayCode.KFoldCV.1');"><i><strong>Show R Code for Kolmogorov-Smirnov Cross-Validation</strong></i></a>
@@ -3178,7 +3174,7 @@ Bias_{jack} = (n-1) \left(\overline{\widehat{\theta}}_{(\cdot)} - \widehat{\thet
 s_{jack} =\sqrt{\frac{n-1}{n}\sum_{i=1}^n \left(\widehat{\theta}_{-i} -\overline{\widehat{\theta}}_{(\cdot)}\right)^2} ~.
 \tag{8.4}
 \end{equation}\]</span></p>
-<p><strong>Example 7.3.2. Coefficient of Variation.</strong> To illustrate, consider a small fictitious sample <span class="math inline">\(\boldsymbol{x}=\{x_1,\ldots,x_n\}\)</span> with realizations</p>
+<p><strong>Example 8.3.2. Coefficient of Variation.</strong> To illustrate, consider a small fictitious sample <span class="math inline">\(\boldsymbol{x}=\{x_1,\ldots,x_n\}\)</span> with realizations</p>
 <pre><code>sample_x &lt;- c(2.46,2.80,3.28,3.86,2.85,3.67,3.37,3.40,
               5.22,2.55,2.79,4.50,3.37,2.88,1.44,2.56,2.00,2.07,2.19,1.77)</code></pre>
 <p>Suppose that we are interested in the <a href="#" class="tooltip" style="color:green"><em>coefficient of variation</em><span style="font-size:8pt">Standard deviation divided by the mean of a distribution, to measure variability in terms of units of the mean</span></a>
@@ -3190,14 +3186,14 @@ s_{jack} =\sqrt{\frac{n-1}{n}\sum_{i=1}^n \left(\widehat{\theta}_{-i} -\overline
 <span id="cb142-4"><a href="ChapSimulation.html#cb142-4" aria-hidden="true" tabindex="-1"></a>BiasJack <span class="ot">&lt;-</span> (<span class="fu">length</span>(sample_x) <span class="sc">-</span> <span class="dv">1</span>) <span class="sc">*</span> (<span class="fu">mean</span>(JackTheta) <span class="sc">-</span> <span class="fu">CVar</span>(sample_x))</span>
 <span id="cb142-5"><a href="ChapSimulation.html#cb142-5" aria-hidden="true" tabindex="-1"></a><span class="fu">sd</span>(JackTheta)</span></code></pre></div>
 <hr />
-<p><strong>Example 7.3.3. Bodily Injury Claims and Loss Elimination Ratios.</strong> In Example 7.2.1, we showed how to compute bootstrap estimates of the bias and standard deviation for the loss elimination ratio using the Example 4.1.11 bodily injury claims data. We follow up now by providing comparable quantities using jackknife statistics.</p>
-<p><a href="#tab:7.7">Table 7.7</a> summarizes the results of the jackknife estimation. It shows that jackknife estimates of the bias and standard deviation of the loss elimination ratio <span class="math inline">\(\mathrm{E}~[\min(X,d)]/\mathrm{E}~[X]\)</span> are largely consistent with the bootstrap methodology. Moreover, one can use the standard deviations to construct normal based confidence intervals, centered around a bias-corrected estimator. For example, at <span class="math inline">\(d=14000\)</span>, we saw in Example 4.1.11 that the nonparametric estimate of <em>LER</em> is 0.97678. This has an estimated bias of 0.00010, resulting in the (jackknife) <em>bias-corrected</em> estimator 0.97688. The 95% confidence intervals are produced by creating an interval of twice the length of 1.96 jackknife standard deviations, centered about the bias-corrected estimator (1.96 is the approximate 97.5th quantile of the standard normal distribution).</p>
+<p><strong>Example 8.3.3. Bodily Injury Claims and Loss Elimination Ratios.</strong> In Example 8.2.1, we showed how to compute bootstrap estimates of the bias and standard deviation for the loss elimination ratio using the Example 4.1.11 bodily injury claims data. We follow up now by providing comparable quantities using jackknife statistics.</p>
+<p><a href="#tab:8.7">Table 8.7</a> summarizes the results of the jackknife estimation. It shows that jackknife estimates of the bias and standard deviation of the loss elimination ratio <span class="math inline">\(\mathrm{E}~[\min(X,d)]/\mathrm{E}~[X]\)</span> are largely consistent with the bootstrap methodology. Moreover, one can use the standard deviations to construct normal based confidence intervals, centered around a bias-corrected estimator. For example, at <span class="math inline">\(d=14000\)</span>, we saw in Example 4.1.11 that the nonparametric estimate of <em>LER</em> is 0.97678. This has an estimated bias of 0.00010, resulting in the (jackknife) <em>bias-corrected</em> estimator 0.97688. The 95% confidence intervals are produced by creating an interval of twice the length of 1.96 jackknife standard deviations, centered about the bias-corrected estimator (1.96 is the approximate 97.5th quantile of the standard normal distribution).</p>
 <h5 style="text-align: center;">
 <a id="displayCode.Jackknife.1" href="javascript:togglecode('toggleCode.Jackknife.1','displayCode.Jackknife.1');"><i><strong>Show the R Code</strong></i></a>
 </h5>
 <div id="toggleCode.Jackknife.1" style="display: none">
 <div class="sourceCode" id="cb143"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb143-1"><a href="ChapSimulation.html#cb143-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Example from Derrig et al</span></span>
-<span id="cb143-2"><a href="ChapSimulation.html#cb143-2" aria-hidden="true" tabindex="-1"></a>BIData <span class="ot">&lt;-</span> <span class="fu">read.csv</span>(<span class="st">&quot;../../Data/DerrigResampling.csv&quot;</span>, <span class="at">header =</span> T)</span>
+<span id="cb143-2"><a href="ChapSimulation.html#cb143-2" aria-hidden="true" tabindex="-1"></a>BIData <span class="ot">&lt;-</span> <span class="fu">read.csv</span>(<span class="st">&quot;Data/DerrigResampling.csv&quot;</span>, <span class="at">header =</span> T)</span>
 <span id="cb143-3"><a href="ChapSimulation.html#cb143-3" aria-hidden="true" tabindex="-1"></a>BIData<span class="sc">$</span>Censored <span class="ot">&lt;-</span> <span class="dv">1</span> <span class="sc">*</span> (BIData<span class="sc">$</span>AmountPaid <span class="sc">&gt;=</span> BIData<span class="sc">$</span>PolicyLimit)</span>
 <span id="cb143-4"><a href="ChapSimulation.html#cb143-4" aria-hidden="true" tabindex="-1"></a>BIDataUncensored <span class="ot">&lt;-</span> <span class="fu">subset</span>(BIData, Censored <span class="sc">==</span> <span class="dv">0</span>)</span>
 <span id="cb143-5"><a href="ChapSimulation.html#cb143-5" aria-hidden="true" tabindex="-1"></a>LER.boot <span class="ot">&lt;-</span> <span class="cf">function</span>(ded, data, indices) {</span>
@@ -3234,8 +3230,8 @@ s_{jack} =\sqrt{\frac{n-1}{n}\sum_{i=1}^n \left(\widehat{\theta}_{-i} -\overline
 <span id="cb143-36"><a href="ChapSimulation.html#cb143-36" aria-hidden="true" tabindex="-1"></a>        OutJack[j, <span class="dv">6</span>]</span>
 <span id="cb143-37"><a href="ChapSimulation.html#cb143-37" aria-hidden="true" tabindex="-1"></a>}</span></code></pre></div>
 </div>
-<p><a id=tab:7.7></a></p>
-<p>Table 7.7. <strong>Jackknife Estimates of LER at Selected Deductibles</strong></p>
+<p><a id=tab:8.7></a></p>
+<p>Table 8.7. <strong>Jackknife Estimates of LER at Selected Deductibles</strong></p>
 <table>
 <thead>
 <tr>
@@ -3436,7 +3432,7 @@ Upper Jackknife 95% CI
 <li>The <em>test</em>, or <em>validation sample</em>, consists of those observations not selected for training. Evaluate the fitted model (based on the training data) using the test data.</li>
 </ul>
 <p>Repeat this process many (say <span class="math inline">\(B\)</span>) times. Take an average over the results and choose the model based on the average evaluation statistic.</p>
-<p><strong>Example 7.3.4. Wisconsin Property Fund.</strong> Return to Example 7.3.1 where we investigate the fit of the gamma and Pareto distributions on the property fund data. We again compare the predictive performance using the Kolmogorov-Smirnov (<em>KS</em>) statistic but this time using the bootstrap procedure to split the data between training and testing samples. The following provides illustrative code.</p>
+<p><strong>Example 8.3.4. Wisconsin Property Fund.</strong> Return to Example 8.3.1 where we investigate the fit of the gamma and Pareto distributions on the property fund data. We again compare the predictive performance using the Kolmogorov-Smirnov (<em>KS</em>) statistic but this time using the bootstrap procedure to split the data between training and testing samples. The following provides illustrative code.</p>
 <h5 style="text-align: center;">
 <a id="displayCode.BootstrapValidation.1" href="javascript:togglecode('toggleCode.BootstrapValidation.1','displayCode.BootstrapValidation.1');"><i><strong>Show R Code for Bootstrapping Validation Procedures</strong></i></a>
 </h5>
@@ -3473,7 +3469,6 @@ Upper Jackknife 95% CI
 </div>
 <div id="S:ImportanceSampling" class="section level2 hasAnchor" number="8.4">
 <h2><span class="header-section-number">8.4</span> Importance Sampling<a href="ChapSimulation.html#S:ImportanceSampling" class="anchor-section" aria-label="Anchor link to header"></a></h2>
-<!-- ## Importance Sampling -->
 <p>Section <a href="ChapSimulation.html#S:SimulationFundamentals">8.1</a> introduced Monte Carlo techniques using the inversion technique : to generate a random variable <span class="math inline">\(X\)</span> with distribution <span class="math inline">\(F\)</span>, apply <span class="math inline">\(F^{-1}\)</span> to calls of a random generator (uniform on the unit interval). What if we what to draw according to <span class="math inline">\(X\)</span>, conditional on <span class="math inline">\(X\in[a,b]\)</span> ?</p>
 <p>One can use an <a href="#" class="tooltip" style="color:green"><em>accept-reject mechanism</em><span style="font-size:8pt">A sampling method that is used where the random sample is discarded if not within a certain pre-specified range [a, b] and is commonly used when the traditional inverse transform method cannot be easily used</span></a> : draw <span class="math inline">\(x\)</span> from distribution <span class="math inline">\(F\)</span></p>
 <ul>
@@ -3481,7 +3476,7 @@ Upper Jackknife 95% CI
 <li>if <span class="math inline">\(x\notin[a,b]\)</span> : draw another one (“<em>reject</em>”)</li>
 </ul>
 <p>Observe that from <span class="math inline">\(n\)</span> values initially generated, we keep here only <span class="math inline">\([F(b)-F(a)]\cdot n\)</span> draws, on average.</p>
-<p><strong>Example 7.4.1. Draws from a Normal Distribution.</strong> Suppose that we draw from a normal distribution with mean 2.5 and variance 1, <span class="math inline">\(N(2.5,1)\)</span>, but are only interested in draws greater that <span class="math inline">\(a \ge 2\)</span> and less than <span class="math inline">\(b \le 4\)</span>. That is, we can only use <span class="math inline">\(F(4)-F(2) = \Phi(4-2.5)-\Phi(2-2.5)\)</span> = 0.9332 - 0.3085 = 0.6247 proportion of the draws. Figure <a href="ChapSimulation.html#fig:sampleani1">8.13</a> demonstrates that some draws lie with the interval <span class="math inline">\((2,4)\)</span> and some are outside.</p>
+<p><strong>Example 8.4.1. Draws from a Normal Distribution.</strong> Suppose that we draw from a normal distribution with mean 2.5 and variance 1, <span class="math inline">\(N(2.5,1)\)</span>, but are only interested in draws greater that <span class="math inline">\(a \ge 2\)</span> and less than <span class="math inline">\(b \le 4\)</span>. That is, we can only use <span class="math inline">\(F(4)-F(2) = \Phi(4-2.5)-\Phi(2-2.5)\)</span> = 0.9332 - 0.3085 = 0.6247 proportion of the draws. Figure <a href="ChapSimulation.html#fig:sampleani1">8.13</a> demonstrates that some draws lie with the interval <span class="math inline">\((2,4)\)</span> and some are outside.</p>
 <h5 style="text-align: center;">
 <a id="displayCode.ImportanceSampling.1" href="javascript:togglecode('toggleCode.ImportanceSampling.1','displayCode.ImportanceSampling.1');"><i><strong>Show R Code for Accept-Reject Mechanism</strong></i></a>
 </h5>
@@ -3555,7 +3550,7 @@ and then use <span class="math inline">\(F^{-1}(\tilde{U})\)</span>. With this a
 <span id="cb148-2"><a href="ChapSimulation.html#cb148-2" aria-hidden="true" tabindex="-1"></a>    <span class="fu">pic_ani</span>()</span>
 <span id="cb148-3"><a href="ChapSimulation.html#cb148-3" aria-hidden="true" tabindex="-1"></a>}</span></code></pre></div>
 <p><img src="LossDataAnalytics_files/figure-html/sampleani_IS_2-.gif" width="50%" style="display: block; margin: auto;" /></p>
-<p>In Example 7.4.1., the inverse of the normal distribution is readily available (in <code>R</code>, the function is <code>qnorm</code>). However, for other applications, this is not the case. Then, one simply uses numerical methods to determine <span class="math inline">\(X^\star\)</span> as the solution of the equation <span class="math inline">\(F(X^\star) =\tilde{U}\)</span> where <span class="math inline">\(\tilde{U}=(1-U)\cdot F(a)+U\cdot F(b)\)</span>. See the following illustrative code.</p>
+<p>In Example 8.4.1., the inverse of the normal distribution is readily available (in <code>R</code>, the function is <code>qnorm</code>). However, for other applications, this is not the case. Then, one simply uses numerical methods to determine <span class="math inline">\(X^\star\)</span> as the solution of the equation <span class="math inline">\(F(X^\star) =\tilde{U}\)</span> where <span class="math inline">\(\tilde{U}=(1-U)\cdot F(a)+U\cdot F(b)\)</span>. See the following illustrative code.</p>
 <h5 style="text-align: center;">
 <a id="displayCode.ImportanceSampling.3" href="javascript:togglecode('toggleCode.ImportanceSampling.3','displayCode.ImportanceSampling.3');"><i><strong>Show R Code for Importance Sampling via Numerical Solutions</strong></i></a>
 </h5>
@@ -3598,15 +3593,12 @@ and then use <span class="math inline">\(F^{-1}(\tilde{U})\)</span>. With this a
 <div id="contributors-7" class="section level4 unnumbered hasAnchor">
 <h4>Contributors<a href="ChapSimulation.html#contributors-7" class="anchor-section" aria-label="Anchor link to header"></a></h4>
 <ul>
-<li><strong>Arthur Charpentier</strong>, Université du Quebec á Montreal, and <strong>Edward W. (Jed) Frees</strong>, University of Wisconsin-Madison, are the principal authors of the initial version of this chapter. Email: <a href="mailto:jfrees@bus.wisc.edu" class="email">jfrees@bus.wisc.edu</a> and/or <a href="mailto:arthur.charpentier@gmail.com" class="email">arthur.charpentier@gmail.com</a> for chapter comments and suggested improvements.</li>
-<li>Chapter reviewers include Yvonne Chueh and Brian Hartman. Write Jed or Arthur to add you name here.</li>
+<li><strong>Arthur Charpentier</strong>, Université du Quebec á Montreal, and <strong>Edward W. (Jed) Frees</strong>, University of Wisconsin-Madison, are the principal authors of the initial version of this chapter.
+<ul>
+<li>Chapter reviewers include Yvonne Chueh and Brian Hartman.</li>
+</ul></li>
+<li><strong>Edward (Jed) Frees</strong>, University of Wisconsin-Madison and Australian National University, is the author of the second edition of this chapter. Email: <a href="mailto:jfrees@bus.wisc.edu" class="email">jfrees@bus.wisc.edu</a> for chapter comments and suggested improvements.</li>
 </ul>
-</div>
-<div id="ts-7.a.-bootstrap-applications-in-predictive-modeling" class="section level3 hasAnchor" number="8.5.1">
-<h3><span class="header-section-number">8.5.1</span> TS 7.A. Bootstrap Applications in Predictive Modeling<a href="ChapSimulation.html#ts-7.a.-bootstrap-applications-in-predictive-modeling" class="anchor-section" aria-label="Anchor link to header"></a></h3>
-<hr />
-<p><strong>This section is under construction.</strong></p>
-<hr />
 
 </div>
 </div>
