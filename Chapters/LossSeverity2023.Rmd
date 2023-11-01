@@ -695,7 +695,7 @@ Since $0 < x < c$, then $1 < y  <  e^{c}$.
 
 *** 
 
-### Mixture Distributions for Severity
+### Mixture Distributions for Severity {#S:MixtureSeverity}
 
 Mixture distributions represent a useful way of modeling data that are drawn from a `r Gloss('heterogeneous population')`. This parent population can be
 thought to be divided into multiple subpopulations with distinct distributions.
@@ -713,6 +713,10 @@ for $0 < a <1$, where the `r Gloss('mixing parameters')` $a$ and $(1 - a)$ repre
 $\mathrm{E}\left( X^{k} \right) = a\mathrm{E}\left( X_{1}^{K} \right) + \left( 1 - a \right)\mathrm{E}\left( X_{2}^{k} \right)$,
 and
 $$M_{X}(t) = aM_{X_{1}}(t) + \left( 1 - a \right)M_{X_{2}}(t),$$ respectively.
+
+<a id=Ex:43.5></a>  
+
+[Example 4.3.5]: ../docs/ChapSeverity.html#Ex:43.5
 
 **Example 4.3.5. Actuarial Exam Question.**
 A collection of insurance policies consists of two types. 25% of policies are Type 1 and 75% of policies are Type 2. For a policy of Type 1, the loss amount per year follows an exponential distribution with mean 200, and for a policy of Type 2, the loss amount per year follows a Pareto distribution with parameters $\alpha=3$ and $\theta=200$. For a policy chosen at random from the entire collection of both types of policies, find the probability that the annual loss will be less than 100, and find the average loss.

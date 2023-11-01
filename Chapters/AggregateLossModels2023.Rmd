@@ -1192,7 +1192,7 @@ Fs(obs)
 ```
 
 
-### Simulation
+### Simulation {#S:AggSimulation}
 
 The distribution of aggregate loss can be evaluated using `r Gloss('Monte Carlo simulation')`. You can get a broad introduction to simulation procedures in Chapter \@ref(ChapSimulation). For aggregate losses, the idea is that one can calculate the empirical distribution of $S_N$ using a random sample. The expected value and variance of the aggregate loss can also be estimated using the sample mean and sample variance of the simulated values. 
 
@@ -1220,6 +1220,11 @@ where $I(\cdot)$ is an indicator function. The `r Gloss('empirical distribution'
 The above procedure assumes that the probability distributions, including the parameter values, of the frequency and severity distributions are known. In practice, one would need to first assume these distributions, estimate their parameters from data, and then assess the quality of model fit using various model validation tools (see Chapter \@ref(ChapModelSelection)). For instance, the assumptions in the collective risk model suggest a two-stage estimation where one model is developed for the number of claims $N$ from data on claim counts, and another model is developed for the severity of claims $X$ from data on the amount of claims.
 
 ***
+
+
+<a id=Ex:74.2></a>  
+
+[Example 7.4.2]: ../docs/ChapAggLossModels.html#Ex:74.2
 
 **Example `r chapnum`.4.2.**
 Recall Example `r chapnum`.3.5 with an individual's claim frequency $N$ has a Poisson distribution with mean $\lambda=25$ and claim severity $X$ is uniformly distributed on the interval $(5,95)$. Using a simulated sample of 10,000 observations, estimate the mean and variance of the aggregate loss $S_N$. In addition, use the simulated sample to estimate the probability that aggregate claims for this individual will exceed 2,000 and compare with the normal approximation estimates from Example `r chapnum`.3.6.

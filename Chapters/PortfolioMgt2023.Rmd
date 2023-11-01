@@ -1209,6 +1209,10 @@ M1 <- 100
 M2 <- 200
 ```
 
+<a id=Ex:134.6></a>  
+
+[Example 13.4.6]: ../docs/ChapPortMgt.html#Ex:134.6>
+
 **Example `r chapnum`.4.6. Portfolio Management.** You are the Chief Risk Officer of a telecommunications firm. Your firm has several property and liability risks. We will consider:
 
 - $X_1$ - buildings, modeled using a gamma distribution with mean `r alpha1*theta1` and scale parameter `r theta1`.

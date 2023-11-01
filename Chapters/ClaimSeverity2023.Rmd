@@ -1006,6 +1006,11 @@ LER(d) = \frac{\mathrm{E~}[X - (X-d)_+]}{\mathrm{E~}[X]} =\frac{\mathrm{E~}[\min
 $$
 for a fixed deductible $d$. 
 
+<a id=Ex:53.2></a>  
+
+[Example 5.3.2]: ../docs/ChapClaimSeverity.html#Ex:53.2
+
+
 **Example. 5.3.2. Bodily Injury Claims and Loss Elimination Ratios** 
 
 ```{r comment="", warning=FALSE, echo = FALSE}

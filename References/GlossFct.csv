@@ -458,6 +458,7 @@ median,"50th percentile of a definition, or middle value where half of the distr
 Lorenz curve,A graph of the proportion of a population on the horizontal axis and a distribution function of interest on the vertical axis.,"4.1, 7.6",
 law of total variance,"A decomposition of the variance of a random variable into conditional components. specifically, for random variables x and y on the same probability space, var(x) = e[var(y|x)] + var[e(x|y)].","5.3, 9.4",
 tail value-at-risk,The expected value of a risk given that the risk exceeds a value-at-risk,"6.2, 10.3",
+expected shortfall,The average value at risk,"6.2, 10.3",
 coefficient of variation,"Standard deviation divided by the mean of a distribution, to measure variability in terms of units of the mean","6.3, 9.2",
 loss ratio,The sum of losses divided by the premium.,"7.1, 7.2",
 homogeneous risks,"Risks that have the same distribution, that is, the distributions are identical.","7.1, 7.2",
