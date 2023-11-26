@@ -71,7 +71,7 @@ The first part of Definition  `r chapnum`.1 is an absolute concept of tail weigh
 **Example `r chapnum`.2.1. Light tail nature of the gamma distribution.**
 Let $X\sim gamma(\alpha,\theta)$, with $\alpha>0$ and $\theta>0$. Show that $\mu_k' < \infty$ for all $k>0$.
 
-`r HideExample('12.2.1','Show Example Solution')`
+`r HideExample('13.2.1','Show Example Solution')`
 
 **Solution.** From the probability density functions expression in Section \@ref(S:ContinuousDistributions), the $k$th raw moment is
 
@@ -91,7 +91,7 @@ Because all the positive moments exist, we have $k^{\ast}=\infty$. Thus, in acco
 **Example `r chapnum`.2.2. Light tail nature of the Weibull distribution.**
 Let $X\sim Weibull(\theta,\tau)$, with $\theta>0$ and $\tau>0$. Show that $\mu_k' < \infty$ for all $k>0$.
 
-`r HideExample('12.2.2','Show Example Solution')`
+`r HideExample('13.2.2','Show Example Solution')`
 
 **Solution.** From the probability density functions expression in Section \@ref(S:ContinuousDistributions), the $k$th raw moment is
 
@@ -165,7 +165,7 @@ We say that
 **Example `r chapnum`.2.4. Comparison of Pareto to Weibull distributions.**
 Let $X\sim Pareto(\alpha, \theta)$ and $Y\sim Weibull(\tau, \theta)$, for $\alpha>0$, $\tau>0$, and $\theta>0$. Show that the Pareto has a heavier right tail than the Weibull.
 
-`r HideExample('12.2.4','Show Example Solution')`
+`r HideExample('13.2.4','Show Example Solution')`
 
 **Solution.**
 
@@ -190,7 +190,7 @@ For some distributions  of which the survival functions do not admit explicit ex
 \begin{eqnarray*}
     \lim_{t\to \infty} \frac{S_X(t)}{S_Y(t)} &=& \lim_{t \to \infty} \frac{S_X^{'}(t)}{S_Y^{'}(t)} \\
     &=& \lim_{t \to \infty} \frac{-f_X(t)}{-f_Y(t)}\\
- &=& \lim_{t\to \infty} \frac{f_X(t)}{f_Y(t)}.
+ &=& \lim_{t\to \infty} \frac{f_X(t)}{f_Y(t)} ,
 \end{eqnarray*}
 
 given that the density functions exist. This is an application of L'Hôpital's Rule from calculus.
@@ -199,7 +199,7 @@ given that the density functions exist. This is an application of L'Hôpital's R
 **Example `r chapnum`.2.5. Comparison of Pareto to gamma distributions.**
 Let $X\sim Pareto(\alpha, \theta)$ and $Y\sim gamma(\alpha, \theta)$, for $\alpha>0$ and $\theta>0$. Show that the Pareto has a heavier right tail than the gamma.
 
-`r HideExample('12.2.5','Show Example Solution')`
+`r HideExample('13.2.5','Show Example Solution')`
 
 **Solution.**
 
@@ -264,7 +264,7 @@ F_X(x)=1-e^{-x/\theta}, \text{ for } x>0.
 $$
 Give a closed-form expression for the $VaR$.
 
-`r HideExample('12.3.1','Show Example Solution')`
+`r HideExample('13.3.1','Show Example Solution')`
 
 **Solution.**
 
@@ -286,7 +286,7 @@ The result reported in Example `r chapnum`.3.1 can be generalized to any continu
 **Example `r chapnum`.3.2. $VaR$ for the normal distribution.**
 Consider an insurance loss random variable $X\sim Normal(\mu,\sigma^2)$ with $\sigma>0$.  In this case, one may interpret the negative values of $X$ as profit or revenue.  Give a closed-form expression for the $VaR$.
 
-`r HideExample('12.3.2','Show Example Solution')`
+`r HideExample('13.3.2','Show Example Solution')`
 
 **Solution.**
 
@@ -312,7 +312,7 @@ In many insurance applications, we have to deal with transformations of random v
 **Example `r chapnum`.3.3. $VaR$ for transformed variables.**
 Consider an insurance loss random variable $Y$ with a lognormal distribution with parameters $\mu \in \mathbf{R}$ and $\sigma^2>0$. Give an expression of the $VaR$ of $Y$ in terms of the standard normal inverse *cdf*.
 
-`r HideExample('12.3.3','Show Example Solution')`
+`r HideExample('13.3.3','Show Example Solution')`
 
 **Solution.**
 
@@ -343,7 +343,7 @@ $$
 $$
 Determine the $VaR$ at $q = 0.6, 0.9, 0.95, 0.95001$.
 
-`r HideExample('12.3.4','Show Example Solution')`
+`r HideExample('13.3.4','Show Example Solution')`
 
 **Solution.**
 
@@ -471,7 +471,7 @@ ES_{q}[X]=\frac{1}{(1-q)}\int_{\pi_q}^{\infty}xf_X(x)dx.
 **Example `r chapnum`.3.6. $ES$ for a normal distribution.**
 Consider an insurance loss random variable\ $X\sim Normal (\mu,\sigma^2)$ with $\mu\in \mathbf{R}$ and $\sigma>0$. Give an expression for $ES$.
 
-`r HideExample('12.3.6','Show Example Solution')`
+`r HideExample('13.3.6','Show Example Solution')`
 
 **Solution.**
 
@@ -504,13 +504,13 @@ $$
 We mentioned earlier in the previous subsection that the $VaR$ of a strictly increasing function of random variable is equal to the function of $VaR$ of the original random variable.  Motivated by the results in Example `r chapnum`.3.6, one can show that the $ES$ of a strictly increasing linear transformation of random variable is equal to the function of $VaR$ of the original random variable. This is due to the linearity property of expectations.  However, the aforementioned  finding cannot be extended to non-linear functions.  The following example of lognormal random variable serves as a counter example.  
 
 **Example `r chapnum`.3.7. $ES$ of a lognormal distribution.**
-Consider an insurance loss random variable $X$ lognormal distribution with parameters $\mu \in \mathbf{R}$ and $\sigma>0$. Show that
+Consider an insurance loss random variable $X$ with a lognormal distribution having parameters $\mu \in \mathbf{R}$ and $\sigma>0$. Show that
 
 $$
 ES_q[X] = \frac{e^{\mu+\sigma^2/2}}{(1-q)} \Phi(\Phi^{-1}(q)-\sigma).
 $$
 
-`r HideExample('12.3.7','Show Example Solution')`
+`r HideExample('13.3.7','Show Example Solution')`
 
 **Solution.**
 
@@ -520,9 +520,8 @@ $$
 f_X(x)=\frac{1}{\sigma\sqrt{2\pi} x}\exp\{-(\log x-\mu )^2/2\sigma^2 \}, \text{ for } x>0.
 $$
 
-Fix $q \in (0,1)$, then the $ES$ of $X$ can be computed via
+Fix $q \in (0,1)$, then the expected shortfall can be computed via
 
-<!-- \label{eqn:cte-normal} -->
 
 \begin{eqnarray}
   ES_q[X] &=& \frac{1}{(1-q)} \int_{\pi_q}^{\infty} x f_X(x)dx \nonumber\\
@@ -557,7 +556,7 @@ ES_{q}[X]&=&\left[-x S_X(x)\big |_{\pi_q}^{\infty}+\int_{\pi_q}^{\infty}S_X(x)dx
 **Example  `r chapnum`.3.8. $ES$ of an exponential distribution.**
 Consider an insurance loss random variable $X$ with an exponential distribution having parameter $\theta$ for $\theta>0$. Give an expression for the $ES$.
 
-`r HideExample('12.3.8','Show Example Solution')`
+`r HideExample('13.3.8','Show Example Solution')`
 
 **Solution.**
 
@@ -868,8 +867,8 @@ With our constraint, we may determine $\lambda$ as the solution of
 
 $$
 \begin{array}{ll}
-K &= \sum_{i=1}^3 c_i \mathrm{E}(X_i) \\
-&= \frac{\lambda}{2} \sum_{i=1}^3 \frac{\mathrm{E}(X_i)^2}{\mathrm{Var}(X_i)} 
+K &= \sum_{i=1}^n c_i \mathrm{E}(X_i) \\
+&= \frac{\lambda}{2} \sum_{i=1}^n \frac{\mathrm{E}(X_i)^2}{\mathrm{Var}(X_i)} 
 \end{array}
 $$
 
@@ -888,7 +887,7 @@ From the math, it turns out that the constant for the $i$th risk, $c_i$ is propo
 *  $\alpha_2 =3$, $\theta_2=2000$ for the second risk $X_2$, and
 *  $\alpha_3 =4$, $\theta_3=3000$ for the third risk $X_3$.
 
-Provide a graph that give values of $c_1$, $c_2$, and $c_3$ for a required revenue $K$. Note that these values increase linearly with $K$.
+Provide a graph that gives values of $c_1$, $c_2$, and $c_3$ for a required revenue $K$. Note that these values increase linearly with $K$.
 
 `r HideRCode('ParetoRisksProp', 'Show an Example with Three Pareto Risks')`
 

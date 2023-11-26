@@ -15,7 +15,6 @@
 In this section, you learn how to:
 
 -   Use bonus-malus system as an experience rating scheme.
-
 -   Compare bonus-malus system with risk classification (Chapter 8) and credibility premium (Chapter 9).
 
 ***
@@ -33,8 +32,7 @@ In motor insurance, *BMS* is a form of *a posteriori* rating to complement the u
 In this section, you learn how to:
 
 -   Use *BMS* in Malaysia and other countries.
-
--   Determine transition rule.
+-   Determine a transition rule.
 
 ***
 
@@ -46,20 +44,27 @@ Before the liberalization of Motor Tariff on 1st July 2017, the rating of motor 
 
 Effective on 1st July 2017, the premium rates for motor insurance are liberalized, or de-tariffed. The pricing of premium is now determined by individual insurers and `r Gloss('takaful')` operators, and the consumers are able to enjoy a wider choice of motor insurance products at competitive prices. Since tariff liberalization encourages innovation and competition among insurers and takaful operators, the premiums are based on broader risk factors other than the risk classes specified in the Motor Tariff. Other rating factors may be defined in the risk profile of an insured, such as age of vehicle, age of driver, safety and security features of vehicle, geographical location of vehicle and traffic offences of driver. However, the bonus-malus entitlement from the Motor Tariff remains 'unchanged' and continue to exist, and is 'transferable' from one insurer, or from one takaful operator, to another.
 
-The discounts in the Malaysian *BMS* are divided into six classes, starting from the initial class of 0% discount, followed by classes of 25%, 30%, 38.3%, 45% and 55% discounts. A claim-free policy year indicates that a policyholder is entitled to move one-step forward to the next discount class, such as from a 0% discount to a 25% discount in the renewal year. If a policyholder is already at the highest class, which is at a 55% discount, a claim-free policy year indicates that the policyholder remains in the same class. On the other hand, if one or more claims are made within the policy year, the discount will be forfeited and the policyholder has to start at 0% discount in the renewal year. This set of transition rules can also be summarized as a rule of -1/Top, that is, a class of bonus for a claim-free year, and moving to the highest class after having one or more claims. For an illustration purpose, [Figure 15.1](#fig:15.1) <!-- @ref(fig:TransitionMsia)  --> shows the classes and the transition diagram for the Malaysian *BMS*.
-
-|    Classes    | Discounts (%) |
-|:-------------:|:-------------:|
-|       0       |       0       |
-|       1       |      25       |
-|       2       |      30       |
-|       3       |     38.33     |
-|       4       |      45       |
-| 5 (and above) |      55       |
-
-<a id=fig:15.1></a>
+The discounts in the Malaysian *BMS* are divided into six classes, starting from the initial class of 0% discount, followed by classes of 25%, 30%, 38.3%, 45% and 55% discounts. A claim-free policy year indicates that a policyholder is entitled to move one-step forward to the next discount class, such as from a 0% discount to a 25% discount in the renewal year. If a policyholder is already at the highest class, which is at a 55% discount, a claim-free policy year indicates that the policyholder remains in the same class. On the other hand, if one or more claims are made within the policy year, the discount will be forfeited and the policyholder has to start at 0% discount in the renewal year. This set of transition rules can also be summarized as a rule of -1/Top, that is, a class of bonus for a claim-free year, and moving to the highest class after having one or more claims. For an illustration purpose, [Figure 15.1](#fig:15.1) shows the classes and the transition diagram for the Malaysian *BMS*.
 
 (ref:TranMalaysia) **Transition diagram for bonus-malus classes (Malaysia)**
+
+```{r echo = FALSE, fig.show="hold", out.width="45%"}
+library(knitr)
+#library(kableExtra)
+Classes <- c(0,1,2,3,4,"5 (and above)")
+Discounts <- c(0,25, 30, 38.33, 45, 55)
+text_Table <- data.frame(Classes, Discounts)
+colnames(text_Table) <- c("Classes", "Discounts (%)")
+#knitr::include_graphics("Figures/FigureTransitionMsia.png")
+knitr::kable(text_Table, caption = '(ref:TranMalaysia)', booktabs = T, align = 'c') 
+
+# %>%
+#   kableExtra::kable_classic(full_width = FALSE) %>% 
+#   kableExtra::column_spec(1,  width = "3.5cm") %>%
+#   kableExtra::kable_styling(bootstrap_options = c("striped", "condensed"))
+```
+
+<a id=fig:15.1></a>
 
 ```{r fig.cap = '(ref:TranMalaysia)', fig.show="hold", out.width="45%", echo=FALSE}
 knitr::include_graphics("Figures/FigureTransitionMsia.png")
@@ -67,6 +72,24 @@ knitr::include_graphics("Figures/gridMalayTable.png")
 ```
 
 ***
+
+
+
+<!-- ```{r echo = FALSE }  -->
+<!-- d1 <- knitr::include_graphics("Figures/FigureTransitionMsia.png") -->
+<!-- d2 <- knitr::kable(text_Table, caption = '(ref:TranMalaysia)', booktabs = T, align = 'c')  -->
+<!-- knitr::kables( -->
+<!--   list( -->
+<!--     # the first kable() to change column names -->
+<!--    d1, -->
+<!--     # the second kable() to set the digits option -->
+<!--     d2) , -->
+<!--   caption = 'Two tables created by knitr::kables().' -->
+<!-- ) -->
+<!-- ``` -->
+
+
+
 
 ### *BMS* in Other Countries
 
@@ -135,8 +158,7 @@ knitr::include_graphics("Figures/FigureTransitionSwitz.png")
 In this section, you learn how to:
 
 -   Represent bonus-malus classes using transition probabilities.
-
--   Use transition matrix.
+-   Use yjr transition matrix.
 
 ***
 
@@ -265,10 +287,8 @@ $$
 In this section, you learn how to:
 
 -   Calculate stationary probabilities.
-
--   Observe premium evolution.
-
--   Measure convergence rate.
+-   Observe a premium evolution.
+-   Measure the convergence rate.
 
 ***
 
@@ -343,7 +363,12 @@ In other words, ${\pi_0} = 0.10$ indicates that 10% of insureds will eventually 
 
 ### `R` Code for a Stationary Distribution
 
-We can use the left eigenvector of a transition matrix to calculate a stationary distribution. The following `R` code can be used to calculate a stationary distribution:
+We can use the left eigenvector of a transition matrix to calculate a stationary distribution. The following `R` code can be used to calculate a stationary distribution in two stages:
+
+1. Create a Transition Matrix
+2. Find a stationary distribution using left eigenvector.
+
+`r HideRCode('Section15.42', 'Show the R Code for a Stationary Distribution')`
 
 **1. Create a Transition Matrix**
 
@@ -382,6 +407,7 @@ We can use the left eigenvector of a transition matrix to calculate a stationary
 
 ```
 
+</div>
 
 ***
 
@@ -526,18 +552,25 @@ Using similar steps, the mean premium in the $n$-th year for $n = 2,...,20$ can 
 
 </div>
 
-### `R` Program for Premium Evolution
+### `R` Code for Premium Evolution
 
 The following `R` code can be used to find the premium in the *n-*th year and the premiums in 20 years under the *BMS* in Malaysia (to find the solution in Example `r chapnum`.4.4). A function for transition matrix is created so that it can be used in the later sections (Section `r chapnum`.5).
+
+1. Create a function for transition matrix
+2. Create a function for the *n-*th power of a square matrix
+3. Create a function for premium in *n-*th year
+4. Provide premiums for 20 years,
+
+`r HideRCode('Section15.43', 'Show the R Code for Premium Evolution')`
 
 **1. Create a function for transition matrix**
 
 ```{r eval = FALSE}
-    #create transition probability using function of lamda
-    TP=function(lamda)
+    #create transition probability using function of \lambda
+    TP=function(\lambda)
     { P=matrix(data=0,nrow=6,ncol=6)
-      P[1,2]=P[2,3]=P[3,4]=P[4,5]=P[5,6]=P[6,6]=exp(-lamda)
-      P[,1]=1-exp(-lamda)
+      P[1,2]=P[2,3]=P[3,4]=P[4,5]=P[5,6]=P[6,6]=exp(-\lambda)
+      P[,1]=1-exp(-\lambda)
       P}
     TP(0.1)
 
@@ -558,10 +591,10 @@ The following `R` code can be used to find the premium in the *n-*th year and th
 
 ```{r eval = FALSE}
     #create function for nth power of square matrix
-    powA = function(n,lamda)
-    { if (n==1)  return (TP(lamda))
-      if (n==2)  return (TP(lamda)%*%TP(lamda))
-      if (n>2) return (TP(lamda)%*%powA(n-1,lamda))}
+    powA = function(n,\lambda)
+    { if (n==1)  return (TP(\lambda))
+      if (n==2)  return (TP(\lambda)%*%TP(\lambda))
+      if (n>2) return (TP(\lambda)%*%powA(n-1,\lambda))}
     powA(3,0.1)
 
     #output
@@ -584,10 +617,10 @@ The following `R` code can be used to find the premium in the *n-*th year and th
     BMS=c(1,0.75,0.7,0.6167,0.55,0.45)
 
     #create function for mean premium in nth year, when prior premium is $1000
-    prem=function(n,lamda)
+    prem=function(n,\lambda)
     { p=numeric(0)
       for (i in 1:length(BMS))
-      p[i]=mean(powA(n,lamda)[,i])
+      p[i]=mean(powA(n,\lambda)[,i])
       1000*sum(p*BMS)}
 
     #example for premium in 3rd year
@@ -603,10 +636,10 @@ The following `R` code can be used to find the premium in the *n-*th year and th
 
 ```{r eval = FALSE}
     #provide mean premium for all 20 years 
-    allprem=function(n,lamda)
+    allprem=function(n,\lambda)
     { p=numeric(0)
       for (i in 1:n)
-      p[i]=prem(i,lamda)
+      p[i]=prem(i,\lambda)
       p}
     round(allprem(20,0.1),1)
 
@@ -616,6 +649,7 @@ The following `R` code can be used to find the premium in the *n-*th year and th
     
 ```     
 
+</div>
 
 ***
 
@@ -684,25 +718,28 @@ knitr::include_graphics("Figures/FigureEvolution.png")
 
 The following `R` code can be used to create a function for the transition matrix under the BMS in Brazil. The function can be used to find the mean premium in the *n-*th year and the mean premiums in 20 years. The function can also be used in the later section (Section `r chapnum`.5).
 
+
+`r HideRCode('Example15.45', 'Show the R Code for Evolution of Premium (Malaysia and Brazil)')`
+
 **1. Create a function for transition matrix**
 
 ```{r eval = FALSE}
     #create function for transition matrix without 1st column
-    TM=function(lamda)
+    TM=function(\lambda)
     { P=matrix(data=0,nrow=7,ncol=7)
-      P[1,2]=P[2,3]=P[3,4]=P[4,5]=P[5,6]=P[6,7]=P[7,7]=exp(-lamda)
-      P[3,2]=P[4,3]=P[5,4]=P[6,5]=P[7,6]=lamda*exp(-lamda)
-      P[4,2]=P[5,3]=P[6,4]=P[7,5]=(1/2)*(lamda^2)*exp(-lamda)
-      P[5,2]=P[6,3]=P[7,4]=(1/6)*(lamda^3)*exp(-lamda)
-      P[6,2]=P[7,3]=(1/24)*(lamda^4)*exp(-lamda)
-      P[7,2]=(1/120)*(lamda^5)*exp(-lamda)
+      P[1,2]=P[2,3]=P[3,4]=P[4,5]=P[5,6]=P[6,7]=P[7,7]=exp(-\lambda)
+      P[3,2]=P[4,3]=P[5,4]=P[6,5]=P[7,6]=\lambda*exp(-\lambda)
+      P[4,2]=P[5,3]=P[6,4]=P[7,5]=(1/2)*(\lambda^2)*exp(-\lambda)
+      P[5,2]=P[6,3]=P[7,4]=(1/6)*(\lambda^3)*exp(-\lambda)
+      P[6,2]=P[7,3]=(1/24)*(\lambda^4)*exp(-\lambda)
+      P[7,2]=(1/120)*(\lambda^5)*exp(-\lambda)
       P}
 
     #add 1st column in transition matrix
-    TP=function(lamda)
-    {P=TM(lamda)
+    TP=function(\lambda)
+    {P=TM(\lambda)
     for (i in 1:7)
-     P[i,1]=1-sum(TM(lamda)[i,-1])
+     P[i,1]=1-sum(TM(\lambda)[i,-1])
      P}
 
     #provide transition matrix (in 4 decimal places)
@@ -724,7 +761,7 @@ The following `R` code can be used to create a function for the transition matri
 
 
 ```{r eval = FALSE}
-  round(powA(n=3,lamda=0.1),4)
+  round(powA(n=3,\lambda=0.1),4)
 
     #output
            [,1]   [,2]   [,3]   [,4]   [,5]   [,6]   [,7]
@@ -746,7 +783,7 @@ The following `R` code can be used to create a function for the transition matri
     BMS=c(1,0.9,0.85,0.8,0.75,0.7,0.65)
 
     #call function for premium
-    prem(n=3,lamda=0.1)
+    prem(n=3,\lambda=0.1)
 
     #output
     [1] 713.117
@@ -756,7 +793,7 @@ The following `R` code can be used to create a function for the transition matri
 **4. Recall all premiums in 20 years**
 
 ```{r eval = FALSE}
-    round(allprem(n=20,lamda=0.1),1)
+    round(allprem(n=20,\lambda=0.1),1)
 
     #output
     [1] 766.9 737.6 713.1 693.8 679.2 669.3 664.0 660.5 658.8 657.7 657.2 656.9 
@@ -764,7 +801,7 @@ The following `R` code can be used to create a function for the transition matri
 
 ```
 
-
+</div>
 
 
 
@@ -843,9 +880,17 @@ Using `R`, the total variations (or convergence rate) in 20 years are:
 
 </div>
 
-### `R` Program for Convergence Rate
+### `R` Code for Convergence Rate
 
 The following `R` code can be used to calculate the total variation in the $n$th year, and the total variations (convergence rates) in 20 years under the *BMS* in Malaysia (the solution in Example `r chapnum`.4.6).
+
+1. Recall the Transition Matrix
+2. Create a function for stationary probabilities
+3. Create a function for total variation in** **the *n*-th year
+4. Provide total variations (convergence rate) in 20 years
+
+
+`r HideRCode('Section15.46', 'Show the R Code for Convergence Rate')`
 
 **1. Recall the Transition Matrix**
 
@@ -868,8 +913,8 @@ The following `R` code can be used to calculate the total variation in the $n$th
 
 ```{r eval = FALSE}
     #create function for stationary probabilities
-    ST=function(lamda)
-    {Re(t(eigen(t(TP(lamda)))$vectors[,1]/sum(eigen(t(TP(lamda)))$vectors[,1])))}
+    ST=function(\lambda)
+    {Re(t(eigen(t(TP(\lambda)))$vectors[,1]/sum(eigen(t(TP(\lambda)))$vectors[,1])))}
     ST(0.1)
 
     #output
@@ -883,10 +928,10 @@ The following `R` code can be used to calculate the total variation in the $n$th
 
 ```{r eval = FALSE}
     #create function for total variation in nth year
-    TV=function(n,lamda)
+    TV=function(n,\lambda)
     { dif=numeric(0)
-      for (j in 1:length(ST(lamda)))
-      dif[j]=abs(mean(powA(n,lamda)[,j])-ST(lamda)[j])
+      for (j in 1:length(ST(\lambda)))
+      dif[j]=abs(mean(powA(n,\lambda)[,j])-ST(\lambda)[j])
       sum(dif)}
 
     #example for n=2
@@ -902,10 +947,10 @@ The following `R` code can be used to calculate the total variation in the $n$th
 
 ```{r eval = FALSE}
     #provide total variation in each year for n years (4 decimal places)
-    tot.var=function(n,lamda)
+    tot.var=function(n,\lambda)
     { q=numeric(0)
       for (t in 1:n)
-      q[t]=TV(t,lamda)
+      q[t]=TV(t,\lambda)
       q}
     round(tot.var(20,0.1),4)
 
@@ -915,7 +960,9 @@ The following `R` code can be used to calculate the total variation in the $n$th
     [13] 0.0000 0.0000 0.0000 0.0000 0.0000 0.0000 0.0000 0.0000
 ```
 
+</div>
 
+***
 
 **Example `r chapnum`.4.7.** Provide the total variations (or convergence rate) in 20 years under the *BMS* in Brazil using the results from example `r chapnum`.4.5.
 
@@ -939,23 +986,20 @@ Examples `r chapnum`.4.6-`r chapnum`.4.7 provide the degree of convergence for t
 
 In this section, you learn how to:
 
--   integrate priori information into optimal relativities
-
--   calculate probability of staying in BMS level
-
--   calculate constrained optimal relativities
-
--   calculate unconstrained optimal relativities
+-   Integrate priori information into optimal relativities.
+-   Calculate probability of staying in BMS level.
+-   Calculate constrained optimal relativities.
+-   Calculate unconstrained optimal relativities.
 
 ***
 
 ### Premium Rating
 
-In motor insurance ratemaking, BMS is a form of *a posteriori* rating mechanism to complement the use of *a priori* risk classification as described in Chapter \@ref(ChapRiskClass). The *a priori* ***risk segmentation*** introduced in Section \@ref(S:RC:Introduction) divides portfolio of drivers into a number of homogeneous risk classes based on observable rating factors (see Section \@ref(S:RatingFactors)), such that policyholders in the same risk class pay the same *a priori* premium. The underlying reason for utilizing BMS that relies on claims experience information is to deal with the *residual heterogeneity* within each homogeneous risk class (e.g., see the discussion before Example 2.6.2) since the observable variables are far from perfect in predicting the riskiness of driving behaviors.
+In motor insurance ratemaking, BMS is a form of *a posteriori* rating mechanism to complement the use of *a priori* risk classification as described in Chapter \@ref(ChapRiskClass). The *a priori* ***risk segmentation*** introduced in Section \@ref(S:RC:Introduction) divides portfolio of drivers into a number of homogeneous risk classes based on observable rating factors (see also Section \@ref(S:RatingFactors)), such that policyholders in the same risk class pay the same *a priori* premium. The underlying reason for utilizing BMS that relies on claims experience information is to deal with the *residual heterogeneity* within each homogeneous risk class (e.g., see the discussion before Example 2.6.2) since the observable variables are far from perfect in predicting the riskiness of driving behaviors.
 
 The ideal *a posteriori* mechanism is the credibility premium framework developed in Chapter \@ref(ChapCredibility) and in particular Section \@ref(S:Cred:BayesInf) (see also @DionneVanasse89), whereby premiums are derived on an individual basis for each policyholder by incorporating both the *a priori* and *a posteriori* information. However, such individual premium determination is overly complex from a commercial standpoint for practical implementations by motor insurers. For this reason, *BMS* is the preferred solution and it consists of the following three building blocks: (a) *BMS* classes; (b) transition rules; (c) premium levels (also known as premium relativities or premium adjustment coefficients).
 
-The first two building blocks are pre-specified in advance and have been discussed in previous sections, whereas the determination (instead of pre-determined as discussed in the cases of Malaysian, Brazilian and Swiss systems) of premium relativities are important for motor insurers precisely because of its complementary and correction nature to account for the imperfection or inaccuracies in the *a priori* risk classification. Note that the premium relativities under BMS are different from the relativity measure defined in Section \@ref(S:RatingFactors), which is the ratio between the expected risk of a given risk class to a baseline risk class, both of which are calculated from observable rating factors. In the following subsections, we briefly introduce the required modelling setup to study the determination of optimal relativities. We refer interested reader to @Denuit07 for a fuller discussion on the technical details.
+The first two building blocks are pre-specified in advance and have been discussed in previous sections, whereas the determination (instead of pre-determined as discussed in the cases of Malaysian, Brazilian and Swiss systems) of premium relativities are important for motor insurers precisely because of its complementary and correction nature to account for the imperfection or inaccuracies in the *a priori* risk classification. Note that the premium relativities under BMS are different from the relativity measure defined in Section \@ref(S:CatVarMultiTarriff), which is the ratio between the expected risk of a given risk class to a baseline risk class, both of which are calculated from observable rating factors. In the following subsections, we briefly introduce the required modelling setup to study the determination of optimal relativities. We refer interested readers to @Denuit07 for a fuller discussion on the technical details.
 
 ### A Priori Risk Classification
 
@@ -965,49 +1009,55 @@ We can then express the predicted *a priori* expected claim frequency for policy
 
 $$
 \mu_{i}=m_{i}\lambda_{i}=m_{i}\exp\left(\hat{\beta}_{0}+\sum\limits_{m=1}^{q}\hat{\beta}_{m}x_{im}\right) ,
-$$ where $\hat{\beta}_{0},\hat{\beta}_{1},\ldots,\hat{\beta}_{q}$ are the estimated regression coefficients. In other words, $\lambda_{i}=\frac{\mu_{i}}{m_{i}}$ is the expected claim frequency per unit exposure, which is the main focus of the *a priori* risk classification.
+$$
+
+where $\hat{\beta}_{0},\hat{\beta}_{1},\ldots,\hat{\beta}_{q}$ are the estimated regression coefficients. In other words, $\lambda_{i}=\frac{\mu_{i}}{m_{i}}$ is the expected claim frequency per unit exposure, which is the main focus of the *a priori* risk classification.
 
 ### Modelling of Residual Heterogeneity
 
 Since unobserved factors that may affect driving behaviors are not taken into account in estimating the expected claim frequency, insurers would have to account for the residual heterogeneity within each *a priori* risk class by introducing a random effect component $\Theta_{i}$ into the conditional distribution of $Y_{i}$. Given $\Theta_{i}=\theta$, $Y_{i}$ follows a Poisson distribution with mean $\lambda_{i}\theta$, that is,
 
-$Pr(Y_{i}=k|\Theta_{i}=\theta)=\exp(-\lambda_{i}\theta)\frac{(\lambda_{i}\theta)^{k}}{k!},k=0,1,2,...$
+$$
+\Pr(Y_{i}=k|\Theta_{i}=\theta)=\exp(-\lambda_{i}\theta)\frac{(\lambda_{i}\theta)^{k}}{k!},k=0,1,2,...
+$$
 
 Following from the setup of gamma-Poisson model in Section \@ref(Sec:Cred:gammaPoisson), we further assume that all the $\Theta_{i}$'s are independent and follow a gamma $(a,a)$ distribution with the following density function as introduced in Appendix \@ref(S:ContinuousDistributions)
 
-$f(\theta)=\frac{1}{\Gamma(a)}a^{a}\theta^{a-1}\exp(-a\theta), \quad \theta > 0,$
+$$
+f(\theta)=\frac{1}{\Gamma(a)}a^{a}\theta^{a-1}\exp(-a\theta), \quad \theta > 0,
+$$
 
-where the use of gamma-Poisson mixture produces a negative binomial distribution for $Y_{i}$ (see Section \@ref(S:mixture-distributions)). With these specifications, we obtain $\mathrm{E}(\Theta_{i})=1$ and hence $\mathrm{E}(Y_{i})=\mathrm{E}(\mathrm{E}(Y_{i}|\Theta_{i}))=\mathrm{E}(\lambda_{i}\Theta_{i})=\lambda_{i}$. by the law of iterated expectation in Appendix \@ref(S:AppB:LIE).
+where the use of gamma-Poisson mixture produces a negative binomial distribution for $Y_{i}$ (see Section \@ref(S:mixture-distributions)). With these specifications, we obtain $\mathrm{E}(\Theta_{i})=1$ and hence $\mathrm{E}(Y_{i})=\mathrm{E}(\mathrm{E}(Y_{i}|\Theta_{i}))$ $=\mathrm{E}(\lambda_{i}\Theta_{i})=\lambda_{i}$. by the law of iterated expectation in Appendix \@ref(S:AppB:LIE).
 
 Furthermore, it can be shown that the posterior distribution of $\Theta| y_{1}=k_{1},y_{2}=k_{2},\ldots,y_{n}=k_{n}$ is gamma distributed with parameters $a+\sum_{j=1}^{n} k_{j}$ and $a+n\lambda_{i}$ and therefore the Bayesian premium is given as
 
-$\mathrm{E}(\lambda_{i}\Theta| y_{1}=k_{1},\ldots,y_{n}=k_{n})=\lambda_{i}\times\frac{a+\sum_{j=1}^{n} k_{j}}{a+n\lambda_{i}}.$
+$$
+\mathrm{E}(\lambda_{i}\Theta| y_{1}=k_{1},\ldots,y_{n}=k_{n})=\lambda_{i}\times\frac{a+\sum_{j=1}^{n} k_{j}}{a+n\lambda_{i}}.
+$$
 
 On the other hand, applying the Bühlmann credibility-weighted estimate in Section \@ref(S:Cred:Buhlmann) to the gamma-Poisson model in Section \@ref(Sec:Cred:gammaPoisson), we obtain
 
-$EPV=E(Var(Y|\lambda_{i}))=E(\lambda_{i}\Theta)=\lambda_{i},$
-
-$VHM=Var(E(Y|\lambda_{i}))=Var(\lambda_{i}\Theta)=\frac{\lambda_{i}^{2}}{a},$
-
-$K=\frac{EPV}{VHM}=\frac{\lambda_{i}}{\frac{\lambda_{i}^{2}}{a}}=\frac{a}{\lambda_{i}},$
-
-$Z=\frac{n}{n+K}=\frac{n\lambda_{i}}{n\lambda_{i}+a},$
-
-$\bar{Y}=\frac{\sum_{j=1}^{n}y_{j}}{n}=\frac{\sum_{j=1}^{n}k_{j}}{n},$
-
-$\mu=E(E(Y_{i}|\lambda_{i}))=E(\lambda_{i}\Theta)=\lambda_{i},$
+$$
+\begin{array}{cl}
+EPV &=\mathrm{E}(\mathrm{Var}(Y|\lambda_{i}))=\mathrm{E}(\lambda_{i}\Theta)=\lambda_{i}, \\
+VHM & =\mathrm{Var}(\mathrm{E}(Y|\lambda_{i}))=\mathrm{Var}(\lambda_{i}\Theta)=\frac{\lambda_{i}^{2}}{a},\\
+K & =\frac{EPV}{VHM}=\frac{\lambda_{i}}{\frac{\lambda_{i}^{2}}{a}}=\frac{a}{\lambda_{i}},\\
+Z & =\frac{n}{n+K}=\frac{n\lambda_{i}}{n\lambda_{i}+a},\\
+\bar{Y} & =\frac{\sum_{j=1}^{n}y_{j}}{n}=\frac{\sum_{j=1}^{n}k_{j}}{n}, \\
+\mu & =\mathrm{E}(\mathrm{E}(Y_{i}|\lambda_{i}))=\mathrm{E}(\lambda_{i}\Theta)=\lambda_{i},
+\end{array}
+$$
 
 and hence the credibility-weighted estimate as
 
-$E(E(Y|\lambda_{i})|y_{1}=k_{1},...,y_{n}=k_{n})$
-
-$=E(\lambda_{i}\Theta|y_{i}=k_{1},...,y_{n}=k_{n})$
-
-$=Z\bar{Y}+(1-Z)\mu$
-
-$=\frac{n\lambda_{i}}{n\lambda_{i}+a}\frac{\sum_{j=1}^{n}k_{j}}{n}+\frac{a}{n\lambda_{i}+a}\lambda_{i}$
-
-$=\frac{\lambda_{i}(a+\sum_{j=1}^{n}k_{j})}{a+n\lambda_{i}}$
+$$
+\begin{array}{cl}
+\mathrm{E}[\mathrm{E}(Y|\lambda_{i})|y_{1}=k_{1},...,y_{n}=k_{n}] & =\mathrm{E}[\lambda_{i}\Theta|y_{i}=k_{1},...,y_{n}=k_{n}] \\
+& = Z\bar{Y}+(1-Z)\mu \\
+& = \frac{n\lambda_{i}}{n\lambda_{i}+a}\frac{\sum_{j=1}^{n}k_{j}}{n}+\frac{a}{n\lambda_{i}+a}\lambda_{i} \\
+& =\frac{\lambda_{i}(a+\sum_{j=1}^{n}k_{j})}{a+n\lambda_{i}}
+\end{array}
+$$
 
 that is, the Bühlmann credibility premium exactly matches the Bayesian premium.
 
@@ -1019,9 +1069,13 @@ Suppose that a driver is selected at random from the portfolio that has been cla
 
 Let $p_{ij}^{\lambda}(\lambda\theta)$ be the transition probability of moving from BMS level $i$ to level $j$ for a driver with expected claim frequency $\lambda\theta$ belonging to the risk class with predicted claim frequency of $\lambda$. In other words, the one-step transition matrix can be written as ${\bf P}(\lambda\theta; \lambda)=\{p_{ij}^{\lambda}(\lambda\theta)\}$. The row vector of the stationary distribution $\boldsymbol \pi=(\pi_{0}^{\lambda}(\lambda\theta),\pi_{1}^{\lambda}(\lambda\theta),\ldots,\pi_{k-1}^{\lambda}(\lambda\theta))$ can be obtained by solving the following conditions:
 
-$\boldsymbol\pi(\lambda\theta;\lambda)\bf P(\lambda\theta;\lambda)=\boldsymbol\pi(\lambda\theta;\lambda)$
 
-$\boldsymbol\pi(\lambda\theta;\lambda)\bf 1=$ $1$
+$$
+\begin{array}{cl}
+\boldsymbol\pi(\lambda\theta;\lambda)\bf P(\lambda\theta;\lambda) &=\boldsymbol\pi(\lambda\theta;\lambda) \\
+\boldsymbol\pi(\lambda\theta;\lambda)\bf 1& =1
+\end{array}
+$$
 
 where $\bf 1$ is the column vector of $1$'s and $\pi_{\ell}^{\lambda}(\lambda\theta)$ is the stationary probability for a driver with true expected claim frequency of $\lambda\theta$ to be in level $\ell$ when the equilibrium steady state is reached in the long run.
 
@@ -1029,28 +1083,31 @@ Note that the equation for stationary distribution that allows for residual hete
 
 With these setup, the probability of drivers staying in *BMS* level $L=\ell$ for $\ell=0,1,\ldots,k-1$ in the context of the entire portfolio can be obtained as
 
-$Pr(L=\ell)$
-
-$=\sum\limits_{g=1}^{h}Pr(L=\ell|\Lambda=\lambda_{g})Pr(\Lambda=\lambda_{g})$
-
-$=\sum\limits_{g=1}^{h}Pr(\Lambda=\lambda_{g})\int_{0}^{\infty}Pr(L=\ell|\Lambda=\lambda_{g},\Theta=\theta)f(\theta)d\theta$
-
-$=\sum\limits_{g=1}^{h}w_{g}\int_{0}^{\infty}\pi_{\ell}^{\lambda_{g}}(\lambda_{g}\theta)f(\theta)d\theta.$
+$$
+\begin{array}{ll}
+\Pr(L=\ell) 
+&=\sum\limits_{g=1}^{h}\Pr(L=\ell|\Lambda=\lambda_{g})\Pr(\Lambda=\lambda_{g}) \\
+&=\sum\limits_{g=1}^{h}\Pr(\Lambda=\lambda_{g})\int_{0}^{\infty}\Pr(L=\ell|\Lambda=\lambda_{g},\Theta=\theta)f(\theta)d\theta \\
+&=\sum\limits_{g=1}^{h}w_{g}\int_{0}^{\infty}\pi_{\ell}^{\lambda_{g}}(\lambda_{g}\theta)f(\theta)d\theta.
+\end{array}
+$$
 
 From previous section (section 15.5.3), $\Theta_{i}$ is the random effect component. As an example, if we assume that all $\Theta_{i}$'s are independent and follow a gamma $(a,a)$ distribution, then$\ f(\theta)$ is the density function of a gamma $(a,a)$ distribution.
 
-For further understanding, we provide R program to calculate the probability of staying in level $L=\ell$, $Pr(L=\ell)$, for the Malaysian BMS. From previous sections, the functions for transition matrix and stationary distribution are in terms of function of lamda. Therefore, the functions allow us to write R program to calculate $Pr(L=\ell)$. Similar R program can be used for the Brazilian BMS.
+For further understanding, we provide `R` program to calculate the probability of staying in level $L=\ell$, $\Pr(L=\ell)$, for the Malaysian BMS. From previous sections, the functions for transition matrix and stationary distribution are functions of $\lambda$. Therefore, the functions allow us to write `R` program to calculate $\Pr(L=\ell)$. Similar `R` programs can be developed for the Brazilian BMS.
 
-**Example `r chapnum`.5.1.** Consider the *BMS* levels and the transition rules of the Malaysian system (-1/Top). Assume that the following 3 values of *a priori* expected claim frequency are given; $\lambda_{1}=0.1$, $\lambda_{2}=0.3$, $\lambda_{3}=0.5$, with the following proportions (weights); $Pr(\Lambda=\lambda_{1})=0.6$, $Pr(\Lambda=\lambda_{2})=0.3$, $Pr(\Lambda=\lambda_{3})=0.1$. We also assume that the gamma parameter is fixed at $a=1.5$. Calculate the probability of staying in level $L=\ell$, $Pr(L=\ell)$.
+**Example `r chapnum`.5.1.** Consider the *BMS* levels and the transition rules of the Malaysian system (-1/Top). Assume that the following 3 values of *a priori* expected claim frequency are given; $\lambda_{1}=0.1$, $\lambda_{2}=0.3$, $\lambda_{3}=0.5$, with the following proportions (weights); $\Pr(\Lambda=\lambda_{1})=0.6$, $\Pr(\Lambda=\lambda_{2})=0.3$, $\Pr(\Lambda=\lambda_{3})=0.1$. We also assume that the gamma parameter is fixed at $a=1.5$. Calculate the probability of staying in level $L=\ell$, $\Pr(L=\ell)$.
 
-**Solution.** We can use R program to calculate $Pr(L=\ell)$.
+`r HideExample('15.5.1','Show Example Solution')`
+
+**Solution.** We can use R program to calculate $\Pr(L=\ell)$.
 
 **1. Define the Parameters**
 
 ```{r eval = FALSE}
     #define parameters
     a.hat=1.5
-    lamda.hat=c(0.1,0.3,0.5)
+    \lambda.hat=c(0.1,0.3,0.5)
     weight=c(0.6,0.3,0.1)
 ```
 
@@ -1059,7 +1116,7 @@ For further understanding, we provide R program to calculate the probability of 
 **2. Recall the Transition Matrix**
 
 ```{r eval = FALSE}
-    #As an example, lamda=0.1, theta=1, so that lamda*theta=0.1
+    #As an example, \lambda=0.1, theta=1, so that \lambda*theta=0.1
     TP(0.1)            
 
     #output
@@ -1076,7 +1133,7 @@ For further understanding, we provide R program to calculate the probability of 
 **3. Recall the Stationary Distribution**
 
 ```{r eval = FALSE}
-    #As an example, lamda=0.1, theta=1, so that lamda*theta=0.1
+    #As an example, \lambda=0.1, theta=1, so that \lambda*theta=0.1
     ST(0.1)            
 
     #output
@@ -1086,19 +1143,19 @@ For further understanding, we provide R program to calculate the probability of 
 
 
 
-**4. Calculate** $Pr(L=\ell)$
+**4. Calculate** $\Pr(L=\ell)$
 
 ```{r eval = FALSE}
     #create function for pi*fdist
-    int1=function(theta,s,a,lamda)
+    int1=function(theta,s,a,\lambda)
     {   a=a.hat
-        lamda=lamda.hat[j]
+        \lambda=\lambda.hat[j]
         f.dist=gamma(a)^(-1)*a^a*theta^(a-1)*exp(-a*theta)
-        p=ST(lamda*theta)
+        p=ST(\lambda*theta)
         return(p[1,s+1]*f.dist)}
 
     #create matrix for integral of pi*fdist
-    #there are 3 rating classes (each with lamda=0.1,0.3,0.5), so we need a 3x6 matrix
+    #there are 3 rating classes (each with \lambda=0.1,0.3,0.5), so we need a 3x6 matrix
     P1=matrix(nrow=3,ncol=6,data=0)
     for (j in 1:3)
     {for (i in 0:5) P1[j,i+1]=integrate(Vectorize(int1),lower=0,upper=Inf,s=i)$value}
@@ -1119,7 +1176,9 @@ For further understanding, we provide R program to calculate the probability of 
     [1,] 0.1621921 0.1129319 0.08485348 0.06686052 0.05442063 0.5187414
 ```
 
+</div>
 
+***
 
 The results indicate that in the long run and under residual heterogeneity, 16% of insureds will eventually belong to level $\ell=$ 0, 11% of insureds will eventually belong to level $\ell=1$, and so forth. The majority of insureds (more than half, i.e. 52%) will eventually occupy the highest level which is level $\ell=5$.
 
@@ -1127,75 +1186,93 @@ The results indicate that in the long run and under residual heterogeneity, 16% 
 
 The ***optimal relativity*** for each *BMS* level was first derived by @Norberg76 through the minimization of the following objective function, which is more commonly known as the Norberg's criterion:
 
-$min\mathrm{E}((\bar{\lambda}\Theta-\bar{\lambda}r_{L})^2)=min\mathrm{E}((\Theta-r_{L})^2),$
+$$
+\min\mathrm{E}((\bar{\lambda}\Theta-\bar{\lambda}r_{L})^2)=\min\mathrm{E}((\Theta-r_{L})^2),
+$$
 
 where $\bar{\lambda}$ is the constant expected claim frequency for all policyholders in the absence of *a priori* risk classification and $r_{L}$ is the premium relativity for BMS level $L$. It should be noted that when there is no risk classification, all $\lambda$'s are equal and they are represented by a constant $\bar{\lambda}$.
 
 @Pitrebois03 then incorporated the information of *a priori* risk classification into the optimization of the same objective function of
 
-$min\mathrm{E}((\Theta-r_{L})^2)$
+$$
+\min\mathrm{E}((\Theta-r_{L})^2)
+$$
 
 to derive $r_{L}$ analytically. @Tan15 further proposed the minimization of the following objective function
 
-$min\mathrm{E}((\Lambda\Theta-\Lambda r_{L})^2),\text{  subject to }\mathrm{E}(r_{L})=1$
+$$
+\min\mathrm{E}((\Lambda\Theta-\Lambda r_{L})^2),\text{  subject to }\mathrm{E}(r_{L})=1
+$$
 
 under a financial balanced constraint (that is, the expected premium relativity equals 1) to determine the optimal relativities of a *BMS* given pre-specified *BMS* levels and transition rules, where
 
-$\min\mathrm{E((\Lambda\Theta-\Lambda r_{L})^2)}$
 
-$=\sum\limits_{\ell=0}^{k-1}\mathrm{E}((\Lambda\Theta-\Lambda r_{L})^2|L=\ell)Pr(L=\ell)$
-
-$=\sum\limits_{\ell=0}^{k-1}E(E((\Lambda\Theta-\Lambda r_{L})^2|L=\ell,\Lambda)|L=\ell)Pr(L=\ell)$
-
-$=\sum\limits_{\ell=0}^{k-1}\sum\limits_{g-1}^{h}E((\Lambda\Theta-\Lambda r_{L})^2|L=\ell,\Lambda=\lambda_{g})Pr(\Lambda=\lambda_{g}|L=\ell)Pr(L=\ell)$
-
-$=\sum\limits_{\ell=0}^{k-1}\sum\limits_{g=1}^{h}\int_{0}^{\infty}(\lambda_{g}\theta-\lambda_{g} r_{\ell})^2\pi_{\ell}(\lambda_{g}\theta)w_{g}f(\theta)d\theta$
-
-$=\sum\limits_{g=1}^{h}w_{g}\int_{0}^{\infty}\sum\limits_{\ell=0}^{k-1}(\lambda_{g}\theta-\lambda_{g}r_{\ell})^2\pi_{\ell}(\lambda_{g}\theta)f(\theta)d\theta.$
+$$
+\begin{array}{ll}
+\min\mathrm{\mathrm{E}[(\Lambda\Theta-\Lambda r_{L})^2]}
+&=\sum\limits_{\ell=0}^{k-1}\mathrm{E}[(\Lambda\Theta-\Lambda r_{L})^2|L=\ell]\Pr(L=\ell) \\
+&=\sum\limits_{\ell=0}^{k-1}\mathrm{E}(\mathrm{E}[(\Lambda\Theta-\Lambda r_{L})^2|L=\ell,\Lambda)|L=\ell]\Pr(L=\ell) \\
+&=\sum\limits_{\ell=0}^{k-1}\sum\limits_{g-1}^{h}\mathrm{E}((\Lambda\Theta-\Lambda r_{L})^2|L=\ell,\Lambda=\lambda_{g})\Pr(\Lambda=\lambda_{g}|L=\ell)\Pr(L=\ell) \\
+&=\sum\limits_{\ell=0}^{k-1}\sum\limits_{g=1}^{h}\int_{0}^{\infty}(\lambda_{g}\theta-\lambda_{g} r_{\ell})^2\pi_{\ell}(\lambda_{g}\theta)w_{g}f(\theta)d\theta \\
+&=\sum\limits_{g=1}^{h}w_{g}\int_{0}^{\infty}\sum\limits_{\ell=0}^{k-1}(\lambda_{g}\theta-\lambda_{g}r_{\ell})^2\pi_{\ell}(\lambda_{g}\theta)f(\theta)d\theta.
+\end{array}
+$$
 
 It is crucially important that the optimal relativity has an average of 100%, so that the bonuses and maluses exactly offset each other to result in a financial equilibrium condition. Note that the approach considered by @Pitrebois03 does not require the financial balanced constraint because the analytical solution to its objective function is given by $r_{\ell}=\mathrm{E}(\Theta|L=\ell)$, so it follows that $\mathrm{E}(r_{L})=\mathrm{E}\left(\mathrm{E}(\Theta|L)\right)=\mathrm{E}(\Theta)=1$ with the specific choice of gamma $(a,a)$ distribution for the random effect component $\Theta$.
 
 In this case, the optimization problem can be solved by specifying the Lagrangian as
 
-$\mathcal{L}({\bf r},\alpha)$
-
-$=\mathrm{E}((\Lambda\Theta-\Lambda r_{L})^2)+\alpha(\mathrm{E}(r_{L})-1)$
-
-$=\sum\limits_{\ell=0}^{k-1}\mathrm{E}((\Lambda\Theta-\Lambda r_{L})^2|L=\ell)Pr(L=\ell)+\alpha(\sum\limits_{\ell=0}^{k-1}r_{\ell}Pr(L=\ell)-1),$
+$$
+\begin{array}{ll}
+\mathcal{L}({\bf r},\alpha)
+&=\mathrm{E}((\Lambda\Theta-\Lambda r_{L})^2)+\alpha(\mathrm{E}(r_{L})-1) \\
+&=\sum\limits_{\ell=0}^{k-1}\mathrm{E}((\Lambda\Theta-\Lambda r_{L})^2|L=\ell)\Pr(L=\ell)+\alpha(\sum\limits_{\ell=0}^{k-1}r_{\ell}\Pr(L=\ell)-1),
+\end{array}
+$$
 
 where ${\bf r}=(r_{0},r_{1},\ldots,r_{k-1})^{T}$. The required first order conditions are given as follows
 
-$Pr(L=\ell)(2\mathrm{E}(\Lambda^2\Theta-\Lambda^2 r_{L}|L=\ell)-\alpha)=0,\qquad \ell=0,1,...,k-1$
+$$
+\begin{array}{cl}
+\Pr(L=\ell)(2\mathrm{E}(\Lambda^2\Theta-\Lambda^2 r_{L}|L=\ell)-\alpha)&=0,\qquad \ell=0,1,...,k-1 \\
+\sum\limits_{\ell=0}^{k-1}r_{\ell}\Pr(L=\ell)-1&=0.
+\end{array}
+$$
 
-$\sum\limits_{\ell=0}^{k-1}r_{\ell}Pr(L=\ell)-1=0.$
 
 Finally, the solution set for $\alpha$ and $r_{\ell}, \ell=0,1,\ldots,k-1$ is obtained as
 
-$\alpha=\frac{(\sum\limits_{\ell=0}^{k-1}\frac{\mathrm{E}(\Lambda^2\Theta|L=\ell)}{\mathrm{E}(\Lambda^2|L=\ell)})-1}{\sum\limits_{\ell=0}^{k-1}\frac{Pr(L=\ell)}{2\mathrm{E}(\Lambda^2|L=\ell)}},$
-
-$r_{\ell}=\frac{\mathrm{E}(\Lambda^2\Theta|L=\ell)}{\mathrm{E}(\Lambda^2|L=\ell)}-\frac{\alpha}{2\mathrm{E}(\Lambda^2|L=\ell)},$
+$$
+\begin{array}{cl}
+\alpha &=\frac{(\sum\limits_{\ell=0}^{k-1}\frac{\mathrm{E}(\Lambda^2\Theta|L=\ell)}{\mathrm{E}(\Lambda^2|L=\ell)})-1}{\sum\limits_{\ell=0}^{k-1}\frac{\Pr(L=\ell)}{2\mathrm{E}(\Lambda^2|L=\ell)}}, \\
+r_{\ell}&=\frac{\mathrm{E}(\Lambda^2\Theta|L=\ell)}{\mathrm{E}(\Lambda^2|L=\ell)}-\frac{\alpha}{2\mathrm{E}(\Lambda^2|L=\ell)},
+\end{array}
+$$
 
 where
 
-$Pr(L=\ell)=\sum\limits_{g=1}^{h}w_{g}\int_{0}^{\infty}\pi_{\ell}^{\lambda_{g}}(\lambda_{g}\theta)f(\theta)d\theta,$
-
-$\mathrm{E}(\Lambda^2\Theta|L=\ell)=\frac{\sum\limits_{g=1}^{h}w_{g}\int_{0}^{\infty}\lambda_{g}^{2}\theta\pi_{\ell}^{\lambda_{g}}(\lambda_{g}\theta)f(\theta)d\theta}{\sum\limits_{g=1}^{h}w_{g}\int_{0}^{\infty}\pi_{\ell}^{\lambda_{g}}(\lambda_{g}\theta)f(\theta)d\theta},$
-
-$\mathrm{E}(\Lambda^2|L=\ell)=\frac{\sum\limits_{g=1}^{h}w_{g}\int_{0}^{\infty}\lambda_{g}^{2}\pi_{\ell}^{\lambda_{g}}(\lambda_{g}\theta)f(\theta)d\theta}{\sum\limits_{g=1}^{h}w_{g}\int_{0}^{\infty}\pi_{\ell}^{\lambda_{g}}(\lambda_{g}\theta)f(\theta)d\theta}.$
+$$
+\begin{array}{cl}
+\Pr(L=\ell)&=\sum\limits_{g=1}^{h}w_{g}\int_{0}^{\infty}\pi_{\ell}^{\lambda_{g}}(\lambda_{g}\theta)f(\theta)d\theta, \\
+\mathrm{E}(\Lambda^2\Theta|L=\ell)&=\frac{\sum\limits_{g=1}^{h}w_{g}\int_{0}^{\infty}\lambda_{g}^{2}\theta\pi_{\ell}^{\lambda_{g}}(\lambda_{g}\theta)f(\theta)d\theta}{\sum\limits_{g=1}^{h}w_{g}\int_{0}^{\infty}\pi_{\ell}^{\lambda_{g}}(\lambda_{g}\theta)f(\theta)d\theta}, \\
+\mathrm{E}(\Lambda^2|L=\ell)&=\frac{\sum\limits_{g=1}^{h}w_{g}\int_{0}^{\infty}\lambda_{g}^{2}\pi_{\ell}^{\lambda_{g}}(\lambda_{g}\theta)f(\theta)d\theta}{\sum\limits_{g=1}^{h}w_{g}\int_{0}^{\infty}\pi_{\ell}^{\lambda_{g}}(\lambda_{g}\theta)f(\theta)d\theta}. \\
+\end{array}
+$$
 
 If we perform the optimization without the financial balanced constraint, then we obtain
 
-$\alpha^{\text{unconstrained}}=0,$
-
-$r_{\ell}^{\text{unconstrained}}=\frac{\mathrm{E}(\Lambda^2\Theta|L=\ell)}{\mathrm{E}(\Lambda^2|L=\ell)}.$
+$\alpha^{\text{unconstrained}}=0,$ and $r_{\ell}^{\text{unconstrained}}=\frac{\mathrm{E}(\Lambda^2\Theta|L=\ell)}{\mathrm{E}(\Lambda^2|L=\ell)}.$
 
 It should be noted that the optimal relativity $r_{\ell}$ of each level $\ell$ is the scale that determines the premium's discount/loading to the insureds. If $r_{\ell}<1$, then the insured receives a discount based on his favorable past performance. If $r_{\ell}>1,$ then the insured is penalized and has to pay additional loading based on his past performance. The concept is similar to the discount under the *BMS* in Malaysia and Brazil which were discussed in previous sections. The difference is that the discounts under the *BMS* in Malaysia and Brazil were pre-determined ($r_{\ell}$ =100%, 75%, 70%, 61.67%, 55%, 45% respectively for $\ell$ =0,1,2,3,4,5 for *BMS* in Malaysia; $r_{\ell}$ =100%, 90%, 85%, 80%, 75%, 70%, 65% respectively for $\ell$ =0,1,2,3,4,5,6 for *BMS* in Brazil), whereas the relativities $r_{\ell}$ under heterogeneous residual are determined using optimization (minimization of an objective function which is subjected to a constraint).
 
-For further understanding, we provide R program to calculate the optimal relativity $r_{\ell}$ under *unconstrained method* which allows for residual heterogeneity for the Malaysian *BMS*. From previous sections, the functions for transition matrix and stationary distribution are in terms of function of lamda. Therefore, the functions allow us to write R program to calculate $r_{\ell}$ . Similar R program can be used for the Brazilian BMS.
+For further understanding, we provide `R` program to calculate the optimal relativity $r_{\ell}$ under *unconstrained method* which allows for residual heterogeneity for the Malaysian *BMS*. From previous sections, the functions for transition matrix and stationary distribution are functions of $\lambda$. Therefore, the functions allow us to write `R` program to calculate $r_{\ell}$ . Similar `R` program can be developed for the Brazilian BMS.
 
 It should be noted that the calculation of optimal relativity under *constrained method* needs more formulas and codes. The reader can create the codes on their own by referring to the codes under the *unconstrained method* provided in Example `r chapnum`.5.2.
 
 **Example `r chapnum`.5.2.** Consider the *BMS* levels and the transition rules of the Malaysian system (-1/Top) in Example `r chapnum`.5.1. Calculate the the optimal relativity $r_{\ell}$ under *unconstrained method* which allows for residual heterogeneity.
+
+`r HideExample('15.5.2','Show Example Solution')`
+
 
 **Solution.** We can use R program to calculate $r_{\ell}$ under *unconstrained method*.
 
@@ -1203,7 +1280,7 @@ It should be noted that the calculation of optimal relativity under *constrained
 
 ```{r eval = FALSE}
 a.hat=1.5
-    lamda.hat=c(0.1,0.3,0.5)
+    \lambda.hat=c(0.1,0.3,0.5)
     weight=c(0.6,0.3,0.1)
 ```
 
@@ -1254,15 +1331,15 @@ a.hat=1.5
 ```{r eval = FALSE}
 
     #create function for theta*pi*fdist
-    int2=function(theta,s,a,lamda)
+    int2=function(theta,s,a,\lambda)
     {   a=a.hat
-        lamda=lamda.hat[j]
+        \lambda=\lambda.hat[j]
         f.dist=gamma(a)^(-1)*a^a*theta^(a-1)*exp(-a*theta)
-        p=ST(lamda*theta)
+        p=ST(\lambda*theta)
         return(theta*p[1,s+1]*f.dist)}
 
     #create matrix for integral of theta*pi*fdist
-    #there are 3 rating classes (each with lamda=0.1,0.3,0.5, so we need a 3x6 matrix)
+    #there are 3 rating classes (each with \lambda=0.1,0.3,0.5, so we need a 3x6 matrix)
     P2=matrix(nrow=3,ncol=6,data=0)
     for (j in 1:3)
     {for (i in 0:5) P2[j,i+1]=integrate(Vectorize(int2),lower=0,upper=Inf,s=i)$value}
@@ -1275,7 +1352,7 @@ a.hat=1.5
     [3,] 0.5128607 0.2082845 0.10207811 0.05653418 0.03412764 0.08611487
 
     #calculate relativities, r
-    r=(t(weight*(lamda.hat)^2)%*%P2)/(t(weight*(lamda.hat)^2)%*%P1)
+    r=(t(weight*(\lambda.hat)^2)%*%P2)/(t(weight*(\lambda.hat)^2)%*%P1)
     r
 
     #output
@@ -1284,11 +1361,19 @@ a.hat=1.5
 ```
 
 
+</div>
+
+***
+
 The results show that under *unconstrained method*, the first 3 levels ( $\ell=$ 0,1,2 ) have premium loadings ( $r_{\ell}=$ 150%, 122%, 105% ), and the last 3 levels ( $\ell=$ 3,4,5 ) have premium discounts ( $r_{\ell}=$ 93%, 84%, 51% ).
 
 As mentioned above, the expected premium relativity equals 1, $\mathrm{E} (r_{L})=1,$ under a financial balanced constraint (*constrained method*). As expected, the *unconstrained method* (in Example `r chapnum`.5.2) does not provide expected premium relativity equals 1. We can use R program to find the expected premium relativity $\mathrm{E} (r_{L}).$
 
 **Example `r chapnum`.5.3.** Consider Example `r chapnum`.5.2. Find the expected premium relativity $\mathrm{E} (r_{L}).$
+
+
+
+`r HideExample('15.5.3','Show Example Solution')`
 
 **Solution.** We can use R program to find the expected premium relativity $\mathrm{E} (r_{L}).$
 
@@ -1314,6 +1399,10 @@ As mentioned above, the expected premium relativity equals 1, $\mathrm{E} (r_{L}
     #output
     [1] 0.8432052
 ```
+
+</div>
+
+***
 
 
 The results show that under unconstrained method, the expected premium relativity is 84.32% (which is less than 100%).
@@ -1352,7 +1441,7 @@ $$
 {3} & {6.69\%} & {113.93\%} & {92.63\%}\\
 {4} & {5.44\%} & {107.79\%} & {83.60\%}\\
 {5} & {51.87\%} & {78.06\%} & {51.34\%}\\
-{E(r_{L})} & & {100\%} & {84.32\%} \\
+{\mathrm{E}(r_{L})} & & {100\%} & {84.32\%} \\
 \hline
 \end{array}
 }
@@ -1379,7 +1468,7 @@ $$
 {4} & {4.02\%} & {125.53\%} & {114.63\%}\\
 {5} & {10.38\%} & {106.25\%} & {91.12\%}\\
 {6} & {75.74\%} & {85.89\%} & {61.74\%}\\
-{E(r_{L})} & & {100\%} & {78.97\%} \\
+{\mathrm{E}(r_{L})} & & {100\%} & {78.97\%} \\
 \hline
 \end{array}
 }

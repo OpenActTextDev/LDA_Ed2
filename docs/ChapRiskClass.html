@@ -906,7 +906,7 @@ div.csl-indent {
 <li class="chapter" data-level="11.3.3" data-path="ChapRiskClass.html"><a href="ChapRiskClass.html#poisson-regression-for-multiplicative-tariff"><i class="fa fa-check"></i><b>11.3.3</b> Poisson Regression for Multiplicative Tariff</a></li>
 <li class="chapter" data-level="11.3.4" data-path="ChapRiskClass.html"><a href="ChapRiskClass.html#numerical-examples"><i class="fa fa-check"></i><b>11.3.4</b> Numerical Examples</a></li>
 </ul></li>
-<li class="chapter" data-level="11.4" data-path="ChapRiskClass.html"><a href="ChapRiskClass.html#risk-classification-vs-discrimination"><i class="fa fa-check"></i><b>11.4</b> Risk classification vs Discrimination</a>
+<li class="chapter" data-level="11.4" data-path="ChapRiskClass.html"><a href="ChapRiskClass.html#S:RatingFactors"><i class="fa fa-check"></i><b>11.4</b> Risk classification vs Discrimination</a>
 <ul>
 <li class="chapter" data-level="11.4.1" data-path="ChapRiskClass.html"><a href="ChapRiskClass.html#economic-commodity-vs-social-good"><i class="fa fa-check"></i><b>11.4.1</b> Economic commodity vs social good</a></li>
 <li class="chapter" data-level="11.4.2" data-path="ChapRiskClass.html"><a href="ChapRiskClass.html#information-asymmetry"><i class="fa fa-check"></i><b>11.4.2</b> Information asymmetry</a></li>
@@ -1019,9 +1019,9 @@ div.csl-indent {
 <li class="chapter" data-level="15.4.1" data-path="ChapBonusMalus.html"><a href="ChapBonusMalus.html#stationary-distribution"><i class="fa fa-check"></i><b>15.4.1</b> Stationary Distribution</a></li>
 <li class="chapter" data-level="15.4.2" data-path="ChapBonusMalus.html"><a href="ChapBonusMalus.html#r-code-for-a-stationary-distribution"><i class="fa fa-check"></i><b>15.4.2</b> <code>R</code> Code for a Stationary Distribution</a></li>
 <li class="chapter" data-level="15.4.3" data-path="ChapBonusMalus.html"><a href="ChapBonusMalus.html#premium-evolution"><i class="fa fa-check"></i><b>15.4.3</b> Premium Evolution</a></li>
-<li class="chapter" data-level="15.4.4" data-path="ChapBonusMalus.html"><a href="ChapBonusMalus.html#r-program-for-premium-evolution"><i class="fa fa-check"></i><b>15.4.4</b> <code>R</code> Program for Premium Evolution</a></li>
+<li class="chapter" data-level="15.4.4" data-path="ChapBonusMalus.html"><a href="ChapBonusMalus.html#r-code-for-premium-evolution"><i class="fa fa-check"></i><b>15.4.4</b> <code>R</code> Code for Premium Evolution</a></li>
 <li class="chapter" data-level="15.4.5" data-path="ChapBonusMalus.html"><a href="ChapBonusMalus.html#convergence-rate"><i class="fa fa-check"></i><b>15.4.5</b> Convergence Rate</a></li>
-<li class="chapter" data-level="15.4.6" data-path="ChapBonusMalus.html"><a href="ChapBonusMalus.html#r-program-for-convergence-rate"><i class="fa fa-check"></i><b>15.4.6</b> <code>R</code> Program for Convergence Rate</a></li>
+<li class="chapter" data-level="15.4.6" data-path="ChapBonusMalus.html"><a href="ChapBonusMalus.html#r-code-for-convergence-rate"><i class="fa fa-check"></i><b>15.4.6</b> <code>R</code> Code for Convergence Rate</a></li>
 </ul></li>
 <li class="chapter" data-level="15.5" data-path="ChapBonusMalus.html"><a href="ChapBonusMalus.html#S:PremRtg"><i class="fa fa-check"></i><b>15.5</b> <em>BMS</em> and Premium Rating</a>
 <ul>
@@ -1771,8 +1771,8 @@ As a result, the relativities are given by</p>
 </script>
 </div>
 </div>
-<div id="risk-classification-vs-discrimination" class="section level2 hasAnchor" number="11.4">
-<h2><span class="header-section-number">11.4</span> Risk classification vs Discrimination<a href="ChapRiskClass.html#risk-classification-vs-discrimination" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<div id="S:RatingFactors" class="section level2 hasAnchor" number="11.4">
+<h2><span class="header-section-number">11.4</span> Risk classification vs Discrimination<a href="ChapRiskClass.html#S:RatingFactors" class="anchor-section" aria-label="Anchor link to header"></a></h2>
 <p>We have so far developed a quantitative model to deal with risk classification. There are however important qualitative aspects of risk classification as well, which have important moral and regulatory and legal implications. We briefly survey various issues related to risk classification in this section; see Frees and Huang (2023) for a more comprehensive treatment.</p>
 <p>We start by acknowledging that risk classification, by definition, differentiates or discriminates among insureds or potential buyers based on a wide variety of attributes. That is, insurers divide individuals into subgroups and charge different premiums on the ground that each subgroup, when suitably formed, exhibits a different risk profile and thus produces insurance events (such as medical claims or car accidents) that are different in number and size. In this sense discrimination, of which the meaning is simply treating subgroups differently, is an essential element in insurance business.</p>
 <p>Insurers can discriminate among customers in various stages. For example, they may decide not to insure potential customers at the marketing or underwriting stage by excluding particular subgroups intentionally, an issue known as redlining. Also insurers may refuse to renew existing customers, or restrict the insurance coverage. Another form of discrimination can be made by charging unfair prices for certain subgroups. This price discrimination is a standard practice in insurance and not an issue provided that the price differences are made based on the underlying risk level of each subgroup. However, non-risk price discrimination is more problematic in that the price differs for the identical product and coverage. These non-risk rating factors tend to be prohibited in many jurisdictions.</p>

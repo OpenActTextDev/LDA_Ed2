@@ -311,6 +311,7 @@ Adding $\log m_i$ in \@ref(eq:mean-ft-Pois-7) does not pose a problem in fitting
 
 
 ### Exercises
+
 <!-- %=================== -->
 1. Regarding [Table 10.1] answer the following.  
     (a) Verify the mean values in the table.  
@@ -685,7 +686,7 @@ As a concluding remark, we comment that Poisson regression is not the only possi
 ```{r child = './Quizzes/Quiz83.html', eval = QUIZ}
 ```
 
-## Risk classification vs Discrimination
+## Risk classification vs Discrimination {#S:RatingFactors}
 
 We have so far developed a quantitative model to deal with risk classification. There are however important qualitative aspects of risk classification as well, which have important moral and  regulatory and legal implications. We briefly survey various issues related to risk classification in this section; see Frees and Huang (2023) for a more comprehensive treatment.
 
