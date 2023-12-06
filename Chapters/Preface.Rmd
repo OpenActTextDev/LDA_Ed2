@@ -166,6 +166,7 @@ Our goal is to have the actuarial community author our textbooks in a collaborat
 - Vytaras Brazauskas,	University of Wisconsin - Milwaukee
 - Yvonne Chueh, Central Washington University
 - Chun Yong Chew, Universiti Tunku Abdul Rahman (UTAR)
+- Benjamin Côté, Université Laval
 - Eren Dodd, University of Southampton
 - Gordon Enderle,	University of Wisconsin - Madison
 - Rob Erhardt,	Wake Forest University

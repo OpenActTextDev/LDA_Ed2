@@ -6,7 +6,7 @@
   <meta http-equiv="X-UA-Compatible" content="IE=edge" />
   <title>Chapter 18 Appendix B: Iterated Expectations | Loss Data Analytics</title>
   <meta name="description" content="Chapter 18 Appendix B: Iterated Expectations | Loss Data Analytics is an interactive, online, freely available text. - The online version will contain many interactive objects (quizzes, computer demonstrations, interactive graphs, video, and the like) to promote deeper learning. - A subset of the book will be available in pdf format for low-cost printing. - The online text will be available in multiple languages to promote access to a worldwide audience." />
-  <meta name="generator" content="bookdown 0.27 and GitBook 2.6.7" />
+  <meta name="generator" content="bookdown 0.32 and GitBook 2.6.7" />
 
   <meta property="og:title" content="Chapter 18 Appendix B: Iterated Expectations | Loss Data Analytics" />
   <meta property="og:type" content="book" />
@@ -515,7 +515,7 @@ code span.al { color: #ff0000; font-weight: bold; } /* Alert */
 code span.an { color: #60a0b0; font-weight: bold; font-style: italic; } /* Annotation */
 code span.at { color: #7d9029; } /* Attribute */
 code span.bn { color: #40a070; } /* BaseN */
-code span.bu { } /* BuiltIn */
+code span.bu { color: #008000; } /* BuiltIn */
 code span.cf { color: #007020; font-weight: bold; } /* ControlFlow */
 code span.ch { color: #4070a0; } /* Char */
 code span.cn { color: #880000; } /* Constant */
@@ -528,7 +528,7 @@ code span.er { color: #ff0000; font-weight: bold; } /* Error */
 code span.ex { } /* Extension */
 code span.fl { color: #40a070; } /* Float */
 code span.fu { color: #06287e; } /* Function */
-code span.im { } /* Import */
+code span.im { color: #008000; font-weight: bold; } /* Import */
 code span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Information */
 code span.kw { color: #007020; font-weight: bold; } /* Keyword */
 code span.op { color: #666666; } /* Operator */
@@ -1203,12 +1203,11 @@ div.csl-indent {
 <div id="CAppB" class="section level1 hasAnchor" number="18">
 <h1><span class="header-section-number">Chapter 18</span> Appendix B: Iterated Expectations<a href="CAppB.html#CAppB" class="anchor-section" aria-label="Anchor link to header"></a></h1>
 <p>This appendix introduces the laws related to iterated expectations. In particular, Section <a href="CAppB.html#S:AppB:CD">18.1</a> introduces the concepts of conditional distribution and conditional expectation. Section <a href="CAppB.html#S:AppB:IE">18.2</a> introduces the Law of Iterated Expectations and the Law of Total Variance.</p>
-<p>In some situations, we only observe a single outcome but can conceptualize an outcome as resulting from a two (or more) stage
-process. Such types of statistical models are called <strong>two-stage</strong>, or <strong>hierarchical</strong> models. Some special cases of hierarchical models include:</p>
+<p>In some situations, we only observe a single outcome but can conceptualize an outcome as resulting from a two (or more) stage process. Such types of statistical models are called <strong>two-stage</strong>, or <strong>hierarchical</strong> models. Some special cases of hierarchical models include:</p>
 <ul>
 <li>models where the parameters of the distribution are random variables;</li>
-<li>mixture distribution, where Stage 1 represents the draw of a sub-population and Stage 2 represents a random variable from a distribution that is determined by the sub-population drew in Stage 1;</li>
-<li>an aggregate distribution, where Stage 1 represents the draw of the number of events and Stage two represents the loss amount occurred per event.</li>
+<li>mixture distribution, where Stage 1 represents the draw of a subpopulation and Stage 2 represents a random variable from a distribution that is determined by the subpopulation drew in Stage 1;</li>
+<li>an aggregate distribution, where Stage 1 represents the draw of the number of events and Stage 2 represents the loss amount occurred per event.</li>
 </ul>
 <p>In these situations, the process gives rise to a conditional distribution of a random variable (the Stage 2 outcome) given the other (the Stage 1 outcome). The Law of Iterated Expectations can be useful for obtaining the unconditional expectation or variance of a random variable in such cases.</p>
 <div id="S:AppB:CD" class="section level2 hasAnchor" number="18.1">
@@ -1220,7 +1219,7 @@ process. Such types of statistical models are called <strong>two-stage</strong>,
 <li>how to define the conditional expectation and variance based on the conditional distribution function</li>
 </ul>
 <hr />
-<p>The iterated expectations are the laws regarding calculation of the expectation and variance of a random variable using a conditional distribution of the variable given another variable. Hence, we first introduce the concepts related to the conditional distribution, and the calculation of the conditional expectation and variable based on a given conditional distribution.</p>
+<p>The iterated expectations are the laws regarding calculation of the expectation and variance of a random variable using a conditional distribution of the variable given another variable. Hence, we first introduce the concepts related to the conditional distribution, and the calculation of the conditional expectation and variance based on a given conditional distribution.</p>
 <div id="conditional-distribution" class="section level3 hasAnchor" number="18.1.1">
 <h3><span class="header-section-number">18.1.1</span> Conditional Distribution<a href="CAppB.html#conditional-distribution" class="anchor-section" aria-label="Anchor link to header"></a></h3>
 <p>Here we introduce the concept of conditional distribution respectively for discrete and continuous random variables.</p>
@@ -1234,8 +1233,8 @@ p(x,y) = \Pr[X=x, Y=y] .
 <p><span class="math display">\[
 p(x,y)=p(x)p(y),
 \]</span></p>
-<p>with <span class="math inline">\(p(x)=\Pr[X=x]\)</span> and <span class="math inline">\(p(y)=\Pr[Y=y]\)</span> being the <strong>marginal probability function</strong> of <span class="math inline">\(X\)</span> and <span class="math inline">\(Y\)</span>, respectively.</p>
-<p>Given the joint probability function, we may obtain the marginal probability functions of <span class="math inline">\(Y\)</span> as</p>
+<p>with <span class="math inline">\(p(x)=\Pr[X=x]\)</span> and <span class="math inline">\(p(y)=\Pr[Y=y]\)</span> being the <strong>marginal probability functions</strong> of <span class="math inline">\(X\)</span> and <span class="math inline">\(Y\)</span>, respectively.</p>
+<p>Given the joint probability function, we may obtain the marginal probability function of <span class="math inline">\(Y\)</span> as</p>
 <p><span class="math display">\[
 p(y)=\sum_x p(x,y),
 \]</span></p>
@@ -1256,7 +1255,7 @@ F(x,y) = \Pr[X\leq x, Y\leq y].
 <p><span class="math display">\[
 F(x,y)=F(x)F(y),
 \]</span></p>
-<p>with <span class="math inline">\(F(x)=\Pr[X\leq x]\)</span> and <span class="math inline">\(F(y)=\Pr[Y\leq y]\)</span> being the <strong>cumulative distribution function</strong> (cdf) of <span class="math inline">\(X\)</span> and <span class="math inline">\(Y\)</span>, respectively. The random variable <span class="math inline">\(X\)</span> is referred to as a <strong>continuous</strong> random variable if its cdf is continuous on <span class="math inline">\(x\)</span>.</p>
+<p>with <span class="math inline">\(F(x)=\Pr[X\leq x]\)</span> and <span class="math inline">\(F(y)=\Pr[Y\leq y]\)</span> being the <strong>cumulative distribution functions</strong> (cdfs) of <span class="math inline">\(X\)</span> and <span class="math inline">\(Y\)</span>, respectively. The random variable <span class="math inline">\(X\)</span> is referred to as a <strong>continuous</strong> random variable if its cdf is continuous on <span class="math inline">\(x\)</span>.</p>
 <p>When the cdf <span class="math inline">\(F(x)\)</span> is continuous on <span class="math inline">\(x\)</span>, then we define <span class="math inline">\(f(x)=\partial F(x)/\partial x\)</span> as the <strong>(marginal) probability density function</strong> (pdf) of <span class="math inline">\(X\)</span>. Similarly, if the joint cdf <span class="math inline">\(F(x,y)\)</span> is continuous on both <span class="math inline">\(x\)</span> and <span class="math inline">\(y\)</span>, we define</p>
 <p><span class="math display">\[
 f(x,y)=\frac{\partial^2 F(x,y)}{\partial x\partial y}
@@ -1289,7 +1288,7 @@ f(y|x) = \frac{f(x,y)}{f(x)},
 \mathrm{E}[Y|X=x]=\sum_y y\,p(y|x),
 \]</span></p>
 <p>where <span class="math inline">\(X\)</span> does not have to be a discrete variable, as far as the conditional probability function <span class="math inline">\(p(y|x)\)</span> is given.</p>
-<p>Note that the conditional expectation <span class="math inline">\(\mathrm{E}[Y|X=x]\)</span> is a fixed number. When we replace <span class="math inline">\(x\)</span> with <span class="math inline">\(X\)</span> on the right hand side of the above equation, we can define the expectation of <span class="math inline">\(Y\)</span> given the random variable <span class="math inline">\(X\)</span> as</p>
+<p>Note that the conditional expectation <span class="math inline">\(\mathrm{E}[Y|X=x]\)</span> is a fixed number. When we replace <span class="math inline">\(x\)</span> with <span class="math inline">\(X\)</span> on the right-hand side of the above equation, we can define the expectation of <span class="math inline">\(Y\)</span> given the random variable <span class="math inline">\(X\)</span> as</p>
 <p><span class="math display">\[
 \mathrm{E}[Y|X]=\sum_y y\,p(y|X),
 \]</span></p>
@@ -1339,7 +1338,7 @@ where <span class="math inline">\(X\)</span> does not have to be a continuous va
 \end{equation}\]</span></p>
 <p>where the first (inside) expectation is taken with respect to the random variable <span class="math inline">\(Y\)</span> and the second (outside) expectation is taken with respect to <span class="math inline">\(X\)</span>.</p>
 <p>For the Law of Iterated Expectations, the random variables may be discrete, continuous, or a hybrid combination of the two. We use the example of discrete variables of <span class="math inline">\(X\)</span> and <span class="math inline">\(Y\)</span> to illustrate the calculation of the unconditional expectation using the Law of Iterated Expectations. For continuous random variables, we only need to replace the summation with the integral, as illustrated earlier in the appendix.</p>
-<p>Given <span class="math inline">\(p(y|x)\)</span> the joint <a href="#" class="tooltip" style="color:green"><em>pmf</em><span style="font-size:8pt">Probability mass function</span></a> of <span class="math inline">\(X\)</span> and <span class="math inline">\(Y\)</span>, the conditional expectation of <span class="math inline">\(h(X,Y)\)</span> given the event <span class="math inline">\(X=x\)</span> is defined as</p>
+<p>Given <span class="math inline">\(p(y|x)\)</span> the conditional <a href="#" class="tooltip" style="color:green"><em>pmf</em><span style="font-size:8pt">Probability mass function</span></a> of <span class="math inline">\(X\)</span> and <span class="math inline">\(Y\)</span>, the conditional expectation of <span class="math inline">\(h(X,Y)\)</span> given the event <span class="math inline">\(X=x\)</span> is defined as</p>
 <p><span class="math display">\[
 \mathrm{E} \left[ h(X,Y) | X=x \right] = \sum_y h(x,y) p(y|x),
 \]</span></p>
@@ -1441,18 +1440,18 @@ N =
 </div>
 <div id="S:AppConjugateDistributions" class="section level2 hasAnchor" number="18.3">
 <h2><span class="header-section-number">18.3</span> Conjugate Distributions<a href="CAppB.html#S:AppConjugateDistributions" class="anchor-section" aria-label="Anchor link to header"></a></h2>
-<p>As described in Section <a href="#S:IntroBayes"><strong>??</strong></a>, for conjugate distributions the posterior and the prior come from the same family of distributions. In insurance applications, this broadly occurs in a “family of distribution families” known as the linear exponential family which we introduce first.</p>
+<p>As described in Section <a href="ChBayes.html#ChBayes:SecConjugate">9.3</a>, for conjugate distributions the posterior and the prior come from the same family of distributions. In insurance applications, this broadly occurs in a “family of distribution families” known as the linear exponential family which we introduce first.</p>
 <div id="linear-exponential-family" class="section level3 hasAnchor" number="18.3.1">
 <h3><span class="header-section-number">18.3.1</span> Linear Exponential Family<a href="CAppB.html#linear-exponential-family" class="anchor-section" aria-label="Anchor link to header"></a></h3>
-<p><strong>Definition.</strong> The distribution of the <em>linear exponential family</em> is</p>
+<p><strong>Definition.</strong> The distribution function of the <em>linear exponential family</em> is</p>
 <p><span class="math display">\[
 f( x; \gamma ,\theta ) =
 \exp \left( \frac{x\gamma -b(\gamma )}{\theta} +S\left( x,\theta \right) \right).
 \]</span></p>
 <p>Here, <span class="math inline">\(x\)</span> is a dependent variable and <span class="math inline">\(\gamma\)</span> is the parameter of interest. The quantity <span class="math inline">\(\theta\)</span> is a scale parameter. The term <span class="math inline">\(b(\gamma)\)</span> depends only on the parameter <span class="math inline">\(\gamma\)</span>, not the dependent variable. The statistic <span class="math inline">\(S\left(x,\theta \right)\)</span> is a function of the dependent variable and the scale parameter, not the parameter <span class="math inline">\(\gamma\)</span>.</p>
-<p>The dependent variable <span class="math inline">\(x\)</span> may be discrete, continuous or a hybrid combination of the two. Thus, <span class="math inline">\(f\left( \cdot\right)\)</span> may be interpreted to be a density or mass function, depending on the application. <a href="#tab:16.1">Table 16.1</a> provides several examples, including the normal, binomial and Poisson distributions.</p>
-<p><a id=tab:16.1></a></p>
-<p>Table 16.1. <strong>Selected Distributions of the Linear Exponential Family</strong></p>
+<p>The dependent variable <span class="math inline">\(x\)</span> may be discrete, continuous or a hybrid combination of the two. Thus, <span class="math inline">\(f\left( \cdot\right)\)</span> may be interpreted to be a density or mass function, depending on the application. <a href="#tab:18.1">Table 18.1</a> provides several examples, including the normal, binomial and Poisson distributions.</p>
+<p><a id=tab:18.1></a></p>
+<p>Table 18.1. <strong>Selected Distributions of the Linear Exponential Family</strong></p>
 <p><span class="math display">\[
 {\small
 \begin{matrix}
@@ -1460,37 +1459,37 @@ f( x; \gamma ,\theta ) =
 \hline
              &amp;             &amp; \text{Density or} &amp; &amp; &amp; \\
 \text{Distribution} &amp; \text{Parameters} &amp; \text{Mass Function} &amp; \text{Components} \\
-\hline \text{General} &amp; \gamma,~ \theta &amp; 
-\exp \left( \frac{x\gamma -b(\gamma )}{\theta} +S\left( x,\theta \right) \right) &amp; 
+\hline \text{General} &amp; \gamma,~ \theta &amp;
+\exp \left( \frac{x\gamma -b(\gamma )}{\theta} +S\left( x,\theta \right) \right) &amp;
 \gamma,~ \theta, b(\gamma), S(x, \theta)\\
- \text{Normal} &amp; \mu, \sigma^2  &amp;
-\frac{1}{\sigma \sqrt{2\pi }}\exp \left(-\frac{(x-\mu )^{2}}{2\sigma ^{2}}\right) &amp; 
+\text{Normal} &amp; \mu, \sigma^2  &amp;
+\frac{1}{\sigma \sqrt{2\pi }}\exp \left(-\frac{(x-\mu )^{2}}{2\sigma ^{2}}\right) &amp;
 \mu, \sigma^2, \frac{\gamma^2}{2}, - \left(\frac{x^2}{2\theta} + \frac{\log(2 \pi
 \theta)}{2} \right) \\
-\text{Binomal} &amp; \pi &amp; 
-{n \choose x} \pi ^x (1-\pi)^{n-x} &amp; 
+\text{Binomal} &amp; \pi &amp;
+{n \choose x} \pi ^x (1-\pi)^{n-x} &amp;
 \log
 \left(\frac{\pi}{1-\pi} \right), 1, n \log(1+e^{\gamma} ),  \\
 &amp;  &amp;  &amp;  \log {n \choose x} \\
-\text{Poisson} &amp; \lambda &amp; 
-\frac{\lambda^x}{x!} \exp(-\lambda)  &amp; 
+\text{Poisson} &amp; \lambda &amp;
+\frac{\lambda^x}{x!} \exp(-\lambda)  &amp;
 \log \lambda, 1, e^{\gamma}, - \log (x!)  \\
-\text{Negative } &amp; 
-r,p &amp;  \frac{\Gamma(x+r)}{x!\Gamma(r)} p^r ( 1-p)^x &amp; 
+\text{Negative } &amp;
+r,p &amp;  \frac{\Gamma(x+r)}{x!\Gamma(r)} p^r ( 1-p)^x &amp;
 \log(1-p), 1, -r \log(1-e^{\gamma}), \\
 ~~~\text{Binomial}^{\ast} &amp; &amp; &amp; ~~~\log \left[ \frac{\Gamma(x+r)}{x!
 \Gamma(r)} \right] \\
-\text{Gamma} &amp; \alpha, \theta  &amp; \frac{1}{\Gamma (\alpha)\theta ^ \alpha}
-x^{\alpha -1 }\exp(-x/ \theta)  &amp; - \frac{1}{\alpha \gamma},
-\frac{1}{\alpha}, - \log ( - \gamma), -\theta^{-1} \log \theta \\
-&amp; &amp; &amp;  - \log \left( \Gamma(\theta ^{-1}) \right) +
-(\theta^{-1} - 1) \log x &amp; &amp; \\ \hline
+\text{Gamma} &amp; \alpha, \gamma  &amp; \frac{1}{\Gamma (\alpha)\gamma ^ \alpha}
+x^{\alpha -1 }\exp(-x/ \gamma)  &amp; - \frac{\gamma}{\alpha },
+\frac{1}{\alpha}, - \log ( - \gamma), -\gamma^{-1} \log \gamma \\
+&amp; &amp; &amp;  - \log \left( \Gamma(\gamma ^{-1}) \right) +
+(\gamma^{-1} - 1) \log x &amp; &amp; \\ \hline
 \end{array}\\
-^{\ast} \text{This assumes that the parameter r is fixed but need not be an integer.}\\ 
+^{\ast} \text{This assumes that the parameter r is fixed but need not be an integer.}\\
 \end{matrix}
 }
 \]</span></p>
-<p>The Tweedie (see Section <a href="ChapAggLossModels.html#S:AggLoss:Tweedie">7.3.4</a>) and inverse Gaussian distributions are also members of the linear exponential family. The linear exponential family of distribution families is extensively used as the basis of generalized linear models as described in, for example, <span class="citation"><a href="#ref-frees2009regression" role="doc-biblioref">Frees</a> (<a href="#ref-frees2009regression" role="doc-biblioref">2009</a>)</span>.</p>
+<p>The Tweedie (see Section <a href="ChapAggLossModels.html#S:AggLoss:Tweedie">7.3.4</a>) and inverse Gaussian distributions are also members of the linear exponential family. The linear exponential family of distribution families is extensively used as the basis of generalized linear models as described in, for example, <span class="citation">Frees (<a href="#ref-frees2009regression" role="doc-biblioref">2009</a>)</span>.</p>
 </div>
 <div id="S:IterExp:Conjugate" class="section level3 hasAnchor" number="18.3.2">
 <h3><span class="header-section-number">18.3.2</span> Conjugate Distributions<a href="CAppB.html#S:IterExp:Conjugate" class="anchor-section" aria-label="Anchor link to header"></a></h3>
@@ -1513,12 +1512,12 @@ where <span class="math inline">\(C_1\)</span> is a normalizing constant. Thus, 
 <span class="math display">\[
 \pi(\gamma,\tau) = C \exp\left\{
 \gamma a_1 - a_2 e^{\gamma} \right\}=
-C ~ 
+C ~
 \left(
 e^{\gamma}\right)^{a_1}
 \exp\left(-a_2e^{\gamma} \right).
 \]</span>
-From the table of exponential family distributions, we recognize this to be a gamma distribution. That is, we have that the prior distribution of <span class="math inline">\(\lambda = e^{\gamma}\)</span> is a gamma distribution with parameters <span class="math inline">\(\alpha_{prior} = a_1+1\)</span> and <span class="math inline">\(\theta_{prior}^{-1}=a_2\)</span>. The posterior distribution is a gamma distribution with parameters <span class="math inline">\(\alpha_{post} =a_1+x+1=\alpha_{prior}+x\)</span> and <span class="math inline">\(\theta_{post}^{-1}=a_2+1 = \theta_{prior}^{-1}+1\)</span>. This is consistent with our Section <a href="#S:ConjugateDistributions"><strong>??</strong></a> result.</p>
+From the table of exponential family distributions, we recognize this to be a gamma distribution. That is, we have that the prior distribution of <span class="math inline">\(\lambda = e^{\gamma}\)</span> is a gamma distribution with parameters <span class="math inline">\(\alpha_{prior} = a_1+1\)</span> and <span class="math inline">\(\theta_{prior}^{-1}=a_2\)</span>. The posterior distribution is a gamma distribution with parameters <span class="math inline">\(\alpha_{post} =a_1+x+1=\alpha_{prior}+x\)</span> and <span class="math inline">\(\theta_{post}^{-1}=a_2+1 = \theta_{prior}^{-1}+1\)</span>.</p>
 <hr />
 <p><strong>Special case. Normal-Normal Model.</strong>
 Consider a normal likelihood so that <span class="math inline">\(b(\gamma) = \gamma^2/2\)</span> and the scale parameter is <span class="math inline">\(\sigma^2\)</span>. Thus, we have
@@ -1533,7 +1532,7 @@ The prior distribution of <span class="math inline">\(\gamma\)</span> is normal 
 <span class="math display">\[
 \pi(\gamma,\tau) = C \exp\left\{
 \gamma a_1 - n a_2 \log(1+e^{\gamma}) \right\}=
-C ~ 
+C ~
 \left(
 \frac{e^{\gamma}}{1+e^{\gamma}}\right)^{a_1}
 \left(1-\frac{e^{\gamma}}{1+e^{\gamma}}\right)^{-na_2+a_1}.
@@ -1542,7 +1541,10 @@ C ~
 <div id="contributors-14" class="section level4 unnumbered hasAnchor">
 <h4>Contributors<a href="CAppB.html#contributors-14" class="anchor-section" aria-label="Anchor link to header"></a></h4>
 <ul>
-<li><strong>Lei (Larry) Hua</strong>, Northern Illinois University, and <strong>Edward W. (Jed) Frees</strong>, University of Wisconsin-Madison, are the principal authors of the initial version of this chapter. Email: <a href="mailto:lhua@niu.edu" class="email">lhua@niu.edu</a> or <a href="mailto:jfrees@bus.wisc.edu" class="email">jfrees@bus.wisc.edu</a> for chapter comments and suggested improvements.</li>
+<li><strong>Lei (Larry) Hua</strong>, Northern Illinois University, and <strong>Edward W. (Jed) Frees</strong>, University of Wisconsin-Madison, are the principal authors of the initial version of this chapter. Email: <a href="mailto:lhua@niu.edu" class="email">lhua@niu.edu</a> or <a href="mailto:jfrees@bus.wisc.edu" class="email">jfrees@bus.wisc.edu</a> for chapter comments and suggested improvements.
+<ul>
+<li>The chapter was reviewed by Benjamin Côté.</li>
+</ul></li>
 </ul>
 
 </div>
@@ -1621,7 +1623,7 @@ gitbook.start({
     var script = document.createElement("script");
     script.type = "text/javascript";
     var src = "true";
-    if (src === "" || src === "true") src = "https://mathjax.rstudio.com/latest/MathJax.js?config=TeX-MML-AM_CHTML";
+    if (src === "" || src === "true") src = "https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.9/latest.js?config=TeX-MML-AM_CHTML";
     if (location.protocol !== "file:")
       if (/^https?:/.test(src))
         src = src.replace(/^https?:/, '');

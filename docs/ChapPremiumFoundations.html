@@ -6,7 +6,7 @@
   <meta http-equiv="X-UA-Compatible" content="IE=edge" />
   <title>Chapter 10 Premium Foundations | Loss Data Analytics</title>
   <meta name="description" content="Chapter 10 Premium Foundations | Loss Data Analytics is an interactive, online, freely available text. - The online version will contain many interactive objects (quizzes, computer demonstrations, interactive graphs, video, and the like) to promote deeper learning. - A subset of the book will be available in pdf format for low-cost printing. - The online text will be available in multiple languages to promote access to a worldwide audience." />
-  <meta name="generator" content="bookdown 0.27 and GitBook 2.6.7" />
+  <meta name="generator" content="bookdown 0.32 and GitBook 2.6.7" />
 
   <meta property="og:title" content="Chapter 10 Premium Foundations | Loss Data Analytics" />
   <meta property="og:type" content="book" />
@@ -515,7 +515,7 @@ code span.al { color: #ff0000; font-weight: bold; } /* Alert */
 code span.an { color: #60a0b0; font-weight: bold; font-style: italic; } /* Annotation */
 code span.at { color: #7d9029; } /* Attribute */
 code span.bn { color: #40a070; } /* BaseN */
-code span.bu { } /* BuiltIn */
+code span.bu { color: #008000; } /* BuiltIn */
 code span.cf { color: #007020; font-weight: bold; } /* ControlFlow */
 code span.ch { color: #4070a0; } /* Char */
 code span.cn { color: #880000; } /* Constant */
@@ -528,7 +528,7 @@ code span.er { color: #ff0000; font-weight: bold; } /* Error */
 code span.ex { } /* Extension */
 code span.fl { color: #40a070; } /* Float */
 code span.fu { color: #06287e; } /* Function */
-code span.im { } /* Import */
+code span.im { color: #008000; font-weight: bold; } /* Import */
 code span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Information */
 code span.kw { color: #007020; font-weight: bold; } /* Keyword */
 code span.op { color: #666666; } /* Operator */
@@ -1276,7 +1276,7 @@ This simplified premium equation promotes a general understanding of the Relatio
 \text{B}&amp;\text{1 April 2019} &amp; 1.00 &amp; 0.00 &amp; 0.75 &amp; 0.25 &amp; 0.25 &amp; 0.00&amp; 1.00 \\
 \text{C}&amp;\text{1 July 2019}  &amp; 1.00 &amp; 0.00 &amp; 0.50 &amp; 0.50 &amp; 0.50 &amp; 0.00&amp; 1.00 \\
 \text{D}&amp;\text{1 Oct 2019}   &amp; 1.00 &amp; 0.00 &amp; 0.25 &amp; 0.75 &amp; 0.75 &amp; 0.00&amp; 1.00 \\ \hline
- &amp;  Total       &amp; 4.00 &amp; 0.00 &amp; 2.50 &amp; 1.50 &amp; 1.50 &amp; 0.00 &amp; 3.00 \\
+&amp;  Total       &amp; 4.00 &amp; 0.00 &amp; 2.50 &amp; 1.50 &amp; 1.50 &amp; 0.00 &amp; 3.00 \\
   \hline
   \hline
 \end{array}
@@ -1369,7 +1369,7 @@ Actuaries often review claims and allocated claim adjustment expenses in aggrega
 </div>
 <div id="S:ExposureToRisk" class="section level3 hasAnchor" number="10.3.7">
 <h3><span class="header-section-number">10.3.7</span> Exposures<a href="ChapPremiumFoundations.html#S:ExposureToRisk" class="anchor-section" aria-label="Anchor link to header"></a></h3>
-<p>The denominator of the pure premium equation is “<a href="#" class="tooltip" style="color:green"><em>exposure</em><span style="font-size:8pt">A type of rating variable that is so important that premiums and losses are often quoted on a "per exposure" basis. that is, premiums and losses are commonly standardized by exposure variables.</span></a>.” We use exposures to standardize heterogeneous risks. To explain exposures, we can consider <em>scale distributions</em> that we learned about in Chapter <a href="ChapSeverity.html#ChapSeverity">4</a>. To recall a <a href="#" class="tooltip" style="color:green"><em>scale distribution</em><span style="font-size:8pt">Suppose that y = c x, where x comes from a parametric distribution family and c is a positive constant. the distribution is said to be a scale distribution if (i) the distributions of y and x come from the same family and (ii) only a single parameter differs and that by a factor of c.</span></a>, suppose that <span class="math inline">\(X\)</span> has a <a href="#" class="tooltip" style="color:green"><em>parametric distribution</em><span style="font-size:8pt">Model assumption that the sample data comes from a population that can be modeled by a probability distribution with a fixed set of parameters</span></a> and define a rescaled version <span class="math inline">\(R = X/E\)</span>, <span class="math inline">\(E &gt; 0\)</span>. If <span class="math inline">\(R\)</span> is in the same parametric family as <span class="math inline">\(X\)</span>, then the distribution is said to be a scale distribution. As we have seen, the gamma, exponential, and Pareto distributions are examples of scale distributions.</p>
+<p>The denominator of the pure premium equation is “<a href="#" class="tooltip" style="color:green"><em>exposure</em><span style="font-size:8pt">A type of rating variable that is so important that premiums and losses are often quoted on a ”per exposure” basis. that is, premiums and losses are commonly standardized by exposure variables.</span></a>.” We use exposures to standardize heterogeneous risks. To explain exposures, we can consider <em>scale distributions</em> that we learned about in Chapter <a href="ChapSeverity.html#ChapSeverity">4</a>. To recall a <a href="#" class="tooltip" style="color:green"><em>scale distribution</em><span style="font-size:8pt">Suppose that y = c x, where x comes from a parametric distribution family and c is a positive constant. the distribution is said to be a scale distribution if (i) the distributions of y and x come from the same family and (ii) only a single parameter differs and that by a factor of c.</span></a>, suppose that <span class="math inline">\(X\)</span> has a <a href="#" class="tooltip" style="color:green"><em>parametric distribution</em><span style="font-size:8pt">Model assumption that the sample data comes from a population that can be modeled by a probability distribution with a fixed set of parameters</span></a> and define a rescaled version <span class="math inline">\(R = X/E\)</span>, <span class="math inline">\(E &gt; 0\)</span>. If <span class="math inline">\(R\)</span> is in the same parametric family as <span class="math inline">\(X\)</span>, then the distribution is said to be a scale distribution. As we have seen, the gamma, exponential, and Pareto distributions are examples of scale distributions.</p>
 <p>Intuitively, the idea behind exposures is to make risks more comparable to one another. For example, it may be that risks <span class="math inline">\(X_1, \ldots, X_n\)</span> are from different distributions and yet, with the choice of the right exposures, the rates <span class="math inline">\(R_1, \ldots, R_n\)</span> are from the same distribution. Here, we interpret the rate <span class="math inline">\(R_i = C_i/E_i\)</span> as the loss divided by exposure.</p>
 <p><a href="#tab:10.3">Table 10.3</a> provides a few examples.</p>
 <p><a id=tab:10.3></a></p>
@@ -1443,7 +1443,7 @@ Actuaries often review claims and allocated claim adjustment expenses in aggrega
 <p><span class="math display">\[
 \begin{equation}
 \dfrac{12~\text{after tax return}}{\text{surplus}} \times \dfrac{1 \times \text{surplus}}{2 \times \text{premium}} \times \dfrac{1~\text{pre-tax}}{0.7~\text{after tax}} = \dfrac{8.6~\text{pre-tax return}}{\text{premium}}
-\end{equation} 
+\end{equation}
 \]</span>
 ### Investment Income on Surplus</p>
 <p>The insurer’s surplus is also comprised of invested assets which provide a rate of return. In ratemaking we assume that the investment income on surplus is earned over the policy term, generally 12 months.</p>
@@ -1493,10 +1493,10 @@ H_{Exp}(X) = \frac{-\eta}{\alpha_{Exp}} \log\left(1-\alpha_{Exp} \theta\right).
 To see the relationship between <span class="math inline">\(H_{Exp}(X)\)</span> and <span class="math inline">\(H_{Var}(X)\)</span>, we choose <span class="math inline">\(\alpha_{Exp} = 2 \alpha_{Var}\)</span>. With an approximation from calculus (<span class="math inline">\(\log(1-x) = -x - x^2/2 - x^3/3 - \cdots\)</span>), we write</p>
 <p><span class="math display">\[
 \begin{array}{ll}
-H_{Exp}(X) &amp;= \frac{-\eta}{\alpha_{Exp}} \log\left(1-\alpha_{Exp} ~\theta\right) 
+H_{Exp}(X) &amp;= \frac{-\eta}{\alpha_{Exp}} \log\left(1-\alpha_{Exp} ~\theta\right)
 = \frac{-\eta}{\alpha_{Exp}} \left\{ -\alpha_{Exp} ~\theta -(\alpha_{Exp} ~\theta)^2/2 - \cdots\right\} \\
-&amp; \approx \eta~ \theta + \frac{\alpha_{Exp}}{2}(\eta ~\theta^2 ) 
-= H_{Var}(X). 
+&amp; \approx \eta~ \theta + \frac{\alpha_{Exp}}{2}(\eta ~\theta^2 )
+= H_{Var}(X).
 \end{array}
 \]</span></p>
 </div>
@@ -1518,7 +1518,7 @@ H_{Exp}(X) &amp;= \frac{-\eta}{\alpha_{Exp}} \log\left(1-\alpha_{Exp} ~\theta\ri
 \end{array}
 }
 \]</span></p>
-<p>This is simply a subset of the many properties quoted in the actuarial literature. For example, the review paper of <span class="citation"><a href="#ref-young2014premium" role="doc-biblioref">Young</a> (<a href="#ref-young2014premium" role="doc-biblioref">2014</a>)</span> lists 15 properties. See also the properties described as <em>coherent axioms</em> that we introduce for risk measures in Section <a href="ChapPortMgt.html#S:RiskMeasure">13.3</a>.</p>
+<p>This is simply a subset of the many properties quoted in the actuarial literature. For example, the review paper of <span class="citation">Young (<a href="#ref-young2014premium" role="doc-biblioref">2014</a>)</span> lists 15 properties. See also the properties described as <em>coherent axioms</em> that we introduce for risk measures in Section <a href="ChapPortMgt.html#S:RiskMeasure">13.3</a>.</p>
 <p>Some of the properties listed in <a href="#tab:10.2">Table 10.2</a> are mild in the sense that they will nearly always be satisfied. For example, the <em>no rip-off</em> property indicates that the premium charge will be smaller than the largest or “maximal” value of the loss <span class="math inline">\(X\)</span> (here, we use the notation <span class="math inline">\(\max \{X\}\)</span> for this maximal value which is defined as an “essential supremum” in mathematics). Other properties may not be so mild. For example, for a portfolio of independent risks, the actuary may want the <em>additivity</em> property to hold. It is easy to see that this property holds for the expected value, variance, and exponential premium principles but not for the standard deviation principle. Another example is the <em>consistency</em> property that does not hold for the expected value principle when the risk loading parameter <span class="math inline">\(\alpha\)</span> is positive.</p>
 <p>The <em>scale invariance</em> principle is known as <em>homogeneity of degree one</em> in economics. For example, it allows us to work in different currencies (e.g., from dollars to Euros) as well as a host of other applications and will be discussed further in the following Section <a href="#S:HeterogeneousRisks"><strong>??</strong></a>. Although a generally accepted principle, we note that this principle does not hold for a large value of <span class="math inline">\(X\)</span> that may border on a surplus constraint of an insurer; if an insurer has a large probability of becoming insolvent, then that insurer may not wish to use linear pricing. It is easy to check that this principle holds for the expected value and standard deviation principles, although not for the variance and exponential principles.</p>
 </div>
@@ -1600,7 +1600,7 @@ The weighted average of these adjustments if +7.5%.</p>
 <p><span class="math display">\[
 \text{Experience Period Loss Ratio} = 65\% \times \dfrac{1.05}{1.075 \times 1.02} = 62.2\%\\
 \text{Target Loss Ratio} = 0.99 - 6.5\% - 25\% - 6.1\% = 61.4\%\\
-\text{Complement of Credibility} = 0.614 \times \dfrac{1.05}{1.02} = 63.2\%\\ 
+\text{Complement of Credibility} = 0.614 \times \dfrac{1.05}{1.02} = 63.2\%\\
 \text{Credibility-weighted loss ratio} = 62.2\% \times 80\% + 63.2\% \times (1 - 80\%) = 62.4\%\\
 \text{Indicated loss ratio} = 62.4\% / 61.4\% = 1.016
 \]</span></p>
@@ -1609,10 +1609,10 @@ The weighted average of these adjustments if +7.5%.</p>
 </div>
 <div id="further-resources-and-contributors" class="section level2 hasAnchor" number="10.7">
 <h2><span class="header-section-number">10.7</span> Further Resources and Contributors<a href="ChapPremiumFoundations.html#further-resources-and-contributors" class="anchor-section" aria-label="Anchor link to header"></a></h2>
-<p>This chapter serves as a bridge between the technical introduction of this book and an introduction to pricing and ratemaking for practicing actuaries. For readers interested in learning practical aspects of pricing, we recommend introductions by the Society of Actuaries in <span class="citation"><a href="#ref-friedland2013fundamentals" role="doc-biblioref">Friedland</a> (<a href="#ref-friedland2013fundamentals" role="doc-biblioref">2013</a>)</span> and by the Casualty Actuarial Society in <span class="citation"><a href="#ref-werner2016basic" role="doc-biblioref">Werner and Modlin</a> (<a href="#ref-werner2016basic" role="doc-biblioref">2016</a>)</span>. For a classic risk management introduction to pricing, see <span class="citation"><a href="#ref-niehaus2003risk" role="doc-biblioref">Niehaus and Harrington</a> (<a href="#ref-niehaus2003risk" role="doc-biblioref">2003</a>)</span>. See also <span class="citation"><a href="#ref-finger2006risk" role="doc-biblioref">Finger</a> (<a href="#ref-finger2006risk" role="doc-biblioref">2006</a>)</span> and <span class="citation"><a href="#ref-frees2014frequency" role="doc-biblioref">Frees</a> (<a href="#ref-frees2014frequency" role="doc-biblioref">2014</a>)</span>.</p>
-<p><span class="citation"><a href="#ref-buhlmann1985premium" role="doc-biblioref">Bühlmann</a> (<a href="#ref-buhlmann1985premium" role="doc-biblioref">1985</a>)</span> was the first in the academic literature to argue that pricing should be done first at the portfolio level (he referred to this as a <em>top down</em> approach) which would be subsequently reconciled with pricing of individual contracts. See also the discussion in <span class="citation"><a href="#ref-kaas2008modern" role="doc-biblioref">Kaas et al.</a> (<a href="#ref-kaas2008modern" role="doc-biblioref">2008</a>)</span>, Chapter 5.</p>
-<p>For more background on pricing principles, a classic treatment is by <span class="citation"><a href="#ref-gerber1979introduction" role="doc-biblioref">Gerber</a> (<a href="#ref-gerber1979introduction" role="doc-biblioref">1979</a>)</span> with a more modern approach in
-<span class="citation"><a href="#ref-kaas2008modern" role="doc-biblioref">Kaas et al.</a> (<a href="#ref-kaas2008modern" role="doc-biblioref">2008</a>)</span>. For more discussion of pricing from a financial economics viewpoint, see <span class="citation"><a href="#ref-bauer2013financial" role="doc-biblioref">Bauer, Phillips, and Zanjani</a> (<a href="#ref-bauer2013financial" role="doc-biblioref">2013</a>)</span>.</p>
+<p>This chapter serves as a bridge between the technical introduction of this book and an introduction to pricing and ratemaking for practicing actuaries. For readers interested in learning practical aspects of pricing, we recommend introductions by the Society of Actuaries in <span class="citation">Friedland (<a href="#ref-friedland2013fundamentals" role="doc-biblioref">2013</a>)</span> and by the Casualty Actuarial Society in <span class="citation">Werner and Modlin (<a href="#ref-werner2016basic" role="doc-biblioref">2016</a>)</span>. For a classic risk management introduction to pricing, see <span class="citation">Niehaus and Harrington (<a href="#ref-niehaus2003risk" role="doc-biblioref">2003</a>)</span>. See also <span class="citation">Finger (<a href="#ref-finger2006risk" role="doc-biblioref">2006</a>)</span> and <span class="citation">Frees (<a href="#ref-frees2014frequency" role="doc-biblioref">2014</a>)</span>.</p>
+<p><span class="citation">Bühlmann (<a href="#ref-buhlmann1985premium" role="doc-biblioref">1985</a>)</span> was the first in the academic literature to argue that pricing should be done first at the portfolio level (he referred to this as a <em>top down</em> approach) which would be subsequently reconciled with pricing of individual contracts. See also the discussion in <span class="citation">Kaas et al. (<a href="#ref-kaas2008modern" role="doc-biblioref">2008</a>)</span>, Chapter 5.</p>
+<p>For more background on pricing principles, a classic treatment is by <span class="citation">Gerber (<a href="#ref-gerber1979introduction" role="doc-biblioref">1979</a>)</span> with a more modern approach in
+<span class="citation">Kaas et al. (<a href="#ref-kaas2008modern" role="doc-biblioref">2008</a>)</span>. For more discussion of pricing from a financial economics viewpoint, see <span class="citation">Bauer, Phillips, and Zanjani (<a href="#ref-bauer2013financial" role="doc-biblioref">2013</a>)</span>.</p>
 <ul>
 <li><strong>Edward W. (Jed) Frees</strong>, University of Wisconsin-Madison, and <strong>José Garrido</strong>, Concordia University are the principal authors of the initial version of this chapter.</li>
 <li>Chapter reviewers include Chun Yong Chew, Curtis Gary Dean, Brian Hartman, and Jeffrey Pai.</li>
@@ -1779,7 +1779,7 @@ gitbook.start({
     var script = document.createElement("script");
     script.type = "text/javascript";
     var src = "true";
-    if (src === "" || src === "true") src = "https://mathjax.rstudio.com/latest/MathJax.js?config=TeX-MML-AM_CHTML";
+    if (src === "" || src === "true") src = "https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.9/latest.js?config=TeX-MML-AM_CHTML";
     if (location.protocol !== "file:")
       if (/^https?:/.test(src))
         src = src.replace(/^https?:/, '');

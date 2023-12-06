@@ -6,7 +6,7 @@
   <meta http-equiv="X-UA-Compatible" content="IE=edge" />
   <title>Chapter 9 Bayesian Inference and Modeling | Loss Data Analytics</title>
   <meta name="description" content="Chapter 9 Bayesian Inference and Modeling | Loss Data Analytics is an interactive, online, freely available text. - The online version will contain many interactive objects (quizzes, computer demonstrations, interactive graphs, video, and the like) to promote deeper learning. - A subset of the book will be available in pdf format for low-cost printing. - The online text will be available in multiple languages to promote access to a worldwide audience." />
-  <meta name="generator" content="bookdown 0.27 and GitBook 2.6.7" />
+  <meta name="generator" content="bookdown 0.32 and GitBook 2.6.7" />
 
   <meta property="og:title" content="Chapter 9 Bayesian Inference and Modeling | Loss Data Analytics" />
   <meta property="og:type" content="book" />
@@ -515,7 +515,7 @@ code span.al { color: #ff0000; font-weight: bold; } /* Alert */
 code span.an { color: #60a0b0; font-weight: bold; font-style: italic; } /* Annotation */
 code span.at { color: #7d9029; } /* Attribute */
 code span.bn { color: #40a070; } /* BaseN */
-code span.bu { } /* BuiltIn */
+code span.bu { color: #008000; } /* BuiltIn */
 code span.cf { color: #007020; font-weight: bold; } /* ControlFlow */
 code span.ch { color: #4070a0; } /* Char */
 code span.cn { color: #880000; } /* Constant */
@@ -528,7 +528,7 @@ code span.er { color: #ff0000; font-weight: bold; } /* Error */
 code span.ex { } /* Extension */
 code span.fl { color: #40a070; } /* Float */
 code span.fu { color: #06287e; } /* Function */
-code span.im { } /* Import */
+code span.im { color: #008000; font-weight: bold; } /* Import */
 code span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Information */
 code span.kw { color: #007020; font-weight: bold; } /* Keyword */
 code span.op { color: #666666; } /* Operator */
@@ -1280,13 +1280,13 @@ Figure 9.4: <strong>Posterior probability density function of parameter <span cl
 </div>
 <div id="a-brief-history-lesson" class="section level3 hasAnchor" number="9.1.2">
 <h3><span class="header-section-number">9.1.2</span> A Brief History Lesson<a href="ChBayes.html#a-brief-history-lesson" class="anchor-section" aria-label="Anchor link to header"></a></h3>
-<p>Interestingly, some have argued that the birth of Bayesian statistics is intimately related to insurance; see, for instance, <span class="citation"><a href="#ref-cowles2013applied" role="doc-biblioref">Cowles</a> (<a href="#ref-cowles2013applied" role="doc-biblioref">2013</a>)</span>. Specifically, the Great Fire of London in 1666—destroying more than 10,000 homes and about 100 churches—led to the rise of insurance as we know it today. Shortly after, the first full-fledged fire insurance company came into existence in England during the 1680s. By the turn of the century, the idea of insurance was well ingrained and its use was booming in England; see, for instance, <span class="citation"><a href="#ref-haueter2017history" role="doc-biblioref">Haueter</a> (<a href="#ref-haueter2017history" role="doc-biblioref">2017</a>)</span>. Yet, the lack of statistical models and methods—much needed to understand risk—drove some insurers to bankruptcy.</p>
+<p>Interestingly, some have argued that the birth of Bayesian statistics is intimately related to insurance; see, for instance, <span class="citation">Cowles (<a href="#ref-cowles2013applied" role="doc-biblioref">2013</a>)</span>. Specifically, the Great Fire of London in 1666—destroying more than 10,000 homes and about 100 churches—led to the rise of insurance as we know it today. Shortly after, the first full-fledged fire insurance company came into existence in England during the 1680s. By the turn of the century, the idea of insurance was well ingrained and its use was booming in England; see, for instance, <span class="citation">Haueter (<a href="#ref-haueter2017history" role="doc-biblioref">2017</a>)</span>. Yet, the lack of statistical models and methods—much needed to understand risk—drove some insurers to bankruptcy.</p>
 <p>Thomas Bayes, an English statistician, philosopher and Presbyterian minister, applied his mind to some of these important statistical questions raised by insurers. This culminated into Bayes’ theory of probability in his seminar essay entitled <em>Essay towards solving a problem in the doctrine of chances</em>, published posthumously in 1763. This essay laid out the foundation of what we now know as Bayesian statistics.</p>
 
 <div class="figure" style="text-align: center"><span style="display:block;" id="fig:ThomasBayes"></span>
 <img src="Figures/ThomasBayes.gif" alt="Portrait of an unknown Presbyterian clergyman identified as Thomas Bayes in O’Donnell (1936)" width="33%" />
 <p class="caption">
-Figure 9.5: <strong>Portrait of an unknown Presbyterian clergyman identified as Thomas Bayes in <span class="citation"><a href="#ref-o1936history" role="doc-biblioref">O’Donnell</a> (<a href="#ref-o1936history" role="doc-biblioref">1936</a>)</span></strong>
+Figure 9.5: <strong>Portrait of an unknown Presbyterian clergyman identified as Thomas Bayes in <span class="citation">O’Donnell (<a href="#ref-o1936history" role="doc-biblioref">1936</a>)</span></strong>
 </p>
 </div>
 <p>Thomas Bayes’ work also helped Pierre-Simon Laplace, a famous French scholar and polymath, to develop and popularize the Bayesian interpretation of probability in the late 1700s and early 1800s. He also moved beyond Bayes’ essay and generalized his framework. Laplace’s efforts were followed by many, and Bayesian thinking continued to progress throughout the years with the help of statisticians like Bruno de Finetti, Harold Jeffreys, Dennis Lindley, and Leonard Jimmie Savage.</p>
@@ -1489,7 +1489,7 @@ p_{Y|X=x}(y) = \frac{p_{X|Y=y}(x)\, p_Y(y)}{\sum_k p_{X|Y=k}(x) \, p_Y(k)}.
 <p><strong>Proposition 9.2.1. Bayes’ Rule for Continuous Random Variables.</strong>
 For two continuous random variables <span class="math inline">\(X\)</span> and <span class="math inline">\(Y\)</span>, the conditional probability density function of <span class="math inline">\(Y\)</span> given <span class="math inline">\(X=x\)</span> follows</p>
 <p><span class="math display">\[
-f_{Y|X=x}(y) = \frac{f_{X|Y=y}(x)\, f_Y(y)}{f_X(x)}, 
+f_{Y|X=x}(y) = \frac{f_{X|Y=y}(x)\, f_Y(y)}{f_X(x)},
 \]</span></p>
 <p>where the marginal distributions of <span class="math inline">\(X\)</span> and <span class="math inline">\(Y\)</span> are given as follows:</p>
 <p><span class="math display">\[
@@ -1525,7 +1525,7 @@ f_{Y|X=x}(y) = \frac{f_{X|Y=y}(x)\, f_Y(y)}{f_X(x)}.
 <p>Model parameters are assumed to be random variables under the Bayesian paradigm, meaning that Bayes’ rule for (discrete or continuous) random variables can be applied to update the prior knowledge about parameters by using new data. This is indeed similar to the process used in Section <a href="ChBayes.html#ChBayes:SubSecBayesVsFreq">9.1.1</a>.</p>
 <p>Let us consider only one (random) model parameter <span class="math inline">\(\theta\)</span> associated with random variable <span class="math inline">\(\Theta\)</span> for now.<a href="#fn15" class="footnote-ref" id="fnref15"><sup>15</sup></a> Further, consider <span class="math inline">\(n\)</span> observations</p>
 <p><span class="math display">\[
-\mathbf{x} = (x_1, x_2, ..., x_n), 
+\mathbf{x} = (x_1, x_2, ..., x_n),
 \]</span></p>
 <p>which are realizations of the collection of random variables</p>
 <p><span class="math display">\[
@@ -1547,7 +1547,7 @@ f_{\Theta|\mathbf{X}=\mathbf{x}}(\theta) = \frac{f_{\mathbf{X}|\Theta=\theta}(\m
 f_{\Theta|\mathbf{X}=\mathbf{x}}(\theta) \propto \underbrace{f_{\mathbf{X}|\Theta=\theta}(\mathbf{x})}_{\text{Likelihood}} \, \, \underbrace{\vphantom{f_{\mathbf{X}|\Theta=\theta}(\mathbf{x})}f_{\Theta}(\theta)}_{\text{Prior}}.
 \]</span></p>
 <hr />
-<p><strong>Example 9.2.1. A Problem Inspired from <span class="citation"><a href="#ref-meyers1994quantifying" role="doc-biblioref">Meyers</a> (<a href="#ref-meyers1994quantifying" role="doc-biblioref">1994</a>)</span>.</strong>
+<p><strong>Example 9.2.1. A Problem Inspired from <span class="citation">Meyers (<a href="#ref-meyers1994quantifying" role="doc-biblioref">1994</a>)</span>.</strong>
 A car insurance pays the following (independent) claim amounts on an automobile insurance policy:</p>
 <p><span class="math display">\[
 1050, \quad\quad 1250, \quad\quad 1550, \quad\quad 2600, \quad\quad 5350, \quad\quad 10200.
@@ -1576,7 +1576,7 @@ f_{A|\mathbf{X}=\mathbf{x}}(\alpha) = \frac{\alpha^{7} \, e^{-6.66518\alpha-41.4
 \]</span></p>
 <p>Interestingly, we do not need to solve the integral in the denominator to find this distribution. As we know that the results should be a proper pdf and that the numerator looks like a gamma distribution, we can deduce that</p>
 <p><span class="math display">\[
-f_{A|\mathbf{X}=\mathbf{x}}(\alpha) = \frac{6.66518^8}{\Gamma(8)} \, \alpha^7 \, e^{-6.66518 \, \alpha}, 
+f_{A|\mathbf{X}=\mathbf{x}}(\alpha) = \frac{6.66518^8}{\Gamma(8)} \, \alpha^7 \, e^{-6.66518 \, \alpha},
 \]</span></p>
 <p>which is a gamma distribution with shape parameter 8 and scale parameter <span class="math inline">\(\frac{1}{6.66518}\)</span>. Figure <a href="ChBayes.html#fig:ChBayesBayesianMeyer">9.6</a> reports the posterior distribution of <span class="math inline">\(\alpha\)</span>.</p>
 
@@ -1607,7 +1607,7 @@ p_{X|Q=q}(x) = \binom{5}{3} q^3 (1-q)^2,
 \]</span>
 we have that the posterior distribution of <span class="math inline">\(q\)</span> is given by</p>
 <p><span class="math display">\[
-f_{Q|X=3}(q) \,  \propto \, p_{X|Q=q}(x) \, f_Q(q) = q^3 \,(1-q)^2, 
+f_{Q|X=3}(q) \,  \propto \, p_{X|Q=q}(x) \, f_Q(q) = q^3 \,(1-q)^2,
 \]</span>
 which is a beta distribution with <span class="math inline">\(a = 4\)</span>, <span class="math inline">\(b = 3\)</span>, and <span class="math inline">\(\theta = 1\)</span>; that is, we can easily deduce that</p>
 <p><span class="math display">\[
@@ -1702,7 +1702,7 @@ f_{Q|\mathbf{X}=\mathbf{x}} (q) \propto &amp;\, f_{\mathbf{X}|Q=q}(\mathbf{x}) f
 \end{align}\]</span></p>
 <p>and zero otherwise. We can numerically obtain the shape of this posterior distribution by dividing <span class="math inline">\(q^{x} (1-q)^{250-x}\)</span> by</p>
 <p><span class="math display">\[
-\int_0^{0.05} \! q^{x} (1-q)^{250-x} \, dq. 
+\int_0^{0.05} \! q^{x} (1-q)^{250-x} \, dq.
 \]</span></p>
 <p>Note that this prior makes it impossible for the estimated frequency to be greater than 0.05.</p>
 <p>The second prior is still uniform, but over <span class="math inline">\([0,1]\)</span> this time, which is given mathematically by</p>
@@ -1739,7 +1739,7 @@ Figure 9.7: <strong>Posterior densities based on informative (gray) and noninfor
 </div>
 <p>We also wish to obtain the expected value of <span class="math inline">\(q\)</span> for both posterior distribution. This can be obtained by numerically integrating the following equation:</p>
 <p><span class="math display">\[
-\mathrm{E}[Q|\mathbf{X}=\mathbf{x}] = \int_0^1 \! q \, f_{Q|\mathbf{X}=\mathbf{x}} (q) \, dq. 
+\mathrm{E}[Q|\mathbf{X}=\mathbf{x}] = \int_0^1 \! q \, f_{Q|\mathbf{X}=\mathbf{x}} (q) \, dq.
 \]</span></p>
 <div class="sourceCode" id="cb151"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb151-1"><a href="ChBayes.html#cb151-1" aria-hidden="true" tabindex="-1"></a>integrandexpvalue1 <span class="ot">&lt;-</span> <span class="cf">function</span>(q) {</span>
 <span id="cb151-2"><a href="ChBayes.html#cb151-2" aria-hidden="true" tabindex="-1"></a>    <span class="fu">integrandposterior1</span>(q)<span class="sc">/</span>marglikelihood1 <span class="sc">*</span> q</span>
@@ -2087,7 +2087,7 @@ f_{M|\mathbf{X}=\mathbf{x}}(\mu) = \frac{1}{\sqrt{2\pi\left( \frac{\tau^2\sigma^
 \]</span></p>
 <p>where <span class="math inline">\(x = \sum_{i=1}^n x_i\)</span>, which is a normal distribution with mean parameter</p>
 <p><span class="math display">\[
-\frac{x}{n} \frac{n\tau^2}{n\tau^2 +\sigma^2} + \theta \frac{\sigma^2}{n\tau^2 +\sigma^2} 
+\frac{x}{n} \frac{n\tau^2}{n\tau^2 +\sigma^2} + \theta \frac{\sigma^2}{n\tau^2 +\sigma^2}
 \]</span></p>
 <p>and variance parameter</p>
 <p><span class="math display">\[
@@ -2197,7 +2197,7 @@ Figure 9.11: <strong>Posterior densities based on three different priors: <span 
 <div id="introduction-to-markov-chain-monte-carlo-methods" class="section level3 hasAnchor" number="9.4.1">
 <h3><span class="header-section-number">9.4.1</span> Introduction to Markov Chain Monte Carlo Methods<a href="ChBayes.html#introduction-to-markov-chain-monte-carlo-methods" class="anchor-section" aria-label="Anchor link to header"></a></h3>
 <p>Sometimes, using conjugate family models is ill-suited for the problem at hand, and more complicated priors need to be selected. Under other circumstances, complex models involve many parameters making the posterior distribution intractable. In these cases, the posterior distribution of the parameters will not have a closed-form solution, generally speaking, and will need to be estimated via numerical methods.</p>
-<p>A common way to generate draws of the parameter posterior distribution is to create Markov chains for which their stationary distributions correspond to the posterior of interest. These Markov chain-based methods are known as Markov chain Monte Carlo (MCMC) methods in the literature. This section provides a brief overview of these methods and of their uses. We do not intend to give much of the theory behind these methods, which would require a deep understanding of Markov chains and their theory.<a href="#fn18" class="footnote-ref" id="fnref18"><sup>18</sup></a> Instead, we focus on their applications in insurance and loss modeling. Specifically, in the next two subsections, we introduce the two most common MCMC methods; that is, the <a href="#" class="tooltip" style="color:green"><em>Gibbs sampler</em><span style="font-size:8pt">The Gibbs sampler is an iterative algorithm in statistics used for simulating samples from complex probability distributions. It’s particularly useful in Bayesian analysis for drawing samples from multivariate distributions by updating one variable at a time while keeping others fixed.</span></a> of <span class="citation"><a href="#ref-gelfand1990sampling" role="doc-biblioref">Gelfand and Smith</a> (<a href="#ref-gelfand1990sampling" role="doc-biblioref">1990</a>)</span> and the <a href="#" class="tooltip" style="color:green"><em>Metropolis–Hastings algorithm</em><span style="font-size:8pt">The Metropolis–Hastings algorithm is a method to generate samples from complex distributions by proposing new samples and deciding whether to accept them, making it valuable for Bayesian analysis and complex modeling.</span></a> of <span class="citation"><a href="#ref-hastings1970monte" role="doc-biblioref">Hastings</a> (<a href="#ref-hastings1970monte" role="doc-biblioref">1970</a>)</span> and <span class="citation"><a href="#ref-metropolis1953equation" role="doc-biblioref">Metropolis et al.</a> (<a href="#ref-metropolis1953equation" role="doc-biblioref">1953</a>)</span>.</p>
+<p>A common way to generate draws of the parameter posterior distribution is to create Markov chains for which their stationary distributions correspond to the posterior of interest. These Markov chain-based methods are known as Markov chain Monte Carlo (MCMC) methods in the literature. This section provides a brief overview of these methods and of their uses. We do not intend to give much of the theory behind these methods, which would require a deep understanding of Markov chains and their theory.<a href="#fn18" class="footnote-ref" id="fnref18"><sup>18</sup></a> Instead, we focus on their applications in insurance and loss modeling. Specifically, in the next two subsections, we introduce the two most common MCMC methods; that is, the <a href="#" class="tooltip" style="color:green"><em>Gibbs sampler</em><span style="font-size:8pt">The Gibbs sampler is an iterative algorithm in statistics used for simulating samples from complex probability distributions. It’s particularly useful in Bayesian analysis for drawing samples from multivariate distributions by updating one variable at a time while keeping others fixed.</span></a> of <span class="citation">Gelfand and Smith (<a href="#ref-gelfand1990sampling" role="doc-biblioref">1990</a>)</span> and the <a href="#" class="tooltip" style="color:green"><em>Metropolis–Hastings algorithm</em><span style="font-size:8pt">The Metropolis–Hastings algorithm is a method to generate samples from complex distributions by proposing new samples and deciding whether to accept them, making it valuable for Bayesian analysis and complex modeling.</span></a> of <span class="citation">Hastings (<a href="#ref-hastings1970monte" role="doc-biblioref">1970</a>)</span> and <span class="citation">Metropolis et al. (<a href="#ref-metropolis1953equation" role="doc-biblioref">1953</a>)</span>.</p>
 </div>
 <div id="the-gibbs-sampler" class="section level3 hasAnchor" number="9.4.2">
 <h3><span class="header-section-number">9.4.2</span> The Gibbs Sampler<a href="ChBayes.html#the-gibbs-sampler" class="anchor-section" aria-label="Anchor link to header"></a></h3>
@@ -2208,7 +2208,7 @@ f_{\mathbf{X}}(\mathbf{x}) = \int \int ... \int f_{\mathbf{X}|\pmb{\Theta} = \pm
 <p>is hard to compute even when using typical quadrature-based rules, especially if <span class="math inline">\(k\)</span> is large.</p>
 <p>Fortunately, under very mild regulatory conditions, samples of the joint estimates of parameters can be obtained by sequentially sampling each parameter individually and by keeping all the other parameters constant. To do so, the distribution of any given parameter conditional on all the other parameters (and the data) needs to be known. These distributions are known as full conditional distributions; that is,</p>
 <p><span class="math display">\[
-f_{\Theta_i \,|\, \mathbf{X} = \mathbf{x}, \, \pmb{\Theta}_{\backslash i} = \pmb{\theta}_{\backslash i}} (\theta_i), 
+f_{\Theta_i \,|\, \mathbf{X} = \mathbf{x}, \, \pmb{\Theta}_{\backslash i} = \pmb{\theta}_{\backslash i}} (\theta_i),
 \]</span></p>
 <p>for parameter <span class="math inline">\(\theta_i\)</span>, where <span class="math inline">\(\pmb{\theta}_{\backslash i}\)</span> represents all parameters except for the <span class="math inline">\(i^{\text{th}}\)</span> one, and <span class="math inline">\(\pmb{\Theta}_{\backslash i}\)</span> is the random variable associated with this set of parameters.</p>
 <p>The full conditional distribution is an important building block in Gibbs sampling. Indeed, if one can obtain each parameter’s distribution conditional on having the value of all the other parameters in closed form, then it is possible to generate samples for each parameter. Specifically, starting from an arbitrary set of starting values <span class="math inline">\(\pmb{\theta}^{(0)}_{\vphantom{2}} = [ \, {\theta}_1^{(0)} \quad {\theta}_2^{(0)} \quad ... \quad {\theta}_k^{(0)} \, ]\)</span>, samples for each parameter can be generated by performing the following steps for <span class="math inline">\(m = 1, 2, ..., M\)</span>:</p>
@@ -2274,7 +2274,7 @@ f_{A,B,\Sigma^2|\mathbf{X}=\mathbf{x}}(\alpha,\beta,\sigma^2) \propto f_{\mathbf
 \end{align*}\]</span></p>
 <p>which is a normal distribution with mean parameter</p>
 <p><span class="math display">\[
- \frac{1}{n} \left(\sum_{i=1}^n x_i - \beta z_i \right) \frac{n \tau_{\alpha}^2}{n\tau_{\alpha}^2 + \sigma^2} + \theta_{\alpha} \frac{\sigma^2}{n\tau_{\alpha}^2+\sigma^2}
+\frac{1}{n} \left(\sum_{i=1}^n x_i - \beta z_i \right) \frac{n \tau_{\alpha}^2}{n\tau_{\alpha}^2 + \sigma^2} + \theta_{\alpha} \frac{\sigma^2}{n\tau_{\alpha}^2+\sigma^2}
 \]</span></p>
 <p>and variance parameter</p>
 <p><span class="math display">\[
@@ -2291,7 +2291,7 @@ f_{A,B,\Sigma^2|\mathbf{X}=\mathbf{x}}(\alpha,\beta,\sigma^2) \propto f_{\mathbf
 \end{align*}\]</span></p>
 <p>which is a normal distribution with mean parameter</p>
 <p><span class="math display">\[
- \frac{1}{n}\left(  \sum_{i=1}^n z_i\left( x_i - \alpha \right) \right) \frac{n \tau_{\beta}^2}{\tau_{\beta}^2\sum_{i=1}^n z_i^2 + \sigma^2} + \theta_{\beta} \frac{\sigma^2}{\tau_{\beta}^2\sum_{i=1}^n z_i^2 +\sigma^2}
+\frac{1}{n}\left(  \sum_{i=1}^n z_i\left( x_i - \alpha \right) \right) \frac{n \tau_{\beta}^2}{\tau_{\beta}^2\sum_{i=1}^n z_i^2 + \sigma^2} + \theta_{\beta} \frac{\sigma^2}{\tau_{\beta}^2\sum_{i=1}^n z_i^2 +\sigma^2}
 \]</span></p>
 <p>and variance parameter</p>
 <p><span class="math display">\[
@@ -2310,7 +2310,7 @@ f_{A,B,\Sigma^2|\mathbf{X}=\mathbf{x}}(\alpha,\beta,\sigma^2) \propto f_{\mathbf
 \]</span></p>
 </div>
 <hr />
-<p>We now apply the Gibbs sampler on <em>real</em> data. The example will use motorcycle insurance data from Wasa, a Swedish insurance company, taken from <code>dataOhlsson</code> of the R package <code>insuranceData</code>; see <span class="citation"><a href="#ref-wolny2014package" role="doc-biblioref">Wolny-Dominiak and Trzesiok</a> (<a href="#ref-wolny2014package" role="doc-biblioref">2014</a>)</span> for more details.</p>
+<p>We now apply the Gibbs sampler on <em>real</em> data. The example will use motorcycle insurance data from Wasa, a Swedish insurance company, taken from <code>dataOhlsson</code> of the R package <code>insuranceData</code>; see <span class="citation">Wolny-Dominiak and Trzesiok (<a href="#ref-wolny2014package" role="doc-biblioref">2014</a>)</span> for more details.</p>
 <div class="sourceCode" id="cb157"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb157-1"><a href="ChBayes.html#cb157-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(<span class="st">&quot;insuranceData&quot;</span>)</span>
 <span id="cb157-2"><a href="ChBayes.html#cb157-2" aria-hidden="true" tabindex="-1"></a><span class="fu">data</span>(dataOhlsson)</span></code></pre></div>
 <p>This dataset contains information about the number of motorcycle accidents, their claim cost, and some risk factors (e.g., the age of the driver, the age of the vehicle, the geographic zone).</p>
@@ -2742,7 +2742,7 @@ Figure 9.17: <strong>Trace plots based on two different starting parameter sets:
 </div>
 <div id="comparing-parallel-chains" class="section level4 hasAnchor" number="9.4.4.2">
 <h4><span class="header-section-number">9.4.4.2</span> Comparing Parallel Chains<a href="ChBayes.html#comparing-parallel-chains" class="anchor-section" aria-label="Anchor link to header"></a></h4>
-<p><strong>Gelman–Rubin Statistic</strong> Another way to assess convergence is to run multiple chains in parallel from different starting points and check if their behavior is similar. In addition to comparing their trace plots, the chains can be compared by using a statistical test—the Gelman–Rubin test of <span class="citation"><a href="#ref-gelman1992inference" role="doc-biblioref">Gelman and Rubin</a> (<a href="#ref-gelman1992inference" role="doc-biblioref">1992</a>)</span>. The latter test compares the within-chain variance to the between-chain variance; to calculate the statistic, we need to generate a small number of chains (say, <span class="math inline">\(R\)</span>), each for <span class="math inline">\(M-M^*\)</span> post-burn-in iterations.</p>
+<p><strong>Gelman–Rubin Statistic</strong> Another way to assess convergence is to run multiple chains in parallel from different starting points and check if their behavior is similar. In addition to comparing their trace plots, the chains can be compared by using a statistical test—the Gelman–Rubin test of <span class="citation">Gelman and Rubin (<a href="#ref-gelman1992inference" role="doc-biblioref">1992</a>)</span>. The latter test compares the within-chain variance to the between-chain variance; to calculate the statistic, we need to generate a small number of chains (say, <span class="math inline">\(R\)</span>), each for <span class="math inline">\(M-M^*\)</span> post-burn-in iterations.</p>
 <p>If the chains have converged, the within-chain variance should be similar to the between-chain variance. Assuming the parameter of interest is <span class="math inline">\(\theta_i\)</span>, the within-chain variance is</p>
 <p><span class="math display">\[
 W = \frac{1}{R(M-M^*-1)} \sum_{r=1}^R \sum_{m=M^*+1}^{M} \left( \theta_{i,r}^{(m)} - \overline{\theta}_{i,r} \right)^2 ,
@@ -2761,7 +2761,7 @@ B = \frac{M-M^*}{R-1} \sum_{r=1}^R \left( \overline{\theta}_{i,r} - \overline{\t
 <h4><span class="header-section-number">9.4.4.3</span> Calculating Effective Sample Sizes<a href="ChBayes.html#calculating-effective-sample-sizes" class="anchor-section" aria-label="Anchor link to header"></a></h4>
 <p><strong>Effective Sample Size</strong> The effective sample size (ESS) is a measure of the number of independent samples obtained from an MCMC chain. Recall that in an MCMC chain, each sample is correlated with the previous sample; as a result, the effective number of independent samples is usually much smaller than the total number of samples generated by the MCMC algorithm. The ESS takes this correlation into account and provides an estimate of the number of independent samples that are equivalent to the correlated samples in the chain.</p>
 <p>In general, a higher effective sample size indicates that the MCMC algorithm has produced more independent samples and is more likely to have accurately sampled the posterior distribution. A lower effective sample size, on the other hand, suggests that the MCMC algorithm may require further tuning or optimization to produce reliable posterior estimates.</p>
-<p>The function <code>multiESS</code>of the R package <code>mcmcse</code> contains a function that gives the ESS of a multivariate Markov chain as described in <span class="citation"><a href="#ref-vats2019multivariate" role="doc-biblioref">Vats, Flegal, and Jones</a> (<a href="#ref-vats2019multivariate" role="doc-biblioref">2019</a>)</span>. The package also includes an estimate of the minimum ESS required for a specified relative tolerance level (see function <code>minESS</code>).</p>
+<p>The function <code>multiESS</code>of the R package <code>mcmcse</code> contains a function that gives the ESS of a multivariate Markov chain as described in <span class="citation">Vats, Flegal, and Jones (<a href="#ref-vats2019multivariate" role="doc-biblioref">2019</a>)</span>. The package also includes an estimate of the minimum ESS required for a specified relative tolerance level (see function <code>minESS</code>).</p>
 <p>We now apply these various diagnostics to an example.</p>
 <hr />
 <p><strong>Example 9.4.4. Markov Chain Diagnostics.</strong>
@@ -2905,11 +2905,11 @@ Figure 9.19: <strong>Trace plot and posterior density for parameter <span class=
 <pre><code>The posterior mean of the parameter is 0.07819139</code></pre>
 <pre><code>The posterior standard deviation of the parameter is 0.003094629</code></pre>
 </div>
-<p>This simple illustration demonstrates the simplicity of utilizing R packages to generate MCMC chains, all without the need for writing extensive code. For more details on the <code>nimble</code> package, see <span class="citation"><a href="#ref-de2017programming" role="doc-biblioref">Valpine et al.</a> (<a href="#ref-de2017programming" role="doc-biblioref">2017</a>)</span>.</p>
+<p>This simple illustration demonstrates the simplicity of utilizing R packages to generate MCMC chains, all without the need for writing extensive code. For more details on the <code>nimble</code> package, see <span class="citation">Valpine et al. (<a href="#ref-de2017programming" role="doc-biblioref">2017</a>)</span>.</p>
 </div>
 <div id="ChBayes:SecFurther" class="section level2 hasAnchor" number="9.6">
 <h2><span class="header-section-number">9.6</span> Further Resources and Contributors<a href="ChBayes.html#ChBayes:SecFurther" class="anchor-section" aria-label="Anchor link to header"></a></h2>
-<p>Many great books exist on Bayesian statistics and MCMC schemes. We refer the interested reader to <span class="citation"><a href="#ref-bernardo2009bayesian" role="doc-biblioref">Bernardo and Smith</a> (<a href="#ref-bernardo2009bayesian" role="doc-biblioref">2009</a>)</span> and <span class="citation"><a href="#ref-robert1999monte" role="doc-biblioref">Robert and Casella</a> (<a href="#ref-robert1999monte" role="doc-biblioref">1999</a>)</span> for an advanced treatment of these topics.</p>
+<p>Many great books exist on Bayesian statistics and MCMC schemes. We refer the interested reader to <span class="citation">Bernardo and Smith (<a href="#ref-bernardo2009bayesian" role="doc-biblioref">2009</a>)</span> and <span class="citation">Robert and Casella (<a href="#ref-robert1999monte" role="doc-biblioref">1999</a>)</span> for an advanced treatment of these topics.</p>
 <div id="contributors-8" class="section level3 unnumbered hasAnchor">
 <h3>Contributors<a href="ChBayes.html#contributors-8" class="anchor-section" aria-label="Anchor link to header"></a></h3>
 <ul>
@@ -2974,7 +2974,7 @@ Wolny-Dominiak, Alicja, and Michal Trzesiok. 2014. <span>“Package <span>‘ins
 <li id="fn15"><p>For the sake of simplicity, we only consider one parameter in our derivation here. Note that, later, we will consider cases with more than one parameter and that this extension does not change the bulk of our results and derivations.<a href="ChBayes.html#fnref15" class="footnote-back">↩︎</a></p></li>
 <li id="fn16"><p>Here, we assume that the domain of the beta is <span class="math inline">\([0,1]\)</span>, meaning that <span class="math inline">\(\theta = 1\)</span>. For more details, see Chapter <a href="ChapSummaryDistributions.html#ChapSummaryDistributions">20</a>.<a href="ChBayes.html#fnref16" class="footnote-back">↩︎</a></p></li>
 <li id="fn17"><p>Conjugate families for the normal distribution with unknown <span class="math inline">\(\sigma^2\)</span> can also be derived. For the sake of simplicity, we will only focus on the case with known variance parameter in this book.<a href="ChBayes.html#fnref17" class="footnote-back">↩︎</a></p></li>
-<li id="fn18"><p>For an overview of the theory behind MCMC methods, see <span class="citation"><a href="#ref-robert1999monte" role="doc-biblioref">Robert and Casella</a> (<a href="#ref-robert1999monte" role="doc-biblioref">1999</a>)</span>.<a href="ChBayes.html#fnref18" class="footnote-back">↩︎</a></p></li>
+<li id="fn18"><p>For an overview of the theory behind MCMC methods, see <span class="citation">Robert and Casella (<a href="#ref-robert1999monte" role="doc-biblioref">1999</a>)</span>.<a href="ChBayes.html#fnref18" class="footnote-back">↩︎</a></p></li>
 <li id="fn19"><p>Note that the inverse gamma prior combined with a Poisson distribution does not generally lead to closed-form posterior densities and thus requires us to use MCMC methods.<a href="ChBayes.html#fnref19" class="footnote-back">↩︎</a></p></li>
 </ol>
 </div>
@@ -3044,7 +3044,7 @@ gitbook.start({
     var script = document.createElement("script");
     script.type = "text/javascript";
     var src = "true";
-    if (src === "" || src === "true") src = "https://mathjax.rstudio.com/latest/MathJax.js?config=TeX-MML-AM_CHTML";
+    if (src === "" || src === "true") src = "https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.9/latest.js?config=TeX-MML-AM_CHTML";
     if (location.protocol !== "file:")
       if (/^https?:/.test(src))
         src = src.replace(/^https?:/, '');

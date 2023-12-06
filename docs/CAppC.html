@@ -6,7 +6,7 @@
   <meta http-equiv="X-UA-Compatible" content="IE=edge" />
   <title>Chapter 19 Appendix C: Maximum Likelihood Theory | Loss Data Analytics</title>
   <meta name="description" content="Chapter 19 Appendix C: Maximum Likelihood Theory | Loss Data Analytics is an interactive, online, freely available text. - The online version will contain many interactive objects (quizzes, computer demonstrations, interactive graphs, video, and the like) to promote deeper learning. - A subset of the book will be available in pdf format for low-cost printing. - The online text will be available in multiple languages to promote access to a worldwide audience." />
-  <meta name="generator" content="bookdown 0.27 and GitBook 2.6.7" />
+  <meta name="generator" content="bookdown 0.32 and GitBook 2.6.7" />
 
   <meta property="og:title" content="Chapter 19 Appendix C: Maximum Likelihood Theory | Loss Data Analytics" />
   <meta property="og:type" content="book" />
@@ -515,7 +515,7 @@ code span.al { color: #ff0000; font-weight: bold; } /* Alert */
 code span.an { color: #60a0b0; font-weight: bold; font-style: italic; } /* Annotation */
 code span.at { color: #7d9029; } /* Attribute */
 code span.bn { color: #40a070; } /* BaseN */
-code span.bu { } /* BuiltIn */
+code span.bu { color: #008000; } /* BuiltIn */
 code span.cf { color: #007020; font-weight: bold; } /* ControlFlow */
 code span.ch { color: #4070a0; } /* Char */
 code span.cn { color: #880000; } /* Constant */
@@ -528,7 +528,7 @@ code span.er { color: #ff0000; font-weight: bold; } /* Error */
 code span.ex { } /* Extension */
 code span.fl { color: #40a070; } /* Float */
 code span.fu { color: #06287e; } /* Function */
-code span.im { } /* Import */
+code span.im { color: #008000; font-weight: bold; } /* Import */
 code span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Information */
 code span.kw { color: #007020; font-weight: bold; } /* Keyword */
 code span.op { color: #666666; } /* Operator */
@@ -1209,14 +1209,14 @@ div.csl-indent {
 <p>In this section, you learn</p>
 <ul>
 <li>the definitions of the likelihood function and the log-likelihood function</li>
-<li>the properties of the likelihood function.</li>
+<li>the properties of the likelihood function</li>
 </ul>
 <hr />
 <p>From Appendix Chapter <a href="CAppA.html#CAppA">17</a>, the likelihood function is a function of parameters given the observed data. Here, we review the concepts of the likelihood function, and introduces its properties that are bases for maximum likelihood inference.</p>
 <div id="likelihood-and-log-likelihood-functions" class="section level3 hasAnchor" number="19.1.1">
 <h3><span class="header-section-number">19.1.1</span> Likelihood and Log-likelihood Functions<a href="CAppC.html#likelihood-and-log-likelihood-functions" class="anchor-section" aria-label="Anchor link to header"></a></h3>
 <p>Here, we give a brief review of the likelihood function and the log-likelihood function from Appendix Chapter <a href="CAppA.html#CAppA">17</a>. Let <span class="math inline">\(f(\cdot|\boldsymbol\theta)\)</span> be the probability function of <span class="math inline">\(X\)</span>, the probability mass function (pmf) if <span class="math inline">\(X\)</span> is discrete or the probability density function (pdf) if it is continuous. The likelihood is a function of the parameters (<span class="math inline">\(\boldsymbol \theta\)</span>) given the data (<span class="math inline">\(\mathbf{x}\)</span>). Hence, it is a function of the parameters with the data being fixed, rather than a function of the data with the parameters being fixed. The vector of data <span class="math inline">\(\mathbf{x}\)</span> is usually a realization of a <em>random sample</em> as defined in Appendix Chapter <a href="CAppA.html#CAppA">17</a>.</p>
-<p>Given a realized of a random sample <span class="math inline">\(\mathbf{x}=(x_1,x_2,\cdots,x_n)\)</span> of size <span class="math inline">\(n\)</span>, the <strong>likelihood function</strong> is defined as
+<p>Given a realized random sample <span class="math inline">\(\mathbf{x}=(x_1,x_2,\cdots,x_n)\)</span> of size <span class="math inline">\(n\)</span>, the <strong>likelihood function</strong> is defined as
 <span class="math display">\[L(\boldsymbol{\theta}|\mathbf{x})=f(\mathbf{x}|\boldsymbol{\theta})=\prod_{i=1}^nf(x_i|\boldsymbol{\theta}),\]</span>
 with the corresponding <strong>log-likelihood function</strong> given by</p>
 <p><span class="math display">\[
@@ -1249,7 +1249,7 @@ u(\boldsymbol\theta)=\frac{ \partial}{\partial \boldsymbol \theta} l(\boldsymbol
     \partial}{\partial \boldsymbol \theta}
     \log f(x_i;\boldsymbol \theta ),
 \]</span></p>
-<p>where <span class="math inline">\(u(\boldsymbol\theta)=(u_1(\boldsymbol\theta),u_2(\boldsymbol\theta),\cdots,u_p(\boldsymbol\theta))\)</span> when <span class="math inline">\(\boldsymbol\theta=(\theta_1,\cdots,\theta_p)\)</span> contains <span class="math inline">\(p&gt;2\)</span> parameters, with the element <span class="math inline">\(u_k(\boldsymbol\theta)=\partial l(\boldsymbol \theta|\mathbf{x})/\partial \theta_k\)</span> being the partial derivative with respect to <span class="math inline">\(\theta_k\)</span> (<span class="math inline">\(k=1,2,\cdots,p\)</span>).</p>
+<p>where <span class="math inline">\(u(\boldsymbol\theta)=(u_1(\boldsymbol\theta),u_2(\boldsymbol\theta),\cdots,u_p(\boldsymbol\theta))\)</span> when <span class="math inline">\(\boldsymbol\theta=(\theta_1,\cdots,\theta_p)\)</span>, with the element <span class="math inline">\(u_k(\boldsymbol\theta)=\partial l(\boldsymbol \theta|\mathbf{x})/\partial \theta_k\)</span> being the partial derivative with respect to <span class="math inline">\(\theta_k\)</span> (<span class="math inline">\(k=1,2,\cdots,p\)</span>).</p>
 <p>The likelihood function has the following properties:</p>
 <ul>
 <li>One basic property of the likelihood function is that the expectation of the score function with respect to <span class="math inline">\(\mathbf{x}\)</span> is 0. That is,</li>
@@ -1258,7 +1258,7 @@ u(\boldsymbol\theta)=\frac{ \partial}{\partial \boldsymbol \theta} l(\boldsymbol
 \mathrm{E}[u(\boldsymbol\theta)]=\mathrm{E} \left[ \frac{ \partial}{\partial \boldsymbol \theta}
     l(\boldsymbol \theta|\mathbf{x}) \right] = \mathbf 0 .
 \]</span></p>
-<p>To illustrate this, we have</p>
+<p>      To illustrate this, we have</p>
 <p><span class="math display">\[
 \begin{aligned}
     \mathrm{E} \left[ \frac{ \partial}{\partial \boldsymbol \theta} l(\boldsymbol \theta|\mathbf{x}) \right]
@@ -1268,9 +1268,13 @@ u(\boldsymbol\theta)=\frac{ \partial}{\partial \boldsymbol \theta} l(\boldsymbol
     = \frac{\partial}{\partial \boldsymbol \theta} 1 = \mathbf 0.\end{aligned}
 \]</span></p>
 <ul>
-<li><p>Denote by <span class="math inline">\({ \partial^2 l(\boldsymbol \theta|\mathbf{x}) }/{\partial \boldsymbol \theta\partial \boldsymbol \theta^{\prime}}={ \partial^2 l(\boldsymbol \theta|\mathbf{x}) }/{\partial \boldsymbol \theta^{2}}\)</span> the second derivative of the log-likelihood function when <span class="math inline">\(\boldsymbol\theta\)</span> is a single parameter, or by <span class="math inline">\({ \partial^2 l(\boldsymbol \theta|\mathbf{x}) }/{\partial \boldsymbol \theta\partial \boldsymbol \theta^{\prime}}=(h_{jk})=({ \partial^2 l(\boldsymbol \theta|\mathbf{x}) }/\partial x_j\partial x_k)\)</span> the hessian matrix of the log-likelihood function when it contains multiple parameters. Denote <span class="math inline">\([{ \partial l(\boldsymbol \theta|\mathbf{x})}{\partial\boldsymbol \theta}][{ \partial l(\boldsymbol \theta|\mathbf{x})}{\partial\boldsymbol \theta&#39;}]=u^2(\boldsymbol \theta)\)</span> when <span class="math inline">\(\boldsymbol\theta\)</span> is a single parameter, or let <span class="math inline">\([{ \partial l(\boldsymbol \theta|\mathbf{x})}{\partial\boldsymbol \theta}][{ \partial l(\boldsymbol \theta|\mathbf{x})}{\partial\boldsymbol \theta&#39;}]=(uu_{jk})\)</span> be a <span class="math inline">\(p\times p\)</span> matrix when <span class="math inline">\(\boldsymbol\theta\)</span> contains a total of <span class="math inline">\(p\)</span> parameters, with each element <span class="math inline">\(uu_{jk}=u_j(\boldsymbol \theta)u_k(\boldsymbol \theta)\)</span> and <span class="math inline">\(u_j(\boldsymbol \theta)\)</span> being the <span class="math inline">\(k\)</span>th element of the score vector as defined earlier. Another basic property of the likelihood function is that sum of the expectation of the hessian matrix and the expectation of the Kronecker product of the score vector and its transpose is <span class="math inline">\(\mathbf 0\)</span>. That is,
-<span class="math display">\[\mathrm{E} \left( \frac{ \partial^2 }{\partial \boldsymbol \theta\partial \boldsymbol \theta^{\prime}} l(\boldsymbol \theta|\mathbf{x}) \right) + \mathrm{E} \left( \frac{ \partial l(\boldsymbol \theta|\mathbf{x})}{\partial\boldsymbol \theta} \frac{ \partial l(\boldsymbol \theta|\mathbf{x})}{\partial\boldsymbol \theta^{\prime}}\right) = \mathbf 0.\]</span></p></li>
-<li><p>Define the <strong>Fisher information matrix</strong> as</p></li>
+<li>Denote by <span class="math inline">\(\frac{\partial^2}{\partial \boldsymbol \theta\partial \boldsymbol \theta&#39;} l(\boldsymbol \theta|\mathbf{x})\)</span> the second derivative of the log-likelihood function. This is a <span class="math inline">\(p\times p\)</span> matrix of second derivatives known as the hessian of the log-likelihood. Another basic property of the likelihood function is that the sum of the expectation of the hessian matrix and the expectation of the Kronecker product of the score vector and its transpose is <span class="math inline">\(\mathbf 0\)</span>. That is,</li>
+</ul>
+<p><span class="math display">\[
+\mathrm{E} \left( \frac{ \partial^2 }{\partial \boldsymbol \theta\partial \boldsymbol \theta^{\prime}} l(\boldsymbol \theta|\mathbf{x}) \right) + \mathrm{E} \left( \frac{ \partial l(\boldsymbol \theta|\mathbf{x})}{\partial\boldsymbol \theta} \frac{ \partial l(\boldsymbol \theta|\mathbf{x})}{\partial\boldsymbol \theta^{\prime}}\right) = \mathbf 0.
+\]</span></p>
+<ul>
+<li>Define the <strong>Fisher information matrix</strong> as</li>
 </ul>
 <p><span class="math display">\[
 \mathcal{I}(\boldsymbol \theta) = \mathrm{E} \left( \frac{ \partial
@@ -1289,18 +1293,18 @@ u(\boldsymbol\theta)=\frac{ \partial}{\partial \boldsymbol \theta} l(\boldsymbol
 <ul>
 <li>the definition and derivation of the maximum likelihood estimator (<em>mle</em>) for parameters from a specific distribution family</li>
 <li>the properties of maximum likelihood estimators that ensure valid large-sample inference of the parameters</li>
-<li>why using the <em>mle</em>-based method, and what caution that needs to be taken.</li>
+<li>why using the <em>mle</em>-based method, and what caution that needs to be taken</li>
 </ul>
 <hr />
 <p>In statistics, maximum likelihood estimators are values of the parameters <span class="math inline">\(\boldsymbol \theta\)</span> that are most likely to have been produced by the data.</p>
 <div id="definition-and-derivation-of-mle" class="section level3 hasAnchor" number="19.2.1">
 <h3><span class="header-section-number">19.2.1</span> Definition and Derivation of <em>MLE</em><a href="CAppC.html#definition-and-derivation-of-mle" class="anchor-section" aria-label="Anchor link to header"></a></h3>
-<p>Based on the definition given in Appendix Chapter <a href="CAppA.html#CAppA">17</a>, the value of <span class="math inline">\(\boldsymbol \theta\)</span>, say <span class="math inline">\(\hat{\boldsymbol \theta}_{MLE}\)</span>,
+<p>Based on the definition given in Appendix Chapter <a href="CAppA.html#CAppA">17</a>, the value of <span class="math inline">\(\boldsymbol \theta\)</span>, say <span class="math inline">\(\hat{\boldsymbol \theta}_{mle}\)</span>,
 that maximizes the likelihood function, is called the <em>maximum likelihood estimator</em> (<em>mle</em>) of <span class="math inline">\(\boldsymbol \theta\)</span>.</p>
-<p>Because the log function <span class="math inline">\(\log(\cdot)\)</span> is a one-to-one function, we can also determine <span class="math inline">\(\hat{\boldsymbol{\theta}}_{MLE}\)</span> by maximizing the log-likelihood
+<p>Because the log function <span class="math inline">\(\log(\cdot)\)</span> is a one-to-one function, we can also determine <span class="math inline">\(\hat{\boldsymbol{\theta}}_{mle}\)</span> by maximizing the log-likelihood
 function, <span class="math inline">\(l(\boldsymbol \theta|\mathbf{x})\)</span>. That is, the <em>mle</em> is defined as</p>
 <p><span class="math display">\[
-\hat{\boldsymbol \theta}_{MLE} = {\mbox{argmax}}_{\boldsymbol{\theta}\in\Theta}~l(\boldsymbol{\theta}|\mathbf{x}).
+\hat{\boldsymbol \theta}_{mle} = {\mbox{argmax}}_{\boldsymbol{\theta}\in\Theta}~l(\boldsymbol{\theta}|\mathbf{x}).
 \]</span></p>
 <p>Given the analytical form of the likelihood function, the <em>mle</em> can be obtained by taking the first derivative of the log-likelihood function with respect to <span class="math inline">\(\boldsymbol{\theta}\)</span>, and setting the values of the partial derivatives to zero. That is, the <em>mle</em> are the solutions of the equations of</p>
 <p><span class="math display">\[
@@ -1328,7 +1332,7 @@ l(\alpha|\mathbf{x} ) =  \sum_{i=1}^5 \log f(x_i;\alpha ) =  5 \alpha \log 500 +
 <p>Solving for the root of the score function yields</p>
 <p><span class="math display">\[
 \frac{ \partial}{\partial \alpha } l(\alpha |\mathbf{x}) =    5  \log 500 + 5 / \alpha -  \sum_{i=1}^5 \log x_i
-=_{set} 0 \Rightarrow \hat{\alpha}_{MLE} = \frac{5}{\sum_{i=1}^5 \log x_i - 5  \log 500 } = 2.453 .
+=_{set} 0 \Rightarrow \hat{\alpha}_{mle} = \frac{5}{\sum_{i=1}^5 \log x_i - 5  \log 500 } = 2.453 .
 \]</span></p>
 </div>
 </div>
@@ -1338,11 +1342,11 @@ l(\alpha|\mathbf{x} ) =  \sum_{i=1}^5 \log f(x_i;\alpha ) =  5 \alpha \log 500 +
 <h3><span class="header-section-number">19.2.2</span> Asymptotic Properties of <em>MLE</em><a href="CAppC.html#asymptotic-properties-of-mle" class="anchor-section" aria-label="Anchor link to header"></a></h3>
 <p>From Appendix Chapter <a href="CAppA.html#CAppA">17</a>, the <a href="#" class="tooltip" style="color:green"><em>MLE</em><span style="font-size:8pt">Maximum likelihood estimate</span></a> has some nice large-sample properties, under certain regularity conditions. We presented the results for a single parameter in Appendix Chapter <a href="CAppA.html#CAppA">17</a>, but results are true for the case when <span class="math inline">\(\boldsymbol{\theta}\)</span> contains multiple parameters. In particular, we have the following results, in a general case when <span class="math inline">\(\boldsymbol{\theta}=(\theta_1,\theta_2,\cdots,\theta_p)\)</span>.</p>
 <ul>
-<li><p>The <em>mle</em> of a parameter <span class="math inline">\(\boldsymbol{\theta}\)</span>, <span class="math inline">\(\hat{\boldsymbol{\theta}}_{MLE}\)</span>, is a <strong>consistent</strong> estimator. That is, the <em>mle</em> <span class="math inline">\(\hat{\boldsymbol{\theta}}_{MLE}\)</span> converges in probability to the true value <span class="math inline">\(\boldsymbol{\theta}\)</span>, as the sample size <span class="math inline">\(n\)</span> goes to infinity.</p></li>
+<li><p>The <em>mle</em> of a parameter <span class="math inline">\(\boldsymbol{\theta}\)</span>, <span class="math inline">\(\hat{\boldsymbol{\theta}}_{mle}\)</span>, is a <strong>consistent</strong> estimator. That is, the <em>mle</em> <span class="math inline">\(\hat{\boldsymbol{\theta}}_{mle}\)</span> converges in probability to the true value <span class="math inline">\(\boldsymbol{\theta}\)</span>, as the sample size <span class="math inline">\(n\)</span> goes to infinity.</p></li>
 <li><p>The <em>mle</em> has the <strong>asymptotic normality</strong> property, meaning that the estimator will converge in distribution to a multivariate normal distribution centered around the true value, when the sample size goes to infinity. Namely,
-<span class="math display">\[\sqrt{n}(\hat{\boldsymbol{\theta}}_{MLE}-\boldsymbol{\theta})\rightarrow N\left(\mathbf 0,\,\boldsymbol{V}\right),\quad \mbox{as}\quad n\rightarrow \infty,\]</span>
-where <span class="math inline">\(\boldsymbol{V}\)</span> denotes the asymptotic variance (or covariance matrix) of the estimator. Hence, the <em>mle</em> <span class="math inline">\(\hat{\boldsymbol{\theta}}_{MLE}\)</span> has an approximate normal distribution with mean <span class="math inline">\(\boldsymbol{\theta}\)</span> and variance (covariance matrix when <span class="math inline">\(p&gt;1\)</span>) <span class="math inline">\(\boldsymbol{V}/n\)</span>, when the sample size is large.</p></li>
-<li><p>The <em>mle</em> is <strong>efficient</strong>, meaning that it has the smallest asymptotic variance <span class="math inline">\(\boldsymbol{V}\)</span>, commonly referred to as the <strong>Cramer–Rao lower bound</strong>. In particular, the Cramer–Rao lower bound is the inverse of the Fisher information (matrix) <span class="math inline">\(\mathcal{I}(\boldsymbol{\theta})\)</span> defined earlier in this appendix. Hence, <span class="math inline">\(\mathrm{Var}(\hat{\boldsymbol{\theta}}_{MLE})\)</span> can be estimated based on the observed Fisher information.</p></li>
+<span class="math display">\[\sqrt{n}(\hat{\boldsymbol{\theta}}_{mle}-\boldsymbol{\theta})\rightarrow N\left(\mathbf 0,\,\boldsymbol{V}\right),\quad \mbox{as}\quad n\rightarrow \infty,\]</span>
+where <span class="math inline">\(\boldsymbol{V}\)</span> denotes the asymptotic variance (or covariance matrix) of the estimator. Hence, the <em>mle</em> <span class="math inline">\(\hat{\boldsymbol{\theta}}_{mle}\)</span> has an approximate normal distribution with mean <span class="math inline">\(\boldsymbol{\theta}\)</span> and covariance matrix <span class="math inline">\(\boldsymbol{V}/n\)</span>, when the sample size is large.</p></li>
+<li><p>The <em>mle</em> is <strong>efficient</strong>, meaning that it has the smallest asymptotic variance <span class="math inline">\(\boldsymbol{V}\)</span>, commonly referred to as the <strong>Cramer–Rao lower bound</strong>. In particular, the Cramer–Rao lower bound is the inverse of the Fisher information (matrix) <span class="math inline">\(\mathcal{I}(\boldsymbol{\theta})\)</span> defined earlier in this appendix. Hence, <span class="math inline">\(\mathrm{Var}(\hat{\boldsymbol{\theta}}_{mle})\)</span> can be estimated based on the observed Fisher information.</p></li>
 </ul>
 <p>Based on the above results, we may perform statistical inference based on the procedures defined in Appendix Chapter <a href="CAppA.html#CAppA">17</a>.</p>
 <hr />
@@ -1392,13 +1396,13 @@ of the maximum likelihood estimator, <span class="math inline">\(\hat{\theta_1},
 </div>
 <div id="use-of-maximum-likelihood-estimation" class="section level3 hasAnchor" number="19.2.3">
 <h3><span class="header-section-number">19.2.3</span> Use of Maximum Likelihood Estimation<a href="CAppC.html#use-of-maximum-likelihood-estimation" class="anchor-section" aria-label="Anchor link to header"></a></h3>
-<p>The method of maximum likelihood has many advantages over alternative methods such as the method of moment method introduced in Appendix Chapter <a href="CAppA.html#CAppA">17</a>.</p>
+<p>The method of maximum likelihood has many advantages over alternative methods such as the method of moments introduced in Appendix Chapter <a href="CAppA.html#CAppA">17</a>.</p>
 <ul>
 <li>It is a general tool that works in many situations. For example, we may be able to write out the closed-form likelihood function for censored and truncated data. Maximum likelihood estimation can be used for regression models including covariates, such as survival regression, generalized linear models and mixed models, that may include covariates that are time-dependent.</li>
 <li>From the efficiency of the <em>mle</em>, it is optimal, the best, in the sense that it has the smallest variance among the class of all unbiased estimators for large sample sizes.</li>
-<li>From the results on the asymptotic normality of the <em>mle</em>, we can obtain a large-sample distribution for the estimator, allowing users to assess the variability in the estimation and perform statistical inference on the parameters. The approach is less computationally extensive than re-sampling methods that require a large of fittings of the model.</li>
+<li>From the results on the asymptotic normality of the <em>mle</em>, we can obtain a large-sample distribution for the estimator, allowing users to assess the variability in the estimation and perform statistical inference on the parameters. The approach is less computationally extensive than re-sampling methods that require a large number of fittings of the model.</li>
 </ul>
-<p>Despite its numerous advantages, <em>mle</em> has its drawback in cases such as generalized linear models when it does not have a closed analytical form. In such cases, maximum likelihood estimators are computed iteratively using numerical optimization methods. For example, we may use the Newton-Raphson iterative algorithm or its variations for obtaining the <em>mle</em>. Iterative algorithms require starting values. For some problems, the choice of a close starting value is critical, particularly in cases where the likelihood function has local minimums or maximums. Hence, there may be a convergence issue when the starting value is far from the maximum. Hence, it is important to start from different values across the parameter space, and compare the maximized likelihood or log-likelihood to make sure the algorithms have converged to a global maximum.</p>
+<p>Despite its numerous advantages, <em>mle</em> has its drawback in cases such as generalized linear models when it does not have a closed analytical form. In such cases, maximum likelihood estimators are computed iteratively using numerical optimization methods. For example, we may use the Newton-Raphson iterative algorithm or its variations for obtaining the <em>mle</em>. Iterative algorithms require starting values. For some problems, the choice of a close starting value is critical, particularly in cases where the likelihood function has local minimums or maximums. Hence, there may be a convergence issue when the starting value is far from the maximum. It is important to start from different values across the parameter space and compare the maximized likelihood or log-likelihood to make sure the algorithms have converged to a global maximum.</p>
 </div>
 </div>
 <div id="S:AppC:SI" class="section level2 hasAnchor" number="19.3">
@@ -1410,14 +1414,13 @@ of the maximum likelihood estimator, <span class="math inline">\(\hat{\theta_1},
 <li>perform likelihood ratio test for cases where there are multiple parameters in <span class="math inline">\(\boldsymbol\theta\)</span></li>
 </ul>
 <hr />
-<p>In Appendix Chapter <a href="CAppA.html#CAppA">17</a>, we have introduced maximum likelihood-based methods for statistical inference when <span class="math inline">\(\boldsymbol\theta\)</span> contains a single parameter. Here, we will extend the results to cases where there are multiple parameters in <span class="math inline">\(\boldsymbol\theta\)</span>.</p>
+<p>In Appendix Chapter <a href="CAppA.html#CAppA">17</a>, we have introduced maximum likelihood based methods for statistical inference when <span class="math inline">\(\boldsymbol\theta\)</span> contains a single parameter. Here, we will extend the results to cases where there are multiple parameters in <span class="math inline">\(\boldsymbol\theta\)</span>.</p>
 <div id="hypothesis-testing" class="section level3 hasAnchor" number="19.3.1">
 <h3><span class="header-section-number">19.3.1</span> Hypothesis Testing<a href="CAppC.html#hypothesis-testing" class="anchor-section" aria-label="Anchor link to header"></a></h3>
 <p>In Appendix Chapter <a href="CAppA.html#CAppA">17</a>, we defined hypothesis testing concerning the null hypothesis, a statement on the parameter(s) of a distribution or model. One important type of inference is to assess whether a parameter estimate is statistically significant, meaning whether the value of the parameter is zero or not.</p>
-<p>We have learned earlier that the <em>mle</em> <span class="math inline">\(\hat{\boldsymbol{\theta}}_{MLE}\)</span> has a large-sample normal distribution with mean <span class="math inline">\(\boldsymbol \theta\)</span> and the variance covariance matrix <span class="math inline">\(\mathcal{I}^{-1}(\boldsymbol \theta)\)</span>. Based on the multivariate normal distribution, the <span class="math inline">\(j\)</span>th element of <span class="math inline">\(\hat{\boldsymbol{\theta}}_{MLE}\)</span>, say
-<span class="math inline">\(\hat{\theta}_{MLE,j}\)</span>, has a large-sample univariate normal distribution.</p>
+<p>We have learned earlier that the <em>mle</em> <span class="math inline">\(\hat{\boldsymbol{\theta}}_{mle}\)</span> has a large-sample normal distribution with mean <span class="math inline">\(\boldsymbol \theta\)</span> and the variance-covariance matrix <span class="math inline">\(\mathcal{I}^{-1}(\boldsymbol \theta)\)</span>. Based on the multivariate normal distribution, the <span class="math inline">\(j\)</span>th element of <span class="math inline">\(\hat{\boldsymbol{\theta}}_{mle}\)</span>, say <span class="math inline">\(\hat{\theta}_{MLE,j}\)</span>, has a large-sample univariate normal distribution.</p>
 <p>Define <span class="math inline">\(se(\hat{\theta}_{MLE,j})\)</span>, the standard error (estimated
-standard deviation) to be the square root of the <span class="math inline">\(j\)</span>th diagonal element of <span class="math inline">\(\mathcal{I}^{-1}(\boldsymbol \theta)_{MLE}\)</span>.
+standard deviation) to be the square root of the <span class="math inline">\(j\)</span>th diagonal element of <span class="math inline">\(\mathcal{I}^{-1}(\boldsymbol \theta)_{mle}\)</span>.
 To assess the null hypothesis that <span class="math inline">\(\theta_j=\theta_0\)</span>, we define the <span class="math inline">\(t\)</span>-statistic or <span class="math inline">\(t\)</span>-ratio to be
 <span class="math inline">\(t(\hat{\theta}_{MLE,j})=(\hat{\theta}_{MLE,j}-\theta_0)/se(\hat{\theta}_{MLE,j})\)</span>.</p>
 <p>Under the null hypothesis, it has a Student-<span class="math inline">\(t\)</span> distribution with degrees of freedom equal to <span class="math inline">\(n-p\)</span>, with <span class="math inline">\(p\)</span> being the dimension of
@@ -1431,17 +1434,17 @@ absolute value), then the test for the <span class="math inline">\(j\)</span> pa
 <div id="S:AppC:MLEModelVal" class="section level3 hasAnchor" number="19.3.2">
 <h3><span class="header-section-number">19.3.2</span> <em>MLE</em> and Model Validation<a href="CAppC.html#S:AppC:MLEModelVal" class="anchor-section" aria-label="Anchor link to header"></a></h3>
 <p>In addition to hypothesis testing and interval estimation introduced in Appendix Chapter <a href="CAppA.html#CAppA">17</a> and the previous subsection, another important type of inference is selection of a model from two choices, where one choice is a special case of the other with certain parameters being restricted. For such two models with one being nested in the other, we have introduced the likelihood ratio test (LRT) in Appendix Chapter <a href="CAppA.html#CAppA">17</a>. Here, we will briefly review the process of performing a LRT based on a specific example of two alternative models.</p>
-<p>Suppose that we have a (large) model under which we derive the maximum likelihood estimator, <span class="math inline">\(\hat{\boldsymbol{\theta}}_{MLE}\)</span>. Now assume that some of the <span class="math inline">\(p\)</span> elements in <span class="math inline">\(\boldsymbol \theta\)</span> are equal to zero and determine the maximum likelihood estimator over the remaining set, with the resulting estimator denoted <span class="math inline">\(\hat{\boldsymbol{\theta}}_{Reduced}\)</span>.</p>
+<p>Suppose that we have a (large) model under which we derive the maximum likelihood estimator, <span class="math inline">\(\hat{\boldsymbol{\theta}}_{mle}\)</span>. Now assume that some of the <span class="math inline">\(p\)</span> elements in <span class="math inline">\(\boldsymbol \theta\)</span> are equal to zero and determine the maximum likelihood estimator over the remaining set, with the resulting estimator denoted <span class="math inline">\(\hat{\boldsymbol{\theta}}_{Reduced}\)</span>.</p>
 <p>Based on the definition in Appendix Chapter <a href="CAppA.html#CAppA">17</a>, the statistic,
-<span class="math inline">\(LRT= 2 \left( l(\hat{\boldsymbol{\theta}}_{MLE}) - l(\hat{\boldsymbol{\theta}}_{Reduced}) \right)\)</span>,
-is called the likelihood ratio statistic. Under the null hypothesis that the reduced model is correct, the
-likelihood ratio has a Chi-square distribution with degrees of
-freedom equal to <span class="math inline">\(d\)</span>, the number of variables set to zero.</p>
+<span class="math inline">\(LRT= 2 \left( l(\hat{\boldsymbol{\theta}}_{mle}) - l(\hat{\boldsymbol{\theta}}_{Reduced}) \right)\)</span>, is called the likelihood ratio statistic. Under the null hypothesis that the reduced model is correct, the likelihood ratio has a chi-square distribution with degrees of freedom equal to <span class="math inline">\(d\)</span>, the number of variables set to zero.</p>
 <p>Such a test allows us to judge which of the two models is more likely to be correct, given the observed data. If the statistic <span class="math inline">\(LRT\)</span> is large relative to the critical value from the chi-square distribution, then we reject the reduced model in favor of the larger one. Details regarding the critical value and alternative methods based on information criteria are given in Appendix Chapter <a href="CAppA.html#CAppA">17</a>.</p>
 <div id="contributors-15" class="section level4 unnumbered hasAnchor">
 <h4>Contributors<a href="CAppC.html#contributors-15" class="anchor-section" aria-label="Anchor link to header"></a></h4>
 <ul>
-<li><strong>Lei (Larry) Hua</strong>, Northern Illinois University, and <strong>Edward W. (Jed) Frees</strong>, University of Wisconsin-Madison, are the principal authors of the initial version of this chapter. Email: <a href="mailto:lhua@niu.edu" class="email">lhua@niu.edu</a> or <a href="mailto:jfrees@bus.wisc.edu" class="email">jfrees@bus.wisc.edu</a> for chapter comments and suggested improvements.</li>
+<li><strong>Lei (Larry) Hua</strong>, Northern Illinois University, and <strong>Edward W. (Jed) Frees</strong>, University of Wisconsin-Madison, are the principal authors of the initial version of this chapter. Email: <a href="mailto:lhua@niu.edu" class="email">lhua@niu.edu</a> or <a href="mailto:jfrees@bus.wisc.edu" class="email">jfrees@bus.wisc.edu</a> for chapter comments and suggested improvements.
+<ul>
+<li>The chapter was reviewed by Benjamin Côté.</li>
+</ul></li>
 </ul>
 
 </div>
@@ -1514,7 +1517,7 @@ gitbook.start({
     var script = document.createElement("script");
     script.type = "text/javascript";
     var src = "true";
-    if (src === "" || src === "true") src = "https://mathjax.rstudio.com/latest/MathJax.js?config=TeX-MML-AM_CHTML";
+    if (src === "" || src === "true") src = "https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.9/latest.js?config=TeX-MML-AM_CHTML";
     if (location.protocol !== "file:")
       if (/^https?:/.test(src))
         src = src.replace(/^https?:/, '');
