@@ -6,7 +6,7 @@
   <meta http-equiv="X-UA-Compatible" content="IE=edge" />
   <title>Chapter 8 Simulation and Resampling | Loss Data Analytics</title>
   <meta name="description" content="Chapter 8 Simulation and Resampling | Loss Data Analytics is an interactive, online, freely available text. - The online version will contain many interactive objects (quizzes, computer demonstrations, interactive graphs, video, and the like) to promote deeper learning. - A subset of the book will be available in pdf format for low-cost printing. - The online text will be available in multiple languages to promote access to a worldwide audience." />
-  <meta name="generator" content="bookdown 0.32 and GitBook 2.6.7" />
+  <meta name="generator" content="bookdown 0.27 and GitBook 2.6.7" />
 
   <meta property="og:title" content="Chapter 8 Simulation and Resampling | Loss Data Analytics" />
   <meta property="og:type" content="book" />
@@ -515,7 +515,7 @@ code span.al { color: #ff0000; font-weight: bold; } /* Alert */
 code span.an { color: #60a0b0; font-weight: bold; font-style: italic; } /* Annotation */
 code span.at { color: #7d9029; } /* Attribute */
 code span.bn { color: #40a070; } /* BaseN */
-code span.bu { color: #008000; } /* BuiltIn */
+code span.bu { } /* BuiltIn */
 code span.cf { color: #007020; font-weight: bold; } /* ControlFlow */
 code span.ch { color: #4070a0; } /* Char */
 code span.cn { color: #880000; } /* Constant */
@@ -528,7 +528,7 @@ code span.er { color: #ff0000; font-weight: bold; } /* Error */
 code span.ex { } /* Extension */
 code span.fl { color: #40a070; } /* Float */
 code span.fu { color: #06287e; } /* Function */
-code span.im { color: #008000; font-weight: bold; } /* Import */
+code span.im { } /* Import */
 code span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Information */
 code span.kw { color: #007020; font-weight: bold; } /* Keyword */
 code span.op { color: #666666; } /* Operator */
@@ -807,7 +807,7 @@ div.csl-indent {
 <li class="chapter" data-level="8.4" data-path="ChapSimulation.html"><a href="ChapSimulation.html#S:CrossValidation"><i class="fa fa-check"></i><b>8.4</b> Model Selection and Cross-Validation</a>
 <ul>
 <li class="chapter" data-level="8.4.1" data-path="ChapSimulation.html"><a href="ChapSimulation.html#k-fold-cross-validation"><i class="fa fa-check"></i><b>8.4.1</b> k-Fold Cross-Validation</a></li>
-<li class="chapter" data-level="8.4.2" data-path="ChapSimulation.html"><a href="ChapSimulation.html#leave-one-out-cross-validation"><i class="fa fa-check"></i><b>8.4.2</b> Leave-One-Out Cross-Validation</a></li>
+<li class="chapter" data-level="8.4.2" data-path="ChapSimulation.html"><a href="ChapSimulation.html#Sec:LOOCrossVal"><i class="fa fa-check"></i><b>8.4.2</b> Leave-One-Out Cross-Validation</a></li>
 <li class="chapter" data-level="8.4.3" data-path="ChapSimulation.html"><a href="ChapSimulation.html#cross-validation-and-bootstrap"><i class="fa fa-check"></i><b>8.4.3</b> Cross-Validation and Bootstrap</a></li>
 </ul></li>
 <li class="chapter" data-level="8.5" data-path="ChapSimulation.html"><a href="ChapSimulation.html#Simulation:further-reading-and-resources"><i class="fa fa-check"></i><b>8.5</b> Further Resources and Contributors</a></li>
@@ -1203,7 +1203,7 @@ div.csl-indent {
 <div id="ChapSimulation" class="section level1 hasAnchor" number="8">
 <h1><span class="header-section-number">Chapter 8</span> Simulation and Resampling<a href="ChapSimulation.html#ChapSimulation" class="anchor-section" aria-label="Anchor link to header"></a></h1>
 <p><em>Chapter Preview.</em> Simulation is a computationally intensive method used to solve difficult problems. Instead of creating physical processes and experimenting with them in order to understand their operational characteristics, a simulation study is based on a computer representation - it considers various hypothetical conditions as inputs and summarizes the results. Through simulation, a vast number of hypothetical conditions can be quickly and inexpensively examined. Section <a href="ChapSimulation.html#S:RandomNumGen">8.1</a> introduces simulation as a valuable computational tool, particularly effective in complex, multivariate settings.</p>
-<p>Analysts find simulation especially useful for computing measures that summarize intricate distributions, as discussed in Section <a href="ChapSimulation.html#S:ComputeParameters">8.2</a>. This encompasses all the examples mentioned in the book thus far, such as measures that summarize the frequency and severity of losses, along with many additional cases. Simulation can also be use to compute complex distributions necessary for hypothesis testing. In addition, we can also use simulation to draw from an empirical distribution - this process is known as <em>resampling</em>. Resampling allows us to assess the uncertainty of estimates in complex models. Section <a href="ChapSimulation.html#S:Bootstrap">8.3</a> introduces resampling in the context of bootstrapping to determine the precision of estimators. Section <a href="ChapSimulation.html#S:CrossValidation">8.4</a> on cross-validation shows how to use it for model selection and validation.</p>
+<p>Analysts find simulation especially useful for computing measures that summarize intricate distributions, as discussed in Section <a href="ChapSimulation.html#S:ComputeParameters">8.2</a>. This encompasses all the examples mentioned in the book thus far, such as measures that summarize the frequency and severity of losses, along with many additional cases. Simulation can also be used to compute complex distributions necessary for hypothesis testing. In addition, we can also use simulation to draw from an empirical distribution - this process is known as <em>resampling</em>. Resampling allows us to assess the uncertainty of estimates in complex models. Section <a href="ChapSimulation.html#S:Bootstrap">8.3</a> introduces resampling in the context of bootstrapping to determine the precision of estimators. Section <a href="ChapSimulation.html#S:CrossValidation">8.4</a> on cross-validation shows how to use it for model selection and validation.</p>
 <div id="S:RandomNumGen" class="section level2 hasAnchor" number="8.1">
 <h2><span class="header-section-number">8.1</span> Random Number Generation<a href="ChapSimulation.html#S:RandomNumGen" class="anchor-section" aria-label="Anchor link to header"></a></h2>
 <hr />
@@ -1271,8 +1271,8 @@ Take <span class="math inline">\(m=15\)</span>, <span class="math inline">\(a=3\
 </tr>
 </tbody>
 </table>
-<p>Sometimes computer generated random results are known as <a href="#" class="tooltip" style="color:green"><em>pseudo-random numbers</em><span style="font-size:8pt">Values that appear random but can be replicated by formula</span></a> to reflect the fact that they are machine generated and can be
-replicated. That is, despite the fact that {<span class="math inline">\(U_{i}\)</span>} appears to be
+<p>The linear congruential generator is just one method of producing pseudo-random outcomes. It is easy to understand and is widely used. The linear congruential generator does have limitations, including the fact that it is possible to detect long-run patterns over time in the sequences generated (recall that we can interpret <em>independence</em> to mean a total lack of functional patterns). Not surprisingly, advanced techniques have been developed that address some of this method’s drawbacks. The random number generated by <code>R</code> utilizes such advanced techniques.</p>
+<p>Sometimes computer generated random results are known as <a href="#" class="tooltip" style="color:green"><em>pseudo-random numbers</em><span style="font-size:8pt">Values that appear random but can be replicated by formula</span></a> to reflect the fact that they are machine generated and can be replicated. That is, despite the fact that {<span class="math inline">\(U_{i}\)</span>} appears to be
 i.i.d, it can be reproduced by using the same seed number (and the same
 algorithm).</p>
 <p><strong>Example 8.1.2. Generating Uniform Random Numbers in <code>R</code>.</strong>
@@ -1308,15 +1308,6 @@ Uniform
 </tr>
 </tbody>
 </table>
-<hr />
-<p>The linear congruential generator is just one method of producing
-pseudo-random outcomes. It is easy to understand and is widely
-used. The linear congruential generator does have limitations, including
-the fact that it is possible to detect long-run patterns over time in
-the sequences generated (recall that we can interpret <em>independence</em> to
-mean a total lack of functional patterns). Not surprisingly, advanced
-techniques have been developed that address some of this method’s
-drawbacks.</p>
 </div>
 </div>
 <div id="S:InverseTransform" class="section level3 hasAnchor" number="8.1.2">
@@ -1329,8 +1320,7 @@ X_i=F^{-1}\left( U_i \right) .
 <p><span class="math display">\[
 F^{-1}(y) = \inf_x ~ \{ F(x) \ge y \} .
 \]</span></p>
-<p>Recall that <span class="math inline">\(\inf\)</span> stands for <em>infimum</em> or the <a href="#" class="tooltip" style="color:green"><em>greatest lower bound</em><span style="font-size:8pt">Largest value that is less than or equal to a specified subset of values/elements</span></a>. It is essentially the smallest value of <em>x</em> that satisfies the inequality <span class="math inline">\(\{F(x) \ge y\}\)</span>.
-The result is that the sequence {<span class="math inline">\(X_{i}\)</span>} is approximately <em>iid</em> with distribution function <span class="math inline">\(F\)</span> if the {<span class="math inline">\(U_i\)</span>} are <em>iid</em> with uniform on <span class="math inline">\((0,1)\)</span> distribution function.</p>
+<p>Recall that <span class="math inline">\(\inf\)</span> stands for <em>infimum</em> or the <a href="#" class="tooltip" style="color:green"><em>greatest lower bound</em><span style="font-size:8pt">Largest value that is less than or equal to a specified subset of values/elements</span></a>. It is essentially the smallest value of <em>x</em> that satisfies the inequality <span class="math inline">\(\{F(x) \ge y\}\)</span>. The result is that the sequence {<span class="math inline">\(X_{i}\)</span>} is <em>iid</em> with distribution function <span class="math inline">\(F\)</span> if the {<span class="math inline">\(U_i\)</span>} are <em>iid</em> with uniform on <span class="math inline">\((0,1)\)</span> distribution function.</p>
 <p>The inverse transform result is available when the underlying random variable is continuous, discrete or a hybrid combination of the two. We now present a series of examples to illustrate its scope of applications.</p>
 <p><a id=Ex:81.3></a></p>
 <p><strong>Example 8.1.3. Generating Exponential Random Numbers.</strong>
@@ -1339,7 +1329,7 @@ parameter <span class="math inline">\(\theta\)</span> so that <span class="math 
 inverse transform, we can use the following steps:
 <span class="math display">\[
 \begin{aligned}
-y = F(x) &amp;\Leftrightarrow  y = 1-e^{-x/\theta} \\
+ y = F(x) &amp;\Leftrightarrow  y = 1-e^{-x/\theta} \\
   &amp;\Leftrightarrow -\theta \ln(1-y) = x = F^{-1}(y) .
 \end{aligned}
 \]</span></p>
@@ -1409,7 +1399,7 @@ Suppose that we would like to generate observations from a Pareto distribution w
 the inverse transform, we can use the following steps:</p>
 <p><span class="math display">\[
 \begin{aligned}
-y = F(x) &amp;\Leftrightarrow 1-y = \left(\frac{\theta}{x+\theta} \right)^{\alpha} \\
+ y = F(x) &amp;\Leftrightarrow 1-y = \left(\frac{\theta}{x+\theta} \right)^{\alpha} \\
   &amp;\Leftrightarrow \left(1-y\right)^{-1/\alpha} = \frac{x+\theta}{\theta} = \frac{x}{\theta} +1 \\
     &amp;\Leftrightarrow \theta \left((1-y)^{-1/\alpha} - 1\right) = x = F^{-1}(y) .\end{aligned}
 \]</span></p>
@@ -1421,15 +1411,15 @@ y = F(x) &amp;\Leftrightarrow 1-y = \left(\frac{\theta}{x+\theta} \right)^{\alph
 </h5>
 <div id="ShowTheory.1" style="display: none">
 <hr />
-<p>This is easy to establish in the continuous case. Because <span class="math inline">\(U\)</span> is a uniform random variable on (0,1), we know that <span class="math inline">\(\Pr(U \le y) = y\)</span>, for <span class="math inline">\(0 \le y \le 1\)</span>. Thus,</p>
+<p>This is easy to establish when <span class="math inline">\(F\)</span> is strictly increasing, where the distribution is continuous. Because <span class="math inline">\(U\)</span> is a uniform random variable on (0,1), we know that <span class="math inline">\(\Pr(U \le y) = y\)</span>, for <span class="math inline">\(0 \le y \le 1\)</span>. Thus,</p>
 <p><span class="math display">\[
 \begin{aligned}
-\Pr(X \le x) &amp;= \Pr(F^{-1}(U) \le x) \\
-&amp;= \Pr(F(F^{-1}(U)) \le F(x)) \\
-&amp;= \Pr(U \le F(x)) = F(x)
+\Pr[X \le x] &amp;= \Pr[F^{-1}(U) \le x] \\
+ &amp;= \Pr[F(F^{-1}(U)) \le F(x)] \\
+&amp;= \Pr[U \le F(x)] = F(x),
 \end{aligned}
 \]</span></p>
-<p>as required. The key step is that <span class="math inline">\(F(F^{-1}(u)) = u\)</span> for each <span class="math inline">\(u\)</span>, which is clearly true when <span class="math inline">\(F\)</span> is strictly increasing.</p>
+<p>as required. The key step is that <span class="math inline">\(F[F^{-1}(u)] = u\)</span> for each <span class="math inline">\(u\)</span>, which is true when <span class="math inline">\(F\)</span> is strictly increasing.</p>
 <hr />
 </div>
 <p>We now consider some discrete examples.</p>
@@ -1621,7 +1611,7 @@ random outcomes:</p>
 \begin{aligned}
 X = \left\{ \begin{array}{cc}
   \textrm{whole life} &amp;   0&lt;U  \leq 0.1  \\
-\textrm{endowment} &amp;  0.1 &lt; U  \leq  0.3\\
+ \textrm{endowment} &amp;  0.1 &lt; U  \leq  0.3\\
 \textrm{term life} &amp;  0.3 &lt; U  \leq  0.4\\
   \textrm{universal life} &amp;  0.4 &lt; U  \leq  0.8  \\
   \textrm{variable life} &amp;  0.8 &lt; U  \leq  1.0 .
@@ -1635,7 +1625,7 @@ X = \left\{ \begin{array}{cc}
 \begin{aligned}
 X = \left\{ \begin{array}{cc}
   \textrm{whole life} &amp;   0.9&lt;U&lt;1.0  \\
-\textrm{endowment} &amp;  0.7 \leq U &lt; 0.9\\
+ \textrm{endowment} &amp;  0.7 \leq U &lt; 0.9\\
 \textrm{term life} &amp;  0.6 \leq U &lt; 0.7\\
   \textrm{universal life} &amp;  0.2 \leq U &lt; 0.6  \\
   \textrm{variable life} &amp;  0 \leq U &lt; 0.2 .
@@ -1706,8 +1696,8 @@ X = F^{-1}(U) = \left\{ \begin{array}{cc}
 \]</span></p>
 <p>For discrete and hybrid random variables, the key is to draw a graph of the distribution function that allows you to visualize potential values of the inverse function.</p>
 <hr />
-<p>You can think of this hybrid distribution as a special case of a mixture model that was introduced in Sections <a href="ChapFrequency-Modeling.html#S:mixture-distributions">3.6</a> and <a href="ChapSeverity.html#S:MixtureSeverity">4.3.2</a>. Mixture models are straight-forward to evaluate using simulation. In the first stage, one simulates a variable indicating the subpopulation. In the second stage, one simulations from that subpopulation. The resulting variate is a realization from the mixture model. To illustrate, let’s revisit <a href="../docs/ChapSeverity.html#Ex:43.5">Example 4.3.5</a>.</p>
-<p><strong>Example 4.3.5. Continued.</strong> In this problem, we can label draws from the Type 1 subpopulation as <span class="math inline">\(X_1\)</span> as from an exponential distribution with mean 200 and and those from the Type s subpopulation as <span class="math inline">\(X_2\)</span> from a Pareto distribution with parameters <span class="math inline">\(\alpha=3\)</span> and <span class="math inline">\(\theta=200\)</span>. Here, 25% of policies are Type 1 and 75% of policies are Type 2.</p>
+<p>You can think of this hybrid distribution as a special case of a mixture model that was introduced in Sections <a href="ChapFrequency-Modeling.html#S:mixture-distributions">3.6</a> and <a href="ChapSeverity.html#S:MixtureSeverity">4.3.2</a>. Mixture models are straight-forward to evaluate using simulation. In the first stage, one simulates a variable indicating the subpopulation. In the second stage, one simulates from that subpopulation. The resulting variate is a realization from the mixture model. To illustrate, let’s revisit <a href="../docs/ChapSeverity.html#Ex:43.5">Example 4.3.5</a>.</p>
+<p><strong>Example 4.3.5. Continued.</strong> In this problem, we can label draws from the Type 1 subpopulation as <span class="math inline">\(X_1\)</span> from an exponential distribution with mean 200, and those from the Type 2 subpopulation as <span class="math inline">\(X_2\)</span> from a Pareto distribution with parameters <span class="math inline">\(\alpha=3\)</span> and <span class="math inline">\(\theta=200\)</span>. Here, 25% of policies are Type 1 and 75% of policies are Type 2.</p>
 <p>We can use simulation to find the probability that the annual loss will be less than 100, and find the average loss. The illustrative code uses the ready-made random number generator functions <code>rbinom</code>, <code>rexp</code>, and <code>actuar::pareto</code>.</p>
 <h5 style="text-align: center;">
 <a id="displayCode.Example4.3.5.Continued" href="javascript:togglecode('toggleCode.Example4.3.5.Continued','displayCode.Example4.3.5.Continued');"><i><strong>Show R Code for Example 4.3.5 Continued</strong></i></a>
@@ -1721,7 +1711,7 @@ X = F^{-1}(U) = \left\{ \begin{array}{cc}
 <span id="cb96-6"><a href="ChapSimulation.html#cb96-6" aria-hidden="true" tabindex="-1"></a><span class="fu">sum</span>(X <span class="sc">&lt;</span> <span class="dv">100</span>)<span class="sc">/</span>nsim</span></code></pre></div>
 <pre><code>[1] 0.62651</code></pre>
 <div class="sourceCode" id="cb98"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb98-1"><a href="ChapSimulation.html#cb98-1" aria-hidden="true" tabindex="-1"></a><span class="fu">mean</span>(X)</span></code></pre></div>
-<pre><code>[1] 124.8949</code></pre>
+<pre><code>[1] 124.894929</code></pre>
 </div>
 </div>
 <div id="S:ImportanceSampling" class="section level3 hasAnchor" number="8.1.5">
@@ -1733,19 +1723,19 @@ X = F^{-1}(U) = \left\{ \begin{array}{cc}
 <li>if <span class="math inline">\(x\notin[a,b]\)</span> : draw another one (“<em>reject</em>”)</li>
 </ul>
 <p>Observe that from <span class="math inline">\(n\)</span> values initially generated, we keep here only <span class="math inline">\([F(b)-F(a)]\cdot n\)</span> draws, on average.</p>
-<p><strong>Example 8.1.8. Draws from a Normal Distribution.</strong> Suppose that we draw from a normal distribution with mean 2.5 and variance 1, <span class="math inline">\(N(2.5,1)\)</span>, but are only interested in draws greater that <span class="math inline">\(a \ge 2\)</span> and less than <span class="math inline">\(b \le 4\)</span>. That is, we can only use <span class="math inline">\(F(4)-F(2) = \Phi(4-2.5)-\Phi(2-2.5)\)</span> = 0.9332 - 0.3085 = 0.6247 proportion of the draws. Figure <a href="ChapSimulation.html#fig:sampleani1">8.4</a> demonstrates that some draws lie with the interval <span class="math inline">\((2,4)\)</span> and some are outside.</p>
+<p><strong>Example 8.1.8. Draws from a Normal Distribution.</strong> Suppose that we draw from a normal distribution with mean 2.5 and variance 1, <span class="math inline">\(N(2.5,1)\)</span>, but are only interested in draws greater that <span class="math inline">\(a = 2\)</span> and less than <span class="math inline">\(b = 4\)</span>. That is, we can only use <span class="math inline">\(F(4)-F(2) = \Phi(4-2.5)-\Phi(2-2.5)\)</span> = 0.9332 - 0.3085 = 0.6247 proportion of the draws. Figure <a href="ChapSimulation.html#fig:sampleani1">8.4</a> demonstrates that some draws lie with the interval <span class="math inline">\((2,4)\)</span> and some are outside.</p>
 <h5 style="text-align: center;">
 <a id="displayCode.ImportanceSampling.1" href="javascript:togglecode('toggleCode.ImportanceSampling.1','displayCode.ImportanceSampling.1');"><i><strong>Show R Code for Accept-Reject Mechanism</strong></i></a>
 </h5>
 <div id="toggleCode.ImportanceSampling.1" style="display: none">
-<div class="sourceCode" id="cb100"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb100-1"><a href="ChapSimulation.html#cb100-1" aria-hidden="true" tabindex="-1"></a>mu <span class="ot">=</span> <span class="fl">2.5</span></span>
-<span id="cb100-2"><a href="ChapSimulation.html#cb100-2" aria-hidden="true" tabindex="-1"></a>sigma <span class="ot">=</span> <span class="dv">1</span></span>
-<span id="cb100-3"><a href="ChapSimulation.html#cb100-3" aria-hidden="true" tabindex="-1"></a>a <span class="ot">=</span> <span class="dv">2</span></span>
-<span id="cb100-4"><a href="ChapSimulation.html#cb100-4" aria-hidden="true" tabindex="-1"></a>b <span class="ot">=</span> <span class="dv">4</span></span>
-<span id="cb100-5"><a href="ChapSimulation.html#cb100-5" aria-hidden="true" tabindex="-1"></a>Fa <span class="ot">=</span> <span class="fu">pnorm</span>(a, mu, sigma)</span>
-<span id="cb100-6"><a href="ChapSimulation.html#cb100-6" aria-hidden="true" tabindex="-1"></a>Fb <span class="ot">=</span> <span class="fu">pnorm</span>(b, mu, sigma)</span>
-<span id="cb100-7"><a href="ChapSimulation.html#cb100-7" aria-hidden="true" tabindex="-1"></a>pic_ani <span class="ot">=</span> <span class="cf">function</span>() {</span>
-<span id="cb100-8"><a href="ChapSimulation.html#cb100-8" aria-hidden="true" tabindex="-1"></a>    u <span class="ot">=</span> <span class="fu">seq</span>(<span class="dv">0</span>, <span class="dv">5</span>, <span class="at">by =</span> <span class="fl">0.01</span>)</span>
+<div class="sourceCode" id="cb100"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb100-1"><a href="ChapSimulation.html#cb100-1" aria-hidden="true" tabindex="-1"></a>mu <span class="ot">&lt;-</span> <span class="fl">2.5</span></span>
+<span id="cb100-2"><a href="ChapSimulation.html#cb100-2" aria-hidden="true" tabindex="-1"></a>sigma <span class="ot">&lt;-</span> <span class="dv">1</span></span>
+<span id="cb100-3"><a href="ChapSimulation.html#cb100-3" aria-hidden="true" tabindex="-1"></a>a <span class="ot">&lt;-</span> <span class="dv">2</span></span>
+<span id="cb100-4"><a href="ChapSimulation.html#cb100-4" aria-hidden="true" tabindex="-1"></a>b <span class="ot">&lt;-</span> <span class="dv">4</span></span>
+<span id="cb100-5"><a href="ChapSimulation.html#cb100-5" aria-hidden="true" tabindex="-1"></a>Fa <span class="ot">&lt;-</span> <span class="fu">pnorm</span>(a, mu, sigma)</span>
+<span id="cb100-6"><a href="ChapSimulation.html#cb100-6" aria-hidden="true" tabindex="-1"></a>Fb <span class="ot">&lt;-</span> <span class="fu">pnorm</span>(b, mu, sigma)</span>
+<span id="cb100-7"><a href="ChapSimulation.html#cb100-7" aria-hidden="true" tabindex="-1"></a>pic_ani <span class="ot">&lt;-</span> <span class="cf">function</span>() {</span>
+<span id="cb100-8"><a href="ChapSimulation.html#cb100-8" aria-hidden="true" tabindex="-1"></a>    u <span class="ot">&lt;-</span> <span class="fu">seq</span>(<span class="dv">0</span>, <span class="dv">5</span>, <span class="at">by =</span> <span class="fl">0.01</span>)</span>
 <span id="cb100-9"><a href="ChapSimulation.html#cb100-9" aria-hidden="true" tabindex="-1"></a>    <span class="fu">plot</span>(u, <span class="fu">pnorm</span>(u, mu, sigma), <span class="at">col =</span> <span class="st">&quot;white&quot;</span>, <span class="at">ylab =</span> <span class="st">&quot;&quot;</span>, <span class="at">xlab =</span> <span class="st">&quot;&quot;</span>)</span>
 <span id="cb100-10"><a href="ChapSimulation.html#cb100-10" aria-hidden="true" tabindex="-1"></a>    <span class="fu">rect</span>(<span class="sc">-</span><span class="dv">1</span>, <span class="sc">-</span><span class="dv">1</span>, <span class="dv">6</span>, <span class="dv">2</span>, <span class="at">col =</span> <span class="fu">rgb</span>(<span class="dv">1</span>, <span class="dv">0</span>, <span class="dv">0</span>, <span class="fl">0.2</span>), <span class="at">border =</span> <span class="cn">NA</span>)</span>
 <span id="cb100-11"><a href="ChapSimulation.html#cb100-11" aria-hidden="true" tabindex="-1"></a>    <span class="fu">rect</span>(a, Fa, b, Fb, <span class="at">col =</span> <span class="st">&quot;white&quot;</span>, <span class="at">border =</span> <span class="cn">NA</span>)</span>
@@ -1753,12 +1743,13 @@ X = F^{-1}(U) = \left\{ \begin{array}{cc}
 <span id="cb100-13"><a href="ChapSimulation.html#cb100-13" aria-hidden="true" tabindex="-1"></a>    <span class="fu">abline</span>(<span class="at">v =</span> <span class="fu">c</span>(a, b), <span class="at">lty =</span> <span class="dv">2</span>, <span class="at">col =</span> <span class="st">&quot;red&quot;</span>)</span>
 <span id="cb100-14"><a href="ChapSimulation.html#cb100-14" aria-hidden="true" tabindex="-1"></a>    ru <span class="ot">&lt;-</span> <span class="fu">runif</span>(<span class="dv">1</span>)</span>
 <span id="cb100-15"><a href="ChapSimulation.html#cb100-15" aria-hidden="true" tabindex="-1"></a>    clr <span class="ot">&lt;-</span> <span class="st">&quot;red&quot;</span></span>
-<span id="cb100-16"><a href="ChapSimulation.html#cb100-16" aria-hidden="true" tabindex="-1"></a>    <span class="cf">if</span> ((<span class="fu">qnorm</span>(ru, mu, sigma) <span class="sc">&gt;=</span> a) <span class="sc">&amp;</span> (<span class="fu">qnorm</span>(ru, mu, sigma) <span class="sc">&lt;=</span> b))</span>
+<span id="cb100-16"><a href="ChapSimulation.html#cb100-16" aria-hidden="true" tabindex="-1"></a>    <span class="cf">if</span> ((<span class="fu">qnorm</span>(ru, mu, sigma) <span class="sc">&gt;=</span> a) <span class="sc">&amp;</span> (<span class="fu">qnorm</span>(ru, mu, sigma) <span class="sc">&lt;=</span> b)) {</span>
 <span id="cb100-17"><a href="ChapSimulation.html#cb100-17" aria-hidden="true" tabindex="-1"></a>        clr <span class="ot">&lt;-</span> <span class="st">&quot;blue&quot;</span></span>
-<span id="cb100-18"><a href="ChapSimulation.html#cb100-18" aria-hidden="true" tabindex="-1"></a>    <span class="fu">segments</span>(<span class="sc">-</span><span class="dv">1</span>, ru, <span class="fu">qnorm</span>(ru, mu, sigma), ru, <span class="at">col =</span> clr, <span class="at">lwd =</span> <span class="dv">2</span>)</span>
-<span id="cb100-19"><a href="ChapSimulation.html#cb100-19" aria-hidden="true" tabindex="-1"></a>    <span class="fu">arrows</span>(<span class="fu">qnorm</span>(ru, mu, sigma), ru, <span class="fu">qnorm</span>(ru, mu, sigma), <span class="dv">0</span>, <span class="at">col =</span> clr, <span class="at">lwd =</span> <span class="dv">2</span>,</span>
-<span id="cb100-20"><a href="ChapSimulation.html#cb100-20" aria-hidden="true" tabindex="-1"></a>        <span class="at">length =</span> <span class="fl">0.1</span>)</span>
-<span id="cb100-21"><a href="ChapSimulation.html#cb100-21" aria-hidden="true" tabindex="-1"></a>}</span></code></pre></div>
+<span id="cb100-18"><a href="ChapSimulation.html#cb100-18" aria-hidden="true" tabindex="-1"></a>    }</span>
+<span id="cb100-19"><a href="ChapSimulation.html#cb100-19" aria-hidden="true" tabindex="-1"></a>    <span class="fu">segments</span>(<span class="sc">-</span><span class="dv">1</span>, ru, <span class="fu">qnorm</span>(ru, mu, sigma), ru, <span class="at">col =</span> clr, <span class="at">lwd =</span> <span class="dv">2</span>)</span>
+<span id="cb100-20"><a href="ChapSimulation.html#cb100-20" aria-hidden="true" tabindex="-1"></a>    <span class="fu">arrows</span>(<span class="fu">qnorm</span>(ru, mu, sigma), ru, <span class="fu">qnorm</span>(ru, mu, sigma), <span class="dv">0</span>, <span class="at">col =</span> clr, <span class="at">lwd =</span> <span class="dv">2</span>,</span>
+<span id="cb100-21"><a href="ChapSimulation.html#cb100-21" aria-hidden="true" tabindex="-1"></a>        <span class="at">length =</span> <span class="fl">0.1</span>)</span>
+<span id="cb100-22"><a href="ChapSimulation.html#cb100-22" aria-hidden="true" tabindex="-1"></a>}</span></code></pre></div>
 </div>
 
 <div class="figure" style="text-align: center"><span style="display:block;" id="fig:sampleani1"></span>
@@ -1776,18 +1767,18 @@ F^{\star}(x) = \Pr(X \le x | a &lt; X \le b) =\frac{F(x)-F(a)}{F(b)-F(a)}, \ \  
 <p><span class="math display">\[
 X^\star=F^{\star-1}\left( U \right) = F^{-1}\left(F(a)+U\cdot[F(b)-F(a)]\right)
 \]</span></p>
-<p>has distribution <span class="math inline">\(F^{\star}\)</span>. Expressed another way, define
-<span class="math display">\[
+<p>has distribution <span class="math inline">\(F^{\star}\)</span>. Expressed another way, define</p>
+<p><span class="math display">\[
 \tilde{U} = (1-U)\cdot F(a)+U\cdot F(b)
-\]</span>
-and then use <span class="math inline">\(F^{-1}(\tilde{U})\)</span>. With this approach, each draw counts.</p>
+\]</span></p>
+<p>and then use <span class="math inline">\(F^{-1}(\tilde{U})\)</span>. With this approach, each draw counts.</p>
 <p>This can be related to the <a href="#" class="tooltip" style="color:green"><em>importance sampling mechanism</em><span style="font-size:8pt">Type of sampling method where values in the region of interest can be over-sampled or values outside the region of interest can be under-sampled</span></a> : we draw more frequently in regions where we expect to have quantities that have some interest. This transform can be considered as a “a change of measure.”</p>
 <h5 style="text-align: center;">
 <a id="displayCode.ImportanceSampling.2" href="javascript:togglecode('toggleCode.ImportanceSampling.2','displayCode.ImportanceSampling.2');"><i><strong>Show R Code for Importance Sampling by the Inverse Transform Method</strong></i></a>
 </h5>
 <div id="toggleCode.ImportanceSampling.2" style="display: none">
-<div class="sourceCode" id="cb101"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb101-1"><a href="ChapSimulation.html#cb101-1" aria-hidden="true" tabindex="-1"></a>pic_ani <span class="ot">=</span> <span class="cf">function</span>() {</span>
-<span id="cb101-2"><a href="ChapSimulation.html#cb101-2" aria-hidden="true" tabindex="-1"></a>    u <span class="ot">=</span> <span class="fu">seq</span>(<span class="dv">0</span>, <span class="dv">5</span>, <span class="at">by =</span> <span class="fl">0.01</span>)</span>
+<div class="sourceCode" id="cb101"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb101-1"><a href="ChapSimulation.html#cb101-1" aria-hidden="true" tabindex="-1"></a>pic_ani <span class="ot">&lt;-</span> <span class="cf">function</span>() {</span>
+<span id="cb101-2"><a href="ChapSimulation.html#cb101-2" aria-hidden="true" tabindex="-1"></a>    u <span class="ot">&lt;-</span> <span class="fu">seq</span>(<span class="dv">0</span>, <span class="dv">5</span>, <span class="at">by =</span> <span class="fl">0.01</span>)</span>
 <span id="cb101-3"><a href="ChapSimulation.html#cb101-3" aria-hidden="true" tabindex="-1"></a>    <span class="fu">plot</span>(u, <span class="fu">pnorm</span>(u, mu, sigma), <span class="at">col =</span> <span class="st">&quot;white&quot;</span>, <span class="at">ylab =</span> <span class="st">&quot;&quot;</span>, <span class="at">xlab =</span> <span class="st">&quot;&quot;</span>)</span>
 <span id="cb101-4"><a href="ChapSimulation.html#cb101-4" aria-hidden="true" tabindex="-1"></a>    <span class="fu">rect</span>(<span class="sc">-</span><span class="dv">1</span>, <span class="sc">-</span><span class="dv">1</span>, <span class="dv">6</span>, <span class="dv">2</span>, <span class="at">col =</span> <span class="fu">rgb</span>(<span class="dv">1</span>, <span class="dv">0</span>, <span class="dv">0</span>, <span class="fl">0.2</span>), <span class="at">border =</span> <span class="cn">NA</span>)</span>
 <span id="cb101-5"><a href="ChapSimulation.html#cb101-5" aria-hidden="true" tabindex="-1"></a>    <span class="fu">rect</span>(a, Fa, b, Fb, <span class="at">col =</span> <span class="st">&quot;white&quot;</span>, <span class="at">border =</span> <span class="cn">NA</span>)</span>
@@ -1801,33 +1792,35 @@ and then use <span class="math inline">\(F^{-1}(\tilde{U})\)</span>. With this a
 <span id="cb101-13"><a href="ChapSimulation.html#cb101-13" aria-hidden="true" tabindex="-1"></a>}</span></code></pre></div>
 </div>
 <p><img src="LossDataAnalytics_files/figure-html/sampleani_IS_2-.gif" width="50%" style="display: block; margin: auto;" /></p>
-<p>In Example 8.1.8, the inverse of the normal distribution is readily available (in <code>R</code>, the function is <code>qnorm</code>). However, for other applications, this is not the case. Then, one simply uses numerical methods to determine <span class="math inline">\(X^\star\)</span> as the solution of the equation <span class="math inline">\(F(X^\star) =\tilde{U}\)</span> where <span class="math inline">\(\tilde{U}=(1-U)\cdot F(a)+U\cdot F(b)\)</span>. See the following illustrative code.</p>
+<p>In Example 8.1.8, the inverse of the normal distribution is readily available (in <code>R</code>, the function is <code>qnorm</code>). However, for other applications, this is not always the case. Then, one simply uses numerical methods to determine <span class="math inline">\(X^\star\)</span> as the solution of the equation <span class="math inline">\(F(X^\star) =\tilde{U}\)</span> where <span class="math inline">\(\tilde{U}=(1-U)\cdot F(a)+U\cdot F(b)\)</span>. See the following illustrative code.</p>
 <h5 style="text-align: center;">
 <a id="displayCode.ImportanceSampling.3" href="javascript:togglecode('toggleCode.ImportanceSampling.3','displayCode.ImportanceSampling.3');"><i><strong>Show R Code for Importance Sampling via Numerical Solutions</strong></i></a>
 </h5>
 <div id="toggleCode.ImportanceSampling.3" style="display: none">
-<div class="sourceCode" id="cb102"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb102-1"><a href="ChapSimulation.html#cb102-1" aria-hidden="true" tabindex="-1"></a>pic_ani <span class="ot">=</span> <span class="cf">function</span>() {</span>
-<span id="cb102-2"><a href="ChapSimulation.html#cb102-2" aria-hidden="true" tabindex="-1"></a>    u <span class="ot">=</span> <span class="fu">seq</span>(<span class="dv">0</span>, <span class="dv">5</span>, <span class="at">by =</span> <span class="fl">0.01</span>)</span>
+<div class="sourceCode" id="cb102"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb102-1"><a href="ChapSimulation.html#cb102-1" aria-hidden="true" tabindex="-1"></a>pic_ani <span class="ot">&lt;-</span> <span class="cf">function</span>() {</span>
+<span id="cb102-2"><a href="ChapSimulation.html#cb102-2" aria-hidden="true" tabindex="-1"></a>    u <span class="ot">&lt;-</span> <span class="fu">seq</span>(<span class="dv">0</span>, <span class="dv">5</span>, <span class="at">by =</span> <span class="fl">0.01</span>)</span>
 <span id="cb102-3"><a href="ChapSimulation.html#cb102-3" aria-hidden="true" tabindex="-1"></a>    <span class="fu">plot</span>(u, <span class="fu">pnorm</span>(u, mu, sigma), <span class="at">col =</span> <span class="st">&quot;white&quot;</span>, <span class="at">ylab =</span> <span class="st">&quot;&quot;</span>, <span class="at">xlab =</span> <span class="st">&quot;&quot;</span>)</span>
 <span id="cb102-4"><a href="ChapSimulation.html#cb102-4" aria-hidden="true" tabindex="-1"></a>    <span class="fu">rect</span>(<span class="sc">-</span><span class="dv">1</span>, <span class="sc">-</span><span class="dv">1</span>, <span class="dv">6</span>, <span class="dv">2</span>, <span class="at">col =</span> <span class="fu">rgb</span>(<span class="dv">1</span>, <span class="dv">0</span>, <span class="dv">0</span>, <span class="fl">0.2</span>), <span class="at">border =</span> <span class="cn">NA</span>)</span>
 <span id="cb102-5"><a href="ChapSimulation.html#cb102-5" aria-hidden="true" tabindex="-1"></a>    <span class="fu">rect</span>(<span class="dv">2</span>, <span class="sc">-</span><span class="dv">1</span>, <span class="dv">4</span>, <span class="dv">2</span>, <span class="at">col =</span> <span class="st">&quot;white&quot;</span>, <span class="at">border =</span> <span class="cn">NA</span>)</span>
 <span id="cb102-6"><a href="ChapSimulation.html#cb102-6" aria-hidden="true" tabindex="-1"></a>    <span class="fu">lines</span>(u, <span class="fu">pnorm</span>(u, mu, sigma), <span class="at">lty =</span> <span class="dv">2</span>)</span>
 <span id="cb102-7"><a href="ChapSimulation.html#cb102-7" aria-hidden="true" tabindex="-1"></a>    pnormstar <span class="ot">&lt;-</span> <span class="fu">Vectorize</span>(<span class="cf">function</span>(x) {</span>
-<span id="cb102-8"><a href="ChapSimulation.html#cb102-8" aria-hidden="true" tabindex="-1"></a>        y <span class="ot">=</span> (<span class="fu">pnorm</span>(x, mu, sigma) <span class="sc">-</span> Fa)<span class="sc">/</span>(Fb <span class="sc">-</span> Fa)</span>
-<span id="cb102-9"><a href="ChapSimulation.html#cb102-9" aria-hidden="true" tabindex="-1"></a>        <span class="cf">if</span> (x <span class="sc">&lt;=</span> a)</span>
+<span id="cb102-8"><a href="ChapSimulation.html#cb102-8" aria-hidden="true" tabindex="-1"></a>        y <span class="ot">&lt;-</span> (<span class="fu">pnorm</span>(x, mu, sigma) <span class="sc">-</span> Fa)<span class="sc">/</span>(Fb <span class="sc">-</span> Fa)</span>
+<span id="cb102-9"><a href="ChapSimulation.html#cb102-9" aria-hidden="true" tabindex="-1"></a>        <span class="cf">if</span> (x <span class="sc">&lt;=</span> a) {</span>
 <span id="cb102-10"><a href="ChapSimulation.html#cb102-10" aria-hidden="true" tabindex="-1"></a>            y <span class="ot">&lt;-</span> <span class="dv">0</span></span>
-<span id="cb102-11"><a href="ChapSimulation.html#cb102-11" aria-hidden="true" tabindex="-1"></a>        <span class="cf">if</span> (x <span class="sc">&gt;=</span> b)</span>
-<span id="cb102-12"><a href="ChapSimulation.html#cb102-12" aria-hidden="true" tabindex="-1"></a>            y <span class="ot">&lt;-</span> <span class="dv">1</span></span>
-<span id="cb102-13"><a href="ChapSimulation.html#cb102-13" aria-hidden="true" tabindex="-1"></a>        <span class="fu">return</span>(y)</span>
-<span id="cb102-14"><a href="ChapSimulation.html#cb102-14" aria-hidden="true" tabindex="-1"></a>    })</span>
-<span id="cb102-15"><a href="ChapSimulation.html#cb102-15" aria-hidden="true" tabindex="-1"></a>    qnormstar <span class="ot">&lt;-</span> <span class="cf">function</span>(u) <span class="fu">as.numeric</span>(<span class="fu">uniroot</span>((<span class="cf">function</span>(x) <span class="fu">pnormstar</span>(x) <span class="sc">-</span> u), <span class="at">lower =</span> <span class="dv">2</span>,</span>
-<span id="cb102-16"><a href="ChapSimulation.html#cb102-16" aria-hidden="true" tabindex="-1"></a>        <span class="at">upper =</span> <span class="dv">4</span>)[<span class="dv">1</span>])</span>
-<span id="cb102-17"><a href="ChapSimulation.html#cb102-17" aria-hidden="true" tabindex="-1"></a>    <span class="fu">lines</span>(u, <span class="fu">pnormstar</span>(u), <span class="at">lwd =</span> <span class="dv">2</span>)</span>
-<span id="cb102-18"><a href="ChapSimulation.html#cb102-18" aria-hidden="true" tabindex="-1"></a>    <span class="fu">abline</span>(<span class="at">v =</span> <span class="fu">c</span>(<span class="dv">2</span>, <span class="dv">4</span>), <span class="at">lty =</span> <span class="dv">2</span>, <span class="at">col =</span> <span class="st">&quot;red&quot;</span>)</span>
-<span id="cb102-19"><a href="ChapSimulation.html#cb102-19" aria-hidden="true" tabindex="-1"></a>    ru <span class="ot">&lt;-</span> <span class="fu">runif</span>(<span class="dv">1</span>)</span>
-<span id="cb102-20"><a href="ChapSimulation.html#cb102-20" aria-hidden="true" tabindex="-1"></a>    <span class="fu">segments</span>(<span class="sc">-</span><span class="dv">1</span>, ru, <span class="fu">qnormstar</span>(ru), ru, <span class="at">col =</span> <span class="st">&quot;blue&quot;</span>, <span class="at">lwd =</span> <span class="dv">2</span>)</span>
-<span id="cb102-21"><a href="ChapSimulation.html#cb102-21" aria-hidden="true" tabindex="-1"></a>    <span class="fu">arrows</span>(<span class="fu">qnormstar</span>(ru), ru, <span class="fu">qnormstar</span>(ru), <span class="dv">0</span>, <span class="at">col =</span> <span class="st">&quot;blue&quot;</span>, <span class="at">lwd =</span> <span class="dv">2</span>, <span class="at">length =</span> <span class="fl">0.1</span>)</span>
-<span id="cb102-22"><a href="ChapSimulation.html#cb102-22" aria-hidden="true" tabindex="-1"></a>}</span></code></pre></div>
+<span id="cb102-11"><a href="ChapSimulation.html#cb102-11" aria-hidden="true" tabindex="-1"></a>        }</span>
+<span id="cb102-12"><a href="ChapSimulation.html#cb102-12" aria-hidden="true" tabindex="-1"></a>        <span class="cf">if</span> (x <span class="sc">&gt;=</span> b) {</span>
+<span id="cb102-13"><a href="ChapSimulation.html#cb102-13" aria-hidden="true" tabindex="-1"></a>            y <span class="ot">&lt;-</span> <span class="dv">1</span></span>
+<span id="cb102-14"><a href="ChapSimulation.html#cb102-14" aria-hidden="true" tabindex="-1"></a>        }</span>
+<span id="cb102-15"><a href="ChapSimulation.html#cb102-15" aria-hidden="true" tabindex="-1"></a>        <span class="fu">return</span>(y)</span>
+<span id="cb102-16"><a href="ChapSimulation.html#cb102-16" aria-hidden="true" tabindex="-1"></a>    })</span>
+<span id="cb102-17"><a href="ChapSimulation.html#cb102-17" aria-hidden="true" tabindex="-1"></a>    qnormstar <span class="ot">&lt;-</span> <span class="cf">function</span>(u) <span class="fu">as.numeric</span>(<span class="fu">uniroot</span>((<span class="cf">function</span>(x) <span class="fu">pnormstar</span>(x) <span class="sc">-</span> u), <span class="at">lower =</span> <span class="dv">2</span>,</span>
+<span id="cb102-18"><a href="ChapSimulation.html#cb102-18" aria-hidden="true" tabindex="-1"></a>        <span class="at">upper =</span> <span class="dv">4</span>)[<span class="dv">1</span>])</span>
+<span id="cb102-19"><a href="ChapSimulation.html#cb102-19" aria-hidden="true" tabindex="-1"></a>    <span class="fu">lines</span>(u, <span class="fu">pnormstar</span>(u), <span class="at">lwd =</span> <span class="dv">2</span>)</span>
+<span id="cb102-20"><a href="ChapSimulation.html#cb102-20" aria-hidden="true" tabindex="-1"></a>    <span class="fu">abline</span>(<span class="at">v =</span> <span class="fu">c</span>(<span class="dv">2</span>, <span class="dv">4</span>), <span class="at">lty =</span> <span class="dv">2</span>, <span class="at">col =</span> <span class="st">&quot;red&quot;</span>)</span>
+<span id="cb102-21"><a href="ChapSimulation.html#cb102-21" aria-hidden="true" tabindex="-1"></a>    ru <span class="ot">&lt;-</span> <span class="fu">runif</span>(<span class="dv">1</span>)</span>
+<span id="cb102-22"><a href="ChapSimulation.html#cb102-22" aria-hidden="true" tabindex="-1"></a>    <span class="fu">segments</span>(<span class="sc">-</span><span class="dv">1</span>, ru, <span class="fu">qnormstar</span>(ru), ru, <span class="at">col =</span> <span class="st">&quot;blue&quot;</span>, <span class="at">lwd =</span> <span class="dv">2</span>)</span>
+<span id="cb102-23"><a href="ChapSimulation.html#cb102-23" aria-hidden="true" tabindex="-1"></a>    <span class="fu">arrows</span>(<span class="fu">qnormstar</span>(ru), ru, <span class="fu">qnormstar</span>(ru), <span class="dv">0</span>, <span class="at">col =</span> <span class="st">&quot;blue&quot;</span>, <span class="at">lwd =</span> <span class="dv">2</span>, <span class="at">length =</span> <span class="fl">0.1</span>)</span>
+<span id="cb102-24"><a href="ChapSimulation.html#cb102-24" aria-hidden="true" tabindex="-1"></a>}</span></code></pre></div>
 </div>
 <p><img src="LossDataAnalytics_files/figure-html/sampleani_IS_1-.gif" width="50%" style="display: block; margin: auto;" /></p>
 </div>
@@ -1865,21 +1858,29 @@ s_{h,R}^2 = \frac{1}{R-1} \sum_{i=1}^{R}\left( h(X_i) -\overline{h}_R
 <p>Denote the total risk as <span class="math inline">\(X = X_1 + X_2.\)</span> For simplicity, you assume that these risks are independent.</p>
 <p>To manage the risk, you seek some insurance protection. You are willing to retain internally small building and motor vehicles amounts, up to <span class="math inline">\(M\)</span>, say. Random amounts in excess of <span class="math inline">\(M\)</span> will have an unpredictable affect on your budget and so for these amounts you seek insurance protection. Stated mathematically, your retained risk is <span class="math inline">\(Y_{retained}=\)</span> <span class="math inline">\(\min(X_1 + X_2,M)\)</span> and the insurer’s portion is <span class="math inline">\(Y_{insurer} = X- Y_{retained}\)</span>.</p>
 <p>To be specific, we use <span class="math inline">\(M=\)</span> 400 as well as <span class="math inline">\(R=\)</span> 1000000 simulations.</p>
-<p><strong>a.</strong> With the settings, we wish to determine the expected claim amount and the associated standard deviation of (i) that retained, (ii) that accepted by the insurer, and (iii) the total overall amount.</p>
+<p><strong>a.</strong> With the settings, we wish to determine the expected claim amount and the associated standard deviation of (i) that retained by you, (ii) that accepted by the insurer, and (iii) the total overall amount.</p>
 <h5 style="text-align: center;">
 <a id="displayCode.PortMgt1.8.1" href="javascript:togglecode('toggleCode.PortMgt1.8.1','displayCode.PortMgt1.8.1');"><i><strong>Show R Code to Define the Risks</strong></i></a>
 </h5>
 <div id="toggleCode.PortMgt1.8.1" style="display: none">
-<div class="sourceCode" id="cb103"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb103-1"><a href="ChapSimulation.html#cb103-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Simulate the risks</span></span>
-<span id="cb103-2"><a href="ChapSimulation.html#cb103-2" aria-hidden="true" tabindex="-1"></a>nSim <span class="ot">&lt;-</span> <span class="dv">1000000</span>  <span class="co">#number of simulations</span></span>
-<span id="cb103-3"><a href="ChapSimulation.html#cb103-3" aria-hidden="true" tabindex="-1"></a><span class="fu">set.seed</span>(<span class="dv">2017</span>)  <span class="co">#set seed to reproduce work </span></span>
-<span id="cb103-4"><a href="ChapSimulation.html#cb103-4" aria-hidden="true" tabindex="-1"></a>X1 <span class="ot">&lt;-</span> <span class="fu">rgamma</span>(nSim, alpha1, <span class="at">scale =</span> theta1)</span>
-<span id="cb103-5"><a href="ChapSimulation.html#cb103-5" aria-hidden="true" tabindex="-1"></a>X2 <span class="ot">&lt;-</span> <span class="fu">rgamma</span>(nSim, alpha2, <span class="at">scale =</span> theta2)</span>
-<span id="cb103-6"><a href="ChapSimulation.html#cb103-6" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb103-7"><a href="ChapSimulation.html#cb103-7" aria-hidden="true" tabindex="-1"></a><span class="co"># Portfolio Risks</span></span>
-<span id="cb103-8"><a href="ChapSimulation.html#cb103-8" aria-hidden="true" tabindex="-1"></a>X <span class="ot">&lt;-</span> X1 <span class="sc">+</span> X2</span>
-<span id="cb103-9"><a href="ChapSimulation.html#cb103-9" aria-hidden="true" tabindex="-1"></a>Yretained <span class="ot">&lt;-</span> <span class="fu">pmin</span>(X, M)</span>
-<span id="cb103-10"><a href="ChapSimulation.html#cb103-10" aria-hidden="true" tabindex="-1"></a>Yinsurer <span class="ot">&lt;-</span> X <span class="sc">-</span> Yretained</span></code></pre></div>
+<div class="sourceCode" id="cb103"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb103-1"><a href="ChapSimulation.html#cb103-1" aria-hidden="true" tabindex="-1"></a><span class="co"># For the gamma distributions, use</span></span>
+<span id="cb103-2"><a href="ChapSimulation.html#cb103-2" aria-hidden="true" tabindex="-1"></a>alpha1 <span class="ot">&lt;-</span> <span class="dv">2</span></span>
+<span id="cb103-3"><a href="ChapSimulation.html#cb103-3" aria-hidden="true" tabindex="-1"></a>theta1 <span class="ot">&lt;-</span> <span class="dv">100</span></span>
+<span id="cb103-4"><a href="ChapSimulation.html#cb103-4" aria-hidden="true" tabindex="-1"></a>alpha2 <span class="ot">&lt;-</span> <span class="dv">2</span></span>
+<span id="cb103-5"><a href="ChapSimulation.html#cb103-5" aria-hidden="true" tabindex="-1"></a>theta2 <span class="ot">&lt;-</span> <span class="dv">200</span></span>
+<span id="cb103-6"><a href="ChapSimulation.html#cb103-6" aria-hidden="true" tabindex="-1"></a><span class="co"># Deductibles</span></span>
+<span id="cb103-7"><a href="ChapSimulation.html#cb103-7" aria-hidden="true" tabindex="-1"></a>M <span class="ot">&lt;-</span> <span class="dv">400</span></span>
+<span id="cb103-8"><a href="ChapSimulation.html#cb103-8" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb103-9"><a href="ChapSimulation.html#cb103-9" aria-hidden="true" tabindex="-1"></a><span class="co"># Simulate the risks</span></span>
+<span id="cb103-10"><a href="ChapSimulation.html#cb103-10" aria-hidden="true" tabindex="-1"></a>nSim <span class="ot">&lt;-</span> <span class="dv">1000000</span>  <span class="co">#number of simulations</span></span>
+<span id="cb103-11"><a href="ChapSimulation.html#cb103-11" aria-hidden="true" tabindex="-1"></a><span class="fu">set.seed</span>(<span class="dv">2017</span>)  <span class="co">#set seed to reproduce work </span></span>
+<span id="cb103-12"><a href="ChapSimulation.html#cb103-12" aria-hidden="true" tabindex="-1"></a>X1 <span class="ot">&lt;-</span> <span class="fu">rgamma</span>(nSim, alpha1, <span class="at">scale =</span> theta1)</span>
+<span id="cb103-13"><a href="ChapSimulation.html#cb103-13" aria-hidden="true" tabindex="-1"></a>X2 <span class="ot">&lt;-</span> <span class="fu">rgamma</span>(nSim, alpha2, <span class="at">scale =</span> theta2)</span>
+<span id="cb103-14"><a href="ChapSimulation.html#cb103-14" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb103-15"><a href="ChapSimulation.html#cb103-15" aria-hidden="true" tabindex="-1"></a><span class="co"># Portfolio Risks</span></span>
+<span id="cb103-16"><a href="ChapSimulation.html#cb103-16" aria-hidden="true" tabindex="-1"></a>X <span class="ot">&lt;-</span> X1 <span class="sc">+</span> X2</span>
+<span id="cb103-17"><a href="ChapSimulation.html#cb103-17" aria-hidden="true" tabindex="-1"></a>Yretained <span class="ot">&lt;-</span> <span class="fu">pmin</span>(X, M)</span>
+<span id="cb103-18"><a href="ChapSimulation.html#cb103-18" aria-hidden="true" tabindex="-1"></a>Yinsurer <span class="ot">&lt;-</span> X <span class="sc">-</span> Yretained</span></code></pre></div>
 </div>
 <p>Here is the code for the expected claim amounts.</p>
 <h5 style="text-align: center;">
@@ -1929,71 +1930,81 @@ Figure 8.5: <strong>Estimated Expected Insurer Claims versus Number of Simulatio
 </p>
 </div>
 <hr />
+<h5 style="text-align: center;">
+<a id="displayCode.PortMgt1.8.3A" href="javascript:togglecode('toggleCode.PortMgt1.8.3A','displayCode.PortMgt1.8.3A');"><i><strong>Show R Code for Plotting Figure 8.5</strong></i></a>
+</h5>
+<div id="toggleCode.PortMgt1.8.3A" style="display: none">
+<div class="sourceCode" id="cb108"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb108-1"><a href="ChapSimulation.html#cb108-1" aria-hidden="true" tabindex="-1"></a><span class="fu">matplot</span>(<span class="dv">1</span><span class="sc">:</span>R, sumP2[, <span class="dv">1</span><span class="sc">:</span><span class="dv">20</span>], <span class="at">type =</span> <span class="st">&quot;l&quot;</span>, <span class="at">col =</span> <span class="fu">rgb</span>(<span class="dv">1</span>, <span class="dv">0</span>, <span class="dv">0</span>, <span class="fl">0.2</span>), <span class="at">ylim =</span> <span class="fu">c</span>(<span class="dv">100</span>, <span class="dv">400</span>),</span>
+<span id="cb108-2"><a href="ChapSimulation.html#cb108-2" aria-hidden="true" tabindex="-1"></a>    <span class="at">xlab =</span> <span class="fu">expression</span>(<span class="fu">paste</span>(<span class="st">&quot;Number of Simulations (&quot;</span>, <span class="fu">italic</span>(<span class="st">&quot;R&quot;</span>), <span class="st">&quot;)&quot;</span>)), <span class="at">ylab =</span> <span class="st">&quot;Expected Insurer Claims&quot;</span>)</span>
+<span id="cb108-3"><a href="ChapSimulation.html#cb108-3" aria-hidden="true" tabindex="-1"></a><span class="fu">abline</span>(<span class="at">h =</span> <span class="fu">mean</span>(Yinsurer), <span class="at">lty =</span> <span class="dv">2</span>)</span>
+<span id="cb108-4"><a href="ChapSimulation.html#cb108-4" aria-hidden="true" tabindex="-1"></a>bonds <span class="ot">&lt;-</span> <span class="fu">cbind</span>(<span class="fl">1.96</span> <span class="sc">*</span> <span class="fu">sd</span>(Yinsurer) <span class="sc">*</span> <span class="fu">sqrt</span>(<span class="dv">1</span><span class="sc">/</span>(<span class="dv">1</span><span class="sc">:</span>R)), <span class="sc">-</span><span class="fl">1.96</span> <span class="sc">*</span> <span class="fu">sd</span>(Yinsurer) <span class="sc">*</span> <span class="fu">sqrt</span>(<span class="dv">1</span><span class="sc">/</span>(<span class="dv">1</span><span class="sc">:</span>R)))</span>
+<span id="cb108-5"><a href="ChapSimulation.html#cb108-5" aria-hidden="true" tabindex="-1"></a><span class="fu">matlines</span>(<span class="dv">1</span><span class="sc">:</span>R, bonds <span class="sc">+</span> <span class="fu">mean</span>(Yinsurer), <span class="at">col =</span> <span class="st">&quot;red&quot;</span>, <span class="at">lty =</span> <span class="dv">1</span>)</span></code></pre></div>
+</div>
 </div>
 <div id="determining-the-number-of-simulations" class="section level3 hasAnchor" number="8.2.2">
 <h3><span class="header-section-number">8.2.2</span> Determining the Number of Simulations<a href="ChapSimulation.html#determining-the-number-of-simulations" class="anchor-section" aria-label="Anchor link to header"></a></h3>
 <p>How many simulated values are recommended? 100? 1,000,000? We can use the <a href="#" class="tooltip" style="color:green"><em>central limit theorem</em><span style="font-size:8pt">The sample mean and sample sum of a random sample of n from a population will converge to a normal curve as the sample size n grows</span></a> to respond to this question.</p>
-<p>As one criterion for your confidence in the result, suppose that you wish to be within 1% of the mean with 95%
-certainty. That is, you want <span class="math inline">\(\Pr \left( |\overline{h}_R - \mathrm{E~}[h(X)]| \le 0.01 \mathrm{E~}[h(X)] \right) \ge 0.95\)</span>. According to the central limit theorem, your estimate should be approximately normally distributed and so we want to have <span class="math inline">\(R\)</span> large enough to satisfy <span class="math inline">\(0.01 \mathrm{E~}[h(X)]/\sqrt{\mathrm{Var~}[h(X)]/R}) \ge 1.96\)</span>. (Recall that 1.96 is the 97.5th percentile from the standard normal distribution.) Replacing <span class="math inline">\(\mathrm{E~}[h(X)]\)</span> and <span class="math inline">\(\mathrm{Var~}[h(X)]\)</span> with estimates, you continue your simulation until</p>
+<p>As one criterion for your confidence in the result, suppose that you wish to be within 1% of the mean with 95% certainty. That is, you want <span class="math inline">\(\Pr \left( |\overline{h}_R - \mathrm{E~}[h(X)]| \le 0.01 \mathrm{E~}[h(X)] \right) \ge 0.95\)</span>. According to the central limit theorem, your estimate should be approximately normally distributed and so we want to have <span class="math inline">\(R\)</span> large enough to satisfy <span class="math inline">\(0.01 \mathrm{E~}[h(X)]/\sqrt{\mathrm{Var~}[h(X)]/R}) \ge 1.96\)</span>. (Recall that 1.96 is the 97.5th percentile from the standard normal distribution.) Replacing <span class="math inline">\(\mathrm{E~}[h(X)]\)</span> and <span class="math inline">\(\mathrm{Var~}[h(X)]\)</span> with estimates, you continue your simulation until</p>
 <p><span class="math display">\[
-\frac{.01\overline{h}_R}{s_{h,R}/\sqrt{R}}\geq 1.96
-\]</span>
-or equivalently</p>
+\frac{0.01~\overline{h}_R}{s_{h,R}/\sqrt{R}}\geq 1.96
+\]</span></p>
+<p>or equivalently</p>
 <p><span class="math display" id="eq:NumSimulations">\[\begin{equation}
 R \geq 38,416\frac{s_{h,R}^2}{\overline{h}_R^2}.
 \tag{8.1}
 \end{equation}\]</span></p>
-<p>This criterion is a direct application of the approximate normality. Note that <span class="math inline">\(\overline{h}_R\)</span> and <span class="math inline">\(s_{h,R}\)</span> are not known in
-advance, so you will have to come up with estimates, either by doing a small pilot study in advance or by interrupting your procedure intermittently to see if the criterion is satisfied.</p>
-<p><strong>Example 8.2.1. Portfolio Management - continued</strong></p>
-<p>For our example, the average insurance claim is 235.011 and the corresponding standard deviation is 280.862. Using equation <a href="ChapSimulation.html#eq:NumSimulations">(8.1)</a>, to be within 10% of the mean, we would only require at least 54.87 thousand simulations. However, to be within 1% we would want at least 5.49 million simulations.</p>
+<p>This criterion is a direct application of the approximate normality. Note that <span class="math inline">\(\overline{h}_R\)</span> and <span class="math inline">\(s_{h,R}\)</span> are not known in advance, so you will have to come up with estimates, either by doing a small pilot study in advance or by interrupting your procedure intermittently to see if the criterion is satisfied.</p>
+<p><strong>Example 8.2.1. Portfolio Management - continued</strong>. For this example, the average insurance claim is 235.011 and the corresponding standard deviation is 280.862. Using equation <a href="ChapSimulation.html#eq:NumSimulations">(8.1)</a>, to be within 1% of the mean, we would only require at least 54.87 thousand simulations. In addition, to be within 0.1% we would want at least 5.49 million simulations.</p>
 <hr />
 <p><strong>Example 8.2.2. Approximation Choices.</strong>
 An important application of simulation is the approximation of <span class="math inline">\(\mathrm{E~}[h(X)]\)</span>. In this example, we show that the choice of the <span class="math inline">\(h(\cdot)\)</span> function and the distribution of <span class="math inline">\(X\)</span> can play a role.</p>
-<p>Consider the following question : what is <span class="math inline">\(\Pr[X&gt;2]\)</span> when <span class="math inline">\(X\)</span> has a <a href="#" class="tooltip" style="color:green"><em>Cauchy distribution</em><span style="font-size:8pt">A continuous distribution that represents the distribution of the ratio of two independent normally random variables, where the denominator distribution has mean zero</span></a>, with density <span class="math inline">\(f(x) =\left(\pi(1+x^2)\right)^{-1}\)</span>, on the real line? The true value is</p>
+<p>Consider the following question : what is <span class="math inline">\(\Pr[X&gt;2]\)</span> when <span class="math inline">\(X\)</span> has a <a href="#" class="tooltip" style="color:green"><em>Cauchy distribution</em><span style="font-size:8pt">A continuous distribution that represents the distribution of the ratio of two independent normally random variables, where the denominator distribution has mean zero</span></a>, with density <span class="math inline">\(f(x) =\left[\pi(1+x^2)\right]^{-1}\)</span>, on the real line? The true value is</p>
 <p><span class="math display">\[
 \Pr\left[X&gt;2\right] = \int_2^\infty \frac{dx}{\pi(1+x^2)} .
 \]</span>
 One can use an <code>R</code> numerical integration function (which usually works well on improper integrals)</p>
-<div class="sourceCode" id="cb108"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb108-1"><a href="ChapSimulation.html#cb108-1" aria-hidden="true" tabindex="-1"></a>true_value <span class="ot">&lt;-</span> <span class="fu">integrate</span>(<span class="cf">function</span>(x) <span class="dv">1</span><span class="sc">/</span>(pi <span class="sc">*</span> (<span class="dv">1</span> <span class="sc">+</span> x<span class="sc">^</span><span class="dv">2</span>)), <span class="at">lower =</span> <span class="dv">2</span>, <span class="at">upper =</span> <span class="cn">Inf</span>)<span class="sc">$</span>value</span></code></pre></div>
+<div class="sourceCode" id="cb109"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb109-1"><a href="ChapSimulation.html#cb109-1" aria-hidden="true" tabindex="-1"></a>true_value <span class="ot">&lt;-</span> <span class="fu">integrate</span>(<span class="cf">function</span>(x) <span class="dv">1</span><span class="sc">/</span>(pi <span class="sc">*</span> (<span class="dv">1</span> <span class="sc">+</span> x<span class="sc">^</span><span class="dv">2</span>)), <span class="at">lower =</span> <span class="dv">2</span>, <span class="at">upper =</span> <span class="cn">Inf</span>)<span class="sc">$</span>value</span></code></pre></div>
 <p>which is equal to 0.14758.</p>
-<p><strong>Approximation 1.</strong> Alternatively, one can use simulation techniques to approximate that quantity. From calculus, you can check that the quantile function of the Cauchy distribution is <span class="math inline">\(F^{-1}(y) = \tan \left( \pi(y-0.5) \right)\)</span>. Then, with simulated uniform (0,1) variates, <span class="math inline">\(U_1, \ldots, U_R\)</span>, we can construct the estimator</p>
+<p><strong>Approximation 1.</strong> Alternatively, one can use simulation techniques to approximate that quantity. From calculus, you can check that the quantile function of the Cauchy distribution is <span class="math inline">\(F^{-1}(y) = \tan \left[\pi(y-0.5) \right]\)</span>. Then, with simulated uniform (0,1) variates, <span class="math inline">\(U_1, \ldots, U_R\)</span>, we can construct the estimator</p>
 <p><span class="math display">\[
-p_1 = \frac{1}{R}\sum_{i=1}^R \mathrm{I}(F^{-1}(U_i)&gt;2) = \frac{1}{R}\sum_{i=1}^R \mathrm{I}(\tan \left( \pi(U_i-0.5) \right)&gt;2) .
+p_1 = \frac{1}{R}\sum_{i=1}^R \mathrm{I}(F^{-1}(U_i)&gt;2) 
+= \frac{1}{R}\sum_{i=1}^R \mathrm{I}(\tan \left[ \pi(U_i-0.5) \right]&gt;2) .
 \]</span></p>
 <h5 style="text-align: center;">
 <a id="displayCode.Approximationchoices.1.9.1" href="javascript:togglecode('toggleCode.Approximationchoices.1.9.1','displayCode.Approximationchoices.1.9.1');"><i><strong>Show the R Code</strong></i></a>
 </h5>
 <div id="toggleCode.Approximationchoices.1.9.1" style="display: none">
-<div class="sourceCode" id="cb109"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb109-1"><a href="ChapSimulation.html#cb109-1" aria-hidden="true" tabindex="-1"></a>Q <span class="ot">&lt;-</span> <span class="cf">function</span>(u) <span class="fu">tan</span>(pi <span class="sc">*</span> (u <span class="sc">-</span> <span class="fl">0.5</span>))</span>
-<span id="cb109-2"><a href="ChapSimulation.html#cb109-2" aria-hidden="true" tabindex="-1"></a>R <span class="ot">&lt;-</span> <span class="dv">1000000</span></span>
-<span id="cb109-3"><a href="ChapSimulation.html#cb109-3" aria-hidden="true" tabindex="-1"></a><span class="fu">set.seed</span>(<span class="dv">1</span>)</span>
-<span id="cb109-4"><a href="ChapSimulation.html#cb109-4" aria-hidden="true" tabindex="-1"></a>X <span class="ot">&lt;-</span> <span class="fu">Q</span>(<span class="fu">runif</span>(R))</span>
-<span id="cb109-5"><a href="ChapSimulation.html#cb109-5" aria-hidden="true" tabindex="-1"></a>p1 <span class="ot">&lt;-</span> <span class="fu">mean</span>(X <span class="sc">&gt;</span> <span class="dv">2</span>)</span>
-<span id="cb109-6"><a href="ChapSimulation.html#cb109-6" aria-hidden="true" tabindex="-1"></a>se.p1 <span class="ot">&lt;-</span> <span class="fu">sd</span>(X <span class="sc">&gt;</span> <span class="dv">2</span>)<span class="sc">/</span><span class="fu">sqrt</span>(R)</span>
-<span id="cb109-7"><a href="ChapSimulation.html#cb109-7" aria-hidden="true" tabindex="-1"></a>p1</span></code></pre></div>
+<div class="sourceCode" id="cb110"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb110-1"><a href="ChapSimulation.html#cb110-1" aria-hidden="true" tabindex="-1"></a>Q <span class="ot">&lt;-</span> <span class="cf">function</span>(u) {</span>
+<span id="cb110-2"><a href="ChapSimulation.html#cb110-2" aria-hidden="true" tabindex="-1"></a>    <span class="fu">tan</span>(pi <span class="sc">*</span> (u <span class="sc">-</span> <span class="fl">0.5</span>))</span>
+<span id="cb110-3"><a href="ChapSimulation.html#cb110-3" aria-hidden="true" tabindex="-1"></a>}</span>
+<span id="cb110-4"><a href="ChapSimulation.html#cb110-4" aria-hidden="true" tabindex="-1"></a>R <span class="ot">&lt;-</span> <span class="dv">1000000</span></span>
+<span id="cb110-5"><a href="ChapSimulation.html#cb110-5" aria-hidden="true" tabindex="-1"></a><span class="fu">set.seed</span>(<span class="dv">1</span>)</span>
+<span id="cb110-6"><a href="ChapSimulation.html#cb110-6" aria-hidden="true" tabindex="-1"></a>X <span class="ot">&lt;-</span> <span class="fu">Q</span>(<span class="fu">runif</span>(R))</span>
+<span id="cb110-7"><a href="ChapSimulation.html#cb110-7" aria-hidden="true" tabindex="-1"></a>p1 <span class="ot">&lt;-</span> <span class="fu">mean</span>(X <span class="sc">&gt;</span> <span class="dv">2</span>)</span>
+<span id="cb110-8"><a href="ChapSimulation.html#cb110-8" aria-hidden="true" tabindex="-1"></a>se.p1 <span class="ot">&lt;-</span> <span class="fu">sd</span>(X <span class="sc">&gt;</span> <span class="dv">2</span>)<span class="sc">/</span><span class="fu">sqrt</span>(R)</span>
+<span id="cb110-9"><a href="ChapSimulation.html#cb110-9" aria-hidden="true" tabindex="-1"></a>p1</span></code></pre></div>
 <pre><code>[1] 0.147439</code></pre>
-<div class="sourceCode" id="cb111"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb111-1"><a href="ChapSimulation.html#cb111-1" aria-hidden="true" tabindex="-1"></a>se.p1</span></code></pre></div>
-<pre><code>[1] 0.0003545432</code></pre>
+<div class="sourceCode" id="cb112"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb112-1"><a href="ChapSimulation.html#cb112-1" aria-hidden="true" tabindex="-1"></a>se.p1</span></code></pre></div>
+<pre><code>[1] 0.000354543181</code></pre>
 </div>
-<p>With one million simulations, we obtain an estimate of 0.14744 with standard error 0.355 (divided by 1000). One can prove that the variance of <span class="math inline">\(p_1\)</span> is of order <span class="math inline">\(0.127/R\)</span>.</p>
+<p>With one million simulations, we obtain an estimate of 0.14744 with standard error 0.355 (divided by 1000). The estimated variance of <span class="math inline">\(p_1\)</span> can be written as <span class="math inline">\(0.127/R\)</span>.</p>
 <!--It can be visualized below -->
 <p><strong>Approximation 2.</strong> With other choices of <span class="math inline">\(h(\cdot)\)</span> and <span class="math inline">\(F(\cdot)\)</span> it is possible to reduce uncertainty even using the same number of simulations <span class="math inline">\(R\)</span>. To begin, one can use the symmetry of the Cauchy distribution to write <span class="math inline">\(\Pr[X&gt;2]=0.5\cdot\Pr[|X|&gt;2]\)</span>. With this, can construct a new estimator,</p>
 <p><span class="math display">\[
 p_2 = \frac{1}{2R}\sum_{i=1}^R \mathrm{I}(|F^{-1}(U_i)|&gt;2) .
 \]</span></p>
-<p>With one million simulations, we obtain an estimate of 0.14748 with standard error 0.228 (divided by 1000). One can prove that the variance of <span class="math inline">\(p_2\)</span> is of order <span class="math inline">\(0.052/R\)</span>.</p>
+<p>With one million simulations, we obtain an estimate of 0.14748 with standard error 0.228 (divided by 1000). The estimated variance of <span class="math inline">\(p_2\)</span> can be written as <span class="math inline">\(0.052/R\)</span>.</p>
 <!--It can be visualized below -->
-<p><strong>Approximation 3.</strong> But one can go one step further. The improper integral can be written as a proper one by a simple symmetry property (since the function is symmetric and the integral on the real line is equal to <span class="math inline">\(1\)</span>)
-<span class="math display">\[
+<p><strong>Approximation 3.</strong> But one can go one step further. The improper integral can be written as a proper one by a simple symmetry property (since the function is symmetric and the integral on the real line is equal to <span class="math inline">\(1\)</span>)</p>
+<p><span class="math display">\[
 \int_2^\infty \frac{dx}{\pi(1+x^2)}=\frac{1}{2}-\int_0^2\frac{dx}{\pi(1+x^2)} .
-\]</span>
-From this expression, a natural approximation would be
-<span class="math display">\[
+\]</span></p>
+<p>From this expression, a natural approximation would be</p>
+<p><span class="math display">\[
 p_3 = \frac{1}{2}-\frac{1}{R}\sum_{i=1}^R h_3(2U_i), ~~~~~~\text{where}~h_3(x)=\frac{2}{\pi(1+x^2)} .
 \]</span></p>
 <p>With one million simulations, we obtain an estimate of 0.14756
-with standard error 0.169 (divided by 1000). One can prove that the variance of <span class="math inline">\(p_3\)</span> is of order <span class="math inline">\(0.0285/R\)</span>.</p>
+with standard error 0.169 (divided by 1000). The estimated variance of <span class="math inline">\(p_3\)</span> can be written as <span class="math inline">\(0.0285/R\)</span>.</p>
 <!--It can be visualized below -->
 <p><strong>Approximation 4.</strong> Finally, one can also consider some change of variable in the integral
 <span class="math display">\[
@@ -2004,7 +2015,7 @@ From this expression, a natural approximation would be
 p_4 = \frac{1}{R}\sum_{i=1}^R h_4(U_i/2),~~~~~\text{where}~h_4(x)=\frac{1}{2\pi(1+x^2)} .
 \]</span>
 The expression seems rather similar to the previous one.</p>
-<p>With one million simulations, we obtain an estimate of 0.14759 with standard error 0.01 (divided by 1000). One can prove that the variance of <span class="math inline">\(p_4\)</span> is of order <span class="math inline">\(0.00009/R\)</span>, which is much smaller than what we had so far!</p>
+<p>With one million simulations, we obtain an estimate of 0.14759 with standard error 0.01 (divided by 1000). The estimated variance of <span class="math inline">\(p_4\)</span> can be written as <span class="math inline">\(0.00009/R\)</span>, which is much smaller than what we had so far!</p>
 <!--It can be visualized below -->
 <p><a href="../docs/ChapSimulation.html#tab:8.1">Table 8.1</a> summarizes the four choices of <span class="math inline">\(h(\cdot)\)</span> and <span class="math inline">\(F(\cdot)\)</span> to approximate <span class="math inline">\(\Pr[X&gt;2] =\)</span> 0.14758. The standard error varies dramatically. Thus, if we have a desired degree of accuracy, then the <em>number of simulations</em> depends strongly on how we write the integrals we try to approximate.</p>
 <p><a id=tab:8.1></a></p>
@@ -2108,7 +2119,7 @@ Error
 <div id="S:SimulationStatInference" class="section level3 hasAnchor" number="8.2.3">
 <h3><span class="header-section-number">8.2.3</span> Simulation and Statistical Inference<a href="ChapSimulation.html#S:SimulationStatInference" class="anchor-section" aria-label="Anchor link to header"></a></h3>
 <p>Simulations not only help us approximate expected values but are also useful in calculating other aspects of distribution functions. As described in Section <a href="ChapSimulation.html#S:SimParameters">8.2.1</a>, the logic is that one wishes to calculate a parameter <span class="math inline">\(\theta(F)\)</span>, use the same rule for calculating the parameter but replace the distribution function <span class="math inline">\(F(\cdot)\)</span> with an empirical one from a simulated sample. For example, in addition to expected values, analysts can use simulation to compute quantiles from complex distributions.</p>
-<p>In addition, simulation is very useful when distributions of test statistics are too complicated to derive; in this case, one can use simulations to approximate the reference distribution. We now illustrate this with the <a href="#" class="tooltip" style="color:green"><em>Kolmogorov-Smirnov test</em><span style="font-size:8pt">A nonparametric statistical test used to determine if a data sample could come from a hypothesized continuous probability distribution</span></a> that we learned about in Section <a href="ChapModelSelection.html#S:MS:Tools:Stats">6.1.2</a>.</p>
+<p>In addition, simulation is very useful when distributions of test statistics are too complicated to derive; in this case, one can use simulations to approximate the reference distribution. We now illustrate this with the <a href="#" class="tooltip" style="color:green"><em>Kolmogorov-Smirnov test</em><span style="font-size:8pt">A nonparametric statistical test used to determine if a data sample could come from a hypothesized continuous probability distribution</span></a> which we learned about in Section <a href="ChapModelSelection.html#S:MS:Tools:Stats">6.1.2</a>.</p>
 <p><strong>Example 8.2.3. Kolmogorov-Smirnov Test of Distribution.</strong>
 Suppose that we have available <span class="math inline">\(n=100\)</span> observations <span class="math inline">\(\{x_1,\cdots,x_n\}\)</span> that, unknown to the analyst, were generated from a gamma distribution with parameters <span class="math inline">\(\alpha = 6\)</span> and <span class="math inline">\(\theta=2\)</span>. The analyst believes that the data come from a lognormal distribution with parameters 1 and 0.4 and would like to test this assumption.</p>
 <p>The first step is to visualize the data.</p>
@@ -2116,13 +2127,12 @@ Suppose that we have available <span class="math inline">\(n=100\)</span> observ
 <a id="displayCode.KSTest.1.10.1" href="javascript:togglecode('toggleCode.KSTest.1.10.1','displayCode.KSTest.1.10.1');"><i><strong>Show R Code To Set up The Visualization</strong></i></a>
 </h5>
 <div id="toggleCode.KSTest.1.10.1" style="display: none">
-<div class="sourceCode" id="cb113"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb113-1"><a href="ChapSimulation.html#cb113-1" aria-hidden="true" tabindex="-1"></a><span class="fu">set.seed</span>(<span class="dv">1</span>)</span>
-<span id="cb113-2"><a href="ChapSimulation.html#cb113-2" aria-hidden="true" tabindex="-1"></a>n <span class="ot">&lt;-</span> <span class="dv">100</span></span>
-<span id="cb113-3"><a href="ChapSimulation.html#cb113-3" aria-hidden="true" tabindex="-1"></a>x <span class="ot">&lt;-</span> <span class="fu">rgamma</span>(n, <span class="dv">6</span>, <span class="dv">2</span>)</span>
-<span id="cb113-4"><a href="ChapSimulation.html#cb113-4" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb113-5"><a href="ChapSimulation.html#cb113-5" aria-hidden="true" tabindex="-1"></a>u <span class="ot">=</span> <span class="fu">seq</span>(<span class="dv">0</span>, <span class="dv">7</span>, <span class="at">by =</span> <span class="fl">0.01</span>)</span>
-<span id="cb113-6"><a href="ChapSimulation.html#cb113-6" aria-hidden="true" tabindex="-1"></a>vx <span class="ot">=</span> <span class="fu">c</span>(<span class="dv">0</span>, <span class="fu">sort</span>(x))</span>
-<span id="cb113-7"><a href="ChapSimulation.html#cb113-7" aria-hidden="true" tabindex="-1"></a>vy <span class="ot">=</span> (<span class="dv">0</span><span class="sc">:</span>n)<span class="sc">/</span>n</span></code></pre></div>
+<div class="sourceCode" id="cb114"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb114-1"><a href="ChapSimulation.html#cb114-1" aria-hidden="true" tabindex="-1"></a><span class="fu">set.seed</span>(<span class="dv">1</span>)</span>
+<span id="cb114-2"><a href="ChapSimulation.html#cb114-2" aria-hidden="true" tabindex="-1"></a>n <span class="ot">&lt;-</span> <span class="dv">100</span></span>
+<span id="cb114-3"><a href="ChapSimulation.html#cb114-3" aria-hidden="true" tabindex="-1"></a>x <span class="ot">&lt;-</span> <span class="fu">rgamma</span>(n, <span class="dv">6</span>, <span class="dv">2</span>)</span>
+<span id="cb114-4"><a href="ChapSimulation.html#cb114-4" aria-hidden="true" tabindex="-1"></a>u <span class="ot">&lt;-</span> <span class="fu">seq</span>(<span class="dv">0</span>, <span class="dv">7</span>, <span class="at">by =</span> <span class="fl">0.01</span>)</span>
+<span id="cb114-5"><a href="ChapSimulation.html#cb114-5" aria-hidden="true" tabindex="-1"></a>vx <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="dv">0</span>, <span class="fu">sort</span>(x))</span>
+<span id="cb114-6"><a href="ChapSimulation.html#cb114-6" aria-hidden="true" tabindex="-1"></a>vy <span class="ot">&lt;-</span> (<span class="dv">0</span><span class="sc">:</span>n)<span class="sc">/</span>n</span></code></pre></div>
 </div>
 <p>With this set-up, Figure <a href="ChapSimulation.html#fig:KSTestData">8.6</a> provides a graph of a histogram and empirical distribution. For reference, superimposed are red dashed lines from the lognormal distribution.</p>
 
@@ -2132,42 +2142,53 @@ Suppose that we have available <span class="math inline">\(n=100\)</span> observ
 Figure 8.6: <strong>Histogram and Empirical Distribution Function of Data used in Kolmogorov-Smirnov Test</strong>. The red dashed lines are fits based on (incorrectly) hypothesized lognormal distribution.
 </p>
 </div>
+<h5 style="text-align: center;">
+<a id="displayCode.Example823.Hide" href="javascript:togglecode('toggleCode.Example823.Hide','displayCode.Example823.Hide');"><i><strong>Show R Code for Plotting Figure 8.6</strong></i></a>
+</h5>
+<div id="toggleCode.Example823.Hide" style="display: none">
+<div class="sourceCode" id="cb115"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb115-1"><a href="ChapSimulation.html#cb115-1" aria-hidden="true" tabindex="-1"></a><span class="fu">par</span>(<span class="at">mfrow =</span> <span class="fu">c</span>(<span class="dv">1</span>, <span class="dv">2</span>))</span>
+<span id="cb115-2"><a href="ChapSimulation.html#cb115-2" aria-hidden="true" tabindex="-1"></a><span class="fu">hist</span>(x, <span class="at">probability =</span> <span class="cn">TRUE</span>, <span class="at">main =</span> <span class="st">&quot;Histogram&quot;</span>, <span class="at">col =</span> <span class="st">&quot;light blue&quot;</span>, <span class="at">border =</span> <span class="st">&quot;white&quot;</span>,</span>
+<span id="cb115-3"><a href="ChapSimulation.html#cb115-3" aria-hidden="true" tabindex="-1"></a>    <span class="at">xlim =</span> <span class="fu">c</span>(<span class="dv">0</span>, <span class="dv">7</span>), <span class="at">ylim =</span> <span class="fu">c</span>(<span class="dv">0</span>, <span class="fl">0.4</span>))</span>
+<span id="cb115-4"><a href="ChapSimulation.html#cb115-4" aria-hidden="true" tabindex="-1"></a><span class="fu">lines</span>(u, <span class="fu">dlnorm</span>(u, <span class="dv">1</span>, <span class="fl">0.4</span>), <span class="at">col =</span> <span class="st">&quot;red&quot;</span>, <span class="at">lty =</span> <span class="dv">2</span>)</span>
+<span id="cb115-5"><a href="ChapSimulation.html#cb115-5" aria-hidden="true" tabindex="-1"></a><span class="fu">plot</span>(vx, vy, <span class="at">type =</span> <span class="st">&quot;l&quot;</span>, <span class="at">xlab =</span> <span class="st">&quot;x&quot;</span>, <span class="at">ylab =</span> <span class="st">&quot;Cumulative Distribution&quot;</span>, <span class="at">main =</span> <span class="st">&quot;Empirical cdf&quot;</span>)</span>
+<span id="cb115-6"><a href="ChapSimulation.html#cb115-6" aria-hidden="true" tabindex="-1"></a><span class="fu">lines</span>(u, <span class="fu">plnorm</span>(u, <span class="dv">1</span>, <span class="fl">0.4</span>), <span class="at">col =</span> <span class="st">&quot;red&quot;</span>, <span class="at">lty =</span> <span class="dv">2</span>)</span></code></pre></div>
+</div>
 <p>Recall that the Kolmogorov-Smirnov statistic equals the largest discrepancy between the empirical and the hypothesized distribution. This is <span class="math inline">\(\max_x |F_n(x)-F_0(x)|\)</span>, where <span class="math inline">\(F_0\)</span> is the hypothesized lognormal distribution. We can calculate this directly as:</p>
 <h5 style="text-align: center;">
 <a id="displayCode.KSTest.1.10.2" href="javascript:togglecode('toggleCode.KSTest.1.10.2','displayCode.KSTest.1.10.2');"><i><strong>Show R Code for a Direct Calculation of the KS Statistic</strong></i></a>
 </h5>
 <div id="toggleCode.KSTest.1.10.2" style="display: none">
-<div class="sourceCode" id="cb114"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb114-1"><a href="ChapSimulation.html#cb114-1" aria-hidden="true" tabindex="-1"></a><span class="co"># test statistic</span></span>
-<span id="cb114-2"><a href="ChapSimulation.html#cb114-2" aria-hidden="true" tabindex="-1"></a>D <span class="ot">&lt;-</span> <span class="cf">function</span>(data, F0) {</span>
-<span id="cb114-3"><a href="ChapSimulation.html#cb114-3" aria-hidden="true" tabindex="-1"></a>    F <span class="ot">&lt;-</span> <span class="fu">Vectorize</span>(<span class="cf">function</span>(x) <span class="fu">mean</span>((data <span class="sc">&lt;=</span> x)))</span>
-<span id="cb114-4"><a href="ChapSimulation.html#cb114-4" aria-hidden="true" tabindex="-1"></a>    n <span class="ot">&lt;-</span> <span class="fu">length</span>(data)</span>
-<span id="cb114-5"><a href="ChapSimulation.html#cb114-5" aria-hidden="true" tabindex="-1"></a>    x <span class="ot">&lt;-</span> <span class="fu">sort</span>(data)</span>
-<span id="cb114-6"><a href="ChapSimulation.html#cb114-6" aria-hidden="true" tabindex="-1"></a>    d1 <span class="ot">=</span> <span class="fu">abs</span>(<span class="fu">F</span>(x <span class="sc">+</span> <span class="fl">0.000001</span>) <span class="sc">-</span> <span class="fu">F0</span>(x <span class="sc">+</span> <span class="fl">0.000001</span>))</span>
-<span id="cb114-7"><a href="ChapSimulation.html#cb114-7" aria-hidden="true" tabindex="-1"></a>    d2 <span class="ot">=</span> <span class="fu">abs</span>(<span class="fu">F</span>(x <span class="sc">-</span> <span class="fl">0.000001</span>) <span class="sc">-</span> <span class="fu">F0</span>(x <span class="sc">-</span> <span class="fl">0.000001</span>))</span>
-<span id="cb114-8"><a href="ChapSimulation.html#cb114-8" aria-hidden="true" tabindex="-1"></a>    <span class="fu">return</span>(<span class="fu">max</span>(<span class="fu">c</span>(d1, d2)))</span>
-<span id="cb114-9"><a href="ChapSimulation.html#cb114-9" aria-hidden="true" tabindex="-1"></a>}</span>
-<span id="cb114-10"><a href="ChapSimulation.html#cb114-10" aria-hidden="true" tabindex="-1"></a><span class="fu">D</span>(x, <span class="cf">function</span>(x) <span class="fu">plnorm</span>(x, <span class="dv">1</span>, <span class="fl">0.4</span>))</span></code></pre></div>
-<pre><code>[1] 0.09703627</code></pre>
+<div class="sourceCode" id="cb116"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb116-1"><a href="ChapSimulation.html#cb116-1" aria-hidden="true" tabindex="-1"></a><span class="co"># test statistic</span></span>
+<span id="cb116-2"><a href="ChapSimulation.html#cb116-2" aria-hidden="true" tabindex="-1"></a>D <span class="ot">&lt;-</span> <span class="cf">function</span>(data, F0) {</span>
+<span id="cb116-3"><a href="ChapSimulation.html#cb116-3" aria-hidden="true" tabindex="-1"></a>    F <span class="ot">&lt;-</span> <span class="fu">Vectorize</span>(<span class="cf">function</span>(x) <span class="fu">mean</span>((data <span class="sc">&lt;=</span> x)))</span>
+<span id="cb116-4"><a href="ChapSimulation.html#cb116-4" aria-hidden="true" tabindex="-1"></a>    n <span class="ot">&lt;-</span> <span class="fu">length</span>(data)</span>
+<span id="cb116-5"><a href="ChapSimulation.html#cb116-5" aria-hidden="true" tabindex="-1"></a>    x <span class="ot">&lt;-</span> data</span>
+<span id="cb116-6"><a href="ChapSimulation.html#cb116-6" aria-hidden="true" tabindex="-1"></a>    d1 <span class="ot">=</span> <span class="fu">abs</span>(<span class="fu">F</span>(x) <span class="sc">-</span> <span class="fu">F0</span>(x))</span>
+<span id="cb116-7"><a href="ChapSimulation.html#cb116-7" aria-hidden="true" tabindex="-1"></a>    d2 <span class="ot">=</span> <span class="fu">abs</span>(<span class="fu">F</span>(x) <span class="sc">-</span> <span class="dv">1</span><span class="sc">/</span>n <span class="sc">-</span> <span class="fu">F0</span>(x))</span>
+<span id="cb116-8"><a href="ChapSimulation.html#cb116-8" aria-hidden="true" tabindex="-1"></a>    <span class="fu">return</span>(<span class="fu">max</span>(<span class="fu">c</span>(d1, d2)))</span>
+<span id="cb116-9"><a href="ChapSimulation.html#cb116-9" aria-hidden="true" tabindex="-1"></a>}</span>
+<span id="cb116-10"><a href="ChapSimulation.html#cb116-10" aria-hidden="true" tabindex="-1"></a><span class="fu">D</span>(x, <span class="cf">function</span>(x) <span class="fu">plnorm</span>(x, <span class="dv">1</span>, <span class="fl">0.4</span>))</span></code></pre></div>
+<pre><code>[1] 0.0970366599</code></pre>
 </div>
 <p>Fortunately, for the lognormal distribution, <code>R</code> has built-in tests that allow us to determine this without complex programming:</p>
-<div class="sourceCode" id="cb116"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb116-1"><a href="ChapSimulation.html#cb116-1" aria-hidden="true" tabindex="-1"></a><span class="fu">ks.test</span>(x, plnorm, <span class="at">mean =</span> <span class="dv">1</span>, <span class="at">sd =</span> <span class="fl">0.4</span>)</span></code></pre></div>
+<div class="sourceCode" id="cb118"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb118-1"><a href="ChapSimulation.html#cb118-1" aria-hidden="true" tabindex="-1"></a><span class="fu">ks.test</span>(x, plnorm, <span class="at">mean =</span> <span class="dv">1</span>, <span class="at">sd =</span> <span class="fl">0.4</span>)</span></code></pre></div>
 <pre><code>
     Asymptotic one-sample Kolmogorov-Smirnov test
 
 data:  x
-D = 0.097037, p-value = 0.3031
+D = 0.09703666, p-value = 0.303148
 alternative hypothesis: two-sided</code></pre>
 <p>However, for many distributions of actuarial interest, pre-built programs are not available. We can use simulation to test the relevance of the test statistic. Specifically, to compute the <span class="math inline">\(p\)</span>-value, let us generate thousands of random samples from a <span class="math inline">\(LN(1,0.4)\)</span> distribution (with the same size), and compute empirically the distribution of the statistic,</p>
 <h5 style="text-align: center;">
 <a id="displayCode.KSTest.1.10.3" href="javascript:togglecode('toggleCode.KSTest.1.10.3','displayCode.KSTest.1.10.3');"><i><strong>Show R Code for the Simulation Distribution of the KS Statistic</strong></i></a>
 </h5>
 <div id="toggleCode.KSTest.1.10.3" style="display: none">
-<div class="sourceCode" id="cb118"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb118-1"><a href="ChapSimulation.html#cb118-1" aria-hidden="true" tabindex="-1"></a>ns <span class="ot">&lt;-</span> <span class="dv">10000</span></span>
-<span id="cb118-2"><a href="ChapSimulation.html#cb118-2" aria-hidden="true" tabindex="-1"></a>d_KS <span class="ot">&lt;-</span> <span class="fu">rep</span>(<span class="cn">NA</span>, ns)</span>
-<span id="cb118-3"><a href="ChapSimulation.html#cb118-3" aria-hidden="true" tabindex="-1"></a><span class="co"># compute the test statistics for a large (ns) number of simulated samples</span></span>
-<span id="cb118-4"><a href="ChapSimulation.html#cb118-4" aria-hidden="true" tabindex="-1"></a><span class="cf">for</span> (s <span class="cf">in</span> <span class="dv">1</span><span class="sc">:</span>ns) d_KS[s] <span class="ot">&lt;-</span> <span class="fu">D</span>(<span class="fu">rlnorm</span>(n, <span class="dv">1</span>, <span class="fl">0.4</span>), <span class="cf">function</span>(x) <span class="fu">plnorm</span>(x, <span class="dv">1</span>, <span class="fl">0.4</span>))</span>
-<span id="cb118-5"><a href="ChapSimulation.html#cb118-5" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb118-6"><a href="ChapSimulation.html#cb118-6" aria-hidden="true" tabindex="-1"></a><span class="fu">mean</span>(d_KS <span class="sc">&gt;</span> <span class="fu">D</span>(x, <span class="cf">function</span>(x) <span class="fu">plnorm</span>(x, <span class="dv">1</span>, <span class="fl">0.4</span>)))</span></code></pre></div>
+<div class="sourceCode" id="cb120"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb120-1"><a href="ChapSimulation.html#cb120-1" aria-hidden="true" tabindex="-1"></a>ns <span class="ot">&lt;-</span> <span class="dv">10000</span></span>
+<span id="cb120-2"><a href="ChapSimulation.html#cb120-2" aria-hidden="true" tabindex="-1"></a>d_KS <span class="ot">&lt;-</span> <span class="fu">rep</span>(<span class="cn">NA</span>, ns)</span>
+<span id="cb120-3"><a href="ChapSimulation.html#cb120-3" aria-hidden="true" tabindex="-1"></a><span class="co"># compute the test statistics for a large (ns) number of simulated samples</span></span>
+<span id="cb120-4"><a href="ChapSimulation.html#cb120-4" aria-hidden="true" tabindex="-1"></a><span class="cf">for</span> (s <span class="cf">in</span> <span class="dv">1</span><span class="sc">:</span>ns) d_KS[s] <span class="ot">&lt;-</span> <span class="fu">D</span>(<span class="fu">rlnorm</span>(n, <span class="dv">1</span>, <span class="fl">0.4</span>), <span class="cf">function</span>(x) <span class="fu">plnorm</span>(x, <span class="dv">1</span>, <span class="fl">0.4</span>))</span>
+<span id="cb120-5"><a href="ChapSimulation.html#cb120-5" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb120-6"><a href="ChapSimulation.html#cb120-6" aria-hidden="true" tabindex="-1"></a><span class="fu">mean</span>(d_KS <span class="sc">&gt;</span> <span class="fu">D</span>(x, <span class="cf">function</span>(x) <span class="fu">plnorm</span>(x, <span class="dv">1</span>, <span class="fl">0.4</span>)))</span></code></pre></div>
 <pre><code>[1] 0.2843</code></pre>
 </div>
 
@@ -2199,7 +2220,7 @@ Figure 8.7: <strong>Simulated Distribution of the Kolmogorov-Smirnov Test Statis
 <div id="bootstrap-foundations" class="section level3 hasAnchor" number="8.3.1">
 <h3><span class="header-section-number">8.3.1</span> Bootstrap Foundations<a href="ChapSimulation.html#bootstrap-foundations" class="anchor-section" aria-label="Anchor link to header"></a></h3>
 <p>Simulation presented up to now is based on sampling from a <strong>known</strong> distribution. Section <a href="ChapSimulation.html#S:RandomNumGen">8.1</a> showed how to use simulation techniques to sample and compute quantities from known distributions. However, statistical science is dedicated to providing inferences about distributions that are <em>unknown</em>. We gather summary statistics based on this unknown population distribution. But how do we sample from an unknown distribution?</p>
-<p>Naturally, we cannot simulate draws from an unknown distribution but we can draw from a sample of observations. If the sample is a good representation from the population, then our simulated draws from the sample should well approximate the simulated draws from a population. The process of sampling from a sample is called <em>resampling</em> or <em>bootstrapping</em>. The term <a href="#" class="tooltip" style="color:green"><em>bootstrap</em><span style="font-size:8pt">A method of sampling with replacement from the original dataset to create additional simulated datasets of the same size as the original</span></a> comes from the phrase “pulling oneself up by one’s bootstraps” (Efron, 1979). With resampling, the original sample plays the role of the population and estimates from the sample play the role of true population parameters.</p>
+<p>Naturally, we cannot simulate draws from an unknown distribution but we can draw from a sample of observations. If the sample is a good representation from the population, then our simulated draws from the sample should well approximate the simulated draws from a population. The process of sampling from a sample is called <em>resampling</em> or <em>bootstrapping</em>. The term <a href="#" class="tooltip" style="color:green"><em>bootstrap</em><span style="font-size:8pt">A method of sampling with replacement from the original dataset to create additional simulated datasets of the same size as the original</span></a> comes from the phrase “pulling oneself up by one’s bootstraps” <span class="citation"><a href="#ref-efron1979bootstrap" role="doc-biblioref">Efron</a> (<a href="#ref-efron1979bootstrap" role="doc-biblioref">1979</a>)</span>. With resampling, the original sample plays the role of the population and estimates from the sample play the role of true population parameters.</p>
 <p>The resampling algorithm is the same as introduced in Section <a href="ChapSimulation.html#S:SimulationStatInference">8.2.3</a> except that now we use simulated draws from a sample. It is common to use <span class="math inline">\(\{X_1, \ldots, X_n\}\)</span> to denote the original sample and let <span class="math inline">\(\{X_1^*, \ldots, X_n^*\}\)</span> denote the simulated draws. We draw them with replacement so that the simulated draws will be independent from one another, the same assumption as with the original sample. For each sample, we also use <em>n</em> simulated draws, the same number as the original sample size. To distinguish this procedure from the simulation, it is common to use <em>B</em> (for bootstrap) to be the number of simulated samples. We could also write <span class="math inline">\(\{X_1^{(b)}, \ldots, X_n^{(b)}\}\)</span>, <span class="math inline">\(b=1,\ldots, B\)</span> to clarify this.</p>
 <p>There are two basic resampling methods, <em>model-free</em> and <em>model-based</em>, which are, respectively, as <em>nonparametric</em> and <em>parametric</em>. In the <a href="#" class="tooltip" style="color:green"><em>nonparametric approach</em><span style="font-size:8pt">A statistical method where no assumption is made about the distribution of the population</span></a>, no assumption is made about the distribution of the parent population. The simulated draws come from the empirical distribution function <span class="math inline">\(F_n(\cdot)\)</span>, so each draw comes from <span class="math inline">\(\{X_1, \ldots, X_n\}\)</span> with probability 1/<em>n</em>.</p>
 <p>In contrast, for the <a href="#" class="tooltip" style="color:green"><em>parametric approach</em><span style="font-size:8pt">A statistical method where a prior assumption is made about the distribution or model form</span></a>, we assume that we have knowledge of the distribution family <em>F</em>. The original sample <span class="math inline">\(X_1, \ldots, X_n\)</span> is used to estimate parameters of that family, say, <span class="math inline">\(\hat{\theta}\)</span>. Then, simulated draws are taken from the <span class="math inline">\(F(\hat{\theta})\)</span>. Section <a href="ChapSimulation.html#S:ParametricBootStrap">8.3.4</a> discusses this approach in further detail.</p>
@@ -2232,13 +2253,13 @@ Figure 8.9: <strong>Inverse of an Empirical Distribution Function</strong>
 <a id="displayCode.BootStrap.A" href="javascript:togglecode('toggleCode.BootStrap.A','displayCode.BootStrap.A');"><i><strong>Show R Code For Creating a Bootstrap Sample</strong></i></a>
 </h5>
 <div id="toggleCode.BootStrap.A" style="display: none">
-<div class="sourceCode" id="cb120"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb120-1"><a href="ChapSimulation.html#cb120-1" aria-hidden="true" tabindex="-1"></a><span class="fu">set.seed</span>(<span class="dv">1</span>)</span>
-<span id="cb120-2"><a href="ChapSimulation.html#cb120-2" aria-hidden="true" tabindex="-1"></a>n <span class="ot">&lt;-</span> <span class="dv">10</span></span>
-<span id="cb120-3"><a href="ChapSimulation.html#cb120-3" aria-hidden="true" tabindex="-1"></a>x <span class="ot">&lt;-</span> <span class="fu">rexp</span>(n, <span class="dv">1</span><span class="sc">/</span><span class="dv">6</span>)</span>
-<span id="cb120-4"><a href="ChapSimulation.html#cb120-4" aria-hidden="true" tabindex="-1"></a>m <span class="ot">&lt;-</span> <span class="dv">8</span></span>
-<span id="cb120-5"><a href="ChapSimulation.html#cb120-5" aria-hidden="true" tabindex="-1"></a>bootvalues <span class="ot">&lt;-</span> <span class="fu">sample</span>(x, <span class="at">size =</span> m, <span class="at">replace =</span> <span class="cn">TRUE</span>)</span></code></pre></div>
+<div class="sourceCode" id="cb122"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb122-1"><a href="ChapSimulation.html#cb122-1" aria-hidden="true" tabindex="-1"></a><span class="fu">set.seed</span>(<span class="dv">1</span>)</span>
+<span id="cb122-2"><a href="ChapSimulation.html#cb122-2" aria-hidden="true" tabindex="-1"></a>n <span class="ot">&lt;-</span> <span class="dv">10</span></span>
+<span id="cb122-3"><a href="ChapSimulation.html#cb122-3" aria-hidden="true" tabindex="-1"></a>x <span class="ot">&lt;-</span> <span class="fu">rexp</span>(n, <span class="dv">1</span><span class="sc">/</span><span class="dv">6</span>)</span>
+<span id="cb122-4"><a href="ChapSimulation.html#cb122-4" aria-hidden="true" tabindex="-1"></a>m <span class="ot">&lt;-</span> <span class="dv">10</span></span>
+<span id="cb122-5"><a href="ChapSimulation.html#cb122-5" aria-hidden="true" tabindex="-1"></a>bootvalues <span class="ot">&lt;-</span> <span class="fu">sample</span>(x, <span class="at">size =</span> m, <span class="at">replace =</span> <span class="cn">TRUE</span>)</span></code></pre></div>
 </div>
-<pre><code>[1] 2.6164 5.7394 5.7394 2.6164 2.6164 7.0899 0.8823 5.7394</code></pre>
+<pre><code> [1] 2.6164 5.7394 5.7394 2.6164 2.6164 7.0899 0.8823 5.7394 4.5311 0.8388</code></pre>
 <p>Observe that value 5.7394 was obtained three times.</p>
 </div>
 </div>
@@ -2277,32 +2298,33 @@ Figure 8.9: <strong>Inverse of an Empirical Distribution Function</strong>
 <a id="displayCode.LER8.2.1" href="javascript:togglecode('toggleCode.LER8.2.1','displayCode.LER8.2.1');"><i><strong>Show R Code For Bootstrap Estimates of LER</strong></i></a>
 </h5>
 <div id="toggleCode.LER8.2.1" style="display: none">
-<div class="sourceCode" id="cb122"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb122-1"><a href="ChapSimulation.html#cb122-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Example from Derrig et al</span></span>
-<span id="cb122-2"><a href="ChapSimulation.html#cb122-2" aria-hidden="true" tabindex="-1"></a>BIData <span class="ot">&lt;-</span> <span class="fu">read.csv</span>(<span class="st">&quot;Data/DerrigResampling.csv&quot;</span>, <span class="at">header =</span> T)</span>
-<span id="cb122-3"><a href="ChapSimulation.html#cb122-3" aria-hidden="true" tabindex="-1"></a>BIData<span class="sc">$</span>Censored <span class="ot">&lt;-</span> <span class="dv">1</span> <span class="sc">*</span> (BIData<span class="sc">$</span>AmountPaid <span class="sc">&gt;=</span> BIData<span class="sc">$</span>PolicyLimit)</span>
-<span id="cb122-4"><a href="ChapSimulation.html#cb122-4" aria-hidden="true" tabindex="-1"></a>BIDataUncensored <span class="ot">&lt;-</span> <span class="fu">subset</span>(BIData, Censored <span class="sc">==</span> <span class="dv">0</span>)</span>
-<span id="cb122-5"><a href="ChapSimulation.html#cb122-5" aria-hidden="true" tabindex="-1"></a>LER.boot <span class="ot">&lt;-</span> <span class="cf">function</span>(ded, data, indices) {</span>
-<span id="cb122-6"><a href="ChapSimulation.html#cb122-6" aria-hidden="true" tabindex="-1"></a>    resample.data <span class="ot">&lt;-</span> data[indices, ]</span>
-<span id="cb122-7"><a href="ChapSimulation.html#cb122-7" aria-hidden="true" tabindex="-1"></a>    sumClaims <span class="ot">&lt;-</span> <span class="fu">sum</span>(resample.data<span class="sc">$</span>AmountPaid)</span>
-<span id="cb122-8"><a href="ChapSimulation.html#cb122-8" aria-hidden="true" tabindex="-1"></a>    sumClaims_d <span class="ot">&lt;-</span> <span class="fu">sum</span>(<span class="fu">pmin</span>(resample.data<span class="sc">$</span>AmountPaid, ded))</span>
-<span id="cb122-9"><a href="ChapSimulation.html#cb122-9" aria-hidden="true" tabindex="-1"></a>    LER <span class="ot">&lt;-</span> sumClaims_d<span class="sc">/</span>sumClaims</span>
-<span id="cb122-10"><a href="ChapSimulation.html#cb122-10" aria-hidden="true" tabindex="-1"></a>    <span class="fu">return</span>(LER)</span>
-<span id="cb122-11"><a href="ChapSimulation.html#cb122-11" aria-hidden="true" tabindex="-1"></a>}</span>
-<span id="cb122-12"><a href="ChapSimulation.html#cb122-12" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb122-13"><a href="ChapSimulation.html#cb122-13" aria-hidden="true" tabindex="-1"></a><span class="do">## Derrig et al</span></span>
-<span id="cb122-14"><a href="ChapSimulation.html#cb122-14" aria-hidden="true" tabindex="-1"></a><span class="fu">set.seed</span>(<span class="dv">2019</span>)</span>
-<span id="cb122-15"><a href="ChapSimulation.html#cb122-15" aria-hidden="true" tabindex="-1"></a>dVec2 <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="dv">4000</span>, <span class="dv">5000</span>, <span class="dv">10500</span>, <span class="dv">11500</span>, <span class="dv">14000</span>, <span class="dv">18500</span>)</span>
-<span id="cb122-16"><a href="ChapSimulation.html#cb122-16" aria-hidden="true" tabindex="-1"></a>OutBoot <span class="ot">&lt;-</span> <span class="fu">matrix</span>(<span class="dv">0</span>, <span class="fu">length</span>(dVec2), <span class="dv">6</span>)</span>
-<span id="cb122-17"><a href="ChapSimulation.html#cb122-17" aria-hidden="true" tabindex="-1"></a><span class="cf">for</span> (i <span class="cf">in</span> <span class="dv">1</span><span class="sc">:</span><span class="fu">length</span>(dVec2)) {</span>
-<span id="cb122-18"><a href="ChapSimulation.html#cb122-18" aria-hidden="true" tabindex="-1"></a>    OutBoot[i, <span class="dv">1</span>] <span class="ot">&lt;-</span> dVec2[i]</span>
-<span id="cb122-19"><a href="ChapSimulation.html#cb122-19" aria-hidden="true" tabindex="-1"></a>    results <span class="ot">&lt;-</span> <span class="fu">boot</span>(<span class="at">data =</span> BIDataUncensored, <span class="at">statistic =</span> LER.boot, <span class="at">R =</span> <span class="dv">1000</span>, <span class="at">ded =</span> dVec2[i])</span>
-<span id="cb122-20"><a href="ChapSimulation.html#cb122-20" aria-hidden="true" tabindex="-1"></a>    OutBoot[i, <span class="dv">2</span>] <span class="ot">&lt;-</span> results<span class="sc">$</span>t0</span>
-<span id="cb122-21"><a href="ChapSimulation.html#cb122-21" aria-hidden="true" tabindex="-1"></a>    biasboot <span class="ot">&lt;-</span> <span class="fu">mean</span>(results<span class="sc">$</span>t) <span class="sc">-</span> results<span class="sc">$</span>t0 <span class="ot">-&gt;</span> OutBoot[i, <span class="dv">3</span>]</span>
-<span id="cb122-22"><a href="ChapSimulation.html#cb122-22" aria-hidden="true" tabindex="-1"></a>    sdboot <span class="ot">&lt;-</span> <span class="fu">sd</span>(results<span class="sc">$</span>t) <span class="ot">-&gt;</span> OutBoot[i, <span class="dv">4</span>]</span>
-<span id="cb122-23"><a href="ChapSimulation.html#cb122-23" aria-hidden="true" tabindex="-1"></a>    temp <span class="ot">&lt;-</span> <span class="fu">boot.ci</span>(results)</span>
-<span id="cb122-24"><a href="ChapSimulation.html#cb122-24" aria-hidden="true" tabindex="-1"></a>    OutBoot[i, <span class="dv">5</span>] <span class="ot">&lt;-</span> temp<span class="sc">$</span>normal[<span class="dv">2</span>]</span>
-<span id="cb122-25"><a href="ChapSimulation.html#cb122-25" aria-hidden="true" tabindex="-1"></a>    OutBoot[i, <span class="dv">6</span>] <span class="ot">&lt;-</span> temp<span class="sc">$</span>normal[<span class="dv">3</span>]</span>
-<span id="cb122-26"><a href="ChapSimulation.html#cb122-26" aria-hidden="true" tabindex="-1"></a>}</span></code></pre></div>
+<div class="sourceCode" id="cb124"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb124-1"><a href="ChapSimulation.html#cb124-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(boot)  <span class="co"># for boot(), boot.ci()</span></span>
+<span id="cb124-2"><a href="ChapSimulation.html#cb124-2" aria-hidden="true" tabindex="-1"></a><span class="co"># Example from Derrig et al</span></span>
+<span id="cb124-3"><a href="ChapSimulation.html#cb124-3" aria-hidden="true" tabindex="-1"></a>BIData <span class="ot">&lt;-</span> <span class="fu">read.csv</span>(<span class="st">&quot;Data/DerrigResampling.csv&quot;</span>, <span class="at">header =</span> T)</span>
+<span id="cb124-4"><a href="ChapSimulation.html#cb124-4" aria-hidden="true" tabindex="-1"></a>BIData<span class="sc">$</span>Censored <span class="ot">&lt;-</span> <span class="dv">1</span> <span class="sc">*</span> (BIData<span class="sc">$</span>AmountPaid <span class="sc">&gt;=</span> BIData<span class="sc">$</span>PolicyLimit)</span>
+<span id="cb124-5"><a href="ChapSimulation.html#cb124-5" aria-hidden="true" tabindex="-1"></a>BIDataUncensored <span class="ot">&lt;-</span> <span class="fu">subset</span>(BIData, Censored <span class="sc">==</span> <span class="dv">0</span>)</span>
+<span id="cb124-6"><a href="ChapSimulation.html#cb124-6" aria-hidden="true" tabindex="-1"></a>LER.boot <span class="ot">&lt;-</span> <span class="cf">function</span>(ded, data, indices) {</span>
+<span id="cb124-7"><a href="ChapSimulation.html#cb124-7" aria-hidden="true" tabindex="-1"></a>    resample.data <span class="ot">&lt;-</span> data[indices, ]</span>
+<span id="cb124-8"><a href="ChapSimulation.html#cb124-8" aria-hidden="true" tabindex="-1"></a>    sumClaims <span class="ot">&lt;-</span> <span class="fu">sum</span>(resample.data<span class="sc">$</span>AmountPaid)</span>
+<span id="cb124-9"><a href="ChapSimulation.html#cb124-9" aria-hidden="true" tabindex="-1"></a>    sumClaims_d <span class="ot">&lt;-</span> <span class="fu">sum</span>(<span class="fu">pmin</span>(resample.data<span class="sc">$</span>AmountPaid, ded))</span>
+<span id="cb124-10"><a href="ChapSimulation.html#cb124-10" aria-hidden="true" tabindex="-1"></a>    LER <span class="ot">&lt;-</span> sumClaims_d<span class="sc">/</span>sumClaims</span>
+<span id="cb124-11"><a href="ChapSimulation.html#cb124-11" aria-hidden="true" tabindex="-1"></a>    <span class="fu">return</span>(LER)</span>
+<span id="cb124-12"><a href="ChapSimulation.html#cb124-12" aria-hidden="true" tabindex="-1"></a>}</span>
+<span id="cb124-13"><a href="ChapSimulation.html#cb124-13" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb124-14"><a href="ChapSimulation.html#cb124-14" aria-hidden="true" tabindex="-1"></a><span class="do">## Derrig et al</span></span>
+<span id="cb124-15"><a href="ChapSimulation.html#cb124-15" aria-hidden="true" tabindex="-1"></a><span class="fu">set.seed</span>(<span class="dv">2019</span>)</span>
+<span id="cb124-16"><a href="ChapSimulation.html#cb124-16" aria-hidden="true" tabindex="-1"></a>dVec2 <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="dv">4000</span>, <span class="dv">5000</span>, <span class="dv">10500</span>, <span class="dv">11500</span>, <span class="dv">14000</span>, <span class="dv">18500</span>)</span>
+<span id="cb124-17"><a href="ChapSimulation.html#cb124-17" aria-hidden="true" tabindex="-1"></a>OutBoot <span class="ot">&lt;-</span> <span class="fu">matrix</span>(<span class="dv">0</span>, <span class="fu">length</span>(dVec2), <span class="dv">6</span>)</span>
+<span id="cb124-18"><a href="ChapSimulation.html#cb124-18" aria-hidden="true" tabindex="-1"></a><span class="cf">for</span> (i <span class="cf">in</span> <span class="dv">1</span><span class="sc">:</span><span class="fu">length</span>(dVec2)) {</span>
+<span id="cb124-19"><a href="ChapSimulation.html#cb124-19" aria-hidden="true" tabindex="-1"></a>    OutBoot[i, <span class="dv">1</span>] <span class="ot">&lt;-</span> dVec2[i]</span>
+<span id="cb124-20"><a href="ChapSimulation.html#cb124-20" aria-hidden="true" tabindex="-1"></a>    results <span class="ot">&lt;-</span> <span class="fu">boot</span>(<span class="at">data =</span> BIDataUncensored, <span class="at">statistic =</span> LER.boot, <span class="at">R =</span> <span class="dv">1000</span>, <span class="at">ded =</span> dVec2[i])</span>
+<span id="cb124-21"><a href="ChapSimulation.html#cb124-21" aria-hidden="true" tabindex="-1"></a>    OutBoot[i, <span class="dv">2</span>] <span class="ot">&lt;-</span> results<span class="sc">$</span>t0</span>
+<span id="cb124-22"><a href="ChapSimulation.html#cb124-22" aria-hidden="true" tabindex="-1"></a>    biasboot <span class="ot">&lt;-</span> <span class="fu">mean</span>(results<span class="sc">$</span>t) <span class="sc">-</span> results<span class="sc">$</span>t0 <span class="ot">-&gt;</span> OutBoot[i, <span class="dv">3</span>]</span>
+<span id="cb124-23"><a href="ChapSimulation.html#cb124-23" aria-hidden="true" tabindex="-1"></a>    sdboot <span class="ot">&lt;-</span> <span class="fu">sd</span>(results<span class="sc">$</span>t) <span class="ot">-&gt;</span> OutBoot[i, <span class="dv">4</span>]</span>
+<span id="cb124-24"><a href="ChapSimulation.html#cb124-24" aria-hidden="true" tabindex="-1"></a>    temp <span class="ot">&lt;-</span> <span class="fu">boot.ci</span>(results, <span class="at">type =</span> <span class="st">&quot;norm&quot;</span>)</span>
+<span id="cb124-25"><a href="ChapSimulation.html#cb124-25" aria-hidden="true" tabindex="-1"></a>    OutBoot[i, <span class="dv">5</span>] <span class="ot">&lt;-</span> temp<span class="sc">$</span>normal[<span class="dv">2</span>]</span>
+<span id="cb124-26"><a href="ChapSimulation.html#cb124-26" aria-hidden="true" tabindex="-1"></a>    OutBoot[i, <span class="dv">6</span>] <span class="ot">&lt;-</span> temp<span class="sc">$</span>normal[<span class="dv">3</span>]</span>
+<span id="cb124-27"><a href="ChapSimulation.html#cb124-27" aria-hidden="true" tabindex="-1"></a>}</span></code></pre></div>
 </div>
 <p><a id=tab:8.4></a></p>
 <p>Table 8.4. <strong>Bootstrap Estimates of LER at Selected Deductibles</strong></p>
@@ -2454,32 +2476,16 @@ Upper Normal 95% CI
 </table>
 <p>The bootstrap standard deviation gives a measure of precision. For one application of standard deviations, we can use the normal approximation to create a confidence interval. For example, the <code>R</code> function <code>boot.ci</code> produces the normal confidence intervals at 95%. These are produced by creating an interval of twice the length of 1.95994 bootstrap standard deviations, centered about the bias-corrected estimator (1.95994 is the 97.5th quantile of the standard normal distribution). For example, the lower normal 95% CI at <span class="math inline">\(d=14000\)</span> is <span class="math inline">\((0.97678-0.00016)- 1.95994*0.00687\)</span> <span class="math inline">\(= 0.96316\)</span>. We further discuss bootstrap confidence intervals in the next section.</p>
 <hr />
-<p><strong>Example 8.3.2. Estimating <span class="math inline">\(\exp(\mu)\)</span>.</strong>
+<p><strong>Example 8.3.2. Estimating <span class="math inline">\(\log(\mu)\)</span>.</strong>
 The bootstrap can be used to quantify the bias of an estimator, for instance. Consider here a sample <span class="math inline">\(\mathbf{x}=\{x_1,\cdots,x_n\}\)</span> that is <a href="#" class="tooltip" style="color:green"><em>iid</em><span style="font-size:8pt">Independent and identically distributed</span></a> with mean <span class="math inline">\(\mu\)</span>.</p>
-<div class="sourceCode" id="cb123"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb123-1"><a href="ChapSimulation.html#cb123-1" aria-hidden="true" tabindex="-1"></a>sample_x <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="fl">2.46</span>, <span class="fl">2.8</span>, <span class="fl">3.28</span>, <span class="fl">3.86</span>, <span class="fl">2.85</span>, <span class="fl">3.67</span>, <span class="fl">3.37</span>, <span class="fl">3.4</span>, <span class="fl">5.22</span>, <span class="fl">2.55</span>, <span class="fl">2.79</span>, <span class="fl">4.5</span>,</span>
-<span id="cb123-2"><a href="ChapSimulation.html#cb123-2" aria-hidden="true" tabindex="-1"></a>    <span class="fl">3.37</span>, <span class="fl">2.88</span>, <span class="fl">1.44</span>, <span class="fl">2.56</span>, <span class="dv">2</span>, <span class="fl">2.07</span>, <span class="fl">2.19</span>, <span class="fl">1.77</span>)</span></code></pre></div>
-<p>Suppose that the quantity of interest is <span class="math inline">\(\theta=\exp(\mu)\)</span>. A natural estimator would be <span class="math inline">\(\widehat{\theta}_1=\exp(\overline{x})\)</span>. This estimator is biased (due to the <a href="#" class="tooltip" style="color:green"><em>Jensen inequality</em><span style="font-size:8pt">For a convex function f(x), f(expected value of x) &lt;= expected value of f(x)</span></a>) but is asymptotically unbiased. For our sample, the estimate is as follows.</p>
-<div class="sourceCode" id="cb124"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb124-1"><a href="ChapSimulation.html#cb124-1" aria-hidden="true" tabindex="-1"></a>(theta_1 <span class="ot">&lt;-</span> <span class="fu">exp</span>(<span class="fu">mean</span>(sample_x)))</span></code></pre></div>
-<pre><code>[1] 19.13463</code></pre>
-<p>One can use the central limit theorem (<em>CLT</em>) to get a correction using
-<span class="math display">\[
-\overline{X}\approx\mathcal{N}\left(\mu,\frac{\sigma^2}{n}\right)\text{ where }\sigma^2=\text{Var}[X_i] ,
-\]</span>
-so that, with the normal moment generating function, we have
-<span class="math display">\[
-\mathrm{E}~\left[\exp(\overline{X})\right] \approx \exp\left(\mu+\frac{\sigma^2}{2n}\right) .
-\]</span>
-Hence, one can consider naturally
-<span class="math display">\[
-\widehat{\theta}_2=\exp\left(\overline{x}-\frac{\widehat{\sigma}^2}{2n}\right) .
-\]</span>
-For our data, this turns out to be as follows.</p>
-<div class="sourceCode" id="cb126"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb126-1"><a href="ChapSimulation.html#cb126-1" aria-hidden="true" tabindex="-1"></a>n <span class="ot">&lt;-</span> <span class="fu">length</span>(sample_x)</span>
-<span id="cb126-2"><a href="ChapSimulation.html#cb126-2" aria-hidden="true" tabindex="-1"></a>(theta_2 <span class="ot">&lt;-</span> <span class="fu">exp</span>(<span class="fu">mean</span>(sample_x) <span class="sc">-</span> <span class="fu">var</span>(sample_x)<span class="sc">/</span>(<span class="dv">2</span> <span class="sc">*</span> n)))</span></code></pre></div>
-<pre><code>[1] 18.73334</code></pre>
-<p>Another approach to use a bootstrap strategy: given a bootstrap sample, <span class="math inline">\(\mathbf{x}^{\ast}_{b}\)</span>, let <span class="math inline">\(\overline{x}^{\ast}_{b}\)</span> denote its mean, and set</p>
+<div class="sourceCode" id="cb125"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb125-1"><a href="ChapSimulation.html#cb125-1" aria-hidden="true" tabindex="-1"></a>sample_x <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="fl">2.46</span>, <span class="fl">2.8</span>, <span class="fl">3.28</span>, <span class="fl">3.86</span>, <span class="fl">2.85</span>, <span class="fl">3.67</span>, <span class="fl">3.37</span>, <span class="fl">3.4</span>, <span class="fl">5.22</span>, <span class="fl">2.55</span>, <span class="fl">2.79</span>, <span class="fl">4.5</span>,</span>
+<span id="cb125-2"><a href="ChapSimulation.html#cb125-2" aria-hidden="true" tabindex="-1"></a>    <span class="fl">3.37</span>, <span class="fl">2.88</span>, <span class="fl">1.44</span>, <span class="fl">2.56</span>, <span class="dv">2</span>, <span class="fl">2.07</span>, <span class="fl">2.19</span>, <span class="fl">1.77</span>)</span></code></pre></div>
+<p>Suppose that the quantity of interest is <span class="math inline">\(\theta=\log(\mu)\)</span>. A natural estimator would be <span class="math inline">\(\widehat{\theta}_1=\log(\overline{x})\)</span>. This estimator is biased (due to the <a href="#" class="tooltip" style="color:green"><em>Jensen inequality</em><span style="font-size:8pt">For a convex function f(x), f(expected value of x) &lt;= expected value of f(x)</span></a>) but is asymptotically unbiased. For our sample, the estimate is as follows.</p>
+<div class="sourceCode" id="cb126"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb126-1"><a href="ChapSimulation.html#cb126-1" aria-hidden="true" tabindex="-1"></a>(theta_1 <span class="ot">&lt;-</span> <span class="fu">log</span>(<span class="fu">mean</span>(sample_x)))</span></code></pre></div>
+<pre><code>[1] 1.08231352</code></pre>
+<p>One can use a bootstrap strategy to get a correction: given a bootstrap sample, <span class="math inline">\(\mathbf{x}^{\ast}_{b}\)</span>, let <span class="math inline">\(\overline{x}^{\ast}_{b}\)</span> denote its mean, and set</p>
 <p><span class="math display">\[
-\widehat{\theta}_3=\frac{1}{B}\sum_{b=1}^B\exp(\overline{x}^{\ast}_{b}) .
+\widehat{\theta}_2=\frac{1}{B}\sum_{b=1}^B\log(\overline{x}^{\ast}_{b}) .
 \]</span></p>
 <p>To implement this, we have the following code where we now use the function <code>boot</code> from the <code>R</code> package <code>boot</code>.</p>
 <h5 style="text-align: center;">
@@ -2487,9 +2493,10 @@ For our data, this turns out to be as follows.</p>
 </h5>
 <div id="toggleCode.bootstrapdisn.1" style="display: none">
 <div class="sourceCode" id="cb128"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb128-1"><a href="ChapSimulation.html#cb128-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(boot)</span>
-<span id="cb128-2"><a href="ChapSimulation.html#cb128-2" aria-hidden="true" tabindex="-1"></a>results <span class="ot">&lt;-</span> <span class="fu">boot</span>(<span class="at">data =</span> sample_x, <span class="at">statistic =</span> <span class="cf">function</span>(y, indices) <span class="fu">exp</span>(<span class="fu">mean</span>(y[indices])),</span>
-<span id="cb128-3"><a href="ChapSimulation.html#cb128-3" aria-hidden="true" tabindex="-1"></a>    <span class="at">R =</span> <span class="dv">1000</span>)</span>
-<span id="cb128-4"><a href="ChapSimulation.html#cb128-4" aria-hidden="true" tabindex="-1"></a>theta_3 <span class="ot">&lt;-</span> <span class="fu">mean</span>(results<span class="sc">$</span>t)</span></code></pre></div>
+<span id="cb128-2"><a href="ChapSimulation.html#cb128-2" aria-hidden="true" tabindex="-1"></a>results <span class="ot">&lt;-</span> <span class="fu">boot</span>(<span class="at">data =</span> sample_x, <span class="at">statistic =</span> <span class="cf">function</span>(y, indices) {</span>
+<span id="cb128-3"><a href="ChapSimulation.html#cb128-3" aria-hidden="true" tabindex="-1"></a>    <span class="fu">log</span>(<span class="fu">mean</span>(y[indices]))</span>
+<span id="cb128-4"><a href="ChapSimulation.html#cb128-4" aria-hidden="true" tabindex="-1"></a>}, <span class="at">R =</span> <span class="dv">1000</span>)</span>
+<span id="cb128-5"><a href="ChapSimulation.html#cb128-5" aria-hidden="true" tabindex="-1"></a>theta_2 <span class="ot">&lt;-</span> <span class="dv">2</span> <span class="sc">*</span> theta_1 <span class="sc">-</span> <span class="fu">mean</span>(results<span class="sc">$</span>t)</span></code></pre></div>
 </div>
 <p>Then, you can <code>plot(results)</code> and <code>print(results)</code> to see the following.</p>
 
@@ -2504,54 +2511,59 @@ ORDINARY NONPARAMETRIC BOOTSTRAP
 
 
 Call:
-boot(data = sample_x, statistic = function(y, indices) exp(mean(y[indices])), 
-    R = 1000)
+boot(data = sample_x, statistic = function(y, indices) {
+    log(mean(y[indices]))
+}, R = 1000)
 
 
 Bootstrap Statistics :
-    original    bias    std. error
-t1* 19.13463 0.2536551    3.909725</code></pre>
-<p>This results in three estimators, the raw estimator <span class="math inline">\(\widehat{\theta}_1=\)</span> 19.135, the <em>CLT</em> corrected <span class="math inline">\(\widehat{\theta}_2=\)</span> 18.733, and the bootstrap estimator <span class="math inline">\(\widehat{\theta}_3=\)</span> 19.388.</p>
-<p>How does this work with differing sample sizes? We now suppose that the <span class="math inline">\(x_i\)</span>’s are generated from a lognormal distribution <span class="math inline">\(LN(0,1.5^2)\)</span>, so that <span class="math inline">\(\mu = \exp(0 + 1.5^2/2) = 3.080217\)</span> and <span class="math inline">\(\theta = \exp(3.080217)\)</span> <span class="math inline">\(= 21.76312\)</span>. We use simulation to draw the sample sizes but then act as if they were a realized set of observations. See the following illustrative code.</p>
+      original         bias     std. error
+t1* 1.08231352 -0.00438957075 0.0669312212</code></pre>
+<p>This results in two estimators, the raw estimator <span class="math inline">\(\widehat{\theta}_1=\)</span> 1.082 and the bootstrap estimator <span class="math inline">\(\widehat{\theta}_2=\)</span> 1.087.</p>
+<p>How does this work with differing sample sizes? We now suppose that the <span class="math inline">\(x_i\)</span>’s are generated from a gamma distribution with shape parameter <span class="math inline">\(\alpha = 0.25\)</span> and scale parameter <span class="math inline">\(\theta = 12\)</span>. We use simulation to draw the sample sizes but then act as if they were a realized set of observations. See the following illustrative code.</p>
 <h5 style="text-align: center;">
 <a id="displayCode.bootstrapdisn.2" href="javascript:togglecode('toggleCode.bootstrapdisn.2','displayCode.bootstrapdisn.2');"><i><strong>Show R Code for Creating Bootstrap Samples</strong></i></a>
 </h5>
 <div id="toggleCode.bootstrapdisn.2" style="display: none">
 <div class="sourceCode" id="cb130"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb130-1"><a href="ChapSimulation.html#cb130-1" aria-hidden="true" tabindex="-1"></a>param <span class="ot">&lt;-</span> <span class="cf">function</span>(x) {</span>
 <span id="cb130-2"><a href="ChapSimulation.html#cb130-2" aria-hidden="true" tabindex="-1"></a>    n <span class="ot">&lt;-</span> <span class="fu">length</span>(x)</span>
-<span id="cb130-3"><a href="ChapSimulation.html#cb130-3" aria-hidden="true" tabindex="-1"></a>    theta_1 <span class="ot">&lt;-</span> <span class="fu">exp</span>(<span class="fu">mean</span>(x))</span>
-<span id="cb130-4"><a href="ChapSimulation.html#cb130-4" aria-hidden="true" tabindex="-1"></a>    theta_2 <span class="ot">&lt;-</span> <span class="fu">exp</span>(<span class="fu">mean</span>(x) <span class="sc">-</span> <span class="fu">var</span>(x)<span class="sc">/</span>(<span class="dv">2</span> <span class="sc">*</span> n))</span>
-<span id="cb130-5"><a href="ChapSimulation.html#cb130-5" aria-hidden="true" tabindex="-1"></a>    results <span class="ot">&lt;-</span> <span class="fu">boot</span>(<span class="at">data =</span> x, <span class="at">statistic =</span> <span class="cf">function</span>(y, indices) <span class="fu">exp</span>(<span class="fu">mean</span>(y[indices])),</span>
-<span id="cb130-6"><a href="ChapSimulation.html#cb130-6" aria-hidden="true" tabindex="-1"></a>        <span class="at">R =</span> <span class="dv">999</span>)</span>
-<span id="cb130-7"><a href="ChapSimulation.html#cb130-7" aria-hidden="true" tabindex="-1"></a>    theta_3 <span class="ot">&lt;-</span> <span class="fu">mean</span>(results<span class="sc">$</span>t)</span>
-<span id="cb130-8"><a href="ChapSimulation.html#cb130-8" aria-hidden="true" tabindex="-1"></a>    <span class="fu">return</span>(<span class="fu">c</span>(theta_1, theta_2, theta_3))</span>
+<span id="cb130-3"><a href="ChapSimulation.html#cb130-3" aria-hidden="true" tabindex="-1"></a>    theta_1 <span class="ot">&lt;-</span> <span class="fu">log</span>(<span class="fu">mean</span>(x))</span>
+<span id="cb130-4"><a href="ChapSimulation.html#cb130-4" aria-hidden="true" tabindex="-1"></a>    results <span class="ot">&lt;-</span> <span class="fu">boot</span>(<span class="at">data =</span> x, <span class="at">statistic =</span> <span class="cf">function</span>(y, indices) {</span>
+<span id="cb130-5"><a href="ChapSimulation.html#cb130-5" aria-hidden="true" tabindex="-1"></a>        <span class="fu">log</span>(<span class="fu">mean</span>(y[indices]))</span>
+<span id="cb130-6"><a href="ChapSimulation.html#cb130-6" aria-hidden="true" tabindex="-1"></a>    }, <span class="at">R =</span> <span class="dv">999</span>)</span>
+<span id="cb130-7"><a href="ChapSimulation.html#cb130-7" aria-hidden="true" tabindex="-1"></a>    theta_2 <span class="ot">&lt;-</span> <span class="dv">2</span> <span class="sc">*</span> theta_1 <span class="sc">-</span> <span class="fu">mean</span>(results<span class="sc">$</span>t)</span>
+<span id="cb130-8"><a href="ChapSimulation.html#cb130-8" aria-hidden="true" tabindex="-1"></a>    <span class="fu">return</span>(<span class="fu">c</span>(theta_1, theta_2))</span>
 <span id="cb130-9"><a href="ChapSimulation.html#cb130-9" aria-hidden="true" tabindex="-1"></a>}</span>
 <span id="cb130-10"><a href="ChapSimulation.html#cb130-10" aria-hidden="true" tabindex="-1"></a><span class="fu">set.seed</span>(<span class="dv">2074</span>)</span>
 <span id="cb130-11"><a href="ChapSimulation.html#cb130-11" aria-hidden="true" tabindex="-1"></a>ns <span class="ot">&lt;-</span> <span class="dv">200</span></span>
 <span id="cb130-12"><a href="ChapSimulation.html#cb130-12" aria-hidden="true" tabindex="-1"></a>est <span class="ot">&lt;-</span> <span class="cf">function</span>(n) {</span>
-<span id="cb130-13"><a href="ChapSimulation.html#cb130-13" aria-hidden="true" tabindex="-1"></a>    call_param <span class="ot">&lt;-</span> <span class="cf">function</span>(i) <span class="fu">param</span>(<span class="fu">rlnorm</span>(n, <span class="dv">0</span>, <span class="fl">1.5</span>))</span>
-<span id="cb130-14"><a href="ChapSimulation.html#cb130-14" aria-hidden="true" tabindex="-1"></a>    V <span class="ot">&lt;-</span> <span class="fu">Vectorize</span>(call_param)(<span class="dv">1</span><span class="sc">:</span>ns)</span>
-<span id="cb130-15"><a href="ChapSimulation.html#cb130-15" aria-hidden="true" tabindex="-1"></a>    <span class="fu">apply</span>(V, <span class="dv">1</span>, median)</span>
-<span id="cb130-16"><a href="ChapSimulation.html#cb130-16" aria-hidden="true" tabindex="-1"></a>}</span>
-<span id="cb130-17"><a href="ChapSimulation.html#cb130-17" aria-hidden="true" tabindex="-1"></a>VN <span class="ot">=</span> <span class="fu">seq</span>(<span class="dv">15</span>, <span class="dv">100</span>, <span class="at">by =</span> <span class="dv">5</span>)</span>
-<span id="cb130-18"><a href="ChapSimulation.html#cb130-18" aria-hidden="true" tabindex="-1"></a>Est <span class="ot">&lt;-</span> <span class="fu">Vectorize</span>(est)(VN)</span>
-<span id="cb130-19"><a href="ChapSimulation.html#cb130-19" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb130-20"><a href="ChapSimulation.html#cb130-20" aria-hidden="true" tabindex="-1"></a><span class="fu">save</span>(VN, Est, <span class="at">file =</span> <span class="st">&quot;../IntermediateCalcs/SimulationChapter/Section812Bootstrap.Rdata&quot;</span>)</span></code></pre></div>
+<span id="cb130-13"><a href="ChapSimulation.html#cb130-13" aria-hidden="true" tabindex="-1"></a>    call_param <span class="ot">&lt;-</span> <span class="cf">function</span>(i) {</span>
+<span id="cb130-14"><a href="ChapSimulation.html#cb130-14" aria-hidden="true" tabindex="-1"></a>        <span class="fu">param</span>(<span class="fu">rgamma</span>(n, <span class="at">shape =</span> <span class="fl">0.25</span>, <span class="at">scale =</span> <span class="dv">12</span>))</span>
+<span id="cb130-15"><a href="ChapSimulation.html#cb130-15" aria-hidden="true" tabindex="-1"></a>    }</span>
+<span id="cb130-16"><a href="ChapSimulation.html#cb130-16" aria-hidden="true" tabindex="-1"></a>    V <span class="ot">&lt;-</span> <span class="fu">Vectorize</span>(call_param)(<span class="dv">1</span><span class="sc">:</span>ns)</span>
+<span id="cb130-17"><a href="ChapSimulation.html#cb130-17" aria-hidden="true" tabindex="-1"></a>    <span class="fu">apply</span>(V, <span class="dv">1</span>, median)</span>
+<span id="cb130-18"><a href="ChapSimulation.html#cb130-18" aria-hidden="true" tabindex="-1"></a>}</span>
+<span id="cb130-19"><a href="ChapSimulation.html#cb130-19" aria-hidden="true" tabindex="-1"></a>VN <span class="ot">&lt;-</span> <span class="fu">seq</span>(<span class="dv">15</span>, <span class="dv">100</span>, <span class="at">by =</span> <span class="dv">5</span>)</span>
+<span id="cb130-20"><a href="ChapSimulation.html#cb130-20" aria-hidden="true" tabindex="-1"></a>Est <span class="ot">&lt;-</span> <span class="fu">Vectorize</span>(est)(VN)</span>
+<span id="cb130-21"><a href="ChapSimulation.html#cb130-21" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb130-22"><a href="ChapSimulation.html#cb130-22" aria-hidden="true" tabindex="-1"></a><span class="fu">save</span>(VN, Est, <span class="at">file =</span> <span class="st">&quot;../IntermediateCalcs/SimulationChapter/Section832Bootstrap.Rdata&quot;</span>)</span></code></pre></div>
 </div>
-<p>The results of the comparison are summarized in Figure <a href="ChapSimulation.html#fig:BootstrapCompare">8.11</a>. This figure shows that the bootstrap estimator is closer to the true parameter value for almost all sample sizes. The bias of all three estimators decreases as the sample size increases.</p>
+<p>The results of the comparison are summarized in Figure <a href="ChapSimulation.html#fig:BootstrapCompare">8.11</a>. This figure shows that the bootstrap estimator is closer to the true parameter value for many of the sample sizes. The bias of both estimators decreases as the sample size increases.</p>
 
 <div class="figure" style="text-align: center"><span style="display:block;" id="fig:BootstrapCompare"></span>
-<img src="LossDataAnalytics_files/figure-html/BootstrapCompare-1.png" alt="Comparison of Estimates. True value of the parameter is given by the solid horizontal line at 21.76." width="672" />
+<img src="LossDataAnalytics_files/figure-html/BootstrapCompare-1.png" alt="Comparison of Estimates. True value of the parameter is given by the solid horizontal line at \(\log(3) \approx 1.099\)." width="672" />
 <p class="caption">
-Figure 8.11: <strong>Comparison of Estimates.</strong> True value of the parameter is given by the solid horizontal line at 21.76.
+Figure 8.11: <strong>Comparison of Estimates.</strong> True value of the parameter is given by the solid horizontal line at <span class="math inline">\(\log(3) \approx 1.099\)</span>.
 </p>
 </div>
+<hr />
+<p>Although successful in this example, we remark that the bootstrap bias adjusted estimator is generally not used in practice because the bias adjustment introduces extra variability into the estimator. Instead, the bias estimate provides information as to whether or not the estimate contains bias; this information gives additional information about the reliability of the estimate.</p>
 </div>
 <div id="confidence-intervals" class="section level3 hasAnchor" number="8.3.3">
 <h3><span class="header-section-number">8.3.3</span> Confidence Intervals<a href="ChapSimulation.html#confidence-intervals" class="anchor-section" aria-label="Anchor link to header"></a></h3>
 <p>The bootstrap procedure generates <em>B</em> replicates <span class="math inline">\(\hat{\theta}_1^*, \ldots,\hat{\theta}_B^*\)</span> of the estimator <span class="math inline">\(\hat{\theta}\)</span>. In <a href="../docs/ChapSimulation.html#Ex:83.1">Example 8.3.1</a>, we saw how to use standard normal approximations to create a confidence interval for parameters of interest. However, given that a major point is to use bootstrapping to avoid relying on assumptions of approximate normality, it is not surprising that there are alternative confidence intervals available.</p>
 <p>For an estimator <span class="math inline">\(\hat{\theta}\)</span>, the <em>basic</em> bootstrap confidence interval is</p>
-<p><span class="math display" id="eq:basicBootCI">\[\begin{equation}
+<p><span class="math display" id="eq:basicBootCI">\[\begin{equation} 
   \left(2 \hat{\theta} - q_U, 2 \hat{\theta} - q_L \right) ,
 \tag{8.2}
 \end{equation}\]</span></p>
@@ -2569,7 +2581,7 @@ ES_{0.95}[X] = \mathrm{E}[X | X &gt; F^{-1}(0.95)] .
 \]</span></p>
 <p>This measure is called the <a href="#" class="tooltip" style="color:green"><em>expected shortfall</em><span style="font-size:8pt">The average value at risk</span></a>. In this formulation, it is the expected value of <span class="math inline">\(X\)</span> conditional on <span class="math inline">\(X\)</span> exceeding the 95th percentile which is also sometimes known as the <em>conditional value at risk</em>. Section <a href="ChapPortMgt.html#S:Tails">13.2</a> explains how quantiles and the expected shortfall are the two most important examples of so-called <em>risk measures</em>. For now, we will simply think of these as measures that we wish to estimate. For the percentile, we use the nonparametric estimator <span class="math inline">\(F^{-1}_n(0.95)\)</span> defined in Section <a href="ChapSeverity.html#S:MS:QuantileEstimator">4.4.1.3</a>. For the expected shortfall, we use the plug-in principle to define the nonparametric estimator</p>
 <p><span class="math display">\[
-ES_{n,0.95}[X] = \frac{\sum_{i=1}^n X_i I(X_i &gt; F^{-1}_n(0.95))}{\sum_{i=1}^n I(X_i &gt; F^{-1}_n(0.95))} ~.
+ES_{n,0.95}[X] = \frac{\sum_{i=1}^n X_i I[X_i &gt; F^{-1}_n(0.95)]}{\sum_{i=1}^n I[X_i &gt; F^{-1}_n(0.95)]} ~.
 \]</span></p>
 <p>In this expression, the denominator counts the number of observations that exceed the 95th percentile <span class="math inline">\(F^{-1}_n(0.95)\)</span>. The numerator adds up losses for those observations that exceed <span class="math inline">\(F^{-1}_n(0.95)\)</span>. <a href="#tab:8.5">Table 8.5</a> summarizes the estimator for selected fractions.</p>
 <h5 style="text-align: center;">
@@ -2810,12 +2822,12 @@ and 7000, respectively. <a href="#tab:8.5">Table 8.5</a> also shows bootstrap es
 <a id="displayCode.bootstrapquantiles.2" href="javascript:togglecode('toggleCode.bootstrapquantiles.2','displayCode.bootstrapquantiles.2');"><i><strong>Show R Code for Creating ES Bootstrap Samples</strong></i></a>
 </h5>
 <div id="toggleCode.bootstrapquantiles.2" style="display: none">
-<div class="sourceCode" id="cb132"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb132-1"><a href="ChapSimulation.html#cb132-1" aria-hidden="true" tabindex="-1"></a>CTE.boot <span class="ot">&lt;-</span> <span class="cf">function</span>(data, indices, RiskLevel) {</span>
+<div class="sourceCode" id="cb132"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb132-1"><a href="ChapSimulation.html#cb132-1" aria-hidden="true" tabindex="-1"></a>ES.boot <span class="ot">&lt;-</span> <span class="cf">function</span>(data, indices, RiskLevel) {</span>
 <span id="cb132-2"><a href="ChapSimulation.html#cb132-2" aria-hidden="true" tabindex="-1"></a>    resample.data <span class="ot">&lt;-</span> data[indices, ]</span>
 <span id="cb132-3"><a href="ChapSimulation.html#cb132-3" aria-hidden="true" tabindex="-1"></a>    X <span class="ot">&lt;-</span> resample.data<span class="sc">$</span>AmountPaid</span>
 <span id="cb132-4"><a href="ChapSimulation.html#cb132-4" aria-hidden="true" tabindex="-1"></a>    cutoff <span class="ot">&lt;-</span> <span class="fu">quantile</span>(X, RiskLevel)</span>
-<span id="cb132-5"><a href="ChapSimulation.html#cb132-5" aria-hidden="true" tabindex="-1"></a>    CTE <span class="ot">&lt;-</span> <span class="fu">sum</span>(X <span class="sc">*</span> (X <span class="sc">&gt;</span> cutoff))<span class="sc">/</span><span class="fu">sum</span>(X <span class="sc">&gt;</span> cutoff)</span>
-<span id="cb132-6"><a href="ChapSimulation.html#cb132-6" aria-hidden="true" tabindex="-1"></a>    <span class="fu">return</span>(CTE)</span>
+<span id="cb132-5"><a href="ChapSimulation.html#cb132-5" aria-hidden="true" tabindex="-1"></a>    ES <span class="ot">&lt;-</span> <span class="fu">sum</span>(X <span class="sc">*</span> (X <span class="sc">&gt;</span> cutoff))<span class="sc">/</span><span class="fu">sum</span>(X <span class="sc">&gt;</span> cutoff)</span>
+<span id="cb132-6"><a href="ChapSimulation.html#cb132-6" aria-hidden="true" tabindex="-1"></a>    <span class="fu">return</span>(ES)</span>
 <span id="cb132-7"><a href="ChapSimulation.html#cb132-7" aria-hidden="true" tabindex="-1"></a>}</span>
 <span id="cb132-8"><a href="ChapSimulation.html#cb132-8" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb132-9"><a href="ChapSimulation.html#cb132-9" aria-hidden="true" tabindex="-1"></a><span class="fu">set.seed</span>(<span class="dv">2017</span>)</span>
@@ -2823,7 +2835,7 @@ and 7000, respectively. <a href="#tab:8.5">Table 8.5</a> also shows bootstrap es
 <span id="cb132-11"><a href="ChapSimulation.html#cb132-11" aria-hidden="true" tabindex="-1"></a>OutBoot1 <span class="ot">&lt;-</span> <span class="fu">matrix</span>(<span class="dv">0</span>, <span class="dv">5</span>, <span class="dv">10</span>)</span>
 <span id="cb132-12"><a href="ChapSimulation.html#cb132-12" aria-hidden="true" tabindex="-1"></a><span class="cf">for</span> (i <span class="cf">in</span> <span class="dv">1</span><span class="sc">:</span><span class="fu">length</span>(PercentVec)) {</span>
 <span id="cb132-13"><a href="ChapSimulation.html#cb132-13" aria-hidden="true" tabindex="-1"></a>    OutBoot1[i, <span class="dv">1</span>] <span class="ot">&lt;-</span> PercentVec[i]</span>
-<span id="cb132-14"><a href="ChapSimulation.html#cb132-14" aria-hidden="true" tabindex="-1"></a>    results <span class="ot">&lt;-</span> <span class="fu">boot</span>(<span class="at">data =</span> BIDataUncensored, <span class="at">statistic =</span> CTE.boot, <span class="at">R =</span> <span class="dv">1000</span>, <span class="at">RiskLevel =</span> PercentVec[i])</span>
+<span id="cb132-14"><a href="ChapSimulation.html#cb132-14" aria-hidden="true" tabindex="-1"></a>    results <span class="ot">&lt;-</span> <span class="fu">boot</span>(<span class="at">data =</span> BIDataUncensored, <span class="at">statistic =</span> ES.boot, <span class="at">R =</span> <span class="dv">1000</span>, <span class="at">RiskLevel =</span> PercentVec[i])</span>
 <span id="cb132-15"><a href="ChapSimulation.html#cb132-15" aria-hidden="true" tabindex="-1"></a>    OutBoot1[i, <span class="dv">2</span>] <span class="ot">&lt;-</span> results<span class="sc">$</span>t0</span>
 <span id="cb132-16"><a href="ChapSimulation.html#cb132-16" aria-hidden="true" tabindex="-1"></a>    OutBoot1[i, <span class="dv">3</span>] <span class="ot">&lt;-</span> <span class="fu">mean</span>(results<span class="sc">$</span>t) <span class="sc">-</span> results<span class="sc">$</span>t0</span>
 <span id="cb132-17"><a href="ChapSimulation.html#cb132-17" aria-hidden="true" tabindex="-1"></a>    OutBoot1[i, <span class="dv">4</span>] <span class="ot">&lt;-</span> <span class="fu">sd</span>(results<span class="sc">$</span>t)</span>
@@ -3049,9 +3061,9 @@ Upper Percentile 95% CI
 <div class="sourceCode" id="cb135"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb135-1"><a href="ChapSimulation.html#cb135-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(MASS)</span>
 <span id="cb135-2"><a href="ChapSimulation.html#cb135-2" aria-hidden="true" tabindex="-1"></a>fit <span class="ot">&lt;-</span> <span class="fu">fitdistr</span>(sample_x, dlnorm, <span class="fu">list</span>(<span class="at">meanlog =</span> <span class="dv">1</span>, <span class="at">sdlog =</span> <span class="dv">1</span>))</span>
 <span id="cb135-3"><a href="ChapSimulation.html#cb135-3" aria-hidden="true" tabindex="-1"></a>fit</span></code></pre></div>
-<pre><code>    meanlog       sdlog   
-  1.03630697   0.30593440 
- (0.06840901) (0.04837027)</code></pre>
+<pre><code>     meanlog         sdlog    
+  1.0363069735   0.3059343996 
+ (0.0684090114) (0.0483702729)</code></pre>
 <p>Then we draw from that distribution.</p>
 <div class="sourceCode" id="cb137"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb137-1"><a href="ChapSimulation.html#cb137-1" aria-hidden="true" tabindex="-1"></a>x <span class="ot">&lt;-</span> <span class="fu">rlnorm</span>(<span class="fu">length</span>(sample_x), <span class="at">meanlog =</span> fit<span class="sc">$</span>estimate[<span class="dv">1</span>], <span class="at">sdlog =</span> fit<span class="sc">$</span>estimate[<span class="dv">2</span>])</span></code></pre></div>
 <h5 style="text-align: center;">
@@ -3083,27 +3095,28 @@ Figure 8.12: <strong>Comparison of Nonparametric and Parametric Bootstrap Distri
 <div id="toggleCode.KMCode.1" style="display: none">
 <div class="sourceCode" id="cb139"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb139-1"><a href="ChapSimulation.html#cb139-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Example from Derrig et al</span></span>
 <span id="cb139-2"><a href="ChapSimulation.html#cb139-2" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(survival)  <span class="co"># for Surv(), survfit()</span></span>
-<span id="cb139-3"><a href="ChapSimulation.html#cb139-3" aria-hidden="true" tabindex="-1"></a>BIData<span class="sc">$</span>UnCensored <span class="ot">&lt;-</span> <span class="dv">1</span> <span class="sc">*</span> (BIData<span class="sc">$</span>AmountPaid <span class="sc">&lt;</span> BIData<span class="sc">$</span>PolicyLimit)</span>
-<span id="cb139-4"><a href="ChapSimulation.html#cb139-4" aria-hidden="true" tabindex="-1"></a><span class="do">## KM estimate</span></span>
-<span id="cb139-5"><a href="ChapSimulation.html#cb139-5" aria-hidden="true" tabindex="-1"></a>KM0 <span class="ot">&lt;-</span> <span class="fu">survfit</span>(<span class="fu">Surv</span>(AmountPaid, UnCensored) <span class="sc">~</span> <span class="dv">1</span>, <span class="at">type =</span> <span class="st">&quot;kaplan-meier&quot;</span>, <span class="at">data =</span> BIData)</span>
-<span id="cb139-6"><a href="ChapSimulation.html#cb139-6" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb139-7"><a href="ChapSimulation.html#cb139-7" aria-hidden="true" tabindex="-1"></a><span class="fu">set.seed</span>(<span class="dv">2019</span>)</span>
-<span id="cb139-8"><a href="ChapSimulation.html#cb139-8" aria-hidden="true" tabindex="-1"></a>PercentVec <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="fl">0.5</span>, <span class="fl">0.8</span>, <span class="fl">0.9</span>, <span class="fl">0.95</span>, <span class="fl">0.98</span>)</span>
-<span id="cb139-9"><a href="ChapSimulation.html#cb139-9" aria-hidden="true" tabindex="-1"></a>OutBoot1 <span class="ot">&lt;-</span> <span class="fu">matrix</span>(<span class="cn">NA</span>, <span class="dv">5</span>, <span class="dv">6</span>)</span>
-<span id="cb139-10"><a href="ChapSimulation.html#cb139-10" aria-hidden="true" tabindex="-1"></a>KM.survobj <span class="ot">&lt;-</span> <span class="fu">Surv</span>(BIData<span class="sc">$</span>AmountPaid, BIData<span class="sc">$</span>UnCensored)</span>
-<span id="cb139-11"><a href="ChapSimulation.html#cb139-11" aria-hidden="true" tabindex="-1"></a><span class="cf">for</span> (i <span class="cf">in</span> <span class="dv">1</span><span class="sc">:</span><span class="fu">length</span>(PercentVec)) {</span>
-<span id="cb139-12"><a href="ChapSimulation.html#cb139-12" aria-hidden="true" tabindex="-1"></a>    OutBoot1[i, <span class="dv">1</span>] <span class="ot">&lt;-</span> PercentVec[i]</span>
-<span id="cb139-13"><a href="ChapSimulation.html#cb139-13" aria-hidden="true" tabindex="-1"></a>    results <span class="ot">&lt;-</span> <span class="fu">bootkm</span>(KM.survobj, <span class="at">q =</span> <span class="dv">1</span> <span class="sc">-</span> PercentVec[i], <span class="at">B =</span> <span class="dv">1000</span>, <span class="at">pr =</span> <span class="cn">FALSE</span>)</span>
-<span id="cb139-14"><a href="ChapSimulation.html#cb139-14" aria-hidden="true" tabindex="-1"></a>    <span class="cf">if</span> (i <span class="sc">==</span> <span class="dv">1</span>) {</span>
-<span id="cb139-15"><a href="ChapSimulation.html#cb139-15" aria-hidden="true" tabindex="-1"></a>        bootreal <span class="ot">&lt;-</span> results</span>
-<span id="cb139-16"><a href="ChapSimulation.html#cb139-16" aria-hidden="true" tabindex="-1"></a>    }</span>
-<span id="cb139-17"><a href="ChapSimulation.html#cb139-17" aria-hidden="true" tabindex="-1"></a>    OutBoot1[i, <span class="dv">2</span>] <span class="ot">&lt;-</span> <span class="fu">quantile</span>(KM0, PercentVec[i])<span class="sc">$</span>quantile</span>
-<span id="cb139-18"><a href="ChapSimulation.html#cb139-18" aria-hidden="true" tabindex="-1"></a>    OutBoot1[i, <span class="dv">3</span>] <span class="ot">&lt;-</span> <span class="fu">mean</span>(results) <span class="sc">-</span> OutBoot1[i, <span class="dv">2</span>]</span>
-<span id="cb139-19"><a href="ChapSimulation.html#cb139-19" aria-hidden="true" tabindex="-1"></a>    OutBoot1[i, <span class="dv">4</span>] <span class="ot">&lt;-</span> <span class="fu">sd</span>(results)</span>
-<span id="cb139-20"><a href="ChapSimulation.html#cb139-20" aria-hidden="true" tabindex="-1"></a>    <span class="co"># temp &lt;- boot.ci(results, type = c(&#39;norm&#39;, &#39;basic&#39;,&#39;perc&#39;))</span></span>
-<span id="cb139-21"><a href="ChapSimulation.html#cb139-21" aria-hidden="true" tabindex="-1"></a>    OutBoot1[i, <span class="dv">5</span>] <span class="ot">&lt;-</span> <span class="dv">2</span> <span class="sc">*</span> OutBoot1[i, <span class="dv">2</span>] <span class="sc">-</span> <span class="fu">quantile</span>(results, <span class="fl">0.975</span>, <span class="at">type =</span> <span class="dv">6</span>)</span>
-<span id="cb139-22"><a href="ChapSimulation.html#cb139-22" aria-hidden="true" tabindex="-1"></a>    OutBoot1[i, <span class="dv">6</span>] <span class="ot">&lt;-</span> <span class="dv">2</span> <span class="sc">*</span> OutBoot1[i, <span class="dv">2</span>] <span class="sc">-</span> <span class="fu">quantile</span>(results, <span class="fl">0.025</span>, <span class="at">type =</span> <span class="dv">6</span>)</span>
-<span id="cb139-23"><a href="ChapSimulation.html#cb139-23" aria-hidden="true" tabindex="-1"></a>}</span></code></pre></div>
+<span id="cb139-3"><a href="ChapSimulation.html#cb139-3" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(Hmisc)  <span class="co"># for bootkm()</span></span>
+<span id="cb139-4"><a href="ChapSimulation.html#cb139-4" aria-hidden="true" tabindex="-1"></a>BIData<span class="sc">$</span>UnCensored <span class="ot">&lt;-</span> <span class="dv">1</span> <span class="sc">*</span> (BIData<span class="sc">$</span>AmountPaid <span class="sc">&lt;</span> BIData<span class="sc">$</span>PolicyLimit)</span>
+<span id="cb139-5"><a href="ChapSimulation.html#cb139-5" aria-hidden="true" tabindex="-1"></a><span class="do">## KM estimate</span></span>
+<span id="cb139-6"><a href="ChapSimulation.html#cb139-6" aria-hidden="true" tabindex="-1"></a>KM0 <span class="ot">&lt;-</span> <span class="fu">survfit</span>(<span class="fu">Surv</span>(AmountPaid, UnCensored) <span class="sc">~</span> <span class="dv">1</span>, <span class="at">type =</span> <span class="st">&quot;kaplan-meier&quot;</span>, <span class="at">data =</span> BIData)</span>
+<span id="cb139-7"><a href="ChapSimulation.html#cb139-7" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb139-8"><a href="ChapSimulation.html#cb139-8" aria-hidden="true" tabindex="-1"></a><span class="fu">set.seed</span>(<span class="dv">2019</span>)</span>
+<span id="cb139-9"><a href="ChapSimulation.html#cb139-9" aria-hidden="true" tabindex="-1"></a>PercentVec <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="fl">0.5</span>, <span class="fl">0.8</span>, <span class="fl">0.9</span>, <span class="fl">0.95</span>, <span class="fl">0.98</span>)</span>
+<span id="cb139-10"><a href="ChapSimulation.html#cb139-10" aria-hidden="true" tabindex="-1"></a>OutBoot1 <span class="ot">&lt;-</span> <span class="fu">matrix</span>(<span class="cn">NA</span>, <span class="dv">5</span>, <span class="dv">6</span>)</span>
+<span id="cb139-11"><a href="ChapSimulation.html#cb139-11" aria-hidden="true" tabindex="-1"></a>KM.survobj <span class="ot">&lt;-</span> <span class="fu">Surv</span>(BIData<span class="sc">$</span>AmountPaid, BIData<span class="sc">$</span>UnCensored)</span>
+<span id="cb139-12"><a href="ChapSimulation.html#cb139-12" aria-hidden="true" tabindex="-1"></a><span class="cf">for</span> (i <span class="cf">in</span> <span class="dv">1</span><span class="sc">:</span><span class="fu">length</span>(PercentVec)) {</span>
+<span id="cb139-13"><a href="ChapSimulation.html#cb139-13" aria-hidden="true" tabindex="-1"></a>    OutBoot1[i, <span class="dv">1</span>] <span class="ot">&lt;-</span> PercentVec[i]</span>
+<span id="cb139-14"><a href="ChapSimulation.html#cb139-14" aria-hidden="true" tabindex="-1"></a>    results <span class="ot">&lt;-</span> <span class="fu">bootkm</span>(KM.survobj, <span class="at">q =</span> <span class="dv">1</span> <span class="sc">-</span> PercentVec[i], <span class="at">B =</span> <span class="dv">1000</span>, <span class="at">pr =</span> <span class="cn">FALSE</span>)</span>
+<span id="cb139-15"><a href="ChapSimulation.html#cb139-15" aria-hidden="true" tabindex="-1"></a>    <span class="cf">if</span> (i <span class="sc">==</span> <span class="dv">1</span>) {</span>
+<span id="cb139-16"><a href="ChapSimulation.html#cb139-16" aria-hidden="true" tabindex="-1"></a>        bootreal <span class="ot">&lt;-</span> results</span>
+<span id="cb139-17"><a href="ChapSimulation.html#cb139-17" aria-hidden="true" tabindex="-1"></a>    }</span>
+<span id="cb139-18"><a href="ChapSimulation.html#cb139-18" aria-hidden="true" tabindex="-1"></a>    OutBoot1[i, <span class="dv">2</span>] <span class="ot">&lt;-</span> <span class="fu">quantile</span>(KM0, PercentVec[i])<span class="sc">$</span>quantile</span>
+<span id="cb139-19"><a href="ChapSimulation.html#cb139-19" aria-hidden="true" tabindex="-1"></a>    OutBoot1[i, <span class="dv">3</span>] <span class="ot">&lt;-</span> <span class="fu">mean</span>(results) <span class="sc">-</span> OutBoot1[i, <span class="dv">2</span>]</span>
+<span id="cb139-20"><a href="ChapSimulation.html#cb139-20" aria-hidden="true" tabindex="-1"></a>    OutBoot1[i, <span class="dv">4</span>] <span class="ot">&lt;-</span> <span class="fu">sd</span>(results)</span>
+<span id="cb139-21"><a href="ChapSimulation.html#cb139-21" aria-hidden="true" tabindex="-1"></a>    <span class="co"># temp &lt;- boot.ci(results, type = c(&#39;norm&#39;, &#39;basic&#39;,&#39;perc&#39;))</span></span>
+<span id="cb139-22"><a href="ChapSimulation.html#cb139-22" aria-hidden="true" tabindex="-1"></a>    OutBoot1[i, <span class="dv">5</span>] <span class="ot">&lt;-</span> <span class="dv">2</span> <span class="sc">*</span> OutBoot1[i, <span class="dv">2</span>] <span class="sc">-</span> <span class="fu">quantile</span>(results, <span class="fl">0.975</span>, <span class="at">type =</span> <span class="dv">6</span>)</span>
+<span id="cb139-23"><a href="ChapSimulation.html#cb139-23" aria-hidden="true" tabindex="-1"></a>    OutBoot1[i, <span class="dv">6</span>] <span class="ot">&lt;-</span> <span class="dv">2</span> <span class="sc">*</span> OutBoot1[i, <span class="dv">2</span>] <span class="sc">-</span> <span class="fu">quantile</span>(results, <span class="fl">0.025</span>, <span class="at">type =</span> <span class="dv">6</span>)</span>
+<span id="cb139-24"><a href="ChapSimulation.html#cb139-24" aria-hidden="true" tabindex="-1"></a>}</span></code></pre></div>
 </div>
 <p><a id=tab:8.7></a></p>
 <p>Table 8.7. <strong>Bootstrap Kaplan-Meier Estimates of Quantiles at Selected Fractions</strong></p>
@@ -3295,14 +3308,14 @@ Figure 8.13: <strong>Cross Validated Kolmogorov-Smirnov (KS) Statistics for the 
 </p>
 </div>
 </div>
-<div id="leave-one-out-cross-validation" class="section level3 hasAnchor" number="8.4.2">
-<h3><span class="header-section-number">8.4.2</span> Leave-One-Out Cross-Validation<a href="ChapSimulation.html#leave-one-out-cross-validation" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<div id="Sec:LOOCrossVal" class="section level3 hasAnchor" number="8.4.2">
+<h3><span class="header-section-number">8.4.2</span> Leave-One-Out Cross-Validation<a href="ChapSimulation.html#Sec:LOOCrossVal" class="anchor-section" aria-label="Anchor link to header"></a></h3>
 <p>A special case where <span class="math inline">\(k=n\)</span> is known as <a href="#" class="tooltip" style="color:green"><em>leave-one-out cross validation</em><span style="font-size:8pt">A special case of k-fold cross validation, where each single data point gets a turn in being the lone hold-out test data point, and n separate models in total are built and tested</span></a>. This case is historically prominent and is closely related to <a href="#" class="tooltip" style="color:green"><em>jackknife statistics</em><span style="font-size:8pt">To calculate an estimator, leave out each observation in turn, calculate the sample estimator statistic each time, and average over the n separate estimates</span></a>, a precursor of the bootstrap technique.</p>
-<p>Even though we present it as a special case of cross-validation, it is helpful to given an explicit definition. Consider a generic statistic <span class="math inline">\(\widehat{\theta}=t(\boldsymbol{x})\)</span> that is an estimator for a parameter of interest <span class="math inline">\(\theta\)</span>. The idea of the jackknife is to compute <span class="math inline">\(n\)</span> values <span class="math inline">\(\widehat{\theta}_{-i}=t(\boldsymbol{x}_{-i})\)</span>, where <span class="math inline">\(\boldsymbol{x}_{-i}\)</span> is the subsample of <span class="math inline">\(\boldsymbol{x}\)</span> with the <span class="math inline">\(i\)</span>-th value removed. The average of these values is denoted as
-<span class="math display">\[
+<p>Even though we present it as a special case of cross-validation, it is helpful to given an explicit definition. Consider a generic statistic <span class="math inline">\(\widehat{\theta}=t(\boldsymbol{x})\)</span> that is an estimator for a parameter of interest <span class="math inline">\(\theta\)</span>. The idea of the jackknife is to compute <span class="math inline">\(n\)</span> values <span class="math inline">\(\widehat{\theta}_{-i}=t(\boldsymbol{x}_{-i})\)</span>, where <span class="math inline">\(\boldsymbol{x}_{-i}\)</span> is the subsample of <span class="math inline">\(\boldsymbol{x}\)</span> with the <span class="math inline">\(i\)</span>-th value removed. The average of these values is denoted as</p>
+<p><span class="math display">\[
 \overline{\widehat{\theta}}_{(\cdot)}=\frac{1}{n}\sum_{i=1}^n \widehat{\theta}_{-i} .
-\]</span>
-These values can be used to create estimates of the bias of the statistic <span class="math inline">\(\widehat{\theta}\)</span></p>
+\]</span></p>
+<p>These values can be used to create estimates of the bias of the statistic <span class="math inline">\(\widehat{\theta}\)</span></p>
 <p><span class="math display" id="eq:Biasjack">\[\begin{equation}
 Bias_{jack} = (n-1) \left(\overline{\widehat{\theta}}_{(\cdot)} - \widehat{\theta}\right)
 \tag{8.3}
@@ -3318,11 +3331,15 @@ s_{jack} =\sqrt{\frac{n-1}{n}\sum_{i=1}^n \left(\widehat{\theta}_{-i} -\overline
 <p>Suppose that we are interested in the <a href="#" class="tooltip" style="color:green"><em>coefficient of variation</em><span style="font-size:8pt">Standard deviation divided by the mean of a distribution, to measure variability in terms of units of the mean</span></a>
 <span class="math inline">\(\theta = CV = \sqrt{\mathrm{Var~}[X]}/\mathrm{E~}[X]\)</span>.</p>
 <p>With this dataset, the estimator of the coefficient of variation turns out to be 0.31196. But how reliable is it? To answer this question, we can compute the jackknife estimates of bias and its standard deviation. The following code shows that the jackknife estimator of the bias is <span class="math inline">\(Bias_{jack} =\)</span> -0.00627 and the jackknife standard deviation is <span class="math inline">\(s_{jack} =\)</span> 0.01293.</p>
-<div class="sourceCode" id="cb142"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb142-1"><a href="ChapSimulation.html#cb142-1" aria-hidden="true" tabindex="-1"></a>CVar <span class="ot">&lt;-</span> <span class="cf">function</span>(x) <span class="fu">sqrt</span>(<span class="fu">var</span>(x))<span class="sc">/</span><span class="fu">mean</span>(x)</span>
-<span id="cb142-2"><a href="ChapSimulation.html#cb142-2" aria-hidden="true" tabindex="-1"></a>JackCVar <span class="ot">&lt;-</span> <span class="cf">function</span>(i) <span class="fu">sqrt</span>(<span class="fu">var</span>(sample_x[<span class="sc">-</span>i]))<span class="sc">/</span><span class="fu">mean</span>(sample_x[<span class="sc">-</span>i])</span>
-<span id="cb142-3"><a href="ChapSimulation.html#cb142-3" aria-hidden="true" tabindex="-1"></a>JackTheta <span class="ot">&lt;-</span> <span class="fu">Vectorize</span>(JackCVar)(<span class="dv">1</span><span class="sc">:</span><span class="fu">length</span>(sample_x))</span>
-<span id="cb142-4"><a href="ChapSimulation.html#cb142-4" aria-hidden="true" tabindex="-1"></a>BiasJack <span class="ot">&lt;-</span> (<span class="fu">length</span>(sample_x) <span class="sc">-</span> <span class="dv">1</span>) <span class="sc">*</span> (<span class="fu">mean</span>(JackTheta) <span class="sc">-</span> <span class="fu">CVar</span>(sample_x))</span>
-<span id="cb142-5"><a href="ChapSimulation.html#cb142-5" aria-hidden="true" tabindex="-1"></a><span class="fu">sd</span>(JackTheta)</span></code></pre></div>
+<div class="sourceCode" id="cb142"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb142-1"><a href="ChapSimulation.html#cb142-1" aria-hidden="true" tabindex="-1"></a>CVar <span class="ot">&lt;-</span> <span class="cf">function</span>(x) {</span>
+<span id="cb142-2"><a href="ChapSimulation.html#cb142-2" aria-hidden="true" tabindex="-1"></a>    <span class="fu">sqrt</span>(<span class="fu">var</span>(x))<span class="sc">/</span><span class="fu">mean</span>(x)</span>
+<span id="cb142-3"><a href="ChapSimulation.html#cb142-3" aria-hidden="true" tabindex="-1"></a>}</span>
+<span id="cb142-4"><a href="ChapSimulation.html#cb142-4" aria-hidden="true" tabindex="-1"></a>JackCVar <span class="ot">&lt;-</span> <span class="cf">function</span>(i) {</span>
+<span id="cb142-5"><a href="ChapSimulation.html#cb142-5" aria-hidden="true" tabindex="-1"></a>    <span class="fu">sqrt</span>(<span class="fu">var</span>(sample_x[<span class="sc">-</span>i]))<span class="sc">/</span><span class="fu">mean</span>(sample_x[<span class="sc">-</span>i])</span>
+<span id="cb142-6"><a href="ChapSimulation.html#cb142-6" aria-hidden="true" tabindex="-1"></a>}</span>
+<span id="cb142-7"><a href="ChapSimulation.html#cb142-7" aria-hidden="true" tabindex="-1"></a>JackTheta <span class="ot">&lt;-</span> <span class="fu">Vectorize</span>(JackCVar)(<span class="dv">1</span><span class="sc">:</span><span class="fu">length</span>(sample_x))</span>
+<span id="cb142-8"><a href="ChapSimulation.html#cb142-8" aria-hidden="true" tabindex="-1"></a>BiasJack <span class="ot">&lt;-</span> (<span class="fu">length</span>(sample_x) <span class="sc">-</span> <span class="dv">1</span>) <span class="sc">*</span> (<span class="fu">mean</span>(JackTheta) <span class="sc">-</span> <span class="fu">CVar</span>(sample_x))</span>
+<span id="cb142-9"><a href="ChapSimulation.html#cb142-9" aria-hidden="true" tabindex="-1"></a><span class="fu">sd</span>(JackTheta)</span></code></pre></div>
 <hr />
 <p><strong>Example 8.4.3. Bodily Injury Claims and Loss Elimination Ratios.</strong> In <a href="../docs/ChapSimulation.html#Ex:83.1">Example 8.3.1</a>, we showed how to compute bootstrap estimates of the bias and standard deviation for the loss elimination ratio using the Example 4.1.11 bodily injury claims data. We follow up now by providing comparable quantities using jackknife statistics.</p>
 <p><a href="#tab:8.8">Table 8.8</a> summarizes the results of the jackknife estimation. It shows that jackknife estimates of the bias and standard deviation of the loss elimination ratio <span class="math inline">\(\mathrm{E}~[\min(X,d)]/\mathrm{E}~[X]\)</span> are largely consistent with the bootstrap methodology. Moreover, one can use the standard deviations to construct normal based confidence intervals, centered around a bias-corrected estimator. For example, at <span class="math inline">\(d=14000\)</span>, we saw in Example 4.1.11 that the nonparametric estimate of <em>LER</em> is 0.97678. This has an estimated bias of 0.00010, resulting in the (jackknife) <em>bias-corrected</em> estimator 0.97688. The 95% confidence intervals are produced by creating an interval of twice the length of 1.96 jackknife standard deviations, centered about the bias-corrected estimator (1.96 is the approximate 97.5th quantile of the standard normal distribution).</p>
@@ -3347,26 +3364,28 @@ s_{jack} =\sqrt{\frac{n-1}{n}\sum_{i=1}^n \left(\widehat{\theta}_{-i} -\overline
 <span id="cb143-15"><a href="ChapSimulation.html#cb143-15" aria-hidden="true" tabindex="-1"></a>    LER <span class="ot">&lt;-</span> <span class="fu">sum</span>(<span class="fu">pmin</span>(x[<span class="sc">-</span>i], ded))<span class="sc">/</span><span class="fu">sum</span>(x[<span class="sc">-</span>i])</span>
 <span id="cb143-16"><a href="ChapSimulation.html#cb143-16" aria-hidden="true" tabindex="-1"></a>    <span class="fu">return</span>(LER)</span>
 <span id="cb143-17"><a href="ChapSimulation.html#cb143-17" aria-hidden="true" tabindex="-1"></a>}</span>
-<span id="cb143-18"><a href="ChapSimulation.html#cb143-18" aria-hidden="true" tabindex="-1"></a>LER <span class="ot">&lt;-</span> <span class="cf">function</span>(ded) <span class="fu">sum</span>(<span class="fu">pmin</span>(x, ded))<span class="sc">/</span><span class="fu">sum</span>(x)</span>
-<span id="cb143-19"><a href="ChapSimulation.html#cb143-19" aria-hidden="true" tabindex="-1"></a><span class="do">## Derrig et al</span></span>
-<span id="cb143-20"><a href="ChapSimulation.html#cb143-20" aria-hidden="true" tabindex="-1"></a><span class="fu">set.seed</span>(<span class="dv">2019</span>)</span>
-<span id="cb143-21"><a href="ChapSimulation.html#cb143-21" aria-hidden="true" tabindex="-1"></a>dVec2 <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="dv">4000</span>, <span class="dv">5000</span>, <span class="dv">10500</span>, <span class="dv">11500</span>, <span class="dv">14000</span>, <span class="dv">18500</span>)</span>
-<span id="cb143-22"><a href="ChapSimulation.html#cb143-22" aria-hidden="true" tabindex="-1"></a>OutJack <span class="ot">&lt;-</span> <span class="fu">matrix</span>(<span class="dv">0</span>, <span class="fu">length</span>(dVec2), <span class="dv">8</span>)</span>
-<span id="cb143-23"><a href="ChapSimulation.html#cb143-23" aria-hidden="true" tabindex="-1"></a><span class="cf">for</span> (j <span class="cf">in</span> <span class="dv">1</span><span class="sc">:</span><span class="fu">length</span>(dVec2)) {</span>
-<span id="cb143-24"><a href="ChapSimulation.html#cb143-24" aria-hidden="true" tabindex="-1"></a>    OutJack[j, <span class="dv">1</span>] <span class="ot">&lt;-</span> dVec2[j]</span>
-<span id="cb143-25"><a href="ChapSimulation.html#cb143-25" aria-hidden="true" tabindex="-1"></a>    results <span class="ot">&lt;-</span> <span class="fu">boot</span>(<span class="at">data =</span> BIDataUncensored, <span class="at">statistic =</span> LER.boot, <span class="at">R =</span> <span class="dv">1000</span>, <span class="at">ded =</span> dVec2[j])</span>
-<span id="cb143-26"><a href="ChapSimulation.html#cb143-26" aria-hidden="true" tabindex="-1"></a>    OutJack[j, <span class="dv">2</span>] <span class="ot">&lt;-</span> results<span class="sc">$</span>t0</span>
-<span id="cb143-27"><a href="ChapSimulation.html#cb143-27" aria-hidden="true" tabindex="-1"></a>    biasboot <span class="ot">&lt;-</span> <span class="fu">mean</span>(results<span class="sc">$</span>t) <span class="sc">-</span> results<span class="sc">$</span>t0 <span class="ot">-&gt;</span> OutJack[j, <span class="dv">3</span>]</span>
-<span id="cb143-28"><a href="ChapSimulation.html#cb143-28" aria-hidden="true" tabindex="-1"></a>    sdboot <span class="ot">&lt;-</span> <span class="fu">sd</span>(results<span class="sc">$</span>t) <span class="ot">-&gt;</span> OutJack[j, <span class="dv">4</span>]</span>
-<span id="cb143-29"><a href="ChapSimulation.html#cb143-29" aria-hidden="true" tabindex="-1"></a>    temp <span class="ot">&lt;-</span> <span class="fu">boot.ci</span>(results)</span>
-<span id="cb143-30"><a href="ChapSimulation.html#cb143-30" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb143-31"><a href="ChapSimulation.html#cb143-31" aria-hidden="true" tabindex="-1"></a>    LER.jack.ded <span class="ot">&lt;-</span> <span class="cf">function</span>(i) <span class="fu">LER.jack</span>(<span class="at">ded =</span> dVec2[j], i)</span>
-<span id="cb143-32"><a href="ChapSimulation.html#cb143-32" aria-hidden="true" tabindex="-1"></a>    JackTheta.ded <span class="ot">&lt;-</span> <span class="fu">Vectorize</span>(LER.jack.ded)(<span class="dv">1</span><span class="sc">:</span><span class="fu">length</span>(x))</span>
-<span id="cb143-33"><a href="ChapSimulation.html#cb143-33" aria-hidden="true" tabindex="-1"></a>    OutJack[j, <span class="dv">5</span>] <span class="ot">&lt;-</span> BiasJack.ded <span class="ot">&lt;-</span> (<span class="fu">length</span>(x) <span class="sc">-</span> <span class="dv">1</span>) <span class="sc">*</span> (<span class="fu">mean</span>(JackTheta.ded) <span class="sc">-</span> <span class="fu">LER</span>(<span class="at">ded =</span> dVec2[j]))</span>
-<span id="cb143-34"><a href="ChapSimulation.html#cb143-34" aria-hidden="true" tabindex="-1"></a>    OutJack[j, <span class="dv">6</span>] <span class="ot">&lt;-</span> <span class="fu">sd</span>(JackTheta.ded)</span>
-<span id="cb143-35"><a href="ChapSimulation.html#cb143-35" aria-hidden="true" tabindex="-1"></a>    OutJack[j, <span class="dv">7</span><span class="sc">:</span><span class="dv">8</span>] <span class="ot">&lt;-</span> <span class="fu">mean</span>(JackTheta.ded) <span class="sc">+</span> <span class="fu">qt</span>(<span class="fu">c</span>(<span class="fl">0.025</span>, <span class="fl">0.975</span>), <span class="fu">length</span>(x) <span class="sc">-</span> <span class="dv">1</span>) <span class="sc">*</span></span>
-<span id="cb143-36"><a href="ChapSimulation.html#cb143-36" aria-hidden="true" tabindex="-1"></a>        OutJack[j, <span class="dv">6</span>]</span>
-<span id="cb143-37"><a href="ChapSimulation.html#cb143-37" aria-hidden="true" tabindex="-1"></a>}</span></code></pre></div>
+<span id="cb143-18"><a href="ChapSimulation.html#cb143-18" aria-hidden="true" tabindex="-1"></a>LER <span class="ot">&lt;-</span> <span class="cf">function</span>(ded) {</span>
+<span id="cb143-19"><a href="ChapSimulation.html#cb143-19" aria-hidden="true" tabindex="-1"></a>    <span class="fu">sum</span>(<span class="fu">pmin</span>(x, ded))<span class="sc">/</span><span class="fu">sum</span>(x)</span>
+<span id="cb143-20"><a href="ChapSimulation.html#cb143-20" aria-hidden="true" tabindex="-1"></a>}</span>
+<span id="cb143-21"><a href="ChapSimulation.html#cb143-21" aria-hidden="true" tabindex="-1"></a><span class="do">## Derrig et al</span></span>
+<span id="cb143-22"><a href="ChapSimulation.html#cb143-22" aria-hidden="true" tabindex="-1"></a><span class="fu">set.seed</span>(<span class="dv">2019</span>)</span>
+<span id="cb143-23"><a href="ChapSimulation.html#cb143-23" aria-hidden="true" tabindex="-1"></a>dVec2 <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="dv">4000</span>, <span class="dv">5000</span>, <span class="dv">10500</span>, <span class="dv">11500</span>, <span class="dv">14000</span>, <span class="dv">18500</span>)</span>
+<span id="cb143-24"><a href="ChapSimulation.html#cb143-24" aria-hidden="true" tabindex="-1"></a>OutJack <span class="ot">&lt;-</span> <span class="fu">matrix</span>(<span class="dv">0</span>, <span class="fu">length</span>(dVec2), <span class="dv">8</span>)</span>
+<span id="cb143-25"><a href="ChapSimulation.html#cb143-25" aria-hidden="true" tabindex="-1"></a><span class="cf">for</span> (j <span class="cf">in</span> <span class="dv">1</span><span class="sc">:</span><span class="fu">length</span>(dVec2)) {</span>
+<span id="cb143-26"><a href="ChapSimulation.html#cb143-26" aria-hidden="true" tabindex="-1"></a>    OutJack[j, <span class="dv">1</span>] <span class="ot">&lt;-</span> dVec2[j]</span>
+<span id="cb143-27"><a href="ChapSimulation.html#cb143-27" aria-hidden="true" tabindex="-1"></a>    results <span class="ot">&lt;-</span> <span class="fu">boot</span>(<span class="at">data =</span> BIDataUncensored, <span class="at">statistic =</span> LER.boot, <span class="at">R =</span> <span class="dv">1000</span>, <span class="at">ded =</span> dVec2[j])</span>
+<span id="cb143-28"><a href="ChapSimulation.html#cb143-28" aria-hidden="true" tabindex="-1"></a>    OutJack[j, <span class="dv">2</span>] <span class="ot">&lt;-</span> results<span class="sc">$</span>t0</span>
+<span id="cb143-29"><a href="ChapSimulation.html#cb143-29" aria-hidden="true" tabindex="-1"></a>    biasboot <span class="ot">&lt;-</span> <span class="fu">mean</span>(results<span class="sc">$</span>t) <span class="sc">-</span> results<span class="sc">$</span>t0 <span class="ot">-&gt;</span> OutJack[j, <span class="dv">3</span>]</span>
+<span id="cb143-30"><a href="ChapSimulation.html#cb143-30" aria-hidden="true" tabindex="-1"></a>    sdboot <span class="ot">&lt;-</span> <span class="fu">sd</span>(results<span class="sc">$</span>t) <span class="ot">-&gt;</span> OutJack[j, <span class="dv">4</span>]</span>
+<span id="cb143-31"><a href="ChapSimulation.html#cb143-31" aria-hidden="true" tabindex="-1"></a>    temp <span class="ot">&lt;-</span> <span class="fu">boot.ci</span>(results, <span class="at">type =</span> <span class="st">&quot;norm&quot;</span>)</span>
+<span id="cb143-32"><a href="ChapSimulation.html#cb143-32" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb143-33"><a href="ChapSimulation.html#cb143-33" aria-hidden="true" tabindex="-1"></a>    LER.jack.ded <span class="ot">&lt;-</span> <span class="cf">function</span>(i) <span class="fu">LER.jack</span>(<span class="at">ded =</span> dVec2[j], i)</span>
+<span id="cb143-34"><a href="ChapSimulation.html#cb143-34" aria-hidden="true" tabindex="-1"></a>    JackTheta.ded <span class="ot">&lt;-</span> <span class="fu">Vectorize</span>(LER.jack.ded)(<span class="dv">1</span><span class="sc">:</span><span class="fu">length</span>(x))</span>
+<span id="cb143-35"><a href="ChapSimulation.html#cb143-35" aria-hidden="true" tabindex="-1"></a>    OutJack[j, <span class="dv">5</span>] <span class="ot">&lt;-</span> BiasJack.ded <span class="ot">&lt;-</span> (<span class="fu">length</span>(x) <span class="sc">-</span> <span class="dv">1</span>) <span class="sc">*</span> (<span class="fu">mean</span>(JackTheta.ded) <span class="sc">-</span> <span class="fu">LER</span>(<span class="at">ded =</span> dVec2[j]))</span>
+<span id="cb143-36"><a href="ChapSimulation.html#cb143-36" aria-hidden="true" tabindex="-1"></a>    OutJack[j, <span class="dv">6</span>] <span class="ot">&lt;-</span> <span class="fu">sd</span>(JackTheta.ded)</span>
+<span id="cb143-37"><a href="ChapSimulation.html#cb143-37" aria-hidden="true" tabindex="-1"></a>    OutJack[j, <span class="dv">7</span><span class="sc">:</span><span class="dv">8</span>] <span class="ot">&lt;-</span> <span class="fu">mean</span>(JackTheta.ded) <span class="sc">+</span> <span class="fu">qt</span>(<span class="fu">c</span>(<span class="fl">0.025</span>, <span class="fl">0.975</span>), <span class="fu">length</span>(x) <span class="sc">-</span> <span class="dv">1</span>) <span class="sc">*</span></span>
+<span id="cb143-38"><a href="ChapSimulation.html#cb143-38" aria-hidden="true" tabindex="-1"></a>        OutJack[j, <span class="dv">6</span>]</span>
+<span id="cb143-39"><a href="ChapSimulation.html#cb143-39" aria-hidden="true" tabindex="-1"></a>}</span></code></pre></div>
 </div>
 <p><a id=tab:8.8></a></p>
 <p>Table 8.8. <strong>Jackknife Estimates of LER at Selected Deductibles</strong></p>
@@ -3604,8 +3623,10 @@ Upper Jackknife 95% CI
 </div>
 <div id="Simulation:further-reading-and-resources" class="section level2 hasAnchor" number="8.5">
 <h2><span class="header-section-number">8.5</span> Further Resources and Contributors<a href="ChapSimulation.html#Simulation:further-reading-and-resources" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<p>Section <a href="ChapSimulation.html#Sec:LOOCrossVal">8.4.2</a> presented the jackknife statistic as an application of (leave one out) cross-validation methods. Another way to present this material is to consider the historical development. <span class="citation"><a href="#ref-efron1982jackknife" role="doc-biblioref">Efron</a> (<a href="#ref-efron1982jackknife" role="doc-biblioref">1982</a>)</span> attributes the jackknife idea to <span class="citation"><a href="#ref-quenouille1949approximate" role="doc-biblioref">Quenouille</a> (<a href="#ref-quenouille1949approximate" role="doc-biblioref">1949</a>)</span>. Even in this simpler time before modern computing power became widely available, the jackknife provided a handy tool to estimate the bias and standard deviation for virtually any statistic. In addition, this provided motivation for the 1979 introduction of the bootstrap in <span class="citation"><a href="#ref-efron1979bootstrap" role="doc-biblioref">Efron</a> (<a href="#ref-efron1979bootstrap" role="doc-biblioref">1979</a>)</span> (see also <span class="citation"><a href="#ref-Efron1992" role="doc-biblioref">Efron</a> (<a href="#ref-Efron1992" role="doc-biblioref">1992</a>)</span>). The bootstrap provided a tool to understand the uncertainty of a statistic, including the standard deviation.</p>
+<p>The presentation in this book, outlined in Chapter <a href="ChapDataAnalytics.html#ChapDataAnalytics">2</a>, follows strategies adopted by analysts. We think of the jackknife and the bootstrap as tools that helps one understand qualities of a statistic of interest. In addition, cross-validation is a resampling strategy primarily devoted to model validation. As noted in <span class="citation"><a href="#ref-efron1982jackknife" role="doc-biblioref">Efron</a> (<a href="#ref-efron1982jackknife" role="doc-biblioref">1982</a>)</span>, the historical development of cross-validation is a bit murkier. It is a method borne from the very simple strategy of splitting a sample in half, then using a model trained on one half to predict performance in the other half. Comparing cross-validation methods to the jackknifing and bootstrapping techniques, all are based on resampling. In addition, questions of statistical inference naturally overlap with model validation issues, so there is a natural overlap among these methods.</p>
 <ul>
-<li>A classic, and still very readable, introduction to the jackknife and bootstrap is provided by <span class="citation">Efron (<a href="#ref-efron1982jackknife" role="doc-biblioref">1982</a>)</span>.</li>
+<li>For further reading, a classic, and still very readable, introduction to the jackknife and bootstrap is provided by <span class="citation"><a href="#ref-efron1982jackknife" role="doc-biblioref">Efron</a> (<a href="#ref-efron1982jackknife" role="doc-biblioref">1982</a>)</span>.</li>
 <li>Here are some links to learn more about <a href="https://freakonometrics.hypotheses.org/6470">reproducibility and randomness</a> and how to go
 <a href="https://freakonometrics.hypotheses.org/6638">from a random generator to a sample function</a>.</li>
 </ul>
@@ -3616,7 +3637,10 @@ Upper Jackknife 95% CI
 <ul>
 <li>Chapter reviewers include Yvonne Chueh and Brian Hartman.</li>
 </ul></li>
-<li><strong>Edward (Jed) Frees</strong>, University of Wisconsin-Madison and Australian National University, is the author of the second edition of this chapter. Email: <a href="mailto:jfrees@bus.wisc.edu" class="email">jfrees@bus.wisc.edu</a> for chapter comments and suggested improvements.</li>
+<li><strong>Edward (Jed) Frees</strong>, University of Wisconsin-Madison and Australian National University, is the author of the second edition of this chapter. Email: <a href="mailto:jfrees@bus.wisc.edu" class="email">jfrees@bus.wisc.edu</a> for chapter comments and suggested improvements.
+<ul>
+<li>This chapter has benefited significantly from suggestions by Hirokazu (Iwahiro) Iwasawa.</li>
+</ul></li>
 </ul>
 
 </div>
@@ -3624,8 +3648,17 @@ Upper Jackknife 95% CI
 </div>
 <h3>Bibliography<a href="bibliography.html#bibliography" class="anchor-section" aria-label="Anchor link to header"></a></h3>
 <div id="refs" class="references csl-bib-body hanging-indent">
+<div id="ref-efron1979bootstrap" class="csl-entry">
+Efron, Bradley. 1979. <span>“Bootstrap Methods: Another Look at the Bootstrap.”</span> <em>The Annals of Statistics</em> 7: 1–26.
+</div>
 <div id="ref-efron1982jackknife" class="csl-entry">
-Efron, Bradley. 1982. <em>The Jackknife, the Bootstrap and Other Resampling Plans</em>. SIAM.
+———. 1982. <em>The Jackknife, the Bootstrap and Other Resampling Plans</em>. SIAM.
+</div>
+<div id="ref-Efron1992" class="csl-entry">
+———. 1992. <span>“Bootstrap Methods: Another Look at the Jackknife.”</span> In <em>Breakthroughs in Statistics: Methodology and Distribution</em>, edited by Samuel Kotz and Norman L Johnson, 569–93. Springer New York. <a href="https://doi.org/10.1007/978-1-4612-4380-9_41">https://doi.org/10.1007/978-1-4612-4380-9_41</a>.
+</div>
+<div id="ref-quenouille1949approximate" class="csl-entry">
+Quenouille, Maurice H. 1949. <span>“Approximate Tests of Correlation in Time-Series.”</span> <em>Journal of the Royal Statistical Society. Series B</em> 11 (1): 68–84.
 </div>
 </div>
             </section>
@@ -3694,7 +3727,7 @@ gitbook.start({
     var script = document.createElement("script");
     script.type = "text/javascript";
     var src = "true";
-    if (src === "" || src === "true") src = "https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.9/latest.js?config=TeX-MML-AM_CHTML";
+    if (src === "" || src === "true") src = "https://mathjax.rstudio.com/latest/MathJax.js?config=TeX-MML-AM_CHTML";
     if (location.protocol !== "file:")
       if (/^https?:/.test(src))
         src = src.replace(/^https?:/, '');

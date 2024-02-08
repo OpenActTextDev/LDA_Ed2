@@ -160,9 +160,9 @@ fig:tikz-cum-triangle-cl3
 fig:tikz-cum-triangle-cl3b
 fig:tikz-cum-triangle-cl4
 fig:tikz-cum-triangle-cl5
-tab:unnamed-chunk-174
-fig:unnamed-chunk-175
+tab:unnamed-chunk-175
 fig:unnamed-chunk-176
+fig:unnamed-chunk-177
 fig:TransitionSwitz
 fig:PremEvolution
 fig:Scatter
@@ -189,8 +189,8 @@ eq:LawIterExp
 eq:LawTotVar
 eq:AppBEV1
 eq:AppBVE2
-tab:unnamed-chunk-253
 tab:unnamed-chunk-254
+tab:unnamed-chunk-255
 tab:DescribeTravel
 tab:PrintNumTravel
 tab:DescribeGPA
@@ -365,7 +365,7 @@ confidence-intervals
 S:ParametricBootStrap
 S:CrossValidation
 k-fold-cross-validation
-leave-one-out-cross-validation
+Sec:LOOCrossVal
 cross-validation-and-bootstrap
 Simulation:further-reading-and-resources
 ChBayes
