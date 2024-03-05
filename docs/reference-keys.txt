@@ -381,6 +381,7 @@ ChBayes:SubsecPrior
 informative-and-weakly-informative-priors
 noninformative-priors
 improper-priors
+choice-of-the-prior-distribution
 prior-sensitivity-analysis
 ChBayes:SecConjugate
 ChBayes:SubsecBetaBin

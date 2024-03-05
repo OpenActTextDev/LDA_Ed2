@@ -503,4 +503,3 @@ conjugate distributions,Conjugate distributions are specific pairs of prior and 
 hyperparameters,Hyperparameters are parameters that define the distribution of a prior distribution,9.3,
 Gibbs sampler,The Gibbs sampler is an iterative algorithm in statistics used for simulating samples from complex probability distributions. It's particularly useful in Bayesian analysis for drawing samples from multivariate distributions by updating one variable at a time while keeping others fixed.,9.4,
 Metropolis--Hastings algorithm,"The Metropolis--Hastings algorithm is a method to generate samples from complex distributions by proposing new samples and deciding whether to accept them, making it valuable for Bayesian analysis and complex modeling.",9.4,
-precision,Precision is the inverse of variance and is often used to quantify the amount of uncertainty or variability in a prior or posterior distribution.,9.3,

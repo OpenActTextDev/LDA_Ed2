@@ -187,6 +187,7 @@ Our goal is to have the actuarial community author our textbooks in a collaborat
 - Bell Ouelega,	American University in Cairo
 - Zhiyu (Frank) Quan, University of Connecticut
 - Jiandong Ren,	Western University
+- Margie Rosenberg, University of Wisconsin - Madison
 - Rajesh V. Sahasrabuddhe, Oliver Wyman
 - Sherly Paola Alfonso Sanchez, Universidad Nacional de Colombia
 - Ranee Thiagarajah,	Illinois State University
@@ -197,6 +198,7 @@ Our goal is to have the actuarial community author our textbooks in a collaborat
 - Di (Cindy) Xu,	University of Nebraska - Lincoln
 - Lina Xu, Columbia University
 - Lu Yang, University of Amsterdam
+- Chun Yong
 - Jorge Yslas, University of Copenhagen
 - Jeffrey Zheng,	Temple University
 - Hongjuan Zhou, Arizona State University
