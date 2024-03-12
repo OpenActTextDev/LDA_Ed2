@@ -229,7 +229,7 @@ S:EDACDA
 model-construction
 S:ParametricNonP
 S:expred
-model-selection
+S:ModelSelection
 S:ManyVarAnalytics
 supervised-and-unsupervised-learning
 algorithmic-modeling
@@ -401,7 +401,7 @@ ChBayes:SecPractice
 ChBayes:SecFurther
 ChapPremiumFoundations
 S:IntroductionRatemaking
-chapter-orginization
+chapter-organization
 S:DataSources
 S:claims
 S:experPeriod
@@ -440,7 +440,7 @@ multiplicative-tariff-model
 poisson-regression-for-multiplicative-tariff
 numerical-examples
 S:RatingFactors
-economic-commodity-vs-social-good
+economic-commodity-versus-social-good
 information-asymmetry
 sensitive-variables-and-regulation
 big-data-models-and-proxy-discrimination

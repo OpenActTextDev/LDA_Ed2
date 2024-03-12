@@ -292,7 +292,7 @@ There are two goals in data analysis: explanation and prediction. In some scient
 In contrast, `r Gloss('predictive modeling')` is the process of applying a statistical model or data mining algorithm to data for the purpose of predicting new or future observations. Predictions include point predictions, interval predictions, regions, distributions, and rankings of new observations. A predictive model can be any method that produces predictions. 
 
  
-### Model Selection
+### Model Selection {#S:ModelSelection}
 
 Although  hypothesis testing is one approach to model selection that is viable in many fields, it does have its drawbacks. For example, the asymmetry between the null and alternative hypotheses raises issues;  hypothesis testing is biased towards a null hypothesis unless there is strong evidence to the contrary.
 

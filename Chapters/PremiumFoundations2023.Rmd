@@ -51,7 +51,7 @@ $$
 $$
 This simplified premium equation promotes a general understanding of the Relationship of insurance costs and revenue. We refer to this equation as the simplified premium equation because (i) it does not include explicit consideration for investment income, and (ii) we combine consideration of claims and claims adjustment expenses. We will refine the simplified premium equation to consider these items later in this chapter.
 
-### Chapter Orginization
+### Chapter Organization
 
 The presentation of this section follows the premium equation.
 
@@ -515,11 +515,11 @@ For more background on pricing principles, a classic treatment is by @gerber1979
 @kaas2008modern. For more discussion of pricing from a financial economics viewpoint, see @bauer2013financial.
 
 
-- **Edward W. (Jed) Frees**, University of Wisconsin-Madison, and **Jos&eacute;  Garrido**, Concordia University are the principal authors of the initial version of this chapter. 
-- Chapter reviewers include Chun Yong Chew, Curtis Gary Dean, Brian Hartman, and Jeffrey Pai. 
-- **Rajesh V. Sahasrabuddhe**, Oliver Wyman, is the author of the second edition of this chapter. Email: rajesh1004@gmail.com for chapter comments and suggested improvements.
+-  **Edward W. (Jed) Frees**, University of Wisconsin-Madison, and **Jos&eacute;  Garrido**, Concordia University are the principal authors of the initial version of this chapter. 
+   - Chapter reviewers include Chun Yong Chew, Curtis Gary Dean, Brian Hartman, and Jeffrey Pai. 
+-  **Rajesh V. Sahasrabuddhe**, Oliver Wyman, is the author of the second edition of this chapter. Email: rajesh1004@gmail.com for chapter comments and suggested improvements.
 
-### TS 9.A. Rate Regulation {-}
+### TS 10.A. Rate Regulation {-}
 
 
 Insurance regulation helps to ensure the financial stability of insurers and to protect consumers. Insurers receive premiums in return for promises to pay in the event of a contingent (insured) event. Like other financial institutions such as banks, there is a strong public interest in promoting the continuing viability of insurers. 
