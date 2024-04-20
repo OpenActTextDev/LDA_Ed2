@@ -77,7 +77,7 @@ The project goal is to have the actuarial community author our textbooks in a co
 
 <img src = "ContributorPics\Frees_Jed2018_150x188.jpg" width = "150" height = "180" style = "float:right; margin-left: 10px; margin-top: 7px" />
 
-- **Edward W. (Jed) Frees** is an emeritus professor, formerly the Hickman-Larson Chair of Actuarial Science at the University of Wisconsin-Madison. He is a Fellow of both the Society of Actuaries and the American Statistical Association. He has published extensively (a four-time winner of the Halmstad and Prize for best paper published in the actuarial literature) and has written three books. He also is a co-editor of the two-volume series *Predictive Modeling Applications in Actuarial Science* published by Cambridge University Press.
+- **Edward (Jed) Frees** is an emeritus professor, formerly the Hickman-Larson Chair of Actuarial Science at the University of Wisconsin-Madison. He is a Fellow of both the Society of Actuaries and the American Statistical Association. He has published extensively (a four-time winner of the Halmstad and Prize for best paper published in the actuarial literature) and has written three books. He also is a co-editor of the two-volume series *Predictive Modeling Applications in Actuarial Science* published by Cambridge University Press.
 
 
 <img src = "ContributorPics\GuojunGan.jpg" width = "150" height = "170" style = "float:right; margin-left: 10px; margin-top: 7px" />
@@ -114,7 +114,7 @@ The project goal is to have the actuarial community author our textbooks in a co
 - **Nii-Armah Okine** is an assistant professor at the Mathematical Sciences Department at Appalachian State University.  He holds a Ph.D. in Business (Actuarial Science) from the University of Wisconsin - Madison and obtained his master’s degree in Actuarial science from Illinois State University. His research interest includes micro-level reserving, joint longitudinal-survival modeling, dependence modeling, micro-insurance, and machine learning.
 
 
-<img src = "ContributorPics\RajSahasrabuddhe.jpg" width = "150" height = "150" style = "float:right; margin-left: 10px; margin-top: 7px" />
+<img src = "ContributorPics\RajSahasrabuddhe.jpg" width = "150" height = "170" style = "float:right; margin-left: 10px; margin-top: 7px" />
 
 -  **Rajesh (Raj) Sahasrabuddhe** is a Partner and Philadelphia Office Leader with Oliver Wyman Actuarial Consulting. Raj is a Fellow of the Casualty Actuarial Society (CAS), an Associate of the Canadian Institute of Actuaries, and a Member of the American Academy of Actuaries. Raj has been an active volunteer with CAS Admissions committees throughout his career, including a term as Chairperson of the Syllabus Committee from 2010 to 2013. He currently serves on the MAS-II Examination Committee. He has authored or co-authored papers that have appeared on syllabi for both the CAS and Society of Actuaries.
 

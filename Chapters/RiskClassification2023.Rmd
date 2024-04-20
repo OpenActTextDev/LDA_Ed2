@@ -686,7 +686,7 @@ As a concluding remark, we comment that Poisson regression is not the only possi
 ```{r child = './Quizzes/Quiz83.html', eval = QUIZ}
 ```
 
-## Risk classification vs Discrimination {#S:RatingFactors}
+## Risk Classification vs Discrimination {#S:RatingFactors}
 
 We have so far developed a quantitative model to deal with risk classification. There are however important qualitative aspects of risk classification as well, which have important moral and  regulatory and legal implications. We briefly survey various issues related to risk classification in this section; see Frees and Huang (2023) for a more comprehensive treatment.
 

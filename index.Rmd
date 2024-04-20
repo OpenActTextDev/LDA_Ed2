@@ -1,5 +1,5 @@
 --- 
-title: "Loss Data Analytics"
+title: "Loss Data Analytics <br> \n Second Edition"
 author: "An open text authored by the Actuarial Community"
 site: bookdown::bookdown_site
 output:
