@@ -150,6 +150,7 @@ save(animp, file= "../IntermediateCalcs/BayesChap/Example811Animate.Rdata")
 ```{r ChBayesBayesianTossAnimation, echo = FALSE, fig.cap='(ref:ChBayesBayesianTossAnimation)', out.width = '80%', fig.asp = 0.75, fig.align = 'center'}
 load(file= "IntermediateCalcs/BayesChap/Example811Animate.Rdata")
 animate(animp, fps=5, nframes=200)
+
 ```
 
 ***

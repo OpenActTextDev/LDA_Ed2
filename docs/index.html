@@ -6,7 +6,7 @@
   <meta http-equiv="X-UA-Compatible" content="IE=edge" />
   <title>Loss Data Analytics Second Edition | Loss Data Analytics   Second Edition</title>
   <meta name="description" content="Loss Data Analytics is an interactive, online, freely available text. - The online version will contain many interactive objects (quizzes, computer demonstrations, interactive graphs, video, and the like) to promote deeper learning. - A subset of the book will be available in pdf format for low-cost printing. - The online text will be available in multiple languages to promote access to a worldwide audience." />
-  <meta name="generator" content="bookdown 0.27 and GitBook 2.6.7" />
+  <meta name="generator" content="bookdown 0.39 and GitBook 2.6.7" />
 
   <meta property="og:title" content="Loss Data Analytics Second Edition | Loss Data Analytics   Second Edition" />
   <meta property="og:type" content="book" />
@@ -515,7 +515,7 @@ code span.al { color: #ff0000; font-weight: bold; } /* Alert */
 code span.an { color: #60a0b0; font-weight: bold; font-style: italic; } /* Annotation */
 code span.at { color: #7d9029; } /* Attribute */
 code span.bn { color: #40a070; } /* BaseN */
-code span.bu { } /* BuiltIn */
+code span.bu { color: #008000; } /* BuiltIn */
 code span.cf { color: #007020; font-weight: bold; } /* ControlFlow */
 code span.ch { color: #4070a0; } /* Char */
 code span.cn { color: #880000; } /* Constant */
@@ -528,7 +528,7 @@ code span.er { color: #ff0000; font-weight: bold; } /* Error */
 code span.ex { } /* Extension */
 code span.fl { color: #40a070; } /* Float */
 code span.fu { color: #06287e; } /* Function */
-code span.im { } /* Import */
+code span.im { color: #008000; font-weight: bold; } /* Import */
 code span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Information */
 code span.kw { color: #007020; font-weight: bold; } /* Keyword */
 code span.op { color: #666666; } /* Operator */
@@ -542,6 +542,10 @@ code span.vs { color: #4070a0; } /* VerbatimString */
 code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warning */
 </style>
 
+<style type="text/css">
+  
+  div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+</style>
 <style type="text/css">
 /* Used with Pandoc 2.11+ new --citeproc when CSL is used */
 div.csl-bib-body { }
@@ -1048,7 +1052,7 @@ div.csl-indent {
 <li class="chapter" data-level="16.1" data-path="ChapDependenceModel.html"><a href="ChapDependenceModel.html#S:Measures"><i class="fa fa-check"></i><b>16.1</b> Classic Measures of Scalar Associations</a>
 <ul>
 <li class="chapter" data-level="16.1.1" data-path="ChapDependenceModel.html"><a href="ChapDependenceModel.html#association-measures-for-quantitative-variables"><i class="fa fa-check"></i><b>16.1.1</b> Association Measures for Quantitative Variables</a></li>
-<li class="chapter" data-level="16.1.2" data-path="ChapDependenceModel.html"><a href="ChapDependenceModel.html#rank-based-measures"><i class="fa fa-check"></i><b>16.1.2</b> Rank Based Measures</a></li>
+<li class="chapter" data-level="16.1.2" data-path="ChapDependenceModel.html"><a href="ChapDependenceModel.html#Sec:RankMeasures"><i class="fa fa-check"></i><b>16.1.2</b> Rank Based Measures</a></li>
 <li class="chapter" data-level="16.1.3" data-path="ChapDependenceModel.html"><a href="ChapDependenceModel.html#Sec:tdc"><i class="fa fa-check"></i><b>16.1.3</b> Tail Dependence Coefficients</a></li>
 </ul></li>
 <li class="chapter" data-level="16.2" data-path="ChapDependenceModel.html"><a href="ChapDependenceModel.html#S:Copula"><i class="fa fa-check"></i><b>16.2</b> Introduction to Copulas</a>
@@ -1215,7 +1219,7 @@ Second Edition</h1>
 <div id="preface" class="section level1 unnumbered hasAnchor">
 <h1>Preface<a href="index.html#preface" class="anchor-section" aria-label="Anchor link to header"></a></h1>
 <p style="text-align:right;">
-<em>Date: 20 April 2024</em>
+<em>Date: 07 August 2024</em>
 </p>
 
 
@@ -1381,6 +1385,7 @@ Second Edition</h1>
 <li>Samuel Kolins, Lebonan Valley College</li>
 <li>Andrew Kwon-Nakamura, Zurich North America</li>
 <li>Ambrose Lo, University of Iowa</li>
+<li>Mélina Mailhot, Concordia University</li>
 <li>Mark Maxwell, University of Texas at Austin</li>
 <li>Tatjana Miljkovic, Miami University</li>
 <li>Bell Ouelega, American University in Cairo</li>
@@ -1427,9 +1432,10 @@ Second Edition</h1>
 <a id="displayCode.SeverityFig.1Intro" href="javascript:togglecode('toggleCode.SeverityFig.1Intro','displayCode.SeverityFig.1Intro');"><i><strong>R Code for Frequency Table</strong></i></a>
 </h5>
 <div id="toggleCode.SeverityFig.1Intro" style="display: none">
-<div class="sourceCode" id="cb1"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb1-1"><a href="index.html#cb1-1" aria-hidden="true" tabindex="-1"></a>Insample <span class="ot">&lt;-</span> <span class="fu">read.csv</span>(<span class="st">&quot;Insample.csv&quot;</span>, <span class="at">header =</span> T, <span class="at">na.strings =</span> <span class="fu">c</span>(<span class="st">&quot;.&quot;</span>), <span class="at">stringsAsFactors =</span> <span class="cn">FALSE</span>)</span>
-<span id="cb1-2"><a href="index.html#cb1-2" aria-hidden="true" tabindex="-1"></a>Insample2010 <span class="ot">&lt;-</span> <span class="fu">subset</span>(Insample, Year <span class="sc">==</span> <span class="dv">2010</span>)</span>
-<span id="cb1-3"><a href="index.html#cb1-3" aria-hidden="true" tabindex="-1"></a><span class="fu">table</span>(Insample2010<span class="sc">$</span>Freq)</span></code></pre></div>
+<div class="sourceCode" id="cb1"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb1-1"><a href="index.html#cb1-1" tabindex="-1"></a>Insample <span class="ot">&lt;-</span> <span class="fu">read.csv</span>(<span class="st">&quot;Insample.csv&quot;</span>, <span class="at">header=</span>T,  <span class="at">na.strings=</span><span class="fu">c</span>(<span class="st">&quot;.&quot;</span>), </span>
+<span id="cb1-2"><a href="index.html#cb1-2" tabindex="-1"></a>                      <span class="at">stringsAsFactors=</span><span class="cn">FALSE</span>)</span>
+<span id="cb1-3"><a href="index.html#cb1-3" tabindex="-1"></a>Insample2010 <span class="ot">&lt;-</span> <span class="fu">subset</span>(Insample, Year<span class="sc">==</span><span class="dv">2010</span>)</span>
+<span id="cb1-4"><a href="index.html#cb1-4" tabindex="-1"></a><span class="fu">table</span>(Insample2010<span class="sc">$</span>Freq)</span></code></pre></div>
 </div>
 <p>We hide the code because we don’t want to insist that you use the <code>R</code> statistical software (although we like it). Still, we encourage you to try some statistical code as you read the book – we have opted to make it easy to learn <code>R</code> as you go. We have set up a separate <a href="https://openacttexts.github.io/LDARcode">R Code for Loss Data Analytics</a> site to explain more of the details of the code.</p>
 <p>Like any book, we have a set of notations and conventions. It will probably save you time if you regularly visit our Appendix Chapter <a href="ChapNotationConvention.html#ChapNotationConvention">21</a> to get used to ours.</p>
@@ -1505,7 +1511,7 @@ gitbook.start({
     var script = document.createElement("script");
     script.type = "text/javascript";
     var src = "true";
-    if (src === "" || src === "true") src = "https://mathjax.rstudio.com/latest/MathJax.js?config=TeX-MML-AM_CHTML";
+    if (src === "" || src === "true") src = "https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.9/latest.js?config=TeX-MML-AM_CHTML";
     if (location.protocol !== "file:")
       if (/^https?:/.test(src))
         src = src.replace(/^https?:/, '');

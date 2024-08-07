@@ -113,7 +113,7 @@ text(x=0.25,y= ytick,labels = yticklab, xpd = TRUE, line=2)
 
 For this section, consider a pair of random variables $(X,Y)$ having joint distribution function $F(\cdot)$ and a random sample $(X_i,Y_i), i=1, \ldots, n$. For the continuous case, suppose that $F(\cdot)$ has  absolutely continuous marginals with marginal density functions.
 
-#### Pearson Correlation
+#### Pearson Correlation {-}
 
 Define the sample covariance function $\widehat{Cov}(X,Y) = \frac{1}{n} \sum_{i=1}^n (X_i - \bar{X})(Y_i - \bar{Y})$, where $\bar{X}$ and $\bar{Y}$ are the sample means of $X$ and $Y$, respectively. Then, the `r Gloss("product-moment (Pearson) correlation")` can be written as
 
@@ -165,9 +165,9 @@ Output:
 From the `R` output above, $r=0.4$, which indicates a positive association between ${\tt LOSS}$ and ${\tt ALAE}$. This means that as the loss amount of a claim increases we expect expenses to increase. 
 
 
-### Rank Based Measures
+### Rank Based Measures {#Sec:RankMeasures}
 
-#### Spearman's Rho {#Sec:Spearman}
+#### Spearman's Rho {-}
 
 The Pearson correlation coefficient does have the drawback that it is not invariant to nonlinear transforms of the data. For example, the correlation between $X$ and $\log Y$ can be quite different from the correlation between $X$ and $Y$. As we see from the `R` code for the Pearson correlation statistic above, the correlation statistic $r$ between the ${\tt ALAE}$ variable in logarithmic dollars and the ${\tt LOSS}$ amounts variable in dollars is $0.33$ as compared to $0.4$ when we calculate the correlation between the ${\tt ALAE}$ variable in dollars and the ${\tt LOSS}$ amounts variable in dollars. This limitation is one reason for considering alternative statistics.
 
@@ -284,7 +284,7 @@ $$
 *** 
 
 
-#### Kendall's Tau {#Sec:Kendall}
+#### Kendall's Tau {-}
 
 An alternative measure that uses ranks is based on the concept of *concordance*. An observation pair $(X,Y)$ is said to be `r Gloss('concordant')` (`r Gloss('discordant')`) if the observation with a larger value of $X$ has also the larger (smaller) value of $Y$. Then $\Pr(concordance) = \Pr[ (X_1-X_2)(Y_1-Y_2) >0 ]$ , $\Pr(discordance) = \Pr[ (X_1-X_2)(Y_1-Y_2) <0 ]$, $\Pr(tie) = \Pr[ (X_1-X_2)(Y_1-Y_2) =0 ]$ and
 
@@ -295,7 +295,10 @@ $$
 \end{array}
 $$
 
-To estimate this, the pairs $(X_i,Y_i)$ and $(X_j,Y_j)$ are said to be concordant if the product $sgn(X_j-X_i)sgn(Y_j-Y_i)$ equals 1 and discordant if the product equals -1. Here, $sgn(x)=1,0,-1$ as $x>0$, $x=0$, $x<0$, respectively. With this, we can express the association measure of @kendall1938new, known as `r Gloss("Kendall's tau")`, as
+
+Thus, the population parameter Kendall's tau, $\tau=\tau(X,Y)$, measures whether higher values of one variable generally correspond to higher values of another variables, regardless of the actual values of those variables. 
+
+To estimate this, the pairs $(X_i,Y_i)$ and $(X_j,Y_j)$ are said to be concordant if the product $sgn(X_j-X_i)sgn(Y_j-Y_i)$ equals 1 and discordant if the product equals -1. Here, $sgn(x)=1,0,-1$ as $x>0$, $x=0$, $x<0$, respectively. With this, we can express the (statistical) association measure of @kendall1938new, known as `r Gloss("Kendall's tau")`, as
 
 $$
 \begin{array}{rl}
@@ -498,7 +501,7 @@ $$
 in case the limit exists. Here, $F_X^{-1}(u)$ and $F_Y^{-1}(u)$ denote the quantiles of $X$ and $Y$ at the level $u$. Then, $X$ and $Y$ are said to be upper tail-dependent if $\lambda_\text{up}\in(0,1]$ and upper tail-independent if $\lambda_\text{up}=0$. When a variable reaches an extreme high value, the upper tail-dependent condition indicates that the other variable also reaches an extremely high value. On the other hand, the upper tail-independent suggests that the extreme values of the two variables are not related to each other. Similarly, the lower tail dependence coefficient, $\lambda_{\text{lo}}$, is defined as:
 
 $$
-\lambda_{\text{lo}} {=} \lim _{u \rightarrow 0^+} \mathrm{Pr}\left\{X \leq F_X^{-1}(u) \mid Y \leq Y^{-1}(u)\right\} .
+\lambda_{\text{lo}} {=} \lim _{u \rightarrow 0^+} \mathrm{Pr}\left\{X \leq F_X^{-1}(u) \mid Y \leq F_Y^{-1}(u)\right\} .
 $$
 
 Let $R(X_j)$  and $R(Y_j)$ denote the rank of $X_j$ and $Y_j$, $j=1,\ldots, n$, respectively. From @Schmidt05, non-parametric estimates of $\lambda_\text{up}$ and $\lambda_\text{lo}$ are given by:
@@ -675,7 +678,7 @@ $$
 In Figure \@ref(fig:IndCop), both the distribution function and scatter plot of observations generated from the independence copula are displayed. The scatter plot indicates that there is no correlation between the two components, $U_1$ and $U_2$.
 
 
-(ref:IndCop) Left: Scatterplot of observations from Independence Copula. Right: Plot for distribution function for Independence Copula.
+(ref:IndCop) **Independence Copula.** Left: Scatterplot of observations from Independence Copula. Right: Plot for distribution function for Independence Copula.
 
 ```{r IndCop, message=FALSE, warning=FALSE, comment="", echo=FALSE, fig.align='center', fig.height=4, fig.width=8, fig.cap='(ref:IndCop)'}
 par(mfrow=c(1,2))
@@ -683,9 +686,9 @@ d<-2
 ic<-indepCopula(dim=d)
 set.seed(100)
 U<-rCopula(1000, copula = ic) # generate a sample
-plot(U, xlab=quote(U[1]), ylab=quote(U[2]), ann = FALSE,xaxt='n',yaxt='n')
+plot(U, xlab=quote(u[1]), ylab=quote(u[2]), ann = FALSE,xaxt='n',yaxt='n')
 
-mtext(side = 1, text = quote(U[1]), line = 2.0,cex=0.9)
+mtext(side = 1, text = quote(u[1]), line = 2.0,cex=0.9)
 xtick<-c(0.0, 0.2, 0.4, 0.6, 0.8, 1.0)
 #xtick<-c(0,1.386294,2.079442,2.484907,2.772589,2.995732,3.178054)
 xticklab<-c("0.0","0.2","0.4","0.6", "0.8","1.0")
@@ -693,14 +696,16 @@ axis(side=1, at=xtick, labels = FALSE)
 text(x=xtick, -0.08,labels = xticklab,pos=1, xpd = TRUE, line=2)
 
 
-mtext(side = 2, text = quote(U[2]), line = 2.5, cex=0.9)
+mtext(side = 2, text = quote(u[2]), line = 2.5, cex=0.9)
 ytick<-c(0.0, 0.2, 0.4, 0.6, 0.8,1.0)
 yticklab<-c("0.0","0.2","0.4","0.6", "0.8","1.0")
 axis(side=2, at=ytick, labels = FALSE)
 text(x=-0.15,y= ytick,labels = yticklab, xpd = TRUE, line=2)
 
 
-persp(ic, pCopula, zlab="C(u,v)", theta=50, cex.lab=0.9, cex.axis = 0.5)
+persp(ic, pCopula, zlab="C(u,v)", theta=50, cex.lab=0.5, cex.axis = 0.5 )
+      #xlab = expression(u[1]),ylab = expression(u[2])
+
 
 ```
 
@@ -754,8 +759,8 @@ par(mfrow=c(1,2))
 d<-2
 gamma_par<-12
 fc<-frankCopula(gamma_par, dim=d)
-persp(fc, pCopula, zlab="C(u,v)", theta=50, cex.lab=0.9, cex.axis = 0.5)
-persp(fc, dCopula, zlab="c(u,v)", theta=50, cex.lab=0.9, cex.axis = 0.5)
+persp(fc, pCopula, zlab="C(u,v)", theta=50, cex.lab=0.5, cex.axis = 0.5)
+persp(fc, dCopula, zlab="c(u,v)", theta=50, cex.lab=0.5, cex.axis = 0.5)
 ```
 
 `r HideRCode('CopPlot.1',"R Code for Frank Copula Plots")`
@@ -782,8 +787,8 @@ par(mfrow=c(1,2))
 d<-2
 gamma_par<-12
 fc<-frankCopula(gamma_par, dim=d)
-persp(fc, pCopula, zlab="C(u,v)", theta=50, cex.lab=0.9, cex.axis = 0.5)
-persp(fc, dCopula, zlab="c(u,v)", theta=50, cex.lab=0.9, cex.axis = 0.5)
+persp(fc, pCopula, zlab="C(u,v)", theta=50, cex.lab=0.5, cex.axis = 0.5)
+persp(fc, dCopula, zlab="c(u,v)", theta=50, cex.lab=0.5, cex.axis = 0.5)
 
 ```
 
@@ -962,8 +967,8 @@ $$
     \hline
  & \text{Shape } \hat{\theta}     &\text{Scale }    \hat{\alpha}     \\
   \hline
-ALAE  & 15133.60360  &  2.22304    \\
-LOSS  &    16228.14797  &  1.23766 \\
+\text{ALAE}  & 15133.60360  &  2.22304    \\
+\text{LOSS}  &    16228.14797  &  1.23766 \\
    \hline
 \end{array}
 \end{matrix}}
@@ -1046,7 +1051,7 @@ Output:
 
 </div>  
 
-The right-hand panel of Figure \@ref(fig:Scatter) shows us there is a positive dependency between these two random variables. This can be summarized using, for example, Spearman's rho  that turns out to be 0.451. As we learned in Section \@ref(Sec:Spearman), this statistic depends only on the order of the two variables through their respective ranks. Therefore, the statistic is the same for (1) the original data in Figure \@ref(fig:Scatter), (2) the data transformed to uniform scales in the left-hand panel of Figure \@ref(fig:Scatter2), and (3) the normal scores in the right-hand panel of Figure \@ref(fig:Scatter2).
+The right-hand panel of Figure \@ref(fig:Scatter) shows us there is a positive dependency between these two random variables. This can be summarized using, for example, Spearman's rho  that turns out to be 0.451. As we learned in Section \@ref(Sec:RankMeasures), this statistic depends only on the order of the two variables through their respective ranks. Therefore, the statistic is the same for (1) the original data in Figure \@ref(fig:Scatter), (2) the data transformed to uniform scales in the left-hand panel of Figure \@ref(fig:Scatter2), and (3) the normal scores in the right-hand panel of Figure \@ref(fig:Scatter2).
  
 The next step is to calculate estimates of the copula parameters. One option is to use traditional maximum likelihood and determine all the parameters at the same time which can be computationally burdensome. Even in our simple example, this means maximizing a (log) likelihood function over five parameters, two for the marginal ${\tt ALAE}$ distribution, two for the marginal ${\tt LOSS}$ distribution, and one for the copula. A widely alternative, known as the *inference for margins (IFM)* approach, is to simply use the fitted marginal distributions, $u_1$ and $u_2$, as inputs when determining the copula. This is the approach taken here. In the following code, you will see that the fitted copula parameter becomes $\hat{\gamma} = 3.114$.
 
@@ -1084,14 +1089,14 @@ The maximized loglikelihood is 172.6
 
 To visualize the fitted Frank's copula, the distribution function and density function perspective plots are drawn in Figure \@ref(fig:FrankCop).
 
-(ref:FrankCop) Left: Plot for distribution function for Franks Copula. Right:Plot for density function for Franks Copula
+(ref:FrankCop) **Frank's Copula**. Left: Plot for distribution function for Frank's Copula. Right:Plot for density function for Frank's Copula
 
 ```{r FrankCop, message=FALSE, warning=FALSE, comment="", echo=FALSE, fig.align='center', fig.cap='(ref:FrankCop)'}
 #par(mfrow=c(1,2))
 frank.cop <- archmCopula("frank", param= c(3.114), dim = 2) 
 par(mar=c(3.2,3,.2,.2),mfrow=c(1,2))
-persp(frank.cop, pCopula, theta=50, zlab="C(u,v)", xlab ="u", ylab="v", cex.lab=0.9, cex.axis = 0.5)
-persp(frank.cop, dCopula, theta=0, zlab="c(u,v)",  xlab ="u", ylab="v", cex.lab=0.9, cex.axis = 0.5)
+persp(frank.cop, pCopula, theta=50, zlab="C(u,v)", xlab ="u", ylab="v", cex.lab=0.5, cex.axis = 0.5)
+persp(frank.cop, dCopula, theta=50, zlab="c(u,v)",  xlab ="u", ylab="v", cex.lab=0.5, cex.axis = 0.5)
 
 ```
 
@@ -1106,7 +1111,7 @@ persp(frank.cop, dCopula, theta=0, zlab="c(u,v)",  xlab ="u", ylab="v", cex.lab=
 
 
 
-We can estimate the anticipated expenses when losses surpass a specific threshold by utilizing the fitted Frank copula based on the data on losses and expenses. For instance, according to the data, the mean expense when losses exceed $\$200,000$ is $\$58,807$. However, when we apply the fitted Frank copula, the projected expenses when losses exceed $\$200,000$ is $\$26,767$. This indicates that the Frank copula doesn't provide an accurate estimate and may not be suitable for this dataset. We will now explore other copula types.
+We can estimate the anticipated expenses when losses surpass a specific threshold by utilizing the fitted Frank copula based on the data on losses and expenses. For instance, according to the data, the mean expense when losses exceed $\$200,000$ is $\$58,807$. However, when we apply the fitted Frank copula, the projected expenses when losses exceed $\$200,000$ is $\$26,767$. This suggests that the Frank copula doesn't provide an accurate estimate and may not be suitable for this dataset. We will now explore other copula types.
 
 
 `r HideRCode('ExpectedExp.1','R Code for using the fitted Frank copula to calculate the expected level of expenses')`
@@ -1180,14 +1185,17 @@ Here, we use $\Phi$ and $\phi$ to denote the standard normal distribution and de
 
 (ref:NormalPDFCopula) **Bivariate Normal Probability Density Function Plots.** The left-hand panel is a traditional bivariate normal probability density function. The right-hand plot is a plot of the copula density for the normal distribution.
 
+
+
 ```{r NormalPDFCopula, message=FALSE, warning=FALSE, comment="", echo=FALSE, out.width='100%', fig.align='center', fig.cap='(ref:NormalPDFCopula)'}
 par(mfrow=c(1, 2))
 #  BIVARIATE NORMAL DF WITH RHO = 0.25
 norm.pdf <- mvdc(normalCopula(0.25), c("norm", "norm"),
           list(list(mean = 0, sd =1), list(mean = 0, sd =1)))
 persp(norm.pdf, dMvdc, xlim = c(-3, 3), ylim=c(-3,3),   
-        zlab = expression("\U03A6"),
+        zlab = expression("\U03A6"), 
         xlab ="x", ylab="y", cex.lab=0.8, cex.axis = 0.3)
+
 #  BIVARIATE NORMAL COPULA WITH RHO = 0.25
 norm.cop <- ellipCopula("normal", param = c(0.25),dim = 2, dispstr = "un")
 persp(norm.cop, dCopula, theta = 30, zlab="c(u,v)",
@@ -1493,7 +1501,7 @@ plot (cbind(U,U), xlab=quote(U[1]),ylab=quote(U[2]),main="Perfect Positive Depen
 </div>  
 
 
-Let's assign the Fr&eacute;chet-H&ouml;effding lower bound as $W$ and the upper bound as $M$. That is, $W=\max(u_1+\cdots+u_p-p+1, 0)$ and $M=\min(u_1,\ldots,u_p)$. It's important to note that $W$ is a copula only if $p=2$, while $M$ is a copula for all $p\geq2$. In dimension two, $W=\max(u_1+u_2-1, 0)$ is known as the **counter-monotone copula**. It captures the inverse relationship between two variables, that is, two random variables that are perfectly negatively related. On the other hand, $M=\min(u_1,u_2)$ in dimension two is known as the **co-monotone copula**. It captures the relationship between two variables where one is related to the other by a strictly increasing function, that is, two random variables that are perfectly positively dependent. The co-monotonic copulas can be extended to the multivariate case. However, it's not possible to extend the counter-monotonic copula because it's not possible to have three or more variables where each pair has a direct inverse relationship.
+Let's assign the Fr&eacute;chet-H&ouml;effding lower bound as $W$ and the upper bound as $M$. That is, $W=\max(u_1+\cdots+u_p-p+1, 0)$ and $M=\min(u_1,\ldots,u_p)$. It's important to note that $W$ is a copula only if $p=2$, while $M$ is a copula for all $p\geq2$. In dimension two, $W=\max(u_1+u_2-1, 0)$ is known as the **counter-monotonic copula**. It captures the inverse relationship between two variables, that is, two random variables that are perfectly negatively related. On the other hand, $M=\min(u_1,u_2)$ in dimension two is known as the **comonotone copula**. It captures the relationship between two variables where one is related to the other by a strictly increasing function, that is, two random variables that are perfectly positively dependent. The co-monotonic copulas can be extended to the multivariate case. However, it's not possible to extend the counter-monotonic copula because it's not possible to have three or more variables where each pair has a direct inverse relationship.
 
 
 **Example `r chapnum`.5.1. Largest Possible Value Example**
@@ -1524,7 +1532,7 @@ The largest value of the joint distribution function is obtained when the depend
 
 ### Measures of Association {#Sec:MeasuresAssociation}
 
-Empirical versions of Spearman's rho and Kendall's tau were introduced in Sections \@ref(Sec:Spearman) and \@ref(Sec:Kendall), respectively. The interesting thing about these expressions is that these summary measures of association are based **only** on the ranks of each variable. Thus, any strictly increasing transform does not affect these measures of association. Specifically, consider two random variables, $Y_1$ and $Y_2$, and let m$_1$ and m$_2$ be strictly increasing functions. Then, the association, when measured by Spearman's rho or Kendall's tau, between $m_1(Y_1)$ and $m_2(Y_2)$ does not change regardless of the choice of m$_1$ and m$_2$. For example, this allows analysts to consider dollars, Euros, or log dollars, and still retain the same essential dependence. As we have seen in Section \@ref(S:Measures), this is not the case with the Pearson's measure of correlation.
+Empirical versions of Spearman's rho and Kendall's tau were introduced in Section \@ref(Sec:RankMeasures), respectively. The interesting thing about these expressions is that these summary measures of association are based **only** on the ranks of each variable. Thus, any strictly increasing transform does not affect these measures of association. Specifically, consider two random variables, $Y_1$ and $Y_2$, and let m$_1$ and m$_2$ be strictly increasing functions. Then, the association, when measured by Spearman's rho or Kendall's tau, between $m_1(Y_1)$ and $m_2(Y_2)$ does not change regardless of the choice of m$_1$ and m$_2$. For example, this allows analysts to consider dollars, Euros, or log dollars, and still retain the same essential dependence. As we have seen in Section \@ref(S:Measures), this is not the case with the Pearson's measure of correlation.
 
 @schweizer1981nonparametric established that the copula accounts for all the dependence in the sense that the way $Y_1$ and $Y_2$ "move together" is captured by the copula, regardless of the scale in which each variable is measured. They also showed that (population versions of) the two standard nonparametric measures of association could be expressed solely in terms of the copula function. Spearman's correlation coefficient is given by
 
@@ -1937,9 +1945,11 @@ The use of copulas in regression is gaining attention in the field of actuarial 
 
 #### Contributors {-}
 
--  **Edward W. (Jed) Frees** and **Nii-Armah Okine**, University of Wisconsin-Madison, and **Emine Selin Sarıdaş**, Mimar Sinan University, are the principal authors of the initial version of this chapter. 
+-  **Edward (Jed) Frees** and **Nii-Armah Okine**, University of Wisconsin-Madison, and **Emine Selin Sarıdaş**, Mimar Sinan University, are the principal authors of the initial version of this chapter. 
    - Chapter reviewers include: Runhuan Feng, Fei Huang, Himchan Jeong, Min Ji, and Toby White.
 -  **Nii-Armah Okine**, Appalachian State University, and **Emine Selin Sarıdaş**, Mimar Sinan University, are the principal authors of the second edition of this chapter. Email: okinean@appstate.edu and selin.saridas@msgsu.edu.tr for chapter comments and suggested improvements.
+   - Chapter reviewers include Mélina Mailhot.
+
 
 
 ### TS `r chapnum`.A. Other Classic Measures of Scalar Associations {-}

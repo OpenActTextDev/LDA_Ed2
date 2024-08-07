@@ -6,7 +6,7 @@
   <meta http-equiv="X-UA-Compatible" content="IE=edge" />
   <title>Chapter 21 Appendix E: Conventions for Notation | Loss Data Analytics   Second Edition</title>
   <meta name="description" content="Loss Data Analytics is an interactive, online, freely available text. - The online version will contain many interactive objects (quizzes, computer demonstrations, interactive graphs, video, and the like) to promote deeper learning. - A subset of the book will be available in pdf format for low-cost printing. - The online text will be available in multiple languages to promote access to a worldwide audience." />
-  <meta name="generator" content="bookdown 0.27 and GitBook 2.6.7" />
+  <meta name="generator" content="bookdown 0.39 and GitBook 2.6.7" />
 
   <meta property="og:title" content="Chapter 21 Appendix E: Conventions for Notation | Loss Data Analytics   Second Edition" />
   <meta property="og:type" content="book" />
@@ -515,7 +515,7 @@ code span.al { color: #ff0000; font-weight: bold; } /* Alert */
 code span.an { color: #60a0b0; font-weight: bold; font-style: italic; } /* Annotation */
 code span.at { color: #7d9029; } /* Attribute */
 code span.bn { color: #40a070; } /* BaseN */
-code span.bu { } /* BuiltIn */
+code span.bu { color: #008000; } /* BuiltIn */
 code span.cf { color: #007020; font-weight: bold; } /* ControlFlow */
 code span.ch { color: #4070a0; } /* Char */
 code span.cn { color: #880000; } /* Constant */
@@ -528,7 +528,7 @@ code span.er { color: #ff0000; font-weight: bold; } /* Error */
 code span.ex { } /* Extension */
 code span.fl { color: #40a070; } /* Float */
 code span.fu { color: #06287e; } /* Function */
-code span.im { } /* Import */
+code span.im { color: #008000; font-weight: bold; } /* Import */
 code span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Information */
 code span.kw { color: #007020; font-weight: bold; } /* Keyword */
 code span.op { color: #666666; } /* Operator */
@@ -542,6 +542,10 @@ code span.vs { color: #4070a0; } /* VerbatimString */
 code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warning */
 </style>
 
+<style type="text/css">
+  
+  div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+</style>
 <style type="text/css">
 /* Used with Pandoc 2.11+ new --citeproc when CSL is used */
 div.csl-bib-body { }
@@ -1048,7 +1052,7 @@ div.csl-indent {
 <li class="chapter" data-level="16.1" data-path="ChapDependenceModel.html"><a href="ChapDependenceModel.html#S:Measures"><i class="fa fa-check"></i><b>16.1</b> Classic Measures of Scalar Associations</a>
 <ul>
 <li class="chapter" data-level="16.1.1" data-path="ChapDependenceModel.html"><a href="ChapDependenceModel.html#association-measures-for-quantitative-variables"><i class="fa fa-check"></i><b>16.1.1</b> Association Measures for Quantitative Variables</a></li>
-<li class="chapter" data-level="16.1.2" data-path="ChapDependenceModel.html"><a href="ChapDependenceModel.html#rank-based-measures"><i class="fa fa-check"></i><b>16.1.2</b> Rank Based Measures</a></li>
+<li class="chapter" data-level="16.1.2" data-path="ChapDependenceModel.html"><a href="ChapDependenceModel.html#Sec:RankMeasures"><i class="fa fa-check"></i><b>16.1.2</b> Rank Based Measures</a></li>
 <li class="chapter" data-level="16.1.3" data-path="ChapDependenceModel.html"><a href="ChapDependenceModel.html#Sec:tdc"><i class="fa fa-check"></i><b>16.1.3</b> Tail Dependence Coefficients</a></li>
 </ul></li>
 <li class="chapter" data-level="16.2" data-path="ChapDependenceModel.html"><a href="ChapDependenceModel.html#S:Copula"><i class="fa fa-check"></i><b>16.2</b> Introduction to Copulas</a>
@@ -1209,7 +1213,7 @@ Second Edition</a>
             <section class="normal" id="section-">
 <div id="ChapNotationConvention" class="section level1 hasAnchor" number="21">
 <h1><span class="header-section-number">Chapter 21</span> Appendix E: Conventions for Notation<a href="ChapNotationConvention.html#ChapNotationConvention" class="anchor-section" aria-label="Anchor link to header"></a></h1>
-<p><em>Chapter Preview</em>. <em>Loss Data Analytics</em> serves as a bridge between actuarial problems and methods and widely accepted statistical concepts and tools. Thus, the notation should be consistent with standard usage employed in probability and mathematical statistics. See, for example, <span class="citation">(<a href="#ref-halperin1965recommended" role="doc-biblioref">Halperin, Hartley, and Hoel 1965</a>)</span> for a description of one standard.</p>
+<p><em>Chapter Preview</em>. <em>Loss Data Analytics</em> serves as a bridge between actuarial problems and methods and widely accepted statistical concepts and tools. Thus, the notation should be consistent with standard usage employed in probability and mathematical statistics. See, for example, <span class="citation">(<a href="#ref-halperin1965recommended">Halperin, Hartley, and Hoel 1965</a>)</span> for a description of one standard.</p>
 <div id="S:General" class="section level2 hasAnchor" number="21.1">
 <h2><span class="header-section-number">21.1</span> General Conventions<a href="ChapNotationConvention.html#S:General" class="anchor-section" aria-label="Anchor link to header"></a></h2>
 <ul>
@@ -1310,7 +1314,7 @@ B(x,y)     &amp; \text{beta function, }\varGamma(x)\varGamma(y)/\varGamma(x+y) \
 </div>
 <div id="further-readings" class="section level2 hasAnchor" number="21.5">
 <h2><span class="header-section-number">21.5</span> Further Readings<a href="ChapNotationConvention.html#further-readings" class="anchor-section" aria-label="Anchor link to header"></a></h2>
-<p>To make connections to other literatures, see <span class="citation">(<a href="#ref-abadir2002notation" role="doc-biblioref">Abadir and Magnus 2002</a>)</span>  for a summary of notation from the econometrics perspective. This reference has a terrific feature that many latex symbols are defined in the article. Further, there is a long history of discussion and debate surrounding actuarial notation; see <span class="citation">(<a href="#ref-boehm1975thoughts" role="doc-biblioref">Boehm et al. 1975</a>)</span> for one contribution.</p>
+<p>To make connections to other literatures, see <span class="citation">(<a href="#ref-abadir2002notation">Abadir and Magnus 2002</a>)</span> for a summary of notation from the econometrics perspective. This reference has a terrific feature that many latex symbols are defined in the article. Further, there is a long history of discussion and debate surrounding actuarial notation; see <span class="citation">(<a href="#ref-boehm1975thoughts">Boehm et al. 1975</a>)</span> for one contribution.</p>
 
 </div>
 </div>
@@ -1392,7 +1396,7 @@ gitbook.start({
     var script = document.createElement("script");
     script.type = "text/javascript";
     var src = "true";
-    if (src === "" || src === "true") src = "https://mathjax.rstudio.com/latest/MathJax.js?config=TeX-MML-AM_CHTML";
+    if (src === "" || src === "true") src = "https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.9/latest.js?config=TeX-MML-AM_CHTML";
     if (location.protocol !== "file:")
       if (/^https?:/.test(src))
         src = src.replace(/^https?:/, '');

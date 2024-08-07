@@ -6,7 +6,7 @@
   <meta http-equiv="X-UA-Compatible" content="IE=edge" />
   <title>Chapter 15 Experience Rating using Bonus-Malus | Loss Data Analytics   Second Edition</title>
   <meta name="description" content="Loss Data Analytics is an interactive, online, freely available text. - The online version will contain many interactive objects (quizzes, computer demonstrations, interactive graphs, video, and the like) to promote deeper learning. - A subset of the book will be available in pdf format for low-cost printing. - The online text will be available in multiple languages to promote access to a worldwide audience." />
-  <meta name="generator" content="bookdown 0.27 and GitBook 2.6.7" />
+  <meta name="generator" content="bookdown 0.39 and GitBook 2.6.7" />
 
   <meta property="og:title" content="Chapter 15 Experience Rating using Bonus-Malus | Loss Data Analytics   Second Edition" />
   <meta property="og:type" content="book" />
@@ -515,7 +515,7 @@ code span.al { color: #ff0000; font-weight: bold; } /* Alert */
 code span.an { color: #60a0b0; font-weight: bold; font-style: italic; } /* Annotation */
 code span.at { color: #7d9029; } /* Attribute */
 code span.bn { color: #40a070; } /* BaseN */
-code span.bu { } /* BuiltIn */
+code span.bu { color: #008000; } /* BuiltIn */
 code span.cf { color: #007020; font-weight: bold; } /* ControlFlow */
 code span.ch { color: #4070a0; } /* Char */
 code span.cn { color: #880000; } /* Constant */
@@ -528,7 +528,7 @@ code span.er { color: #ff0000; font-weight: bold; } /* Error */
 code span.ex { } /* Extension */
 code span.fl { color: #40a070; } /* Float */
 code span.fu { color: #06287e; } /* Function */
-code span.im { } /* Import */
+code span.im { color: #008000; font-weight: bold; } /* Import */
 code span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Information */
 code span.kw { color: #007020; font-weight: bold; } /* Keyword */
 code span.op { color: #666666; } /* Operator */
@@ -542,6 +542,10 @@ code span.vs { color: #4070a0; } /* VerbatimString */
 code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warning */
 </style>
 
+<style type="text/css">
+  
+  div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+</style>
 <style type="text/css">
 /* Used with Pandoc 2.11+ new --citeproc when CSL is used */
 div.csl-bib-body { }
@@ -1048,7 +1052,7 @@ div.csl-indent {
 <li class="chapter" data-level="16.1" data-path="ChapDependenceModel.html"><a href="ChapDependenceModel.html#S:Measures"><i class="fa fa-check"></i><b>16.1</b> Classic Measures of Scalar Associations</a>
 <ul>
 <li class="chapter" data-level="16.1.1" data-path="ChapDependenceModel.html"><a href="ChapDependenceModel.html#association-measures-for-quantitative-variables"><i class="fa fa-check"></i><b>16.1.1</b> Association Measures for Quantitative Variables</a></li>
-<li class="chapter" data-level="16.1.2" data-path="ChapDependenceModel.html"><a href="ChapDependenceModel.html#rank-based-measures"><i class="fa fa-check"></i><b>16.1.2</b> Rank Based Measures</a></li>
+<li class="chapter" data-level="16.1.2" data-path="ChapDependenceModel.html"><a href="ChapDependenceModel.html#Sec:RankMeasures"><i class="fa fa-check"></i><b>16.1.2</b> Rank Based Measures</a></li>
 <li class="chapter" data-level="16.1.3" data-path="ChapDependenceModel.html"><a href="ChapDependenceModel.html#Sec:tdc"><i class="fa fa-check"></i><b>16.1.3</b> Tail Dependence Coefficients</a></li>
 </ul></li>
 <li class="chapter" data-level="16.2" data-path="ChapDependenceModel.html"><a href="ChapDependenceModel.html#S:Copula"><i class="fa fa-check"></i><b>16.2</b> Introduction to Copulas</a>
@@ -1221,7 +1225,7 @@ Second Edition</a>
 <li>Compare bonus-malus system with risk classification (Chapter 8) and credibility premium (Chapter 9).</li>
 </ul>
 <hr />
-<p><a href="#" class="tooltip" style="color:green"><em>Bonus-malus system</em><span style="font-size:8pt">A type of rating mechanism where insured premiums are adjusted based on their individual loss experience history</span></a>, which is used interchangeably as “no-fault discount,” “merit rating,” “experience rating” or “no-claim discount” in different countries, is based on penalizing insureds who are responsible for one or more claims by a premium surcharge (malus), and rewarding insureds with a premium discount (bonus) if they do not have any claims. Insurers use bonus-malus system (<em>BMS</em>) for two main purposes: to encourage drivers to drive more carefully in a policy year without any claims, and to ensure insureds to pay premiums proportional to their risks based on their claims experience via an experience rating mechanism.</p>
+<p><a href="#" class="tooltip" style="color:green"><em>Bonus-malus system</em><span style="font-size:8pt">A type of rating mechanism where insured premiums are adjusted based on their individual loss experience history</span></a>, which is used interchangeably as “no-fault discount”, “merit rating”, “experience rating” or “no-claim discount” in different countries, is based on penalizing insureds who are responsible for one or more claims by a premium surcharge (malus), and rewarding insureds with a premium discount (bonus) if they do not have any claims. Insurers use bonus-malus system (<em>BMS</em>) for two main purposes: to encourage drivers to drive more carefully in a policy year without any claims, and to ensure insureds to pay premiums proportional to their risks based on their claims experience via an experience rating mechanism.</p>
 <p><em>BMS</em> is an experience rating system commonly used in motor insurance. It represents an attempt to categorize insureds into homogeneous groups who pay premiums based on their claims experience. Depending on the rules in the scheme, new policyholders may be required to pay full premium initially, and obtain discounts in the future years as a result of claim-free years. <em>BMS</em> rewards policyholders for not making any claims during a policy year. In other words, it grants a bonus to a careful driver. This bonus principle may affect policy holders’ decisions whether to claim or not to claim, especially when involving accidents with slight damages, which is known as the ‘<a href="#" class="tooltip" style="color:green"><em>hunger for bonus</em><span style="font-size:8pt">Phenomenon where insureds under an experience rating system are dissuaded from filing minor claims in order to keep their no-claims discount</span></a>’ phenomenon. The ‘hunger for bonus’ under a <em>BMS</em> may reduce insurers’ claim costs, and may be able to offset the expected decrease in premium income.</p>
 <p>In motor insurance, <em>BMS</em> is a form of <em>a posteriori</em> rating to complement the use of <em>a priori</em> risk classification described in Chapter <a href="ChapRiskClass.html#ChapRiskClass">11</a>. The <em>a priori</em> risk classification divides portfolio of drivers into a number of homogeneous risk classes based on rating factors, such that policyholders in the same risk class pay the same premium. The ideal <em>a posteriori</em> mechanism is the credibility premium developed in Chapter <a href="ChapCredibility.html#ChapCredibility">12</a>, whereby premiums are derived on an individual basis for each policyholder by incorporating both the <em>a priori</em> and <em>a posteriori</em> information. However, such individual premium determination is overly complex from a commercial standpoint for practical implementations by motor insurers. For this reason, <em>BMS</em> is the preferred solution and it consists of three elements: bonus-malus classes, transition rules, and premium levels (also known as premium relativities). The advantage of using <em>BMS</em> is that the bonus-malus classes and the transition rules are pre-specified in advance by insurers. The bonus-malus classes and transition rules will be discussed in the next section.</p>
 </div>
@@ -1242,67 +1246,37 @@ Second Edition</a>
 <p>The discounts in the Malaysian <em>BMS</em> are divided into six classes, starting from the initial class of 0% discount, followed by classes of 25%, 30%, 38.3%, 45% and 55% discounts. A claim-free policy year indicates that a policyholder is entitled to move one-step forward to the next discount class, such as from a 0% discount to a 25% discount in the renewal year. If a policyholder is already at the highest class, which is at a 55% discount, a claim-free policy year indicates that the policyholder remains in the same class. On the other hand, if one or more claims are made within the policy year, the discount will be forfeited and the policyholder has to start at 0% discount in the renewal year. This set of transition rules can also be summarized as a rule of -1/Top, that is, a class of bonus for a claim-free year, and moving to the highest class after having one or more claims. For an illustration purpose, <a href="#fig:15.1">Figure 15.1</a> shows the classes and the transition diagram for the Malaysian <em>BMS</em>.</p>
 
 <table>
-<caption>
-<span id="tab:unnamed-chunk-175">Table 15.1: </span><strong>Transition diagram for bonus-malus classes (Malaysia)</strong>
-</caption>
+<caption><span id="tab:unnamed-chunk-175">Table 15.1: </span><strong>Transition diagram for bonus-malus classes (Malaysia)</strong></caption>
 <thead>
-<tr>
-<th style="text-align:center;">
-Classes
-</th>
-<th style="text-align:center;">
-Discounts (%)
-</th>
+<tr class="header">
+<th align="center">Classes</th>
+<th align="center">Discounts (%)</th>
 </tr>
 </thead>
 <tbody>
-<tr>
-<td style="text-align:center;">
-0
-</td>
-<td style="text-align:center;">
-0.00
-</td>
+<tr class="odd">
+<td align="center">0</td>
+<td align="center">0.00</td>
 </tr>
-<tr>
-<td style="text-align:center;">
-1
-</td>
-<td style="text-align:center;">
-25.00
-</td>
+<tr class="even">
+<td align="center">1</td>
+<td align="center">25.00</td>
 </tr>
-<tr>
-<td style="text-align:center;">
-2
-</td>
-<td style="text-align:center;">
-30.00
-</td>
+<tr class="odd">
+<td align="center">2</td>
+<td align="center">30.00</td>
 </tr>
-<tr>
-<td style="text-align:center;">
-3
-</td>
-<td style="text-align:center;">
-38.33
-</td>
+<tr class="even">
+<td align="center">3</td>
+<td align="center">38.33</td>
 </tr>
-<tr>
-<td style="text-align:center;">
-4
-</td>
-<td style="text-align:center;">
-45.00
-</td>
+<tr class="odd">
+<td align="center">4</td>
+<td align="center">45.00</td>
 </tr>
-<tr>
-<td style="text-align:center;">
-5 (and above)
-</td>
-<td style="text-align:center;">
-55.00
-</td>
+<tr class="even">
+<td align="center">5 (and above)</td>
+<td align="center">55.00</td>
 </tr>
 </tbody>
 </table>
@@ -1329,7 +1303,7 @@ Figure 15.1: <strong>Transition diagram for bonus-malus classes (Malaysia)</stro
 </div>
 <div id="bms-in-other-countries" class="section level3 hasAnchor" number="15.2.2">
 <h3><span class="header-section-number">15.2.2</span> <em>BMS</em> in Other Countries<a href="ChapBonusMalus.html#bms-in-other-countries" class="anchor-section" aria-label="Anchor link to header"></a></h3>
-<p>The <em>BMS</em> in Brazil are subdivided into seven classes, with the following premium levels <span class="citation">(<a href="#ref-LemaireZi94" role="doc-biblioref">Lemaire and Zi 1994</a>)</span>: 100, 90, 85, 80, 75, 70, and 65. These premium levels are entitled to the following discounts: 0%, 10%, 15%, 20%, 25%, 30% and 35%. New policyholders have to start at 0% discount, or at premium level 100. A claim-free policy year indicates that a policyholder can move forward at a one-class discount. If one or more claims incurred within the policy year, the policyholder has to move one-class backward for each claim. <a href="#fig:15.2">Figure 15.2</a> <!-- \ref{fig:TransitionBrazil} --> shows the classes and the transition diagram for the <em>BMS</em> in Brazil. This set of transition rules can also be summarized as a rule of -1/+1, that is, a class of bonus for a claim-free policy year, and a class of malus for each claim reported.</p>
+<p>The <em>BMS</em> in Brazil are subdivided into seven classes, with the following premium levels <span class="citation">(<a href="#ref-LemaireZi94">Lemaire and Zi 1994</a>)</span>: 100, 90, 85, 80, 75, 70, and 65. These premium levels are entitled to the following discounts: 0%, 10%, 15%, 20%, 25%, 30% and 35%. New policyholders have to start at 0% discount, or at premium level 100. A claim-free policy year indicates that a policyholder can move forward at a one-class discount. If one or more claims incurred within the policy year, the policyholder has to move one-class backward for each claim. <a href="#fig:15.2">Figure 15.2</a> <!-- \ref{fig:TransitionBrazil} --> shows the classes and the transition diagram for the <em>BMS</em> in Brazil. This set of transition rules can also be summarized as a rule of -1/+1, that is, a class of bonus for a claim-free policy year, and a class of malus for each claim reported.</p>
 <table>
 <thead>
 <tr class="header">
@@ -1377,7 +1351,7 @@ Figure 15.2: <strong>Transition diagram for bonus-malus classes (Brazil)</strong
 </p>
 </div>
 <hr />
-<p>The <em>BMS</em> in Switzerland are subdivided into twenty-two classes, with the following premium levels: 270, 250, 230, 215, 200, 185, 170, 155, 140, 130, 120, 110, 100, 90, 80, 75, 70, 65, 60, 55, 50 and 45 <span class="citation">(<a href="#ref-LemaireZi94" role="doc-biblioref">Lemaire and Zi 1994</a>)</span>. The premium levels 270, 250, 230, 215, 200, 185, 170, 155, 140, 130, 120 and 110 are the premiums with the following loadings (malus): 170%, 150%, 130%, 115%, 100%, 85%, 70%, 55%, 40%, 30%, 20%, and 10%. On the other hand, the premium levels 100, 90, 80, 75, 70, 65, 60, 55, 50 and 45 are the premiums with the following discounts (bonus): 0%, 10%, 20%, 25%, 30%, 35%, 40%, 45%, 50% and 55%. New policyholders have to start at 0% discount, or at premium level 100, and a claim-free policy year indicates that a policyholder can move one-class forward. If one or more claims incurred within the policy year, the policyholder has to move four-classes backward for each claim. <a href="#tab:15.3">Table 15.1</a> and Figure <a href="ChapBonusMalus.html#fig:TransitionSwitz">15.3</a> respectively show the classes and the transition diagram for the <em>BMS</em> in Switzerland. This set of transition rule can be summarized as a rule of -1/+4. It should be noted that the entry level is at class 12, which is at premium level 100 (or 0% discount).</p>
+<p>The <em>BMS</em> in Switzerland are subdivided into twenty-two classes, with the following premium levels: 270, 250, 230, 215, 200, 185, 170, 155, 140, 130, 120, 110, 100, 90, 80, 75, 70, 65, 60, 55, 50 and 45 <span class="citation">(<a href="#ref-LemaireZi94">Lemaire and Zi 1994</a>)</span>. The premium levels 270, 250, 230, 215, 200, 185, 170, 155, 140, 130, 120 and 110 are the premiums with the following loadings (malus): 170%, 150%, 130%, 115%, 100%, 85%, 70%, 55%, 40%, 30%, 20%, and 10%. On the other hand, the premium levels 100, 90, 80, 75, 70, 65, 60, 55, 50 and 45 are the premiums with the following discounts (bonus): 0%, 10%, 20%, 25%, 30%, 35%, 40%, 45%, 50% and 55%. New policyholders have to start at 0% discount, or at premium level 100, and a claim-free policy year indicates that a policyholder can move one-class forward. If one or more claims incurred within the policy year, the policyholder has to move four-classes backward for each claim. <a href="#tab:15.3">Table 15.1</a> and Figure <a href="ChapBonusMalus.html#fig:TransitionSwitz">15.3</a> respectively show the classes and the transition diagram for the <em>BMS</em> in Switzerland. This set of transition rule can be summarized as a rule of -1/+4. It should be noted that the entry level is at class 12, which is at premium level 100 (or 0% discount).</p>
 <p><a id=tab:15.3></a></p>
 <p><strong>Table 15.1 Bonus-malus classes (Switzerland)</strong></p>
 <p><span class="math display">\[
@@ -1434,10 +1408,10 @@ p_{ij}(0,m+n)=\sum_{l\in S} p_{il}(0,m)p_{lj}(m,m+n)=\sum_{l\in S}p_{il}^{(m)}p_
 <p>In the context of <em>BMS</em>, the transition of the bonus-malus classes is governed by the transition probability in a given policy year. The transition of the bonus-malus classes is also a time-homogeneous Markov Chain since the set of transition rules is fixed and independent of time. We can represent the one-step transition probabilities by a <span class="math inline">\(k \times k\)</span> <em>transition matrix</em> <span class="math inline">\({\bf P}=(p_{ij})\)</span> that corresponds to bonus-malus classes <span class="math inline">\(0,1,2,\ldots,k-1\)</span>.</p>
 <p><span class="math display">\[
 \small{
-{\bf P} = 
+{\bf P} =
 \left[ {\begin{array}{*{20}c}
 p_{00} &amp; p_{01} &amp; \ldots &amp; &amp; &amp; p_{0k-1} \\
-p_{10} &amp; p_{11} &amp; \ldots &amp; &amp; &amp; p_{1k-1} \\ 
+p_{10} &amp; p_{11} &amp; \ldots &amp; &amp; &amp; p_{1k-1} \\
 \vdots &amp; \ddots &amp; &amp; &amp; &amp; \vdots \\
 p_{k-10} &amp; p_{k-11} &amp; \cdots &amp; &amp; &amp; p_{k-1k-1}   
 \end{array} } \right]
@@ -1450,7 +1424,7 @@ p_{k-10} &amp; p_{k-11} &amp; \cdots &amp; &amp; &amp; p_{k-1k-1}
 <p>Consider the Malaysian <em>BMS</em>. Let <span class="math inline">\(\{X_{t}:t=0,1,2,\ldots\}\)</span> be the bonus-malus class occupied by a policyholder at time <span class="math inline">\(t\)</span> with state space <span class="math inline">\(S=\{0,1,2,3,4,5\}\)</span>. Therefore, the transition probability in a no-claim policy year is equal to the probability of transition from state <span class="math inline">\(i\)</span> to state <span class="math inline">\(i+1\)</span>, i.e. <span class="math inline">\(p_{ii+1}\)</span>. If an insured has one or more claims within the policy year, the probability of transitioning back to state 0 is represented by <span class="math inline">\(p_{i0}=1-p_{ii+1}\)</span>. Hence, the Malaysian <em>BMS</em> can be represented by the following <span class="math inline">\(6\times 6\)</span> transition matrix:</p>
 <p><span class="math display">\[
 \small{
-{\bf P} = 
+{\bf P} =
 \left[ {\begin{array}{*{20}c}
 p_{00}&amp;p_{01}&amp;0&amp;0&amp;0&amp;0\\
 p_{10}&amp;0&amp;p_{12}&amp;0&amp;0&amp;0\\
@@ -1458,7 +1432,7 @@ p_{20}&amp;0&amp;0&amp;p_{23}&amp;0&amp;0\\
 p_{30}&amp;0&amp;0&amp;0&amp;p_{34}&amp;0\\
 p_{40}&amp;0&amp;0&amp;0&amp;0&amp;p_{45}\\
 p_{50}&amp;0&amp;0&amp;0&amp;0&amp;p_{55}
-\end{array} }\right] = 
+\end{array} }\right] =
 \left[ {\begin{array}{*{20}c}
 {1 - p_{01}}&amp;p_{01}&amp;0&amp;0&amp;0&amp;0\\
 {1 - p_{12}}&amp;0&amp;p_{12}&amp;0&amp;0&amp;0\\
@@ -1478,7 +1452,7 @@ p_{50}&amp;0&amp;0&amp;0&amp;0&amp;p_{55}
 <p>Based on the bonus-malus classes and the transition diagram shown in <a href="#fig:15.2">Figure 15.2</a> <!-- <a href="#fig:TransitionBrazil"><strong>??</strong></a> --> , the probability of a no-claim policy year is equal to the probability of moving one-class forward, whereas the probability of having one or more claims within the policy year is equal to the probability of moving one-class backward for each claim. Therefore, each row can contain two or more transition probabilities; one probability for advancing to the next state, and one or more probabilities for moving one-class backward. The transition matrix is:</p>
 <p><span class="math display">\[
 \small{
-{\bf P} = 
+{\bf P} =
 \left[ {\begin{array}{*{20}{c}}
 {1 - p_{01}}&amp;p_{01}&amp;0&amp;0&amp;0&amp;0&amp;0\\
 {1 - p_{12}}&amp;0&amp;p_{12}&amp;0&amp;0&amp;0&amp;0\\
@@ -1501,7 +1475,7 @@ p_{50}&amp;0&amp;0&amp;0&amp;0&amp;p_{55}
 <p>From <a href="#tab:15.3">Table 15.1</a> and Figure <a href="ChapBonusMalus.html#fig:TransitionSwitz">15.3</a>, the probability of a no-claim policy year is equal to the probability of moving one-class forward, whereas the probability of having one or more claims within the policy year is equal to the probability of moving four-classes backward for each claim. The transition matrix is:</p>
 <p><span class="math display">\[
 \small{
-{\bf P} = 
+{\bf P} =
 \left[
 {\begin{array}{*{12}{c}}
 1 - {p_{01}} &amp; p_{01} &amp; 0 &amp; 0 &amp; 0 &amp; 0 &amp; 0 &amp; 0 &amp; 0 &amp; 0 &amp; 0 &amp; \cdots\\
@@ -1549,7 +1523,7 @@ p_{50}&amp;0&amp;0&amp;0&amp;0&amp;p_{55}
 <p><strong>Solution.</strong> The transition matrix can be re-written as:</p>
 <p><span class="math display">\[
 \small{
-{\bf P} = 
+{\bf P} =
 \left[ {\begin{array}{*{20}c}
 {1 - p_{0}}&amp;p_{0}&amp;0&amp;0&amp;0&amp;0\\
 {1 - p_{0}}&amp;0&amp;p_{0}&amp;0&amp;0&amp;0\\
@@ -1603,31 +1577,31 @@ p_{50}&amp;0&amp;0&amp;0&amp;0&amp;p_{55}
 </h5>
 <div id="toggleCode.Section15.42" style="display: none">
 <p><strong>1. Create a Transition Matrix</strong></p>
-<div class="sourceCode" id="cb224"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb224-1"><a href="ChapBonusMalus.html#cb224-1" aria-hidden="true" tabindex="-1"></a>    <span class="co">#create transition matrix for Malaysian data</span></span>
-<span id="cb224-2"><a href="ChapBonusMalus.html#cb224-2" aria-hidden="true" tabindex="-1"></a>    P<span class="ot">=</span><span class="fu">matrix</span>(<span class="at">data=</span><span class="dv">0</span>,<span class="at">nrow=</span><span class="dv">6</span>,<span class="at">ncol=</span><span class="dv">6</span>)</span>
-<span id="cb224-3"><a href="ChapBonusMalus.html#cb224-3" aria-hidden="true" tabindex="-1"></a>    P[<span class="dv">1</span>,<span class="dv">2</span>]<span class="ot">=</span>P[<span class="dv">2</span>,<span class="dv">3</span>]<span class="ot">=</span>P[<span class="dv">3</span>,<span class="dv">4</span>]<span class="ot">=</span>P[<span class="dv">4</span>,<span class="dv">5</span>]<span class="ot">=</span>P[<span class="dv">5</span>,<span class="dv">6</span>]<span class="ot">=</span>P[<span class="dv">6</span>,<span class="dv">6</span>]<span class="ot">=</span><span class="fl">0.9</span></span>
-<span id="cb224-4"><a href="ChapBonusMalus.html#cb224-4" aria-hidden="true" tabindex="-1"></a>    P[,<span class="dv">1</span>]<span class="ot">=</span><span class="fl">0.1</span></span>
-<span id="cb224-5"><a href="ChapBonusMalus.html#cb224-5" aria-hidden="true" tabindex="-1"></a>    P</span>
-<span id="cb224-6"><a href="ChapBonusMalus.html#cb224-6" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb224-7"><a href="ChapBonusMalus.html#cb224-7" aria-hidden="true" tabindex="-1"></a>    <span class="co">#output</span></span>
-<span id="cb224-8"><a href="ChapBonusMalus.html#cb224-8" aria-hidden="true" tabindex="-1"></a>         [,<span class="dv">1</span>] [,<span class="dv">2</span>] [,<span class="dv">3</span>] [,<span class="dv">4</span>] [,<span class="dv">5</span>] [,<span class="dv">6</span>]</span>
-<span id="cb224-9"><a href="ChapBonusMalus.html#cb224-9" aria-hidden="true" tabindex="-1"></a>    [<span class="dv">1</span>,]  <span class="fl">0.1</span>  <span class="fl">0.9</span>  <span class="fl">0.0</span>  <span class="fl">0.0</span>  <span class="fl">0.0</span>  <span class="fl">0.0</span></span>
-<span id="cb224-10"><a href="ChapBonusMalus.html#cb224-10" aria-hidden="true" tabindex="-1"></a>    [<span class="dv">2</span>,]  <span class="fl">0.1</span>  <span class="fl">0.0</span>  <span class="fl">0.9</span>  <span class="fl">0.0</span>  <span class="fl">0.0</span>  <span class="fl">0.0</span></span>
-<span id="cb224-11"><a href="ChapBonusMalus.html#cb224-11" aria-hidden="true" tabindex="-1"></a>    [<span class="dv">3</span>,]  <span class="fl">0.1</span>  <span class="fl">0.0</span>  <span class="fl">0.0</span>  <span class="fl">0.9</span>  <span class="fl">0.0</span>  <span class="fl">0.0</span></span>
-<span id="cb224-12"><a href="ChapBonusMalus.html#cb224-12" aria-hidden="true" tabindex="-1"></a>    [<span class="dv">4</span>,]  <span class="fl">0.1</span>  <span class="fl">0.0</span>  <span class="fl">0.0</span>  <span class="fl">0.0</span>  <span class="fl">0.9</span>  <span class="fl">0.0</span></span>
-<span id="cb224-13"><a href="ChapBonusMalus.html#cb224-13" aria-hidden="true" tabindex="-1"></a>    [<span class="dv">5</span>,]  <span class="fl">0.1</span>  <span class="fl">0.0</span>  <span class="fl">0.0</span>  <span class="fl">0.0</span>  <span class="fl">0.0</span>  <span class="fl">0.9</span></span>
-<span id="cb224-14"><a href="ChapBonusMalus.html#cb224-14" aria-hidden="true" tabindex="-1"></a>    [<span class="dv">6</span>,]  <span class="fl">0.1</span>  <span class="fl">0.0</span>  <span class="fl">0.0</span>  <span class="fl">0.0</span>  <span class="fl">0.0</span>  <span class="fl">0.9</span></span></code></pre></div>
+<div class="sourceCode" id="cb224"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb224-1"><a href="ChapBonusMalus.html#cb224-1" tabindex="-1"></a>    <span class="co">#create transition matrix for Malaysian data</span></span>
+<span id="cb224-2"><a href="ChapBonusMalus.html#cb224-2" tabindex="-1"></a>    P<span class="ot">=</span><span class="fu">matrix</span>(<span class="at">data=</span><span class="dv">0</span>,<span class="at">nrow=</span><span class="dv">6</span>,<span class="at">ncol=</span><span class="dv">6</span>)</span>
+<span id="cb224-3"><a href="ChapBonusMalus.html#cb224-3" tabindex="-1"></a>    P[<span class="dv">1</span>,<span class="dv">2</span>]<span class="ot">=</span>P[<span class="dv">2</span>,<span class="dv">3</span>]<span class="ot">=</span>P[<span class="dv">3</span>,<span class="dv">4</span>]<span class="ot">=</span>P[<span class="dv">4</span>,<span class="dv">5</span>]<span class="ot">=</span>P[<span class="dv">5</span>,<span class="dv">6</span>]<span class="ot">=</span>P[<span class="dv">6</span>,<span class="dv">6</span>]<span class="ot">=</span><span class="fl">0.9</span></span>
+<span id="cb224-4"><a href="ChapBonusMalus.html#cb224-4" tabindex="-1"></a>    P[,<span class="dv">1</span>]<span class="ot">=</span><span class="fl">0.1</span></span>
+<span id="cb224-5"><a href="ChapBonusMalus.html#cb224-5" tabindex="-1"></a>    P</span>
+<span id="cb224-6"><a href="ChapBonusMalus.html#cb224-6" tabindex="-1"></a></span>
+<span id="cb224-7"><a href="ChapBonusMalus.html#cb224-7" tabindex="-1"></a>    <span class="co">#output</span></span>
+<span id="cb224-8"><a href="ChapBonusMalus.html#cb224-8" tabindex="-1"></a>         [,<span class="dv">1</span>] [,<span class="dv">2</span>] [,<span class="dv">3</span>] [,<span class="dv">4</span>] [,<span class="dv">5</span>] [,<span class="dv">6</span>]</span>
+<span id="cb224-9"><a href="ChapBonusMalus.html#cb224-9" tabindex="-1"></a>    [<span class="dv">1</span>,]  <span class="fl">0.1</span>  <span class="fl">0.9</span>  <span class="fl">0.0</span>  <span class="fl">0.0</span>  <span class="fl">0.0</span>  <span class="fl">0.0</span></span>
+<span id="cb224-10"><a href="ChapBonusMalus.html#cb224-10" tabindex="-1"></a>    [<span class="dv">2</span>,]  <span class="fl">0.1</span>  <span class="fl">0.0</span>  <span class="fl">0.9</span>  <span class="fl">0.0</span>  <span class="fl">0.0</span>  <span class="fl">0.0</span></span>
+<span id="cb224-11"><a href="ChapBonusMalus.html#cb224-11" tabindex="-1"></a>    [<span class="dv">3</span>,]  <span class="fl">0.1</span>  <span class="fl">0.0</span>  <span class="fl">0.0</span>  <span class="fl">0.9</span>  <span class="fl">0.0</span>  <span class="fl">0.0</span></span>
+<span id="cb224-12"><a href="ChapBonusMalus.html#cb224-12" tabindex="-1"></a>    [<span class="dv">4</span>,]  <span class="fl">0.1</span>  <span class="fl">0.0</span>  <span class="fl">0.0</span>  <span class="fl">0.0</span>  <span class="fl">0.9</span>  <span class="fl">0.0</span></span>
+<span id="cb224-13"><a href="ChapBonusMalus.html#cb224-13" tabindex="-1"></a>    [<span class="dv">5</span>,]  <span class="fl">0.1</span>  <span class="fl">0.0</span>  <span class="fl">0.0</span>  <span class="fl">0.0</span>  <span class="fl">0.0</span>  <span class="fl">0.9</span></span>
+<span id="cb224-14"><a href="ChapBonusMalus.html#cb224-14" tabindex="-1"></a>    [<span class="dv">6</span>,]  <span class="fl">0.1</span>  <span class="fl">0.0</span>  <span class="fl">0.0</span>  <span class="fl">0.0</span>  <span class="fl">0.0</span>  <span class="fl">0.9</span></span></code></pre></div>
 <p><strong>2. Find a stationary distribution using left eigenvector</strong></p>
-<div class="sourceCode" id="cb225"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb225-1"><a href="ChapBonusMalus.html#cb225-1" aria-hidden="true" tabindex="-1"></a>    <span class="co">#for left eigenvector, use eigenvector of transpose of transition matrix</span></span>
-<span id="cb225-2"><a href="ChapBonusMalus.html#cb225-2" aria-hidden="true" tabindex="-1"></a>    <span class="co">#then divide entry of 1st column by sum of 1st column so that all entries sum to 1 </span></span>
-<span id="cb225-3"><a href="ChapBonusMalus.html#cb225-3" aria-hidden="true" tabindex="-1"></a>    <span class="co">#provide stationary distribution in terms of a row vector (use transpose)</span></span>
-<span id="cb225-4"><a href="ChapBonusMalus.html#cb225-4" aria-hidden="true" tabindex="-1"></a>    <span class="co">#provide stationary distribution with numeric/real values (use function Re())</span></span>
-<span id="cb225-5"><a href="ChapBonusMalus.html#cb225-5" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb225-6"><a href="ChapBonusMalus.html#cb225-6" aria-hidden="true" tabindex="-1"></a>    <span class="fu">Re</span>(<span class="fu">t</span>(<span class="fu">eigen</span>(<span class="fu">t</span>(P))<span class="sc">$</span>vectors[,<span class="dv">1</span>]<span class="sc">/</span><span class="fu">sum</span>(<span class="fu">eigen</span>(<span class="fu">t</span>(P))<span class="sc">$</span>vectors[,<span class="dv">1</span>])))</span>
-<span id="cb225-7"><a href="ChapBonusMalus.html#cb225-7" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb225-8"><a href="ChapBonusMalus.html#cb225-8" aria-hidden="true" tabindex="-1"></a>    <span class="co">#output</span></span>
-<span id="cb225-9"><a href="ChapBonusMalus.html#cb225-9" aria-hidden="true" tabindex="-1"></a>         [,<span class="dv">1</span>] [,<span class="dv">2</span>]  [,<span class="dv">3</span>]   [,<span class="dv">4</span>]    [,<span class="dv">5</span>]    [,<span class="dv">6</span>]</span>
-<span id="cb225-10"><a href="ChapBonusMalus.html#cb225-10" aria-hidden="true" tabindex="-1"></a>    [<span class="dv">1</span>,]  <span class="fl">0.1</span> <span class="fl">0.09</span> <span class="fl">0.081</span> <span class="fl">0.0729</span> <span class="fl">0.06561</span> <span class="fl">0.59049</span></span></code></pre></div>
+<div class="sourceCode" id="cb225"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb225-1"><a href="ChapBonusMalus.html#cb225-1" tabindex="-1"></a>    <span class="co">#for left eigenvector, use eigenvector of transpose of transition matrix</span></span>
+<span id="cb225-2"><a href="ChapBonusMalus.html#cb225-2" tabindex="-1"></a>    <span class="co">#then divide entry of 1st column by sum of 1st column so that all entries sum to 1 </span></span>
+<span id="cb225-3"><a href="ChapBonusMalus.html#cb225-3" tabindex="-1"></a>    <span class="co">#provide stationary distribution in terms of a row vector (use transpose)</span></span>
+<span id="cb225-4"><a href="ChapBonusMalus.html#cb225-4" tabindex="-1"></a>    <span class="co">#provide stationary distribution with numeric/real values (use function Re())</span></span>
+<span id="cb225-5"><a href="ChapBonusMalus.html#cb225-5" tabindex="-1"></a></span>
+<span id="cb225-6"><a href="ChapBonusMalus.html#cb225-6" tabindex="-1"></a>    <span class="fu">Re</span>(<span class="fu">t</span>(<span class="fu">eigen</span>(<span class="fu">t</span>(P))<span class="sc">$</span>vectors[,<span class="dv">1</span>]<span class="sc">/</span><span class="fu">sum</span>(<span class="fu">eigen</span>(<span class="fu">t</span>(P))<span class="sc">$</span>vectors[,<span class="dv">1</span>])))</span>
+<span id="cb225-7"><a href="ChapBonusMalus.html#cb225-7" tabindex="-1"></a></span>
+<span id="cb225-8"><a href="ChapBonusMalus.html#cb225-8" tabindex="-1"></a>    <span class="co">#output</span></span>
+<span id="cb225-9"><a href="ChapBonusMalus.html#cb225-9" tabindex="-1"></a>         [,<span class="dv">1</span>] [,<span class="dv">2</span>]  [,<span class="dv">3</span>]   [,<span class="dv">4</span>]    [,<span class="dv">5</span>]    [,<span class="dv">6</span>]</span>
+<span id="cb225-10"><a href="ChapBonusMalus.html#cb225-10" tabindex="-1"></a>    [<span class="dv">1</span>,]  <span class="fl">0.1</span> <span class="fl">0.09</span> <span class="fl">0.081</span> <span class="fl">0.0729</span> <span class="fl">0.06561</span> <span class="fl">0.59049</span></span></code></pre></div>
 </div>
 <hr />
 <p><strong>Example 15.4.2.</strong> Consider the <em>BMS</em> in Brazil where the transition rule is -1/+1. Let the probability of a no-claim policy year (probability of one-class forward) equal to <span class="math inline">\(p_0\)</span>, the probability of one or more claims in a policy year (probability of one-class backward) equal to <span class="math inline">\(p_1\)</span>, the probability of one or more claims in the next policy year (probability of two-classes backward) equal to <span class="math inline">\(p_2\)</span>, and so on and so forth. Find the stationary distribution assuming that <span class="math inline">\(p_k\)</span> is distributed as Poisson with probability</p>
@@ -1640,7 +1614,7 @@ p_k = \frac{e^{ - 0.1}{(0.1)}^k}{{k!}},{\rm{ }}k = 0,1,2,\ldots
 <div id="toggleExample.15.4.2" style="display: none">
 <p><strong>Solution.</strong> The transition matrix for the <em>BMS</em> in Brazil can be written as:</p>
 <p><span class="math display">\[
-{\small 
+{\small
 {\bf{P}} = \left[ {\begin{array}{*{20}{c}}
 {1 - {p_0}}&amp;{{p_0}}&amp;0&amp;0&amp;0&amp;0&amp;0\\
 {1 - {p_0}}&amp;0&amp;{{p_0}}&amp;0&amp;0&amp;0&amp;0\\
@@ -1649,7 +1623,7 @@ p_k = \frac{e^{ - 0.1}{(0.1)}^k}{{k!}},{\rm{ }}k = 0,1,2,\ldots
 {1 - \sum_i {{p_i}}}&amp;{{p_3}}&amp;{{p_2}}&amp;{{p_1}}&amp;0&amp;{{p_0}}&amp;0\\
 {1 - \sum_i{{p_i}} }&amp;{{p_4}}&amp;{{p_3}}&amp;{{p_2}}&amp;{{p_1}}&amp;0&amp;{{p_0}}\\
 {1 - \sum_i {{p_i}}}&amp;{{p_5}}&amp;{{p_4}}&amp;{{p_3}}&amp;{{p_2}}&amp;{{p_1}}&amp;{{p_0}}
-\end{array}} \right] = 
+\end{array}} \right] =
 \left[ {\begin{array}{*{20}{c}}
 {0.0952}&amp;{0.9048}&amp;0&amp;0&amp;0&amp;0&amp;0\\
 {0.0952}&amp;0&amp;{0.9048}&amp;0&amp;0&amp;0&amp;0\\
@@ -1671,7 +1645,7 @@ p_k = \frac{e^{ - 0.1}{(0.1)}^k}{{k!}},{\rm{ }}k = 0,1,2,\ldots
 {{\pi _4}}\\
 {{\pi_5}}\\
 {{\pi _6}}
-\end{array}} \right] = 
+\end{array}} \right] =
 \left[ {\begin{array}{*{20}{c}}
 {0.0000}\\
 {0.0000}\\
@@ -1692,16 +1666,16 @@ p_k = \frac{e^{ - 0.1}{(0.1)}^k}{{k!}},{\rm{ }}k = 0,1,2,\ldots
 <div id="toggleExample.15.4.3" style="display: none">
 <p><strong>Solution.</strong> After using the discount, the premium for each class is</p>
 <p><span class="math display">\[
-=  \ ($1000)\times \text{(1 - % of discount})\\ 
+=  \ ($1000)\times \text{(1 - % of discount})\\
 \]</span></p>
 <p>Using stationary probabilities from Example 15.4.2, the mean premium under steady state condition is:</p>
 <p><span class="math display">\[
-\begin{array}{l} = 
-\sum\limits_j 
-\text{(proportion in class } j \text{ in the long run)} \times ($1000) \times \text{(1 - % of discount})\\ 
-= $1000\times[{\pi _0}(1) + {\pi _1}(1 - 0.1) + {\pi _2}(1 - 0.15) + \ldots + {\pi _6}(1 - 0.35)]\\ 
+\begin{array}{l} =
+\sum\limits_j
+\text{(proportion in class } j \text{ in the long run)} \times ($1000) \times \text{(1 - % of discount})\\
+= $1000\times[{\pi _0}(1) + {\pi _1}(1 - 0.1) + {\pi _2}(1 - 0.15) + \ldots + {\pi _6}(1 - 0.35)]\\
 = $1000\times[0 + 0 + (0.0003)(0.85) + \ldots + (0.8894)(0.65)]\\
-= $656.5 
+= $656.5
 \end{array}
 \]</span></p>
 <hr />
@@ -1719,7 +1693,7 @@ p_k = \frac{e^{ - 0.1}{(0.1)}^k}{{k!}},{\rm{ }}k = 0,1,2,\ldots
 <p><strong>Solution.</strong> Under the Malaysian <em>BMS</em>, the transition matrix in the first year is:</p>
 <p><span class="math display">\[
 \small{
-{\bf{P}^{(1)}} = 
+{\bf{P}^{(1)}} =
 \left[{\begin{array}{*{20}{c}}
 {0.0952}&amp;{0.9048}&amp;0&amp;0&amp;0&amp;0\\
 {0.0952}&amp;0&amp;{0.9048}&amp;0&amp;0&amp;0\\
@@ -1732,8 +1706,8 @@ p_k = \frac{e^{ - 0.1}{(0.1)}^k}{{k!}},{\rm{ }}k = 0,1,2,\ldots
 \]</span></p>
 <p>The mean premium in the first year, after implementing the discount, is:</p>
 <p><span class="math display">\[
-\begin{aligned} 
-&amp;= \sum\limits_j ($1000) \times 
+\begin{aligned}
+&amp;= \sum\limits_j ($1000) \times
 \text{(average proportion in class } j) \times \text{(1 - % of discount}) \\
 &amp;= $1000\times\left[ \frac{\sum\limits_i {p_{i0}}}{6}{(1)} +
 \frac{\sum\limits_i {p_{i1}}}{6}{(1 - 0.25)} + \ldots +
@@ -1763,66 +1737,66 @@ $1000\times[0.0952(1) + 0.1508(0.75) + \cdots + 0.3016(0.45)]\\
 </h5>
 <div id="toggleCode.Section15.43" style="display: none">
 <p><strong>1. Create a function for transition matrix</strong></p>
-<div class="sourceCode" id="cb226"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb226-1"><a href="ChapBonusMalus.html#cb226-1" aria-hidden="true" tabindex="-1"></a>    <span class="co">#create transition probability using function of \lambda</span></span>
-<span id="cb226-2"><a href="ChapBonusMalus.html#cb226-2" aria-hidden="true" tabindex="-1"></a>    TP<span class="ot">=</span><span class="cf">function</span>(\lambda)</span>
-<span id="cb226-3"><a href="ChapBonusMalus.html#cb226-3" aria-hidden="true" tabindex="-1"></a>    { P<span class="ot">=</span><span class="fu">matrix</span>(<span class="at">data=</span><span class="dv">0</span>,<span class="at">nrow=</span><span class="dv">6</span>,<span class="at">ncol=</span><span class="dv">6</span>)</span>
-<span id="cb226-4"><a href="ChapBonusMalus.html#cb226-4" aria-hidden="true" tabindex="-1"></a>      P[<span class="dv">1</span>,<span class="dv">2</span>]<span class="ot">=</span>P[<span class="dv">2</span>,<span class="dv">3</span>]<span class="ot">=</span>P[<span class="dv">3</span>,<span class="dv">4</span>]<span class="ot">=</span>P[<span class="dv">4</span>,<span class="dv">5</span>]<span class="ot">=</span>P[<span class="dv">5</span>,<span class="dv">6</span>]<span class="ot">=</span>P[<span class="dv">6</span>,<span class="dv">6</span>]<span class="ot">=</span><span class="fu">exp</span>(<span class="sc">-</span>\lambda)</span>
-<span id="cb226-5"><a href="ChapBonusMalus.html#cb226-5" aria-hidden="true" tabindex="-1"></a>      P[,<span class="dv">1</span>]<span class="ot">=</span><span class="dv">1</span><span class="sc">-</span><span class="fu">exp</span>(<span class="sc">-</span>\lambda)</span>
-<span id="cb226-6"><a href="ChapBonusMalus.html#cb226-6" aria-hidden="true" tabindex="-1"></a>      P}</span>
-<span id="cb226-7"><a href="ChapBonusMalus.html#cb226-7" aria-hidden="true" tabindex="-1"></a>    <span class="fu">TP</span>(<span class="fl">0.1</span>)</span>
-<span id="cb226-8"><a href="ChapBonusMalus.html#cb226-8" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb226-9"><a href="ChapBonusMalus.html#cb226-9" aria-hidden="true" tabindex="-1"></a>    <span class="co">#output</span></span>
-<span id="cb226-10"><a href="ChapBonusMalus.html#cb226-10" aria-hidden="true" tabindex="-1"></a>               [,<span class="dv">1</span>]      [,<span class="dv">2</span>]      [,<span class="dv">3</span>]      [,<span class="dv">4</span>]      [,<span class="dv">5</span>]      [,<span class="dv">6</span>]</span>
-<span id="cb226-11"><a href="ChapBonusMalus.html#cb226-11" aria-hidden="true" tabindex="-1"></a>    [<span class="dv">1</span>,] <span class="fl">0.09516258</span> <span class="fl">0.9048374</span> <span class="fl">0.0000000</span> <span class="fl">0.0000000</span> <span class="fl">0.0000000</span> <span class="fl">0.0000000</span></span>
-<span id="cb226-12"><a href="ChapBonusMalus.html#cb226-12" aria-hidden="true" tabindex="-1"></a>    [<span class="dv">2</span>,] <span class="fl">0.09516258</span> <span class="fl">0.0000000</span> <span class="fl">0.9048374</span> <span class="fl">0.0000000</span> <span class="fl">0.0000000</span> <span class="fl">0.0000000</span></span>
-<span id="cb226-13"><a href="ChapBonusMalus.html#cb226-13" aria-hidden="true" tabindex="-1"></a>    [<span class="dv">3</span>,] <span class="fl">0.09516258</span> <span class="fl">0.0000000</span> <span class="fl">0.0000000</span> <span class="fl">0.9048374</span> <span class="fl">0.0000000</span> <span class="fl">0.0000000</span></span>
-<span id="cb226-14"><a href="ChapBonusMalus.html#cb226-14" aria-hidden="true" tabindex="-1"></a>    [<span class="dv">4</span>,] <span class="fl">0.09516258</span> <span class="fl">0.0000000</span> <span class="fl">0.0000000</span> <span class="fl">0.0000000</span> <span class="fl">0.9048374</span> <span class="fl">0.0000000</span></span>
-<span id="cb226-15"><a href="ChapBonusMalus.html#cb226-15" aria-hidden="true" tabindex="-1"></a>    [<span class="dv">5</span>,] <span class="fl">0.09516258</span> <span class="fl">0.0000000</span> <span class="fl">0.0000000</span> <span class="fl">0.0000000</span> <span class="fl">0.0000000</span> <span class="fl">0.9048374</span></span>
-<span id="cb226-16"><a href="ChapBonusMalus.html#cb226-16" aria-hidden="true" tabindex="-1"></a>    [<span class="dv">6</span>,] <span class="fl">0.09516258</span> <span class="fl">0.0000000</span> <span class="fl">0.0000000</span> <span class="fl">0.0000000</span> <span class="fl">0.0000000</span> <span class="fl">0.9048374</span></span></code></pre></div>
+<div class="sourceCode" id="cb226"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb226-1"><a href="ChapBonusMalus.html#cb226-1" tabindex="-1"></a>    <span class="co">#create transition probability using function of \lambda</span></span>
+<span id="cb226-2"><a href="ChapBonusMalus.html#cb226-2" tabindex="-1"></a>    TP<span class="ot">=</span><span class="cf">function</span>(\lambda)</span>
+<span id="cb226-3"><a href="ChapBonusMalus.html#cb226-3" tabindex="-1"></a>    { P<span class="ot">=</span><span class="fu">matrix</span>(<span class="at">data=</span><span class="dv">0</span>,<span class="at">nrow=</span><span class="dv">6</span>,<span class="at">ncol=</span><span class="dv">6</span>)</span>
+<span id="cb226-4"><a href="ChapBonusMalus.html#cb226-4" tabindex="-1"></a>      P[<span class="dv">1</span>,<span class="dv">2</span>]<span class="ot">=</span>P[<span class="dv">2</span>,<span class="dv">3</span>]<span class="ot">=</span>P[<span class="dv">3</span>,<span class="dv">4</span>]<span class="ot">=</span>P[<span class="dv">4</span>,<span class="dv">5</span>]<span class="ot">=</span>P[<span class="dv">5</span>,<span class="dv">6</span>]<span class="ot">=</span>P[<span class="dv">6</span>,<span class="dv">6</span>]<span class="ot">=</span><span class="fu">exp</span>(<span class="sc">-</span>\lambda)</span>
+<span id="cb226-5"><a href="ChapBonusMalus.html#cb226-5" tabindex="-1"></a>      P[,<span class="dv">1</span>]<span class="ot">=</span><span class="dv">1</span><span class="sc">-</span><span class="fu">exp</span>(<span class="sc">-</span>\lambda)</span>
+<span id="cb226-6"><a href="ChapBonusMalus.html#cb226-6" tabindex="-1"></a>      P}</span>
+<span id="cb226-7"><a href="ChapBonusMalus.html#cb226-7" tabindex="-1"></a>    <span class="fu">TP</span>(<span class="fl">0.1</span>)</span>
+<span id="cb226-8"><a href="ChapBonusMalus.html#cb226-8" tabindex="-1"></a></span>
+<span id="cb226-9"><a href="ChapBonusMalus.html#cb226-9" tabindex="-1"></a>    <span class="co">#output</span></span>
+<span id="cb226-10"><a href="ChapBonusMalus.html#cb226-10" tabindex="-1"></a>               [,<span class="dv">1</span>]      [,<span class="dv">2</span>]      [,<span class="dv">3</span>]      [,<span class="dv">4</span>]      [,<span class="dv">5</span>]      [,<span class="dv">6</span>]</span>
+<span id="cb226-11"><a href="ChapBonusMalus.html#cb226-11" tabindex="-1"></a>    [<span class="dv">1</span>,] <span class="fl">0.09516258</span> <span class="fl">0.9048374</span> <span class="fl">0.0000000</span> <span class="fl">0.0000000</span> <span class="fl">0.0000000</span> <span class="fl">0.0000000</span></span>
+<span id="cb226-12"><a href="ChapBonusMalus.html#cb226-12" tabindex="-1"></a>    [<span class="dv">2</span>,] <span class="fl">0.09516258</span> <span class="fl">0.0000000</span> <span class="fl">0.9048374</span> <span class="fl">0.0000000</span> <span class="fl">0.0000000</span> <span class="fl">0.0000000</span></span>
+<span id="cb226-13"><a href="ChapBonusMalus.html#cb226-13" tabindex="-1"></a>    [<span class="dv">3</span>,] <span class="fl">0.09516258</span> <span class="fl">0.0000000</span> <span class="fl">0.0000000</span> <span class="fl">0.9048374</span> <span class="fl">0.0000000</span> <span class="fl">0.0000000</span></span>
+<span id="cb226-14"><a href="ChapBonusMalus.html#cb226-14" tabindex="-1"></a>    [<span class="dv">4</span>,] <span class="fl">0.09516258</span> <span class="fl">0.0000000</span> <span class="fl">0.0000000</span> <span class="fl">0.0000000</span> <span class="fl">0.9048374</span> <span class="fl">0.0000000</span></span>
+<span id="cb226-15"><a href="ChapBonusMalus.html#cb226-15" tabindex="-1"></a>    [<span class="dv">5</span>,] <span class="fl">0.09516258</span> <span class="fl">0.0000000</span> <span class="fl">0.0000000</span> <span class="fl">0.0000000</span> <span class="fl">0.0000000</span> <span class="fl">0.9048374</span></span>
+<span id="cb226-16"><a href="ChapBonusMalus.html#cb226-16" tabindex="-1"></a>    [<span class="dv">6</span>,] <span class="fl">0.09516258</span> <span class="fl">0.0000000</span> <span class="fl">0.0000000</span> <span class="fl">0.0000000</span> <span class="fl">0.0000000</span> <span class="fl">0.9048374</span></span></code></pre></div>
 <p><strong>2. Create a function for the</strong> <strong><em>n-</em>th power of a square matrix</strong></p>
-<div class="sourceCode" id="cb227"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb227-1"><a href="ChapBonusMalus.html#cb227-1" aria-hidden="true" tabindex="-1"></a>    <span class="co">#create function for nth power of square matrix</span></span>
-<span id="cb227-2"><a href="ChapBonusMalus.html#cb227-2" aria-hidden="true" tabindex="-1"></a>    powA <span class="ot">=</span> <span class="cf">function</span>(n,\lambda)</span>
-<span id="cb227-3"><a href="ChapBonusMalus.html#cb227-3" aria-hidden="true" tabindex="-1"></a>    { <span class="cf">if</span> (n<span class="sc">==</span><span class="dv">1</span>)  <span class="fu">return</span> (<span class="fu">TP</span>(\lambda))</span>
-<span id="cb227-4"><a href="ChapBonusMalus.html#cb227-4" aria-hidden="true" tabindex="-1"></a>      <span class="cf">if</span> (n<span class="sc">==</span><span class="dv">2</span>)  <span class="fu">return</span> (<span class="fu">TP</span>(\lambda)<span class="sc">%*%</span><span class="fu">TP</span>(\lambda))</span>
-<span id="cb227-5"><a href="ChapBonusMalus.html#cb227-5" aria-hidden="true" tabindex="-1"></a>      <span class="cf">if</span> (n<span class="sc">&gt;</span><span class="dv">2</span>) <span class="fu">return</span> (<span class="fu">TP</span>(\lambda)<span class="sc">%*%</span><span class="fu">powA</span>(n<span class="dv">-1</span>,\lambda))}</span>
-<span id="cb227-6"><a href="ChapBonusMalus.html#cb227-6" aria-hidden="true" tabindex="-1"></a>    <span class="fu">powA</span>(<span class="dv">3</span>,<span class="fl">0.1</span>)</span>
-<span id="cb227-7"><a href="ChapBonusMalus.html#cb227-7" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb227-8"><a href="ChapBonusMalus.html#cb227-8" aria-hidden="true" tabindex="-1"></a>    <span class="co">#output</span></span>
-<span id="cb227-9"><a href="ChapBonusMalus.html#cb227-9" aria-hidden="true" tabindex="-1"></a>               [,<span class="dv">1</span>]       [,<span class="dv">2</span>]       [,<span class="dv">3</span>]      [,<span class="dv">4</span>]      [,<span class="dv">5</span>]      [,<span class="dv">6</span>]</span>
-<span id="cb227-10"><a href="ChapBonusMalus.html#cb227-10" aria-hidden="true" tabindex="-1"></a>    [<span class="dv">1</span>,] <span class="fl">0.09516258</span> <span class="fl">0.08610666</span> <span class="fl">0.07791253</span> <span class="fl">0.7408182</span> <span class="fl">0.0000000</span> <span class="fl">0.0000000</span></span>
-<span id="cb227-11"><a href="ChapBonusMalus.html#cb227-11" aria-hidden="true" tabindex="-1"></a>    [<span class="dv">2</span>,] <span class="fl">0.09516258</span> <span class="fl">0.08610666</span> <span class="fl">0.07791253</span> <span class="fl">0.0000000</span> <span class="fl">0.7408182</span> <span class="fl">0.0000000</span></span>
-<span id="cb227-12"><a href="ChapBonusMalus.html#cb227-12" aria-hidden="true" tabindex="-1"></a>    [<span class="dv">3</span>,] <span class="fl">0.09516258</span> <span class="fl">0.08610666</span> <span class="fl">0.07791253</span> <span class="fl">0.0000000</span> <span class="fl">0.0000000</span> <span class="fl">0.7408182</span></span>
-<span id="cb227-13"><a href="ChapBonusMalus.html#cb227-13" aria-hidden="true" tabindex="-1"></a>    [<span class="dv">4</span>,] <span class="fl">0.09516258</span> <span class="fl">0.08610666</span> <span class="fl">0.07791253</span> <span class="fl">0.0000000</span> <span class="fl">0.0000000</span> <span class="fl">0.7408182</span></span>
-<span id="cb227-14"><a href="ChapBonusMalus.html#cb227-14" aria-hidden="true" tabindex="-1"></a>    [<span class="dv">5</span>,] <span class="fl">0.09516258</span> <span class="fl">0.08610666</span> <span class="fl">0.07791253</span> <span class="fl">0.0000000</span> <span class="fl">0.0000000</span> <span class="fl">0.7408182</span></span>
-<span id="cb227-15"><a href="ChapBonusMalus.html#cb227-15" aria-hidden="true" tabindex="-1"></a>    [<span class="dv">6</span>,] <span class="fl">0.09516258</span> <span class="fl">0.08610666</span> <span class="fl">0.07791253</span> <span class="fl">0.0000000</span> <span class="fl">0.0000000</span> <span class="fl">0.7408182</span></span></code></pre></div>
+<div class="sourceCode" id="cb227"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb227-1"><a href="ChapBonusMalus.html#cb227-1" tabindex="-1"></a>    <span class="co">#create function for nth power of square matrix</span></span>
+<span id="cb227-2"><a href="ChapBonusMalus.html#cb227-2" tabindex="-1"></a>    powA <span class="ot">=</span> <span class="cf">function</span>(n,\lambda)</span>
+<span id="cb227-3"><a href="ChapBonusMalus.html#cb227-3" tabindex="-1"></a>    { <span class="cf">if</span> (n<span class="sc">==</span><span class="dv">1</span>)  <span class="fu">return</span> (<span class="fu">TP</span>(\lambda))</span>
+<span id="cb227-4"><a href="ChapBonusMalus.html#cb227-4" tabindex="-1"></a>      <span class="cf">if</span> (n<span class="sc">==</span><span class="dv">2</span>)  <span class="fu">return</span> (<span class="fu">TP</span>(\lambda)<span class="sc">%*%</span><span class="fu">TP</span>(\lambda))</span>
+<span id="cb227-5"><a href="ChapBonusMalus.html#cb227-5" tabindex="-1"></a>      <span class="cf">if</span> (n<span class="sc">&gt;</span><span class="dv">2</span>) <span class="fu">return</span> (<span class="fu">TP</span>(\lambda)<span class="sc">%*%</span><span class="fu">powA</span>(n<span class="dv">-1</span>,\lambda))}</span>
+<span id="cb227-6"><a href="ChapBonusMalus.html#cb227-6" tabindex="-1"></a>    <span class="fu">powA</span>(<span class="dv">3</span>,<span class="fl">0.1</span>)</span>
+<span id="cb227-7"><a href="ChapBonusMalus.html#cb227-7" tabindex="-1"></a></span>
+<span id="cb227-8"><a href="ChapBonusMalus.html#cb227-8" tabindex="-1"></a>    <span class="co">#output</span></span>
+<span id="cb227-9"><a href="ChapBonusMalus.html#cb227-9" tabindex="-1"></a>               [,<span class="dv">1</span>]       [,<span class="dv">2</span>]       [,<span class="dv">3</span>]      [,<span class="dv">4</span>]      [,<span class="dv">5</span>]      [,<span class="dv">6</span>]</span>
+<span id="cb227-10"><a href="ChapBonusMalus.html#cb227-10" tabindex="-1"></a>    [<span class="dv">1</span>,] <span class="fl">0.09516258</span> <span class="fl">0.08610666</span> <span class="fl">0.07791253</span> <span class="fl">0.7408182</span> <span class="fl">0.0000000</span> <span class="fl">0.0000000</span></span>
+<span id="cb227-11"><a href="ChapBonusMalus.html#cb227-11" tabindex="-1"></a>    [<span class="dv">2</span>,] <span class="fl">0.09516258</span> <span class="fl">0.08610666</span> <span class="fl">0.07791253</span> <span class="fl">0.0000000</span> <span class="fl">0.7408182</span> <span class="fl">0.0000000</span></span>
+<span id="cb227-12"><a href="ChapBonusMalus.html#cb227-12" tabindex="-1"></a>    [<span class="dv">3</span>,] <span class="fl">0.09516258</span> <span class="fl">0.08610666</span> <span class="fl">0.07791253</span> <span class="fl">0.0000000</span> <span class="fl">0.0000000</span> <span class="fl">0.7408182</span></span>
+<span id="cb227-13"><a href="ChapBonusMalus.html#cb227-13" tabindex="-1"></a>    [<span class="dv">4</span>,] <span class="fl">0.09516258</span> <span class="fl">0.08610666</span> <span class="fl">0.07791253</span> <span class="fl">0.0000000</span> <span class="fl">0.0000000</span> <span class="fl">0.7408182</span></span>
+<span id="cb227-14"><a href="ChapBonusMalus.html#cb227-14" tabindex="-1"></a>    [<span class="dv">5</span>,] <span class="fl">0.09516258</span> <span class="fl">0.08610666</span> <span class="fl">0.07791253</span> <span class="fl">0.0000000</span> <span class="fl">0.0000000</span> <span class="fl">0.7408182</span></span>
+<span id="cb227-15"><a href="ChapBonusMalus.html#cb227-15" tabindex="-1"></a>    [<span class="dv">6</span>,] <span class="fl">0.09516258</span> <span class="fl">0.08610666</span> <span class="fl">0.07791253</span> <span class="fl">0.0000000</span> <span class="fl">0.0000000</span> <span class="fl">0.7408182</span></span></code></pre></div>
 <p><strong>3. Create a function for premium in <em>n-</em>th year</strong></p>
-<div class="sourceCode" id="cb228"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb228-1"><a href="ChapBonusMalus.html#cb228-1" aria-hidden="true" tabindex="-1"></a>    <span class="co">#define BMS discount for Malaysia</span></span>
-<span id="cb228-2"><a href="ChapBonusMalus.html#cb228-2" aria-hidden="true" tabindex="-1"></a>    BMS<span class="ot">=</span><span class="fu">c</span>(<span class="dv">1</span>,<span class="fl">0.75</span>,<span class="fl">0.7</span>,<span class="fl">0.6167</span>,<span class="fl">0.55</span>,<span class="fl">0.45</span>)</span>
-<span id="cb228-3"><a href="ChapBonusMalus.html#cb228-3" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb228-4"><a href="ChapBonusMalus.html#cb228-4" aria-hidden="true" tabindex="-1"></a>    <span class="co">#create function for mean premium in nth year, when prior premium is $1000</span></span>
-<span id="cb228-5"><a href="ChapBonusMalus.html#cb228-5" aria-hidden="true" tabindex="-1"></a>    prem<span class="ot">=</span><span class="cf">function</span>(n,\lambda)</span>
-<span id="cb228-6"><a href="ChapBonusMalus.html#cb228-6" aria-hidden="true" tabindex="-1"></a>    { p<span class="ot">=</span><span class="fu">numeric</span>(<span class="dv">0</span>)</span>
-<span id="cb228-7"><a href="ChapBonusMalus.html#cb228-7" aria-hidden="true" tabindex="-1"></a>      <span class="cf">for</span> (i <span class="cf">in</span> <span class="dv">1</span><span class="sc">:</span><span class="fu">length</span>(BMS))</span>
-<span id="cb228-8"><a href="ChapBonusMalus.html#cb228-8" aria-hidden="true" tabindex="-1"></a>      p[i]<span class="ot">=</span><span class="fu">mean</span>(<span class="fu">powA</span>(n,\lambda)[,i])</span>
-<span id="cb228-9"><a href="ChapBonusMalus.html#cb228-9" aria-hidden="true" tabindex="-1"></a>      <span class="dv">1000</span><span class="sc">*</span><span class="fu">sum</span>(p<span class="sc">*</span>BMS)}</span>
-<span id="cb228-10"><a href="ChapBonusMalus.html#cb228-10" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb228-11"><a href="ChapBonusMalus.html#cb228-11" aria-hidden="true" tabindex="-1"></a>    <span class="co">#example for premium in 3rd year</span></span>
-<span id="cb228-12"><a href="ChapBonusMalus.html#cb228-12" aria-hidden="true" tabindex="-1"></a>    <span class="fu">prem</span>(<span class="dv">3</span>,<span class="fl">0.1</span>)</span>
-<span id="cb228-13"><a href="ChapBonusMalus.html#cb228-13" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb228-14"><a href="ChapBonusMalus.html#cb228-14" aria-hidden="true" tabindex="-1"></a>    <span class="co">#output</span></span>
-<span id="cb228-15"><a href="ChapBonusMalus.html#cb228-15" aria-hidden="true" tabindex="-1"></a>    [<span class="dv">1</span>] <span class="fl">580.5789</span></span></code></pre></div>
+<div class="sourceCode" id="cb228"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb228-1"><a href="ChapBonusMalus.html#cb228-1" tabindex="-1"></a>    <span class="co">#define BMS discount for Malaysia</span></span>
+<span id="cb228-2"><a href="ChapBonusMalus.html#cb228-2" tabindex="-1"></a>    BMS<span class="ot">=</span><span class="fu">c</span>(<span class="dv">1</span>,<span class="fl">0.75</span>,<span class="fl">0.7</span>,<span class="fl">0.6167</span>,<span class="fl">0.55</span>,<span class="fl">0.45</span>)</span>
+<span id="cb228-3"><a href="ChapBonusMalus.html#cb228-3" tabindex="-1"></a></span>
+<span id="cb228-4"><a href="ChapBonusMalus.html#cb228-4" tabindex="-1"></a>    <span class="co">#create function for mean premium in nth year, when prior premium is $1000</span></span>
+<span id="cb228-5"><a href="ChapBonusMalus.html#cb228-5" tabindex="-1"></a>    prem<span class="ot">=</span><span class="cf">function</span>(n,\lambda)</span>
+<span id="cb228-6"><a href="ChapBonusMalus.html#cb228-6" tabindex="-1"></a>    { p<span class="ot">=</span><span class="fu">numeric</span>(<span class="dv">0</span>)</span>
+<span id="cb228-7"><a href="ChapBonusMalus.html#cb228-7" tabindex="-1"></a>      <span class="cf">for</span> (i <span class="cf">in</span> <span class="dv">1</span><span class="sc">:</span><span class="fu">length</span>(BMS))</span>
+<span id="cb228-8"><a href="ChapBonusMalus.html#cb228-8" tabindex="-1"></a>      p[i]<span class="ot">=</span><span class="fu">mean</span>(<span class="fu">powA</span>(n,\lambda)[,i])</span>
+<span id="cb228-9"><a href="ChapBonusMalus.html#cb228-9" tabindex="-1"></a>      <span class="dv">1000</span><span class="sc">*</span><span class="fu">sum</span>(p<span class="sc">*</span>BMS)}</span>
+<span id="cb228-10"><a href="ChapBonusMalus.html#cb228-10" tabindex="-1"></a></span>
+<span id="cb228-11"><a href="ChapBonusMalus.html#cb228-11" tabindex="-1"></a>    <span class="co">#example for premium in 3rd year</span></span>
+<span id="cb228-12"><a href="ChapBonusMalus.html#cb228-12" tabindex="-1"></a>    <span class="fu">prem</span>(<span class="dv">3</span>,<span class="fl">0.1</span>)</span>
+<span id="cb228-13"><a href="ChapBonusMalus.html#cb228-13" tabindex="-1"></a></span>
+<span id="cb228-14"><a href="ChapBonusMalus.html#cb228-14" tabindex="-1"></a>    <span class="co">#output</span></span>
+<span id="cb228-15"><a href="ChapBonusMalus.html#cb228-15" tabindex="-1"></a>    [<span class="dv">1</span>] <span class="fl">580.5789</span></span></code></pre></div>
 <p><strong>4. Provide premiums for 20 years</strong></p>
-<div class="sourceCode" id="cb229"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb229-1"><a href="ChapBonusMalus.html#cb229-1" aria-hidden="true" tabindex="-1"></a>    <span class="co">#provide mean premium for all 20 years </span></span>
-<span id="cb229-2"><a href="ChapBonusMalus.html#cb229-2" aria-hidden="true" tabindex="-1"></a>    allprem<span class="ot">=</span><span class="cf">function</span>(n,\lambda)</span>
-<span id="cb229-3"><a href="ChapBonusMalus.html#cb229-3" aria-hidden="true" tabindex="-1"></a>    { p<span class="ot">=</span><span class="fu">numeric</span>(<span class="dv">0</span>)</span>
-<span id="cb229-4"><a href="ChapBonusMalus.html#cb229-4" aria-hidden="true" tabindex="-1"></a>      <span class="cf">for</span> (i <span class="cf">in</span> <span class="dv">1</span><span class="sc">:</span>n)</span>
-<span id="cb229-5"><a href="ChapBonusMalus.html#cb229-5" aria-hidden="true" tabindex="-1"></a>      p[i]<span class="ot">=</span><span class="fu">prem</span>(i,\lambda)</span>
-<span id="cb229-6"><a href="ChapBonusMalus.html#cb229-6" aria-hidden="true" tabindex="-1"></a>      p}</span>
-<span id="cb229-7"><a href="ChapBonusMalus.html#cb229-7" aria-hidden="true" tabindex="-1"></a>    <span class="fu">round</span>(<span class="fu">allprem</span>(<span class="dv">20</span>,<span class="fl">0.1</span>),<span class="dv">1</span>)</span>
-<span id="cb229-8"><a href="ChapBonusMalus.html#cb229-8" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb229-9"><a href="ChapBonusMalus.html#cb229-9" aria-hidden="true" tabindex="-1"></a>    <span class="co">#output</span></span>
-<span id="cb229-10"><a href="ChapBonusMalus.html#cb229-10" aria-hidden="true" tabindex="-1"></a>    [<span class="dv">1</span>] <span class="fl">625.5</span> <span class="fl">598.7</span> <span class="fl">580.6</span> <span class="fl">570.6</span> <span class="fl">565.8</span> <span class="fl">565.8</span> <span class="fl">565.8</span> <span class="fl">565.8</span> <span class="fl">565.8</span> <span class="fl">565.8</span> <span class="fl">565.8</span> </span>
-<span id="cb229-11"><a href="ChapBonusMalus.html#cb229-11" aria-hidden="true" tabindex="-1"></a>    <span class="fl">565.8</span> <span class="fl">565.8</span> <span class="fl">565.8</span> <span class="fl">565.8</span> <span class="fl">565.8</span> <span class="fl">565.8</span> <span class="fl">565.8</span> <span class="fl">565.8</span> <span class="fl">565.8</span></span></code></pre></div>
+<div class="sourceCode" id="cb229"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb229-1"><a href="ChapBonusMalus.html#cb229-1" tabindex="-1"></a>    <span class="co">#provide mean premium for all 20 years </span></span>
+<span id="cb229-2"><a href="ChapBonusMalus.html#cb229-2" tabindex="-1"></a>    allprem<span class="ot">=</span><span class="cf">function</span>(n,\lambda)</span>
+<span id="cb229-3"><a href="ChapBonusMalus.html#cb229-3" tabindex="-1"></a>    { p<span class="ot">=</span><span class="fu">numeric</span>(<span class="dv">0</span>)</span>
+<span id="cb229-4"><a href="ChapBonusMalus.html#cb229-4" tabindex="-1"></a>      <span class="cf">for</span> (i <span class="cf">in</span> <span class="dv">1</span><span class="sc">:</span>n)</span>
+<span id="cb229-5"><a href="ChapBonusMalus.html#cb229-5" tabindex="-1"></a>      p[i]<span class="ot">=</span><span class="fu">prem</span>(i,\lambda)</span>
+<span id="cb229-6"><a href="ChapBonusMalus.html#cb229-6" tabindex="-1"></a>      p}</span>
+<span id="cb229-7"><a href="ChapBonusMalus.html#cb229-7" tabindex="-1"></a>    <span class="fu">round</span>(<span class="fu">allprem</span>(<span class="dv">20</span>,<span class="fl">0.1</span>),<span class="dv">1</span>)</span>
+<span id="cb229-8"><a href="ChapBonusMalus.html#cb229-8" tabindex="-1"></a></span>
+<span id="cb229-9"><a href="ChapBonusMalus.html#cb229-9" tabindex="-1"></a>    <span class="co">#output</span></span>
+<span id="cb229-10"><a href="ChapBonusMalus.html#cb229-10" tabindex="-1"></a>    [<span class="dv">1</span>] <span class="fl">625.5</span> <span class="fl">598.7</span> <span class="fl">580.6</span> <span class="fl">570.6</span> <span class="fl">565.8</span> <span class="fl">565.8</span> <span class="fl">565.8</span> <span class="fl">565.8</span> <span class="fl">565.8</span> <span class="fl">565.8</span> <span class="fl">565.8</span> </span>
+<span id="cb229-11"><a href="ChapBonusMalus.html#cb229-11" tabindex="-1"></a>    <span class="fl">565.8</span> <span class="fl">565.8</span> <span class="fl">565.8</span> <span class="fl">565.8</span> <span class="fl">565.8</span> <span class="fl">565.8</span> <span class="fl">565.8</span> <span class="fl">565.8</span> <span class="fl">565.8</span></span></code></pre></div>
 </div>
 <hr />
 <p><strong>Example 15.4.5.</strong> Using the results from Example 15.4.2, observe the mean premiums in 20 years under the <em>BMS</em> in Brazil, assuming that the premium prior to implementing the bonus-malus discount is 1000.</p>
@@ -1874,7 +1848,7 @@ $1000\times[0.0952(1) + 0.1508(0.75) + \cdots + 0.3016(0.45)]\\
 \]</span></p>
 
 <div class="figure" style="text-align: center"><span style="display:block;" id="fig:PremEvolution"></span>
-<img src="Figures/FigureEvolution.PNG" alt="Evolution of Premium (Malaysia and Brazil)" width="60%" />
+<img src="Figures/FigureEvolution.png" alt="Evolution of Premium (Malaysia and Brazil)" width="60%" />
 <p class="caption">
 Figure 15.4: <strong>Evolution of Premium (Malaysia and Brazil)</strong>
 </p>
@@ -1885,63 +1859,63 @@ Figure 15.4: <strong>Evolution of Premium (Malaysia and Brazil)</strong>
 </h5>
 <div id="toggleCode.Example15.45" style="display: none">
 <p><strong>1. Create a function for transition matrix</strong></p>
-<div class="sourceCode" id="cb230"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb230-1"><a href="ChapBonusMalus.html#cb230-1" aria-hidden="true" tabindex="-1"></a>    <span class="co">#create function for transition matrix without 1st column</span></span>
-<span id="cb230-2"><a href="ChapBonusMalus.html#cb230-2" aria-hidden="true" tabindex="-1"></a>    TM<span class="ot">=</span><span class="cf">function</span>(\lambda)</span>
-<span id="cb230-3"><a href="ChapBonusMalus.html#cb230-3" aria-hidden="true" tabindex="-1"></a>    { P<span class="ot">=</span><span class="fu">matrix</span>(<span class="at">data=</span><span class="dv">0</span>,<span class="at">nrow=</span><span class="dv">7</span>,<span class="at">ncol=</span><span class="dv">7</span>)</span>
-<span id="cb230-4"><a href="ChapBonusMalus.html#cb230-4" aria-hidden="true" tabindex="-1"></a>      P[<span class="dv">1</span>,<span class="dv">2</span>]<span class="ot">=</span>P[<span class="dv">2</span>,<span class="dv">3</span>]<span class="ot">=</span>P[<span class="dv">3</span>,<span class="dv">4</span>]<span class="ot">=</span>P[<span class="dv">4</span>,<span class="dv">5</span>]<span class="ot">=</span>P[<span class="dv">5</span>,<span class="dv">6</span>]<span class="ot">=</span>P[<span class="dv">6</span>,<span class="dv">7</span>]<span class="ot">=</span>P[<span class="dv">7</span>,<span class="dv">7</span>]<span class="ot">=</span><span class="fu">exp</span>(<span class="sc">-</span>\lambda)</span>
-<span id="cb230-5"><a href="ChapBonusMalus.html#cb230-5" aria-hidden="true" tabindex="-1"></a>      P[<span class="dv">3</span>,<span class="dv">2</span>]<span class="ot">=</span>P[<span class="dv">4</span>,<span class="dv">3</span>]<span class="ot">=</span>P[<span class="dv">5</span>,<span class="dv">4</span>]<span class="ot">=</span>P[<span class="dv">6</span>,<span class="dv">5</span>]<span class="ot">=</span>P[<span class="dv">7</span>,<span class="dv">6</span>]<span class="ot">=</span>\lambda<span class="sc">*</span><span class="fu">exp</span>(<span class="sc">-</span>\lambda)</span>
-<span id="cb230-6"><a href="ChapBonusMalus.html#cb230-6" aria-hidden="true" tabindex="-1"></a>      P[<span class="dv">4</span>,<span class="dv">2</span>]<span class="ot">=</span>P[<span class="dv">5</span>,<span class="dv">3</span>]<span class="ot">=</span>P[<span class="dv">6</span>,<span class="dv">4</span>]<span class="ot">=</span>P[<span class="dv">7</span>,<span class="dv">5</span>]<span class="ot">=</span>(<span class="dv">1</span><span class="sc">/</span><span class="dv">2</span>)<span class="sc">*</span>(\lambda<span class="sc">^</span><span class="dv">2</span>)<span class="sc">*</span><span class="fu">exp</span>(<span class="sc">-</span>\lambda)</span>
-<span id="cb230-7"><a href="ChapBonusMalus.html#cb230-7" aria-hidden="true" tabindex="-1"></a>      P[<span class="dv">5</span>,<span class="dv">2</span>]<span class="ot">=</span>P[<span class="dv">6</span>,<span class="dv">3</span>]<span class="ot">=</span>P[<span class="dv">7</span>,<span class="dv">4</span>]<span class="ot">=</span>(<span class="dv">1</span><span class="sc">/</span><span class="dv">6</span>)<span class="sc">*</span>(\lambda<span class="sc">^</span><span class="dv">3</span>)<span class="sc">*</span><span class="fu">exp</span>(<span class="sc">-</span>\lambda)</span>
-<span id="cb230-8"><a href="ChapBonusMalus.html#cb230-8" aria-hidden="true" tabindex="-1"></a>      P[<span class="dv">6</span>,<span class="dv">2</span>]<span class="ot">=</span>P[<span class="dv">7</span>,<span class="dv">3</span>]<span class="ot">=</span>(<span class="dv">1</span><span class="sc">/</span><span class="dv">24</span>)<span class="sc">*</span>(\lambda<span class="sc">^</span><span class="dv">4</span>)<span class="sc">*</span><span class="fu">exp</span>(<span class="sc">-</span>\lambda)</span>
-<span id="cb230-9"><a href="ChapBonusMalus.html#cb230-9" aria-hidden="true" tabindex="-1"></a>      P[<span class="dv">7</span>,<span class="dv">2</span>]<span class="ot">=</span>(<span class="dv">1</span><span class="sc">/</span><span class="dv">120</span>)<span class="sc">*</span>(\lambda<span class="sc">^</span><span class="dv">5</span>)<span class="sc">*</span><span class="fu">exp</span>(<span class="sc">-</span>\lambda)</span>
-<span id="cb230-10"><a href="ChapBonusMalus.html#cb230-10" aria-hidden="true" tabindex="-1"></a>      P}</span>
-<span id="cb230-11"><a href="ChapBonusMalus.html#cb230-11" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb230-12"><a href="ChapBonusMalus.html#cb230-12" aria-hidden="true" tabindex="-1"></a>    <span class="co">#add 1st column in transition matrix</span></span>
-<span id="cb230-13"><a href="ChapBonusMalus.html#cb230-13" aria-hidden="true" tabindex="-1"></a>    TP<span class="ot">=</span><span class="cf">function</span>(\lambda)</span>
-<span id="cb230-14"><a href="ChapBonusMalus.html#cb230-14" aria-hidden="true" tabindex="-1"></a>    {P<span class="ot">=</span><span class="fu">TM</span>(\lambda)</span>
-<span id="cb230-15"><a href="ChapBonusMalus.html#cb230-15" aria-hidden="true" tabindex="-1"></a>    <span class="cf">for</span> (i <span class="cf">in</span> <span class="dv">1</span><span class="sc">:</span><span class="dv">7</span>)</span>
-<span id="cb230-16"><a href="ChapBonusMalus.html#cb230-16" aria-hidden="true" tabindex="-1"></a>     P[i,<span class="dv">1</span>]<span class="ot">=</span><span class="dv">1</span><span class="sc">-</span><span class="fu">sum</span>(<span class="fu">TM</span>(\lambda)[i,<span class="sc">-</span><span class="dv">1</span>])</span>
-<span id="cb230-17"><a href="ChapBonusMalus.html#cb230-17" aria-hidden="true" tabindex="-1"></a>     P}</span>
-<span id="cb230-18"><a href="ChapBonusMalus.html#cb230-18" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb230-19"><a href="ChapBonusMalus.html#cb230-19" aria-hidden="true" tabindex="-1"></a>    <span class="co">#provide transition matrix (in 4 decimal places)</span></span>
-<span id="cb230-20"><a href="ChapBonusMalus.html#cb230-20" aria-hidden="true" tabindex="-1"></a>    <span class="fu">round</span>(<span class="fu">TP</span>(<span class="fl">0.1</span>),<span class="dv">4</span>)</span>
-<span id="cb230-21"><a href="ChapBonusMalus.html#cb230-21" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb230-22"><a href="ChapBonusMalus.html#cb230-22" aria-hidden="true" tabindex="-1"></a>    <span class="co">#output</span></span>
-<span id="cb230-23"><a href="ChapBonusMalus.html#cb230-23" aria-hidden="true" tabindex="-1"></a>           [,<span class="dv">1</span>]   [,<span class="dv">2</span>]   [,<span class="dv">3</span>]   [,<span class="dv">4</span>]   [,<span class="dv">5</span>]   [,<span class="dv">6</span>]   [,<span class="dv">7</span>]</span>
-<span id="cb230-24"><a href="ChapBonusMalus.html#cb230-24" aria-hidden="true" tabindex="-1"></a>    [<span class="dv">1</span>,] <span class="fl">0.0952</span> <span class="fl">0.9048</span> <span class="fl">0.0000</span> <span class="fl">0.0000</span> <span class="fl">0.0000</span> <span class="fl">0.0000</span> <span class="fl">0.0000</span></span>
-<span id="cb230-25"><a href="ChapBonusMalus.html#cb230-25" aria-hidden="true" tabindex="-1"></a>    [<span class="dv">2</span>,] <span class="fl">0.0952</span> <span class="fl">0.0000</span> <span class="fl">0.9048</span> <span class="fl">0.0000</span> <span class="fl">0.0000</span> <span class="fl">0.0000</span> <span class="fl">0.0000</span></span>
-<span id="cb230-26"><a href="ChapBonusMalus.html#cb230-26" aria-hidden="true" tabindex="-1"></a>    [<span class="dv">3</span>,] <span class="fl">0.0047</span> <span class="fl">0.0905</span> <span class="fl">0.0000</span> <span class="fl">0.9048</span> <span class="fl">0.0000</span> <span class="fl">0.0000</span> <span class="fl">0.0000</span></span>
-<span id="cb230-27"><a href="ChapBonusMalus.html#cb230-27" aria-hidden="true" tabindex="-1"></a>    [<span class="dv">4</span>,] <span class="fl">0.0002</span> <span class="fl">0.0045</span> <span class="fl">0.0905</span> <span class="fl">0.0000</span> <span class="fl">0.9048</span> <span class="fl">0.0000</span> <span class="fl">0.0000</span></span>
-<span id="cb230-28"><a href="ChapBonusMalus.html#cb230-28" aria-hidden="true" tabindex="-1"></a>    [<span class="dv">5</span>,] <span class="fl">0.0000</span> <span class="fl">0.0002</span> <span class="fl">0.0045</span> <span class="fl">0.0905</span> <span class="fl">0.0000</span> <span class="fl">0.9048</span> <span class="fl">0.0000</span></span>
-<span id="cb230-29"><a href="ChapBonusMalus.html#cb230-29" aria-hidden="true" tabindex="-1"></a>    [<span class="dv">6</span>,] <span class="fl">0.0000</span> <span class="fl">0.0000</span> <span class="fl">0.0002</span> <span class="fl">0.0045</span> <span class="fl">0.0905</span> <span class="fl">0.0000</span> <span class="fl">0.9048</span></span>
-<span id="cb230-30"><a href="ChapBonusMalus.html#cb230-30" aria-hidden="true" tabindex="-1"></a>    [<span class="dv">7</span>,] <span class="fl">0.0000</span> <span class="fl">0.0000</span> <span class="fl">0.0000</span> <span class="fl">0.0002</span> <span class="fl">0.0045</span> <span class="fl">0.0905</span> <span class="fl">0.9048</span></span></code></pre></div>
+<div class="sourceCode" id="cb230"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb230-1"><a href="ChapBonusMalus.html#cb230-1" tabindex="-1"></a>    <span class="co">#create function for transition matrix without 1st column</span></span>
+<span id="cb230-2"><a href="ChapBonusMalus.html#cb230-2" tabindex="-1"></a>    TM<span class="ot">=</span><span class="cf">function</span>(\lambda)</span>
+<span id="cb230-3"><a href="ChapBonusMalus.html#cb230-3" tabindex="-1"></a>    { P<span class="ot">=</span><span class="fu">matrix</span>(<span class="at">data=</span><span class="dv">0</span>,<span class="at">nrow=</span><span class="dv">7</span>,<span class="at">ncol=</span><span class="dv">7</span>)</span>
+<span id="cb230-4"><a href="ChapBonusMalus.html#cb230-4" tabindex="-1"></a>      P[<span class="dv">1</span>,<span class="dv">2</span>]<span class="ot">=</span>P[<span class="dv">2</span>,<span class="dv">3</span>]<span class="ot">=</span>P[<span class="dv">3</span>,<span class="dv">4</span>]<span class="ot">=</span>P[<span class="dv">4</span>,<span class="dv">5</span>]<span class="ot">=</span>P[<span class="dv">5</span>,<span class="dv">6</span>]<span class="ot">=</span>P[<span class="dv">6</span>,<span class="dv">7</span>]<span class="ot">=</span>P[<span class="dv">7</span>,<span class="dv">7</span>]<span class="ot">=</span><span class="fu">exp</span>(<span class="sc">-</span>\lambda)</span>
+<span id="cb230-5"><a href="ChapBonusMalus.html#cb230-5" tabindex="-1"></a>      P[<span class="dv">3</span>,<span class="dv">2</span>]<span class="ot">=</span>P[<span class="dv">4</span>,<span class="dv">3</span>]<span class="ot">=</span>P[<span class="dv">5</span>,<span class="dv">4</span>]<span class="ot">=</span>P[<span class="dv">6</span>,<span class="dv">5</span>]<span class="ot">=</span>P[<span class="dv">7</span>,<span class="dv">6</span>]<span class="ot">=</span>\lambda<span class="sc">*</span><span class="fu">exp</span>(<span class="sc">-</span>\lambda)</span>
+<span id="cb230-6"><a href="ChapBonusMalus.html#cb230-6" tabindex="-1"></a>      P[<span class="dv">4</span>,<span class="dv">2</span>]<span class="ot">=</span>P[<span class="dv">5</span>,<span class="dv">3</span>]<span class="ot">=</span>P[<span class="dv">6</span>,<span class="dv">4</span>]<span class="ot">=</span>P[<span class="dv">7</span>,<span class="dv">5</span>]<span class="ot">=</span>(<span class="dv">1</span><span class="sc">/</span><span class="dv">2</span>)<span class="sc">*</span>(\lambda<span class="sc">^</span><span class="dv">2</span>)<span class="sc">*</span><span class="fu">exp</span>(<span class="sc">-</span>\lambda)</span>
+<span id="cb230-7"><a href="ChapBonusMalus.html#cb230-7" tabindex="-1"></a>      P[<span class="dv">5</span>,<span class="dv">2</span>]<span class="ot">=</span>P[<span class="dv">6</span>,<span class="dv">3</span>]<span class="ot">=</span>P[<span class="dv">7</span>,<span class="dv">4</span>]<span class="ot">=</span>(<span class="dv">1</span><span class="sc">/</span><span class="dv">6</span>)<span class="sc">*</span>(\lambda<span class="sc">^</span><span class="dv">3</span>)<span class="sc">*</span><span class="fu">exp</span>(<span class="sc">-</span>\lambda)</span>
+<span id="cb230-8"><a href="ChapBonusMalus.html#cb230-8" tabindex="-1"></a>      P[<span class="dv">6</span>,<span class="dv">2</span>]<span class="ot">=</span>P[<span class="dv">7</span>,<span class="dv">3</span>]<span class="ot">=</span>(<span class="dv">1</span><span class="sc">/</span><span class="dv">24</span>)<span class="sc">*</span>(\lambda<span class="sc">^</span><span class="dv">4</span>)<span class="sc">*</span><span class="fu">exp</span>(<span class="sc">-</span>\lambda)</span>
+<span id="cb230-9"><a href="ChapBonusMalus.html#cb230-9" tabindex="-1"></a>      P[<span class="dv">7</span>,<span class="dv">2</span>]<span class="ot">=</span>(<span class="dv">1</span><span class="sc">/</span><span class="dv">120</span>)<span class="sc">*</span>(\lambda<span class="sc">^</span><span class="dv">5</span>)<span class="sc">*</span><span class="fu">exp</span>(<span class="sc">-</span>\lambda)</span>
+<span id="cb230-10"><a href="ChapBonusMalus.html#cb230-10" tabindex="-1"></a>      P}</span>
+<span id="cb230-11"><a href="ChapBonusMalus.html#cb230-11" tabindex="-1"></a></span>
+<span id="cb230-12"><a href="ChapBonusMalus.html#cb230-12" tabindex="-1"></a>    <span class="co">#add 1st column in transition matrix</span></span>
+<span id="cb230-13"><a href="ChapBonusMalus.html#cb230-13" tabindex="-1"></a>    TP<span class="ot">=</span><span class="cf">function</span>(\lambda)</span>
+<span id="cb230-14"><a href="ChapBonusMalus.html#cb230-14" tabindex="-1"></a>    {P<span class="ot">=</span><span class="fu">TM</span>(\lambda)</span>
+<span id="cb230-15"><a href="ChapBonusMalus.html#cb230-15" tabindex="-1"></a>    <span class="cf">for</span> (i <span class="cf">in</span> <span class="dv">1</span><span class="sc">:</span><span class="dv">7</span>)</span>
+<span id="cb230-16"><a href="ChapBonusMalus.html#cb230-16" tabindex="-1"></a>     P[i,<span class="dv">1</span>]<span class="ot">=</span><span class="dv">1</span><span class="sc">-</span><span class="fu">sum</span>(<span class="fu">TM</span>(\lambda)[i,<span class="sc">-</span><span class="dv">1</span>])</span>
+<span id="cb230-17"><a href="ChapBonusMalus.html#cb230-17" tabindex="-1"></a>     P}</span>
+<span id="cb230-18"><a href="ChapBonusMalus.html#cb230-18" tabindex="-1"></a></span>
+<span id="cb230-19"><a href="ChapBonusMalus.html#cb230-19" tabindex="-1"></a>    <span class="co">#provide transition matrix (in 4 decimal places)</span></span>
+<span id="cb230-20"><a href="ChapBonusMalus.html#cb230-20" tabindex="-1"></a>    <span class="fu">round</span>(<span class="fu">TP</span>(<span class="fl">0.1</span>),<span class="dv">4</span>)</span>
+<span id="cb230-21"><a href="ChapBonusMalus.html#cb230-21" tabindex="-1"></a></span>
+<span id="cb230-22"><a href="ChapBonusMalus.html#cb230-22" tabindex="-1"></a>    <span class="co">#output</span></span>
+<span id="cb230-23"><a href="ChapBonusMalus.html#cb230-23" tabindex="-1"></a>           [,<span class="dv">1</span>]   [,<span class="dv">2</span>]   [,<span class="dv">3</span>]   [,<span class="dv">4</span>]   [,<span class="dv">5</span>]   [,<span class="dv">6</span>]   [,<span class="dv">7</span>]</span>
+<span id="cb230-24"><a href="ChapBonusMalus.html#cb230-24" tabindex="-1"></a>    [<span class="dv">1</span>,] <span class="fl">0.0952</span> <span class="fl">0.9048</span> <span class="fl">0.0000</span> <span class="fl">0.0000</span> <span class="fl">0.0000</span> <span class="fl">0.0000</span> <span class="fl">0.0000</span></span>
+<span id="cb230-25"><a href="ChapBonusMalus.html#cb230-25" tabindex="-1"></a>    [<span class="dv">2</span>,] <span class="fl">0.0952</span> <span class="fl">0.0000</span> <span class="fl">0.9048</span> <span class="fl">0.0000</span> <span class="fl">0.0000</span> <span class="fl">0.0000</span> <span class="fl">0.0000</span></span>
+<span id="cb230-26"><a href="ChapBonusMalus.html#cb230-26" tabindex="-1"></a>    [<span class="dv">3</span>,] <span class="fl">0.0047</span> <span class="fl">0.0905</span> <span class="fl">0.0000</span> <span class="fl">0.9048</span> <span class="fl">0.0000</span> <span class="fl">0.0000</span> <span class="fl">0.0000</span></span>
+<span id="cb230-27"><a href="ChapBonusMalus.html#cb230-27" tabindex="-1"></a>    [<span class="dv">4</span>,] <span class="fl">0.0002</span> <span class="fl">0.0045</span> <span class="fl">0.0905</span> <span class="fl">0.0000</span> <span class="fl">0.9048</span> <span class="fl">0.0000</span> <span class="fl">0.0000</span></span>
+<span id="cb230-28"><a href="ChapBonusMalus.html#cb230-28" tabindex="-1"></a>    [<span class="dv">5</span>,] <span class="fl">0.0000</span> <span class="fl">0.0002</span> <span class="fl">0.0045</span> <span class="fl">0.0905</span> <span class="fl">0.0000</span> <span class="fl">0.9048</span> <span class="fl">0.0000</span></span>
+<span id="cb230-29"><a href="ChapBonusMalus.html#cb230-29" tabindex="-1"></a>    [<span class="dv">6</span>,] <span class="fl">0.0000</span> <span class="fl">0.0000</span> <span class="fl">0.0002</span> <span class="fl">0.0045</span> <span class="fl">0.0905</span> <span class="fl">0.0000</span> <span class="fl">0.9048</span></span>
+<span id="cb230-30"><a href="ChapBonusMalus.html#cb230-30" tabindex="-1"></a>    [<span class="dv">7</span>,] <span class="fl">0.0000</span> <span class="fl">0.0000</span> <span class="fl">0.0000</span> <span class="fl">0.0002</span> <span class="fl">0.0045</span> <span class="fl">0.0905</span> <span class="fl">0.9048</span></span></code></pre></div>
 <p><strong>2. Recall the <span class="math inline">\(n^{th}\)</span> power of a square matrix</strong></p>
-<div class="sourceCode" id="cb231"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb231-1"><a href="ChapBonusMalus.html#cb231-1" aria-hidden="true" tabindex="-1"></a>  <span class="fu">round</span>(<span class="fu">powA</span>(<span class="at">n=</span><span class="dv">3</span>,\<span class="at">lambda=</span><span class="fl">0.1</span>),<span class="dv">4</span>)</span>
-<span id="cb231-2"><a href="ChapBonusMalus.html#cb231-2" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb231-3"><a href="ChapBonusMalus.html#cb231-3" aria-hidden="true" tabindex="-1"></a>    <span class="co">#output</span></span>
-<span id="cb231-4"><a href="ChapBonusMalus.html#cb231-4" aria-hidden="true" tabindex="-1"></a>           [,<span class="dv">1</span>]   [,<span class="dv">2</span>]   [,<span class="dv">3</span>]   [,<span class="dv">4</span>]   [,<span class="dv">5</span>]   [,<span class="dv">6</span>]   [,<span class="dv">7</span>]</span>
-<span id="cb231-5"><a href="ChapBonusMalus.html#cb231-5" aria-hidden="true" tabindex="-1"></a>    [<span class="dv">1</span>,] <span class="fl">0.0211</span> <span class="fl">0.1602</span> <span class="fl">0.0779</span> <span class="fl">0.7408</span> <span class="fl">0.0000</span> <span class="fl">0.0000</span> <span class="fl">0.0000</span></span>
-<span id="cb231-6"><a href="ChapBonusMalus.html#cb231-6" aria-hidden="true" tabindex="-1"></a>    [<span class="dv">2</span>,] <span class="fl">0.0174</span> <span class="fl">0.0157</span> <span class="fl">0.2261</span> <span class="fl">0.0000</span> <span class="fl">0.7408</span> <span class="fl">0.0000</span> <span class="fl">0.0000</span></span>
-<span id="cb231-7"><a href="ChapBonusMalus.html#cb231-7" aria-hidden="true" tabindex="-1"></a>    [<span class="dv">3</span>,] <span class="fl">0.0024</span> <span class="fl">0.0233</span> <span class="fl">0.0112</span> <span class="fl">0.2222</span> <span class="fl">0.0000</span> <span class="fl">0.7408</span> <span class="fl">0.0000</span></span>
-<span id="cb231-8"><a href="ChapBonusMalus.html#cb231-8" aria-hidden="true" tabindex="-1"></a>    [<span class="dv">4</span>,] <span class="fl">0.0010</span> <span class="fl">0.0023</span> <span class="fl">0.0226</span> <span class="fl">0.0111</span> <span class="fl">0.2222</span> <span class="fl">0.0000</span> <span class="fl">0.7408</span></span>
-<span id="cb231-9"><a href="ChapBonusMalus.html#cb231-9" aria-hidden="true" tabindex="-1"></a>    [<span class="dv">5</span>,] <span class="fl">0.0001</span> <span class="fl">0.0009</span> <span class="fl">0.0022</span> <span class="fl">0.0226</span> <span class="fl">0.0111</span> <span class="fl">0.2222</span> <span class="fl">0.7408</span></span>
-<span id="cb231-10"><a href="ChapBonusMalus.html#cb231-10" aria-hidden="true" tabindex="-1"></a>    [<span class="dv">6</span>,] <span class="fl">0.0000</span> <span class="fl">0.0001</span> <span class="fl">0.0009</span> <span class="fl">0.0024</span> <span class="fl">0.0262</span> <span class="fl">0.0815</span> <span class="fl">0.8890</span></span>
-<span id="cb231-11"><a href="ChapBonusMalus.html#cb231-11" aria-hidden="true" tabindex="-1"></a>    [<span class="dv">7</span>,] <span class="fl">0.0000</span> <span class="fl">0.0000</span> <span class="fl">0.0002</span> <span class="fl">0.0017</span> <span class="fl">0.0127</span> <span class="fl">0.0927</span> <span class="fl">0.8927</span></span></code></pre></div>
+<div class="sourceCode" id="cb231"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb231-1"><a href="ChapBonusMalus.html#cb231-1" tabindex="-1"></a>  <span class="fu">round</span>(<span class="fu">powA</span>(<span class="at">n=</span><span class="dv">3</span>,\<span class="at">lambda=</span><span class="fl">0.1</span>),<span class="dv">4</span>)</span>
+<span id="cb231-2"><a href="ChapBonusMalus.html#cb231-2" tabindex="-1"></a></span>
+<span id="cb231-3"><a href="ChapBonusMalus.html#cb231-3" tabindex="-1"></a>    <span class="co">#output</span></span>
+<span id="cb231-4"><a href="ChapBonusMalus.html#cb231-4" tabindex="-1"></a>           [,<span class="dv">1</span>]   [,<span class="dv">2</span>]   [,<span class="dv">3</span>]   [,<span class="dv">4</span>]   [,<span class="dv">5</span>]   [,<span class="dv">6</span>]   [,<span class="dv">7</span>]</span>
+<span id="cb231-5"><a href="ChapBonusMalus.html#cb231-5" tabindex="-1"></a>    [<span class="dv">1</span>,] <span class="fl">0.0211</span> <span class="fl">0.1602</span> <span class="fl">0.0779</span> <span class="fl">0.7408</span> <span class="fl">0.0000</span> <span class="fl">0.0000</span> <span class="fl">0.0000</span></span>
+<span id="cb231-6"><a href="ChapBonusMalus.html#cb231-6" tabindex="-1"></a>    [<span class="dv">2</span>,] <span class="fl">0.0174</span> <span class="fl">0.0157</span> <span class="fl">0.2261</span> <span class="fl">0.0000</span> <span class="fl">0.7408</span> <span class="fl">0.0000</span> <span class="fl">0.0000</span></span>
+<span id="cb231-7"><a href="ChapBonusMalus.html#cb231-7" tabindex="-1"></a>    [<span class="dv">3</span>,] <span class="fl">0.0024</span> <span class="fl">0.0233</span> <span class="fl">0.0112</span> <span class="fl">0.2222</span> <span class="fl">0.0000</span> <span class="fl">0.7408</span> <span class="fl">0.0000</span></span>
+<span id="cb231-8"><a href="ChapBonusMalus.html#cb231-8" tabindex="-1"></a>    [<span class="dv">4</span>,] <span class="fl">0.0010</span> <span class="fl">0.0023</span> <span class="fl">0.0226</span> <span class="fl">0.0111</span> <span class="fl">0.2222</span> <span class="fl">0.0000</span> <span class="fl">0.7408</span></span>
+<span id="cb231-9"><a href="ChapBonusMalus.html#cb231-9" tabindex="-1"></a>    [<span class="dv">5</span>,] <span class="fl">0.0001</span> <span class="fl">0.0009</span> <span class="fl">0.0022</span> <span class="fl">0.0226</span> <span class="fl">0.0111</span> <span class="fl">0.2222</span> <span class="fl">0.7408</span></span>
+<span id="cb231-10"><a href="ChapBonusMalus.html#cb231-10" tabindex="-1"></a>    [<span class="dv">6</span>,] <span class="fl">0.0000</span> <span class="fl">0.0001</span> <span class="fl">0.0009</span> <span class="fl">0.0024</span> <span class="fl">0.0262</span> <span class="fl">0.0815</span> <span class="fl">0.8890</span></span>
+<span id="cb231-11"><a href="ChapBonusMalus.html#cb231-11" tabindex="-1"></a>    [<span class="dv">7</span>,] <span class="fl">0.0000</span> <span class="fl">0.0000</span> <span class="fl">0.0002</span> <span class="fl">0.0017</span> <span class="fl">0.0127</span> <span class="fl">0.0927</span> <span class="fl">0.8927</span></span></code></pre></div>
 <p><strong>3. Recall the premium in <em>n-</em>th year</strong></p>
-<div class="sourceCode" id="cb232"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb232-1"><a href="ChapBonusMalus.html#cb232-1" aria-hidden="true" tabindex="-1"></a>    <span class="co">#define BMS discount for Brazil</span></span>
-<span id="cb232-2"><a href="ChapBonusMalus.html#cb232-2" aria-hidden="true" tabindex="-1"></a>    BMS<span class="ot">=</span><span class="fu">c</span>(<span class="dv">1</span>,<span class="fl">0.9</span>,<span class="fl">0.85</span>,<span class="fl">0.8</span>,<span class="fl">0.75</span>,<span class="fl">0.7</span>,<span class="fl">0.65</span>)</span>
-<span id="cb232-3"><a href="ChapBonusMalus.html#cb232-3" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb232-4"><a href="ChapBonusMalus.html#cb232-4" aria-hidden="true" tabindex="-1"></a>    <span class="co">#call function for premium</span></span>
-<span id="cb232-5"><a href="ChapBonusMalus.html#cb232-5" aria-hidden="true" tabindex="-1"></a>    <span class="fu">prem</span>(<span class="at">n=</span><span class="dv">3</span>,\<span class="at">lambda=</span><span class="fl">0.1</span>)</span>
-<span id="cb232-6"><a href="ChapBonusMalus.html#cb232-6" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb232-7"><a href="ChapBonusMalus.html#cb232-7" aria-hidden="true" tabindex="-1"></a>    <span class="co">#output</span></span>
-<span id="cb232-8"><a href="ChapBonusMalus.html#cb232-8" aria-hidden="true" tabindex="-1"></a>    [<span class="dv">1</span>] <span class="fl">713.117</span></span></code></pre></div>
+<div class="sourceCode" id="cb232"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb232-1"><a href="ChapBonusMalus.html#cb232-1" tabindex="-1"></a>    <span class="co">#define BMS discount for Brazil</span></span>
+<span id="cb232-2"><a href="ChapBonusMalus.html#cb232-2" tabindex="-1"></a>    BMS<span class="ot">=</span><span class="fu">c</span>(<span class="dv">1</span>,<span class="fl">0.9</span>,<span class="fl">0.85</span>,<span class="fl">0.8</span>,<span class="fl">0.75</span>,<span class="fl">0.7</span>,<span class="fl">0.65</span>)</span>
+<span id="cb232-3"><a href="ChapBonusMalus.html#cb232-3" tabindex="-1"></a></span>
+<span id="cb232-4"><a href="ChapBonusMalus.html#cb232-4" tabindex="-1"></a>    <span class="co">#call function for premium</span></span>
+<span id="cb232-5"><a href="ChapBonusMalus.html#cb232-5" tabindex="-1"></a>    <span class="fu">prem</span>(<span class="at">n=</span><span class="dv">3</span>,\<span class="at">lambda=</span><span class="fl">0.1</span>)</span>
+<span id="cb232-6"><a href="ChapBonusMalus.html#cb232-6" tabindex="-1"></a></span>
+<span id="cb232-7"><a href="ChapBonusMalus.html#cb232-7" tabindex="-1"></a>    <span class="co">#output</span></span>
+<span id="cb232-8"><a href="ChapBonusMalus.html#cb232-8" tabindex="-1"></a>    [<span class="dv">1</span>] <span class="fl">713.117</span></span></code></pre></div>
 <p><strong>4. Recall all premiums in 20 years</strong></p>
-<div class="sourceCode" id="cb233"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb233-1"><a href="ChapBonusMalus.html#cb233-1" aria-hidden="true" tabindex="-1"></a>    <span class="fu">round</span>(<span class="fu">allprem</span>(<span class="at">n=</span><span class="dv">20</span>,\<span class="at">lambda=</span><span class="fl">0.1</span>),<span class="dv">1</span>)</span>
-<span id="cb233-2"><a href="ChapBonusMalus.html#cb233-2" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb233-3"><a href="ChapBonusMalus.html#cb233-3" aria-hidden="true" tabindex="-1"></a>    <span class="co">#output</span></span>
-<span id="cb233-4"><a href="ChapBonusMalus.html#cb233-4" aria-hidden="true" tabindex="-1"></a>    [<span class="dv">1</span>] <span class="fl">766.9</span> <span class="fl">737.6</span> <span class="fl">713.1</span> <span class="fl">693.8</span> <span class="fl">679.2</span> <span class="fl">669.3</span> <span class="fl">664.0</span> <span class="fl">660.5</span> <span class="fl">658.8</span> <span class="fl">657.7</span> <span class="fl">657.2</span> <span class="fl">656.9</span> </span>
-<span id="cb233-5"><a href="ChapBonusMalus.html#cb233-5" aria-hidden="true" tabindex="-1"></a>     <span class="fl">656.7</span> <span class="fl">656.6</span> <span class="fl">656.6</span> <span class="fl">656.6</span> <span class="fl">656.5</span> <span class="fl">656.5</span> <span class="fl">656.5</span> <span class="fl">656.5</span></span></code></pre></div>
+<div class="sourceCode" id="cb233"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb233-1"><a href="ChapBonusMalus.html#cb233-1" tabindex="-1"></a>    <span class="fu">round</span>(<span class="fu">allprem</span>(<span class="at">n=</span><span class="dv">20</span>,\<span class="at">lambda=</span><span class="fl">0.1</span>),<span class="dv">1</span>)</span>
+<span id="cb233-2"><a href="ChapBonusMalus.html#cb233-2" tabindex="-1"></a></span>
+<span id="cb233-3"><a href="ChapBonusMalus.html#cb233-3" tabindex="-1"></a>    <span class="co">#output</span></span>
+<span id="cb233-4"><a href="ChapBonusMalus.html#cb233-4" tabindex="-1"></a>    [<span class="dv">1</span>] <span class="fl">766.9</span> <span class="fl">737.6</span> <span class="fl">713.1</span> <span class="fl">693.8</span> <span class="fl">679.2</span> <span class="fl">669.3</span> <span class="fl">664.0</span> <span class="fl">660.5</span> <span class="fl">658.8</span> <span class="fl">657.7</span> <span class="fl">657.2</span> <span class="fl">656.9</span> </span>
+<span id="cb233-5"><a href="ChapBonusMalus.html#cb233-5" tabindex="-1"></a>     <span class="fl">656.7</span> <span class="fl">656.6</span> <span class="fl">656.6</span> <span class="fl">656.6</span> <span class="fl">656.5</span> <span class="fl">656.5</span> <span class="fl">656.5</span> <span class="fl">656.5</span></span></code></pre></div>
 </div>
 </div>
 <div id="convergence-rate" class="section level3 hasAnchor" number="15.4.5">
@@ -2018,51 +1992,51 @@ Figure 15.4: <strong>Evolution of Premium (Malaysia and Brazil)</strong>
 </h5>
 <div id="toggleCode.Section15.46" style="display: none">
 <p><strong>1. Recall the Transition Matrix</strong></p>
-<div class="sourceCode" id="cb234"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb234-1"><a href="ChapBonusMalus.html#cb234-1" aria-hidden="true" tabindex="-1"></a>    <span class="fu">TP</span>(<span class="fl">0.1</span>)            </span>
-<span id="cb234-2"><a href="ChapBonusMalus.html#cb234-2" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb234-3"><a href="ChapBonusMalus.html#cb234-3" aria-hidden="true" tabindex="-1"></a>    <span class="co">#output</span></span>
-<span id="cb234-4"><a href="ChapBonusMalus.html#cb234-4" aria-hidden="true" tabindex="-1"></a>               [,<span class="dv">1</span>]      [,<span class="dv">2</span>]      [,<span class="dv">3</span>]      [,<span class="dv">4</span>]      [,<span class="dv">5</span>]      [,<span class="dv">6</span>]</span>
-<span id="cb234-5"><a href="ChapBonusMalus.html#cb234-5" aria-hidden="true" tabindex="-1"></a>    [<span class="dv">1</span>,] <span class="fl">0.09516258</span> <span class="fl">0.9048374</span> <span class="fl">0.0000000</span> <span class="fl">0.0000000</span> <span class="fl">0.0000000</span> <span class="fl">0.0000000</span></span>
-<span id="cb234-6"><a href="ChapBonusMalus.html#cb234-6" aria-hidden="true" tabindex="-1"></a>    [<span class="dv">2</span>,] <span class="fl">0.09516258</span> <span class="fl">0.0000000</span> <span class="fl">0.9048374</span> <span class="fl">0.0000000</span> <span class="fl">0.0000000</span> <span class="fl">0.0000000</span></span>
-<span id="cb234-7"><a href="ChapBonusMalus.html#cb234-7" aria-hidden="true" tabindex="-1"></a>    [<span class="dv">3</span>,] <span class="fl">0.09516258</span> <span class="fl">0.0000000</span> <span class="fl">0.0000000</span> <span class="fl">0.9048374</span> <span class="fl">0.0000000</span> <span class="fl">0.0000000</span></span>
-<span id="cb234-8"><a href="ChapBonusMalus.html#cb234-8" aria-hidden="true" tabindex="-1"></a>    [<span class="dv">4</span>,] <span class="fl">0.09516258</span> <span class="fl">0.0000000</span> <span class="fl">0.0000000</span> <span class="fl">0.0000000</span> <span class="fl">0.9048374</span> <span class="fl">0.0000000</span></span>
-<span id="cb234-9"><a href="ChapBonusMalus.html#cb234-9" aria-hidden="true" tabindex="-1"></a>    [<span class="dv">5</span>,] <span class="fl">0.09516258</span> <span class="fl">0.0000000</span> <span class="fl">0.0000000</span> <span class="fl">0.0000000</span> <span class="fl">0.0000000</span> <span class="fl">0.9048374</span></span>
-<span id="cb234-10"><a href="ChapBonusMalus.html#cb234-10" aria-hidden="true" tabindex="-1"></a>    [<span class="dv">6</span>,] <span class="fl">0.09516258</span> <span class="fl">0.0000000</span> <span class="fl">0.0000000</span> <span class="fl">0.0000000</span> <span class="fl">0.0000000</span> <span class="fl">0.9048374</span></span></code></pre></div>
+<div class="sourceCode" id="cb234"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb234-1"><a href="ChapBonusMalus.html#cb234-1" tabindex="-1"></a>    <span class="fu">TP</span>(<span class="fl">0.1</span>)            </span>
+<span id="cb234-2"><a href="ChapBonusMalus.html#cb234-2" tabindex="-1"></a></span>
+<span id="cb234-3"><a href="ChapBonusMalus.html#cb234-3" tabindex="-1"></a>    <span class="co">#output</span></span>
+<span id="cb234-4"><a href="ChapBonusMalus.html#cb234-4" tabindex="-1"></a>               [,<span class="dv">1</span>]      [,<span class="dv">2</span>]      [,<span class="dv">3</span>]      [,<span class="dv">4</span>]      [,<span class="dv">5</span>]      [,<span class="dv">6</span>]</span>
+<span id="cb234-5"><a href="ChapBonusMalus.html#cb234-5" tabindex="-1"></a>    [<span class="dv">1</span>,] <span class="fl">0.09516258</span> <span class="fl">0.9048374</span> <span class="fl">0.0000000</span> <span class="fl">0.0000000</span> <span class="fl">0.0000000</span> <span class="fl">0.0000000</span></span>
+<span id="cb234-6"><a href="ChapBonusMalus.html#cb234-6" tabindex="-1"></a>    [<span class="dv">2</span>,] <span class="fl">0.09516258</span> <span class="fl">0.0000000</span> <span class="fl">0.9048374</span> <span class="fl">0.0000000</span> <span class="fl">0.0000000</span> <span class="fl">0.0000000</span></span>
+<span id="cb234-7"><a href="ChapBonusMalus.html#cb234-7" tabindex="-1"></a>    [<span class="dv">3</span>,] <span class="fl">0.09516258</span> <span class="fl">0.0000000</span> <span class="fl">0.0000000</span> <span class="fl">0.9048374</span> <span class="fl">0.0000000</span> <span class="fl">0.0000000</span></span>
+<span id="cb234-8"><a href="ChapBonusMalus.html#cb234-8" tabindex="-1"></a>    [<span class="dv">4</span>,] <span class="fl">0.09516258</span> <span class="fl">0.0000000</span> <span class="fl">0.0000000</span> <span class="fl">0.0000000</span> <span class="fl">0.9048374</span> <span class="fl">0.0000000</span></span>
+<span id="cb234-9"><a href="ChapBonusMalus.html#cb234-9" tabindex="-1"></a>    [<span class="dv">5</span>,] <span class="fl">0.09516258</span> <span class="fl">0.0000000</span> <span class="fl">0.0000000</span> <span class="fl">0.0000000</span> <span class="fl">0.0000000</span> <span class="fl">0.9048374</span></span>
+<span id="cb234-10"><a href="ChapBonusMalus.html#cb234-10" tabindex="-1"></a>    [<span class="dv">6</span>,] <span class="fl">0.09516258</span> <span class="fl">0.0000000</span> <span class="fl">0.0000000</span> <span class="fl">0.0000000</span> <span class="fl">0.0000000</span> <span class="fl">0.9048374</span></span></code></pre></div>
 <p><strong>2. Create a function for stationary probabilities</strong></p>
-<div class="sourceCode" id="cb235"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb235-1"><a href="ChapBonusMalus.html#cb235-1" aria-hidden="true" tabindex="-1"></a>    <span class="co">#create function for stationary probabilities</span></span>
-<span id="cb235-2"><a href="ChapBonusMalus.html#cb235-2" aria-hidden="true" tabindex="-1"></a>    ST<span class="ot">=</span><span class="cf">function</span>(\lambda)</span>
-<span id="cb235-3"><a href="ChapBonusMalus.html#cb235-3" aria-hidden="true" tabindex="-1"></a>    {<span class="fu">Re</span>(<span class="fu">t</span>(<span class="fu">eigen</span>(<span class="fu">t</span>(<span class="fu">TP</span>(\lambda)))<span class="sc">$</span>vectors[,<span class="dv">1</span>]<span class="sc">/</span><span class="fu">sum</span>(<span class="fu">eigen</span>(<span class="fu">t</span>(<span class="fu">TP</span>(\lambda)))<span class="sc">$</span>vectors[,<span class="dv">1</span>])))}</span>
-<span id="cb235-4"><a href="ChapBonusMalus.html#cb235-4" aria-hidden="true" tabindex="-1"></a>    <span class="fu">ST</span>(<span class="fl">0.1</span>)</span>
-<span id="cb235-5"><a href="ChapBonusMalus.html#cb235-5" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb235-6"><a href="ChapBonusMalus.html#cb235-6" aria-hidden="true" tabindex="-1"></a>    <span class="co">#output</span></span>
-<span id="cb235-7"><a href="ChapBonusMalus.html#cb235-7" aria-hidden="true" tabindex="-1"></a>               [,<span class="dv">1</span>]       [,<span class="dv">2</span>]       [,<span class="dv">3</span>]       [,<span class="dv">4</span>]       [,<span class="dv">5</span>]      [,<span class="dv">6</span>]</span>
-<span id="cb235-8"><a href="ChapBonusMalus.html#cb235-8" aria-hidden="true" tabindex="-1"></a>    [<span class="dv">1</span>,] <span class="fl">0.09516258</span> <span class="fl">0.08610666</span> <span class="fl">0.07791253</span> <span class="fl">0.07049817</span> <span class="fl">0.06378939</span> <span class="fl">0.6065307</span></span></code></pre></div>
+<div class="sourceCode" id="cb235"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb235-1"><a href="ChapBonusMalus.html#cb235-1" tabindex="-1"></a>    <span class="co">#create function for stationary probabilities</span></span>
+<span id="cb235-2"><a href="ChapBonusMalus.html#cb235-2" tabindex="-1"></a>    ST<span class="ot">=</span><span class="cf">function</span>(\lambda)</span>
+<span id="cb235-3"><a href="ChapBonusMalus.html#cb235-3" tabindex="-1"></a>    {<span class="fu">Re</span>(<span class="fu">t</span>(<span class="fu">eigen</span>(<span class="fu">t</span>(<span class="fu">TP</span>(\lambda)))<span class="sc">$</span>vectors[,<span class="dv">1</span>]<span class="sc">/</span><span class="fu">sum</span>(<span class="fu">eigen</span>(<span class="fu">t</span>(<span class="fu">TP</span>(\lambda)))<span class="sc">$</span>vectors[,<span class="dv">1</span>])))}</span>
+<span id="cb235-4"><a href="ChapBonusMalus.html#cb235-4" tabindex="-1"></a>    <span class="fu">ST</span>(<span class="fl">0.1</span>)</span>
+<span id="cb235-5"><a href="ChapBonusMalus.html#cb235-5" tabindex="-1"></a></span>
+<span id="cb235-6"><a href="ChapBonusMalus.html#cb235-6" tabindex="-1"></a>    <span class="co">#output</span></span>
+<span id="cb235-7"><a href="ChapBonusMalus.html#cb235-7" tabindex="-1"></a>               [,<span class="dv">1</span>]       [,<span class="dv">2</span>]       [,<span class="dv">3</span>]       [,<span class="dv">4</span>]       [,<span class="dv">5</span>]      [,<span class="dv">6</span>]</span>
+<span id="cb235-8"><a href="ChapBonusMalus.html#cb235-8" tabindex="-1"></a>    [<span class="dv">1</span>,] <span class="fl">0.09516258</span> <span class="fl">0.08610666</span> <span class="fl">0.07791253</span> <span class="fl">0.07049817</span> <span class="fl">0.06378939</span> <span class="fl">0.6065307</span></span></code></pre></div>
 <p><strong>3. Create a function for total variation in</strong> <strong>the <em>n</em>-th year</strong></p>
-<div class="sourceCode" id="cb236"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb236-1"><a href="ChapBonusMalus.html#cb236-1" aria-hidden="true" tabindex="-1"></a>    <span class="co">#create function for total variation in nth year</span></span>
-<span id="cb236-2"><a href="ChapBonusMalus.html#cb236-2" aria-hidden="true" tabindex="-1"></a>    TV<span class="ot">=</span><span class="cf">function</span>(n,\lambda)</span>
-<span id="cb236-3"><a href="ChapBonusMalus.html#cb236-3" aria-hidden="true" tabindex="-1"></a>    { dif<span class="ot">=</span><span class="fu">numeric</span>(<span class="dv">0</span>)</span>
-<span id="cb236-4"><a href="ChapBonusMalus.html#cb236-4" aria-hidden="true" tabindex="-1"></a>      <span class="cf">for</span> (j <span class="cf">in</span> <span class="dv">1</span><span class="sc">:</span><span class="fu">length</span>(<span class="fu">ST</span>(\lambda)))</span>
-<span id="cb236-5"><a href="ChapBonusMalus.html#cb236-5" aria-hidden="true" tabindex="-1"></a>      dif[j]<span class="ot">=</span><span class="fu">abs</span>(<span class="fu">mean</span>(<span class="fu">powA</span>(n,\lambda)[,j])<span class="sc">-</span><span class="fu">ST</span>(\lambda)[j])</span>
-<span id="cb236-6"><a href="ChapBonusMalus.html#cb236-6" aria-hidden="true" tabindex="-1"></a>      <span class="fu">sum</span>(dif)}</span>
-<span id="cb236-7"><a href="ChapBonusMalus.html#cb236-7" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb236-8"><a href="ChapBonusMalus.html#cb236-8" aria-hidden="true" tabindex="-1"></a>    <span class="co">#example for n=2</span></span>
-<span id="cb236-9"><a href="ChapBonusMalus.html#cb236-9" aria-hidden="true" tabindex="-1"></a>    <span class="fu">TV</span>(<span class="dv">2</span>,<span class="fl">0.1</span>)</span>
-<span id="cb236-10"><a href="ChapBonusMalus.html#cb236-10" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb236-11"><a href="ChapBonusMalus.html#cb236-11" aria-hidden="true" tabindex="-1"></a>    <span class="co">#output</span></span>
-<span id="cb236-12"><a href="ChapBonusMalus.html#cb236-12" aria-hidden="true" tabindex="-1"></a>    [<span class="dv">1</span>] <span class="fl">0.3943306</span></span></code></pre></div>
+<div class="sourceCode" id="cb236"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb236-1"><a href="ChapBonusMalus.html#cb236-1" tabindex="-1"></a>    <span class="co">#create function for total variation in nth year</span></span>
+<span id="cb236-2"><a href="ChapBonusMalus.html#cb236-2" tabindex="-1"></a>    TV<span class="ot">=</span><span class="cf">function</span>(n,\lambda)</span>
+<span id="cb236-3"><a href="ChapBonusMalus.html#cb236-3" tabindex="-1"></a>    { dif<span class="ot">=</span><span class="fu">numeric</span>(<span class="dv">0</span>)</span>
+<span id="cb236-4"><a href="ChapBonusMalus.html#cb236-4" tabindex="-1"></a>      <span class="cf">for</span> (j <span class="cf">in</span> <span class="dv">1</span><span class="sc">:</span><span class="fu">length</span>(<span class="fu">ST</span>(\lambda)))</span>
+<span id="cb236-5"><a href="ChapBonusMalus.html#cb236-5" tabindex="-1"></a>      dif[j]<span class="ot">=</span><span class="fu">abs</span>(<span class="fu">mean</span>(<span class="fu">powA</span>(n,\lambda)[,j])<span class="sc">-</span><span class="fu">ST</span>(\lambda)[j])</span>
+<span id="cb236-6"><a href="ChapBonusMalus.html#cb236-6" tabindex="-1"></a>      <span class="fu">sum</span>(dif)}</span>
+<span id="cb236-7"><a href="ChapBonusMalus.html#cb236-7" tabindex="-1"></a></span>
+<span id="cb236-8"><a href="ChapBonusMalus.html#cb236-8" tabindex="-1"></a>    <span class="co">#example for n=2</span></span>
+<span id="cb236-9"><a href="ChapBonusMalus.html#cb236-9" tabindex="-1"></a>    <span class="fu">TV</span>(<span class="dv">2</span>,<span class="fl">0.1</span>)</span>
+<span id="cb236-10"><a href="ChapBonusMalus.html#cb236-10" tabindex="-1"></a></span>
+<span id="cb236-11"><a href="ChapBonusMalus.html#cb236-11" tabindex="-1"></a>    <span class="co">#output</span></span>
+<span id="cb236-12"><a href="ChapBonusMalus.html#cb236-12" tabindex="-1"></a>    [<span class="dv">1</span>] <span class="fl">0.3943306</span></span></code></pre></div>
 <p><strong>4. Provide total variations (convergence rate) in 20 years</strong></p>
-<div class="sourceCode" id="cb237"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb237-1"><a href="ChapBonusMalus.html#cb237-1" aria-hidden="true" tabindex="-1"></a>    <span class="co">#provide total variation in each year for n years (4 decimal places)</span></span>
-<span id="cb237-2"><a href="ChapBonusMalus.html#cb237-2" aria-hidden="true" tabindex="-1"></a>    tot.var<span class="ot">=</span><span class="cf">function</span>(n,\lambda)</span>
-<span id="cb237-3"><a href="ChapBonusMalus.html#cb237-3" aria-hidden="true" tabindex="-1"></a>    { q<span class="ot">=</span><span class="fu">numeric</span>(<span class="dv">0</span>)</span>
-<span id="cb237-4"><a href="ChapBonusMalus.html#cb237-4" aria-hidden="true" tabindex="-1"></a>      <span class="cf">for</span> (t <span class="cf">in</span> <span class="dv">1</span><span class="sc">:</span>n)</span>
-<span id="cb237-5"><a href="ChapBonusMalus.html#cb237-5" aria-hidden="true" tabindex="-1"></a>      q[t]<span class="ot">=</span><span class="fu">TV</span>(t,\lambda)</span>
-<span id="cb237-6"><a href="ChapBonusMalus.html#cb237-6" aria-hidden="true" tabindex="-1"></a>      q}</span>
-<span id="cb237-7"><a href="ChapBonusMalus.html#cb237-7" aria-hidden="true" tabindex="-1"></a>    <span class="fu">round</span>(<span class="fu">tot.var</span>(<span class="dv">20</span>,<span class="fl">0.1</span>),<span class="dv">4</span>)</span>
-<span id="cb237-8"><a href="ChapBonusMalus.html#cb237-8" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb237-9"><a href="ChapBonusMalus.html#cb237-9" aria-hidden="true" tabindex="-1"></a>    <span class="co">#output</span></span>
-<span id="cb237-10"><a href="ChapBonusMalus.html#cb237-10" aria-hidden="true" tabindex="-1"></a>    [<span class="dv">1</span>] <span class="fl">0.6098</span> <span class="fl">0.3943</span> <span class="fl">0.2253</span> <span class="fl">0.0959</span> <span class="fl">0.0000</span> <span class="fl">0.0000</span> <span class="fl">0.0000</span> <span class="fl">0.0000</span> <span class="fl">0.0000</span> <span class="fl">0.0000</span> <span class="fl">0.0000</span> </span>
-<span id="cb237-11"><a href="ChapBonusMalus.html#cb237-11" aria-hidden="true" tabindex="-1"></a>    <span class="fl">0.0000</span></span>
-<span id="cb237-12"><a href="ChapBonusMalus.html#cb237-12" aria-hidden="true" tabindex="-1"></a>    [<span class="dv">13</span>] <span class="fl">0.0000</span> <span class="fl">0.0000</span> <span class="fl">0.0000</span> <span class="fl">0.0000</span> <span class="fl">0.0000</span> <span class="fl">0.0000</span> <span class="fl">0.0000</span> <span class="fl">0.0000</span></span></code></pre></div>
+<div class="sourceCode" id="cb237"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb237-1"><a href="ChapBonusMalus.html#cb237-1" tabindex="-1"></a>    <span class="co">#provide total variation in each year for n years (4 decimal places)</span></span>
+<span id="cb237-2"><a href="ChapBonusMalus.html#cb237-2" tabindex="-1"></a>    tot.var<span class="ot">=</span><span class="cf">function</span>(n,\lambda)</span>
+<span id="cb237-3"><a href="ChapBonusMalus.html#cb237-3" tabindex="-1"></a>    { q<span class="ot">=</span><span class="fu">numeric</span>(<span class="dv">0</span>)</span>
+<span id="cb237-4"><a href="ChapBonusMalus.html#cb237-4" tabindex="-1"></a>      <span class="cf">for</span> (t <span class="cf">in</span> <span class="dv">1</span><span class="sc">:</span>n)</span>
+<span id="cb237-5"><a href="ChapBonusMalus.html#cb237-5" tabindex="-1"></a>      q[t]<span class="ot">=</span><span class="fu">TV</span>(t,\lambda)</span>
+<span id="cb237-6"><a href="ChapBonusMalus.html#cb237-6" tabindex="-1"></a>      q}</span>
+<span id="cb237-7"><a href="ChapBonusMalus.html#cb237-7" tabindex="-1"></a>    <span class="fu">round</span>(<span class="fu">tot.var</span>(<span class="dv">20</span>,<span class="fl">0.1</span>),<span class="dv">4</span>)</span>
+<span id="cb237-8"><a href="ChapBonusMalus.html#cb237-8" tabindex="-1"></a></span>
+<span id="cb237-9"><a href="ChapBonusMalus.html#cb237-9" tabindex="-1"></a>    <span class="co">#output</span></span>
+<span id="cb237-10"><a href="ChapBonusMalus.html#cb237-10" tabindex="-1"></a>    [<span class="dv">1</span>] <span class="fl">0.6098</span> <span class="fl">0.3943</span> <span class="fl">0.2253</span> <span class="fl">0.0959</span> <span class="fl">0.0000</span> <span class="fl">0.0000</span> <span class="fl">0.0000</span> <span class="fl">0.0000</span> <span class="fl">0.0000</span> <span class="fl">0.0000</span> <span class="fl">0.0000</span> </span>
+<span id="cb237-11"><a href="ChapBonusMalus.html#cb237-11" tabindex="-1"></a>    <span class="fl">0.0000</span></span>
+<span id="cb237-12"><a href="ChapBonusMalus.html#cb237-12" tabindex="-1"></a>    [<span class="dv">13</span>] <span class="fl">0.0000</span> <span class="fl">0.0000</span> <span class="fl">0.0000</span> <span class="fl">0.0000</span> <span class="fl">0.0000</span> <span class="fl">0.0000</span> <span class="fl">0.0000</span> <span class="fl">0.0000</span></span></code></pre></div>
 </div>
 <hr />
 <p><strong>Example 15.4.7.</strong> Provide the total variations (or convergence rate) in 20 years under the <em>BMS</em> in Brazil using the results from example 15.4.5.</p>
@@ -2075,7 +2049,7 @@ Figure 15.4: <strong>Evolution of Premium (Malaysia and Brazil)</strong>
 <p>0.0145, 0.0071, 0.0043, 0.0021, 0.0013, 0.0006, 0.0004, 0.0002, 0.0001, 0.0001.</p>
 <hr />
 </div>
-<p>Examples 15.4.6-15.4.7 provide the degree of convergence for two different <em>BMS</em> (two different countries). The Malaysian <em>BMS</em> reaches full stationary only after five years, while the <em>BMS</em> in Brazil takes a longer period. As mentioned in <span class="citation"><a href="#ref-Lemaire98" role="doc-biblioref">Lemaire</a> (<a href="#ref-Lemaire98" role="doc-biblioref">1998</a>)</span>, a more sophisticated <em>BMS</em> would converge more slowly, and is considered as a drawback as it takes a longer period to stabilize. The main objective of a <em>BMS</em> is to separate the good drivers from the bad drivers, and thus, it is desirable to have a classification process that can be finalized (or stabilized) as soon as possible.</p>
+<p>Examples 15.4.6-15.4.7 provide the degree of convergence for two different <em>BMS</em> (two different countries). The Malaysian <em>BMS</em> reaches full stationary only after five years, while the <em>BMS</em> in Brazil takes a longer period. As mentioned in <span class="citation">Lemaire (<a href="#ref-Lemaire98">1998</a>)</span>, a more sophisticated <em>BMS</em> would converge more slowly, and is considered as a drawback as it takes a longer period to stabilize. The main objective of a <em>BMS</em> is to separate the good drivers from the bad drivers, and thus, it is desirable to have a classification process that can be finalized (or stabilized) as soon as possible.</p>
 </div>
 </div>
 <div id="S:PremRtg" class="section level2 hasAnchor" number="15.5">
@@ -2092,12 +2066,12 @@ Figure 15.4: <strong>Evolution of Premium (Malaysia and Brazil)</strong>
 <div id="premium-rating" class="section level3 hasAnchor" number="15.5.1">
 <h3><span class="header-section-number">15.5.1</span> Premium Rating<a href="ChapBonusMalus.html#premium-rating" class="anchor-section" aria-label="Anchor link to header"></a></h3>
 <p>In motor insurance ratemaking, BMS is a form of <em>a posteriori</em> rating mechanism to complement the use of <em>a priori</em> risk classification as described in Chapter <a href="ChapRiskClass.html#ChapRiskClass">11</a>. The <em>a priori</em> <strong><em>risk segmentation</em></strong> introduced in Section <a href="ChapRiskClass.html#S:RC:Introduction">11.1</a> divides portfolio of drivers into a number of homogeneous risk classes based on observable rating factors (see also Section <a href="ChapRiskClass.html#S:RatingFactors">11.4</a>), such that policyholders in the same risk class pay the same <em>a priori</em> premium. The underlying reason for utilizing BMS that relies on claims experience information is to deal with the <em>residual heterogeneity</em> within each homogeneous risk class (e.g., see the discussion before Example 2.6.2) since the observable variables are far from perfect in predicting the riskiness of driving behaviors.</p>
-<p>The ideal <em>a posteriori</em> mechanism is the credibility premium framework developed in Chapter <a href="ChapCredibility.html#ChapCredibility">12</a> and in particular Section <a href="ChapCredibility.html#S:Cred:BayesInf">12.3</a> (see also <span class="citation"><a href="#ref-DionneVanasse89" role="doc-biblioref">Dionne and Vanasse</a> (<a href="#ref-DionneVanasse89" role="doc-biblioref">1989</a>)</span>), whereby premiums are derived on an individual basis for each policyholder by incorporating both the <em>a priori</em> and <em>a posteriori</em> information. However, such individual premium determination is overly complex from a commercial standpoint for practical implementations by motor insurers. For this reason, <em>BMS</em> is the preferred solution and it consists of the following three building blocks: (a) <em>BMS</em> classes; (b) transition rules; (c) premium levels (also known as premium relativities or premium adjustment coefficients).</p>
-<p>The first two building blocks are pre-specified in advance and have been discussed in previous sections, whereas the determination (instead of pre-determined as discussed in the cases of Malaysian, Brazilian and Swiss systems) of premium relativities are important for motor insurers precisely because of its complementary and correction nature to account for the imperfection or inaccuracies in the <em>a priori</em> risk classification. Note that the premium relativities under BMS are different from the relativity measure defined in Section <a href="ChapRiskClass.html#S:CatVarMultiTarriff">11.3</a>, which is the ratio between the expected risk of a given risk class to a baseline risk class, both of which are calculated from observable rating factors. In the following subsections, we briefly introduce the required modelling setup to study the determination of optimal relativities. We refer interested readers to <span class="citation"><a href="#ref-Denuit07" role="doc-biblioref">Denuit et al.</a> (<a href="#ref-Denuit07" role="doc-biblioref">2007</a>)</span> for a fuller discussion on the technical details.</p>
+<p>The ideal <em>a posteriori</em> mechanism is the credibility premium framework developed in Chapter <a href="ChapCredibility.html#ChapCredibility">12</a> and in particular Section <a href="ChapCredibility.html#S:Cred:BayesInf">12.3</a> (see also <span class="citation">Dionne and Vanasse (<a href="#ref-DionneVanasse89">1989</a>)</span>), whereby premiums are derived on an individual basis for each policyholder by incorporating both the <em>a priori</em> and <em>a posteriori</em> information. However, such individual premium determination is overly complex from a commercial standpoint for practical implementations by motor insurers. For this reason, <em>BMS</em> is the preferred solution and it consists of the following three building blocks: (a) <em>BMS</em> classes; (b) transition rules; (c) premium levels (also known as premium relativities or premium adjustment coefficients).</p>
+<p>The first two building blocks are pre-specified in advance and have been discussed in previous sections, whereas the determination (instead of pre-determined as discussed in the cases of Malaysian, Brazilian and Swiss systems) of premium relativities are important for motor insurers precisely because of its complementary and correction nature to account for the imperfection or inaccuracies in the <em>a priori</em> risk classification. Note that the premium relativities under BMS are different from the relativity measure defined in Section <a href="ChapRiskClass.html#S:CatVarMultiTarriff">11.3</a>, which is the ratio between the expected risk of a given risk class to a baseline risk class, both of which are calculated from observable rating factors. In the following subsections, we briefly introduce the required modelling setup to study the determination of optimal relativities. We refer interested readers to <span class="citation">Denuit et al. (<a href="#ref-Denuit07">2007</a>)</span> for a fuller discussion on the technical details.</p>
 </div>
 <div id="a-priori-risk-classification" class="section level3 hasAnchor" number="15.5.2">
 <h3><span class="header-section-number">15.5.2</span> A Priori Risk Classification<a href="ChapBonusMalus.html#a-priori-risk-classification" class="anchor-section" aria-label="Anchor link to header"></a></h3>
-<p>Let us consider a portfolio of <span class="math inline">\(n\)</span> policies, where the risk exposure (see Section <a href="ChapPremiumFoundations.html#S:ExposureToRisk">10.4</a>) of driver <span class="math inline">\(i\)</span> is denoted as <span class="math inline">\(m_{i}\)</span> and the number of claims reported is represented by <span class="math inline">\(Y_{i}\)</span>, following from the notations used in Section <a href="ChapRiskClass.html#S:RC:PoissonRegression">11.2</a>. Let <span class="math inline">\({\bf x}_{i}^{T}=(x_{i1},x_{i2},\ldots, x_{iq})\)</span> be the vector of observable variables for <span class="math inline">\(i=1,2,\ldots, n\)</span>. The Poisson regression as developed in Section <a href="ChapRiskClass.html#S:RC:PoissonRegression">11.2</a> is commonly chosen to model <span class="math inline">\(Y_{i}\)</span> under the generalized linear models (GLM) framework, see Section 13.3.2.2 and also <span class="citation"><a href="#ref-McCullaghNelder89" role="doc-biblioref">McCullagh and Nelder</a> (<a href="#ref-McCullaghNelder89" role="doc-biblioref">1989</a>)</span>.</p>
+<p>Let us consider a portfolio of <span class="math inline">\(n\)</span> policies, where the risk exposure (see Section <a href="ChapPremiumFoundations.html#S:ExposureToRisk">10.4</a>) of driver <span class="math inline">\(i\)</span> is denoted as <span class="math inline">\(m_{i}\)</span> and the number of claims reported is represented by <span class="math inline">\(Y_{i}\)</span>, following from the notations used in Section <a href="ChapRiskClass.html#S:RC:PoissonRegression">11.2</a>. Let <span class="math inline">\({\bf x}_{i}^{T}=(x_{i1},x_{i2},\ldots, x_{iq})\)</span> be the vector of observable variables for <span class="math inline">\(i=1,2,\ldots, n\)</span>. The Poisson regression as developed in Section <a href="ChapRiskClass.html#S:RC:PoissonRegression">11.2</a> is commonly chosen to model <span class="math inline">\(Y_{i}\)</span> under the generalized linear models (GLM) framework, see Section 13.3.2.2 and also <span class="citation">McCullagh and Nelder (<a href="#ref-McCullaghNelder89">1989</a>)</span>.</p>
 <p>We can then express the predicted <em>a priori</em> expected claim frequency for policyholder <span class="math inline">\(i\)</span> as</p>
 <p><span class="math display">\[
 \mu_{i}=m_{i}\lambda_{i}=m_{i}\exp\left(\hat{\beta}_{0}+\sum\limits_{m=1}^{q}\hat{\beta}_{m}x_{im}\right) ,
@@ -2157,7 +2131,7 @@ Z &amp; =\frac{n}{n+K}=\frac{n\lambda_{i}}{n\lambda_{i}+a},\\
 <p>With these setup, the probability of drivers staying in <em>BMS</em> level <span class="math inline">\(L=\ell\)</span> for <span class="math inline">\(\ell=0,1,\ldots,k-1\)</span> in the context of the entire portfolio can be obtained as</p>
 <p><span class="math display">\[
 \begin{array}{ll}
-\Pr(L=\ell) 
+\Pr(L=\ell)
 &amp;=\sum\limits_{g=1}^{h}\Pr(L=\ell|\Lambda=\lambda_{g})\Pr(\Lambda=\lambda_{g}) \\
 &amp;=\sum\limits_{g=1}^{h}\Pr(\Lambda=\lambda_{g})\int_{0}^{\infty}\Pr(L=\ell|\Lambda=\lambda_{g},\Theta=\theta)f(\theta)d\theta \\
 &amp;=\sum\limits_{g=1}^{h}w_{g}\int_{0}^{\infty}\pi_{\ell}^{\lambda_{g}}(\lambda_{g}\theta)f(\theta)d\theta.
@@ -2172,74 +2146,74 @@ Z &amp; =\frac{n}{n+K}=\frac{n\lambda_{i}}{n\lambda_{i}+a},\\
 <div id="toggleExample.15.5.1" style="display: none">
 <p><strong>Solution.</strong> We can use R program to calculate <span class="math inline">\(\Pr(L=\ell)\)</span>.</p>
 <p><strong>1. Define the Parameters</strong></p>
-<div class="sourceCode" id="cb238"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb238-1"><a href="ChapBonusMalus.html#cb238-1" aria-hidden="true" tabindex="-1"></a>    <span class="co">#define parameters</span></span>
-<span id="cb238-2"><a href="ChapBonusMalus.html#cb238-2" aria-hidden="true" tabindex="-1"></a>    a.hat<span class="ot">=</span><span class="fl">1.5</span></span>
-<span id="cb238-3"><a href="ChapBonusMalus.html#cb238-3" aria-hidden="true" tabindex="-1"></a>    \lambda.hat<span class="ot">=</span><span class="fu">c</span>(<span class="fl">0.1</span>,<span class="fl">0.3</span>,<span class="fl">0.5</span>)</span>
-<span id="cb238-4"><a href="ChapBonusMalus.html#cb238-4" aria-hidden="true" tabindex="-1"></a>    weight<span class="ot">=</span><span class="fu">c</span>(<span class="fl">0.6</span>,<span class="fl">0.3</span>,<span class="fl">0.1</span>)</span></code></pre></div>
+<div class="sourceCode" id="cb238"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb238-1"><a href="ChapBonusMalus.html#cb238-1" tabindex="-1"></a>    <span class="co">#define parameters</span></span>
+<span id="cb238-2"><a href="ChapBonusMalus.html#cb238-2" tabindex="-1"></a>    a.hat<span class="ot">=</span><span class="fl">1.5</span></span>
+<span id="cb238-3"><a href="ChapBonusMalus.html#cb238-3" tabindex="-1"></a>    \lambda.hat<span class="ot">=</span><span class="fu">c</span>(<span class="fl">0.1</span>,<span class="fl">0.3</span>,<span class="fl">0.5</span>)</span>
+<span id="cb238-4"><a href="ChapBonusMalus.html#cb238-4" tabindex="-1"></a>    weight<span class="ot">=</span><span class="fu">c</span>(<span class="fl">0.6</span>,<span class="fl">0.3</span>,<span class="fl">0.1</span>)</span></code></pre></div>
 <p><strong>2. Recall the Transition Matrix</strong></p>
-<div class="sourceCode" id="cb239"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb239-1"><a href="ChapBonusMalus.html#cb239-1" aria-hidden="true" tabindex="-1"></a>    <span class="co">#As an example, \lambda=0.1, theta=1, so that \lambda*theta=0.1</span></span>
-<span id="cb239-2"><a href="ChapBonusMalus.html#cb239-2" aria-hidden="true" tabindex="-1"></a>    <span class="fu">TP</span>(<span class="fl">0.1</span>)            </span>
-<span id="cb239-3"><a href="ChapBonusMalus.html#cb239-3" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb239-4"><a href="ChapBonusMalus.html#cb239-4" aria-hidden="true" tabindex="-1"></a>    <span class="co">#output</span></span>
-<span id="cb239-5"><a href="ChapBonusMalus.html#cb239-5" aria-hidden="true" tabindex="-1"></a>               [,<span class="dv">1</span>]      [,<span class="dv">2</span>]      [,<span class="dv">3</span>]      [,<span class="dv">4</span>]      [,<span class="dv">5</span>]      [,<span class="dv">6</span>]</span>
-<span id="cb239-6"><a href="ChapBonusMalus.html#cb239-6" aria-hidden="true" tabindex="-1"></a>    [<span class="dv">1</span>,] <span class="fl">0.09516258</span> <span class="fl">0.9048374</span> <span class="fl">0.0000000</span> <span class="fl">0.0000000</span> <span class="fl">0.0000000</span> <span class="fl">0.0000000</span></span>
-<span id="cb239-7"><a href="ChapBonusMalus.html#cb239-7" aria-hidden="true" tabindex="-1"></a>    [<span class="dv">2</span>,] <span class="fl">0.09516258</span> <span class="fl">0.0000000</span> <span class="fl">0.9048374</span> <span class="fl">0.0000000</span> <span class="fl">0.0000000</span> <span class="fl">0.0000000</span></span>
-<span id="cb239-8"><a href="ChapBonusMalus.html#cb239-8" aria-hidden="true" tabindex="-1"></a>    [<span class="dv">3</span>,] <span class="fl">0.09516258</span> <span class="fl">0.0000000</span> <span class="fl">0.0000000</span> <span class="fl">0.9048374</span> <span class="fl">0.0000000</span> <span class="fl">0.0000000</span></span>
-<span id="cb239-9"><a href="ChapBonusMalus.html#cb239-9" aria-hidden="true" tabindex="-1"></a>    [<span class="dv">4</span>,] <span class="fl">0.09516258</span> <span class="fl">0.0000000</span> <span class="fl">0.0000000</span> <span class="fl">0.0000000</span> <span class="fl">0.9048374</span> <span class="fl">0.0000000</span></span>
-<span id="cb239-10"><a href="ChapBonusMalus.html#cb239-10" aria-hidden="true" tabindex="-1"></a>    [<span class="dv">5</span>,] <span class="fl">0.09516258</span> <span class="fl">0.0000000</span> <span class="fl">0.0000000</span> <span class="fl">0.0000000</span> <span class="fl">0.0000000</span> <span class="fl">0.9048374</span></span>
-<span id="cb239-11"><a href="ChapBonusMalus.html#cb239-11" aria-hidden="true" tabindex="-1"></a>    [<span class="dv">6</span>,] <span class="fl">0.09516258</span> <span class="fl">0.0000000</span> <span class="fl">0.0000000</span> <span class="fl">0.0000000</span> <span class="fl">0.0000000</span> <span class="fl">0.9048374</span></span></code></pre></div>
+<div class="sourceCode" id="cb239"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb239-1"><a href="ChapBonusMalus.html#cb239-1" tabindex="-1"></a>    <span class="co">#As an example, \lambda=0.1, theta=1, so that \lambda*theta=0.1</span></span>
+<span id="cb239-2"><a href="ChapBonusMalus.html#cb239-2" tabindex="-1"></a>    <span class="fu">TP</span>(<span class="fl">0.1</span>)            </span>
+<span id="cb239-3"><a href="ChapBonusMalus.html#cb239-3" tabindex="-1"></a></span>
+<span id="cb239-4"><a href="ChapBonusMalus.html#cb239-4" tabindex="-1"></a>    <span class="co">#output</span></span>
+<span id="cb239-5"><a href="ChapBonusMalus.html#cb239-5" tabindex="-1"></a>               [,<span class="dv">1</span>]      [,<span class="dv">2</span>]      [,<span class="dv">3</span>]      [,<span class="dv">4</span>]      [,<span class="dv">5</span>]      [,<span class="dv">6</span>]</span>
+<span id="cb239-6"><a href="ChapBonusMalus.html#cb239-6" tabindex="-1"></a>    [<span class="dv">1</span>,] <span class="fl">0.09516258</span> <span class="fl">0.9048374</span> <span class="fl">0.0000000</span> <span class="fl">0.0000000</span> <span class="fl">0.0000000</span> <span class="fl">0.0000000</span></span>
+<span id="cb239-7"><a href="ChapBonusMalus.html#cb239-7" tabindex="-1"></a>    [<span class="dv">2</span>,] <span class="fl">0.09516258</span> <span class="fl">0.0000000</span> <span class="fl">0.9048374</span> <span class="fl">0.0000000</span> <span class="fl">0.0000000</span> <span class="fl">0.0000000</span></span>
+<span id="cb239-8"><a href="ChapBonusMalus.html#cb239-8" tabindex="-1"></a>    [<span class="dv">3</span>,] <span class="fl">0.09516258</span> <span class="fl">0.0000000</span> <span class="fl">0.0000000</span> <span class="fl">0.9048374</span> <span class="fl">0.0000000</span> <span class="fl">0.0000000</span></span>
+<span id="cb239-9"><a href="ChapBonusMalus.html#cb239-9" tabindex="-1"></a>    [<span class="dv">4</span>,] <span class="fl">0.09516258</span> <span class="fl">0.0000000</span> <span class="fl">0.0000000</span> <span class="fl">0.0000000</span> <span class="fl">0.9048374</span> <span class="fl">0.0000000</span></span>
+<span id="cb239-10"><a href="ChapBonusMalus.html#cb239-10" tabindex="-1"></a>    [<span class="dv">5</span>,] <span class="fl">0.09516258</span> <span class="fl">0.0000000</span> <span class="fl">0.0000000</span> <span class="fl">0.0000000</span> <span class="fl">0.0000000</span> <span class="fl">0.9048374</span></span>
+<span id="cb239-11"><a href="ChapBonusMalus.html#cb239-11" tabindex="-1"></a>    [<span class="dv">6</span>,] <span class="fl">0.09516258</span> <span class="fl">0.0000000</span> <span class="fl">0.0000000</span> <span class="fl">0.0000000</span> <span class="fl">0.0000000</span> <span class="fl">0.9048374</span></span></code></pre></div>
 <p><strong>3. Recall the Stationary Distribution</strong></p>
-<div class="sourceCode" id="cb240"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb240-1"><a href="ChapBonusMalus.html#cb240-1" aria-hidden="true" tabindex="-1"></a>    <span class="co">#As an example, \lambda=0.1, theta=1, so that \lambda*theta=0.1</span></span>
-<span id="cb240-2"><a href="ChapBonusMalus.html#cb240-2" aria-hidden="true" tabindex="-1"></a>    <span class="fu">ST</span>(<span class="fl">0.1</span>)            </span>
-<span id="cb240-3"><a href="ChapBonusMalus.html#cb240-3" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb240-4"><a href="ChapBonusMalus.html#cb240-4" aria-hidden="true" tabindex="-1"></a>    <span class="co">#output</span></span>
-<span id="cb240-5"><a href="ChapBonusMalus.html#cb240-5" aria-hidden="true" tabindex="-1"></a>               [,<span class="dv">1</span>]       [,<span class="dv">2</span>]       [,<span class="dv">3</span>]       [,<span class="dv">4</span>]       [,<span class="dv">5</span>]      [,<span class="dv">6</span>]</span>
-<span id="cb240-6"><a href="ChapBonusMalus.html#cb240-6" aria-hidden="true" tabindex="-1"></a>    [<span class="dv">1</span>,] <span class="fl">0.09516258</span> <span class="fl">0.08610666</span> <span class="fl">0.07791253</span> <span class="fl">0.07049817</span> <span class="fl">0.06378939</span> <span class="fl">0.6065307</span></span></code></pre></div>
+<div class="sourceCode" id="cb240"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb240-1"><a href="ChapBonusMalus.html#cb240-1" tabindex="-1"></a>    <span class="co">#As an example, \lambda=0.1, theta=1, so that \lambda*theta=0.1</span></span>
+<span id="cb240-2"><a href="ChapBonusMalus.html#cb240-2" tabindex="-1"></a>    <span class="fu">ST</span>(<span class="fl">0.1</span>)            </span>
+<span id="cb240-3"><a href="ChapBonusMalus.html#cb240-3" tabindex="-1"></a></span>
+<span id="cb240-4"><a href="ChapBonusMalus.html#cb240-4" tabindex="-1"></a>    <span class="co">#output</span></span>
+<span id="cb240-5"><a href="ChapBonusMalus.html#cb240-5" tabindex="-1"></a>               [,<span class="dv">1</span>]       [,<span class="dv">2</span>]       [,<span class="dv">3</span>]       [,<span class="dv">4</span>]       [,<span class="dv">5</span>]      [,<span class="dv">6</span>]</span>
+<span id="cb240-6"><a href="ChapBonusMalus.html#cb240-6" tabindex="-1"></a>    [<span class="dv">1</span>,] <span class="fl">0.09516258</span> <span class="fl">0.08610666</span> <span class="fl">0.07791253</span> <span class="fl">0.07049817</span> <span class="fl">0.06378939</span> <span class="fl">0.6065307</span></span></code></pre></div>
 <p><strong>4. Calculate</strong> <span class="math inline">\(\Pr(L=\ell)\)</span></p>
-<div class="sourceCode" id="cb241"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb241-1"><a href="ChapBonusMalus.html#cb241-1" aria-hidden="true" tabindex="-1"></a>    <span class="co">#create function for pi*fdist</span></span>
-<span id="cb241-2"><a href="ChapBonusMalus.html#cb241-2" aria-hidden="true" tabindex="-1"></a>    int1<span class="ot">=</span><span class="cf">function</span>(theta,s,a,\lambda)</span>
-<span id="cb241-3"><a href="ChapBonusMalus.html#cb241-3" aria-hidden="true" tabindex="-1"></a>    {   a<span class="ot">=</span>a.hat</span>
-<span id="cb241-4"><a href="ChapBonusMalus.html#cb241-4" aria-hidden="true" tabindex="-1"></a>        \lambda<span class="ot">=</span>\lambda.hat[j]</span>
-<span id="cb241-5"><a href="ChapBonusMalus.html#cb241-5" aria-hidden="true" tabindex="-1"></a>        f.dist<span class="ot">=</span><span class="fu">gamma</span>(a)<span class="sc">^</span>(<span class="sc">-</span><span class="dv">1</span>)<span class="sc">*</span>a<span class="sc">^</span>a<span class="sc">*</span>theta<span class="sc">^</span>(a<span class="dv">-1</span>)<span class="sc">*</span><span class="fu">exp</span>(<span class="sc">-</span>a<span class="sc">*</span>theta)</span>
-<span id="cb241-6"><a href="ChapBonusMalus.html#cb241-6" aria-hidden="true" tabindex="-1"></a>        p<span class="ot">=</span><span class="fu">ST</span>(\lambda<span class="sc">*</span>theta)</span>
-<span id="cb241-7"><a href="ChapBonusMalus.html#cb241-7" aria-hidden="true" tabindex="-1"></a>        <span class="fu">return</span>(p[<span class="dv">1</span>,s<span class="sc">+</span><span class="dv">1</span>]<span class="sc">*</span>f.dist)}</span>
-<span id="cb241-8"><a href="ChapBonusMalus.html#cb241-8" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb241-9"><a href="ChapBonusMalus.html#cb241-9" aria-hidden="true" tabindex="-1"></a>    <span class="co">#create matrix for integral of pi*fdist</span></span>
-<span id="cb241-10"><a href="ChapBonusMalus.html#cb241-10" aria-hidden="true" tabindex="-1"></a>    <span class="co">#there are 3 rating classes (each with \lambda=0.1,0.3,0.5), so we need a 3x6 matrix</span></span>
-<span id="cb241-11"><a href="ChapBonusMalus.html#cb241-11" aria-hidden="true" tabindex="-1"></a>    P1<span class="ot">=</span><span class="fu">matrix</span>(<span class="at">nrow=</span><span class="dv">3</span>,<span class="at">ncol=</span><span class="dv">6</span>,<span class="at">data=</span><span class="dv">0</span>)</span>
-<span id="cb241-12"><a href="ChapBonusMalus.html#cb241-12" aria-hidden="true" tabindex="-1"></a>    <span class="cf">for</span> (j <span class="cf">in</span> <span class="dv">1</span><span class="sc">:</span><span class="dv">3</span>)</span>
-<span id="cb241-13"><a href="ChapBonusMalus.html#cb241-13" aria-hidden="true" tabindex="-1"></a>    {<span class="cf">for</span> (i <span class="cf">in</span> <span class="dv">0</span><span class="sc">:</span><span class="dv">5</span>) P1[j,i<span class="sc">+</span><span class="dv">1</span>]<span class="ot">=</span><span class="fu">integrate</span>(<span class="fu">Vectorize</span>(int1),<span class="at">lower=</span><span class="dv">0</span>,<span class="at">upper=</span><span class="cn">Inf</span>,<span class="at">s=</span>i)<span class="sc">$</span>value}</span>
-<span id="cb241-14"><a href="ChapBonusMalus.html#cb241-14" aria-hidden="true" tabindex="-1"></a>    P1</span>
-<span id="cb241-15"><a href="ChapBonusMalus.html#cb241-15" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb241-16"><a href="ChapBonusMalus.html#cb241-16" aria-hidden="true" tabindex="-1"></a>    <span class="co">#output</span></span>
-<span id="cb241-17"><a href="ChapBonusMalus.html#cb241-17" aria-hidden="true" tabindex="-1"></a>               [,<span class="dv">1</span>]      [,<span class="dv">2</span>]      [,<span class="dv">3</span>]       [,<span class="dv">4</span>]       [,<span class="dv">5</span>]      [,<span class="dv">6</span>]</span>
-<span id="cb241-18"><a href="ChapBonusMalus.html#cb241-18" aria-hidden="true" tabindex="-1"></a>    [<span class="dv">1</span>,] <span class="fl">0.09226953</span> <span class="fl">0.0789042</span> <span class="fl">0.0681005</span> <span class="fl">0.05926000</span> <span class="fl">0.05194672</span> <span class="fl">0.6495191</span></span>
-<span id="cb241-19"><a href="ChapBonusMalus.html#cb241-19" aria-hidden="true" tabindex="-1"></a>    [<span class="dv">2</span>,] <span class="fl">0.23927422</span> <span class="fl">0.1570442</span> <span class="fl">0.1095757</span> <span class="fl">0.08001922</span> <span class="fl">0.06053327</span> <span class="fl">0.3535534</span></span>
-<span id="cb241-20"><a href="ChapBonusMalus.html#cb241-20" aria-hidden="true" tabindex="-1"></a>    [<span class="dv">3</span>,] <span class="fl">0.35048094</span> <span class="fl">0.1847610</span> <span class="fl">0.1112046</span> <span class="fl">0.07298753</span> <span class="fl">0.05092619</span> <span class="fl">0.2296397</span></span>
-<span id="cb241-21"><a href="ChapBonusMalus.html#cb241-21" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb241-22"><a href="ChapBonusMalus.html#cb241-22" aria-hidden="true" tabindex="-1"></a>    <span class="co">#calculate probability of L (weight*matrix P1)</span></span>
-<span id="cb241-23"><a href="ChapBonusMalus.html#cb241-23" aria-hidden="true" tabindex="-1"></a>    prob.L<span class="ot">=</span><span class="fu">t</span>(weight)<span class="sc">%*%</span>P1</span>
-<span id="cb241-24"><a href="ChapBonusMalus.html#cb241-24" aria-hidden="true" tabindex="-1"></a>    prob.L</span>
-<span id="cb241-25"><a href="ChapBonusMalus.html#cb241-25" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb241-26"><a href="ChapBonusMalus.html#cb241-26" aria-hidden="true" tabindex="-1"></a>    <span class="co">#output</span></span>
-<span id="cb241-27"><a href="ChapBonusMalus.html#cb241-27" aria-hidden="true" tabindex="-1"></a>              [,<span class="dv">1</span>]      [,<span class="dv">2</span>]       [,<span class="dv">3</span>]       [,<span class="dv">4</span>]       [,<span class="dv">5</span>]      [,<span class="dv">6</span>]</span>
-<span id="cb241-28"><a href="ChapBonusMalus.html#cb241-28" aria-hidden="true" tabindex="-1"></a>    [<span class="dv">1</span>,] <span class="fl">0.1621921</span> <span class="fl">0.1129319</span> <span class="fl">0.08485348</span> <span class="fl">0.06686052</span> <span class="fl">0.05442063</span> <span class="fl">0.5187414</span></span></code></pre></div>
+<div class="sourceCode" id="cb241"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb241-1"><a href="ChapBonusMalus.html#cb241-1" tabindex="-1"></a>    <span class="co">#create function for pi*fdist</span></span>
+<span id="cb241-2"><a href="ChapBonusMalus.html#cb241-2" tabindex="-1"></a>    int1<span class="ot">=</span><span class="cf">function</span>(theta,s,a,\lambda)</span>
+<span id="cb241-3"><a href="ChapBonusMalus.html#cb241-3" tabindex="-1"></a>    {   a<span class="ot">=</span>a.hat</span>
+<span id="cb241-4"><a href="ChapBonusMalus.html#cb241-4" tabindex="-1"></a>        \lambda<span class="ot">=</span>\lambda.hat[j]</span>
+<span id="cb241-5"><a href="ChapBonusMalus.html#cb241-5" tabindex="-1"></a>        f.dist<span class="ot">=</span><span class="fu">gamma</span>(a)<span class="sc">^</span>(<span class="sc">-</span><span class="dv">1</span>)<span class="sc">*</span>a<span class="sc">^</span>a<span class="sc">*</span>theta<span class="sc">^</span>(a<span class="dv">-1</span>)<span class="sc">*</span><span class="fu">exp</span>(<span class="sc">-</span>a<span class="sc">*</span>theta)</span>
+<span id="cb241-6"><a href="ChapBonusMalus.html#cb241-6" tabindex="-1"></a>        p<span class="ot">=</span><span class="fu">ST</span>(\lambda<span class="sc">*</span>theta)</span>
+<span id="cb241-7"><a href="ChapBonusMalus.html#cb241-7" tabindex="-1"></a>        <span class="fu">return</span>(p[<span class="dv">1</span>,s<span class="sc">+</span><span class="dv">1</span>]<span class="sc">*</span>f.dist)}</span>
+<span id="cb241-8"><a href="ChapBonusMalus.html#cb241-8" tabindex="-1"></a></span>
+<span id="cb241-9"><a href="ChapBonusMalus.html#cb241-9" tabindex="-1"></a>    <span class="co">#create matrix for integral of pi*fdist</span></span>
+<span id="cb241-10"><a href="ChapBonusMalus.html#cb241-10" tabindex="-1"></a>    <span class="co">#there are 3 rating classes (each with \lambda=0.1,0.3,0.5), so we need a 3x6 matrix</span></span>
+<span id="cb241-11"><a href="ChapBonusMalus.html#cb241-11" tabindex="-1"></a>    P1<span class="ot">=</span><span class="fu">matrix</span>(<span class="at">nrow=</span><span class="dv">3</span>,<span class="at">ncol=</span><span class="dv">6</span>,<span class="at">data=</span><span class="dv">0</span>)</span>
+<span id="cb241-12"><a href="ChapBonusMalus.html#cb241-12" tabindex="-1"></a>    <span class="cf">for</span> (j <span class="cf">in</span> <span class="dv">1</span><span class="sc">:</span><span class="dv">3</span>)</span>
+<span id="cb241-13"><a href="ChapBonusMalus.html#cb241-13" tabindex="-1"></a>    {<span class="cf">for</span> (i <span class="cf">in</span> <span class="dv">0</span><span class="sc">:</span><span class="dv">5</span>) P1[j,i<span class="sc">+</span><span class="dv">1</span>]<span class="ot">=</span><span class="fu">integrate</span>(<span class="fu">Vectorize</span>(int1),<span class="at">lower=</span><span class="dv">0</span>,<span class="at">upper=</span><span class="cn">Inf</span>,<span class="at">s=</span>i)<span class="sc">$</span>value}</span>
+<span id="cb241-14"><a href="ChapBonusMalus.html#cb241-14" tabindex="-1"></a>    P1</span>
+<span id="cb241-15"><a href="ChapBonusMalus.html#cb241-15" tabindex="-1"></a></span>
+<span id="cb241-16"><a href="ChapBonusMalus.html#cb241-16" tabindex="-1"></a>    <span class="co">#output</span></span>
+<span id="cb241-17"><a href="ChapBonusMalus.html#cb241-17" tabindex="-1"></a>               [,<span class="dv">1</span>]      [,<span class="dv">2</span>]      [,<span class="dv">3</span>]       [,<span class="dv">4</span>]       [,<span class="dv">5</span>]      [,<span class="dv">6</span>]</span>
+<span id="cb241-18"><a href="ChapBonusMalus.html#cb241-18" tabindex="-1"></a>    [<span class="dv">1</span>,] <span class="fl">0.09226953</span> <span class="fl">0.0789042</span> <span class="fl">0.0681005</span> <span class="fl">0.05926000</span> <span class="fl">0.05194672</span> <span class="fl">0.6495191</span></span>
+<span id="cb241-19"><a href="ChapBonusMalus.html#cb241-19" tabindex="-1"></a>    [<span class="dv">2</span>,] <span class="fl">0.23927422</span> <span class="fl">0.1570442</span> <span class="fl">0.1095757</span> <span class="fl">0.08001922</span> <span class="fl">0.06053327</span> <span class="fl">0.3535534</span></span>
+<span id="cb241-20"><a href="ChapBonusMalus.html#cb241-20" tabindex="-1"></a>    [<span class="dv">3</span>,] <span class="fl">0.35048094</span> <span class="fl">0.1847610</span> <span class="fl">0.1112046</span> <span class="fl">0.07298753</span> <span class="fl">0.05092619</span> <span class="fl">0.2296397</span></span>
+<span id="cb241-21"><a href="ChapBonusMalus.html#cb241-21" tabindex="-1"></a></span>
+<span id="cb241-22"><a href="ChapBonusMalus.html#cb241-22" tabindex="-1"></a>    <span class="co">#calculate probability of L (weight*matrix P1)</span></span>
+<span id="cb241-23"><a href="ChapBonusMalus.html#cb241-23" tabindex="-1"></a>    prob.L<span class="ot">=</span><span class="fu">t</span>(weight)<span class="sc">%*%</span>P1</span>
+<span id="cb241-24"><a href="ChapBonusMalus.html#cb241-24" tabindex="-1"></a>    prob.L</span>
+<span id="cb241-25"><a href="ChapBonusMalus.html#cb241-25" tabindex="-1"></a></span>
+<span id="cb241-26"><a href="ChapBonusMalus.html#cb241-26" tabindex="-1"></a>    <span class="co">#output</span></span>
+<span id="cb241-27"><a href="ChapBonusMalus.html#cb241-27" tabindex="-1"></a>              [,<span class="dv">1</span>]      [,<span class="dv">2</span>]       [,<span class="dv">3</span>]       [,<span class="dv">4</span>]       [,<span class="dv">5</span>]      [,<span class="dv">6</span>]</span>
+<span id="cb241-28"><a href="ChapBonusMalus.html#cb241-28" tabindex="-1"></a>    [<span class="dv">1</span>,] <span class="fl">0.1621921</span> <span class="fl">0.1129319</span> <span class="fl">0.08485348</span> <span class="fl">0.06686052</span> <span class="fl">0.05442063</span> <span class="fl">0.5187414</span></span></code></pre></div>
 </div>
 <hr />
 <p>The results indicate that in the long run and under residual heterogeneity, 16% of insureds will eventually belong to level <span class="math inline">\(\ell=\)</span> 0, 11% of insureds will eventually belong to level <span class="math inline">\(\ell=1\)</span>, and so forth. The majority of insureds (more than half, i.e. 52%) will eventually occupy the highest level which is level <span class="math inline">\(\ell=5\)</span>.</p>
 </div>
 <div id="determination-of-optimal-relativities" class="section level3 hasAnchor" number="15.5.5">
 <h3><span class="header-section-number">15.5.5</span> Determination of Optimal Relativities<a href="ChapBonusMalus.html#determination-of-optimal-relativities" class="anchor-section" aria-label="Anchor link to header"></a></h3>
-<p>The <strong><em>optimal relativity</em></strong> for each <em>BMS</em> level was first derived by <span class="citation"><a href="#ref-Norberg76" role="doc-biblioref">Norberg</a> (<a href="#ref-Norberg76" role="doc-biblioref">1976</a>)</span> through the minimization of the following objective function, which is more commonly known as the Norberg’s criterion:</p>
+<p>The <strong><em>optimal relativity</em></strong> for each <em>BMS</em> level was first derived by <span class="citation">Norberg (<a href="#ref-Norberg76">1976</a>)</span> through the minimization of the following objective function, which is more commonly known as the Norberg’s criterion:</p>
 <p><span class="math display">\[
 \min\mathrm{E}((\bar{\lambda}\Theta-\bar{\lambda}r_{L})^2)=\min\mathrm{E}((\Theta-r_{L})^2),
 \]</span></p>
 <p>where <span class="math inline">\(\bar{\lambda}\)</span> is the constant expected claim frequency for all policyholders in the absence of <em>a priori</em> risk classification and <span class="math inline">\(r_{L}\)</span> is the premium relativity for BMS level <span class="math inline">\(L\)</span>. It should be noted that when there is no risk classification, all <span class="math inline">\(\lambda\)</span>’s are equal and they are represented by a constant <span class="math inline">\(\bar{\lambda}\)</span>.</p>
-<p><span class="citation"><a href="#ref-Pitrebois03" role="doc-biblioref">Pitrebois, Denuit, and Walhin</a> (<a href="#ref-Pitrebois03" role="doc-biblioref">2003</a>)</span> then incorporated the information of <em>a priori</em> risk classification into the optimization of the same objective function of</p>
+<p><span class="citation">Pitrebois, Denuit, and Walhin (<a href="#ref-Pitrebois03">2003</a>)</span> then incorporated the information of <em>a priori</em> risk classification into the optimization of the same objective function of</p>
 <p><span class="math display">\[
 \min\mathrm{E}((\Theta-r_{L})^2)
 \]</span></p>
-<p>to derive <span class="math inline">\(r_{L}\)</span> analytically. <span class="citation"><a href="#ref-Tan15" role="doc-biblioref">Tan et al.</a> (<a href="#ref-Tan15" role="doc-biblioref">2015</a>)</span> further proposed the minimization of the following objective function</p>
+<p>to derive <span class="math inline">\(r_{L}\)</span> analytically. <span class="citation">Tan et al. (<a href="#ref-Tan15">2015</a>)</span> further proposed the minimization of the following objective function</p>
 <p><span class="math display">\[
 \min\mathrm{E}((\Lambda\Theta-\Lambda r_{L})^2),\text{  subject to }\mathrm{E}(r_{L})=1
 \]</span></p>
@@ -2254,7 +2228,7 @@ Z &amp; =\frac{n}{n+K}=\frac{n\lambda_{i}}{n\lambda_{i}+a},\\
 &amp;=\sum\limits_{g=1}^{h}w_{g}\int_{0}^{\infty}\sum\limits_{\ell=0}^{k-1}(\lambda_{g}\theta-\lambda_{g}r_{\ell})^2\pi_{\ell}(\lambda_{g}\theta)f(\theta)d\theta.
 \end{array}
 \]</span></p>
-<p>It is crucially important that the optimal relativity has an average of 100%, so that the bonuses and maluses exactly offset each other to result in a financial equilibrium condition. Note that the approach considered by <span class="citation"><a href="#ref-Pitrebois03" role="doc-biblioref">Pitrebois, Denuit, and Walhin</a> (<a href="#ref-Pitrebois03" role="doc-biblioref">2003</a>)</span> does not require the financial balanced constraint because the analytical solution to its objective function is given by <span class="math inline">\(r_{\ell}=\mathrm{E}(\Theta|L=\ell)\)</span>, so it follows that <span class="math inline">\(\mathrm{E}(r_{L})=\mathrm{E}\left(\mathrm{E}(\Theta|L)\right)=\mathrm{E}(\Theta)=1\)</span> with the specific choice of gamma <span class="math inline">\((a,a)\)</span> distribution for the random effect component <span class="math inline">\(\Theta\)</span>.</p>
+<p>It is crucially important that the optimal relativity has an average of 100%, so that the bonuses and maluses exactly offset each other to result in a financial equilibrium condition. Note that the approach considered by <span class="citation">Pitrebois, Denuit, and Walhin (<a href="#ref-Pitrebois03">2003</a>)</span> does not require the financial balanced constraint because the analytical solution to its objective function is given by <span class="math inline">\(r_{\ell}=\mathrm{E}(\Theta|L=\ell)\)</span>, so it follows that <span class="math inline">\(\mathrm{E}(r_{L})=\mathrm{E}\left(\mathrm{E}(\Theta|L)\right)=\mathrm{E}(\Theta)=1\)</span> with the specific choice of gamma <span class="math inline">\((a,a)\)</span> distribution for the random effect component <span class="math inline">\(\Theta\)</span>.</p>
 <p>In this case, the optimization problem can be solved by specifying the Lagrangian as</p>
 <p><span class="math display">\[
 \begin{array}{ll}
@@ -2297,63 +2271,63 @@ r_{\ell}&amp;=\frac{\mathrm{E}(\Lambda^2\Theta|L=\ell)}{\mathrm{E}(\Lambda^2|L=\
 <div id="toggleExample.15.5.2" style="display: none">
 <p><strong>Solution.</strong> We can use R program to calculate <span class="math inline">\(r_{\ell}\)</span> under <em>unconstrained method</em>.</p>
 <p><strong>1. Recall the parameters from Example 15.5.1</strong></p>
-<div class="sourceCode" id="cb242"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb242-1"><a href="ChapBonusMalus.html#cb242-1" aria-hidden="true" tabindex="-1"></a>a.hat<span class="ot">=</span><span class="fl">1.5</span></span>
-<span id="cb242-2"><a href="ChapBonusMalus.html#cb242-2" aria-hidden="true" tabindex="-1"></a>    \lambda.hat<span class="ot">=</span><span class="fu">c</span>(<span class="fl">0.1</span>,<span class="fl">0.3</span>,<span class="fl">0.5</span>)</span>
-<span id="cb242-3"><a href="ChapBonusMalus.html#cb242-3" aria-hidden="true" tabindex="-1"></a>    weight<span class="ot">=</span><span class="fu">c</span>(<span class="fl">0.6</span>,<span class="fl">0.3</span>,<span class="fl">0.1</span>)</span></code></pre></div>
+<div class="sourceCode" id="cb242"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb242-1"><a href="ChapBonusMalus.html#cb242-1" tabindex="-1"></a>a.hat<span class="ot">=</span><span class="fl">1.5</span></span>
+<span id="cb242-2"><a href="ChapBonusMalus.html#cb242-2" tabindex="-1"></a>    \lambda.hat<span class="ot">=</span><span class="fu">c</span>(<span class="fl">0.1</span>,<span class="fl">0.3</span>,<span class="fl">0.5</span>)</span>
+<span id="cb242-3"><a href="ChapBonusMalus.html#cb242-3" tabindex="-1"></a>    weight<span class="ot">=</span><span class="fu">c</span>(<span class="fl">0.6</span>,<span class="fl">0.3</span>,<span class="fl">0.1</span>)</span></code></pre></div>
 <p><strong>2. Recall the Transition Matrix for Malaysian BMS</strong></p>
-<div class="sourceCode" id="cb243"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb243-1"><a href="ChapBonusMalus.html#cb243-1" aria-hidden="true" tabindex="-1"></a>    <span class="fu">TP</span>(<span class="fl">0.1</span>)</span>
-<span id="cb243-2"><a href="ChapBonusMalus.html#cb243-2" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb243-3"><a href="ChapBonusMalus.html#cb243-3" aria-hidden="true" tabindex="-1"></a>    <span class="co">#output</span></span>
-<span id="cb243-4"><a href="ChapBonusMalus.html#cb243-4" aria-hidden="true" tabindex="-1"></a>               [,<span class="dv">1</span>]      [,<span class="dv">2</span>]      [,<span class="dv">3</span>]      [,<span class="dv">4</span>]      [,<span class="dv">5</span>]      [,<span class="dv">6</span>]</span>
-<span id="cb243-5"><a href="ChapBonusMalus.html#cb243-5" aria-hidden="true" tabindex="-1"></a>    [<span class="dv">1</span>,] <span class="fl">0.09516258</span> <span class="fl">0.9048374</span> <span class="fl">0.0000000</span> <span class="fl">0.0000000</span> <span class="fl">0.0000000</span> <span class="fl">0.0000000</span></span>
-<span id="cb243-6"><a href="ChapBonusMalus.html#cb243-6" aria-hidden="true" tabindex="-1"></a>    [<span class="dv">2</span>,] <span class="fl">0.09516258</span> <span class="fl">0.0000000</span> <span class="fl">0.9048374</span> <span class="fl">0.0000000</span> <span class="fl">0.0000000</span> <span class="fl">0.0000000</span></span>
-<span id="cb243-7"><a href="ChapBonusMalus.html#cb243-7" aria-hidden="true" tabindex="-1"></a>    [<span class="dv">3</span>,] <span class="fl">0.09516258</span> <span class="fl">0.0000000</span> <span class="fl">0.0000000</span> <span class="fl">0.9048374</span> <span class="fl">0.0000000</span> <span class="fl">0.0000000</span></span>
-<span id="cb243-8"><a href="ChapBonusMalus.html#cb243-8" aria-hidden="true" tabindex="-1"></a>    [<span class="dv">4</span>,] <span class="fl">0.09516258</span> <span class="fl">0.0000000</span> <span class="fl">0.0000000</span> <span class="fl">0.0000000</span> <span class="fl">0.9048374</span> <span class="fl">0.0000000</span></span>
-<span id="cb243-9"><a href="ChapBonusMalus.html#cb243-9" aria-hidden="true" tabindex="-1"></a>    [<span class="dv">5</span>,] <span class="fl">0.09516258</span> <span class="fl">0.0000000</span> <span class="fl">0.0000000</span> <span class="fl">0.0000000</span> <span class="fl">0.0000000</span> <span class="fl">0.9048374</span></span>
-<span id="cb243-10"><a href="ChapBonusMalus.html#cb243-10" aria-hidden="true" tabindex="-1"></a>    [<span class="dv">6</span>,] <span class="fl">0.09516258</span> <span class="fl">0.0000000</span> <span class="fl">0.0000000</span> <span class="fl">0.0000000</span> <span class="fl">0.0000000</span> <span class="fl">0.9048374</span></span></code></pre></div>
+<div class="sourceCode" id="cb243"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb243-1"><a href="ChapBonusMalus.html#cb243-1" tabindex="-1"></a>    <span class="fu">TP</span>(<span class="fl">0.1</span>)</span>
+<span id="cb243-2"><a href="ChapBonusMalus.html#cb243-2" tabindex="-1"></a></span>
+<span id="cb243-3"><a href="ChapBonusMalus.html#cb243-3" tabindex="-1"></a>    <span class="co">#output</span></span>
+<span id="cb243-4"><a href="ChapBonusMalus.html#cb243-4" tabindex="-1"></a>               [,<span class="dv">1</span>]      [,<span class="dv">2</span>]      [,<span class="dv">3</span>]      [,<span class="dv">4</span>]      [,<span class="dv">5</span>]      [,<span class="dv">6</span>]</span>
+<span id="cb243-5"><a href="ChapBonusMalus.html#cb243-5" tabindex="-1"></a>    [<span class="dv">1</span>,] <span class="fl">0.09516258</span> <span class="fl">0.9048374</span> <span class="fl">0.0000000</span> <span class="fl">0.0000000</span> <span class="fl">0.0000000</span> <span class="fl">0.0000000</span></span>
+<span id="cb243-6"><a href="ChapBonusMalus.html#cb243-6" tabindex="-1"></a>    [<span class="dv">2</span>,] <span class="fl">0.09516258</span> <span class="fl">0.0000000</span> <span class="fl">0.9048374</span> <span class="fl">0.0000000</span> <span class="fl">0.0000000</span> <span class="fl">0.0000000</span></span>
+<span id="cb243-7"><a href="ChapBonusMalus.html#cb243-7" tabindex="-1"></a>    [<span class="dv">3</span>,] <span class="fl">0.09516258</span> <span class="fl">0.0000000</span> <span class="fl">0.0000000</span> <span class="fl">0.9048374</span> <span class="fl">0.0000000</span> <span class="fl">0.0000000</span></span>
+<span id="cb243-8"><a href="ChapBonusMalus.html#cb243-8" tabindex="-1"></a>    [<span class="dv">4</span>,] <span class="fl">0.09516258</span> <span class="fl">0.0000000</span> <span class="fl">0.0000000</span> <span class="fl">0.0000000</span> <span class="fl">0.9048374</span> <span class="fl">0.0000000</span></span>
+<span id="cb243-9"><a href="ChapBonusMalus.html#cb243-9" tabindex="-1"></a>    [<span class="dv">5</span>,] <span class="fl">0.09516258</span> <span class="fl">0.0000000</span> <span class="fl">0.0000000</span> <span class="fl">0.0000000</span> <span class="fl">0.0000000</span> <span class="fl">0.9048374</span></span>
+<span id="cb243-10"><a href="ChapBonusMalus.html#cb243-10" tabindex="-1"></a>    [<span class="dv">6</span>,] <span class="fl">0.09516258</span> <span class="fl">0.0000000</span> <span class="fl">0.0000000</span> <span class="fl">0.0000000</span> <span class="fl">0.0000000</span> <span class="fl">0.9048374</span></span></code></pre></div>
 <p><strong>3. Recall the Stationary Distribution</strong></p>
-<div class="sourceCode" id="cb244"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb244-1"><a href="ChapBonusMalus.html#cb244-1" aria-hidden="true" tabindex="-1"></a>    <span class="fu">ST</span>(<span class="fl">0.1</span>)</span>
-<span id="cb244-2"><a href="ChapBonusMalus.html#cb244-2" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb244-3"><a href="ChapBonusMalus.html#cb244-3" aria-hidden="true" tabindex="-1"></a>    <span class="co">#output</span></span>
-<span id="cb244-4"><a href="ChapBonusMalus.html#cb244-4" aria-hidden="true" tabindex="-1"></a>               [,<span class="dv">1</span>]       [,<span class="dv">2</span>]       [,<span class="dv">3</span>]       [,<span class="dv">4</span>]       [,<span class="dv">5</span>]      [,<span class="dv">6</span>]</span>
-<span id="cb244-5"><a href="ChapBonusMalus.html#cb244-5" aria-hidden="true" tabindex="-1"></a>    [<span class="dv">1</span>,] <span class="fl">0.09516258</span> <span class="fl">0.08610666</span> <span class="fl">0.07791253</span> <span class="fl">0.07049817</span> <span class="fl">0.06378939</span> <span class="fl">0.6065307</span></span></code></pre></div>
+<div class="sourceCode" id="cb244"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb244-1"><a href="ChapBonusMalus.html#cb244-1" tabindex="-1"></a>    <span class="fu">ST</span>(<span class="fl">0.1</span>)</span>
+<span id="cb244-2"><a href="ChapBonusMalus.html#cb244-2" tabindex="-1"></a></span>
+<span id="cb244-3"><a href="ChapBonusMalus.html#cb244-3" tabindex="-1"></a>    <span class="co">#output</span></span>
+<span id="cb244-4"><a href="ChapBonusMalus.html#cb244-4" tabindex="-1"></a>               [,<span class="dv">1</span>]       [,<span class="dv">2</span>]       [,<span class="dv">3</span>]       [,<span class="dv">4</span>]       [,<span class="dv">5</span>]      [,<span class="dv">6</span>]</span>
+<span id="cb244-5"><a href="ChapBonusMalus.html#cb244-5" tabindex="-1"></a>    [<span class="dv">1</span>,] <span class="fl">0.09516258</span> <span class="fl">0.08610666</span> <span class="fl">0.07791253</span> <span class="fl">0.07049817</span> <span class="fl">0.06378939</span> <span class="fl">0.6065307</span></span></code></pre></div>
 <p><strong>4. Recall P1 from Example 15.5.1 (matrix for integral of pi*fdist)</strong></p>
-<div class="sourceCode" id="cb245"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb245-1"><a href="ChapBonusMalus.html#cb245-1" aria-hidden="true" tabindex="-1"></a>    P1</span>
-<span id="cb245-2"><a href="ChapBonusMalus.html#cb245-2" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb245-3"><a href="ChapBonusMalus.html#cb245-3" aria-hidden="true" tabindex="-1"></a>    <span class="co">#output</span></span>
-<span id="cb245-4"><a href="ChapBonusMalus.html#cb245-4" aria-hidden="true" tabindex="-1"></a>               [,<span class="dv">1</span>]      [,<span class="dv">2</span>]      [,<span class="dv">3</span>]       [,<span class="dv">4</span>]       [,<span class="dv">5</span>]      [,<span class="dv">6</span>]</span>
-<span id="cb245-5"><a href="ChapBonusMalus.html#cb245-5" aria-hidden="true" tabindex="-1"></a>    [<span class="dv">1</span>,] <span class="fl">0.09226953</span> <span class="fl">0.0789042</span> <span class="fl">0.0681005</span> <span class="fl">0.05926000</span> <span class="fl">0.05194672</span> <span class="fl">0.6495191</span></span>
-<span id="cb245-6"><a href="ChapBonusMalus.html#cb245-6" aria-hidden="true" tabindex="-1"></a>    [<span class="dv">2</span>,] <span class="fl">0.23927422</span> <span class="fl">0.1570442</span> <span class="fl">0.1095757</span> <span class="fl">0.08001922</span> <span class="fl">0.06053327</span> <span class="fl">0.3535534</span></span>
-<span id="cb245-7"><a href="ChapBonusMalus.html#cb245-7" aria-hidden="true" tabindex="-1"></a>    [<span class="dv">3</span>,] <span class="fl">0.35048094</span> <span class="fl">0.1847610</span> <span class="fl">0.1112046</span> <span class="fl">0.07298753</span> <span class="fl">0.05092619</span> <span class="fl">0.2296397</span></span></code></pre></div>
+<div class="sourceCode" id="cb245"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb245-1"><a href="ChapBonusMalus.html#cb245-1" tabindex="-1"></a>    P1</span>
+<span id="cb245-2"><a href="ChapBonusMalus.html#cb245-2" tabindex="-1"></a></span>
+<span id="cb245-3"><a href="ChapBonusMalus.html#cb245-3" tabindex="-1"></a>    <span class="co">#output</span></span>
+<span id="cb245-4"><a href="ChapBonusMalus.html#cb245-4" tabindex="-1"></a>               [,<span class="dv">1</span>]      [,<span class="dv">2</span>]      [,<span class="dv">3</span>]       [,<span class="dv">4</span>]       [,<span class="dv">5</span>]      [,<span class="dv">6</span>]</span>
+<span id="cb245-5"><a href="ChapBonusMalus.html#cb245-5" tabindex="-1"></a>    [<span class="dv">1</span>,] <span class="fl">0.09226953</span> <span class="fl">0.0789042</span> <span class="fl">0.0681005</span> <span class="fl">0.05926000</span> <span class="fl">0.05194672</span> <span class="fl">0.6495191</span></span>
+<span id="cb245-6"><a href="ChapBonusMalus.html#cb245-6" tabindex="-1"></a>    [<span class="dv">2</span>,] <span class="fl">0.23927422</span> <span class="fl">0.1570442</span> <span class="fl">0.1095757</span> <span class="fl">0.08001922</span> <span class="fl">0.06053327</span> <span class="fl">0.3535534</span></span>
+<span id="cb245-7"><a href="ChapBonusMalus.html#cb245-7" tabindex="-1"></a>    [<span class="dv">3</span>,] <span class="fl">0.35048094</span> <span class="fl">0.1847610</span> <span class="fl">0.1112046</span> <span class="fl">0.07298753</span> <span class="fl">0.05092619</span> <span class="fl">0.2296397</span></span></code></pre></div>
 <p><strong>5. Calculate the optimal relativities under heterogeneity</strong> <span class="math inline">\(r_\ell\)</span></p>
-<div class="sourceCode" id="cb246"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb246-1"><a href="ChapBonusMalus.html#cb246-1" aria-hidden="true" tabindex="-1"></a>    <span class="co">#create function for theta*pi*fdist</span></span>
-<span id="cb246-2"><a href="ChapBonusMalus.html#cb246-2" aria-hidden="true" tabindex="-1"></a>    int2<span class="ot">=</span><span class="cf">function</span>(theta,s,a,\lambda)</span>
-<span id="cb246-3"><a href="ChapBonusMalus.html#cb246-3" aria-hidden="true" tabindex="-1"></a>    {   a<span class="ot">=</span>a.hat</span>
-<span id="cb246-4"><a href="ChapBonusMalus.html#cb246-4" aria-hidden="true" tabindex="-1"></a>        \lambda<span class="ot">=</span>\lambda.hat[j]</span>
-<span id="cb246-5"><a href="ChapBonusMalus.html#cb246-5" aria-hidden="true" tabindex="-1"></a>        f.dist<span class="ot">=</span><span class="fu">gamma</span>(a)<span class="sc">^</span>(<span class="sc">-</span><span class="dv">1</span>)<span class="sc">*</span>a<span class="sc">^</span>a<span class="sc">*</span>theta<span class="sc">^</span>(a<span class="dv">-1</span>)<span class="sc">*</span><span class="fu">exp</span>(<span class="sc">-</span>a<span class="sc">*</span>theta)</span>
-<span id="cb246-6"><a href="ChapBonusMalus.html#cb246-6" aria-hidden="true" tabindex="-1"></a>        p<span class="ot">=</span><span class="fu">ST</span>(\lambda<span class="sc">*</span>theta)</span>
-<span id="cb246-7"><a href="ChapBonusMalus.html#cb246-7" aria-hidden="true" tabindex="-1"></a>        <span class="fu">return</span>(theta<span class="sc">*</span>p[<span class="dv">1</span>,s<span class="sc">+</span><span class="dv">1</span>]<span class="sc">*</span>f.dist)}</span>
-<span id="cb246-8"><a href="ChapBonusMalus.html#cb246-8" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb246-9"><a href="ChapBonusMalus.html#cb246-9" aria-hidden="true" tabindex="-1"></a>    <span class="co">#create matrix for integral of theta*pi*fdist</span></span>
-<span id="cb246-10"><a href="ChapBonusMalus.html#cb246-10" aria-hidden="true" tabindex="-1"></a>    <span class="co">#there are 3 rating classes (each with \lambda=0.1,0.3,0.5, so we need a 3x6 matrix)</span></span>
-<span id="cb246-11"><a href="ChapBonusMalus.html#cb246-11" aria-hidden="true" tabindex="-1"></a>    P2<span class="ot">=</span><span class="fu">matrix</span>(<span class="at">nrow=</span><span class="dv">3</span>,<span class="at">ncol=</span><span class="dv">6</span>,<span class="at">data=</span><span class="dv">0</span>)</span>
-<span id="cb246-12"><a href="ChapBonusMalus.html#cb246-12" aria-hidden="true" tabindex="-1"></a>    <span class="cf">for</span> (j <span class="cf">in</span> <span class="dv">1</span><span class="sc">:</span><span class="dv">3</span>)</span>
-<span id="cb246-13"><a href="ChapBonusMalus.html#cb246-13" aria-hidden="true" tabindex="-1"></a>    {<span class="cf">for</span> (i <span class="cf">in</span> <span class="dv">0</span><span class="sc">:</span><span class="dv">5</span>) P2[j,i<span class="sc">+</span><span class="dv">1</span>]<span class="ot">=</span><span class="fu">integrate</span>(<span class="fu">Vectorize</span>(int2),<span class="at">lower=</span><span class="dv">0</span>,<span class="at">upper=</span><span class="cn">Inf</span>,<span class="at">s=</span>i)<span class="sc">$</span>value}</span>
-<span id="cb246-14"><a href="ChapBonusMalus.html#cb246-14" aria-hidden="true" tabindex="-1"></a>    P2</span>
-<span id="cb246-15"><a href="ChapBonusMalus.html#cb246-15" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb246-16"><a href="ChapBonusMalus.html#cb246-16" aria-hidden="true" tabindex="-1"></a>    <span class="co">#output</span></span>
-<span id="cb246-17"><a href="ChapBonusMalus.html#cb246-17" aria-hidden="true" tabindex="-1"></a>              [,<span class="dv">1</span>]      [,<span class="dv">2</span>]       [,<span class="dv">3</span>]       [,<span class="dv">4</span>]       [,<span class="dv">5</span>]       [,<span class="dv">6</span>]</span>
-<span id="cb246-18"><a href="ChapBonusMalus.html#cb246-18" aria-hidden="true" tabindex="-1"></a>    [<span class="dv">1</span>,] <span class="fl">0.1490027</span> <span class="fl">0.1196800</span> <span class="fl">0.09737915</span> <span class="fl">0.08014937</span> <span class="fl">0.06664948</span> <span class="fl">0.48713928</span></span>
-<span id="cb246-19"><a href="ChapBonusMalus.html#cb246-19" aria-hidden="true" tabindex="-1"></a>    [<span class="dv">2</span>,] <span class="fl">0.3660619</span> <span class="fl">0.2027370</span> <span class="fl">0.12238497</span> <span class="fl">0.07876803</span> <span class="fl">0.05327145</span> <span class="fl">0.17677669</span></span>
-<span id="cb246-20"><a href="ChapBonusMalus.html#cb246-20" aria-hidden="true" tabindex="-1"></a>    [<span class="dv">3</span>,] <span class="fl">0.5128607</span> <span class="fl">0.2082845</span> <span class="fl">0.10207811</span> <span class="fl">0.05653418</span> <span class="fl">0.03412764</span> <span class="fl">0.08611487</span></span>
-<span id="cb246-21"><a href="ChapBonusMalus.html#cb246-21" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb246-22"><a href="ChapBonusMalus.html#cb246-22" aria-hidden="true" tabindex="-1"></a>    <span class="co">#calculate relativities, r</span></span>
-<span id="cb246-23"><a href="ChapBonusMalus.html#cb246-23" aria-hidden="true" tabindex="-1"></a>    r<span class="ot">=</span>(<span class="fu">t</span>(weight<span class="sc">*</span>(\lambda.hat)<span class="sc">^</span><span class="dv">2</span>)<span class="sc">%*%</span>P2)<span class="sc">/</span>(<span class="fu">t</span>(weight<span class="sc">*</span>(\lambda.hat)<span class="sc">^</span><span class="dv">2</span>)<span class="sc">%*%</span>P1)</span>
-<span id="cb246-24"><a href="ChapBonusMalus.html#cb246-24" aria-hidden="true" tabindex="-1"></a>    r</span>
-<span id="cb246-25"><a href="ChapBonusMalus.html#cb246-25" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb246-26"><a href="ChapBonusMalus.html#cb246-26" aria-hidden="true" tabindex="-1"></a>    <span class="co">#output</span></span>
-<span id="cb246-27"><a href="ChapBonusMalus.html#cb246-27" aria-hidden="true" tabindex="-1"></a>             [,<span class="dv">1</span>]     [,<span class="dv">2</span>]     [,<span class="dv">3</span>]      [,<span class="dv">4</span>]      [,<span class="dv">5</span>]      [,<span class="dv">6</span>]</span>
-<span id="cb246-28"><a href="ChapBonusMalus.html#cb246-28" aria-hidden="true" tabindex="-1"></a>    [<span class="dv">1</span>,] <span class="fl">1.495888</span> <span class="fl">1.221421</span> <span class="fl">1.047722</span> <span class="fl">0.9263311</span> <span class="fl">0.8360428</span> <span class="fl">0.5133785</span></span></code></pre></div>
+<div class="sourceCode" id="cb246"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb246-1"><a href="ChapBonusMalus.html#cb246-1" tabindex="-1"></a>    <span class="co">#create function for theta*pi*fdist</span></span>
+<span id="cb246-2"><a href="ChapBonusMalus.html#cb246-2" tabindex="-1"></a>    int2<span class="ot">=</span><span class="cf">function</span>(theta,s,a,\lambda)</span>
+<span id="cb246-3"><a href="ChapBonusMalus.html#cb246-3" tabindex="-1"></a>    {   a<span class="ot">=</span>a.hat</span>
+<span id="cb246-4"><a href="ChapBonusMalus.html#cb246-4" tabindex="-1"></a>        \lambda<span class="ot">=</span>\lambda.hat[j]</span>
+<span id="cb246-5"><a href="ChapBonusMalus.html#cb246-5" tabindex="-1"></a>        f.dist<span class="ot">=</span><span class="fu">gamma</span>(a)<span class="sc">^</span>(<span class="sc">-</span><span class="dv">1</span>)<span class="sc">*</span>a<span class="sc">^</span>a<span class="sc">*</span>theta<span class="sc">^</span>(a<span class="dv">-1</span>)<span class="sc">*</span><span class="fu">exp</span>(<span class="sc">-</span>a<span class="sc">*</span>theta)</span>
+<span id="cb246-6"><a href="ChapBonusMalus.html#cb246-6" tabindex="-1"></a>        p<span class="ot">=</span><span class="fu">ST</span>(\lambda<span class="sc">*</span>theta)</span>
+<span id="cb246-7"><a href="ChapBonusMalus.html#cb246-7" tabindex="-1"></a>        <span class="fu">return</span>(theta<span class="sc">*</span>p[<span class="dv">1</span>,s<span class="sc">+</span><span class="dv">1</span>]<span class="sc">*</span>f.dist)}</span>
+<span id="cb246-8"><a href="ChapBonusMalus.html#cb246-8" tabindex="-1"></a></span>
+<span id="cb246-9"><a href="ChapBonusMalus.html#cb246-9" tabindex="-1"></a>    <span class="co">#create matrix for integral of theta*pi*fdist</span></span>
+<span id="cb246-10"><a href="ChapBonusMalus.html#cb246-10" tabindex="-1"></a>    <span class="co">#there are 3 rating classes (each with \lambda=0.1,0.3,0.5, so we need a 3x6 matrix)</span></span>
+<span id="cb246-11"><a href="ChapBonusMalus.html#cb246-11" tabindex="-1"></a>    P2<span class="ot">=</span><span class="fu">matrix</span>(<span class="at">nrow=</span><span class="dv">3</span>,<span class="at">ncol=</span><span class="dv">6</span>,<span class="at">data=</span><span class="dv">0</span>)</span>
+<span id="cb246-12"><a href="ChapBonusMalus.html#cb246-12" tabindex="-1"></a>    <span class="cf">for</span> (j <span class="cf">in</span> <span class="dv">1</span><span class="sc">:</span><span class="dv">3</span>)</span>
+<span id="cb246-13"><a href="ChapBonusMalus.html#cb246-13" tabindex="-1"></a>    {<span class="cf">for</span> (i <span class="cf">in</span> <span class="dv">0</span><span class="sc">:</span><span class="dv">5</span>) P2[j,i<span class="sc">+</span><span class="dv">1</span>]<span class="ot">=</span><span class="fu">integrate</span>(<span class="fu">Vectorize</span>(int2),<span class="at">lower=</span><span class="dv">0</span>,<span class="at">upper=</span><span class="cn">Inf</span>,<span class="at">s=</span>i)<span class="sc">$</span>value}</span>
+<span id="cb246-14"><a href="ChapBonusMalus.html#cb246-14" tabindex="-1"></a>    P2</span>
+<span id="cb246-15"><a href="ChapBonusMalus.html#cb246-15" tabindex="-1"></a></span>
+<span id="cb246-16"><a href="ChapBonusMalus.html#cb246-16" tabindex="-1"></a>    <span class="co">#output</span></span>
+<span id="cb246-17"><a href="ChapBonusMalus.html#cb246-17" tabindex="-1"></a>              [,<span class="dv">1</span>]      [,<span class="dv">2</span>]       [,<span class="dv">3</span>]       [,<span class="dv">4</span>]       [,<span class="dv">5</span>]       [,<span class="dv">6</span>]</span>
+<span id="cb246-18"><a href="ChapBonusMalus.html#cb246-18" tabindex="-1"></a>    [<span class="dv">1</span>,] <span class="fl">0.1490027</span> <span class="fl">0.1196800</span> <span class="fl">0.09737915</span> <span class="fl">0.08014937</span> <span class="fl">0.06664948</span> <span class="fl">0.48713928</span></span>
+<span id="cb246-19"><a href="ChapBonusMalus.html#cb246-19" tabindex="-1"></a>    [<span class="dv">2</span>,] <span class="fl">0.3660619</span> <span class="fl">0.2027370</span> <span class="fl">0.12238497</span> <span class="fl">0.07876803</span> <span class="fl">0.05327145</span> <span class="fl">0.17677669</span></span>
+<span id="cb246-20"><a href="ChapBonusMalus.html#cb246-20" tabindex="-1"></a>    [<span class="dv">3</span>,] <span class="fl">0.5128607</span> <span class="fl">0.2082845</span> <span class="fl">0.10207811</span> <span class="fl">0.05653418</span> <span class="fl">0.03412764</span> <span class="fl">0.08611487</span></span>
+<span id="cb246-21"><a href="ChapBonusMalus.html#cb246-21" tabindex="-1"></a></span>
+<span id="cb246-22"><a href="ChapBonusMalus.html#cb246-22" tabindex="-1"></a>    <span class="co">#calculate relativities, r</span></span>
+<span id="cb246-23"><a href="ChapBonusMalus.html#cb246-23" tabindex="-1"></a>    r<span class="ot">=</span>(<span class="fu">t</span>(weight<span class="sc">*</span>(\lambda.hat)<span class="sc">^</span><span class="dv">2</span>)<span class="sc">%*%</span>P2)<span class="sc">/</span>(<span class="fu">t</span>(weight<span class="sc">*</span>(\lambda.hat)<span class="sc">^</span><span class="dv">2</span>)<span class="sc">%*%</span>P1)</span>
+<span id="cb246-24"><a href="ChapBonusMalus.html#cb246-24" tabindex="-1"></a>    r</span>
+<span id="cb246-25"><a href="ChapBonusMalus.html#cb246-25" tabindex="-1"></a></span>
+<span id="cb246-26"><a href="ChapBonusMalus.html#cb246-26" tabindex="-1"></a>    <span class="co">#output</span></span>
+<span id="cb246-27"><a href="ChapBonusMalus.html#cb246-27" tabindex="-1"></a>             [,<span class="dv">1</span>]     [,<span class="dv">2</span>]     [,<span class="dv">3</span>]      [,<span class="dv">4</span>]      [,<span class="dv">5</span>]      [,<span class="dv">6</span>]</span>
+<span id="cb246-28"><a href="ChapBonusMalus.html#cb246-28" tabindex="-1"></a>    [<span class="dv">1</span>,] <span class="fl">1.495888</span> <span class="fl">1.221421</span> <span class="fl">1.047722</span> <span class="fl">0.9263311</span> <span class="fl">0.8360428</span> <span class="fl">0.5133785</span></span></code></pre></div>
 </div>
 <hr />
 <p>The results show that under <em>unconstrained method</em>, the first 3 levels ( <span class="math inline">\(\ell=\)</span> 0,1,2 ) have premium loadings ( <span class="math inline">\(r_{\ell}=\)</span> 150%, 122%, 105% ), and the last 3 levels ( <span class="math inline">\(\ell=\)</span> 3,4,5 ) have premium discounts ( <span class="math inline">\(r_{\ell}=\)</span> 93%, 84%, 51% ).</p>
@@ -2365,19 +2339,19 @@ r_{\ell}&amp;=\frac{\mathrm{E}(\Lambda^2\Theta|L=\ell)}{\mathrm{E}(\Lambda^2|L=\
 <div id="toggleExample.15.5.3" style="display: none">
 <p><strong>Solution.</strong> We can use R program to find the expected premium relativity <span class="math inline">\(\mathrm{E} (r_{L}).\)</span></p>
 <p><strong>1. Recall stationary probabilities from Example 15.5.1 and relativities from Example 15.5.2</strong></p>
-<div class="sourceCode" id="cb247"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb247-1"><a href="ChapBonusMalus.html#cb247-1" aria-hidden="true" tabindex="-1"></a>    <span class="fu">rbind</span>(prob.L,r)</span>
-<span id="cb247-2"><a href="ChapBonusMalus.html#cb247-2" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb247-3"><a href="ChapBonusMalus.html#cb247-3" aria-hidden="true" tabindex="-1"></a>    <span class="co">#output</span></span>
-<span id="cb247-4"><a href="ChapBonusMalus.html#cb247-4" aria-hidden="true" tabindex="-1"></a>              [,<span class="dv">1</span>]      [,<span class="dv">2</span>]       [,<span class="dv">3</span>]       [,<span class="dv">4</span>]       [,<span class="dv">5</span>]      [,<span class="dv">6</span>]</span>
-<span id="cb247-5"><a href="ChapBonusMalus.html#cb247-5" aria-hidden="true" tabindex="-1"></a>    [<span class="dv">1</span>,] <span class="fl">0.1621921</span> <span class="fl">0.1129319</span> <span class="fl">0.08485348</span> <span class="fl">0.06686052</span> <span class="fl">0.05442063</span> <span class="fl">0.5187414</span></span>
-<span id="cb247-6"><a href="ChapBonusMalus.html#cb247-6" aria-hidden="true" tabindex="-1"></a>    [<span class="dv">2</span>,] <span class="fl">1.4958885</span> <span class="fl">1.2214214</span> <span class="fl">1.04772189</span> <span class="fl">0.92633112</span> <span class="fl">0.83604284</span> <span class="fl">0.5133785</span></span></code></pre></div>
+<div class="sourceCode" id="cb247"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb247-1"><a href="ChapBonusMalus.html#cb247-1" tabindex="-1"></a>    <span class="fu">rbind</span>(prob.L,r)</span>
+<span id="cb247-2"><a href="ChapBonusMalus.html#cb247-2" tabindex="-1"></a></span>
+<span id="cb247-3"><a href="ChapBonusMalus.html#cb247-3" tabindex="-1"></a>    <span class="co">#output</span></span>
+<span id="cb247-4"><a href="ChapBonusMalus.html#cb247-4" tabindex="-1"></a>              [,<span class="dv">1</span>]      [,<span class="dv">2</span>]       [,<span class="dv">3</span>]       [,<span class="dv">4</span>]       [,<span class="dv">5</span>]      [,<span class="dv">6</span>]</span>
+<span id="cb247-5"><a href="ChapBonusMalus.html#cb247-5" tabindex="-1"></a>    [<span class="dv">1</span>,] <span class="fl">0.1621921</span> <span class="fl">0.1129319</span> <span class="fl">0.08485348</span> <span class="fl">0.06686052</span> <span class="fl">0.05442063</span> <span class="fl">0.5187414</span></span>
+<span id="cb247-6"><a href="ChapBonusMalus.html#cb247-6" tabindex="-1"></a>    [<span class="dv">2</span>,] <span class="fl">1.4958885</span> <span class="fl">1.2214214</span> <span class="fl">1.04772189</span> <span class="fl">0.92633112</span> <span class="fl">0.83604284</span> <span class="fl">0.5133785</span></span></code></pre></div>
 <p><strong>2. Calculate the expected premium relativity</strong> <span class="math inline">\(\mathrm{E} (r_{L}).\)</span></p>
-<div class="sourceCode" id="cb248"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb248-1"><a href="ChapBonusMalus.html#cb248-1" aria-hidden="true" tabindex="-1"></a>    <span class="co">#calculate E(r)</span></span>
-<span id="cb248-2"><a href="ChapBonusMalus.html#cb248-2" aria-hidden="true" tabindex="-1"></a>    expected.r<span class="ot">=</span><span class="fu">sum</span>(prob.L<span class="sc">*</span>r)</span>
-<span id="cb248-3"><a href="ChapBonusMalus.html#cb248-3" aria-hidden="true" tabindex="-1"></a>    expected.r</span>
-<span id="cb248-4"><a href="ChapBonusMalus.html#cb248-4" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb248-5"><a href="ChapBonusMalus.html#cb248-5" aria-hidden="true" tabindex="-1"></a>    <span class="co">#output</span></span>
-<span id="cb248-6"><a href="ChapBonusMalus.html#cb248-6" aria-hidden="true" tabindex="-1"></a>    [<span class="dv">1</span>] <span class="fl">0.8432052</span></span></code></pre></div>
+<div class="sourceCode" id="cb248"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb248-1"><a href="ChapBonusMalus.html#cb248-1" tabindex="-1"></a>    <span class="co">#calculate E(r)</span></span>
+<span id="cb248-2"><a href="ChapBonusMalus.html#cb248-2" tabindex="-1"></a>    expected.r<span class="ot">=</span><span class="fu">sum</span>(prob.L<span class="sc">*</span>r)</span>
+<span id="cb248-3"><a href="ChapBonusMalus.html#cb248-3" tabindex="-1"></a>    expected.r</span>
+<span id="cb248-4"><a href="ChapBonusMalus.html#cb248-4" tabindex="-1"></a></span>
+<span id="cb248-5"><a href="ChapBonusMalus.html#cb248-5" tabindex="-1"></a>    <span class="co">#output</span></span>
+<span id="cb248-6"><a href="ChapBonusMalus.html#cb248-6" tabindex="-1"></a>    [<span class="dv">1</span>] <span class="fl">0.8432052</span></span></code></pre></div>
 </div>
 <hr />
 <p>The results show that under unconstrained method, the expected premium relativity is 84.32% (which is less than 100%).</p>
@@ -2392,7 +2366,7 @@ r_{\ell}&amp;=\frac{\mathrm{E}(\Lambda^2\Theta|L=\ell)}{\mathrm{E}(\Lambda^2|L=\
 <p><span class="math display">\[
 \Pr(\Lambda=\lambda_{1})=0.6, \Pr(\Lambda=\lambda_{2})=0.3, \Pr(\Lambda=\lambda_{3})=0.1.
 \]</span></p>
-<p>The gamma parameter is fixed at <span class="math inline">\(a=1.5\)</span>. Note that while these modelling assumptions are simple, the purpose here is to demonstrate the determination of optimal relativities under a relatively simple setup, and that the optimization procedure for the <em>BMS</em> remains the same even if the <em>a priori</em> risk classification is performed extensively. We refer interested readers to the motor vehicle claims data as documented in <span class="citation"><a href="#ref-Dejong08" role="doc-biblioref">De Jong and Heller</a> (<a href="#ref-Dejong08" role="doc-biblioref">2008</a>)</span> to conduct the <em>a priori</em> risk segmentation before proceeding to the determination of optimal relativities.</p>
+<p>The gamma parameter is fixed at <span class="math inline">\(a=1.5\)</span>. Note that while these modelling assumptions are simple, the purpose here is to demonstrate the determination of optimal relativities under a relatively simple setup, and that the optimization procedure for the <em>BMS</em> remains the same even if the <em>a priori</em> risk classification is performed extensively. We refer interested readers to the motor vehicle claims data as documented in <span class="citation">De Jong and Heller (<a href="#ref-Dejong08">2008</a>)</span> to conduct the <em>a priori</em> risk segmentation before proceeding to the determination of optimal relativities.</p>
 <p>For the Malaysian <em>BMS</em> with 6 levels and the transition rule of -1/Top, the obtained numerical values of optimal relativities are presented in <a href="#tab:15.5">Table 15.5</a> together with the stationary probabilities. We find that around half of the policyholders will occupy the highest <em>BMS</em> level with the lowest premium relativity over the long run when the stationary state has been reached. We also observe that the constrained optimal relativities are higher than the unconstrained counterparts because of the need to satisfy the financial balanced constraint <span class="math inline">\((\mathrm{E}(r_{L})=100\%).\)</span></p>
 <p><a id=tab:15.5></a></p>
 <p>Table 15.5. <strong>Optimal Relativities with</strong> <span class="math inline">\(k=6\)</span> levels and transition rule of -1/Top</p>
@@ -2440,15 +2414,15 @@ r_{\ell}&amp;=\frac{\mathrm{E}(\Lambda^2\Theta|L=\ell)}{\mathrm{E}(\Lambda^2|L=\
 \min\mathrm{E}\left((\Lambda\Theta-\Lambda a-\Lambda bL)^{2}\right) \text{ subject to }
 a+b\mathrm{E}(L)\ge 1.
 \]</span></p>
-<p>We refer interested readers to <span class="citation"><a href="#ref-Tan16" role="doc-biblioref">Tan</a> (<a href="#ref-Tan16" role="doc-biblioref">2016</a>)</span> for a discussion on how to incorporate further commercial constraints and also on the solution to this optimization problem involving Kuhn-Tucker conditions.</p>
+<p>We refer interested readers to <span class="citation">Tan (<a href="#ref-Tan16">2016</a>)</span> for a discussion on how to incorporate further commercial constraints and also on the solution to this optimization problem involving Kuhn-Tucker conditions.</p>
 </div>
 </div>
 <div id="S:Further" class="section level2 hasAnchor" number="15.6">
 <h2><span class="header-section-number">15.6</span> Further Resources and Contributors<a href="ChapBonusMalus.html#S:Further" class="anchor-section" aria-label="Anchor link to header"></a></h2>
 <div id="further-reading-and-references-1" class="section level3 hasAnchor" number="15.6.1">
 <h3><span class="header-section-number">15.6.1</span> Further Reading and References<a href="ChapBonusMalus.html#further-reading-and-references-1" class="anchor-section" aria-label="Anchor link to header"></a></h3>
-<p>Note that our discussions in Section <a href="ChapBonusMalus.html#S:PremRtg">15.5</a> focus on the classical frequency-driven BMS, which implicitly assume that the information of frequency and severity are independent, consistent with the collective risk model as discussed in Section <a href="ChapAggLossModels.html#S:AggLoss:CRM">7.3</a>. However, a number of recent empirical studies (<span class="citation"><a href="#ref-Frees2016" role="doc-biblioref">Frees, Lee, and Yang</a> (<a href="#ref-Frees2016" role="doc-biblioref">2016b</a>)</span>; <span class="citation"><a href="#ref-Garrido2016" role="doc-biblioref">Garrido, Genest, and Schulz</a> (<a href="#ref-Garrido2016" role="doc-biblioref">2016</a>)</span>) point towards the need due to their significant dependence structure. In this regard, <span class="citation"><a href="#ref-Oh20b" role="doc-biblioref">Oh, Kim, and Ahn</a> (<a href="#ref-Oh20b" role="doc-biblioref">2020</a>)</span> and <span class="citation"><a href="#ref-Oh20a" role="doc-biblioref">Oh, Shi, and Ahn</a> (<a href="#ref-Oh20a" role="doc-biblioref">2020</a>)</span> propose recent BMS framework that allows for such frequency-severity dependence based on the bivariate random effect model, where the former utilize both frequency and severity information in the specification of transition rule.</p>
-<p>On the other hand, the framework presented in Section <a href="ChapBonusMalus.html#S:PremRtg">15.5</a> is found to suffer from a double-counting problem, which results in biased premiums due to the dual role of the <em>a priori</em> rating factors in affecting both the <em>a priori</em> risk classification as well as <em>a posteriori</em> experience rating. We refer interested readers to <span class="citation"><a href="#ref-Oh20c" role="doc-biblioref">Oh et al.</a> (<a href="#ref-Oh20c" role="doc-biblioref">2020</a>)</span> who propose to incorporate the estimation of <em>a priori</em> rate (in addition to the <em>a posteriori</em> rate) under a full optimization process to resolve the double-counting problem.</p>
+<p>Note that our discussions in Section <a href="ChapBonusMalus.html#S:PremRtg">15.5</a> focus on the classical frequency-driven BMS, which implicitly assume that the information of frequency and severity are independent, consistent with the collective risk model as discussed in Section <a href="ChapAggLossModels.html#S:AggLoss:CRM">7.3</a>. However, a number of recent empirical studies (<span class="citation">Frees, Lee, and Yang (<a href="#ref-Frees2016">2016b</a>)</span>; <span class="citation">Garrido, Genest, and Schulz (<a href="#ref-Garrido2016">2016</a>)</span>) point towards the need due to their significant dependence structure. In this regard, <span class="citation">Oh, Kim, and Ahn (<a href="#ref-Oh20b">2020</a>)</span> and <span class="citation">Oh, Shi, and Ahn (<a href="#ref-Oh20a">2020</a>)</span> propose recent BMS framework that allows for such frequency-severity dependence based on the bivariate random effect model, where the former utilize both frequency and severity information in the specification of transition rule.</p>
+<p>On the other hand, the framework presented in Section <a href="ChapBonusMalus.html#S:PremRtg">15.5</a> is found to suffer from a double-counting problem, which results in biased premiums due to the dual role of the <em>a priori</em> rating factors in affecting both the <em>a priori</em> risk classification as well as <em>a posteriori</em> experience rating. We refer interested readers to <span class="citation">Oh et al. (<a href="#ref-Oh20c">2020</a>)</span> who propose to incorporate the estimation of <em>a priori</em> rate (in addition to the <em>a posteriori</em> rate) under a full optimization process to resolve the double-counting problem.</p>
 <div id="contributors-11" class="section level4 unnumbered hasAnchor">
 <h4>Contributors<a href="ChapBonusMalus.html#contributors-11" class="anchor-section" aria-label="Anchor link to header"></a></h4>
 <ul>
@@ -2574,7 +2548,7 @@ gitbook.start({
     var script = document.createElement("script");
     script.type = "text/javascript";
     var src = "true";
-    if (src === "" || src === "true") src = "https://mathjax.rstudio.com/latest/MathJax.js?config=TeX-MML-AM_CHTML";
+    if (src === "" || src === "true") src = "https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.9/latest.js?config=TeX-MML-AM_CHTML";
     if (location.protocol !== "file:")
       if (/^https?:/.test(src))
         src = src.replace(/^https?:/, '');

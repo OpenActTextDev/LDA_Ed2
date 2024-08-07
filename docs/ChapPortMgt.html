@@ -6,7 +6,7 @@
   <meta http-equiv="X-UA-Compatible" content="IE=edge" />
   <title>Chapter 13 Insurance Portfolio Management including Reinsurance | Loss Data Analytics   Second Edition</title>
   <meta name="description" content="Loss Data Analytics is an interactive, online, freely available text. - The online version will contain many interactive objects (quizzes, computer demonstrations, interactive graphs, video, and the like) to promote deeper learning. - A subset of the book will be available in pdf format for low-cost printing. - The online text will be available in multiple languages to promote access to a worldwide audience." />
-  <meta name="generator" content="bookdown 0.27 and GitBook 2.6.7" />
+  <meta name="generator" content="bookdown 0.39 and GitBook 2.6.7" />
 
   <meta property="og:title" content="Chapter 13 Insurance Portfolio Management including Reinsurance | Loss Data Analytics   Second Edition" />
   <meta property="og:type" content="book" />
@@ -515,7 +515,7 @@ code span.al { color: #ff0000; font-weight: bold; } /* Alert */
 code span.an { color: #60a0b0; font-weight: bold; font-style: italic; } /* Annotation */
 code span.at { color: #7d9029; } /* Attribute */
 code span.bn { color: #40a070; } /* BaseN */
-code span.bu { } /* BuiltIn */
+code span.bu { color: #008000; } /* BuiltIn */
 code span.cf { color: #007020; font-weight: bold; } /* ControlFlow */
 code span.ch { color: #4070a0; } /* Char */
 code span.cn { color: #880000; } /* Constant */
@@ -528,7 +528,7 @@ code span.er { color: #ff0000; font-weight: bold; } /* Error */
 code span.ex { } /* Extension */
 code span.fl { color: #40a070; } /* Float */
 code span.fu { color: #06287e; } /* Function */
-code span.im { } /* Import */
+code span.im { color: #008000; font-weight: bold; } /* Import */
 code span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Information */
 code span.kw { color: #007020; font-weight: bold; } /* Keyword */
 code span.op { color: #666666; } /* Operator */
@@ -542,6 +542,10 @@ code span.vs { color: #4070a0; } /* VerbatimString */
 code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warning */
 </style>
 
+<style type="text/css">
+  
+  div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+</style>
 <style type="text/css">
 /* Used with Pandoc 2.11+ new --citeproc when CSL is used */
 div.csl-bib-body { }
@@ -1048,7 +1052,7 @@ div.csl-indent {
 <li class="chapter" data-level="16.1" data-path="ChapDependenceModel.html"><a href="ChapDependenceModel.html#S:Measures"><i class="fa fa-check"></i><b>16.1</b> Classic Measures of Scalar Associations</a>
 <ul>
 <li class="chapter" data-level="16.1.1" data-path="ChapDependenceModel.html"><a href="ChapDependenceModel.html#association-measures-for-quantitative-variables"><i class="fa fa-check"></i><b>16.1.1</b> Association Measures for Quantitative Variables</a></li>
-<li class="chapter" data-level="16.1.2" data-path="ChapDependenceModel.html"><a href="ChapDependenceModel.html#rank-based-measures"><i class="fa fa-check"></i><b>16.1.2</b> Rank Based Measures</a></li>
+<li class="chapter" data-level="16.1.2" data-path="ChapDependenceModel.html"><a href="ChapDependenceModel.html#Sec:RankMeasures"><i class="fa fa-check"></i><b>16.1.2</b> Rank Based Measures</a></li>
 <li class="chapter" data-level="16.1.3" data-path="ChapDependenceModel.html"><a href="ChapDependenceModel.html#Sec:tdc"><i class="fa fa-check"></i><b>16.1.3</b> Tail Dependence Coefficients</a></li>
 </ul></li>
 <li class="chapter" data-level="16.2" data-path="ChapDependenceModel.html"><a href="ChapDependenceModel.html#S:Copula"><i class="fa fa-check"></i><b>16.2</b> Introduction to Copulas</a>
@@ -1218,7 +1222,7 @@ Second Edition</a>
 <div id="introduction-to-insurance-portfolios" class="section level2 hasAnchor" number="13.1">
 <h2><span class="header-section-number">13.1</span> Introduction to Insurance Portfolios<a href="ChapPortMgt.html#introduction-to-insurance-portfolios" class="anchor-section" aria-label="Anchor link to header"></a></h2>
 <p>In previous chapters, our analyses primarily focused on the contract level, which represents agreements between policyholders and insurers. Insurers maintain and manage <a href="#" class="tooltip" style="color:green"><em>portfolios</em><span style="font-size:8pt">A collection of contracts</span></a>, which are essentially collections of these individual contracts. Conceptually, one can liken an insurance company to nothing more than a collection, or portfolio, of insurance contracts. Similar to banking and investments, there are management decisions that are made exclusively at the portfolio level. Within this chapter, we address three crucial actuarial tasks: quantifying the impact of extreme events, determining overall portfolio risk, and managing insurance portfolios through reinsurance.</p>
-<p><a href="#" class="tooltip" style="color:green"><em>Insurance portfolios</em><span style="font-size:8pt">A collection, or aggregation, of insurance contracts</span></a>, representing the obligations of insurers, pique our interest primarily due to the probabilities associated with significant outcomes. These outcomes often translate to unusually large obligations, frequently stemming from unforeseen consequences of <strong>climate-related risks</strong>. For instance, consider the freezing rain event of 1998 that swept through eastern Ontario and southwestern Quebec, lasting six days. This calamity resulted in double the typical precipitation for the region during an ice storm and gave rise to a catastrophe, triggering over 840,000 insurance claims. Astonishingly, this number exceeded the claims filed in the wake of Hurricane Andrew, one of North America’s most extensive natural disasters. The catastrophe led to insurance settlements exceeding 1.44 billion Canadian dollars, marking the highest loss burden in Canada’s history. Such incidents are not isolated; similar catastrophic events, like Hurricane Harvey, Superstorm Sandy, the 2011 Japanese earthquake and tsunami, have also caused extreme insurance losses. In our exploration of extreme events in insurance, we introduce the concept of heavy-tailed distributions in Section <a href="ChapPortMgt.html#S:Tails">13.2</a>.</p>
+<p><a href="#" class="tooltip" style="color:green"><em>Insurance portfolios</em><span style="font-size:8pt">A collection, or aggregation, of insurance contracts</span></a>, representing the obligations of insurers, pique our interest primarily due to the probabilities associated with significant outcomes. These outcomes often translate to unusually large obligations. To illustrate, within property and casualty insurance, large obligations frequently stem from unforeseen consequences of <strong>climate-related risks</strong>. For instance, consider the freezing rain event of 1998 that swept through eastern Ontario and southwestern Quebec, lasting six days. This calamity resulted in double the typical precipitation for the region during an ice storm and gave rise to a catastrophe, triggering over 840,000 insurance claims. Astonishingly, this number exceeded the claims filed in the wake of Hurricane Andrew, one of North America’s most extensive natural disasters. The catastrophe led to insurance settlements exceeding 1.44 billion Canadian dollars, marking the highest loss burden in Canada’s history. Such incidents are not isolated; similar catastrophic events, like Hurricane Harvey, Superstorm Sandy, the 2011 Japanese earthquake and tsunami, have also caused extreme insurance losses. In our exploration of extreme events in insurance, we introduce the concept of heavy-tailed distributions in Section <a href="ChapPortMgt.html#S:Tails">13.2</a>.</p>
 <p>Insurance companies engage in the buying and selling of risks as if they were commodities. As we explored in Chapter <a href="ChapPremiumFoundations.html#ChapPremiumFoundations">10</a>, greater uncertainty associated with risks typically translates into higher prices. In that chapter, pricing principles were introduced to quantify the magnitude of these risks. Furthermore, insurance portfolios represent the obligations of a company and, although they are not traded on a marketplace, they require careful management. One crucial aspect of this management is aligning the size of the obligations with an equivalent amount of assets. The subsequent Chapter <a href="ChapLossReserves.html#ChapLossReserves">14</a> on loss reserves offers practical methods for achieving this alignment. Additionally, insurers need to assess the extent of their obligations for purposes such as capacity planning, policy formulation, and maintaining a balanced product portfolio that fosters revenue growth while managing volatility. To facilitate these tasks, Section <a href="ChapPortMgt.html#S:RiskMeasure">13.3</a> introduces risk measures that succinctly capture the uncertainty inherent in the distribution of an insurance portfolio.</p>
 <p>Similar to individuals, insurance companies manage their risk portfolios by acquiring insurance, in this case, risk protection from <a href="#" class="tooltip" style="color:green"><em>reinsurers</em><span style="font-size:8pt">A company that sells reinsurance</span></a>, which are insurance companies serving insurers. Just as individuals can structure the amount of risk they retain through mechanisms like deductibles and policy limits, insurers employ similar strategies to structure their risk portfolios. This practice of sharing insurance portfolio risk is detailed in Section <a href="ChapPortMgt.html#S:Reinsurance">13.4</a>, where we delve into the concept of reinsurance.</p>
 <p>These three actuarial tasks, quantifying the impact of extreme events, determining overall portfolio risk, and managing insurance portfolios through reinsurance, are based on the distribution of insurance portfolios. In Chapter <a href="ChapAggLossModels.html#ChapAggLossModels">7</a>, we delved into modeling the distribution of insurance portfolios as the sum of individual contracts where we used <span class="math inline">\(S\)</span> for aggregate losses. Now, this chapter is dedicated to the direct exploration of portfolio distributions and so we revert to the traditional <span class="math inline">\(X\)</span> notation.</p>
@@ -1250,7 +1254,7 @@ Second Edition</a>
 <li>Compare the tails of two distributions.</li>
 </ul>
 <hr />
-<p>For extreme events such as those due to climate risks, a few major events hitting a portfolio and then converting into losses usually represent the greatest part of the indemnities paid by insurance companies. The aforementioned losses, also called ‘extremes,’ are quantitatively modeled by the tails of the associated probability distributions. From the quantitative modeling standpoint, relying on probabilistic models having lengthy tails can be daunting. For instance, periods of financial stress may appear with a higher frequency than expected, and insurance losses may occur with worse severity. Therefore, the study of probabilistic behavior in the tail portion of actuarial models is important in quantitative risk management. For this reason, this section introduces a few mathematical notions that describe the tail weight of random variables. These notions will benefit us in the construction and selection of appropriate models with desired mathematical properties in the tail portion.</p>
+<p>For extreme events such as those due to climate risks, a few major events hitting a portfolio and then converting into losses usually represent the greatest part of the indemnities paid by insurance companies. The aforementioned losses, also called ‘extremes’, are quantitatively modeled by the tails of the associated probability distributions. From the quantitative modeling standpoint, relying on probabilistic models having lengthy tails can be daunting. For instance, periods of financial stress may appear with a higher frequency than expected, and insurance losses may occur with worse severity. Therefore, the study of probabilistic behavior in the tail portion of actuarial models is important in quantitative risk management. For this reason, this section introduces a few mathematical notions that describe the tail weight of random variables. These notions will benefit us in the construction and selection of appropriate models with desired mathematical properties in the tail portion.</p>
 <p>Formally, define <span class="math inline">\(X\)</span> to be the random obligations that arise from a collection (portfolio) of insurance contracts. At the portfolio level, we are particularly interested in studying the right tail of the distribution of <span class="math inline">\(X\)</span> which represents the occurrence of large losses. Informally, <em>a random variable is said to be heavy-tailed if high probabilities are assigned to large values.</em> This does not imply that the probability density/mass function increases as the value of <span class="math inline">\(X\)</span> goes to infinity. Indeed, for a real-valued random variable, the <a href="#" class="tooltip" style="color:green"><em>pdf</em><span style="font-size:8pt">Probability density function</span></a>/<a href="#" class="tooltip" style="color:green"><em>pmf</em><span style="font-size:8pt">Probability mass function</span></a> must diminish at infinity in order to guarantee the total probability to be equal to one. Instead, what we are concerned about is the <em>rate</em> of decay of the pdf/pmf. Unwelcome outcomes are more likely to occur for an insurance portfolio that is described by a loss random variable possessing a heavier (right) tail. Tail weight can be an absolute or a relative concept. Specifically, for the former, we may consider a random variable to be heavy-tailed if certain mathematical properties of the probability distribution are met. For the latter, we can say the tail of one distribution is heavier/lighter than the other if some tail measures are larger/smaller.</p>
 <p>Several quantitative approaches have been proposed to classify and compare tail weights. For most of these approaches, the <a href="#" class="tooltip" style="color:green"><em>survival function</em><span style="font-size:8pt">One minus the distribution function. it gives the probability that a rv exceeds a specific value.</span></a> serves as the building block. In what follows, we introduce two simple yet useful tail classification methods both of which are based on the behavior of the survival function of <span class="math inline">\(X\)</span>.</p>
 <div id="classification-based-on-moments" class="section level3 hasAnchor" number="13.2.1">
@@ -1369,7 +1373,7 @@ Let <span class="math inline">\(X\sim Pareto(\alpha, \theta)\)</span> and <span 
 <p><span class="math display">\[\begin{eqnarray*}
     \lim_{t\to \infty} \frac{S_X(t)}{S_Y(t)} &amp;=&amp; \lim_{t \to \infty} \frac{S_X^{&#39;}(t)}{S_Y^{&#39;}(t)} \\
     &amp;=&amp; \lim_{t \to \infty} \frac{-f_X(t)}{-f_Y(t)}\\
- &amp;=&amp; \lim_{t\to \infty} \frac{f_X(t)}{f_Y(t)} ,
+&amp;=&amp; \lim_{t\to \infty} \frac{f_X(t)}{f_Y(t)} ,
 \end{eqnarray*}\]</span></p>
 <p>given that the density functions exist. This is an application of L’Hôpital’s Rule from calculus.</p>
 <p><strong>Example 13.2.5. Comparison of Pareto to gamma distributions.</strong>
@@ -1381,7 +1385,7 @@ Let <span class="math inline">\(X\sim Pareto(\alpha, \theta)\)</span> and <span 
 <p><strong>Solution.</strong></p>
 <p><span class="math display">\[\begin{eqnarray*}
     \lim_{t\to \infty} \frac{f_{X}(t)}{f_{Y}(t)} &amp;=&amp; \lim_{t \to \infty} \frac{\alpha \theta^{\alpha} (t+ \theta)^{-\alpha-1}}{t^{\tau-1} e^{-t/\lambda} \lambda^{-\tau} \Gamma(\tau)^{-1}} \\
- &amp;\propto&amp;  \lim_{t\to \infty} \frac{e^{t/\lambda}}{(t+\theta)^{\alpha+1} t^{\tau-1}} \\
+&amp;\propto&amp;  \lim_{t\to \infty} \frac{e^{t/\lambda}}{(t+\theta)^{\alpha+1} t^{\tau-1}} \\
     &amp;=&amp; \infty,
 \end{eqnarray*}\]</span></p>
 <p>as exponentials go to infinity faster than polynomials.</p>
@@ -1462,7 +1466,7 @@ Consider an insurance loss random variable <span class="math inline">\(X\sim Nor
 <p><strong>Solution.</strong></p>
 <p>Because normal distribution is a continuous distribution, the <span class="math inline">\(VaR\)</span> of <span class="math inline">\(X\)</span> must satisfy</p>
 <p><span class="math display">\[\begin{eqnarray*}
- q &amp;=&amp; F_X(VaR_q[X])\\
+q &amp;=&amp; F_X(VaR_q[X])\\
 &amp;=&amp;\Pr\left[(X-\mu)/\sigma\leq (VaR_q[X]-\mu)/\sigma\right]\\
 &amp;=&amp;\Phi((VaR_q[X]-\mu)/\sigma).
 \end{eqnarray*}\]</span></p>
@@ -1529,15 +1533,14 @@ By the definition of <span class="math inline">\(VaR\)</span>, we thus have then
 <hr />
 <p>Let us now conclude the current subsection by an open discussion of the <span class="math inline">\(VaR\)</span> measure. Some advantages of utilizing <span class="math inline">\(VaR\)</span> include</p>
 <ul>
-<li>possessing a practically meaningful interpretation,</li>
-<li>relatively simple to compute for many distributions with closed-form distribution functions, and</li>
-<li>no additional assumption is required for the computation of <span class="math inline">\(VaR\)</span>.</li>
+<li>possessing a practically meaningful interpretation, and</li>
+<li>relatively simple to compute for many distributions with closed-form distribution functions.</li>
 </ul>
 <p>On the other hand, the limitations of <span class="math inline">\(VaR\)</span> can be particularly pronounced for some risk management practices. We report some of them herein:</p>
 <ul>
 <li>the selection of the confidence level <span class="math inline">\(q\in (0,1)\)</span> is highly subjective, while the <span class="math inline">\(VaR\)</span> can be very sensitive to the choice of <span class="math inline">\(q\)</span> (e.g., in Example 13.3.4, <span class="math inline">\(VaR_{0.95}[X]=3\)</span> and <span class="math inline">\(VaR_{0.950001}[X]=4\)</span>);</li>
 <li>the scenarios/loss information that are above the <span class="math inline">\((1-q)\times 100\%\)</span> worst event, are completely neglected;</li>
-<li>as will be seen in Section <a href="ChapPortMgt.html#Sec:CoherentRiskMeasure">13.3.3</a>, the <span class="math inline">\(VaR\)</span> is not a coherent risk measure (specifically, the <span class="math inline">\(VaR\)</span> measure does not satisfy the subadditivity axiom, meaning that diversification benefits may not be fully reflected).</li>
+<li>as will be seen in Section <a href="ChapPortMgt.html#Sec:CoherentRiskMeasure">13.3.3</a>, the <span class="math inline">\(VaR\)</span> is not a coherent risk measure.</li>
 </ul>
 <p>The <span class="math inline">\(VaR\)</span> represents the <span class="math inline">\((1-q)\times100\%\)</span> chance maximal loss. One major drawback of the <span class="math inline">\(VaR\)</span> measure is that it does not reflect the extremal losses occurring beyond the <span class="math inline">\((1-q)\times100\%\)</span> chance worst scenario. For illustrative purposes, let us consider the following slightly unrealistic yet inspiring example.</p>
 <p><strong>Example 13.3.5.</strong>
@@ -1563,13 +1566,13 @@ ES_q[X] \geq VaR_q[X].
 <p><span class="math display" id="eq:ESExpressions">\[\begin{equation}
 \begin{array}{ll}
 ES_{q}(X) &amp;= \frac{1}{1-q} \int_{q}^{1} VaR_{a}(X) d a &amp; \text{Expected Shortfall}\\
-&amp;= \pi_q  + \frac{1}{1- q} 
+&amp;= \pi_q  + \frac{1}{1- q}
 \left\{ \mathrm{E} [X] - \mathrm{E} [X \wedge \pi_q ] \right\} &amp; \text{Tail VaR}\\
 &amp; = \mathrm{E} (X | X &gt; \pi_q ) &amp; \text{Conditional VaR} .
 \end{array}
 \tag{13.3}  
 \end{equation}\]</span></p>
-<p>The equalities in Display <a href="ChapPortMgt.html#eq:ESExpressions">(13.3)</a> hold under some additional (mild) assumptions on the continuity of the distribution function. As we are interested in applications to portfolios, we employ such assumptions in this chapter which allows us to describe alternative ways of thinking about these measures. For example, from the third expression, we see that <span class="math inline">\(ES\)</span> can also be interpreted to be the expected amount given that the loss exceeds the <span class="math inline">\(VaR_{q}\)</span>.</p>
+<p>The equalities in Display <a href="ChapPortMgt.html#eq:ESExpressions">(13.3)</a> hold under some additional (mild) assumptions on the continuity of the distribution function at the point <span class="math inline">\(\pi_q\)</span>. As we are interested in applications to portfolios, we employ such assumptions in this chapter which allows us to describe alternative ways of thinking about these measures. For example, from the third expression, we see that <span class="math inline">\(ES\)</span> can also be interpreted to be the expected amount given that the loss exceeds the <span class="math inline">\(VaR_{q}\)</span>.</p>
 <p>Naturally, analysts may work with distributions where the assumptions of continuity do not hold, such as discrete distributions (see the examples Chapter 3). For these distributions,
 Display <a href="ChapPortMgt.html#eq:ESExpressions">(13.3)</a> provides a definition for some alternative risk measures, the <em>Tail value-at-risk</em> and the <em>Conditional value-at-risk</em>. You can learn more about these alternative risk measures in the references given in Section <a href="ChapPortMgt.html#Sec:PortfolioFurtherReadings">13.6</a>.</p>
 <h5 style="text-align: center;">
@@ -1579,19 +1582,19 @@ Display <a href="ChapPortMgt.html#eq:ESExpressions">(13.3)</a> provides a defini
 <p>To see the connections between the second and third equalities, use a variable substitution, <span class="math inline">\(z=VaR_{a}(X)=F^{-1}(a)\)</span> so that <span class="math inline">\(F(z)=a\)</span> and <span class="math inline">\(f(z)dz=da\)</span>. With this, we have</p>
 <p><span class="math display">\[
 \begin{array}{ll}
-  \int_{a}^{b} VaR_{a}(X) ~d a &amp;=  \int_{a}^{b} F^{-1}_{a} ~d a    =   \int_{F^{-1}_a}^{F^{-1}_b} z f(z) dz \\ 
-  &amp; =   \left.-z[1-F(z)]\right|_{F^{-1}_a}^{F^{-1}_b} + \int_{F^{-1}_a}^{F^{-1}_b} [1-F(z)] dz \\ 
-    &amp; =   F^{-1}_{a}(1-a) -F^{-1}_{b}(1-b) +  [\mathrm{E} (X \wedge F^{-1}_{b})- \mathrm{E} (X \wedge F^{-1}_{a})]  .\\ 
+  \int_{a}^{b} VaR_{a}(X) ~d a &amp;=  \int_{a}^{b} F^{-1}_{a} ~d a    =   \int_{F^{-1}_a}^{F^{-1}_b} z f(z) dz \\
+  &amp; =   \left.-z[1-F(z)]\right|_{F^{-1}_a}^{F^{-1}_b} + \int_{F^{-1}_a}^{F^{-1}_b} [1-F(z)] dz \\
+    &amp; =   F^{-1}_{a}(1-a) -F^{-1}_{b}(1-b) +  [\mathrm{E} (X \wedge F^{-1}_{b})- \mathrm{E} (X \wedge F^{-1}_{a})]  .\\
   \end{array}
 \]</span></p>
 <p>Thus,</p>
 <p><span class="math display">\[
 \begin{array}{ll}
   \frac{1}{1-q} \int_{q}^{1} VaR_{a}(X) d a   
-    &amp; =   \frac{1}{1-q} \left\{\pi_q (1-q) + 
-    [\mathrm{E} (X ) - \mathrm{E} (X \wedge \pi_q )] \right\} \\ 
-        &amp; =  \pi_q + \frac{1}{1-q} 
-    [\mathrm{E} (X ) - \mathrm{E} (X \wedge \pi_q )]  ,\\ 
+    &amp; =   \frac{1}{1-q} \left\{\pi_q (1-q) +
+    [\mathrm{E} (X ) - \mathrm{E} (X \wedge \pi_q )] \right\} \\
+        &amp; =  \pi_q + \frac{1}{1-q}
+    [\mathrm{E} (X ) - \mathrm{E} (X \wedge \pi_q )]  ,\\
   \end{array}
 \]</span></p>
 <p>as claimed.</p>
@@ -1718,7 +1721,7 @@ ES_q[X] &amp;=&amp; \pi_q+\frac{\theta}{\alpha-1} \frac{[\theta/(\theta+\pi_q)]^
 <p>The <span class="math inline">\(VaR\)</span> and <span class="math inline">\(ES\)</span> are risk measures but one might also consider two simpler alternatives, the mean <span class="math inline">\(\mathrm{E}[X]\)</span> and the standard deviation <span class="math inline">\(\mathrm{SD}(X)\)</span> <span class="math inline">\(=\sqrt{\mathrm{Var}(X)}\)</span>. In addition, other classical special cases include the <em>standard deviation principle</em></p>
 <p><span class="math display" id="eq:SD-principle">\[\begin{equation}
 H_{\mathrm{SD}}(X)=\mathrm{E}[X]+\alpha \mathrm{SD}(X),\text{ for } \alpha\geq 0,
-\tag{13.7} 
+\tag{13.7}
 \end{equation}\]</span></p>
 <p>and the <em>variance principle</em></p>
 <p><span class="math display">\[
@@ -1777,7 +1780,7 @@ H_{\mathrm{Var}}(X)=\mathrm{E}[X]+\alpha \mathrm{Var}(X),\text{ for } \alpha\geq
 <ul>
 <li>validation of <em>subadditivity</em>:</li>
 </ul>
-<p><span class="math display">\[\begin{eqnarray*} 
+<p><span class="math display">\[\begin{eqnarray*}
 \mathrm{SD}[X+Y]&amp;=&amp;\sqrt{\mathrm{Var}(X)+\mathrm{Var}(Y)+2\mathrm{Cov}(X,Y)}\\
       &amp;\leq&amp; \sqrt{\mathrm{SD}(X)^2+\mathrm{SD}(Y)^2+2\mathrm{SD}(X)\mathrm{SD}(Y)}\\
       &amp;=&amp; \mathrm{SD}(X)+\mathrm{SD}(Y);
@@ -1809,6 +1812,8 @@ X=\left\{
 </div>
 <hr />
 <p>We have so far checked that <span class="math inline">\(\mathrm{E}[\cdot]\)</span> is a coherent risk measure and that <span class="math inline">\(\mathrm{SD}(\cdot)\)</span> is not. <a href="../docs/ChapPortMgt.html#Exer:13.1%3E">Exercise 13.1</a> asks you to study the coherent property for the standard deviation principle <a href="ChapPortMgt.html#eq:SD-principle">(13.7)</a> which is a linear combination of coherent and incoherent risk measures.</p>
+<p>It turns out that the <span class="math inline">\(VaR\)</span> is not a coherent risk measure. Specifically, the <span class="math inline">\(VaR\)</span> measure does not satisfy the subadditivity axiom, meaning that diversification benefits may not be fully reflected.</p>
+<p>In contrast, <span class="math inline">\(ES\)</span> is a coherent risk measure and thus is able to more accurately capture the diversification effects of insurance portfolio. Herein, we do not intend to provide the proof of the coherent feature for <span class="math inline">\(ES\)</span>, which is considered to be challenging technically.</p>
 <div id="surveyElement13A3">
 
 </div>
@@ -1864,20 +1869,17 @@ Note that <span class="math inline">\(Y_{insurer}+Y_{reinsurer}=X\)</span>.</p>
 <a id="displayCode.QuotaShare" href="javascript:togglecode('toggleCode.QuotaShare','displayCode.QuotaShare');"><i><strong>Show the R Code</strong></i></a>
 </h5>
 <div id="toggleCode.QuotaShare" style="display: none">
-<div class="sourceCode" id="cb178"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb178-1"><a href="ChapPortMgt.html#cb178-1" aria-hidden="true" tabindex="-1"></a><span class="fu">set.seed</span>(<span class="dv">2018</span>)</span>
-<span id="cb178-2"><a href="ChapPortMgt.html#cb178-2" aria-hidden="true" tabindex="-1"></a>theta <span class="ot">=</span> <span class="dv">1000</span></span>
-<span id="cb178-3"><a href="ChapPortMgt.html#cb178-3" aria-hidden="true" tabindex="-1"></a>alpha <span class="ot">=</span> <span class="dv">3</span></span>
-<span id="cb178-4"><a href="ChapPortMgt.html#cb178-4" aria-hidden="true" tabindex="-1"></a>nSim <span class="ot">=</span> <span class="dv">10000</span></span>
-<span id="cb178-5"><a href="ChapPortMgt.html#cb178-5" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(actuar)</span>
-<span id="cb178-6"><a href="ChapPortMgt.html#cb178-6" aria-hidden="true" tabindex="-1"></a>X <span class="ot">&lt;-</span> <span class="fu">rpareto</span>(nSim, <span class="at">shape =</span> alpha, <span class="at">scale =</span> theta)</span>
-<span id="cb178-7"><a href="ChapPortMgt.html#cb178-7" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb178-8"><a href="ChapPortMgt.html#cb178-8" aria-hidden="true" tabindex="-1"></a><span class="fu">par</span>(<span class="at">mfrow =</span> <span class="fu">c</span>(<span class="dv">1</span>, <span class="dv">3</span>))</span>
-<span id="cb178-9"><a href="ChapPortMgt.html#cb178-9" aria-hidden="true" tabindex="-1"></a><span class="fu">plot</span>(<span class="fu">density</span>(X), <span class="at">xlim =</span> <span class="fu">c</span>(<span class="dv">0</span>, <span class="dv">3</span> <span class="sc">*</span> theta), <span class="at">ylim =</span> <span class="fu">c</span>(<span class="dv">0</span>, <span class="fl">0.008</span>), <span class="at">main =</span> <span class="st">&quot;Total Loss&quot;</span>,</span>
-<span id="cb178-10"><a href="ChapPortMgt.html#cb178-10" aria-hidden="true" tabindex="-1"></a>    <span class="at">xlab =</span> <span class="st">&quot;Losses&quot;</span>)</span>
-<span id="cb178-11"><a href="ChapPortMgt.html#cb178-11" aria-hidden="true" tabindex="-1"></a><span class="fu">plot</span>(<span class="fu">density</span>(<span class="fl">0.75</span> <span class="sc">*</span> X), <span class="at">xlim =</span> <span class="fu">c</span>(<span class="dv">0</span>, <span class="dv">3</span> <span class="sc">*</span> theta), <span class="at">ylim =</span> <span class="fu">c</span>(<span class="dv">0</span>, <span class="fl">0.008</span>), <span class="at">main =</span> <span class="st">&quot;Insurer (75%)&quot;</span>,</span>
-<span id="cb178-12"><a href="ChapPortMgt.html#cb178-12" aria-hidden="true" tabindex="-1"></a>    <span class="at">xlab =</span> <span class="st">&quot;Losses&quot;</span>)</span>
-<span id="cb178-13"><a href="ChapPortMgt.html#cb178-13" aria-hidden="true" tabindex="-1"></a><span class="fu">plot</span>(<span class="fu">density</span>(<span class="fl">0.25</span> <span class="sc">*</span> X), <span class="at">xlim =</span> <span class="fu">c</span>(<span class="dv">0</span>, <span class="dv">3</span> <span class="sc">*</span> theta), <span class="at">ylim =</span> <span class="fu">c</span>(<span class="dv">0</span>, <span class="fl">0.008</span>), <span class="at">main =</span> <span class="st">&quot;Reinsurer (25%)&quot;</span>,</span>
-<span id="cb178-14"><a href="ChapPortMgt.html#cb178-14" aria-hidden="true" tabindex="-1"></a>    <span class="at">xlab =</span> <span class="st">&quot;Losses&quot;</span>)</span></code></pre></div>
+<div class="sourceCode" id="cb178"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb178-1"><a href="ChapPortMgt.html#cb178-1" tabindex="-1"></a><span class="fu">set.seed</span>(<span class="dv">2018</span>)</span>
+<span id="cb178-2"><a href="ChapPortMgt.html#cb178-2" tabindex="-1"></a>theta <span class="ot">=</span> <span class="dv">1000</span></span>
+<span id="cb178-3"><a href="ChapPortMgt.html#cb178-3" tabindex="-1"></a>alpha <span class="ot">=</span> <span class="dv">3</span></span>
+<span id="cb178-4"><a href="ChapPortMgt.html#cb178-4" tabindex="-1"></a>nSim <span class="ot">=</span> <span class="dv">10000</span></span>
+<span id="cb178-5"><a href="ChapPortMgt.html#cb178-5" tabindex="-1"></a><span class="fu">library</span>(actuar)</span>
+<span id="cb178-6"><a href="ChapPortMgt.html#cb178-6" tabindex="-1"></a>X <span class="ot">&lt;-</span>  <span class="fu">rpareto</span>(nSim, <span class="at">shape =</span> alpha, <span class="at">scale =</span> theta)</span>
+<span id="cb178-7"><a href="ChapPortMgt.html#cb178-7" tabindex="-1"></a></span>
+<span id="cb178-8"><a href="ChapPortMgt.html#cb178-8" tabindex="-1"></a><span class="fu">par</span>(<span class="at">mfrow=</span><span class="fu">c</span>(<span class="dv">1</span>,<span class="dv">3</span>))</span>
+<span id="cb178-9"><a href="ChapPortMgt.html#cb178-9" tabindex="-1"></a><span class="fu">plot</span>(<span class="fu">density</span>(X), <span class="at">xlim=</span><span class="fu">c</span>(<span class="dv">0</span>,<span class="dv">3</span><span class="sc">*</span>theta), <span class="at">ylim=</span><span class="fu">c</span>(<span class="dv">0</span>,<span class="fl">0.008</span>), <span class="at">main=</span><span class="st">&quot;Total Loss&quot;</span>, <span class="at">xlab=</span><span class="st">&quot;Losses&quot;</span>)</span>
+<span id="cb178-10"><a href="ChapPortMgt.html#cb178-10" tabindex="-1"></a><span class="fu">plot</span>(<span class="fu">density</span>(<span class="fl">0.75</span><span class="sc">*</span>X), <span class="at">xlim=</span><span class="fu">c</span>(<span class="dv">0</span>,<span class="dv">3</span><span class="sc">*</span>theta), <span class="at">ylim=</span><span class="fu">c</span>(<span class="dv">0</span>,<span class="fl">0.008</span>), <span class="at">main=</span><span class="st">&quot;Insurer (75%)&quot;</span>, <span class="at">xlab=</span><span class="st">&quot;Losses&quot;</span>)</span>
+<span id="cb178-11"><a href="ChapPortMgt.html#cb178-11" tabindex="-1"></a><span class="fu">plot</span>(<span class="fu">density</span>(<span class="fl">0.25</span><span class="sc">*</span>X), <span class="at">xlim=</span><span class="fu">c</span>(<span class="dv">0</span>,<span class="dv">3</span><span class="sc">*</span>theta), <span class="at">ylim=</span><span class="fu">c</span>(<span class="dv">0</span>,<span class="fl">0.008</span>), <span class="at">main=</span><span class="st">&quot;Reinsurer (25%)&quot;</span>, <span class="at">xlab=</span><span class="st">&quot;Losses&quot;</span>)</span></code></pre></div>
 </div>
 <div id="quota-share-is-desirable-for-reinsurers" class="section level4 hasAnchor" number="13.4.1.1">
 <h4><span class="header-section-number">13.4.1.1</span> Quota Share is Desirable for Reinsurers<a href="ChapPortMgt.html#quota-share-is-desirable-for-reinsurers" class="anchor-section" aria-label="Anchor link to header"></a></h4>
@@ -1918,12 +1920,12 @@ Y_{insurer}=g(X) \ \ \ \text{and} \ \ \ \ Y_{reinsurer}=X-g(X),
 <p><span class="math display">\[
 \begin{array}{ll}
 L &amp;= \mathrm{Var} (Y_{insurer}) - \lambda (\mathrm{E} (Y_{insurer}) - K) \\
-&amp;= \sum_{i=1}^n c_i^2 ~\mathrm{Var}(X_i) - \lambda (\sum_{i=1}^n c_i ~\mathrm{E}(X_i) - K) 
+&amp;= \sum_{i=1}^n c_i^2 ~\mathrm{Var}(X_i) - \lambda (\sum_{i=1}^n c_i ~\mathrm{E}(X_i) - K)
 \end{array}
 \]</span></p>
 <p>Taking a partial derivative with respect to <span class="math inline">\(\lambda\)</span> and setting this equal to zero simply means that the constraint, <span class="math inline">\(\mathrm{E}(Y_{insurer}) = K\)</span>, is enforced and we have to choose the proportions <span class="math inline">\(c_i\)</span> to satisfy this constraint. Moreover, taking the partial derivative with respect to each proportion <span class="math inline">\(c_i\)</span> yields</p>
 <p><span class="math display">\[
-\frac{\partial}{\partial c_i} L = 2 c_i ~\mathrm{Var}(X_i) - \lambda ~\mathrm{E}(X_i) = 0 
+\frac{\partial}{\partial c_i} L = 2 c_i ~\mathrm{Var}(X_i) - \lambda ~\mathrm{E}(X_i) = 0
 \]</span></p>
 <p>so that</p>
 <p><span class="math display">\[
@@ -1933,7 +1935,7 @@ c_i  =  \frac{\lambda}{2} \frac{\mathrm{E}(X_i)}{\mathrm{Var}(X_i)} .
 <p><span class="math display">\[
 \begin{array}{ll}
 K &amp;= \sum_{i=1}^n c_i \mathrm{E}(X_i) \\
-&amp;= \frac{\lambda}{2} \sum_{i=1}^n \frac{\mathrm{E}(X_i)^2}{\mathrm{Var}(X_i)} 
+&amp;= \frac{\lambda}{2} \sum_{i=1}^n \frac{\mathrm{E}(X_i)^2}{\mathrm{Var}(X_i)}
 \end{array}
 \]</span></p>
 <p>and use this value of <span class="math inline">\(\lambda\)</span> to determine the proportions.</p>
@@ -1952,39 +1954,34 @@ K &amp;= \sum_{i=1}^n c_i \mathrm{E}(X_i) \\
 </h5>
 <div id="toggleCode.ParetoRisksProp" style="display: none">
 <p><strong>Solution.</strong></p>
-<div class="sourceCode" id="cb179"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb179-1"><a href="ChapPortMgt.html#cb179-1" aria-hidden="true" tabindex="-1"></a>theta1 <span class="ot">=</span> <span class="dv">1000</span></span>
-<span id="cb179-2"><a href="ChapPortMgt.html#cb179-2" aria-hidden="true" tabindex="-1"></a>theta2 <span class="ot">=</span> <span class="dv">2000</span></span>
-<span id="cb179-3"><a href="ChapPortMgt.html#cb179-3" aria-hidden="true" tabindex="-1"></a>theta3 <span class="ot">=</span> <span class="dv">3000</span></span>
-<span id="cb179-4"><a href="ChapPortMgt.html#cb179-4" aria-hidden="true" tabindex="-1"></a>alpha1 <span class="ot">=</span> <span class="dv">3</span></span>
-<span id="cb179-5"><a href="ChapPortMgt.html#cb179-5" aria-hidden="true" tabindex="-1"></a>alpha2 <span class="ot">=</span> <span class="dv">3</span></span>
-<span id="cb179-6"><a href="ChapPortMgt.html#cb179-6" aria-hidden="true" tabindex="-1"></a>alpha3 <span class="ot">=</span> <span class="dv">4</span></span>
-<span id="cb179-7"><a href="ChapPortMgt.html#cb179-7" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(actuar)</span>
-<span id="cb179-8"><a href="ChapPortMgt.html#cb179-8" aria-hidden="true" tabindex="-1"></a>propnfct <span class="ot">&lt;-</span> <span class="cf">function</span>(alpha, theta) {</span>
-<span id="cb179-9"><a href="ChapPortMgt.html#cb179-9" aria-hidden="true" tabindex="-1"></a>    mu <span class="ot">&lt;-</span> <span class="fu">mpareto</span>(<span class="at">shape =</span> alpha, <span class="at">scale =</span> theta, <span class="at">order =</span> <span class="dv">1</span>)</span>
-<span id="cb179-10"><a href="ChapPortMgt.html#cb179-10" aria-hidden="true" tabindex="-1"></a>    var <span class="ot">&lt;-</span> <span class="fu">mpareto</span>(<span class="at">shape =</span> alpha, <span class="at">scale =</span> theta, <span class="at">order =</span> <span class="dv">2</span>) <span class="sc">-</span> mu<span class="sc">^</span><span class="dv">2</span></span>
-<span id="cb179-11"><a href="ChapPortMgt.html#cb179-11" aria-hidden="true" tabindex="-1"></a>    mu<span class="sc">/</span>var</span>
-<span id="cb179-12"><a href="ChapPortMgt.html#cb179-12" aria-hidden="true" tabindex="-1"></a>}</span>
-<span id="cb179-13"><a href="ChapPortMgt.html#cb179-13" aria-hidden="true" tabindex="-1"></a>temp <span class="ot">&lt;-</span> <span class="fu">propnfct</span>(alpha1, theta1) <span class="sc">*</span> <span class="fu">mpareto</span>(<span class="at">shape =</span> alpha1, <span class="at">scale =</span> theta1, <span class="at">order =</span> <span class="dv">1</span>) <span class="sc">+</span></span>
-<span id="cb179-14"><a href="ChapPortMgt.html#cb179-14" aria-hidden="true" tabindex="-1"></a>    <span class="fu">propnfct</span>(alpha2, theta2) <span class="sc">*</span> <span class="fu">mpareto</span>(<span class="at">shape =</span> alpha2, <span class="at">scale =</span> theta2, <span class="at">order =</span> <span class="dv">1</span>) <span class="sc">+</span></span>
-<span id="cb179-15"><a href="ChapPortMgt.html#cb179-15" aria-hidden="true" tabindex="-1"></a>    <span class="fu">propnfct</span>(alpha3, theta3) <span class="sc">*</span> <span class="fu">mpareto</span>(<span class="at">shape =</span> alpha3, <span class="at">scale =</span> theta3, <span class="at">order =</span> <span class="dv">1</span>)</span>
-<span id="cb179-16"><a href="ChapPortMgt.html#cb179-16" aria-hidden="true" tabindex="-1"></a>KVec <span class="ot">&lt;-</span> <span class="fu">seq</span>(<span class="dv">100</span>, <span class="dv">2500</span>, <span class="at">length.out =</span> <span class="dv">20</span>)</span>
-<span id="cb179-17"><a href="ChapPortMgt.html#cb179-17" aria-hidden="true" tabindex="-1"></a>Lambdavec <span class="ot">&lt;-</span> <span class="dv">2</span> <span class="sc">*</span> KVec<span class="sc">/</span>temp</span>
-<span id="cb179-18"><a href="ChapPortMgt.html#cb179-18" aria-hidden="true" tabindex="-1"></a>c1 <span class="ot">&lt;-</span> <span class="fu">propnfct</span>(alpha1, theta1)</span>
-<span id="cb179-19"><a href="ChapPortMgt.html#cb179-19" aria-hidden="true" tabindex="-1"></a>c2 <span class="ot">&lt;-</span> <span class="fu">propnfct</span>(alpha2, theta2)</span>
-<span id="cb179-20"><a href="ChapPortMgt.html#cb179-20" aria-hidden="true" tabindex="-1"></a>c3 <span class="ot">&lt;-</span> <span class="fu">propnfct</span>(alpha3, theta3)</span>
-<span id="cb179-21"><a href="ChapPortMgt.html#cb179-21" aria-hidden="true" tabindex="-1"></a>c1Vec <span class="ot">&lt;-</span> c2Vec <span class="ot">&lt;-</span> c3Vec <span class="ot">&lt;-</span> <span class="dv">0</span> <span class="sc">*</span> KVec</span>
-<span id="cb179-22"><a href="ChapPortMgt.html#cb179-22" aria-hidden="true" tabindex="-1"></a><span class="cf">for</span> (j <span class="cf">in</span> <span class="dv">1</span><span class="sc">:</span><span class="dv">20</span>) {</span>
-<span id="cb179-23"><a href="ChapPortMgt.html#cb179-23" aria-hidden="true" tabindex="-1"></a>    c1Vec[j] <span class="ot">&lt;-</span> (Lambdavec[j]<span class="sc">/</span><span class="dv">2</span>) <span class="sc">*</span> <span class="fu">propnfct</span>(alpha1, theta1)</span>
-<span id="cb179-24"><a href="ChapPortMgt.html#cb179-24" aria-hidden="true" tabindex="-1"></a>    c2Vec[j] <span class="ot">&lt;-</span> (Lambdavec[j]<span class="sc">/</span><span class="dv">2</span>) <span class="sc">*</span> <span class="fu">propnfct</span>(alpha2, theta2)</span>
-<span id="cb179-25"><a href="ChapPortMgt.html#cb179-25" aria-hidden="true" tabindex="-1"></a>    c3Vec[j] <span class="ot">&lt;-</span> (Lambdavec[j]<span class="sc">/</span><span class="dv">2</span>) <span class="sc">*</span> <span class="fu">propnfct</span>(alpha3, theta3)</span>
-<span id="cb179-26"><a href="ChapPortMgt.html#cb179-26" aria-hidden="true" tabindex="-1"></a>}</span>
-<span id="cb179-27"><a href="ChapPortMgt.html#cb179-27" aria-hidden="true" tabindex="-1"></a><span class="fu">plot</span>(KVec, c1Vec, <span class="at">type =</span> <span class="st">&quot;l&quot;</span>, <span class="at">ylab =</span> <span class="st">&quot;proportion&quot;</span>, <span class="at">xlab =</span> <span class="st">&quot;required revenue (K)&quot;</span>,</span>
-<span id="cb179-28"><a href="ChapPortMgt.html#cb179-28" aria-hidden="true" tabindex="-1"></a>    <span class="at">ylim =</span> <span class="fu">c</span>(<span class="dv">0</span>, <span class="dv">1</span>))</span>
-<span id="cb179-29"><a href="ChapPortMgt.html#cb179-29" aria-hidden="true" tabindex="-1"></a><span class="fu">lines</span>(KVec, c2Vec)</span>
-<span id="cb179-30"><a href="ChapPortMgt.html#cb179-30" aria-hidden="true" tabindex="-1"></a><span class="fu">lines</span>(KVec, c3Vec)</span>
-<span id="cb179-31"><a href="ChapPortMgt.html#cb179-31" aria-hidden="true" tabindex="-1"></a><span class="fu">text</span>(<span class="dv">1200</span>, <span class="fl">0.8</span>, <span class="fu">expression</span>(c[<span class="dv">1</span>]))</span>
-<span id="cb179-32"><a href="ChapPortMgt.html#cb179-32" aria-hidden="true" tabindex="-1"></a><span class="fu">text</span>(<span class="dv">2000</span>, <span class="fl">0.75</span>, <span class="fu">expression</span>(c[<span class="dv">2</span>]))</span>
-<span id="cb179-33"><a href="ChapPortMgt.html#cb179-33" aria-hidden="true" tabindex="-1"></a><span class="fu">text</span>(<span class="dv">1500</span>, <span class="fl">0.3</span>, <span class="fu">expression</span>(c[<span class="dv">3</span>]))</span></code></pre></div>
+<div class="sourceCode" id="cb179"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb179-1"><a href="ChapPortMgt.html#cb179-1" tabindex="-1"></a>theta1 <span class="ot">=</span> <span class="dv">1000</span>; theta2 <span class="ot">=</span> <span class="dv">2000</span>; theta3 <span class="ot">=</span> <span class="dv">3000</span>;</span>
+<span id="cb179-2"><a href="ChapPortMgt.html#cb179-2" tabindex="-1"></a>alpha1 <span class="ot">=</span> <span class="dv">3</span>; alpha2 <span class="ot">=</span> <span class="dv">3</span>; alpha3 <span class="ot">=</span> <span class="dv">4</span>;</span>
+<span id="cb179-3"><a href="ChapPortMgt.html#cb179-3" tabindex="-1"></a><span class="fu">library</span>(actuar)</span>
+<span id="cb179-4"><a href="ChapPortMgt.html#cb179-4" tabindex="-1"></a>propnfct <span class="ot">&lt;-</span> <span class="cf">function</span>(alpha,theta){</span>
+<span id="cb179-5"><a href="ChapPortMgt.html#cb179-5" tabindex="-1"></a>  mu    <span class="ot">&lt;-</span> <span class="fu">mpareto</span>(<span class="at">shape=</span>alpha, <span class="at">scale=</span>theta, <span class="at">order=</span><span class="dv">1</span>)</span>
+<span id="cb179-6"><a href="ChapPortMgt.html#cb179-6" tabindex="-1"></a>  var   <span class="ot">&lt;-</span> <span class="fu">mpareto</span>(<span class="at">shape=</span>alpha, <span class="at">scale=</span>theta, <span class="at">order=</span><span class="dv">2</span>) <span class="sc">-</span> mu<span class="sc">^</span><span class="dv">2</span></span>
+<span id="cb179-7"><a href="ChapPortMgt.html#cb179-7" tabindex="-1"></a>  mu<span class="sc">/</span>var</span>
+<span id="cb179-8"><a href="ChapPortMgt.html#cb179-8" tabindex="-1"></a>}</span>
+<span id="cb179-9"><a href="ChapPortMgt.html#cb179-9" tabindex="-1"></a>temp <span class="ot">&lt;-</span> <span class="fu">propnfct</span>(alpha1, theta1)<span class="sc">*</span><span class="fu">mpareto</span>(<span class="at">shape=</span>alpha1, <span class="at">scale=</span>theta1, <span class="at">order=</span><span class="dv">1</span>)<span class="sc">+</span></span>
+<span id="cb179-10"><a href="ChapPortMgt.html#cb179-10" tabindex="-1"></a>        <span class="fu">propnfct</span>(alpha2, theta2)<span class="sc">*</span><span class="fu">mpareto</span>(<span class="at">shape=</span>alpha2, <span class="at">scale=</span>theta2, <span class="at">order=</span><span class="dv">1</span>)<span class="sc">+</span></span>
+<span id="cb179-11"><a href="ChapPortMgt.html#cb179-11" tabindex="-1"></a>        <span class="fu">propnfct</span>(alpha3, theta3)<span class="sc">*</span><span class="fu">mpareto</span>(<span class="at">shape=</span>alpha3, <span class="at">scale=</span>theta3, <span class="at">order=</span><span class="dv">1</span>)  </span>
+<span id="cb179-12"><a href="ChapPortMgt.html#cb179-12" tabindex="-1"></a>KVec <span class="ot">&lt;-</span> <span class="fu">seq</span>(<span class="dv">100</span>, <span class="dv">2500</span>, <span class="at">length.out=</span><span class="dv">20</span>)</span>
+<span id="cb179-13"><a href="ChapPortMgt.html#cb179-13" tabindex="-1"></a>Lambdavec <span class="ot">&lt;-</span> <span class="dv">2</span><span class="sc">*</span>KVec<span class="sc">/</span>temp</span>
+<span id="cb179-14"><a href="ChapPortMgt.html#cb179-14" tabindex="-1"></a>c1 <span class="ot">&lt;-</span> <span class="fu">propnfct</span>(alpha1, theta1)</span>
+<span id="cb179-15"><a href="ChapPortMgt.html#cb179-15" tabindex="-1"></a>c2 <span class="ot">&lt;-</span> <span class="fu">propnfct</span>(alpha2, theta2)</span>
+<span id="cb179-16"><a href="ChapPortMgt.html#cb179-16" tabindex="-1"></a>c3 <span class="ot">&lt;-</span> <span class="fu">propnfct</span>(alpha3, theta3)</span>
+<span id="cb179-17"><a href="ChapPortMgt.html#cb179-17" tabindex="-1"></a>c1Vec <span class="ot">&lt;-</span> c2Vec <span class="ot">&lt;-</span> c3Vec <span class="ot">&lt;-</span> <span class="dv">0</span><span class="sc">*</span>KVec </span>
+<span id="cb179-18"><a href="ChapPortMgt.html#cb179-18" tabindex="-1"></a><span class="cf">for</span> (j <span class="cf">in</span> <span class="dv">1</span><span class="sc">:</span><span class="dv">20</span>) {</span>
+<span id="cb179-19"><a href="ChapPortMgt.html#cb179-19" tabindex="-1"></a>  c1Vec[j] <span class="ot">&lt;-</span> (Lambdavec[j]<span class="sc">/</span><span class="dv">2</span>) <span class="sc">*</span> <span class="fu">propnfct</span>(alpha1, theta1)</span>
+<span id="cb179-20"><a href="ChapPortMgt.html#cb179-20" tabindex="-1"></a>  c2Vec[j] <span class="ot">&lt;-</span> (Lambdavec[j]<span class="sc">/</span><span class="dv">2</span>) <span class="sc">*</span> <span class="fu">propnfct</span>(alpha2, theta2)</span>
+<span id="cb179-21"><a href="ChapPortMgt.html#cb179-21" tabindex="-1"></a>  c3Vec[j] <span class="ot">&lt;-</span> (Lambdavec[j]<span class="sc">/</span><span class="dv">2</span>) <span class="sc">*</span> <span class="fu">propnfct</span>(alpha3, theta3)</span>
+<span id="cb179-22"><a href="ChapPortMgt.html#cb179-22" tabindex="-1"></a>  }</span>
+<span id="cb179-23"><a href="ChapPortMgt.html#cb179-23" tabindex="-1"></a><span class="fu">plot</span>(KVec, c1Vec, <span class="at">type=</span><span class="st">&quot;l&quot;</span>, <span class="at">ylab=</span><span class="st">&quot;proportion&quot;</span>, <span class="at">xlab=</span><span class="st">&quot;required revenue (K)&quot;</span>, <span class="at">ylim=</span><span class="fu">c</span>(<span class="dv">0</span>,<span class="dv">1</span>))</span>
+<span id="cb179-24"><a href="ChapPortMgt.html#cb179-24" tabindex="-1"></a><span class="fu">lines</span>(KVec, c2Vec)</span>
+<span id="cb179-25"><a href="ChapPortMgt.html#cb179-25" tabindex="-1"></a><span class="fu">lines</span>(KVec, c3Vec)</span>
+<span id="cb179-26"><a href="ChapPortMgt.html#cb179-26" tabindex="-1"></a><span class="fu">text</span>(<span class="dv">1200</span>,<span class="fl">0.80</span>, <span class="fu">expression</span>(c[<span class="dv">1</span>]))</span>
+<span id="cb179-27"><a href="ChapPortMgt.html#cb179-27" tabindex="-1"></a><span class="fu">text</span>(<span class="dv">2000</span>,<span class="fl">0.75</span>, <span class="fu">expression</span>(c[<span class="dv">2</span>]))</span>
+<span id="cb179-28"><a href="ChapPortMgt.html#cb179-28" tabindex="-1"></a><span class="fu">text</span>(<span class="dv">1500</span>,<span class="fl">0.30</span>, <span class="fu">expression</span>(c[<span class="dv">3</span>]))</span></code></pre></div>
 <p><img src="LossDataAnalytics_files/figure-html/unnamed-chunk-160-1.png" width="768" style="display: block; margin: auto;" /></p>
 </div>
 </div>
@@ -2055,7 +2052,7 @@ for any retention function <span class="math inline">\(g\)</span>. This establis
 <h4><span class="header-section-number">13.4.2.2</span> Excess of Loss<a href="ChapPortMgt.html#excess-of-loss" class="anchor-section" aria-label="Anchor link to header"></a></h4>
 <p>A closely related form of non-proportional reinsurance is the <a href="#" class="tooltip" style="color:green"><em>excess of loss</em><span style="font-size:8pt">Under an excess of loss arrangement, the insurer sets a retention level for each claim and pays claim amounts less than the level with the reinsurer paying the excess.</span></a> coverage. Under this contract, we assume that the total risk <span class="math inline">\(X\)</span> can be thought of as composed as <span class="math inline">\(n\)</span> separate risks <span class="math inline">\(X_1, \ldots, X_n\)</span> and that each of these risks are subject to an upper limit, say, <span class="math inline">\(M_i\)</span>. So the insurer retains</p>
 <p><span class="math display">\[
- Y_{insurer} = \sum_{i=1}^n Y_{i,insurer}, \ \ \ \ \text{where} \ \ \ \ \ Y_{i,insurer} = X_i \wedge M_i.
+Y_{insurer} = \sum_{i=1}^n Y_{i,insurer}, \ \ \ \ \text{where} \ \ \ \ \ Y_{i,insurer} = X_i \wedge M_i.
 \]</span>
 and the reinsurer is responsible for the excess, <span class="math inline">\(Y_{reinsurer}=X - Y_{insurer}\)</span>. The retention limits may vary by risk or may be the same for all risks, that is, <span class="math inline">\(M_i =M\)</span>, for all <span class="math inline">\(i\)</span>.</p>
 </div>
@@ -2085,7 +2082,7 @@ and</p>
 <p>Taking a partial derivative of <span class="math inline">\(L\)</span> with respect to <span class="math inline">\(\lambda\)</span> and setting this equal to zero simply means that the constraint, <span class="math inline">\(\mathrm{E}(Y_{insurer}) = K\)</span>, is enforced and we have to choose the limits <span class="math inline">\(M_i\)</span> to satisfy this constraint. Moreover, taking the partial derivative with respect to each limit <span class="math inline">\(M_i\)</span> yields</p>
 <p><span class="math display">\[
 \begin{array}{ll}
-\frac{\partial}{\partial M_i} L 
+\frac{\partial}{\partial M_i} L
 &amp;= \frac{\partial}{\partial M_i}  ~\mathrm{Var}(X_i \wedge M_i)  - \lambda \frac{\partial}{\partial M_i} ~\mathrm{E}(X_i \wedge M_i) \\
 &amp;= \frac{\partial}{\partial M_i} \left(\mathrm{E}(X_i \wedge M_i)^2 -(\mathrm{E}(X_i \wedge M_i))^2\right) - \lambda (1-F_i(M_i)) \\
 &amp;= 2 M_i (1-F_i(M_i)) - 2 \mathrm{E}(X_i \wedge M_i) (1-F_i(M_i))-
@@ -2109,62 +2106,50 @@ and</p>
 <div id="toggleCode.ParetoRisksExcess" style="display: none">
 <p><strong>Solution</strong></p>
 <p><strong>a</strong>. We first optimize the Lagrangian using the <code>R</code> package <code>alabama</code> for <em>Augmented Lagrangian Adaptive Barrier Minimization Algorithm</em>.</p>
-<div class="sourceCode" id="cb180"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb180-1"><a href="ChapPortMgt.html#cb180-1" aria-hidden="true" tabindex="-1"></a>theta1 <span class="ot">=</span> <span class="dv">1000</span></span>
-<span id="cb180-2"><a href="ChapPortMgt.html#cb180-2" aria-hidden="true" tabindex="-1"></a>theta2 <span class="ot">=</span> <span class="dv">2000</span></span>
-<span id="cb180-3"><a href="ChapPortMgt.html#cb180-3" aria-hidden="true" tabindex="-1"></a>theta3 <span class="ot">=</span> <span class="dv">3000</span></span>
-<span id="cb180-4"><a href="ChapPortMgt.html#cb180-4" aria-hidden="true" tabindex="-1"></a>alpha1 <span class="ot">=</span> <span class="dv">3</span></span>
-<span id="cb180-5"><a href="ChapPortMgt.html#cb180-5" aria-hidden="true" tabindex="-1"></a>alpha2 <span class="ot">=</span> <span class="dv">3</span></span>
-<span id="cb180-6"><a href="ChapPortMgt.html#cb180-6" aria-hidden="true" tabindex="-1"></a>alpha3 <span class="ot">=</span> <span class="dv">4</span></span>
-<span id="cb180-7"><a href="ChapPortMgt.html#cb180-7" aria-hidden="true" tabindex="-1"></a>Pmin <span class="ot">&lt;-</span> <span class="dv">2000</span></span>
-<span id="cb180-8"><a href="ChapPortMgt.html#cb180-8" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(actuar)</span>
-<span id="cb180-9"><a href="ChapPortMgt.html#cb180-9" aria-hidden="true" tabindex="-1"></a>VarFct <span class="ot">&lt;-</span> <span class="cf">function</span>(M) {</span>
-<span id="cb180-10"><a href="ChapPortMgt.html#cb180-10" aria-hidden="true" tabindex="-1"></a>    M1 <span class="ot">=</span> M[<span class="dv">1</span>]</span>
-<span id="cb180-11"><a href="ChapPortMgt.html#cb180-11" aria-hidden="true" tabindex="-1"></a>    M2 <span class="ot">=</span> M[<span class="dv">2</span>]</span>
-<span id="cb180-12"><a href="ChapPortMgt.html#cb180-12" aria-hidden="true" tabindex="-1"></a>    M3 <span class="ot">=</span> M[<span class="dv">3</span>]</span>
-<span id="cb180-13"><a href="ChapPortMgt.html#cb180-13" aria-hidden="true" tabindex="-1"></a>    mu1 <span class="ot">&lt;-</span> <span class="fu">levpareto</span>(<span class="at">limit =</span> M1, <span class="at">shape =</span> alpha1, <span class="at">scale =</span> theta1, <span class="at">order =</span> <span class="dv">1</span>)</span>
-<span id="cb180-14"><a href="ChapPortMgt.html#cb180-14" aria-hidden="true" tabindex="-1"></a>    var1 <span class="ot">&lt;-</span> <span class="fu">levpareto</span>(<span class="at">limit =</span> M1, <span class="at">shape =</span> alpha1, <span class="at">scale =</span> theta1, <span class="at">order =</span> <span class="dv">2</span>) <span class="sc">-</span> mu1<span class="sc">^</span><span class="dv">2</span></span>
-<span id="cb180-15"><a href="ChapPortMgt.html#cb180-15" aria-hidden="true" tabindex="-1"></a>    mu2 <span class="ot">&lt;-</span> <span class="fu">levpareto</span>(<span class="at">limit =</span> M2, <span class="at">shape =</span> alpha2, <span class="at">scale =</span> theta2, <span class="at">order =</span> <span class="dv">1</span>)</span>
-<span id="cb180-16"><a href="ChapPortMgt.html#cb180-16" aria-hidden="true" tabindex="-1"></a>    var2 <span class="ot">&lt;-</span> <span class="fu">levpareto</span>(<span class="at">limit =</span> M2, <span class="at">shape =</span> alpha2, <span class="at">scale =</span> theta2, <span class="at">order =</span> <span class="dv">2</span>) <span class="sc">-</span> mu2<span class="sc">^</span><span class="dv">2</span></span>
-<span id="cb180-17"><a href="ChapPortMgt.html#cb180-17" aria-hidden="true" tabindex="-1"></a>    mu3 <span class="ot">&lt;-</span> <span class="fu">levpareto</span>(<span class="at">limit =</span> M3, <span class="at">shape =</span> alpha3, <span class="at">scale =</span> theta3, <span class="at">order =</span> <span class="dv">1</span>)</span>
-<span id="cb180-18"><a href="ChapPortMgt.html#cb180-18" aria-hidden="true" tabindex="-1"></a>    var3 <span class="ot">&lt;-</span> <span class="fu">levpareto</span>(<span class="at">limit =</span> M3, <span class="at">shape =</span> alpha3, <span class="at">scale =</span> theta3, <span class="at">order =</span> <span class="dv">2</span>) <span class="sc">-</span> mu3<span class="sc">^</span><span class="dv">2</span></span>
-<span id="cb180-19"><a href="ChapPortMgt.html#cb180-19" aria-hidden="true" tabindex="-1"></a>    varFct <span class="ot">&lt;-</span> var1 <span class="sc">+</span> var2 <span class="sc">+</span> var3</span>
-<span id="cb180-20"><a href="ChapPortMgt.html#cb180-20" aria-hidden="true" tabindex="-1"></a>    meanFct <span class="ot">&lt;-</span> mu1 <span class="sc">+</span> mu2 <span class="sc">+</span> mu3</span>
-<span id="cb180-21"><a href="ChapPortMgt.html#cb180-21" aria-hidden="true" tabindex="-1"></a>    <span class="fu">c</span>(meanFct, varFct)</span>
-<span id="cb180-22"><a href="ChapPortMgt.html#cb180-22" aria-hidden="true" tabindex="-1"></a>}</span>
-<span id="cb180-23"><a href="ChapPortMgt.html#cb180-23" aria-hidden="true" tabindex="-1"></a>f <span class="ot">&lt;-</span> <span class="cf">function</span>(M) {</span>
-<span id="cb180-24"><a href="ChapPortMgt.html#cb180-24" aria-hidden="true" tabindex="-1"></a>    <span class="fu">VarFct</span>(M)[<span class="dv">2</span>]</span>
-<span id="cb180-25"><a href="ChapPortMgt.html#cb180-25" aria-hidden="true" tabindex="-1"></a>}</span>
-<span id="cb180-26"><a href="ChapPortMgt.html#cb180-26" aria-hidden="true" tabindex="-1"></a>h <span class="ot">&lt;-</span> <span class="cf">function</span>(M) {</span>
-<span id="cb180-27"><a href="ChapPortMgt.html#cb180-27" aria-hidden="true" tabindex="-1"></a>    <span class="fu">VarFct</span>(M)[<span class="dv">1</span>] <span class="sc">-</span> Pmin</span>
-<span id="cb180-28"><a href="ChapPortMgt.html#cb180-28" aria-hidden="true" tabindex="-1"></a>}</span>
-<span id="cb180-29"><a href="ChapPortMgt.html#cb180-29" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(alabama)</span>
-<span id="cb180-30"><a href="ChapPortMgt.html#cb180-30" aria-hidden="true" tabindex="-1"></a>par0 <span class="ot">=</span> <span class="fu">rep</span>(<span class="dv">1000</span>, <span class="dv">3</span>)</span>
-<span id="cb180-31"><a href="ChapPortMgt.html#cb180-31" aria-hidden="true" tabindex="-1"></a>op <span class="ot">&lt;-</span> <span class="fu">auglag</span>(<span class="at">par =</span> par0, <span class="at">fn =</span> f, <span class="at">hin =</span> h, <span class="at">control.outer =</span> <span class="fu">list</span>(<span class="at">trace =</span> <span class="cn">FALSE</span>))</span></code></pre></div>
+<div class="sourceCode" id="cb180"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb180-1"><a href="ChapPortMgt.html#cb180-1" tabindex="-1"></a>theta1 <span class="ot">=</span> <span class="dv">1000</span>;theta2 <span class="ot">=</span> <span class="dv">2000</span>;theta3 <span class="ot">=</span> <span class="dv">3000</span>;</span>
+<span id="cb180-2"><a href="ChapPortMgt.html#cb180-2" tabindex="-1"></a>alpha1 <span class="ot">=</span> <span class="dv">3</span>;   alpha2 <span class="ot">=</span> <span class="dv">3</span>;   alpha3 <span class="ot">=</span> <span class="dv">4</span>;</span>
+<span id="cb180-3"><a href="ChapPortMgt.html#cb180-3" tabindex="-1"></a>Pmin <span class="ot">&lt;-</span> <span class="dv">2000</span></span>
+<span id="cb180-4"><a href="ChapPortMgt.html#cb180-4" tabindex="-1"></a><span class="fu">library</span>(actuar)</span>
+<span id="cb180-5"><a href="ChapPortMgt.html#cb180-5" tabindex="-1"></a>VarFct <span class="ot">&lt;-</span> <span class="cf">function</span>(M){</span>
+<span id="cb180-6"><a href="ChapPortMgt.html#cb180-6" tabindex="-1"></a>  M1<span class="ot">=</span>M[<span class="dv">1</span>];M2<span class="ot">=</span>M[<span class="dv">2</span>];M3<span class="ot">=</span>M[<span class="dv">3</span>]</span>
+<span id="cb180-7"><a href="ChapPortMgt.html#cb180-7" tabindex="-1"></a>  mu1    <span class="ot">&lt;-</span> <span class="fu">levpareto</span>(<span class="at">limit=</span>M1,<span class="at">shape=</span>alpha1, <span class="at">scale=</span>theta1, <span class="at">order=</span><span class="dv">1</span>)</span>
+<span id="cb180-8"><a href="ChapPortMgt.html#cb180-8" tabindex="-1"></a>  var1   <span class="ot">&lt;-</span> <span class="fu">levpareto</span>(<span class="at">limit=</span>M1,<span class="at">shape=</span>alpha1, <span class="at">scale=</span>theta1, <span class="at">order=</span><span class="dv">2</span>)<span class="sc">-</span>mu1<span class="sc">^</span><span class="dv">2</span></span>
+<span id="cb180-9"><a href="ChapPortMgt.html#cb180-9" tabindex="-1"></a>  mu2    <span class="ot">&lt;-</span> <span class="fu">levpareto</span>(<span class="at">limit=</span>M2,<span class="at">shape=</span>alpha2, <span class="at">scale=</span>theta2, <span class="at">order=</span><span class="dv">1</span>)</span>
+<span id="cb180-10"><a href="ChapPortMgt.html#cb180-10" tabindex="-1"></a>  var2   <span class="ot">&lt;-</span> <span class="fu">levpareto</span>(<span class="at">limit=</span>M2,<span class="at">shape=</span>alpha2, <span class="at">scale=</span>theta2, <span class="at">order=</span><span class="dv">2</span>)<span class="sc">-</span>mu2<span class="sc">^</span><span class="dv">2</span></span>
+<span id="cb180-11"><a href="ChapPortMgt.html#cb180-11" tabindex="-1"></a>  mu3    <span class="ot">&lt;-</span> <span class="fu">levpareto</span>(<span class="at">limit=</span>M3,<span class="at">shape=</span>alpha3, <span class="at">scale=</span>theta3, <span class="at">order=</span><span class="dv">1</span>)</span>
+<span id="cb180-12"><a href="ChapPortMgt.html#cb180-12" tabindex="-1"></a>  var3   <span class="ot">&lt;-</span> <span class="fu">levpareto</span>(<span class="at">limit=</span>M3,<span class="at">shape=</span>alpha3, <span class="at">scale=</span>theta3, <span class="at">order=</span><span class="dv">2</span>)<span class="sc">-</span>mu3<span class="sc">^</span><span class="dv">2</span></span>
+<span id="cb180-13"><a href="ChapPortMgt.html#cb180-13" tabindex="-1"></a>  varFct <span class="ot">&lt;-</span> var1 <span class="sc">+</span>var2<span class="sc">+</span>var3</span>
+<span id="cb180-14"><a href="ChapPortMgt.html#cb180-14" tabindex="-1"></a>  meanFct <span class="ot">&lt;-</span> mu1<span class="sc">+</span>mu2<span class="sc">+</span>mu3</span>
+<span id="cb180-15"><a href="ChapPortMgt.html#cb180-15" tabindex="-1"></a>  <span class="fu">c</span>(meanFct,varFct)</span>
+<span id="cb180-16"><a href="ChapPortMgt.html#cb180-16" tabindex="-1"></a>  }</span>
+<span id="cb180-17"><a href="ChapPortMgt.html#cb180-17" tabindex="-1"></a>f <span class="ot">&lt;-</span> <span class="cf">function</span>(M){<span class="fu">VarFct</span>(M)[<span class="dv">2</span>]}</span>
+<span id="cb180-18"><a href="ChapPortMgt.html#cb180-18" tabindex="-1"></a>h <span class="ot">&lt;-</span> <span class="cf">function</span>(M){<span class="fu">VarFct</span>(M)[<span class="dv">1</span>] <span class="sc">-</span> Pmin}</span>
+<span id="cb180-19"><a href="ChapPortMgt.html#cb180-19" tabindex="-1"></a><span class="fu">library</span>(alabama)</span>
+<span id="cb180-20"><a href="ChapPortMgt.html#cb180-20" tabindex="-1"></a>par0<span class="ot">=</span><span class="fu">rep</span>(<span class="dv">1000</span>,<span class="dv">3</span>)</span>
+<span id="cb180-21"><a href="ChapPortMgt.html#cb180-21" tabindex="-1"></a>op <span class="ot">&lt;-</span> <span class="fu">auglag</span>(<span class="at">par=</span>par0,<span class="at">fn=</span>f,<span class="at">hin=</span>h,<span class="at">control.outer=</span><span class="fu">list</span>(<span class="at">trace=</span><span class="cn">FALSE</span>))</span></code></pre></div>
 <p>The optimal retention limits <span class="math inline">\(M_1\)</span>, <span class="math inline">\(M_2\)</span>, and <span class="math inline">\(M_3\)</span> resulting retention limit minus expected insurer’s claims, <span class="math inline">\(M_i - \mathrm{E}(X_i \wedge M_i)\)</span>, is the same for all risks, as we derived theoretically.</p>
-<div class="sourceCode" id="cb181"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb181-1"><a href="ChapPortMgt.html#cb181-1" aria-hidden="true" tabindex="-1"></a>M1star <span class="ot">=</span> op<span class="sc">$</span>par[<span class="dv">1</span>]</span>
-<span id="cb181-2"><a href="ChapPortMgt.html#cb181-2" aria-hidden="true" tabindex="-1"></a>M2star <span class="ot">=</span> op<span class="sc">$</span>par[<span class="dv">2</span>]</span>
-<span id="cb181-3"><a href="ChapPortMgt.html#cb181-3" aria-hidden="true" tabindex="-1"></a>M3star <span class="ot">=</span> op<span class="sc">$</span>par[<span class="dv">3</span>]</span>
-<span id="cb181-4"><a href="ChapPortMgt.html#cb181-4" aria-hidden="true" tabindex="-1"></a>M1star <span class="sc">-</span> <span class="fu">levpareto</span>(M1star, <span class="at">shape =</span> alpha1, <span class="at">scale =</span> theta1, <span class="at">order =</span> <span class="dv">1</span>)</span></code></pre></div>
+<div class="sourceCode" id="cb181"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb181-1"><a href="ChapPortMgt.html#cb181-1" tabindex="-1"></a>M1star <span class="ot">=</span> op<span class="sc">$</span>par[<span class="dv">1</span>];M2star <span class="ot">=</span> op<span class="sc">$</span>par[<span class="dv">2</span>];M3star <span class="ot">=</span> op<span class="sc">$</span>par[<span class="dv">3</span>]</span>
+<span id="cb181-2"><a href="ChapPortMgt.html#cb181-2" tabindex="-1"></a>M1star <span class="sc">-</span><span class="fu">levpareto</span>(M1star,<span class="at">shape=</span>alpha1, <span class="at">scale=</span>theta1,<span class="at">order=</span><span class="dv">1</span>)</span></code></pre></div>
 <pre><code>[1] 1344.13508</code></pre>
-<div class="sourceCode" id="cb183"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb183-1"><a href="ChapPortMgt.html#cb183-1" aria-hidden="true" tabindex="-1"></a>M2star <span class="sc">-</span> <span class="fu">levpareto</span>(M2star, <span class="at">shape =</span> alpha2, <span class="at">scale =</span> theta2, <span class="at">order =</span> <span class="dv">1</span>)</span></code></pre></div>
+<div class="sourceCode" id="cb183"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb183-1"><a href="ChapPortMgt.html#cb183-1" tabindex="-1"></a>M2star <span class="sc">-</span><span class="fu">levpareto</span>(M2star,<span class="at">shape=</span>alpha2, <span class="at">scale=</span>theta2,<span class="at">order=</span><span class="dv">1</span>)</span></code></pre></div>
 <pre><code>[1] 1344.13325</code></pre>
-<div class="sourceCode" id="cb185"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb185-1"><a href="ChapPortMgt.html#cb185-1" aria-hidden="true" tabindex="-1"></a>M3star <span class="sc">-</span> <span class="fu">levpareto</span>(M3star, <span class="at">shape =</span> alpha3, <span class="at">scale =</span> theta3, <span class="at">order =</span> <span class="dv">1</span>)</span></code></pre></div>
+<div class="sourceCode" id="cb185"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb185-1"><a href="ChapPortMgt.html#cb185-1" tabindex="-1"></a>M3star <span class="sc">-</span><span class="fu">levpareto</span>(M3star,<span class="at">shape=</span>alpha3, <span class="at">scale=</span>theta3,<span class="at">order=</span><span class="dv">1</span>)</span></code></pre></div>
 <pre><code>[1] 1344.13349</code></pre>
 <p><strong>b</strong>. We graphically compare the distribution of total risks to that retained by the insurer and by the reinsurer.</p>
-<div class="sourceCode" id="cb187"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb187-1"><a href="ChapPortMgt.html#cb187-1" aria-hidden="true" tabindex="-1"></a><span class="fu">set.seed</span>(<span class="dv">2018</span>)</span>
-<span id="cb187-2"><a href="ChapPortMgt.html#cb187-2" aria-hidden="true" tabindex="-1"></a>nSim <span class="ot">=</span> <span class="dv">10000</span></span>
-<span id="cb187-3"><a href="ChapPortMgt.html#cb187-3" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(actuar)</span>
-<span id="cb187-4"><a href="ChapPortMgt.html#cb187-4" aria-hidden="true" tabindex="-1"></a>Y1 <span class="ot">&lt;-</span> <span class="fu">rpareto</span>(nSim, <span class="at">shape =</span> alpha1, <span class="at">scale =</span> theta1)</span>
-<span id="cb187-5"><a href="ChapPortMgt.html#cb187-5" aria-hidden="true" tabindex="-1"></a>Y2 <span class="ot">&lt;-</span> <span class="fu">rpareto</span>(nSim, <span class="at">shape =</span> alpha2, <span class="at">scale =</span> theta2)</span>
-<span id="cb187-6"><a href="ChapPortMgt.html#cb187-6" aria-hidden="true" tabindex="-1"></a>Y3 <span class="ot">&lt;-</span> <span class="fu">rpareto</span>(nSim, <span class="at">shape =</span> alpha3, <span class="at">scale =</span> theta3)</span>
-<span id="cb187-7"><a href="ChapPortMgt.html#cb187-7" aria-hidden="true" tabindex="-1"></a>YTotal <span class="ot">&lt;-</span> Y1 <span class="sc">+</span> Y2 <span class="sc">+</span> Y3</span>
-<span id="cb187-8"><a href="ChapPortMgt.html#cb187-8" aria-hidden="true" tabindex="-1"></a>Yinsur <span class="ot">&lt;-</span> <span class="fu">pmin</span>(Y1, M1star) <span class="sc">+</span> <span class="fu">pmin</span>(Y2, M2star) <span class="sc">+</span> <span class="fu">pmin</span>(Y3, M3star)</span>
-<span id="cb187-9"><a href="ChapPortMgt.html#cb187-9" aria-hidden="true" tabindex="-1"></a>Yreinsur <span class="ot">&lt;-</span> YTotal <span class="sc">-</span> Yinsur</span>
-<span id="cb187-10"><a href="ChapPortMgt.html#cb187-10" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb187-11"><a href="ChapPortMgt.html#cb187-11" aria-hidden="true" tabindex="-1"></a><span class="fu">par</span>(<span class="at">mfrow =</span> <span class="fu">c</span>(<span class="dv">1</span>, <span class="dv">3</span>))</span>
-<span id="cb187-12"><a href="ChapPortMgt.html#cb187-12" aria-hidden="true" tabindex="-1"></a><span class="fu">plot</span>(<span class="fu">density</span>(YTotal), <span class="at">xlim =</span> <span class="fu">c</span>(<span class="dv">0</span>, <span class="dv">10000</span>), <span class="at">main =</span> <span class="st">&quot;Total Loss&quot;</span>, <span class="at">xlab =</span> <span class="st">&quot;Losses&quot;</span>)</span>
-<span id="cb187-13"><a href="ChapPortMgt.html#cb187-13" aria-hidden="true" tabindex="-1"></a><span class="fu">plot</span>(<span class="fu">density</span>(Yinsur), <span class="at">xlim =</span> <span class="fu">c</span>(<span class="dv">0</span>, <span class="dv">10000</span>), <span class="at">main =</span> <span class="st">&quot;Insurer&quot;</span>, <span class="at">xlab =</span> <span class="st">&quot;Losses&quot;</span>)</span>
-<span id="cb187-14"><a href="ChapPortMgt.html#cb187-14" aria-hidden="true" tabindex="-1"></a><span class="fu">plot</span>(<span class="fu">density</span>(Yreinsur), <span class="at">xlim =</span> <span class="fu">c</span>(<span class="dv">0</span>, <span class="dv">10000</span>), <span class="at">main =</span> <span class="st">&quot;Reinsurer&quot;</span>, <span class="at">xlab =</span> <span class="st">&quot;Losses&quot;</span>)</span></code></pre></div>
+<div class="sourceCode" id="cb187"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb187-1"><a href="ChapPortMgt.html#cb187-1" tabindex="-1"></a><span class="fu">set.seed</span>(<span class="dv">2018</span>)</span>
+<span id="cb187-2"><a href="ChapPortMgt.html#cb187-2" tabindex="-1"></a>nSim <span class="ot">=</span> <span class="dv">10000</span></span>
+<span id="cb187-3"><a href="ChapPortMgt.html#cb187-3" tabindex="-1"></a><span class="fu">library</span>(actuar)</span>
+<span id="cb187-4"><a href="ChapPortMgt.html#cb187-4" tabindex="-1"></a>Y1 <span class="ot">&lt;-</span> <span class="fu">rpareto</span>(nSim, <span class="at">shape =</span> alpha1, <span class="at">scale =</span> theta1)</span>
+<span id="cb187-5"><a href="ChapPortMgt.html#cb187-5" tabindex="-1"></a>Y2 <span class="ot">&lt;-</span> <span class="fu">rpareto</span>(nSim, <span class="at">shape =</span> alpha2, <span class="at">scale =</span> theta2)</span>
+<span id="cb187-6"><a href="ChapPortMgt.html#cb187-6" tabindex="-1"></a>Y3 <span class="ot">&lt;-</span> <span class="fu">rpareto</span>(nSim, <span class="at">shape =</span> alpha3, <span class="at">scale =</span> theta3)</span>
+<span id="cb187-7"><a href="ChapPortMgt.html#cb187-7" tabindex="-1"></a>YTotal <span class="ot">&lt;-</span> Y1 <span class="sc">+</span> Y2 <span class="sc">+</span> Y3</span>
+<span id="cb187-8"><a href="ChapPortMgt.html#cb187-8" tabindex="-1"></a>Yinsur <span class="ot">&lt;-</span>  <span class="fu">pmin</span>(Y1,M1star)<span class="sc">+</span><span class="fu">pmin</span>(Y2,M2star)<span class="sc">+</span><span class="fu">pmin</span>(Y3,M3star)</span>
+<span id="cb187-9"><a href="ChapPortMgt.html#cb187-9" tabindex="-1"></a>Yreinsur <span class="ot">&lt;-</span> YTotal <span class="sc">-</span> Yinsur</span>
+<span id="cb187-10"><a href="ChapPortMgt.html#cb187-10" tabindex="-1"></a></span>
+<span id="cb187-11"><a href="ChapPortMgt.html#cb187-11" tabindex="-1"></a><span class="fu">par</span>(<span class="at">mfrow=</span><span class="fu">c</span>(<span class="dv">1</span>,<span class="dv">3</span>))</span>
+<span id="cb187-12"><a href="ChapPortMgt.html#cb187-12" tabindex="-1"></a><span class="fu">plot</span>(<span class="fu">density</span>(YTotal),   <span class="at">xlim=</span><span class="fu">c</span>(<span class="dv">0</span>,<span class="dv">10000</span>), <span class="at">main=</span><span class="st">&quot;Total Loss&quot;</span>, <span class="at">xlab=</span><span class="st">&quot;Losses&quot;</span>)</span>
+<span id="cb187-13"><a href="ChapPortMgt.html#cb187-13" tabindex="-1"></a><span class="fu">plot</span>(<span class="fu">density</span>(Yinsur),   <span class="at">xlim=</span><span class="fu">c</span>(<span class="dv">0</span>,<span class="dv">10000</span>), <span class="at">main=</span><span class="st">&quot;Insurer&quot;</span>,    <span class="at">xlab=</span><span class="st">&quot;Losses&quot;</span>)</span>
+<span id="cb187-14"><a href="ChapPortMgt.html#cb187-14" tabindex="-1"></a><span class="fu">plot</span>(<span class="fu">density</span>(Yreinsur), <span class="at">xlim=</span><span class="fu">c</span>(<span class="dv">0</span>,<span class="dv">10000</span>), <span class="at">main=</span><span class="st">&quot;Reinsurer&quot;</span>,  <span class="at">xlab=</span><span class="st">&quot;Losses&quot;</span>)</span></code></pre></div>
 <p><img src="LossDataAnalytics_files/figure-html/unnamed-chunk-163-1.png" width="768" style="display: block; margin: auto;" /></p>
 </div>
 <hr />
@@ -2283,56 +2268,53 @@ so that your retained risk is <span class="math inline">\(Y_{retained}= X- Y_{in
 <div id="toggleCode.PortMgt" style="display: none">
 <p><strong>Solution</strong>.</p>
 <p>In preparation, here is the code needed to set the parameters.</p>
-<div class="sourceCode" id="cb188"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb188-1"><a href="ChapPortMgt.html#cb188-1" aria-hidden="true" tabindex="-1"></a><span class="co"># For the gamma distributions, use</span></span>
-<span id="cb188-2"><a href="ChapPortMgt.html#cb188-2" aria-hidden="true" tabindex="-1"></a>alpha1 <span class="ot">&lt;-</span> <span class="dv">2</span></span>
-<span id="cb188-3"><a href="ChapPortMgt.html#cb188-3" aria-hidden="true" tabindex="-1"></a>theta1 <span class="ot">&lt;-</span> <span class="dv">100</span></span>
-<span id="cb188-4"><a href="ChapPortMgt.html#cb188-4" aria-hidden="true" tabindex="-1"></a>alpha2 <span class="ot">&lt;-</span> <span class="dv">2</span></span>
-<span id="cb188-5"><a href="ChapPortMgt.html#cb188-5" aria-hidden="true" tabindex="-1"></a>theta2 <span class="ot">&lt;-</span> <span class="dv">200</span></span>
-<span id="cb188-6"><a href="ChapPortMgt.html#cb188-6" aria-hidden="true" tabindex="-1"></a><span class="co"># For the Pareto distributions, use</span></span>
-<span id="cb188-7"><a href="ChapPortMgt.html#cb188-7" aria-hidden="true" tabindex="-1"></a>alpha3 <span class="ot">&lt;-</span> <span class="dv">2</span></span>
-<span id="cb188-8"><a href="ChapPortMgt.html#cb188-8" aria-hidden="true" tabindex="-1"></a>theta3 <span class="ot">&lt;-</span> <span class="dv">1000</span></span>
-<span id="cb188-9"><a href="ChapPortMgt.html#cb188-9" aria-hidden="true" tabindex="-1"></a>alpha4 <span class="ot">&lt;-</span> <span class="dv">3</span></span>
-<span id="cb188-10"><a href="ChapPortMgt.html#cb188-10" aria-hidden="true" tabindex="-1"></a>theta4 <span class="ot">&lt;-</span> <span class="dv">2000</span></span>
-<span id="cb188-11"><a href="ChapPortMgt.html#cb188-11" aria-hidden="true" tabindex="-1"></a><span class="co"># Limits</span></span>
-<span id="cb188-12"><a href="ChapPortMgt.html#cb188-12" aria-hidden="true" tabindex="-1"></a>M1 <span class="ot">&lt;-</span> <span class="dv">100</span></span>
-<span id="cb188-13"><a href="ChapPortMgt.html#cb188-13" aria-hidden="true" tabindex="-1"></a>M2 <span class="ot">&lt;-</span> <span class="dv">200</span></span></code></pre></div>
+<div class="sourceCode" id="cb188"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb188-1"><a href="ChapPortMgt.html#cb188-1" tabindex="-1"></a><span class="co"># For the gamma distributions, use</span></span>
+<span id="cb188-2"><a href="ChapPortMgt.html#cb188-2" tabindex="-1"></a>alpha1 <span class="ot">&lt;-</span> <span class="dv">2</span>;      theta1 <span class="ot">&lt;-</span> <span class="dv">100</span></span>
+<span id="cb188-3"><a href="ChapPortMgt.html#cb188-3" tabindex="-1"></a>alpha2 <span class="ot">&lt;-</span> <span class="dv">2</span>;      theta2 <span class="ot">&lt;-</span> <span class="dv">200</span></span>
+<span id="cb188-4"><a href="ChapPortMgt.html#cb188-4" tabindex="-1"></a><span class="co"># For the Pareto distributions, use</span></span>
+<span id="cb188-5"><a href="ChapPortMgt.html#cb188-5" tabindex="-1"></a>alpha3 <span class="ot">&lt;-</span> <span class="dv">2</span>;      theta3 <span class="ot">&lt;-</span> <span class="dv">1000</span></span>
+<span id="cb188-6"><a href="ChapPortMgt.html#cb188-6" tabindex="-1"></a>alpha4 <span class="ot">&lt;-</span> <span class="dv">3</span>;      theta4 <span class="ot">&lt;-</span> <span class="dv">2000</span></span>
+<span id="cb188-7"><a href="ChapPortMgt.html#cb188-7" tabindex="-1"></a><span class="co"># Limits</span></span>
+<span id="cb188-8"><a href="ChapPortMgt.html#cb188-8" tabindex="-1"></a>M1     <span class="ot">&lt;-</span> <span class="dv">100</span></span>
+<span id="cb188-9"><a href="ChapPortMgt.html#cb188-9" tabindex="-1"></a>M2     <span class="ot">&lt;-</span> <span class="dv">200</span></span></code></pre></div>
 <p>With these parameters, we can now simulate realizations of the portfolio risks.</p>
-<div class="sourceCode" id="cb189"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb189-1"><a href="ChapPortMgt.html#cb189-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Simulate the risks</span></span>
-<span id="cb189-2"><a href="ChapPortMgt.html#cb189-2" aria-hidden="true" tabindex="-1"></a>nSim <span class="ot">&lt;-</span> <span class="dv">10000</span>  <span class="co">#number of simulations</span></span>
-<span id="cb189-3"><a href="ChapPortMgt.html#cb189-3" aria-hidden="true" tabindex="-1"></a><span class="fu">set.seed</span>(<span class="dv">2017</span>)  <span class="co">#set seed to reproduce work </span></span>
-<span id="cb189-4"><a href="ChapPortMgt.html#cb189-4" aria-hidden="true" tabindex="-1"></a>X1 <span class="ot">&lt;-</span> <span class="fu">rgamma</span>(nSim, alpha1, <span class="at">scale =</span> theta1)</span>
-<span id="cb189-5"><a href="ChapPortMgt.html#cb189-5" aria-hidden="true" tabindex="-1"></a>X2 <span class="ot">&lt;-</span> <span class="fu">rgamma</span>(nSim, alpha2, <span class="at">scale =</span> theta2)</span>
-<span id="cb189-6"><a href="ChapPortMgt.html#cb189-6" aria-hidden="true" tabindex="-1"></a><span class="co"># For the Pareto Distribution, use</span></span>
-<span id="cb189-7"><a href="ChapPortMgt.html#cb189-7" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(actuar)</span>
-<span id="cb189-8"><a href="ChapPortMgt.html#cb189-8" aria-hidden="true" tabindex="-1"></a>X3 <span class="ot">&lt;-</span> <span class="fu">rpareto</span>(nSim, <span class="at">scale =</span> theta3, <span class="at">shape =</span> alpha3)</span>
-<span id="cb189-9"><a href="ChapPortMgt.html#cb189-9" aria-hidden="true" tabindex="-1"></a>X4 <span class="ot">&lt;-</span> <span class="fu">rpareto</span>(nSim, <span class="at">scale =</span> theta4, <span class="at">shape =</span> alpha4)</span>
-<span id="cb189-10"><a href="ChapPortMgt.html#cb189-10" aria-hidden="true" tabindex="-1"></a><span class="co"># Portfolio Risks</span></span>
-<span id="cb189-11"><a href="ChapPortMgt.html#cb189-11" aria-hidden="true" tabindex="-1"></a>X <span class="ot">&lt;-</span> X1 <span class="sc">+</span> X2 <span class="sc">+</span> X3 <span class="sc">+</span> X4</span>
-<span id="cb189-12"><a href="ChapPortMgt.html#cb189-12" aria-hidden="true" tabindex="-1"></a>Yretained <span class="ot">&lt;-</span> <span class="fu">pmin</span>(X1, M1) <span class="sc">+</span> <span class="fu">pmin</span>(X2, M2)</span>
-<span id="cb189-13"><a href="ChapPortMgt.html#cb189-13" aria-hidden="true" tabindex="-1"></a>Yinsurer <span class="ot">&lt;-</span> X <span class="sc">-</span> Yretained</span></code></pre></div>
+<div class="sourceCode" id="cb189"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb189-1"><a href="ChapPortMgt.html#cb189-1" tabindex="-1"></a><span class="co"># Simulate the risks</span></span>
+<span id="cb189-2"><a href="ChapPortMgt.html#cb189-2" tabindex="-1"></a>nSim <span class="ot">&lt;-</span> <span class="dv">10000</span>  <span class="co">#number of simulations</span></span>
+<span id="cb189-3"><a href="ChapPortMgt.html#cb189-3" tabindex="-1"></a><span class="fu">set.seed</span>(<span class="dv">2017</span>) <span class="co">#set seed to reproduce work </span></span>
+<span id="cb189-4"><a href="ChapPortMgt.html#cb189-4" tabindex="-1"></a>X1 <span class="ot">&lt;-</span> <span class="fu">rgamma</span>(nSim,alpha1,<span class="at">scale =</span> theta1)  </span>
+<span id="cb189-5"><a href="ChapPortMgt.html#cb189-5" tabindex="-1"></a>X2 <span class="ot">&lt;-</span> <span class="fu">rgamma</span>(nSim,alpha2,<span class="at">scale =</span> theta2)  </span>
+<span id="cb189-6"><a href="ChapPortMgt.html#cb189-6" tabindex="-1"></a><span class="co"># For the Pareto Distribution, use</span></span>
+<span id="cb189-7"><a href="ChapPortMgt.html#cb189-7" tabindex="-1"></a><span class="fu">library</span>(actuar)</span>
+<span id="cb189-8"><a href="ChapPortMgt.html#cb189-8" tabindex="-1"></a>X3 <span class="ot">&lt;-</span> <span class="fu">rpareto</span>(nSim,<span class="at">scale=</span>theta3,<span class="at">shape=</span>alpha3)</span>
+<span id="cb189-9"><a href="ChapPortMgt.html#cb189-9" tabindex="-1"></a>X4 <span class="ot">&lt;-</span> <span class="fu">rpareto</span>(nSim,<span class="at">scale=</span>theta4,<span class="at">shape=</span>alpha4)</span>
+<span id="cb189-10"><a href="ChapPortMgt.html#cb189-10" tabindex="-1"></a><span class="co"># Portfolio Risks</span></span>
+<span id="cb189-11"><a href="ChapPortMgt.html#cb189-11" tabindex="-1"></a>X         <span class="ot">&lt;-</span> X1 <span class="sc">+</span> X2 <span class="sc">+</span> X3 <span class="sc">+</span> X4</span>
+<span id="cb189-12"><a href="ChapPortMgt.html#cb189-12" tabindex="-1"></a>Yretained <span class="ot">&lt;-</span> <span class="fu">pmin</span>(X1,M1) <span class="sc">+</span> <span class="fu">pmin</span>(X2,M2)</span>
+<span id="cb189-13"><a href="ChapPortMgt.html#cb189-13" tabindex="-1"></a>Yinsurer  <span class="ot">&lt;-</span> X <span class="sc">-</span> Yretained</span></code></pre></div>
 <p><strong>(a)</strong> Here are the results for the expected claim amounts.</p>
-<div class="sourceCode" id="cb190"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb190-1"><a href="ChapPortMgt.html#cb190-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Expected Claim Amounts</span></span>
-<span id="cb190-2"><a href="ChapPortMgt.html#cb190-2" aria-hidden="true" tabindex="-1"></a>ExpVec <span class="ot">&lt;-</span> <span class="fu">t</span>(<span class="fu">as.matrix</span>(<span class="fu">c</span>(<span class="fu">mean</span>(Yretained), <span class="fu">mean</span>(Yinsurer), <span class="fu">mean</span>(X))))</span>
-<span id="cb190-3"><a href="ChapPortMgt.html#cb190-3" aria-hidden="true" tabindex="-1"></a><span class="fu">colnames</span>(ExpVec) <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="st">&quot;Retained&quot;</span>, <span class="st">&quot;Insurer&quot;</span>, <span class="st">&quot;Total&quot;</span>)</span>
-<span id="cb190-4"><a href="ChapPortMgt.html#cb190-4" aria-hidden="true" tabindex="-1"></a><span class="fu">round</span>(ExpVec, <span class="at">digits =</span> <span class="dv">2</span>)</span></code></pre></div>
+<div class="sourceCode" id="cb190"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb190-1"><a href="ChapPortMgt.html#cb190-1" tabindex="-1"></a><span class="co"># Expected Claim Amounts</span></span>
+<span id="cb190-2"><a href="ChapPortMgt.html#cb190-2" tabindex="-1"></a>ExpVec <span class="ot">&lt;-</span> <span class="fu">t</span>(<span class="fu">as.matrix</span>(<span class="fu">c</span>(<span class="fu">mean</span>(Yretained),<span class="fu">mean</span>(Yinsurer),<span class="fu">mean</span>(X))))</span>
+<span id="cb190-3"><a href="ChapPortMgt.html#cb190-3" tabindex="-1"></a><span class="fu">colnames</span>(ExpVec) <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="st">&quot;Retained&quot;</span>, <span class="st">&quot;Insurer&quot;</span>,<span class="st">&quot;Total&quot;</span>)</span>
+<span id="cb190-4"><a href="ChapPortMgt.html#cb190-4" tabindex="-1"></a><span class="fu">round</span>(ExpVec,<span class="at">digits=</span><span class="dv">2</span>)</span></code></pre></div>
 <pre><code>     Retained Insurer   Total
 [1,]   269.05 5274.41 5543.46</code></pre>
 <p><strong>(b)</strong> Here are the results for the quantiles.</p>
-<div class="sourceCode" id="cb192"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb192-1"><a href="ChapPortMgt.html#cb192-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Quantiles</span></span>
-<span id="cb192-2"><a href="ChapPortMgt.html#cb192-2" aria-hidden="true" tabindex="-1"></a>quantMat <span class="ot">&lt;-</span> <span class="fu">rbind</span>(<span class="fu">quantile</span>(Yretained, <span class="at">probs =</span> <span class="fu">c</span>(<span class="fl">0.8</span>, <span class="fl">0.9</span>, <span class="fl">0.95</span>, <span class="fl">0.99</span>)), <span class="fu">quantile</span>(Yinsurer,</span>
-<span id="cb192-3"><a href="ChapPortMgt.html#cb192-3" aria-hidden="true" tabindex="-1"></a>    <span class="at">probs =</span> <span class="fu">c</span>(<span class="fl">0.8</span>, <span class="fl">0.9</span>, <span class="fl">0.95</span>, <span class="fl">0.99</span>)), <span class="fu">quantile</span>(X, <span class="at">probs =</span> <span class="fu">c</span>(<span class="fl">0.8</span>, <span class="fl">0.9</span>, <span class="fl">0.95</span>, <span class="fl">0.99</span>)))</span>
-<span id="cb192-4"><a href="ChapPortMgt.html#cb192-4" aria-hidden="true" tabindex="-1"></a><span class="fu">rownames</span>(quantMat) <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="st">&quot;Retained&quot;</span>, <span class="st">&quot;Insurer&quot;</span>, <span class="st">&quot;Total&quot;</span>)</span>
-<span id="cb192-5"><a href="ChapPortMgt.html#cb192-5" aria-hidden="true" tabindex="-1"></a><span class="fu">round</span>(quantMat, <span class="at">digits =</span> <span class="dv">2</span>)</span></code></pre></div>
+<div class="sourceCode" id="cb192"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb192-1"><a href="ChapPortMgt.html#cb192-1" tabindex="-1"></a><span class="co"># Quantiles</span></span>
+<span id="cb192-2"><a href="ChapPortMgt.html#cb192-2" tabindex="-1"></a>quantMat <span class="ot">&lt;-</span> <span class="fu">rbind</span>(</span>
+<span id="cb192-3"><a href="ChapPortMgt.html#cb192-3" tabindex="-1"></a>  <span class="fu">quantile</span>(Yretained, <span class="at">probs=</span><span class="fu">c</span>(<span class="fl">0.80</span>, <span class="fl">0.90</span>, <span class="fl">0.95</span>, <span class="fl">0.99</span>)),</span>
+<span id="cb192-4"><a href="ChapPortMgt.html#cb192-4" tabindex="-1"></a>  <span class="fu">quantile</span>(Yinsurer,  <span class="at">probs=</span><span class="fu">c</span>(<span class="fl">0.80</span>, <span class="fl">0.90</span>, <span class="fl">0.95</span>, <span class="fl">0.99</span>)),</span>
+<span id="cb192-5"><a href="ChapPortMgt.html#cb192-5" tabindex="-1"></a>  <span class="fu">quantile</span>(X       ,  <span class="at">probs=</span><span class="fu">c</span>(<span class="fl">0.80</span>, <span class="fl">0.90</span>, <span class="fl">0.95</span>, <span class="fl">0.99</span>)))</span>
+<span id="cb192-6"><a href="ChapPortMgt.html#cb192-6" tabindex="-1"></a><span class="fu">rownames</span>(quantMat) <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="st">&quot;Retained&quot;</span>, <span class="st">&quot;Insurer&quot;</span>,<span class="st">&quot;Total&quot;</span>)</span>
+<span id="cb192-7"><a href="ChapPortMgt.html#cb192-7" tabindex="-1"></a><span class="fu">round</span>(quantMat,<span class="at">digits=</span><span class="dv">2</span>)</span></code></pre></div>
 <pre><code>             80%     90%     95%      99%
 Retained  300.00  300.00  300.00   300.00
 Insurer  6075.67 7399.80 9172.69 14859.02
 Total    6351.35 7675.04 9464.20 15159.02</code></pre>
 <p><strong>(c)</strong> Here are the results for the density plots of the retained, insurer, and total portfolio risk.</p>
-<div class="sourceCode" id="cb194"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb194-1"><a href="ChapPortMgt.html#cb194-1" aria-hidden="true" tabindex="-1"></a><span class="fu">par</span>(<span class="at">mfrow =</span> <span class="fu">c</span>(<span class="dv">1</span>, <span class="dv">3</span>))</span>
-<span id="cb194-2"><a href="ChapPortMgt.html#cb194-2" aria-hidden="true" tabindex="-1"></a><span class="fu">plot</span>(<span class="fu">density</span>(Yretained), <span class="at">xlim =</span> <span class="fu">c</span>(<span class="dv">0</span>, <span class="dv">500</span>), <span class="at">main =</span> <span class="st">&quot;Retained Portfolio Risk&quot;</span>, <span class="at">xlab =</span> <span class="st">&quot;Loss (Note the different horizontal scale)&quot;</span>,</span>
-<span id="cb194-3"><a href="ChapPortMgt.html#cb194-3" aria-hidden="true" tabindex="-1"></a>    <span class="at">ylab =</span> <span class="st">&quot;Density (Note different vertical scale)&quot;</span>)</span>
-<span id="cb194-4"><a href="ChapPortMgt.html#cb194-4" aria-hidden="true" tabindex="-1"></a><span class="fu">plot</span>(<span class="fu">density</span>(Yinsurer), <span class="at">xlim =</span> <span class="fu">c</span>(<span class="dv">0</span>, <span class="dv">15000</span>), <span class="at">main =</span> <span class="st">&quot;Insurer Portfolio Risk&quot;</span>, <span class="at">xlab =</span> <span class="st">&quot;Loss&quot;</span>)</span>
-<span id="cb194-5"><a href="ChapPortMgt.html#cb194-5" aria-hidden="true" tabindex="-1"></a><span class="fu">plot</span>(<span class="fu">density</span>(X), <span class="at">xlim =</span> <span class="fu">c</span>(<span class="dv">0</span>, <span class="dv">15000</span>), <span class="at">main =</span> <span class="st">&quot;Total Portfolio Risk&quot;</span>, <span class="at">xlab =</span> <span class="st">&quot;Loss&quot;</span>)</span></code></pre></div>
+<div class="sourceCode" id="cb194"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb194-1"><a href="ChapPortMgt.html#cb194-1" tabindex="-1"></a><span class="fu">par</span>(<span class="at">mfrow=</span><span class="fu">c</span>(<span class="dv">1</span>,<span class="dv">3</span>))</span>
+<span id="cb194-2"><a href="ChapPortMgt.html#cb194-2" tabindex="-1"></a><span class="fu">plot</span>(<span class="fu">density</span>(Yretained), <span class="at">xlim=</span><span class="fu">c</span>(<span class="dv">0</span>,<span class="dv">500</span>), <span class="at">main=</span><span class="st">&quot;Retained Portfolio Risk&quot;</span>, <span class="at">xlab=</span><span class="st">&quot;Loss (Note the different horizontal scale)&quot;</span>, <span class="at">ylab =</span> <span class="st">&quot;Density (Note different vertical scale)&quot;</span>)</span>
+<span id="cb194-3"><a href="ChapPortMgt.html#cb194-3" tabindex="-1"></a><span class="fu">plot</span>(<span class="fu">density</span>(Yinsurer), <span class="at">xlim=</span><span class="fu">c</span>(<span class="dv">0</span>,<span class="dv">15000</span>), <span class="at">main=</span><span class="st">&quot;Insurer Portfolio Risk&quot;</span>, <span class="at">xlab=</span><span class="st">&quot;Loss&quot;</span>)</span>
+<span id="cb194-4"><a href="ChapPortMgt.html#cb194-4" tabindex="-1"></a><span class="fu">plot</span>(<span class="fu">density</span>(X), <span class="at">xlim=</span><span class="fu">c</span>(<span class="dv">0</span>,<span class="dv">15000</span>), <span class="at">main=</span><span class="st">&quot;Total Portfolio Risk&quot;</span>, <span class="at">xlab=</span><span class="st">&quot;Loss&quot;</span>)</span></code></pre></div>
 <p><img src="LossDataAnalytics_files/figure-html/unnamed-chunk-169-1.png" width="768" style="display: block; margin: auto;" /></p>
 </div>
 </div>
@@ -2399,24 +2381,24 @@ Figure 13.1: <strong>Property Fund VaR and ES Plots.</strong> The left-hand pane
 <a id="displayCode.PortMgt.13.2" href="javascript:togglecode('toggleCode.PortMgt.13.2','displayCode.PortMgt.13.2');"><i><strong>Solutions for Exercise 13.2</strong></i></a>
 </h5>
 <div id="toggleCode.PortMgt.13.2" style="display: none">
-<div class="sourceCode" id="cb195"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb195-1"><a href="ChapPortMgt.html#cb195-1" aria-hidden="true" tabindex="-1"></a>ClaimLev  <span class="ot">&lt;-</span> <span class="fu">read.csv</span>(<span class="st">&quot;Data/CLAIMLEVEL.csv&quot;</span>, <span class="at">header=</span><span class="cn">TRUE</span>)</span>
-<span id="cb195-2"><a href="ChapPortMgt.html#cb195-2" aria-hidden="true" tabindex="-1"></a>ClaimData <span class="ot">&lt;-</span><span class="fu">subset</span>(ClaimLev,Year<span class="sc">==</span><span class="dv">2010</span>);     <span class="co">#2010 subset</span></span>
-<span id="cb195-3"><a href="ChapPortMgt.html#cb195-3" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb195-4"><a href="ChapPortMgt.html#cb195-4" aria-hidden="true" tabindex="-1"></a>ClaimsBC  <span class="ot">&lt;-</span> ClaimData<span class="sc">$</span>Claim</span>
-<span id="cb195-5"><a href="ChapPortMgt.html#cb195-5" aria-hidden="true" tabindex="-1"></a>prob.seq <span class="ot">=</span> <span class="fu">seq</span>(<span class="fl">0.50</span>, <span class="fl">0.99</span>, <span class="at">by=</span><span class="fl">0.001</span>)</span>
-<span id="cb195-6"><a href="ChapPortMgt.html#cb195-6" aria-hidden="true" tabindex="-1"></a>VaR <span class="ot">=</span> <span class="fu">quantile</span>(ClaimsBC, prob.seq)</span>
-<span id="cb195-7"><a href="ChapPortMgt.html#cb195-7" aria-hidden="true" tabindex="-1"></a>CTE <span class="ot">&lt;-</span> VaR</span>
-<span id="cb195-8"><a href="ChapPortMgt.html#cb195-8" aria-hidden="true" tabindex="-1"></a><span class="cf">for</span> (i <span class="cf">in</span> (<span class="dv">1</span><span class="sc">:</span><span class="fu">length</span>(prob.seq)))</span>
-<span id="cb195-9"><a href="ChapPortMgt.html#cb195-9" aria-hidden="true" tabindex="-1"></a>   {CTE[i] <span class="ot">=</span> <span class="fu">sum</span>(ClaimsBC<span class="sc">*</span>(ClaimsBC<span class="sc">&gt;</span>VaR[i]))<span class="sc">/</span><span class="fu">sum</span>(ClaimsBC<span class="sc">&gt;</span>VaR[i])</span>
-<span id="cb195-10"><a href="ChapPortMgt.html#cb195-10" aria-hidden="true" tabindex="-1"></a>}</span>
-<span id="cb195-11"><a href="ChapPortMgt.html#cb195-11" aria-hidden="true" tabindex="-1"></a><span class="fu">par</span>(<span class="at">mfrow=</span><span class="fu">c</span>(<span class="dv">1</span>, <span class="dv">3</span>))</span>
-<span id="cb195-12"><a href="ChapPortMgt.html#cb195-12" aria-hidden="true" tabindex="-1"></a><span class="fu">options</span>(<span class="at">scipen=</span><span class="dv">10</span>)</span>
-<span id="cb195-13"><a href="ChapPortMgt.html#cb195-13" aria-hidden="true" tabindex="-1"></a><span class="fu">plot</span>(prob.seq, VaR, <span class="at">log =</span> <span class="st">&quot;y&quot;</span>, <span class="at">xlab =</span> <span class="st">&#39;Confidence Level&#39;</span>)</span>
-<span id="cb195-14"><a href="ChapPortMgt.html#cb195-14" aria-hidden="true" tabindex="-1"></a><span class="fu">abline</span>(<span class="at">v =</span> <span class="fl">0.8</span>, <span class="at">col =</span> <span class="st">&quot;blue&quot;</span>, <span class="at">lty =</span> <span class="dv">2</span>)</span>
-<span id="cb195-15"><a href="ChapPortMgt.html#cb195-15" aria-hidden="true" tabindex="-1"></a><span class="fu">plot</span>(prob.seq, CTE, <span class="at">log =</span> <span class="st">&quot;y&quot;</span>, <span class="at">xlab =</span> <span class="st">&#39;Confidence Level&#39;</span>, <span class="at">ylab =</span> <span class="st">&#39;ES&#39;</span>)</span>
-<span id="cb195-16"><a href="ChapPortMgt.html#cb195-16" aria-hidden="true" tabindex="-1"></a><span class="fu">abline</span>(<span class="at">v =</span> <span class="fl">0.8</span>, <span class="at">col =</span> <span class="st">&quot;blue&quot;</span>, <span class="at">lty =</span> <span class="dv">2</span>)</span>
-<span id="cb195-17"><a href="ChapPortMgt.html#cb195-17" aria-hidden="true" tabindex="-1"></a><span class="fu">plot</span>(VaR, CTE, <span class="at">log =</span> <span class="st">&quot;xy&quot;</span>, <span class="at">ylab =</span> <span class="st">&#39;ES&#39;</span>)</span>
-<span id="cb195-18"><a href="ChapPortMgt.html#cb195-18" aria-hidden="true" tabindex="-1"></a><span class="fu">abline</span>(<span class="dv">0</span>,<span class="dv">1</span>)</span></code></pre></div>
+<div class="sourceCode" id="cb195"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb195-1"><a href="ChapPortMgt.html#cb195-1" tabindex="-1"></a>ClaimLev  <span class="ot">&lt;-</span> <span class="fu">read.csv</span>(<span class="st">&quot;Data/CLAIMLEVEL.csv&quot;</span>, <span class="at">header=</span><span class="cn">TRUE</span>)</span>
+<span id="cb195-2"><a href="ChapPortMgt.html#cb195-2" tabindex="-1"></a>ClaimData <span class="ot">&lt;-</span><span class="fu">subset</span>(ClaimLev,Year<span class="sc">==</span><span class="dv">2010</span>);     <span class="co">#2010 subset</span></span>
+<span id="cb195-3"><a href="ChapPortMgt.html#cb195-3" tabindex="-1"></a></span>
+<span id="cb195-4"><a href="ChapPortMgt.html#cb195-4" tabindex="-1"></a>ClaimsBC  <span class="ot">&lt;-</span> ClaimData<span class="sc">$</span>Claim</span>
+<span id="cb195-5"><a href="ChapPortMgt.html#cb195-5" tabindex="-1"></a>prob.seq <span class="ot">=</span> <span class="fu">seq</span>(<span class="fl">0.50</span>, <span class="fl">0.99</span>, <span class="at">by=</span><span class="fl">0.001</span>)</span>
+<span id="cb195-6"><a href="ChapPortMgt.html#cb195-6" tabindex="-1"></a>VaR <span class="ot">=</span> <span class="fu">quantile</span>(ClaimsBC, prob.seq)</span>
+<span id="cb195-7"><a href="ChapPortMgt.html#cb195-7" tabindex="-1"></a>CTE <span class="ot">&lt;-</span> VaR</span>
+<span id="cb195-8"><a href="ChapPortMgt.html#cb195-8" tabindex="-1"></a><span class="cf">for</span> (i <span class="cf">in</span> (<span class="dv">1</span><span class="sc">:</span><span class="fu">length</span>(prob.seq)))</span>
+<span id="cb195-9"><a href="ChapPortMgt.html#cb195-9" tabindex="-1"></a>   {CTE[i] <span class="ot">=</span> <span class="fu">sum</span>(ClaimsBC<span class="sc">*</span>(ClaimsBC<span class="sc">&gt;</span>VaR[i]))<span class="sc">/</span><span class="fu">sum</span>(ClaimsBC<span class="sc">&gt;</span>VaR[i])</span>
+<span id="cb195-10"><a href="ChapPortMgt.html#cb195-10" tabindex="-1"></a>}</span>
+<span id="cb195-11"><a href="ChapPortMgt.html#cb195-11" tabindex="-1"></a><span class="fu">par</span>(<span class="at">mfrow=</span><span class="fu">c</span>(<span class="dv">1</span>, <span class="dv">3</span>))</span>
+<span id="cb195-12"><a href="ChapPortMgt.html#cb195-12" tabindex="-1"></a><span class="fu">options</span>(<span class="at">scipen=</span><span class="dv">10</span>)</span>
+<span id="cb195-13"><a href="ChapPortMgt.html#cb195-13" tabindex="-1"></a><span class="fu">plot</span>(prob.seq, VaR, <span class="at">log =</span> <span class="st">&quot;y&quot;</span>, <span class="at">xlab =</span> <span class="st">&#39;Confidence Level&#39;</span>)</span>
+<span id="cb195-14"><a href="ChapPortMgt.html#cb195-14" tabindex="-1"></a><span class="fu">abline</span>(<span class="at">v =</span> <span class="fl">0.8</span>, <span class="at">col =</span> <span class="st">&quot;blue&quot;</span>, <span class="at">lty =</span> <span class="dv">2</span>)</span>
+<span id="cb195-15"><a href="ChapPortMgt.html#cb195-15" tabindex="-1"></a><span class="fu">plot</span>(prob.seq, CTE, <span class="at">log =</span> <span class="st">&quot;y&quot;</span>, <span class="at">xlab =</span> <span class="st">&#39;Confidence Level&#39;</span>, <span class="at">ylab =</span> <span class="st">&#39;ES&#39;</span>)</span>
+<span id="cb195-16"><a href="ChapPortMgt.html#cb195-16" tabindex="-1"></a><span class="fu">abline</span>(<span class="at">v =</span> <span class="fl">0.8</span>, <span class="at">col =</span> <span class="st">&quot;blue&quot;</span>, <span class="at">lty =</span> <span class="dv">2</span>)</span>
+<span id="cb195-17"><a href="ChapPortMgt.html#cb195-17" tabindex="-1"></a><span class="fu">plot</span>(VaR, CTE, <span class="at">log =</span> <span class="st">&quot;xy&quot;</span>, <span class="at">ylab =</span> <span class="st">&#39;ES&#39;</span>)</span>
+<span id="cb195-18"><a href="ChapPortMgt.html#cb195-18" tabindex="-1"></a><span class="fu">abline</span>(<span class="dv">0</span>,<span class="dv">1</span>)</span></code></pre></div>
 <hr />
 </div>
 <p><strong>Exercise 13.3. Risk Measures with Stop-Loss</strong>. Consider the stop-loss arrangement with retention level <span class="math inline">\(M\)</span> described in Section <a href="ChapPortMgt.html#S:NonProportionalRe">13.4.2</a>.</p>
@@ -2425,7 +2407,7 @@ Figure 13.1: <strong>Property Fund VaR and ES Plots.</strong> The left-hand pane
 VaR_{\alpha}[X \wedge M]  =\left\{
 \begin{array}{cl}
   F^{-1}_{\alpha}  &amp; \text{if } \alpha &lt; F(M) \\
- M                 &amp; \text{if } \alpha \ge F(M)
+M                 &amp; \text{if } \alpha \ge F(M)
 \end{array} \right. ,
 \]</span></p>
 <p>where <span class="math inline">\(F^{-1}_{\alpha}=VaR_{\alpha}(X)\)</span> is a quantile for a random variable <span class="math inline">\(X\)</span>.</p>
@@ -2434,8 +2416,8 @@ VaR_{\alpha}[X \wedge M]  =\left\{
 {\small
 ES_{\alpha}[X \wedge M]=\left\{
 \begin{array}{cl}
-F_{\alpha}^{-1}+\frac{1}{1-\alpha} \left\{ \mathrm{E} (X \wedge M)- \mathrm{E} (X \wedge F_{\alpha}^{-1}) \right\} 
-&amp;  \text{if }  \alpha &lt; F(M)  \\ 
+F_{\alpha}^{-1}+\frac{1}{1-\alpha} \left\{ \mathrm{E} (X \wedge M)- \mathrm{E} (X \wedge F_{\alpha}^{-1}) \right\}
+&amp;  \text{if }  \alpha &lt; F(M)  \\
 M &amp; \text{if } \alpha \ge F(M)\\
 \end{array} \right. .
 }
@@ -2459,7 +2441,7 @@ Figure 13.2: <strong>Property Fund VaR and ES Plots for Various Upper Limits.</s
 <p><span class="math display">\[
 \Pr[X \wedge M \le z ]=F_{X \wedge M}(z) = \left\{
 \begin{array}{cl}
-F(z) &amp;  \text{if }  z &lt; M  \\ 
+F(z) &amp;  \text{if }  z &lt; M  \\
 1 &amp; \text{if } z \ge M\\
 \end{array} \right. .
 \]</span></p>
@@ -2475,8 +2457,8 @@ ES_{\alpha}[X \wedge M]
 \begin{array}{cl}
 F^{-1}_{\alpha} + \frac{1}{1-\alpha} \left\{
 \mathrm{E}[X \wedge M] - \mathrm{E} [X \wedge M \wedge F^{-1}_{\alpha}]
-\right\} 
-&amp;  \text{if }  \alpha &lt; F(M)  \\ 
+\right\}
+&amp;  \text{if }  \alpha &lt; F(M)  \\
 M + \frac{1}{1-\alpha} \left\{
 \mathrm{E}[X \wedge M] - \mathrm{E} [X \wedge M \wedge M]
 \right\}  &amp; \text{if } \alpha \ge F(M)\\
@@ -2485,41 +2467,43 @@ M + \frac{1}{1-\alpha} \left\{
 \begin{array}{cl}
 F^{-1}_{\alpha} + \frac{1}{1-\alpha} \left\{
 \mathrm{E}[X \wedge M] - \mathrm{E} [X  \wedge F^{-1}_{\alpha}]
-\right\} 
-&amp;  \text{if }  \alpha &lt; F(M)  \\ 
+\right\}
+&amp;  \text{if }  \alpha &lt; F(M)  \\
 M   &amp; \text{if } \alpha \ge F(M)\\
 \end{array} \right. ,
- \end{array}
+\end{array}
 \]</span></p>
 <p>as desired.</p>
 <p><strong>c/d.</strong></p>
-<div class="sourceCode" id="cb196"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb196-1"><a href="ChapPortMgt.html#cb196-1" aria-hidden="true" tabindex="-1"></a>ClaimsBC <span class="ot">&lt;-</span> ClaimData<span class="sc">$</span>Claim</span>
-<span id="cb196-2"><a href="ChapPortMgt.html#cb196-2" aria-hidden="true" tabindex="-1"></a>alpha <span class="ot">=</span> <span class="fl">0.99</span></span>
-<span id="cb196-3"><a href="ChapPortMgt.html#cb196-3" aria-hidden="true" tabindex="-1"></a>VaR.alpha <span class="ot">=</span> <span class="fu">quantile</span>(ClaimsBC, alpha)</span>
-<span id="cb196-4"><a href="ChapPortMgt.html#cb196-4" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb196-5"><a href="ChapPortMgt.html#cb196-5" aria-hidden="true" tabindex="-1"></a>maxClaim <span class="ot">&lt;-</span> <span class="fu">max</span>(ClaimsBC)</span>
-<span id="cb196-6"><a href="ChapPortMgt.html#cb196-6" aria-hidden="true" tabindex="-1"></a>sortClaims <span class="ot">&lt;-</span> <span class="fu">sort</span>(ClaimsBC, <span class="at">decreasing =</span> <span class="cn">TRUE</span>)</span>
-<span id="cb196-7"><a href="ChapPortMgt.html#cb196-7" aria-hidden="true" tabindex="-1"></a>maxClaimN <span class="ot">&lt;-</span> sortClaims[<span class="dv">1</span>]</span>
-<span id="cb196-8"><a href="ChapPortMgt.html#cb196-8" aria-hidden="true" tabindex="-1"></a>maxClaimN<span class="fl">.1</span> <span class="ot">&lt;-</span> sortClaims[<span class="dv">2</span>]</span>
-<span id="cb196-9"><a href="ChapPortMgt.html#cb196-9" aria-hidden="true" tabindex="-1"></a>u.seq <span class="ot">=</span> <span class="fu">seq</span>(<span class="fl">0.01</span> <span class="sc">*</span> maxClaimN<span class="fl">.1</span>, <span class="fl">0.25</span> <span class="sc">*</span> maxClaimN<span class="fl">.1</span>, <span class="at">length.out =</span> <span class="dv">110</span>)</span>
-<span id="cb196-10"><a href="ChapPortMgt.html#cb196-10" aria-hidden="true" tabindex="-1"></a>VaR.u <span class="ot">&lt;-</span> <span class="fu">pmin</span>(VaR.alpha, u.seq)</span>
-<span id="cb196-11"><a href="ChapPortMgt.html#cb196-11" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb196-12"><a href="ChapPortMgt.html#cb196-12" aria-hidden="true" tabindex="-1"></a>LEV <span class="ot">&lt;-</span> <span class="fu">mean</span>(<span class="fu">pmin</span>(ClaimsBC, VaR.alpha))</span>
-<span id="cb196-13"><a href="ChapPortMgt.html#cb196-13" aria-hidden="true" tabindex="-1"></a>CTE.u <span class="ot">&lt;-</span> VaR.u</span>
-<span id="cb196-14"><a href="ChapPortMgt.html#cb196-14" aria-hidden="true" tabindex="-1"></a><span class="cf">for</span> (i <span class="cf">in</span> (<span class="dv">1</span><span class="sc">:</span><span class="fu">length</span>(u.seq))) {</span>
-<span id="cb196-15"><a href="ChapPortMgt.html#cb196-15" aria-hidden="true" tabindex="-1"></a>    LEVi <span class="ot">&lt;-</span> <span class="fu">mean</span>(<span class="fu">pmin</span>(ClaimsBC, u.seq[i]))</span>
-<span id="cb196-16"><a href="ChapPortMgt.html#cb196-16" aria-hidden="true" tabindex="-1"></a>    CTE.u[i] <span class="ot">&lt;-</span> ((LEVi <span class="sc">-</span> LEV <span class="sc">+</span> (<span class="dv">1</span> <span class="sc">-</span> alpha) <span class="sc">*</span> VaR.alpha)<span class="sc">/</span>(<span class="dv">1</span> <span class="sc">-</span> alpha)) <span class="sc">*</span> (u.seq[i] <span class="sc">&gt;=</span></span>
-<span id="cb196-17"><a href="ChapPortMgt.html#cb196-17" aria-hidden="true" tabindex="-1"></a>        VaR.alpha) <span class="sc">+</span> u.seq[i] <span class="sc">*</span> (u.seq[i] <span class="sc">&lt;</span> VaR.alpha)</span>
-<span id="cb196-18"><a href="ChapPortMgt.html#cb196-18" aria-hidden="true" tabindex="-1"></a>}</span>
-<span id="cb196-19"><a href="ChapPortMgt.html#cb196-19" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb196-20"><a href="ChapPortMgt.html#cb196-20" aria-hidden="true" tabindex="-1"></a><span class="fu">par</span>(<span class="at">mfrow =</span> <span class="fu">c</span>(<span class="dv">1</span>, <span class="dv">2</span>))</span>
-<span id="cb196-21"><a href="ChapPortMgt.html#cb196-21" aria-hidden="true" tabindex="-1"></a><span class="fu">options</span>(<span class="at">scipen =</span> <span class="dv">10</span>)</span>
-<span id="cb196-22"><a href="ChapPortMgt.html#cb196-22" aria-hidden="true" tabindex="-1"></a><span class="fu">plot</span>(u.seq, VaR.u, <span class="at">xlab =</span> <span class="st">&quot;Upper Limit&quot;</span>, <span class="at">ylab =</span> <span class="st">&quot;VaR&quot;</span>, <span class="at">type =</span> <span class="st">&quot;l&quot;</span>, <span class="at">ylim =</span> <span class="fu">c</span>(<span class="dv">40000</span>,</span>
-<span id="cb196-23"><a href="ChapPortMgt.html#cb196-23" aria-hidden="true" tabindex="-1"></a>    <span class="dv">600000</span>))</span>
-<span id="cb196-24"><a href="ChapPortMgt.html#cb196-24" aria-hidden="true" tabindex="-1"></a><span class="fu">abline</span>(<span class="at">v =</span> VaR.alpha, <span class="at">col =</span> <span class="st">&quot;blue&quot;</span>, <span class="at">lty =</span> <span class="dv">2</span>)</span>
-<span id="cb196-25"><a href="ChapPortMgt.html#cb196-25" aria-hidden="true" tabindex="-1"></a><span class="fu">plot</span>(u.seq, CTE.u, <span class="at">xlab =</span> <span class="st">&quot;Upper Limit&quot;</span>, <span class="at">ylab =</span> <span class="st">&quot;ES&quot;</span>, <span class="at">type =</span> <span class="st">&quot;l&quot;</span>, <span class="at">ylim =</span> <span class="fu">c</span>(<span class="dv">40000</span>,</span>
-<span id="cb196-26"><a href="ChapPortMgt.html#cb196-26" aria-hidden="true" tabindex="-1"></a>    <span class="dv">600000</span>))</span>
-<span id="cb196-27"><a href="ChapPortMgt.html#cb196-27" aria-hidden="true" tabindex="-1"></a><span class="fu">abline</span>(<span class="at">v =</span> VaR.alpha, <span class="at">col =</span> <span class="st">&quot;blue&quot;</span>, <span class="at">lty =</span> <span class="dv">2</span>)</span></code></pre></div>
+<div class="sourceCode" id="cb196"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb196-1"><a href="ChapPortMgt.html#cb196-1" tabindex="-1"></a>ClaimsBC  <span class="ot">&lt;-</span> ClaimData<span class="sc">$</span>Claim</span>
+<span id="cb196-2"><a href="ChapPortMgt.html#cb196-2" tabindex="-1"></a>alpha <span class="ot">=</span> <span class="fl">0.99</span></span>
+<span id="cb196-3"><a href="ChapPortMgt.html#cb196-3" tabindex="-1"></a>VaR.alpha <span class="ot">=</span> <span class="fu">quantile</span>(ClaimsBC, alpha)</span>
+<span id="cb196-4"><a href="ChapPortMgt.html#cb196-4" tabindex="-1"></a></span>
+<span id="cb196-5"><a href="ChapPortMgt.html#cb196-5" tabindex="-1"></a>maxClaim <span class="ot">&lt;-</span> <span class="fu">max</span>(ClaimsBC)</span>
+<span id="cb196-6"><a href="ChapPortMgt.html#cb196-6" tabindex="-1"></a>sortClaims <span class="ot">&lt;-</span> <span class="fu">sort</span>(ClaimsBC, <span class="at">decreasing =</span> <span class="cn">TRUE</span>)</span>
+<span id="cb196-7"><a href="ChapPortMgt.html#cb196-7" tabindex="-1"></a>maxClaimN <span class="ot">&lt;-</span> sortClaims[<span class="dv">1</span>]</span>
+<span id="cb196-8"><a href="ChapPortMgt.html#cb196-8" tabindex="-1"></a>maxClaimN<span class="fl">.1</span> <span class="ot">&lt;-</span> sortClaims[<span class="dv">2</span>]</span>
+<span id="cb196-9"><a href="ChapPortMgt.html#cb196-9" tabindex="-1"></a>u.seq <span class="ot">=</span> <span class="fu">seq</span>(<span class="fl">0.01</span><span class="sc">*</span>maxClaimN<span class="fl">.1</span>, <span class="fl">0.25</span><span class="sc">*</span>maxClaimN<span class="fl">.1</span>, <span class="at">length.out =</span> <span class="dv">110</span>)</span>
+<span id="cb196-10"><a href="ChapPortMgt.html#cb196-10" tabindex="-1"></a>VaR.u <span class="ot">&lt;-</span> <span class="fu">pmin</span>(VaR.alpha, u.seq)</span>
+<span id="cb196-11"><a href="ChapPortMgt.html#cb196-11" tabindex="-1"></a></span>
+<span id="cb196-12"><a href="ChapPortMgt.html#cb196-12" tabindex="-1"></a>LEV <span class="ot">&lt;-</span> <span class="fu">mean</span>(<span class="fu">pmin</span>(ClaimsBC,VaR.alpha))</span>
+<span id="cb196-13"><a href="ChapPortMgt.html#cb196-13" tabindex="-1"></a>CTE.u <span class="ot">&lt;-</span> VaR.u</span>
+<span id="cb196-14"><a href="ChapPortMgt.html#cb196-14" tabindex="-1"></a><span class="cf">for</span> (i <span class="cf">in</span> (<span class="dv">1</span><span class="sc">:</span><span class="fu">length</span>(u.seq)))</span>
+<span id="cb196-15"><a href="ChapPortMgt.html#cb196-15" tabindex="-1"></a>   {</span>
+<span id="cb196-16"><a href="ChapPortMgt.html#cb196-16" tabindex="-1"></a>  LEVi <span class="ot">&lt;-</span> <span class="fu">mean</span>(<span class="fu">pmin</span>(ClaimsBC,u.seq[i]))</span>
+<span id="cb196-17"><a href="ChapPortMgt.html#cb196-17" tabindex="-1"></a>  CTE.u[i] <span class="ot">&lt;-</span>  ((LEVi <span class="sc">-</span> LEV <span class="sc">+</span> (<span class="dv">1</span><span class="sc">-</span>alpha)<span class="sc">*</span>VaR.alpha)<span class="sc">/</span>(<span class="dv">1</span><span class="sc">-</span>alpha))<span class="sc">*</span></span>
+<span id="cb196-18"><a href="ChapPortMgt.html#cb196-18" tabindex="-1"></a>                (u.seq[i] <span class="sc">&gt;=</span> VaR.alpha) <span class="sc">+</span></span>
+<span id="cb196-19"><a href="ChapPortMgt.html#cb196-19" tabindex="-1"></a>                 u.seq[i]<span class="sc">*</span>(u.seq[i] <span class="sc">&lt;</span> VaR.alpha) </span>
+<span id="cb196-20"><a href="ChapPortMgt.html#cb196-20" tabindex="-1"></a>}</span>
+<span id="cb196-21"><a href="ChapPortMgt.html#cb196-21" tabindex="-1"></a></span>
+<span id="cb196-22"><a href="ChapPortMgt.html#cb196-22" tabindex="-1"></a><span class="fu">par</span>(<span class="at">mfrow=</span><span class="fu">c</span>(<span class="dv">1</span>, <span class="dv">2</span>))</span>
+<span id="cb196-23"><a href="ChapPortMgt.html#cb196-23" tabindex="-1"></a><span class="fu">options</span>(<span class="at">scipen=</span><span class="dv">10</span>)</span>
+<span id="cb196-24"><a href="ChapPortMgt.html#cb196-24" tabindex="-1"></a><span class="fu">plot</span>(u.seq, VaR.u, <span class="at">xlab =</span> <span class="st">&#39;Upper Limit&#39;</span>, </span>
+<span id="cb196-25"><a href="ChapPortMgt.html#cb196-25" tabindex="-1"></a>     <span class="at">ylab =</span> <span class="st">&quot;VaR&quot;</span>, <span class="at">type =</span> <span class="st">&#39;l&#39;</span>, <span class="at">ylim =</span> <span class="fu">c</span>(<span class="dv">40000</span>,<span class="dv">600000</span>))</span>
+<span id="cb196-26"><a href="ChapPortMgt.html#cb196-26" tabindex="-1"></a><span class="fu">abline</span>(<span class="at">v =</span> VaR.alpha, <span class="at">col =</span> <span class="st">&quot;blue&quot;</span>, <span class="at">lty =</span> <span class="dv">2</span>)</span>
+<span id="cb196-27"><a href="ChapPortMgt.html#cb196-27" tabindex="-1"></a><span class="fu">plot</span>(u.seq, CTE.u, <span class="at">xlab =</span> <span class="st">&#39;Upper Limit&#39;</span>, </span>
+<span id="cb196-28"><a href="ChapPortMgt.html#cb196-28" tabindex="-1"></a>     <span class="at">ylab =</span> <span class="st">&quot;ES&quot;</span>, <span class="at">type =</span> <span class="st">&#39;l&#39;</span>, <span class="at">ylim =</span> <span class="fu">c</span>(<span class="dv">40000</span>,<span class="dv">600000</span>))</span>
+<span id="cb196-29"><a href="ChapPortMgt.html#cb196-29" tabindex="-1"></a><span class="fu">abline</span>(<span class="at">v =</span> VaR.alpha, <span class="at">col =</span> <span class="st">&quot;blue&quot;</span>, <span class="at">lty =</span> <span class="dv">2</span>)</span></code></pre></div>
 <hr />
 </div>
 <div id="surveyElement13A4">
@@ -2543,19 +2527,22 @@ M   &amp; \text{if } \alpha \ge F(M)\\
 </div>
 <div id="Sec:PortfolioFurtherReadings" class="section level2 hasAnchor" number="13.6">
 <h2><span class="header-section-number">13.6</span> Further Resources and Contributors<a href="ChapPortMgt.html#Sec:PortfolioFurtherReadings" class="anchor-section" aria-label="Anchor link to header"></a></h2>
-<p>We refer the interested reader to <span class="citation"><a href="#ref-denuit2006actuarial" role="doc-biblioref">Denuit et al.</a> (<a href="#ref-denuit2006actuarial" role="doc-biblioref">2006</a>)</span> and <span class="citation"><a href="#ref-hardy2006" role="doc-biblioref">Hardy</a> (<a href="#ref-hardy2006" role="doc-biblioref">2006</a>)</span> for more comprehensive discussions of alternative risk measures for both discrete and continuous random variables. Note, however, that the definition in <span class="citation"><a href="#ref-denuit2006actuarial" role="doc-biblioref">Denuit et al.</a> (<a href="#ref-denuit2006actuarial" role="doc-biblioref">2006</a>)</span> of “expected shortfall” differs from the one in this text. We use the definition of expected shortfall from <span class="citation"><a href="#ref-Wang2022" role="doc-biblioref">Wang and Zitikis</a> (<a href="#ref-Wang2022" role="doc-biblioref">2022</a>)</span>.</p>
-<p>As summarized in <span class="citation"><a href="#ref-Wang2022" role="doc-biblioref">Wang and Zitikis</a> (<a href="#ref-Wang2022" role="doc-biblioref">2022</a>)</span>, both <span class="math inline">\(VaR\)</span> and <span class="math inline">\(ES\)</span> have solid axiomatic foundations and “appear in the banking regulation frameworks of Basel III/IV, as well as in the insurance regulation frameworks of Solvency II and the Swiss Solvency Test.” In addition to the coherence properties introduced in Section <a href="ChapPortMgt.html#Sec:CoherentRiskMeasure">13.3.3</a>, this paper introduces economic axioms to motivate the use of <span class="math inline">\(ES\)</span>. Thus, their usefulness in determining adequate solvency for banks and insurers motivates our emphasis in Section <a href="ChapPortMgt.html#S:RiskMeasure">13.3</a> of these measures.</p>
-<p>Concepts of pricing individual risks were introduced in Chapter <a href="ChapPremiumFoundations.html#ChapPremiumFoundations">10</a>. For a comprehensive treatment of pricing portfolios, we refer to <span class="citation"><a href="#ref-Mildenhall2022" role="doc-biblioref">Mildenhall and Major</a> (<a href="#ref-Mildenhall2022" role="doc-biblioref">2022</a>)</span>.</p>
-<p>There are many superb treatments of reinsurance in the literature. An outstanding book-long introduction is <span class="citation"><a href="#ref-albrecher2017reinsurance" role="doc-biblioref">Albrecher, Beirlant, and Teugels</a> (<a href="#ref-albrecher2017reinsurance" role="doc-biblioref">2017</a>)</span>.</p>
-<p>Some of the examples from this chapter were borrowed from <span class="citation"><a href="#ref-clark1996basics" role="doc-biblioref">Clark</a> (<a href="#ref-clark1996basics" role="doc-biblioref">1996</a>)</span>, <span class="citation"><a href="#ref-klugman2012" role="doc-biblioref">Klugman, Panjer, and Willmot</a> (<a href="#ref-klugman2012" role="doc-biblioref">2012</a>)</span>, and <span class="citation"><a href="#ref-bahnemann2015distributions" role="doc-biblioref">Bahnemann</a> (<a href="#ref-bahnemann2015distributions" role="doc-biblioref">2015</a>)</span>. These resources provide excellent sources for additional discussions and examples.</p>
+<p>We refer the interested reader to <span class="citation">Denuit et al. (<a href="#ref-denuit2006actuarial">2006</a>)</span> and <span class="citation">Hardy (<a href="#ref-hardy2006">2006</a>)</span> for more comprehensive discussions of alternative risk measures for both discrete and continuous random variables. Note, however, that the definition in <span class="citation">Denuit et al. (<a href="#ref-denuit2006actuarial">2006</a>)</span> of “expected shortfall” differs from the one in this text. We use the definition of expected shortfall from <span class="citation">Wang and Zitikis (<a href="#ref-Wang2022">2022</a>)</span>.</p>
+<p>As summarized in <span class="citation">Wang and Zitikis (<a href="#ref-Wang2022">2022</a>)</span>, both <span class="math inline">\(VaR\)</span> and <span class="math inline">\(ES\)</span> have solid axiomatic foundations and “appear in the banking regulation frameworks of Basel III/IV, as well as in the insurance regulation frameworks of Solvency II and the Swiss Solvency Test.” In addition to the coherence properties introduced in Section <a href="ChapPortMgt.html#Sec:CoherentRiskMeasure">13.3.3</a>, this paper introduces economic axioms to motivate the use of <span class="math inline">\(ES\)</span>. Thus, their usefulness in determining adequate solvency for banks and insurers motivates our emphasis in Section <a href="ChapPortMgt.html#S:RiskMeasure">13.3</a> of these measures.</p>
+<p>Concepts of pricing individual risks were introduced in Chapter <a href="ChapPremiumFoundations.html#ChapPremiumFoundations">10</a>. For a comprehensive treatment of pricing portfolios, we refer to <span class="citation">Mildenhall and Major (<a href="#ref-Mildenhall2022">2022</a>)</span>.</p>
+<p>There are many superb treatments of reinsurance in the literature. An outstanding book-long introduction is <span class="citation">Albrecher, Beirlant, and Teugels (<a href="#ref-albrecher2017reinsurance">2017</a>)</span>.</p>
+<p>Some of the examples from this chapter were borrowed from <span class="citation">Clark (<a href="#ref-clark1996basics">1996</a>)</span>, <span class="citation">Klugman, Panjer, and Willmot (<a href="#ref-klugman2012">2012</a>)</span>, and <span class="citation">Bahnemann (<a href="#ref-bahnemann2015distributions">2015</a>)</span>. These resources provide excellent sources for additional discussions and examples.</p>
 <ul>
 <li><strong>Edward (Jed) Frees</strong>, University of Wisconsin-Madison, and <strong>Jianxi Su</strong>, Purdue University were the principal authors of the initial version of this chapter.
 <ul>
 <li>Chapter reviewers include: Fei Huang, Hirokazu (Iwahiro) Iwasawa, Peng Shi, Ranee Thiagarajah, Ping Wang, and Chengguo Weng.</li>
 </ul></li>
-<li><strong>Edward (Jed) Frees</strong>, University of Wisconsin-Madison and Australian National University, is the author of the second edition of this chapter. Email: <a href="mailto:jfrees@bus.wisc.edu" class="email">jfrees@bus.wisc.edu</a> for chapter comments and suggested improvements.</li>
+<li><strong>Edward (Jed) Frees</strong>, University of Wisconsin-Madison and Australian National University, is the author of the second edition of this chapter. Email: <a href="mailto:jfrees@bus.wisc.edu" class="email">jfrees@bus.wisc.edu</a> for chapter comments and suggested improvements.
+<ul>
+<li>Chapter reviewers include Chengguo Weng.</li>
+</ul></li>
 </ul>
-<script type="text/javascript">
+<script>
 function togglecode(id1,id2) {
    var ele = document.getElementById(id1); var text = document.getElementById(id2);
    if (ele.style.display == "block") {ele.style.display = "none"; text.innerHTML = "Show";}
@@ -2657,7 +2644,7 @@ gitbook.start({
     var script = document.createElement("script");
     script.type = "text/javascript";
     var src = "true";
-    if (src === "" || src === "true") src = "https://mathjax.rstudio.com/latest/MathJax.js?config=TeX-MML-AM_CHTML";
+    if (src === "" || src === "true") src = "https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.9/latest.js?config=TeX-MML-AM_CHTML";
     if (location.protocol !== "file:")
       if (/^https?:/.test(src))
         src = src.replace(/^https?:/, '');

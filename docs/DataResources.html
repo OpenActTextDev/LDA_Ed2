@@ -6,7 +6,7 @@
   <meta http-equiv="X-UA-Compatible" content="IE=edge" />
   <title>Chapter 22 Appendix. Data Resources | Loss Data Analytics   Second Edition</title>
   <meta name="description" content="Loss Data Analytics is an interactive, online, freely available text. - The online version will contain many interactive objects (quizzes, computer demonstrations, interactive graphs, video, and the like) to promote deeper learning. - A subset of the book will be available in pdf format for low-cost printing. - The online text will be available in multiple languages to promote access to a worldwide audience." />
-  <meta name="generator" content="bookdown 0.27 and GitBook 2.6.7" />
+  <meta name="generator" content="bookdown 0.39 and GitBook 2.6.7" />
 
   <meta property="og:title" content="Chapter 22 Appendix. Data Resources | Loss Data Analytics   Second Edition" />
   <meta property="og:type" content="book" />
@@ -515,7 +515,7 @@ code span.al { color: #ff0000; font-weight: bold; } /* Alert */
 code span.an { color: #60a0b0; font-weight: bold; font-style: italic; } /* Annotation */
 code span.at { color: #7d9029; } /* Attribute */
 code span.bn { color: #40a070; } /* BaseN */
-code span.bu { } /* BuiltIn */
+code span.bu { color: #008000; } /* BuiltIn */
 code span.cf { color: #007020; font-weight: bold; } /* ControlFlow */
 code span.ch { color: #4070a0; } /* Char */
 code span.cn { color: #880000; } /* Constant */
@@ -528,7 +528,7 @@ code span.er { color: #ff0000; font-weight: bold; } /* Error */
 code span.ex { } /* Extension */
 code span.fl { color: #40a070; } /* Float */
 code span.fu { color: #06287e; } /* Function */
-code span.im { } /* Import */
+code span.im { color: #008000; font-weight: bold; } /* Import */
 code span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Information */
 code span.kw { color: #007020; font-weight: bold; } /* Keyword */
 code span.op { color: #666666; } /* Operator */
@@ -542,6 +542,10 @@ code span.vs { color: #4070a0; } /* VerbatimString */
 code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warning */
 </style>
 
+<style type="text/css">
+  
+  div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+</style>
 <style type="text/css">
 /* Used with Pandoc 2.11+ new --citeproc when CSL is used */
 div.csl-bib-body { }
@@ -1048,7 +1052,7 @@ div.csl-indent {
 <li class="chapter" data-level="16.1" data-path="ChapDependenceModel.html"><a href="ChapDependenceModel.html#S:Measures"><i class="fa fa-check"></i><b>16.1</b> Classic Measures of Scalar Associations</a>
 <ul>
 <li class="chapter" data-level="16.1.1" data-path="ChapDependenceModel.html"><a href="ChapDependenceModel.html#association-measures-for-quantitative-variables"><i class="fa fa-check"></i><b>16.1.1</b> Association Measures for Quantitative Variables</a></li>
-<li class="chapter" data-level="16.1.2" data-path="ChapDependenceModel.html"><a href="ChapDependenceModel.html#rank-based-measures"><i class="fa fa-check"></i><b>16.1.2</b> Rank Based Measures</a></li>
+<li class="chapter" data-level="16.1.2" data-path="ChapDependenceModel.html"><a href="ChapDependenceModel.html#Sec:RankMeasures"><i class="fa fa-check"></i><b>16.1.2</b> Rank Based Measures</a></li>
 <li class="chapter" data-level="16.1.3" data-path="ChapDependenceModel.html"><a href="ChapDependenceModel.html#Sec:tdc"><i class="fa fa-check"></i><b>16.1.3</b> Tail Dependence Coefficients</a></li>
 </ul></li>
 <li class="chapter" data-level="16.2" data-path="ChapDependenceModel.html"><a href="ChapDependenceModel.html#S:Copula"><i class="fa fa-check"></i><b>16.2</b> Introduction to Copulas</a>
@@ -1218,1999 +1222,1003 @@ Second Edition</a>
 <p>The data are available using this download button: <a href="https://raw.githubusercontent.com/OpenActTextDev/LDA_Ed2/main/Data/WiscPropFund.csv" download>
 <button type="button"  style="background-color:#008CBA;color:white">Download the Wisconsin Property Fund Data</button></a></p>
 <table>
-<caption>
-<span id="tab:unnamed-chunk-254">Table 22.1: </span><strong>Variables in the Wisconsin Property Fund Dataset</strong>
-</caption>
+<caption><span id="tab:unnamed-chunk-254">Table 22.1: </span><strong>Variables in the Wisconsin Property Fund Dataset</strong></caption>
+<colgroup>
+<col width="11%" />
+<col width="88%" />
+</colgroup>
 <thead>
-<tr>
-<th style="text-align:left;">
-Variable
-</th>
-<th style="text-align:left;">
-Description
-</th>
+<tr class="header">
+<th align="left">Variable</th>
+<th align="left">Description</th>
 </tr>
 </thead>
 <tbody>
-<tr>
-<td style="text-align:left;">
-PolicyNum
-</td>
-<td style="text-align:left;">
-Policy number
-</td>
+<tr class="odd">
+<td align="left">PolicyNum</td>
+<td align="left">Policy number</td>
 </tr>
-<tr>
-<td style="text-align:left;">
-Year
-</td>
-<td style="text-align:left;">
-Contract year
-</td>
+<tr class="even">
+<td align="left">Year</td>
+<td align="left">Contract year</td>
 </tr>
-<tr>
-<td style="text-align:left;">
-Premium
-</td>
-<td style="text-align:left;">
-Premium
-</td>
+<tr class="odd">
+<td align="left">Premium</td>
+<td align="left">Premium</td>
 </tr>
-<tr>
-<td style="text-align:left;">
-Deduct
-</td>
-<td style="text-align:left;">
-Deductible
-</td>
+<tr class="even">
+<td align="left">Deduct</td>
+<td align="left">Deductible</td>
 </tr>
-<tr>
-<td style="text-align:left;">
-BCcov
-</td>
-<td style="text-align:left;">
-Coverage for building and contents
-</td>
+<tr class="odd">
+<td align="left">BCcov</td>
+<td align="left">Coverage for building and contents</td>
 </tr>
-<tr>
-<td style="text-align:left;">
-Freq
-</td>
-<td style="text-align:left;">
-Number of claims during the year (frequency)
-</td>
+<tr class="even">
+<td align="left">Freq</td>
+<td align="left">Number of claims during the year (frequency)</td>
 </tr>
-<tr>
-<td style="text-align:left;">
-Fire5
-</td>
-<td style="text-align:left;">
-Binary variable to indicate the fire class is below 5
-</td>
+<tr class="odd">
+<td align="left">Fire5</td>
+<td align="left">Binary variable to indicate the fire class is below 5</td>
 </tr>
-<tr>
-<td style="text-align:left;">
-NoClaimCredit
-</td>
-<td style="text-align:left;">
-Binary variable to indicate no claims in the past two years
-</td>
+<tr class="even">
+<td align="left">NoClaimCredit</td>
+<td align="left">Binary variable to indicate no claims in the past two years</td>
 </tr>
-<tr>
-<td style="text-align:left;">
-EntityType
-</td>
-<td style="text-align:left;">
-Categorical variable that is one of six types: 1=Village, 2=City,3=County, 4=Misc, 5=School, or Town)
-</td>
+<tr class="odd">
+<td align="left">EntityType</td>
+<td align="left">Categorical variable that is one of six types: 1=Village, 2=City,3=County, 4=Misc, 5=School, or Town)</td>
 </tr>
-<tr>
-<td style="text-align:left;">
-AlarmCredit
-</td>
-<td style="text-align:left;">
-Categorical variable that is one of four types: (0, 5, 10, or 15) for automatic smoke alarms in main rooms
-</td>
+<tr class="even">
+<td align="left">AlarmCredit</td>
+<td align="left">Categorical variable that is one of four types: (0, 5, 10, or 15) for automatic smoke alarms in main rooms</td>
 </tr>
-<tr>
-<td style="text-align:left;">
-BCClaim
-</td>
-<td style="text-align:left;">
-Builing and contents claims
-</td>
+<tr class="odd">
+<td align="left">BCClaim</td>
+<td align="left">Builing and contents claims</td>
+</tr>
+</tbody>
+</table>
+<table style="width:100%;">
+<caption><span id="tab:unnamed-chunk-255">Table 22.2: </span><strong>Wisconsin Property Fund First Five Rows</strong></caption>
+<colgroup>
+<col width="10%" />
+<col width="5%" />
+<col width="8%" />
+<col width="7%" />
+<col width="9%" />
+<col width="5%" />
+<col width="6%" />
+<col width="14%" />
+<col width="11%" />
+<col width="12%" />
+<col width="8%" />
+</colgroup>
+<thead>
+<tr class="header">
+<th align="center">PolicyNum</th>
+<th align="center">Year</th>
+<th align="center">Premium</th>
+<th align="center">Deduct</th>
+<th align="center">BCcov</th>
+<th align="center">Freq</th>
+<th align="center">Fire5</th>
+<th align="center">NoClaimCredit</th>
+<th align="center">EntityType</th>
+<th align="center">AlarmCredit</th>
+<th align="center">BCClaim</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td align="center">120002</td>
+<td align="center">2006</td>
+<td align="center">9313</td>
+<td align="center">1000</td>
+<td align="center">22714456</td>
+<td align="center">0</td>
+<td align="center">1</td>
+<td align="center">0</td>
+<td align="center">3</td>
+<td align="center">1</td>
+<td align="center">0.00</td>
+</tr>
+<tr class="even">
+<td align="center">120002</td>
+<td align="center">2007</td>
+<td align="center">8767</td>
+<td align="center">1000</td>
+<td align="center">25046646</td>
+<td align="center">0</td>
+<td align="center">1</td>
+<td align="center">0</td>
+<td align="center">3</td>
+<td align="center">1</td>
+<td align="center">0.00</td>
+</tr>
+<tr class="odd">
+<td align="center">120002</td>
+<td align="center">2008</td>
+<td align="center">7090</td>
+<td align="center">1000</td>
+<td align="center">20851525</td>
+<td align="center">0</td>
+<td align="center">1</td>
+<td align="center">1</td>
+<td align="center">3</td>
+<td align="center">1</td>
+<td align="center">0.00</td>
+</tr>
+<tr class="even">
+<td align="center">120002</td>
+<td align="center">2009</td>
+<td align="center">8522</td>
+<td align="center">1000</td>
+<td align="center">21852696</td>
+<td align="center">0</td>
+<td align="center">1</td>
+<td align="center">1</td>
+<td align="center">3</td>
+<td align="center">1</td>
+<td align="center">0.00</td>
+</tr>
+<tr class="odd">
+<td align="center">120002</td>
+<td align="center">2010</td>
+<td align="center">7994</td>
+<td align="center">1000</td>
+<td align="center">23511493</td>
+<td align="center">1</td>
+<td align="center">1</td>
+<td align="center">1</td>
+<td align="center">3</td>
+<td align="center">1</td>
+<td align="center">6838.87</td>
 </tr>
 </tbody>
 </table>
 <table>
-<caption>
-<span id="tab:unnamed-chunk-255">Table 22.2: </span><strong>Wisconsin Property Fund First Five Rows</strong>
-</caption>
+<caption><span id="tab:unnamed-chunk-255">Table 22.2: </span><strong>Wisconsin Property Fund Last Five Rows</strong></caption>
+<colgroup>
+<col width="10%" />
+<col width="5%" />
+<col width="8%" />
+<col width="7%" />
+<col width="10%" />
+<col width="5%" />
+<col width="6%" />
+<col width="13%" />
+<col width="11%" />
+<col width="11%" />
+<col width="10%" />
+</colgroup>
 <thead>
-<tr>
-<th style="text-align:center;">
-PolicyNum
-</th>
-<th style="text-align:center;">
-Year
-</th>
-<th style="text-align:center;">
-Premium
-</th>
-<th style="text-align:center;">
-Deduct
-</th>
-<th style="text-align:center;">
-BCcov
-</th>
-<th style="text-align:center;">
-Freq
-</th>
-<th style="text-align:center;">
-Fire5
-</th>
-<th style="text-align:center;">
-NoClaimCredit
-</th>
-<th style="text-align:center;">
-EntityType
-</th>
-<th style="text-align:center;">
-AlarmCredit
-</th>
-<th style="text-align:center;">
-BCClaim
-</th>
+<tr class="header">
+<th align="center">PolicyNum</th>
+<th align="center">Year</th>
+<th align="center">Premium</th>
+<th align="center">Deduct</th>
+<th align="center">BCcov</th>
+<th align="center">Freq</th>
+<th align="center">Fire5</th>
+<th align="center">NoClaimCredit</th>
+<th align="center">EntityType</th>
+<th align="center">AlarmCredit</th>
+<th align="center">BCClaim</th>
 </tr>
 </thead>
 <tbody>
-<tr>
-<td style="text-align:center;">
-120002
-</td>
-<td style="text-align:center;">
-2006
-</td>
-<td style="text-align:center;">
-9313
-</td>
-<td style="text-align:center;">
-1000
-</td>
-<td style="text-align:center;">
-22714456
-</td>
-<td style="text-align:center;">
-0
-</td>
-<td style="text-align:center;">
-1
-</td>
-<td style="text-align:center;">
-0
-</td>
-<td style="text-align:center;">
-3
-</td>
-<td style="text-align:center;">
-1
-</td>
-<td style="text-align:center;">
-0.00
-</td>
+<tr class="odd">
+<td align="center">180787</td>
+<td align="center">2010</td>
+<td align="center">199</td>
+<td align="center">500</td>
+<td align="center">285000</td>
+<td align="center">0</td>
+<td align="center">1</td>
+<td align="center">1</td>
+<td align="center">4</td>
+<td align="center">1</td>
+<td align="center">0.00</td>
 </tr>
-<tr>
-<td style="text-align:center;">
-120002
-</td>
-<td style="text-align:center;">
-2007
-</td>
-<td style="text-align:center;">
-8767
-</td>
-<td style="text-align:center;">
-1000
-</td>
-<td style="text-align:center;">
-25046646
-</td>
-<td style="text-align:center;">
-0
-</td>
-<td style="text-align:center;">
-1
-</td>
-<td style="text-align:center;">
-0
-</td>
-<td style="text-align:center;">
-3
-</td>
-<td style="text-align:center;">
-1
-</td>
-<td style="text-align:center;">
-0.00
-</td>
+<tr class="even">
+<td align="center">180788</td>
+<td align="center">2010</td>
+<td align="center">58344</td>
+<td align="center">100000</td>
+<td align="center">416739800</td>
+<td align="center">1</td>
+<td align="center">1</td>
+<td align="center">0</td>
+<td align="center">4</td>
+<td align="center">1</td>
+<td align="center">168304.05</td>
 </tr>
-<tr>
-<td style="text-align:center;">
-120002
-</td>
-<td style="text-align:center;">
-2008
-</td>
-<td style="text-align:center;">
-7090
-</td>
-<td style="text-align:center;">
-1000
-</td>
-<td style="text-align:center;">
-20851525
-</td>
-<td style="text-align:center;">
-0
-</td>
-<td style="text-align:center;">
-1
-</td>
-<td style="text-align:center;">
-1
-</td>
-<td style="text-align:center;">
-3
-</td>
-<td style="text-align:center;">
-1
-</td>
-<td style="text-align:center;">
-0.00
-</td>
+<tr class="odd">
+<td align="center">180789</td>
+<td align="center">2010</td>
+<td align="center">295</td>
+<td align="center">500</td>
+<td align="center">500988</td>
+<td align="center">1</td>
+<td align="center">1</td>
+<td align="center">0</td>
+<td align="center">4</td>
+<td align="center">1</td>
+<td align="center">1034.33</td>
 </tr>
-<tr>
-<td style="text-align:center;">
-120002
-</td>
-<td style="text-align:center;">
-2009
-</td>
-<td style="text-align:center;">
-8522
-</td>
-<td style="text-align:center;">
-1000
-</td>
-<td style="text-align:center;">
-21852696
-</td>
-<td style="text-align:center;">
-0
-</td>
-<td style="text-align:center;">
-1
-</td>
-<td style="text-align:center;">
-1
-</td>
-<td style="text-align:center;">
-3
-</td>
-<td style="text-align:center;">
-1
-</td>
-<td style="text-align:center;">
-0.00
-</td>
+<tr class="even">
+<td align="center">180790</td>
+<td align="center">2010</td>
+<td align="center">2077</td>
+<td align="center">1000</td>
+<td align="center">3580665</td>
+<td align="center">0</td>
+<td align="center">1</td>
+<td align="center">0</td>
+<td align="center">4</td>
+<td align="center">4</td>
+<td align="center">0.00</td>
 </tr>
-<tr>
-<td style="text-align:center;">
-120002
-</td>
-<td style="text-align:center;">
-2010
-</td>
-<td style="text-align:center;">
-7994
-</td>
-<td style="text-align:center;">
-1000
-</td>
-<td style="text-align:center;">
-23511493
-</td>
-<td style="text-align:center;">
-1
-</td>
-<td style="text-align:center;">
-1
-</td>
-<td style="text-align:center;">
-1
-</td>
-<td style="text-align:center;">
-3
-</td>
-<td style="text-align:center;">
-1
-</td>
-<td style="text-align:center;">
-6838.87
-</td>
-</tr>
-</tbody>
-</table>
-<table>
-<caption>
-<span id="tab:unnamed-chunk-255">Table 22.2: </span><strong>Wisconsin Property Fund Last Five Rows</strong>
-</caption>
-<thead>
-<tr>
-<th style="text-align:center;">
-PolicyNum
-</th>
-<th style="text-align:center;">
-Year
-</th>
-<th style="text-align:center;">
-Premium
-</th>
-<th style="text-align:center;">
-Deduct
-</th>
-<th style="text-align:center;">
-BCcov
-</th>
-<th style="text-align:center;">
-Freq
-</th>
-<th style="text-align:center;">
-Fire5
-</th>
-<th style="text-align:center;">
-NoClaimCredit
-</th>
-<th style="text-align:center;">
-EntityType
-</th>
-<th style="text-align:center;">
-AlarmCredit
-</th>
-<th style="text-align:center;">
-BCClaim
-</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td style="text-align:center;">
-180787
-</td>
-<td style="text-align:center;">
-2010
-</td>
-<td style="text-align:center;">
-199
-</td>
-<td style="text-align:center;">
-500
-</td>
-<td style="text-align:center;">
-285000
-</td>
-<td style="text-align:center;">
-0
-</td>
-<td style="text-align:center;">
-1
-</td>
-<td style="text-align:center;">
-1
-</td>
-<td style="text-align:center;">
-4
-</td>
-<td style="text-align:center;">
-1
-</td>
-<td style="text-align:center;">
-0.00
-</td>
-</tr>
-<tr>
-<td style="text-align:center;">
-180788
-</td>
-<td style="text-align:center;">
-2010
-</td>
-<td style="text-align:center;">
-58344
-</td>
-<td style="text-align:center;">
-100000
-</td>
-<td style="text-align:center;">
-416739800
-</td>
-<td style="text-align:center;">
-1
-</td>
-<td style="text-align:center;">
-1
-</td>
-<td style="text-align:center;">
-0
-</td>
-<td style="text-align:center;">
-4
-</td>
-<td style="text-align:center;">
-1
-</td>
-<td style="text-align:center;">
-168304.05
-</td>
-</tr>
-<tr>
-<td style="text-align:center;">
-180789
-</td>
-<td style="text-align:center;">
-2010
-</td>
-<td style="text-align:center;">
-295
-</td>
-<td style="text-align:center;">
-500
-</td>
-<td style="text-align:center;">
-500988
-</td>
-<td style="text-align:center;">
-1
-</td>
-<td style="text-align:center;">
-1
-</td>
-<td style="text-align:center;">
-0
-</td>
-<td style="text-align:center;">
-4
-</td>
-<td style="text-align:center;">
-1
-</td>
-<td style="text-align:center;">
-1034.33
-</td>
-</tr>
-<tr>
-<td style="text-align:center;">
-180790
-</td>
-<td style="text-align:center;">
-2010
-</td>
-<td style="text-align:center;">
-2077
-</td>
-<td style="text-align:center;">
-1000
-</td>
-<td style="text-align:center;">
-3580665
-</td>
-<td style="text-align:center;">
-0
-</td>
-<td style="text-align:center;">
-1
-</td>
-<td style="text-align:center;">
-0
-</td>
-<td style="text-align:center;">
-4
-</td>
-<td style="text-align:center;">
-4
-</td>
-<td style="text-align:center;">
-0.00
-</td>
-</tr>
-<tr>
-<td style="text-align:center;">
-180791
-</td>
-<td style="text-align:center;">
-2010
-</td>
-<td style="text-align:center;">
-81
-</td>
-<td style="text-align:center;">
-500
-</td>
-<td style="text-align:center;">
-118800
-</td>
-<td style="text-align:center;">
-0
-</td>
-<td style="text-align:center;">
-1
-</td>
-<td style="text-align:center;">
-0
-</td>
-<td style="text-align:center;">
-4
-</td>
-<td style="text-align:center;">
-1
-</td>
-<td style="text-align:center;">
-0.00
-</td>
+<tr class="odd">
+<td align="center">180791</td>
+<td align="center">2010</td>
+<td align="center">81</td>
+<td align="center">500</td>
+<td align="center">118800</td>
+<td align="center">0</td>
+<td align="center">1</td>
+<td align="center">0</td>
+<td align="center">4</td>
+<td align="center">1</td>
+<td align="center">0.00</td>
 </tr>
 </tbody>
 </table>
 </div>
 <div id="Sec:DataTravel" class="section level2 hasAnchor" number="22.2">
 <h2><span class="header-section-number">22.2</span> ANU Corporate Travel Data<a href="DataResources.html#Sec:DataTravel" class="anchor-section" aria-label="Anchor link to header"></a></h2>
-<p>Universities purchase corporate travel policies to cover employees and students traveling on official university business for a wide variety of accidents and incidents while away from the campus or primary workplace. This broad coverage includes medical care and evacuation, loss of personal property, extraction for political and weather related reasons, and more. See <span class="citation"><a href="#ref-frees2022ANURisks" role="doc-biblioref">Frees and Butt</a> (<a href="#ref-frees2022ANURisks" role="doc-biblioref">2022</a>)</span> for more information about this coverage.</p>
+<p>Universities purchase corporate travel policies to cover employees and students traveling on official university business for a wide variety of accidents and incidents while away from the campus or primary workplace. This broad coverage includes medical care and evacuation, loss of personal property, extraction for political and weather related reasons, and more. See <span class="citation">Frees and Butt (<a href="#ref-frees2022ANURisks">2022</a>)</span> for more information about this coverage.</p>
 <p>There are 2107 observations in this dataset. The variable names are described in Table <a href="DataResources.html#tab:DescribeTravel">22.3</a> and the first and last five observations are in Table <a href="DataResources.html#tab:PrintNumTravel">22.4</a>.</p>
 <p>Data are available using this button: <a href="https://datacommons.anu.edu.au/DataCommons/rest/records/anudc:6160/data/TravelClaims2022.csv"
 download >
 <button type="button"  style="background-color:#008CBA;color:white">Download Corporate Travel Claims Data</button></a>.</p>
 <table>
-<caption>
-<span id="tab:DescribeTravel">Table 22.3: </span><strong>Variables in the Corporate Travel Dataset</strong>
-</caption>
+<caption><span id="tab:DescribeTravel">Table 22.3: </span><strong>Variables in the Corporate Travel Dataset</strong></caption>
+<colgroup>
+<col width="17%" />
+<col width="82%" />
+</colgroup>
 <thead>
-<tr>
-<th style="text-align:left;">
-Variable
-</th>
-<th style="text-align:left;">
-Description
-</th>
+<tr class="header">
+<th align="left">Variable</th>
+<th align="left">Description</th>
 </tr>
 </thead>
 <tbody>
-<tr>
-<td style="text-align:left;">
-UW Year
-</td>
-<td style="text-align:left;">
-Underwriting Year
-</td>
+<tr class="odd">
+<td align="left">UW Year</td>
+<td align="left">Underwriting Year</td>
 </tr>
-<tr>
-<td style="text-align:left;">
-Loss Date
-</td>
-<td style="text-align:left;">
-Date that the loss occurred
-</td>
+<tr class="even">
+<td align="left">Loss Date</td>
+<td align="left">Date that the loss occurred</td>
 </tr>
-<tr>
-<td style="text-align:left;">
-Reported Date
-</td>
-<td style="text-align:left;">
-Date that the loss was reported
-</td>
+<tr class="odd">
+<td align="left">Reported Date</td>
+<td align="left">Date that the loss was reported</td>
 </tr>
-<tr>
-<td style="text-align:left;">
-Last Trans Date
-</td>
-<td style="text-align:left;">
-Last date in which there was a transaction regarding the loss
-</td>
+<tr class="even">
+<td align="left">Last Trans Date</td>
+<td align="left">Last date in which there was a transaction regarding the loss</td>
 </tr>
-<tr>
-<td style="text-align:left;">
-Paid Loss
-</td>
-<td style="text-align:left;">
-Cumulative amount paid on the loss
-</td>
+<tr class="odd">
+<td align="left">Paid Loss</td>
+<td align="left">Cumulative amount paid on the loss</td>
 </tr>
-<tr>
-<td style="text-align:left;">
-Outstanding Reserve
-</td>
-<td style="text-align:left;">
-Estimate of the loss amount yet to be paid
-</td>
+<tr class="even">
+<td align="left">Outstanding Reserve</td>
+<td align="left">Estimate of the loss amount yet to be paid</td>
 </tr>
-<tr>
-<td style="text-align:left;">
-Incurred Loss
-</td>
-<td style="text-align:left;">
-Sum of the amount paid and the estimate of future payments
-</td>
+<tr class="odd">
+<td align="left">Incurred Loss</td>
+<td align="left">Sum of the amount paid and the estimate of future payments</td>
 </tr>
-<tr>
-<td style="text-align:left;">
-Status
-</td>
-<td style="text-align:left;">
-An indicator as to whether the claim has been deemed settled (closed) or not settled (open)
-</td>
+<tr class="even">
+<td align="left">Status</td>
+<td align="left">An indicator as to whether the claim has been deemed settled (closed) or not settled (open)</td>
 </tr>
 </tbody>
 </table>
-<table>
-<caption>
-<span id="tab:PrintNumTravel">Table 22.4: </span><strong>Corporate Travel Data First Five Rows</strong>
-</caption>
+<table style="width:100%;">
+<caption><span id="tab:PrintNumTravel">Table 22.4: </span><strong>Corporate Travel Data First Five Rows</strong></caption>
+<colgroup>
+<col width="8%" />
+<col width="11%" />
+<col width="13%" />
+<col width="15%" />
+<col width="10%" />
+<col width="19%" />
+<col width="13%" />
+<col width="7%" />
+</colgroup>
 <thead>
-<tr>
-<th style="text-align:center;">
-UW.Year
-</th>
-<th style="text-align:center;">
-Loss.Date
-</th>
-<th style="text-align:center;">
-Reported.Date
-</th>
-<th style="text-align:center;">
-Last.Trans.Date
-</th>
-<th style="text-align:center;">
-Paid.Loss
-</th>
-<th style="text-align:center;">
-Outstanding.Reserve
-</th>
-<th style="text-align:center;">
-Incurred.Loss
-</th>
-<th style="text-align:center;">
-Status
-</th>
+<tr class="header">
+<th align="center">UW.Year</th>
+<th align="center">Loss.Date</th>
+<th align="center">Reported.Date</th>
+<th align="center">Last.Trans.Date</th>
+<th align="center">Paid.Loss</th>
+<th align="center">Outstanding.Reserve</th>
+<th align="center">Incurred.Loss</th>
+<th align="center">Status</th>
 </tr>
 </thead>
 <tbody>
-<tr>
-<td style="text-align:center;">
-2021
-</td>
-<td style="text-align:center;">
-19/12/2021
-</td>
-<td style="text-align:center;">
-20/12/2021
-</td>
-<td style="text-align:center;">
-24/12/2021
-</td>
-<td style="text-align:center;">
-10000.00
-</td>
-<td style="text-align:center;">
-0
-</td>
-<td style="text-align:center;">
-10000.00
-</td>
-<td style="text-align:center;">
-Closed
-</td>
+<tr class="odd">
+<td align="center">2021</td>
+<td align="center">19/12/2021</td>
+<td align="center">20/12/2021</td>
+<td align="center">24/12/2021</td>
+<td align="center">10000.00</td>
+<td align="center">0</td>
+<td align="center">10000.00</td>
+<td align="center">Closed</td>
 </tr>
-<tr>
-<td style="text-align:center;">
-2021
-</td>
-<td style="text-align:center;">
-9/4/2022
-</td>
-<td style="text-align:center;">
-29/04/2022
-</td>
-<td style="text-align:center;">
-30/05/2022
-</td>
-<td style="text-align:center;">
-423.08
-</td>
-<td style="text-align:center;">
-0
-</td>
-<td style="text-align:center;">
-423.08
-</td>
-<td style="text-align:center;">
-Closed
-</td>
+<tr class="even">
+<td align="center">2021</td>
+<td align="center">9/4/2022</td>
+<td align="center">29/04/2022</td>
+<td align="center">30/05/2022</td>
+<td align="center">423.08</td>
+<td align="center">0</td>
+<td align="center">423.08</td>
+<td align="center">Closed</td>
 </tr>
-<tr>
-<td style="text-align:center;">
-2021
-</td>
-<td style="text-align:center;">
-2/5/2022
-</td>
-<td style="text-align:center;">
-4/5/2022
-</td>
-<td style="text-align:center;">
-</td>
-<td style="text-align:center;">
-0.00
-</td>
-<td style="text-align:center;">
-500
-</td>
-<td style="text-align:center;">
-500.00
-</td>
-<td style="text-align:center;">
-Open
-</td>
+<tr class="odd">
+<td align="center">2021</td>
+<td align="center">2/5/2022</td>
+<td align="center">4/5/2022</td>
+<td align="center"></td>
+<td align="center">0.00</td>
+<td align="center">500</td>
+<td align="center">500.00</td>
+<td align="center">Open</td>
 </tr>
-<tr>
-<td style="text-align:center;">
-2021
-</td>
-<td style="text-align:center;">
-5/5/2022
-</td>
-<td style="text-align:center;">
-17/05/2022
-</td>
-<td style="text-align:center;">
-</td>
-<td style="text-align:center;">
-0.00
-</td>
-<td style="text-align:center;">
-562
-</td>
-<td style="text-align:center;">
-562.00
-</td>
-<td style="text-align:center;">
-Open
-</td>
+<tr class="even">
+<td align="center">2021</td>
+<td align="center">5/5/2022</td>
+<td align="center">17/05/2022</td>
+<td align="center"></td>
+<td align="center">0.00</td>
+<td align="center">562</td>
+<td align="center">562.00</td>
+<td align="center">Open</td>
 </tr>
-<tr>
-<td style="text-align:center;">
-2021
-</td>
-<td style="text-align:center;">
-30/04/2022
-</td>
-<td style="text-align:center;">
-27/05/2022
-</td>
-<td style="text-align:center;">
-10/6/2022
-</td>
-<td style="text-align:center;">
-1500.00
-</td>
-<td style="text-align:center;">
-0
-</td>
-<td style="text-align:center;">
-1500.00
-</td>
-<td style="text-align:center;">
-Closed
-</td>
+<tr class="odd">
+<td align="center">2021</td>
+<td align="center">30/04/2022</td>
+<td align="center">27/05/2022</td>
+<td align="center">10/6/2022</td>
+<td align="center">1500.00</td>
+<td align="center">0</td>
+<td align="center">1500.00</td>
+<td align="center">Closed</td>
 </tr>
 </tbody>
 </table>
-<table>
-<caption>
-<span id="tab:PrintNumTravel">Table 22.4: </span><strong>Corporate Travel Data Last Five Rows</strong>
-</caption>
+<table style="width:100%;">
+<caption><span id="tab:PrintNumTravel">Table 22.4: </span><strong>Corporate Travel Data Last Five Rows</strong></caption>
+<colgroup>
+<col width="8%" />
+<col width="11%" />
+<col width="13%" />
+<col width="15%" />
+<col width="10%" />
+<col width="19%" />
+<col width="13%" />
+<col width="7%" />
+</colgroup>
 <thead>
-<tr>
-<th style="text-align:center;">
-UW.Year
-</th>
-<th style="text-align:center;">
-Loss.Date
-</th>
-<th style="text-align:center;">
-Reported.Date
-</th>
-<th style="text-align:center;">
-Last.Trans.Date
-</th>
-<th style="text-align:center;">
-Paid.Loss
-</th>
-<th style="text-align:center;">
-Outstanding.Reserve
-</th>
-<th style="text-align:center;">
-Incurred.Loss
-</th>
-<th style="text-align:center;">
-Status
-</th>
+<tr class="header">
+<th align="center">UW.Year</th>
+<th align="center">Loss.Date</th>
+<th align="center">Reported.Date</th>
+<th align="center">Last.Trans.Date</th>
+<th align="center">Paid.Loss</th>
+<th align="center">Outstanding.Reserve</th>
+<th align="center">Incurred.Loss</th>
+<th align="center">Status</th>
 </tr>
 </thead>
 <tbody>
-<tr>
-<td style="text-align:center;">
-2006
-</td>
-<td style="text-align:center;">
-1/11/2006
-</td>
-<td style="text-align:center;">
-19/06/2007
-</td>
-<td style="text-align:center;">
-</td>
-<td style="text-align:center;">
-0.00
-</td>
-<td style="text-align:center;">
-0
-</td>
-<td style="text-align:center;">
-0.00
-</td>
-<td style="text-align:center;">
-Closed
-</td>
+<tr class="odd">
+<td align="center">2006</td>
+<td align="center">1/11/2006</td>
+<td align="center">19/06/2007</td>
+<td align="center"></td>
+<td align="center">0.00</td>
+<td align="center">0</td>
+<td align="center">0.00</td>
+<td align="center">Closed</td>
 </tr>
-<tr>
-<td style="text-align:center;">
-2006
-</td>
-<td style="text-align:center;">
-24/06/2007
-</td>
-<td style="text-align:center;">
-26/06/2007
-</td>
-<td style="text-align:center;">
-8/1/2008
-</td>
-<td style="text-align:center;">
-6278.10
-</td>
-<td style="text-align:center;">
-0
-</td>
-<td style="text-align:center;">
-6278.10
-</td>
-<td style="text-align:center;">
-Closed
-</td>
+<tr class="even">
+<td align="center">2006</td>
+<td align="center">24/06/2007</td>
+<td align="center">26/06/2007</td>
+<td align="center">8/1/2008</td>
+<td align="center">6278.10</td>
+<td align="center">0</td>
+<td align="center">6278.10</td>
+<td align="center">Closed</td>
 </tr>
-<tr>
-<td style="text-align:center;">
-2006
-</td>
-<td style="text-align:center;">
-4/7/2007
-</td>
-<td style="text-align:center;">
-6/7/2007
-</td>
-<td style="text-align:center;">
-11/9/2007
-</td>
-<td style="text-align:center;">
-114.50
-</td>
-<td style="text-align:center;">
-0
-</td>
-<td style="text-align:center;">
-114.50
-</td>
-<td style="text-align:center;">
-Closed
-</td>
+<tr class="odd">
+<td align="center">2006</td>
+<td align="center">4/7/2007</td>
+<td align="center">6/7/2007</td>
+<td align="center">11/9/2007</td>
+<td align="center">114.50</td>
+<td align="center">0</td>
+<td align="center">114.50</td>
+<td align="center">Closed</td>
 </tr>
-<tr>
-<td style="text-align:center;">
-2006
-</td>
-<td style="text-align:center;">
-20/05/2007
-</td>
-<td style="text-align:center;">
-26/06/2007
-</td>
-<td style="text-align:center;">
-14/07/2007
-</td>
-<td style="text-align:center;">
-135.65
-</td>
-<td style="text-align:center;">
-0
-</td>
-<td style="text-align:center;">
-135.65
-</td>
-<td style="text-align:center;">
-Closed
-</td>
+<tr class="even">
+<td align="center">2006</td>
+<td align="center">20/05/2007</td>
+<td align="center">26/06/2007</td>
+<td align="center">14/07/2007</td>
+<td align="center">135.65</td>
+<td align="center">0</td>
+<td align="center">135.65</td>
+<td align="center">Closed</td>
 </tr>
-<tr>
-<td style="text-align:center;">
-2006
-</td>
-<td style="text-align:center;">
-15/02/2007
-</td>
-<td style="text-align:center;">
-27/06/2007
-</td>
-<td style="text-align:center;">
-14/07/2007
-</td>
-<td style="text-align:center;">
-1207.75
-</td>
-<td style="text-align:center;">
-0
-</td>
-<td style="text-align:center;">
-1207.75
-</td>
-<td style="text-align:center;">
-Closed
-</td>
+<tr class="odd">
+<td align="center">2006</td>
+<td align="center">15/02/2007</td>
+<td align="center">27/06/2007</td>
+<td align="center">14/07/2007</td>
+<td align="center">1207.75</td>
+<td align="center">0</td>
+<td align="center">1207.75</td>
+<td align="center">Closed</td>
 </tr>
 </tbody>
 </table>
 <p><br></p>
-<p><em>Source</em>: Frees, Edward and Butt, Adam (2022). “ANU Corporate Travel Insurance Claims 2022.” Australian National University Data Commons. DOI <a href="https://doi.org/10.25911/vrdw-9f32" class="uri">https://doi.org/10.25911/vrdw-9f32</a>.</p>
+<p><em>Source</em>: Frees, Edward and Butt, Adam (2022). “ANU Corporate Travel Insurance Claims 2022”. Australian National University Data Commons. DOI <a href="https://doi.org/10.25911/vrdw-9f32" class="uri">https://doi.org/10.25911/vrdw-9f32</a>.</p>
 </div>
 <div id="Sec:DataGPA" class="section level2 hasAnchor" number="22.3">
 <h2><span class="header-section-number">22.3</span> ANU Group Personal Accident Data<a href="DataResources.html#Sec:DataGPA" class="anchor-section" aria-label="Anchor link to header"></a></h2>
-<p>Group personal accident insurance offers financial protection in case of injury or death resulting from an incident that occurs on the job. Like workers’ compensation, group personal accident offers insurance coverage and liability insurance protection against accidental death or injury. Unlike workers’ compensation, group personal accident covers students and ANU’s voluntary workers. See <span class="citation"><a href="#ref-frees2022ANURisks" role="doc-biblioref">Frees and Butt</a> (<a href="#ref-frees2022ANURisks" role="doc-biblioref">2022</a>)</span> for more information about this coverage.</p>
+<p>Group personal accident insurance offers financial protection in case of injury or death resulting from an incident that occurs on the job. Like workers’ compensation, group personal accident offers insurance coverage and liability insurance protection against accidental death or injury. Unlike workers’ compensation, group personal accident covers students and ANU’s voluntary workers. See <span class="citation">Frees and Butt (<a href="#ref-frees2022ANURisks">2022</a>)</span> for more information about this coverage.</p>
 <p>There are 148 observations in this dataset. The variable names are described in Table <a href="DataResources.html#tab:DescribeGPA">22.5</a> and the first and last five observations are in Table <a href="DataResources.html#tab:PrintNumGPA">22.6</a>.</p>
 <p>Data are available using this button: <a href="https://datacommons.anu.edu.au/DataCommons/rest/records/anudc:6164/data/GroupPersonalAccidentClaims2022.csv" download > <button type="button"  style="background-color:#008CBA;color:white">Download Group Personal Accident Claims Data</button></a>.</p>
 <table>
-<caption>
-<span id="tab:DescribeGPA">Table 22.5: </span><strong>Variables in the Group Personal Accident Dataset</strong>
-</caption>
+<caption><span id="tab:DescribeGPA">Table 22.5: </span><strong>Variables in the Group Personal Accident Dataset</strong></caption>
+<colgroup>
+<col width="17%" />
+<col width="82%" />
+</colgroup>
 <thead>
-<tr>
-<th style="text-align:left;">
-Variable
-</th>
-<th style="text-align:left;">
-Description
-</th>
+<tr class="header">
+<th align="left">Variable</th>
+<th align="left">Description</th>
 </tr>
 </thead>
 <tbody>
-<tr>
-<td style="text-align:left;">
-UW Year
-</td>
-<td style="text-align:left;">
-Underwriting Year
-</td>
+<tr class="odd">
+<td align="left">UW Year</td>
+<td align="left">Underwriting Year</td>
 </tr>
-<tr>
-<td style="text-align:left;">
-Loss Date
-</td>
-<td style="text-align:left;">
-Date that the loss occurred
-</td>
+<tr class="even">
+<td align="left">Loss Date</td>
+<td align="left">Date that the loss occurred</td>
 </tr>
-<tr>
-<td style="text-align:left;">
-Last Trans Date
-</td>
-<td style="text-align:left;">
-Last date in which there was a transaction regarding the loss.
-</td>
+<tr class="odd">
+<td align="left">Last Trans Date</td>
+<td align="left">Last date in which there was a transaction regarding the loss.</td>
 </tr>
-<tr>
-<td style="text-align:left;">
-Paid Loss
-</td>
-<td style="text-align:left;">
-Cumulative amount paid on the loss
-</td>
+<tr class="even">
+<td align="left">Paid Loss</td>
+<td align="left">Cumulative amount paid on the loss</td>
 </tr>
-<tr>
-<td style="text-align:left;">
-Outstanding Reserve
-</td>
-<td style="text-align:left;">
-Estimate of the loss amount yet to be paid
-</td>
+<tr class="odd">
+<td align="left">Outstanding Reserve</td>
+<td align="left">Estimate of the loss amount yet to be paid</td>
 </tr>
-<tr>
-<td style="text-align:left;">
-Incurred Loss
-</td>
-<td style="text-align:left;">
-Sum of the amount paid and the estimate of future payments
-</td>
+<tr class="even">
+<td align="left">Incurred Loss</td>
+<td align="left">Sum of the amount paid and the estimate of future payments</td>
 </tr>
-<tr>
-<td style="text-align:left;">
-Status
-</td>
-<td style="text-align:left;">
-An indicator as to whether the claim has been deemed settled (closed) or not settled (open)
-</td>
+<tr class="odd">
+<td align="left">Status</td>
+<td align="left">An indicator as to whether the claim has been deemed settled (closed) or not settled (open)</td>
 </tr>
 </tbody>
 </table>
 <table>
-<caption>
-<span id="tab:PrintNumGPA">Table 22.6: </span><strong>Group Personal Accident Data First Five Rows</strong>
-</caption>
+<caption><span id="tab:PrintNumGPA">Table 22.6: </span><strong>Group Personal Accident Data First Five Rows</strong></caption>
+<colgroup>
+<col width="9%" />
+<col width="12%" />
+<col width="18%" />
+<col width="11%" />
+<col width="22%" />
+<col width="16%" />
+<col width="8%" />
+</colgroup>
 <thead>
-<tr>
-<th style="text-align:center;">
-UW.Year
-</th>
-<th style="text-align:center;">
-Loss.Date
-</th>
-<th style="text-align:center;">
-Last.Trans.Date
-</th>
-<th style="text-align:center;">
-Paid.Loss
-</th>
-<th style="text-align:center;">
-Outstanding.Reserve
-</th>
-<th style="text-align:center;">
-Incurred.Loss
-</th>
-<th style="text-align:center;">
-Status
-</th>
+<tr class="header">
+<th align="center">UW.Year</th>
+<th align="center">Loss.Date</th>
+<th align="center">Last.Trans.Date</th>
+<th align="center">Paid.Loss</th>
+<th align="center">Outstanding.Reserve</th>
+<th align="center">Incurred.Loss</th>
+<th align="center">Status</th>
 </tr>
 </thead>
 <tbody>
-<tr>
-<td style="text-align:center;">
-2021
-</td>
-<td style="text-align:center;">
-6/12/2021
-</td>
-<td style="text-align:center;">
-3/6/2022
-</td>
-<td style="text-align:center;">
-805.0
-</td>
-<td style="text-align:center;">
-0.0
-</td>
-<td style="text-align:center;">
-805
-</td>
-<td style="text-align:center;">
-Closed
-</td>
+<tr class="odd">
+<td align="center">2021</td>
+<td align="center">6/12/2021</td>
+<td align="center">3/6/2022</td>
+<td align="center">805.0</td>
+<td align="center">0.0</td>
+<td align="center">805</td>
+<td align="center">Closed</td>
 </tr>
-<tr>
-<td style="text-align:center;">
-2021
-</td>
-<td style="text-align:center;">
-15/11/2021
-</td>
-<td style="text-align:center;">
-</td>
-<td style="text-align:center;">
-0.0
-</td>
-<td style="text-align:center;">
-0.0
-</td>
-<td style="text-align:center;">
-0
-</td>
-<td style="text-align:center;">
-Closed
-</td>
+<tr class="even">
+<td align="center">2021</td>
+<td align="center">15/11/2021</td>
+<td align="center"></td>
+<td align="center">0.0</td>
+<td align="center">0.0</td>
+<td align="center">0</td>
+<td align="center">Closed</td>
 </tr>
-<tr>
-<td style="text-align:center;">
-2021
-</td>
-<td style="text-align:center;">
-15/11/2021
-</td>
-<td style="text-align:center;">
-</td>
-<td style="text-align:center;">
-0.0
-</td>
-<td style="text-align:center;">
-0.0
-</td>
-<td style="text-align:center;">
-0
-</td>
-<td style="text-align:center;">
-Closed
-</td>
+<tr class="odd">
+<td align="center">2021</td>
+<td align="center">15/11/2021</td>
+<td align="center"></td>
+<td align="center">0.0</td>
+<td align="center">0.0</td>
+<td align="center">0</td>
+<td align="center">Closed</td>
 </tr>
-<tr>
-<td style="text-align:center;">
-2021
-</td>
-<td style="text-align:center;">
-22/03/2022
-</td>
-<td style="text-align:center;">
-4/5/2022
-</td>
-<td style="text-align:center;">
-396.0
-</td>
-<td style="text-align:center;">
-0.0
-</td>
-<td style="text-align:center;">
-396
-</td>
-<td style="text-align:center;">
-Closed
-</td>
+<tr class="even">
+<td align="center">2021</td>
+<td align="center">22/03/2022</td>
+<td align="center">4/5/2022</td>
+<td align="center">396.0</td>
+<td align="center">0.0</td>
+<td align="center">396</td>
+<td align="center">Closed</td>
 </tr>
-<tr>
-<td style="text-align:center;">
-2021
-</td>
-<td style="text-align:center;">
-11/4/2022
-</td>
-<td style="text-align:center;">
-2/8/2022
-</td>
-<td style="text-align:center;">
-740.1
-</td>
-<td style="text-align:center;">
-359.9
-</td>
-<td style="text-align:center;">
-1100
-</td>
-<td style="text-align:center;">
-Open
-</td>
+<tr class="odd">
+<td align="center">2021</td>
+<td align="center">11/4/2022</td>
+<td align="center">2/8/2022</td>
+<td align="center">740.1</td>
+<td align="center">359.9</td>
+<td align="center">1100</td>
+<td align="center">Open</td>
 </tr>
 </tbody>
 </table>
 <table>
-<caption>
-<span id="tab:PrintNumGPA">Table 22.6: </span><strong>Group Personal Accident Data Last Five Rows</strong>
-</caption>
+<caption><span id="tab:PrintNumGPA">Table 22.6: </span><strong>Group Personal Accident Data Last Five Rows</strong></caption>
+<colgroup>
+<col width="9%" />
+<col width="12%" />
+<col width="18%" />
+<col width="11%" />
+<col width="22%" />
+<col width="16%" />
+<col width="8%" />
+</colgroup>
 <thead>
-<tr>
-<th style="text-align:center;">
-UW.Year
-</th>
-<th style="text-align:center;">
-Loss.Date
-</th>
-<th style="text-align:center;">
-Last.Trans.Date
-</th>
-<th style="text-align:center;">
-Paid.Loss
-</th>
-<th style="text-align:center;">
-Outstanding.Reserve
-</th>
-<th style="text-align:center;">
-Incurred.Loss
-</th>
-<th style="text-align:center;">
-Status
-</th>
+<tr class="header">
+<th align="center">UW.Year</th>
+<th align="center">Loss.Date</th>
+<th align="center">Last.Trans.Date</th>
+<th align="center">Paid.Loss</th>
+<th align="center">Outstanding.Reserve</th>
+<th align="center">Incurred.Loss</th>
+<th align="center">Status</th>
 </tr>
 </thead>
 <tbody>
-<tr>
-<td style="text-align:center;">
-2010
-</td>
-<td style="text-align:center;">
-6/3/2011
-</td>
-<td style="text-align:center;">
-26/07/2011
-</td>
-<td style="text-align:center;">
-776.00
-</td>
-<td style="text-align:center;">
-0
-</td>
-<td style="text-align:center;">
-776.00
-</td>
-<td style="text-align:center;">
-Closed
-</td>
+<tr class="odd">
+<td align="center">2010</td>
+<td align="center">6/3/2011</td>
+<td align="center">26/07/2011</td>
+<td align="center">776.00</td>
+<td align="center">0</td>
+<td align="center">776.00</td>
+<td align="center">Closed</td>
 </tr>
-<tr>
-<td style="text-align:center;">
-2010
-</td>
-<td style="text-align:center;">
-22/07/2011
-</td>
-<td style="text-align:center;">
-23/01/2012
-</td>
-<td style="text-align:center;">
-4624.54
-</td>
-<td style="text-align:center;">
-0
-</td>
-<td style="text-align:center;">
-4624.54
-</td>
-<td style="text-align:center;">
-Closed
-</td>
+<tr class="even">
+<td align="center">2010</td>
+<td align="center">22/07/2011</td>
+<td align="center">23/01/2012</td>
+<td align="center">4624.54</td>
+<td align="center">0</td>
+<td align="center">4624.54</td>
+<td align="center">Closed</td>
 </tr>
-<tr>
-<td style="text-align:center;">
-2010
-</td>
-<td style="text-align:center;">
-5/6/2011
-</td>
-<td style="text-align:center;">
-30/01/2012
-</td>
-<td style="text-align:center;">
-1503.65
-</td>
-<td style="text-align:center;">
-0
-</td>
-<td style="text-align:center;">
-1503.65
-</td>
-<td style="text-align:center;">
-Closed
-</td>
+<tr class="odd">
+<td align="center">2010</td>
+<td align="center">5/6/2011</td>
+<td align="center">30/01/2012</td>
+<td align="center">1503.65</td>
+<td align="center">0</td>
+<td align="center">1503.65</td>
+<td align="center">Closed</td>
 </tr>
-<tr>
-<td style="text-align:center;">
-2007
-</td>
-<td style="text-align:center;">
-11/1/2008
-</td>
-<td style="text-align:center;">
-23/02/2008
-</td>
-<td style="text-align:center;">
-0.00
-</td>
-<td style="text-align:center;">
-0
-</td>
-<td style="text-align:center;">
-0.00
-</td>
-<td style="text-align:center;">
-Closed
-</td>
+<tr class="even">
+<td align="center">2007</td>
+<td align="center">11/1/2008</td>
+<td align="center">23/02/2008</td>
+<td align="center">0.00</td>
+<td align="center">0</td>
+<td align="center">0.00</td>
+<td align="center">Closed</td>
 </tr>
-<tr>
-<td style="text-align:center;">
-2007
-</td>
-<td style="text-align:center;">
-29/08/2008
-</td>
-<td style="text-align:center;">
-</td>
-<td style="text-align:center;">
-0.00
-</td>
-<td style="text-align:center;">
-0
-</td>
-<td style="text-align:center;">
-0.00
-</td>
-<td style="text-align:center;">
-Closed
-</td>
+<tr class="odd">
+<td align="center">2007</td>
+<td align="center">29/08/2008</td>
+<td align="center"></td>
+<td align="center">0.00</td>
+<td align="center">0</td>
+<td align="center">0.00</td>
+<td align="center">Closed</td>
 </tr>
 </tbody>
 </table>
 <p><br></p>
-<p><em>Source</em>: Frees, Edward and Butt, Adam (2022). “ANU Group Personal Accident Claims 2022.” Australian National University Data Commons. <a href="https://doi.org/10.25911/jcfx-zj56" class="uri">https://doi.org/10.25911/jcfx-zj56</a>.</p>
+<p><em>Source</em>: Frees, Edward and Butt, Adam (2022). “ANU Group Personal Accident Claims 2022”. Australian National University Data Commons. <a href="https://doi.org/10.25911/jcfx-zj56" class="uri">https://doi.org/10.25911/jcfx-zj56</a>.</p>
 </div>
 <div id="Sec:DataAuto" class="section level2 hasAnchor" number="22.4">
 <h2><span class="header-section-number">22.4</span> ANU Motor Vehicle Data<a href="DataResources.html#Sec:DataAuto" class="anchor-section" aria-label="Anchor link to header"></a></h2>
-<p>This policy covers ANU’s vehicles including cars, vans, utilities, and motorcycles. See <span class="citation"><a href="#ref-frees2022ANURisks" role="doc-biblioref">Frees and Butt</a> (<a href="#ref-frees2022ANURisks" role="doc-biblioref">2022</a>)</span> for more information about this coverage.</p>
+<p>This policy covers ANU’s vehicles including cars, vans, utilities, and motorcycles. See <span class="citation">Frees and Butt (<a href="#ref-frees2022ANURisks">2022</a>)</span> for more information about this coverage.</p>
 <p>There are 318 observations in this dataset. The variable names are described in Table <a href="DataResources.html#tab:DescribeAuto">22.7</a> and the first and last five observations are in Table <a href="DataResources.html#tab:PrintNumAuto">22.8</a>.</p>
 <p>Data are available using this button: <a href="https://datacommons.anu.edu.au/DataCommons/rest/records/anudc:6165/data/MotorClaims2022.csv"
 download >
 <button type="button"  style="background-color:#008CBA;color:white">Download Motor Vehicle Claims Data</button></a>.</p>
 <table>
-<caption>
-<span id="tab:DescribeAuto">Table 22.7: </span><strong>Variables in the Motor Vehicle Dataset</strong>
-</caption>
+<caption><span id="tab:DescribeAuto">Table 22.7: </span><strong>Variables in the Motor Vehicle Dataset</strong></caption>
+<colgroup>
+<col width="26%" />
+<col width="73%" />
+</colgroup>
 <thead>
-<tr>
-<th style="text-align:left;">
-Variable
-</th>
-<th style="text-align:left;">
-Description
-</th>
+<tr class="header">
+<th align="left">Variable</th>
+<th align="left">Description</th>
 </tr>
 </thead>
 <tbody>
-<tr>
-<td style="text-align:left;">
-Policy Term Start Date
-</td>
-<td style="text-align:left;">
-Start date of the contract year in which the loss occurred
-</td>
+<tr class="odd">
+<td align="left">Policy Term Start Date</td>
+<td align="left">Start date of the contract year in which the loss occurred</td>
 </tr>
-<tr>
-<td style="text-align:left;">
-Loss Date
-</td>
-<td style="text-align:left;">
-Date that the loss occurred
-</td>
+<tr class="even">
+<td align="left">Loss Date</td>
+<td align="left">Date that the loss occurred</td>
 </tr>
-<tr>
-<td style="text-align:left;">
-Reported Date
-</td>
-<td style="text-align:left;">
-Date that the loss was reported
-</td>
+<tr class="odd">
+<td align="left">Reported Date</td>
+<td align="left">Date that the loss was reported</td>
 </tr>
-<tr>
-<td style="text-align:left;">
-Motor Fault
-</td>
-<td style="text-align:left;">
-Party responsible for the loss
-</td>
+<tr class="even">
+<td align="left">Motor Fault</td>
+<td align="left">Party responsible for the loss</td>
 </tr>
-<tr>
-<td style="text-align:left;">
-Driver Age
-</td>
-<td style="text-align:left;">
-Age of the driver
-</td>
+<tr class="odd">
+<td align="left">Driver Age</td>
+<td align="left">Age of the driver</td>
 </tr>
-<tr>
-<td style="text-align:left;">
-Vehicle Description
-</td>
-<td style="text-align:left;">
-Type of vehicle
-</td>
+<tr class="even">
+<td align="left">Vehicle Description</td>
+<td align="left">Type of vehicle</td>
 </tr>
-<tr>
-<td style="text-align:left;">
-Loss Postcode
-</td>
-<td style="text-align:left;">
-Postal code where the loss occurred
-</td>
+<tr class="odd">
+<td align="left">Loss Postcode</td>
+<td align="left">Postal code where the loss occurred</td>
 </tr>
-<tr>
-<td style="text-align:left;">
-Excess
-</td>
-<td style="text-align:left;">
-The deductible applied to the loss
-</td>
+<tr class="even">
+<td align="left">Excess</td>
+<td align="left">The deductible applied to the loss</td>
 </tr>
-<tr>
-<td style="text-align:left;">
-Motor Net Paid
-</td>
-<td style="text-align:left;">
-Amount paid to the insured (ANU)
-</td>
+<tr class="odd">
+<td align="left">Motor Net Paid</td>
+<td align="left">Amount paid to the insured (ANU)</td>
 </tr>
-<tr>
-<td style="text-align:left;">
-Outstanding Estimate
-</td>
-<td style="text-align:left;">
-Estimate of the loss amount yet to be paid
-</td>
+<tr class="even">
+<td align="left">Outstanding Estimate</td>
+<td align="left">Estimate of the loss amount yet to be paid</td>
 </tr>
-<tr>
-<td style="text-align:left;">
-Motor Net Incurred
-</td>
-<td style="text-align:left;">
-Sum of the amount paid and the estimate of future payments
-</td>
+<tr class="odd">
+<td align="left">Motor Net Incurred</td>
+<td align="left">Sum of the amount paid and the estimate of future payments</td>
 </tr>
-<tr>
-<td style="text-align:left;">
-Third Party Identified
-</td>
-<td style="text-align:left;">
-Indicates whether a responsible third party could be identified
-</td>
+<tr class="even">
+<td align="left">Third Party Identified</td>
+<td align="left">Indicates whether a responsible third party could be identified</td>
 </tr>
-<tr>
-<td style="text-align:left;">
-Third Party Insured
-</td>
-<td style="text-align:left;">
-Indicates whether a responsible third party was insured
-</td>
+<tr class="odd">
+<td align="left">Third Party Insured</td>
+<td align="left">Indicates whether a responsible third party was insured</td>
+</tr>
+</tbody>
+</table>
+<table style="width:100%;">
+<caption><span id="tab:PrintNumAuto">Table 22.8: </span><strong>Motor Vehicle Data First Five Rows</strong></caption>
+<colgroup>
+<col width="19%" />
+<col width="9%" />
+<col width="12%" />
+<col width="20%" />
+<col width="9%" />
+<col width="16%" />
+<col width="12%" />
+</colgroup>
+<thead>
+<tr class="header">
+<th align="center">Policy.Term.Start.Date</th>
+<th align="center">Loss.Date</th>
+<th align="center">Reported.Date</th>
+<th align="center">Motor.Fault</th>
+<th align="center">Driver.Age</th>
+<th align="center">Vehicle.Description</th>
+<th align="center">Loss.Postcode</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td align="center">1/11/2011</td>
+<td align="center">6/6/2012</td>
+<td align="center">4/10/2012</td>
+<td align="center">THIRD PARTY RESPONSIBLE</td>
+<td align="center">NA</td>
+<td align="center">FORD TRANSIT VAN</td>
+<td align="center">2600</td>
+</tr>
+<tr class="even">
+<td align="center">1/11/2011</td>
+<td align="center">16/08/2012</td>
+<td align="center">14/11/2013</td>
+<td align="center">INSURED RESPONSIBLE</td>
+<td align="center">39</td>
+<td align="center">TOYOTA HIACE</td>
+<td align="center">2612</td>
+</tr>
+<tr class="odd">
+<td align="center">1/11/2011</td>
+<td align="center">4/9/2012</td>
+<td align="center">17/01/2013</td>
+<td align="center">INSURED RESPONSIBLE</td>
+<td align="center">52</td>
+<td align="center">HYUNDAI IX35</td>
+<td align="center">2600</td>
+</tr>
+<tr class="even">
+<td align="center">1/11/2011</td>
+<td align="center">21/09/2012</td>
+<td align="center">28/09/2012</td>
+<td align="center">THIRD PARTY RESPONSIBLE</td>
+<td align="center">59</td>
+<td align="center">HOLDEN COMMODORE</td>
+<td align="center">2518</td>
+</tr>
+<tr class="odd">
+<td align="center">1/11/2011</td>
+<td align="center">22/09/2012</td>
+<td align="center">12/10/2012</td>
+<td align="center">INSURED RESPONSIBLE</td>
+<td align="center">NA</td>
+<td align="center">SUBARU FORESTER</td>
+<td align="center">2612</td>
 </tr>
 </tbody>
 </table>
 <table>
-<caption>
-<span id="tab:PrintNumAuto">Table 22.8: </span><strong>Motor Vehicle Data First Five Rows</strong>
-</caption>
+<caption><span id="tab:PrintNumAuto">Table 22.8: </span><strong>Motor Vehicle Data Last Five Rows</strong></caption>
+<colgroup>
+<col width="7%" />
+<col width="14%" />
+<col width="19%" />
+<col width="18%" />
+<col width="21%" />
+<col width="18%" />
+</colgroup>
 <thead>
-<tr>
-<th style="text-align:center;">
-Policy.Term.Start.Date
-</th>
-<th style="text-align:center;">
-Loss.Date
-</th>
-<th style="text-align:center;">
-Reported.Date
-</th>
-<th style="text-align:center;">
-Motor.Fault
-</th>
-<th style="text-align:center;">
-Driver.Age
-</th>
-<th style="text-align:center;">
-Vehicle.Description
-</th>
-<th style="text-align:center;">
-Loss.Postcode
-</th>
+<tr class="header">
+<th align="center">Excess</th>
+<th align="center">Motor.Net.Paid</th>
+<th align="center">Outstanding.Estimate</th>
+<th align="center">Motor.Net.Incurred</th>
+<th align="center">Third.Party.Identified</th>
+<th align="center">Third.Party.Insured</th>
 </tr>
 </thead>
 <tbody>
-<tr>
-<td style="text-align:center;">
-1/11/2011
-</td>
-<td style="text-align:center;">
-6/6/2012
-</td>
-<td style="text-align:center;">
-4/10/2012
-</td>
-<td style="text-align:center;">
-THIRD PARTY RESPONSIBLE
-</td>
-<td style="text-align:center;">
-NA
-</td>
-<td style="text-align:center;">
-FORD TRANSIT VAN
-</td>
-<td style="text-align:center;">
-2600
-</td>
+<tr class="odd">
+<td align="center">1000</td>
+<td align="center">384.88</td>
+<td align="center">0</td>
+<td align="center">384.88</td>
+<td align="center">IDENTIFIED</td>
+<td align="center"></td>
 </tr>
-<tr>
-<td style="text-align:center;">
-1/11/2011
-</td>
-<td style="text-align:center;">
-16/08/2012
-</td>
-<td style="text-align:center;">
-14/11/2013
-</td>
-<td style="text-align:center;">
-INSURED RESPONSIBLE
-</td>
-<td style="text-align:center;">
-39
-</td>
-<td style="text-align:center;">
-TOYOTA HIACE
-</td>
-<td style="text-align:center;">
-2612
-</td>
+<tr class="even">
+<td align="center">1000</td>
+<td align="center">901.21</td>
+<td align="center">0</td>
+<td align="center">901.21</td>
+<td align="center"></td>
+<td align="center"></td>
 </tr>
-<tr>
-<td style="text-align:center;">
-1/11/2011
-</td>
-<td style="text-align:center;">
-4/9/2012
-</td>
-<td style="text-align:center;">
-17/01/2013
-</td>
-<td style="text-align:center;">
-INSURED RESPONSIBLE
-</td>
-<td style="text-align:center;">
-52
-</td>
-<td style="text-align:center;">
-HYUNDAI IX35
-</td>
-<td style="text-align:center;">
-2600
-</td>
+<tr class="odd">
+<td align="center">1000</td>
+<td align="center">1225.71</td>
+<td align="center">0</td>
+<td align="center">1225.71</td>
+<td align="center"></td>
+<td align="center"></td>
 </tr>
-<tr>
-<td style="text-align:center;">
-1/11/2011
-</td>
-<td style="text-align:center;">
-21/09/2012
-</td>
-<td style="text-align:center;">
-28/09/2012
-</td>
-<td style="text-align:center;">
-THIRD PARTY RESPONSIBLE
-</td>
-<td style="text-align:center;">
-59
-</td>
-<td style="text-align:center;">
-HOLDEN COMMODORE
-</td>
-<td style="text-align:center;">
-2518
-</td>
+<tr class="even">
+<td align="center">NA</td>
+<td align="center">1671.76</td>
+<td align="center">0</td>
+<td align="center">1671.76</td>
+<td align="center">IDENTIFIED</td>
+<td align="center">NOT INSURED</td>
 </tr>
-<tr>
-<td style="text-align:center;">
-1/11/2011
-</td>
-<td style="text-align:center;">
-22/09/2012
-</td>
-<td style="text-align:center;">
-12/10/2012
-</td>
-<td style="text-align:center;">
-INSURED RESPONSIBLE
-</td>
-<td style="text-align:center;">
-NA
-</td>
-<td style="text-align:center;">
-SUBARU FORESTER
-</td>
-<td style="text-align:center;">
-2612
-</td>
+<tr class="odd">
+<td align="center">1000</td>
+<td align="center">3418.86</td>
+<td align="center">0</td>
+<td align="center">3418.86</td>
+<td align="center"></td>
+<td align="center">INSURED</td>
 </tr>
 </tbody>
 </table>
 <table>
+<colgroup>
+<col width="20%" />
+<col width="10%" />
+<col width="12%" />
+<col width="17%" />
+<col width="10%" />
+<col width="17%" />
+<col width="12%" />
+</colgroup>
 <thead>
-<tr>
-<th style="text-align:center;">
-Excess
-</th>
-<th style="text-align:center;">
-Motor.Net.Paid
-</th>
-<th style="text-align:center;">
-Outstanding.Estimate
-</th>
-<th style="text-align:center;">
-Motor.Net.Incurred
-</th>
-<th style="text-align:center;">
-Third.Party.Identified
-</th>
-<th style="text-align:center;">
-Third.Party.Insured
-</th>
+<tr class="header">
+<th align="center">Policy.Term.Start.Date</th>
+<th align="center">Loss.Date</th>
+<th align="center">Reported.Date</th>
+<th align="center">Motor.Fault</th>
+<th align="center">Driver.Age</th>
+<th align="center">Vehicle.Description</th>
+<th align="center">Loss.Postcode</th>
 </tr>
 </thead>
 <tbody>
-<tr>
-<td style="text-align:center;">
-1000
-</td>
-<td style="text-align:center;">
-384.88
-</td>
-<td style="text-align:center;">
-0
-</td>
-<td style="text-align:center;">
-384.88
-</td>
-<td style="text-align:center;">
-IDENTIFIED
-</td>
-<td style="text-align:center;">
-</td>
+<tr class="odd">
+<td align="center">1/11/2021</td>
+<td align="center">4/4/2022</td>
+<td align="center">5/4/2022</td>
+<td align="center">INSURED RESPONSIBLE</td>
+<td align="center">66</td>
+<td align="center">VOLKSWAGEN TIGUAN</td>
+<td align="center">2604</td>
 </tr>
-<tr>
-<td style="text-align:center;">
-1000
-</td>
-<td style="text-align:center;">
-901.21
-</td>
-<td style="text-align:center;">
-0
-</td>
-<td style="text-align:center;">
-901.21
-</td>
-<td style="text-align:center;">
-</td>
-<td style="text-align:center;">
-</td>
+<tr class="even">
+<td align="center">11/1/2021</td>
+<td align="center">11/4/2022</td>
+<td align="center">9/5/2022</td>
+<td align="center">INSURED RESPONSIBLE</td>
+<td align="center">27</td>
+<td align="center">TOYOTA HILUX</td>
+<td align="center">2540</td>
 </tr>
-<tr>
-<td style="text-align:center;">
-1000
-</td>
-<td style="text-align:center;">
-1225.71
-</td>
-<td style="text-align:center;">
-0
-</td>
-<td style="text-align:center;">
-1225.71
-</td>
-<td style="text-align:center;">
-</td>
-<td style="text-align:center;">
-</td>
+<tr class="odd">
+<td align="center">1/11/2021</td>
+<td align="center">11/4/2022</td>
+<td align="center">9/5/2022</td>
+<td align="center">INSURED RESPONSIBLE</td>
+<td align="center">27</td>
+<td align="center">TOYOTA HILUX</td>
+<td align="center">2540</td>
 </tr>
-<tr>
-<td style="text-align:center;">
-NA
-</td>
-<td style="text-align:center;">
-1671.76
-</td>
-<td style="text-align:center;">
-0
-</td>
-<td style="text-align:center;">
-1671.76
-</td>
-<td style="text-align:center;">
-IDENTIFIED
-</td>
-<td style="text-align:center;">
-NOT INSURED
-</td>
+<tr class="even">
+<td align="center">11/1/2021</td>
+<td align="center">15/04/2022</td>
+<td align="center">11/7/2022</td>
+<td align="center">INSURED RESPONSIBLE</td>
+<td align="center">21</td>
+<td align="center">TOYOTA HILVX</td>
+<td align="center">2601</td>
 </tr>
-<tr>
-<td style="text-align:center;">
-1000
-</td>
-<td style="text-align:center;">
-3418.86
-</td>
-<td style="text-align:center;">
-0
-</td>
-<td style="text-align:center;">
-3418.86
-</td>
-<td style="text-align:center;">
-</td>
-<td style="text-align:center;">
-INSURED
-</td>
+<tr class="odd">
+<td align="center">1/11/2021</td>
+<td align="center">18/07/2022</td>
+<td align="center">18/07/2022</td>
+<td align="center">NO-ONE RESPONSIBLE</td>
+<td align="center">NA</td>
+<td align="center">TOYOTA HILUX</td>
+<td align="center">2601</td>
 </tr>
 </tbody>
 </table>
 <table>
-<caption>
-<span id="tab:PrintNumAuto">Table 22.8: </span><strong>Motor Vehicle Data Last Five Rows</strong>
-</caption>
+<colgroup>
+<col width="7%" />
+<col width="14%" />
+<col width="19%" />
+<col width="18%" />
+<col width="21%" />
+<col width="18%" />
+</colgroup>
 <thead>
-<tr>
-<th style="text-align:center;">
-Policy.Term.Start.Date
-</th>
-<th style="text-align:center;">
-Loss.Date
-</th>
-<th style="text-align:center;">
-Reported.Date
-</th>
-<th style="text-align:center;">
-Motor.Fault
-</th>
-<th style="text-align:center;">
-Driver.Age
-</th>
-<th style="text-align:center;">
-Vehicle.Description
-</th>
-<th style="text-align:center;">
-Loss.Postcode
-</th>
+<tr class="header">
+<th align="center">Excess</th>
+<th align="center">Motor.Net.Paid</th>
+<th align="center">Outstanding.Estimate</th>
+<th align="center">Motor.Net.Incurred</th>
+<th align="center">Third.Party.Identified</th>
+<th align="center">Third.Party.Insured</th>
 </tr>
 </thead>
 <tbody>
-<tr>
-<td style="text-align:center;">
-1/11/2021
-</td>
-<td style="text-align:center;">
-4/4/2022
-</td>
-<td style="text-align:center;">
-5/4/2022
-</td>
-<td style="text-align:center;">
-INSURED RESPONSIBLE
-</td>
-<td style="text-align:center;">
-66
-</td>
-<td style="text-align:center;">
-VOLKSWAGEN TIGUAN
-</td>
-<td style="text-align:center;">
-2604
-</td>
+<tr class="odd">
+<td align="center">0</td>
+<td align="center">2373.49</td>
+<td align="center">1056.00</td>
+<td align="center">3429.49</td>
+<td align="center"></td>
+<td align="center"></td>
 </tr>
-<tr>
-<td style="text-align:center;">
-11/1/2021
-</td>
-<td style="text-align:center;">
-11/4/2022
-</td>
-<td style="text-align:center;">
-9/5/2022
-</td>
-<td style="text-align:center;">
-INSURED RESPONSIBLE
-</td>
-<td style="text-align:center;">
-27
-</td>
-<td style="text-align:center;">
-TOYOTA HILUX
-</td>
-<td style="text-align:center;">
-2540
-</td>
+<tr class="even">
+<td align="center">0</td>
+<td align="center">210.00</td>
+<td align="center">25000.00</td>
+<td align="center">25210.00</td>
+<td align="center"></td>
+<td align="center"></td>
 </tr>
-<tr>
-<td style="text-align:center;">
-1/11/2021
-</td>
-<td style="text-align:center;">
-11/4/2022
-</td>
-<td style="text-align:center;">
-9/5/2022
-</td>
-<td style="text-align:center;">
-INSURED RESPONSIBLE
-</td>
-<td style="text-align:center;">
-27
-</td>
-<td style="text-align:center;">
-TOYOTA HILUX
-</td>
-<td style="text-align:center;">
-2540
-</td>
+<tr class="odd">
+<td align="center">0</td>
+<td align="center">0.00</td>
+<td align="center">31927.27</td>
+<td align="center">31927.27</td>
+<td align="center"></td>
+<td align="center"></td>
 </tr>
-<tr>
-<td style="text-align:center;">
-11/1/2021
-</td>
-<td style="text-align:center;">
-15/04/2022
-</td>
-<td style="text-align:center;">
-11/7/2022
-</td>
-<td style="text-align:center;">
-INSURED RESPONSIBLE
-</td>
-<td style="text-align:center;">
-21
-</td>
-<td style="text-align:center;">
-TOYOTA HILVX
-</td>
-<td style="text-align:center;">
-2601
-</td>
+<tr class="even">
+<td align="center">0</td>
+<td align="center">0.00</td>
+<td align="center">2750.00</td>
+<td align="center">2750.00</td>
+<td align="center"></td>
+<td align="center"></td>
 </tr>
-<tr>
-<td style="text-align:center;">
-1/11/2021
-</td>
-<td style="text-align:center;">
-18/07/2022
-</td>
-<td style="text-align:center;">
-18/07/2022
-</td>
-<td style="text-align:center;">
-NO-ONE RESPONSIBLE
-</td>
-<td style="text-align:center;">
-NA
-</td>
-<td style="text-align:center;">
-TOYOTA HILUX
-</td>
-<td style="text-align:center;">
-2601
-</td>
-</tr>
-</tbody>
-</table>
-<table>
-<thead>
-<tr>
-<th style="text-align:center;">
-Excess
-</th>
-<th style="text-align:center;">
-Motor.Net.Paid
-</th>
-<th style="text-align:center;">
-Outstanding.Estimate
-</th>
-<th style="text-align:center;">
-Motor.Net.Incurred
-</th>
-<th style="text-align:center;">
-Third.Party.Identified
-</th>
-<th style="text-align:center;">
-Third.Party.Insured
-</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td style="text-align:center;">
-0
-</td>
-<td style="text-align:center;">
-2373.49
-</td>
-<td style="text-align:center;">
-1056.00
-</td>
-<td style="text-align:center;">
-3429.49
-</td>
-<td style="text-align:center;">
-</td>
-<td style="text-align:center;">
-</td>
-</tr>
-<tr>
-<td style="text-align:center;">
-0
-</td>
-<td style="text-align:center;">
-210.00
-</td>
-<td style="text-align:center;">
-25000.00
-</td>
-<td style="text-align:center;">
-25210.00
-</td>
-<td style="text-align:center;">
-</td>
-<td style="text-align:center;">
-</td>
-</tr>
-<tr>
-<td style="text-align:center;">
-0
-</td>
-<td style="text-align:center;">
-0.00
-</td>
-<td style="text-align:center;">
-31927.27
-</td>
-<td style="text-align:center;">
-31927.27
-</td>
-<td style="text-align:center;">
-</td>
-<td style="text-align:center;">
-</td>
-</tr>
-<tr>
-<td style="text-align:center;">
-0
-</td>
-<td style="text-align:center;">
-0.00
-</td>
-<td style="text-align:center;">
-2750.00
-</td>
-<td style="text-align:center;">
-2750.00
-</td>
-<td style="text-align:center;">
-</td>
-<td style="text-align:center;">
-</td>
-</tr>
-<tr>
-<td style="text-align:center;">
-0
-</td>
-<td style="text-align:center;">
-0.00
-</td>
-<td style="text-align:center;">
-299.00
-</td>
-<td style="text-align:center;">
-299.00
-</td>
-<td style="text-align:center;">
-</td>
-<td style="text-align:center;">
-</td>
+<tr class="odd">
+<td align="center">0</td>
+<td align="center">0.00</td>
+<td align="center">299.00</td>
+<td align="center">299.00</td>
+<td align="center"></td>
+<td align="center"></td>
 </tr>
 </tbody>
 </table>
 <p><br></p>
-<p><em>Source</em>: Frees, Edward and Butt, Adam (2022). “ANU Motor Vehicle Claims 2022.” Australian National University Data Commons. DOI <a href="https://doi.org/10.25911/g7e4-9e46" class="uri">https://doi.org/10.25911/g7e4-9e46</a>.</p>
+<p><em>Source</em>: Frees, Edward and Butt, Adam (2022). “ANU Motor Vehicle Claims 2022”. Australian National University Data Commons. DOI <a href="https://doi.org/10.25911/g7e4-9e46" class="uri">https://doi.org/10.25911/g7e4-9e46</a>.</p>
 </div>
 <div id="spanish-personal-insurance-data" class="section level2 hasAnchor" number="22.5">
 <h2><span class="header-section-number">22.5</span> Spanish Personal Insurance Data<a href="DataResources.html#spanish-personal-insurance-data" class="anchor-section" aria-label="Anchor link to header"></a></h2>
@@ -3219,1041 +2227,495 @@ Third.Party.Insured
 <button type="button"  style="background-color:#008CBA;color:white">Download the Spanish Personal Insurance Data</button></a></p>
 <p>The description of the data is the following:</p>
 <table>
-<caption>
-<span id="tab:DescribeCover">Table 22.9: </span>Variable and Description of Spanish Personal Insurance Data
-</caption>
+<caption><span id="tab:DescribeCover">Table 22.9: </span>Variable and Description of Spanish Personal Insurance Data</caption>
+<colgroup>
+<col width="10%" />
+<col width="89%" />
+</colgroup>
 <thead>
-<tr>
-<th style="text-align:left;">
-Variable
-</th>
-<th style="text-align:left;">
-Description
-</th>
+<tr class="header">
+<th align="left">Variable</th>
+<th align="left">Description</th>
 </tr>
 </thead>
 <tbody>
-<tr>
-<td style="text-align:left;">
-gender
-</td>
-<td style="text-align:left;">
-1 for male and 0 for female
-</td>
+<tr class="odd">
+<td align="left">gender</td>
+<td align="left">1 for male and 0 for female</td>
 </tr>
-<tr>
-<td style="text-align:left;">
-Age_client
-</td>
-<td style="text-align:left;">
-the age of the customer in years
-</td>
+<tr class="even">
+<td align="left">Age_client</td>
+<td align="left">the age of the customer in years</td>
 </tr>
-<tr>
-<td style="text-align:left;">
-year
-</td>
-<td style="text-align:left;">
-Policy year. Equals 5 corresponding to 2014.
-</td>
+<tr class="odd">
+<td align="left">year</td>
+<td align="left">Policy year. Equals 5 corresponding to 2014.</td>
 </tr>
-<tr>
-<td style="text-align:left;">
-age_of_car_M
-</td>
-<td style="text-align:left;">
-the number of years since the vehicle was bought by the customer
-</td>
+<tr class="even">
+<td align="left">age_of_car_M</td>
+<td align="left">the number of years since the vehicle was bought by the customer</td>
 </tr>
-<tr>
-<td style="text-align:left;">
-Car_power_M
-</td>
-<td style="text-align:left;">
-the power of the vehicle
-</td>
+<tr class="odd">
+<td align="left">Car_power_M</td>
+<td align="left">the power of the vehicle</td>
 </tr>
-<tr>
-<td style="text-align:left;">
-Car_2ndDriver_M
-</td>
-<td style="text-align:left;">
-1 if the customer has informed the insurance company that a second occasional driver uses the vehicle, and 0 otherwise
-</td>
+<tr class="even">
+<td align="left">Car_2ndDriver_M</td>
+<td align="left">1 if the customer has informed the insurance company that a second occasional driver uses the vehicle, and 0 otherwise</td>
 </tr>
-<tr>
-<td style="text-align:left;">
-num_policiesC
-</td>
-<td style="text-align:left;">
-the total number of policies held by the same customer in the insurance company
-</td>
+<tr class="odd">
+<td align="left">num_policiesC</td>
+<td align="left">the total number of policies held by the same customer in the insurance company</td>
 </tr>
-<tr>
-<td style="text-align:left;">
-metro_code
-</td>
-<td style="text-align:left;">
-1 for urban or metropolitan and 0 for rural
-</td>
+<tr class="even">
+<td align="left">metro_code</td>
+<td align="left">1 for urban or metropolitan and 0 for rural</td>
 </tr>
-<tr>
-<td style="text-align:left;">
-Policy_PaymentMethodA
-</td>
-<td style="text-align:left;">
-1 for annual payment and 0 for monthly payment in the motor policy
-</td>
+<tr class="odd">
+<td align="left">Policy_PaymentMethodA</td>
+<td align="left">1 for annual payment and 0 for monthly payment in the motor policy</td>
 </tr>
-<tr>
-<td style="text-align:left;">
-Policy_PaymentMethodH
-</td>
-<td style="text-align:left;">
-1 for annual payment and 0 for monthly payment in the homeowners policy
-</td>
+<tr class="even">
+<td align="left">Policy_PaymentMethodH</td>
+<td align="left">1 for annual payment and 0 for monthly payment in the homeowners policy</td>
 </tr>
-<tr>
-<td style="text-align:left;">
-Insuredcapital_content_re
-</td>
-<td style="text-align:left;">
-the value of content in homeowners insurance
-</td>
+<tr class="odd">
+<td align="left">Insuredcapital_content_re</td>
+<td align="left">the value of content in homeowners insurance</td>
 </tr>
-<tr>
-<td style="text-align:left;">
-Insuredcapital_continent_re
-</td>
-<td style="text-align:left;">
-the value of building in homeowners insurance
-</td>
+<tr class="even">
+<td align="left">Insuredcapital_continent_re</td>
+<td align="left">the value of building in homeowners insurance</td>
 </tr>
-<tr>
-<td style="text-align:left;">
-appartment
-</td>
-<td style="text-align:left;">
-1 if the homeowners insurance correspond to an apartment and 0 otherwise
-</td>
+<tr class="odd">
+<td align="left">appartment</td>
+<td align="left">1 if the homeowners insurance correspond to an apartment and 0 otherwise</td>
 </tr>
-<tr>
-<td style="text-align:left;">
-Client_Seniority
-</td>
-<td style="text-align:left;">
-the number of years that the customer has been in the company
-</td>
+<tr class="even">
+<td align="left">Client_Seniority</td>
+<td align="left">the number of years that the customer has been in the company</td>
 </tr>
-<tr>
-<td style="text-align:left;">
-Retention
-</td>
-<td style="text-align:left;">
-1 if the policy is renewed and 0 otherwise
-</td>
+<tr class="odd">
+<td align="left">Retention</td>
+<td align="left">1 if the policy is renewed and 0 otherwise</td>
 </tr>
-<tr>
-<td style="text-align:left;">
-NClaims1
-</td>
-<td style="text-align:left;">
-the number of claims in the motor insurance policy for the corresponding year
-</td>
+<tr class="even">
+<td align="left">NClaims1</td>
+<td align="left">the number of claims in the motor insurance policy for the corresponding year</td>
 </tr>
-<tr>
-<td style="text-align:left;">
-NClaims2
-</td>
-<td style="text-align:left;">
-the number of claims in the homeowners insurance policy for the corresponding year
-</td>
+<tr class="odd">
+<td align="left">NClaims2</td>
+<td align="left">the number of claims in the homeowners insurance policy for the corresponding year</td>
 </tr>
-<tr>
-<td style="text-align:left;">
-Claims1
-</td>
-<td style="text-align:left;">
-the sum of claims cost in the motor insurance policy for the corresponding year
-</td>
+<tr class="even">
+<td align="left">Claims1</td>
+<td align="left">the sum of claims cost in the motor insurance policy for the corresponding year</td>
 </tr>
-<tr>
-<td style="text-align:left;">
-Claims2
-</td>
-<td style="text-align:left;">
-the sum of claims cost in the homeowners insurance policy for the corresponding year
-</td>
+<tr class="odd">
+<td align="left">Claims2</td>
+<td align="left">the sum of claims cost in the homeowners insurance policy for the corresponding year</td>
 </tr>
-<tr>
-<td style="text-align:left;">
-Types
-</td>
-<td style="text-align:left;">
-1 when neither an auto nor a home claim, it is equal to 2 when the customer has an auto but not a home claim, it is equal to 3 when the customer does not have not an auto but a home claim and it is equal to 4 when both an auto and a home claim.
-</td>
+<tr class="even">
+<td align="left">Types</td>
+<td align="left">1 when neither an auto nor a home claim, it is equal to 2 when the customer has an auto but not a home claim, it is equal to 3 when the customer does not have not an auto but a home claim and it is equal to 4 when both an auto and a home claim.</td>
 </tr>
-<tr>
-<td style="text-align:left;">
-PolID
-</td>
-<td style="text-align:left;">
-Policy Identification Number
-</td>
+<tr class="odd">
+<td align="left">PolID</td>
+<td align="left">Policy Identification Number</td>
 </tr>
 </tbody>
 </table>
 <p>All monetary units are expressed in Euros. In motor insurance, only claims at fault are considered.</p>
 <table>
-<caption>
-<span id="tab:PrintNumPersonalIns">Table 22.10: </span><strong>Spanish Personal Insurance Data First Five Rows</strong>
-</caption>
+<caption><span id="tab:PrintNumPersonalIns">Table 22.10: </span><strong>Spanish Personal Insurance Data First Five Rows</strong></caption>
+<colgroup>
+<col width="5%" />
+<col width="8%" />
+<col width="4%" />
+<col width="9%" />
+<col width="9%" />
+<col width="11%" />
+<col width="10%" />
+<col width="8%" />
+<col width="16%" />
+<col width="16%" />
+</colgroup>
 <thead>
-<tr>
-<th style="text-align:center;">
-gender
-</th>
-<th style="text-align:center;">
-Age_client
-</th>
-<th style="text-align:center;">
-year
-</th>
-<th style="text-align:center;">
-age_of_car_M
-</th>
-<th style="text-align:center;">
-Car_power_M
-</th>
-<th style="text-align:center;">
-Car_2ndDriver_M
-</th>
-<th style="text-align:center;">
-num_policiesC
-</th>
-<th style="text-align:center;">
-metro_code
-</th>
-<th style="text-align:center;">
-Policy_PaymentMethodA
-</th>
-<th style="text-align:center;">
-Policy_PaymentMethodH
-</th>
+<tr class="header">
+<th align="center">gender</th>
+<th align="center">Age_client</th>
+<th align="center">year</th>
+<th align="center">age_of_car_M</th>
+<th align="center">Car_power_M</th>
+<th align="center">Car_2ndDriver_M</th>
+<th align="center">num_policiesC</th>
+<th align="center">metro_code</th>
+<th align="center">Policy_PaymentMethodA</th>
+<th align="center">Policy_PaymentMethodH</th>
 </tr>
 </thead>
 <tbody>
-<tr>
-<td style="text-align:center;">
-1
-</td>
-<td style="text-align:center;">
-47
-</td>
-<td style="text-align:center;">
-5
-</td>
-<td style="text-align:center;">
-12
-</td>
-<td style="text-align:center;">
-163
-</td>
-<td style="text-align:center;">
-0
-</td>
-<td style="text-align:center;">
-0
-</td>
-<td style="text-align:center;">
-0
-</td>
-<td style="text-align:center;">
-1
-</td>
-<td style="text-align:center;">
-1
-</td>
+<tr class="odd">
+<td align="center">1</td>
+<td align="center">47</td>
+<td align="center">5</td>
+<td align="center">12</td>
+<td align="center">163</td>
+<td align="center">0</td>
+<td align="center">0</td>
+<td align="center">0</td>
+<td align="center">1</td>
+<td align="center">1</td>
 </tr>
-<tr>
-<td style="text-align:center;">
-1
-</td>
-<td style="text-align:center;">
-52
-</td>
-<td style="text-align:center;">
-5
-</td>
-<td style="text-align:center;">
-13
-</td>
-<td style="text-align:center;">
-80
-</td>
-<td style="text-align:center;">
-0
-</td>
-<td style="text-align:center;">
-1
-</td>
-<td style="text-align:center;">
-0
-</td>
-<td style="text-align:center;">
-1
-</td>
-<td style="text-align:center;">
-1
-</td>
+<tr class="even">
+<td align="center">1</td>
+<td align="center">52</td>
+<td align="center">5</td>
+<td align="center">13</td>
+<td align="center">80</td>
+<td align="center">0</td>
+<td align="center">1</td>
+<td align="center">0</td>
+<td align="center">1</td>
+<td align="center">1</td>
 </tr>
-<tr>
-<td style="text-align:center;">
-0
-</td>
-<td style="text-align:center;">
-66
-</td>
-<td style="text-align:center;">
-5
-</td>
-<td style="text-align:center;">
-7
-</td>
-<td style="text-align:center;">
-97
-</td>
-<td style="text-align:center;">
-0
-</td>
-<td style="text-align:center;">
-1
-</td>
-<td style="text-align:center;">
-1
-</td>
-<td style="text-align:center;">
-1
-</td>
-<td style="text-align:center;">
-1
-</td>
+<tr class="odd">
+<td align="center">0</td>
+<td align="center">66</td>
+<td align="center">5</td>
+<td align="center">7</td>
+<td align="center">97</td>
+<td align="center">0</td>
+<td align="center">1</td>
+<td align="center">1</td>
+<td align="center">1</td>
+<td align="center">1</td>
 </tr>
-<tr>
-<td style="text-align:center;">
-1
-</td>
-<td style="text-align:center;">
-70
-</td>
-<td style="text-align:center;">
-5
-</td>
-<td style="text-align:center;">
-17
-</td>
-<td style="text-align:center;">
-95
-</td>
-<td style="text-align:center;">
-0
-</td>
-<td style="text-align:center;">
-1
-</td>
-<td style="text-align:center;">
-0
-</td>
-<td style="text-align:center;">
-1
-</td>
-<td style="text-align:center;">
-1
-</td>
+<tr class="even">
+<td align="center">1</td>
+<td align="center">70</td>
+<td align="center">5</td>
+<td align="center">17</td>
+<td align="center">95</td>
+<td align="center">0</td>
+<td align="center">1</td>
+<td align="center">0</td>
+<td align="center">1</td>
+<td align="center">1</td>
 </tr>
-<tr>
-<td style="text-align:center;">
-1
-</td>
-<td style="text-align:center;">
-67
-</td>
-<td style="text-align:center;">
-5
-</td>
-<td style="text-align:center;">
-13
-</td>
-<td style="text-align:center;">
-110
-</td>
-<td style="text-align:center;">
-0
-</td>
-<td style="text-align:center;">
-1
-</td>
-<td style="text-align:center;">
-0
-</td>
-<td style="text-align:center;">
-1
-</td>
-<td style="text-align:center;">
-1
-</td>
+<tr class="odd">
+<td align="center">1</td>
+<td align="center">67</td>
+<td align="center">5</td>
+<td align="center">13</td>
+<td align="center">110</td>
+<td align="center">0</td>
+<td align="center">1</td>
+<td align="center">0</td>
+<td align="center">1</td>
+<td align="center">1</td>
 </tr>
 </tbody>
 </table>
 <table>
+<caption><span id="tab:PrintNumPersonalIns">Table 22.10: </span><strong>Spanish Personal Insurance Data Last Five Rows</strong></caption>
+<colgroup>
+<col width="18%" />
+<col width="19%" />
+<col width="8%" />
+<col width="12%" />
+<col width="7%" />
+<col width="6%" />
+<col width="6%" />
+<col width="6%" />
+<col width="6%" />
+<col width="4%" />
+<col width="4%" />
+</colgroup>
 <thead>
-<tr>
-<th style="text-align:center;">
-Insuredcapital_content_re
-</th>
-<th style="text-align:center;">
-Insuredcapital_continent_re
-</th>
-<th style="text-align:center;">
-appartment
-</th>
-<th style="text-align:center;">
-Client_Seniority
-</th>
-<th style="text-align:center;">
-Retention
-</th>
-<th style="text-align:center;">
-NClaims1
-</th>
-<th style="text-align:center;">
-NClaims2
-</th>
-<th style="text-align:center;">
-Claims1
-</th>
-<th style="text-align:center;">
-Claims2
-</th>
-<th style="text-align:center;">
-Types
-</th>
-<th style="text-align:center;">
-PolID
-</th>
+<tr class="header">
+<th align="center">Insuredcapital_content_re</th>
+<th align="center">Insuredcapital_continent_re</th>
+<th align="center">appartment</th>
+<th align="center">Client_Seniority</th>
+<th align="center">Retention</th>
+<th align="center">NClaims1</th>
+<th align="center">NClaims2</th>
+<th align="center">Claims1</th>
+<th align="center">Claims2</th>
+<th align="center">Types</th>
+<th align="center">PolID</th>
 </tr>
 </thead>
 <tbody>
-<tr>
-<td style="text-align:center;">
-10.18920207
-</td>
-<td style="text-align:center;">
-12.0732153
-</td>
-<td style="text-align:center;">
-1
-</td>
-<td style="text-align:center;">
-6.58179329
-</td>
-<td style="text-align:center;">
-1
-</td>
-<td style="text-align:center;">
-0
-</td>
-<td style="text-align:center;">
-0
-</td>
-<td style="text-align:center;">
-0
-</td>
-<td style="text-align:center;">
-0.00
-</td>
-<td style="text-align:center;">
-1
-</td>
-<td style="text-align:center;">
-12476
-</td>
+<tr class="odd">
+<td align="center">10.18920207</td>
+<td align="center">12.0732153</td>
+<td align="center">1</td>
+<td align="center">6.58179329</td>
+<td align="center">1</td>
+<td align="center">0</td>
+<td align="center">0</td>
+<td align="center">0</td>
+<td align="center">0.00</td>
+<td align="center">1</td>
+<td align="center">12476</td>
 </tr>
-<tr>
-<td style="text-align:center;">
-9.57144250
-</td>
-<td style="text-align:center;">
-11.4431860
-</td>
-<td style="text-align:center;">
-0
-</td>
-<td style="text-align:center;">
-18.48049281
-</td>
-<td style="text-align:center;">
-1
-</td>
-<td style="text-align:center;">
-0
-</td>
-<td style="text-align:center;">
-0
-</td>
-<td style="text-align:center;">
-0
-</td>
-<td style="text-align:center;">
-0.00
-</td>
-<td style="text-align:center;">
-1
-</td>
-<td style="text-align:center;">
-29232
-</td>
+<tr class="even">
+<td align="center">9.57144250</td>
+<td align="center">11.4431860</td>
+<td align="center">0</td>
+<td align="center">18.48049281</td>
+<td align="center">1</td>
+<td align="center">0</td>
+<td align="center">0</td>
+<td align="center">0</td>
+<td align="center">0.00</td>
+<td align="center">1</td>
+<td align="center">29232</td>
 </tr>
-<tr>
-<td style="text-align:center;">
-9.33021633
-</td>
-<td style="text-align:center;">
-11.2760512
-</td>
-<td style="text-align:center;">
-1
-</td>
-<td style="text-align:center;">
-15.08555784
-</td>
-<td style="text-align:center;">
-1
-</td>
-<td style="text-align:center;">
-0
-</td>
-<td style="text-align:center;">
-0
-</td>
-<td style="text-align:center;">
-0
-</td>
-<td style="text-align:center;">
-0.00
-</td>
-<td style="text-align:center;">
-1
-</td>
-<td style="text-align:center;">
-23770
-</td>
+<tr class="odd">
+<td align="center">9.33021633</td>
+<td align="center">11.2760512</td>
+<td align="center">1</td>
+<td align="center">15.08555784</td>
+<td align="center">1</td>
+<td align="center">0</td>
+<td align="center">0</td>
+<td align="center">0</td>
+<td align="center">0.00</td>
+<td align="center">1</td>
+<td align="center">23770</td>
 </tr>
-<tr>
-<td style="text-align:center;">
-10.48489670
-</td>
-<td style="text-align:center;">
-11.1366224
-</td>
-<td style="text-align:center;">
-1
-</td>
-<td style="text-align:center;">
-15.52361396
-</td>
-<td style="text-align:center;">
-1
-</td>
-<td style="text-align:center;">
-0
-</td>
-<td style="text-align:center;">
-1
-</td>
-<td style="text-align:center;">
-0
-</td>
-<td style="text-align:center;">
-57.97
-</td>
-<td style="text-align:center;">
-3
-</td>
-<td style="text-align:center;">
-8228
-</td>
+<tr class="even">
+<td align="center">10.48489670</td>
+<td align="center">11.1366224</td>
+<td align="center">1</td>
+<td align="center">15.52361396</td>
+<td align="center">1</td>
+<td align="center">0</td>
+<td align="center">1</td>
+<td align="center">0</td>
+<td align="center">57.97</td>
+<td align="center">3</td>
+<td align="center">8228</td>
 </tr>
-<tr>
-<td style="text-align:center;">
-10.96130962
-</td>
-<td style="text-align:center;">
-12.3475909
-</td>
-<td style="text-align:center;">
-0
-</td>
-<td style="text-align:center;">
-6.10814511
-</td>
-<td style="text-align:center;">
-1
-</td>
-<td style="text-align:center;">
-0
-</td>
-<td style="text-align:center;">
-0
-</td>
-<td style="text-align:center;">
-0
-</td>
-<td style="text-align:center;">
-0.00
-</td>
-<td style="text-align:center;">
-1
-</td>
-<td style="text-align:center;">
-37088
-</td>
+<tr class="odd">
+<td align="center">10.96130962</td>
+<td align="center">12.3475909</td>
+<td align="center">0</td>
+<td align="center">6.10814511</td>
+<td align="center">1</td>
+<td align="center">0</td>
+<td align="center">0</td>
+<td align="center">0</td>
+<td align="center">0.00</td>
+<td align="center">1</td>
+<td align="center">37088</td>
 </tr>
 </tbody>
 </table>
 <table>
-<caption>
-<span id="tab:PrintNumPersonalIns">Table 22.10: </span><strong>Spanish Personal Insurance Data Last Five Rows</strong>
-</caption>
+<colgroup>
+<col width="5%" />
+<col width="8%" />
+<col width="4%" />
+<col width="9%" />
+<col width="9%" />
+<col width="11%" />
+<col width="10%" />
+<col width="8%" />
+<col width="16%" />
+<col width="16%" />
+</colgroup>
 <thead>
-<tr>
-<th style="text-align:center;">
-gender
-</th>
-<th style="text-align:center;">
-Age_client
-</th>
-<th style="text-align:center;">
-year
-</th>
-<th style="text-align:center;">
-age_of_car_M
-</th>
-<th style="text-align:center;">
-Car_power_M
-</th>
-<th style="text-align:center;">
-Car_2ndDriver_M
-</th>
-<th style="text-align:center;">
-num_policiesC
-</th>
-<th style="text-align:center;">
-metro_code
-</th>
-<th style="text-align:center;">
-Policy_PaymentMethodA
-</th>
-<th style="text-align:center;">
-Policy_PaymentMethodH
-</th>
+<tr class="header">
+<th align="center">gender</th>
+<th align="center">Age_client</th>
+<th align="center">year</th>
+<th align="center">age_of_car_M</th>
+<th align="center">Car_power_M</th>
+<th align="center">Car_2ndDriver_M</th>
+<th align="center">num_policiesC</th>
+<th align="center">metro_code</th>
+<th align="center">Policy_PaymentMethodA</th>
+<th align="center">Policy_PaymentMethodH</th>
 </tr>
 </thead>
 <tbody>
-<tr>
-<td style="text-align:center;">
-1
-</td>
-<td style="text-align:center;">
-66
-</td>
-<td style="text-align:center;">
-5
-</td>
-<td style="text-align:center;">
-8
-</td>
-<td style="text-align:center;">
-143
-</td>
-<td style="text-align:center;">
-0
-</td>
-<td style="text-align:center;">
-1
-</td>
-<td style="text-align:center;">
-0
-</td>
-<td style="text-align:center;">
-1
-</td>
-<td style="text-align:center;">
-1
-</td>
+<tr class="odd">
+<td align="center">1</td>
+<td align="center">66</td>
+<td align="center">5</td>
+<td align="center">8</td>
+<td align="center">143</td>
+<td align="center">0</td>
+<td align="center">1</td>
+<td align="center">0</td>
+<td align="center">1</td>
+<td align="center">1</td>
 </tr>
-<tr>
-<td style="text-align:center;">
-1
-</td>
-<td style="text-align:center;">
-55
-</td>
-<td style="text-align:center;">
-5
-</td>
-<td style="text-align:center;">
-18
-</td>
-<td style="text-align:center;">
-125
-</td>
-<td style="text-align:center;">
-1
-</td>
-<td style="text-align:center;">
-1
-</td>
-<td style="text-align:center;">
-0
-</td>
-<td style="text-align:center;">
-1
-</td>
-<td style="text-align:center;">
-1
-</td>
+<tr class="even">
+<td align="center">1</td>
+<td align="center">55</td>
+<td align="center">5</td>
+<td align="center">18</td>
+<td align="center">125</td>
+<td align="center">1</td>
+<td align="center">1</td>
+<td align="center">0</td>
+<td align="center">1</td>
+<td align="center">1</td>
 </tr>
-<tr>
-<td style="text-align:center;">
-0
-</td>
-<td style="text-align:center;">
-41
-</td>
-<td style="text-align:center;">
-5
-</td>
-<td style="text-align:center;">
-10
-</td>
-<td style="text-align:center;">
-190
-</td>
-<td style="text-align:center;">
-0
-</td>
-<td style="text-align:center;">
-1
-</td>
-<td style="text-align:center;">
-0
-</td>
-<td style="text-align:center;">
-1
-</td>
-<td style="text-align:center;">
-1
-</td>
+<tr class="odd">
+<td align="center">0</td>
+<td align="center">41</td>
+<td align="center">5</td>
+<td align="center">10</td>
+<td align="center">190</td>
+<td align="center">0</td>
+<td align="center">1</td>
+<td align="center">0</td>
+<td align="center">1</td>
+<td align="center">1</td>
 </tr>
-<tr>
-<td style="text-align:center;">
-1
-</td>
-<td style="text-align:center;">
-50
-</td>
-<td style="text-align:center;">
-5
-</td>
-<td style="text-align:center;">
-5
-</td>
-<td style="text-align:center;">
-140
-</td>
-<td style="text-align:center;">
-0
-</td>
-<td style="text-align:center;">
-1
-</td>
-<td style="text-align:center;">
-0
-</td>
-<td style="text-align:center;">
-1
-</td>
-<td style="text-align:center;">
-1
-</td>
+<tr class="even">
+<td align="center">1</td>
+<td align="center">50</td>
+<td align="center">5</td>
+<td align="center">5</td>
+<td align="center">140</td>
+<td align="center">0</td>
+<td align="center">1</td>
+<td align="center">0</td>
+<td align="center">1</td>
+<td align="center">1</td>
 </tr>
-<tr>
-<td style="text-align:center;">
-1
-</td>
-<td style="text-align:center;">
-55
-</td>
-<td style="text-align:center;">
-5
-</td>
-<td style="text-align:center;">
-12
-</td>
-<td style="text-align:center;">
-90
-</td>
-<td style="text-align:center;">
-0
-</td>
-<td style="text-align:center;">
-1
-</td>
-<td style="text-align:center;">
-1
-</td>
-<td style="text-align:center;">
-1
-</td>
-<td style="text-align:center;">
-1
-</td>
+<tr class="odd">
+<td align="center">1</td>
+<td align="center">55</td>
+<td align="center">5</td>
+<td align="center">12</td>
+<td align="center">90</td>
+<td align="center">0</td>
+<td align="center">1</td>
+<td align="center">1</td>
+<td align="center">1</td>
+<td align="center">1</td>
 </tr>
 </tbody>
 </table>
 <table>
+<colgroup>
+<col width="18%" />
+<col width="19%" />
+<col width="8%" />
+<col width="12%" />
+<col width="7%" />
+<col width="6%" />
+<col width="6%" />
+<col width="6%" />
+<col width="6%" />
+<col width="4%" />
+<col width="4%" />
+</colgroup>
 <thead>
-<tr>
-<th style="text-align:center;">
-Insuredcapital_content_re
-</th>
-<th style="text-align:center;">
-Insuredcapital_continent_re
-</th>
-<th style="text-align:center;">
-appartment
-</th>
-<th style="text-align:center;">
-Client_Seniority
-</th>
-<th style="text-align:center;">
-Retention
-</th>
-<th style="text-align:center;">
-NClaims1
-</th>
-<th style="text-align:center;">
-NClaims2
-</th>
-<th style="text-align:center;">
-Claims1
-</th>
-<th style="text-align:center;">
-Claims2
-</th>
-<th style="text-align:center;">
-Types
-</th>
-<th style="text-align:center;">
-PolID
-</th>
+<tr class="header">
+<th align="center">Insuredcapital_content_re</th>
+<th align="center">Insuredcapital_continent_re</th>
+<th align="center">appartment</th>
+<th align="center">Client_Seniority</th>
+<th align="center">Retention</th>
+<th align="center">NClaims1</th>
+<th align="center">NClaims2</th>
+<th align="center">Claims1</th>
+<th align="center">Claims2</th>
+<th align="center">Types</th>
+<th align="center">PolID</th>
 </tr>
 </thead>
 <tbody>
-<tr>
-<td style="text-align:center;">
-10.30518223
-</td>
-<td style="text-align:center;">
-11.4037721
-</td>
-<td style="text-align:center;">
-1
-</td>
-<td style="text-align:center;">
-19.73169062
-</td>
-<td style="text-align:center;">
-1
-</td>
-<td style="text-align:center;">
-0
-</td>
-<td style="text-align:center;">
-0
-</td>
-<td style="text-align:center;">
-0
-</td>
-<td style="text-align:center;">
-0
-</td>
-<td style="text-align:center;">
-1
-</td>
-<td style="text-align:center;">
-2967
-</td>
+<tr class="odd">
+<td align="center">10.30518223</td>
+<td align="center">11.4037721</td>
+<td align="center">1</td>
+<td align="center">19.73169062</td>
+<td align="center">1</td>
+<td align="center">0</td>
+<td align="center">0</td>
+<td align="center">0</td>
+<td align="center">0</td>
+<td align="center">1</td>
+<td align="center">2967</td>
 </tr>
-<tr>
-<td style="text-align:center;">
-10.88842000
-</td>
-<td style="text-align:center;">
-11.0707182
-</td>
-<td style="text-align:center;">
-1
-</td>
-<td style="text-align:center;">
-15.33470226
-</td>
-<td style="text-align:center;">
-1
-</td>
-<td style="text-align:center;">
-0
-</td>
-<td style="text-align:center;">
-0
-</td>
-<td style="text-align:center;">
-0
-</td>
-<td style="text-align:center;">
-0
-</td>
-<td style="text-align:center;">
-1
-</td>
-<td style="text-align:center;">
-9387
-</td>
+<tr class="even">
+<td align="center">10.88842000</td>
+<td align="center">11.0707182</td>
+<td align="center">1</td>
+<td align="center">15.33470226</td>
+<td align="center">1</td>
+<td align="center">0</td>
+<td align="center">0</td>
+<td align="center">0</td>
+<td align="center">0</td>
+<td align="center">1</td>
+<td align="center">9387</td>
 </tr>
-<tr>
-<td style="text-align:center;">
-9.22486636
-</td>
-<td style="text-align:center;">
-11.6327216
-</td>
-<td style="text-align:center;">
-1
-</td>
-<td style="text-align:center;">
-6.00684463
-</td>
-<td style="text-align:center;">
-1
-</td>
-<td style="text-align:center;">
-0
-</td>
-<td style="text-align:center;">
-0
-</td>
-<td style="text-align:center;">
-0
-</td>
-<td style="text-align:center;">
-0
-</td>
-<td style="text-align:center;">
-1
-</td>
-<td style="text-align:center;">
-36519
-</td>
+<tr class="odd">
+<td align="center">9.22486636</td>
+<td align="center">11.6327216</td>
+<td align="center">1</td>
+<td align="center">6.00684463</td>
+<td align="center">1</td>
+<td align="center">0</td>
+<td align="center">0</td>
+<td align="center">0</td>
+<td align="center">0</td>
+<td align="center">1</td>
+<td align="center">36519</td>
 </tr>
-<tr>
-<td style="text-align:center;">
-9.96916293
-</td>
-<td style="text-align:center;">
-12.2717054
-</td>
-<td style="text-align:center;">
-0
-</td>
-<td style="text-align:center;">
-8.39151266
-</td>
-<td style="text-align:center;">
-1
-</td>
-<td style="text-align:center;">
-0
-</td>
-<td style="text-align:center;">
-0
-</td>
-<td style="text-align:center;">
-0
-</td>
-<td style="text-align:center;">
-0
-</td>
-<td style="text-align:center;">
-1
-</td>
-<td style="text-align:center;">
-33276
-</td>
+<tr class="even">
+<td align="center">9.96916293</td>
+<td align="center">12.2717054</td>
+<td align="center">0</td>
+<td align="center">8.39151266</td>
+<td align="center">1</td>
+<td align="center">0</td>
+<td align="center">0</td>
+<td align="center">0</td>
+<td align="center">0</td>
+<td align="center">1</td>
+<td align="center">33276</td>
 </tr>
-<tr>
-<td style="text-align:center;">
-11.12727769
-</td>
-<td style="text-align:center;">
-12.7367038
-</td>
-<td style="text-align:center;">
-0
-</td>
-<td style="text-align:center;">
-6.42299795
-</td>
-<td style="text-align:center;">
-1
-</td>
-<td style="text-align:center;">
-0
-</td>
-<td style="text-align:center;">
-0
-</td>
-<td style="text-align:center;">
-0
-</td>
-<td style="text-align:center;">
-0
-</td>
-<td style="text-align:center;">
-1
-</td>
-<td style="text-align:center;">
-25370
-</td>
+<tr class="odd">
+<td align="center">11.12727769</td>
+<td align="center">12.7367038</td>
+<td align="center">0</td>
+<td align="center">6.42299795</td>
+<td align="center">1</td>
+<td align="center">0</td>
+<td align="center">0</td>
+<td align="center">0</td>
+<td align="center">0</td>
+<td align="center">1</td>
+<td align="center">25370</td>
 </tr>
 </tbody>
 </table>
 <p>These data were drawn from a larger database of 40,284 insurance private customers. These customers are tracked from 2010 to 2014. Some customers do not renew their policies, so that they do not stay in the sample for five years. For the smaller data, only the 2014 policy year was used and from this, a random sample of 10,000 customers was drawn.</p>
-<p>See <span class="citation"><a href="#ref-frees2021dependence" role="doc-biblioref">Frees et al.</a> (<a href="#ref-frees2021dependence" role="doc-biblioref">2021</a>)</span> for more information about this dataset. The larger database contains 122935 rows and is freely available at:</p>
+<p>See <span class="citation">Frees et al. (<a href="#ref-frees2021dependence">2021</a>)</span> for more information about this dataset. The larger database contains 122935 rows and is freely available at:</p>
 <p><em>Source:</em></p>
-<p>Guillen, Montserrat; Bolancé, Catalina; Frees, Edward W.; Valdez, Emiliano A. (2021), “Insurance data for homeowners and motor insurance customers monitored over five years,” Mendeley Data, V1, DOI <a href="https://doi.org/10.17632/vfchtm5y7j.1" class="uri">https://doi.org/10.17632/vfchtm5y7j.1</a></p>
+<p>Guillen, Montserrat; Bolancé, Catalina; Frees, Edward W.; Valdez, Emiliano A. (2021), “Insurance data for homeowners and motor insurance customers monitored over five years”, Mendeley Data, V1, DOI <a href="https://doi.org/10.17632/vfchtm5y7j.1" class="uri">https://doi.org/10.17632/vfchtm5y7j.1</a></p>
 </div>
 <div id="S:CASDatasets" class="section level2 hasAnchor" number="22.6">
 <h2><span class="header-section-number">22.6</span> ‘R’ Package CASdatasets<a href="DataResources.html#S:CASDatasets" class="anchor-section" aria-label="Anchor link to header"></a></h2>
-<p>The <code>R</code> package <code>CASdatasets</code> provides a convenient way to access many well-known insurance datasets. This package was originally created to support the book <em>Computational Actuarial Science with R</em>, edited by Arthur Charpentier, <span class="citation"><a href="#ref-charpentier2014computational" role="doc-biblioref">Charpentier</a> (<a href="#ref-charpentier2014computational" role="doc-biblioref">2014</a>)</span>.</p>
+<p>The <code>R</code> package <code>CASdatasets</code> provides a convenient way to access many well-known insurance datasets. This package was originally created to support the book <em>Computational Actuarial Science with R</em>, edited by Arthur Charpentier, <span class="citation">Charpentier (<a href="#ref-charpentier2014computational">2014</a>)</span>.</p>
 <p>To install the package, here is a bit of <code>R</code> code:</p>
-<div class="sourceCode" id="cb299"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb299-1"><a href="DataResources.html#cb299-1" aria-hidden="true" tabindex="-1"></a><span class="fu">install.packages</span>(<span class="st">&quot;CASdatasets&quot;</span>, <span class="at">repos =</span> <span class="st">&quot;http://cas.uqam.ca/pub/&quot;</span>, <span class="at">type =</span> <span class="st">&quot;source&quot;</span>)</span>
-<span id="cb299-2"><a href="DataResources.html#cb299-2" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(CASdatasets)</span>
-<span id="cb299-3"><a href="DataResources.html#cb299-3" aria-hidden="true" tabindex="-1"></a><span class="st">`</span><span class="at">?</span><span class="st">`</span>(CASdatasets)</span>
-<span id="cb299-4"><a href="DataResources.html#cb299-4" aria-hidden="true" tabindex="-1"></a><span class="st">`</span><span class="at">?</span><span class="st">`</span>(sgautonb  <span class="co"># See the documentation of the Singapore Auto Data</span></span>
-<span id="cb299-5"><a href="DataResources.html#cb299-5" aria-hidden="true" tabindex="-1"></a>)</span>
-<span id="cb299-6"><a href="DataResources.html#cb299-6" aria-hidden="true" tabindex="-1"></a><span class="st">`</span><span class="at">?</span><span class="st">`</span>(lossalae  <span class="co"># See the documentation of the Loss and Expense Data</span></span>
-<span id="cb299-7"><a href="DataResources.html#cb299-7" aria-hidden="true" tabindex="-1"></a>)</span></code></pre></div>
+<div class="sourceCode" id="cb299"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb299-1"><a href="DataResources.html#cb299-1" tabindex="-1"></a><span class="fu">install.packages</span>(<span class="st">&quot;CASdatasets&quot;</span>, <span class="at">repos =</span> <span class="st">&quot;http://cas.uqam.ca/pub/&quot;</span>, <span class="at">type=</span><span class="st">&quot;source&quot;</span>)</span>
+<span id="cb299-2"><a href="DataResources.html#cb299-2" tabindex="-1"></a><span class="fu">library</span>(CASdatasets)</span>
+<span id="cb299-3"><a href="DataResources.html#cb299-3" tabindex="-1"></a>?CASdatasets</span>
+<span id="cb299-4"><a href="DataResources.html#cb299-4" tabindex="-1"></a>?sgautonb <span class="co"># See the documentation of the Singapore Auto Data</span></span>
+<span id="cb299-5"><a href="DataResources.html#cb299-5" tabindex="-1"></a>?lossalae <span class="co"># See the documentation of the Loss and Expense Data</span></span></code></pre></div>
 <p>Note that this package assumes that you have already installed a few other packages, including <em>xts</em>, <em>sp</em>, and <em>zoo</em>.</p>
 <p>To illustrate,</p>
 <ul>
@@ -4356,7 +2818,7 @@ gitbook.start({
     var script = document.createElement("script");
     script.type = "text/javascript";
     var src = "true";
-    if (src === "" || src === "true") src = "https://mathjax.rstudio.com/latest/MathJax.js?config=TeX-MML-AM_CHTML";
+    if (src === "" || src === "true") src = "https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.9/latest.js?config=TeX-MML-AM_CHTML";
     if (location.protocol !== "file:")
       if (/^https?:/.test(src))
         src = src.replace(/^https?:/, '');

@@ -6,7 +6,7 @@
   <meta http-equiv="X-UA-Compatible" content="IE=edge" />
   <title>Chapter 10 Premium Foundations | Loss Data Analytics   Second Edition</title>
   <meta name="description" content="Loss Data Analytics is an interactive, online, freely available text. - The online version will contain many interactive objects (quizzes, computer demonstrations, interactive graphs, video, and the like) to promote deeper learning. - A subset of the book will be available in pdf format for low-cost printing. - The online text will be available in multiple languages to promote access to a worldwide audience." />
-  <meta name="generator" content="bookdown 0.27 and GitBook 2.6.7" />
+  <meta name="generator" content="bookdown 0.39 and GitBook 2.6.7" />
 
   <meta property="og:title" content="Chapter 10 Premium Foundations | Loss Data Analytics   Second Edition" />
   <meta property="og:type" content="book" />
@@ -515,7 +515,7 @@ code span.al { color: #ff0000; font-weight: bold; } /* Alert */
 code span.an { color: #60a0b0; font-weight: bold; font-style: italic; } /* Annotation */
 code span.at { color: #7d9029; } /* Attribute */
 code span.bn { color: #40a070; } /* BaseN */
-code span.bu { } /* BuiltIn */
+code span.bu { color: #008000; } /* BuiltIn */
 code span.cf { color: #007020; font-weight: bold; } /* ControlFlow */
 code span.ch { color: #4070a0; } /* Char */
 code span.cn { color: #880000; } /* Constant */
@@ -528,7 +528,7 @@ code span.er { color: #ff0000; font-weight: bold; } /* Error */
 code span.ex { } /* Extension */
 code span.fl { color: #40a070; } /* Float */
 code span.fu { color: #06287e; } /* Function */
-code span.im { } /* Import */
+code span.im { color: #008000; font-weight: bold; } /* Import */
 code span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Information */
 code span.kw { color: #007020; font-weight: bold; } /* Keyword */
 code span.op { color: #666666; } /* Operator */
@@ -542,6 +542,10 @@ code span.vs { color: #4070a0; } /* VerbatimString */
 code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warning */
 </style>
 
+<style type="text/css">
+  
+  div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+</style>
 <style type="text/css">
 /* Used with Pandoc 2.11+ new --citeproc when CSL is used */
 div.csl-bib-body { }
@@ -1048,7 +1052,7 @@ div.csl-indent {
 <li class="chapter" data-level="16.1" data-path="ChapDependenceModel.html"><a href="ChapDependenceModel.html#S:Measures"><i class="fa fa-check"></i><b>16.1</b> Classic Measures of Scalar Associations</a>
 <ul>
 <li class="chapter" data-level="16.1.1" data-path="ChapDependenceModel.html"><a href="ChapDependenceModel.html#association-measures-for-quantitative-variables"><i class="fa fa-check"></i><b>16.1.1</b> Association Measures for Quantitative Variables</a></li>
-<li class="chapter" data-level="16.1.2" data-path="ChapDependenceModel.html"><a href="ChapDependenceModel.html#rank-based-measures"><i class="fa fa-check"></i><b>16.1.2</b> Rank Based Measures</a></li>
+<li class="chapter" data-level="16.1.2" data-path="ChapDependenceModel.html"><a href="ChapDependenceModel.html#Sec:RankMeasures"><i class="fa fa-check"></i><b>16.1.2</b> Rank Based Measures</a></li>
 <li class="chapter" data-level="16.1.3" data-path="ChapDependenceModel.html"><a href="ChapDependenceModel.html#Sec:tdc"><i class="fa fa-check"></i><b>16.1.3</b> Tail Dependence Coefficients</a></li>
 </ul></li>
 <li class="chapter" data-level="16.2" data-path="ChapDependenceModel.html"><a href="ChapDependenceModel.html#S:Copula"><i class="fa fa-check"></i><b>16.2</b> Introduction to Copulas</a>
@@ -1404,7 +1408,7 @@ available. In addition, <em>reported claims</em>, also known as <em>case incurre
 <em>incurred claims</em>, are the sum of paid claims and case reserves. The <em>ultimate claim</em> is the amount required to close and settle all claims for a defined group of policies. We describe the estimation of
 ultimate claims and claims adjustment expenses in Section <a href="ChapLossReserves.html#ChapLossReserves">14</a>.</p>
 <p>Alternatively, we can estimate projected claims and claims expenses as the product of projected claim frequency and claims severity:</p>
-<p><span class="math display">\[ 
+<p><span class="math display">\[
 \text{Claims and Claims Expenses}_{i}^{(t)} =  E[X] \times E[N]
 \]</span></p>
 <p>where:</p>
@@ -1492,7 +1496,7 @@ claims adjustment expense payments.</p>
 </ul>
 <hr />
 <p>The denominator of the pure premium equation is
-“<a href="#" class="tooltip" style="color:green"><em>exposure</em><span style="font-size:8pt">A type of rating variable that is so important that premiums and losses are often quoted on a "per exposure" basis. that is, premiums and losses are commonly standardized by exposure variables.</span></a>.” We use exposures to standardize
+“<a href="#" class="tooltip" style="color:green"><em>exposure</em><span style="font-size:8pt">A type of rating variable that is so important that premiums and losses are often quoted on a ”per exposure” basis. that is, premiums and losses are commonly standardized by exposure variables.</span></a>.” We use exposures to standardize
 heterogeneous risks. To explain exposures, we can consider <em>scale
 distributions</em> that we learned about in Chapter <a href="ChapSeverity.html#ChapSeverity">4</a>. To
 recall a <a href="#" class="tooltip" style="color:green"><em>scale distribution</em><span style="font-size:8pt">Suppose that y = c x, where x comes from a parametric distribution family and c is a positive constant. the distribution is said to be a scale distribution if (i) the distributions of y and x come from the same family and (ii) only a single parameter differs and that by a factor of c.</span></a>, suppose that <span class="math inline">\(X\)</span> has a
@@ -1581,7 +1585,7 @@ portfolio of four illustrative policies.</p>
 \text{B}&amp;\text{1 April 2019} &amp; 1.00 &amp; 0.00 &amp; 0.75 &amp; 0.25 &amp; 0.25 &amp; 0.00&amp; 1.00 \\
 \text{C}&amp;\text{1 July 2019}  &amp; 1.00 &amp; 0.00 &amp; 0.50 &amp; 0.50 &amp; 0.50 &amp; 0.00&amp; 1.00 \\
 \text{D}&amp;\text{1 Oct 2019}   &amp; 1.00 &amp; 0.00 &amp; 0.25 &amp; 0.75 &amp; 0.75 &amp; 0.00&amp; 1.00 \\ \hline
- &amp;  Total       &amp; 4.00 &amp; 0.00 &amp; 2.50 &amp; 1.50 &amp; 1.50 &amp; 0.00 &amp; 3.00 \\
+&amp;  Total       &amp; 4.00 &amp; 0.00 &amp; 2.50 &amp; 1.50 &amp; 1.50 &amp; 0.00 &amp; 3.00 \\
   \hline
   \hline
 \end{array}
@@ -1605,7 +1609,7 @@ portfolio of four illustrative policies.</p>
 <li>Calculate the expected pure premium</li>
 </ul>
 <hr />
-<p>The <code>pure premium</code> in equation <a href="ChapPremiumFoundations.html#eq:SimpPremiumEquation">(10.1)</a> is a random
+<p>The <em>pure premium</em> in equation <a href="ChapPremiumFoundations.html#eq:SimpPremiumEquation">(10.1)</a> is a random
 variable, and so, as a baseline, we use the <em>expected costs</em> to
 determine rates. To develop our initial understanding, we will consider
 the insurer that enters into many contracts with risks that are similar
@@ -1776,7 +1780,7 @@ tax rate of 30%, then the profit provision in the premium would be:</p>
 <p><span class="math display">\[
 \begin{equation}
 \dfrac{12\%~\text{after tax return}}{\text{surplus}} \times \dfrac{1 \times \text{surplus}}{2 \times \text{premium}} \times \dfrac{1~\text{pre-tax}}{0.7~\text{after tax}} = \dfrac{8.6\%~\text{pre-tax return}}{\text{premium}}
-\end{equation} 
+\end{equation}
 \]</span></p>
 <p>We can then reduce the required underwriting profit to consider investment income on surplus. Using the example of Section <a href="ChapPremiumFoundations.html#S:InvIncSurplus">10.7.2</a>, the resulting required underwriting profit provision would reduce from 8.6% to 6.1%.</p>
 </div>
@@ -1894,10 +1898,10 @@ choose <span class="math inline">\(\alpha_{Exp} = 2 \alpha_{Var}\)</span>. With 
 calculus (<span class="math inline">\(\log(1-x) = -x - x^2/2 - x^3/3 - \cdots\)</span>), we write</p>
 <p><span class="math display">\[
 \begin{array}{ll}
-H_{Exp}(X) &amp;= \frac{-\eta}{\alpha_{Exp}} \log\left(1-\alpha_{Exp} ~\theta\right) 
+H_{Exp}(X) &amp;= \frac{-\eta}{\alpha_{Exp}} \log\left(1-\alpha_{Exp} ~\theta\right)
 = \frac{-\eta}{\alpha_{Exp}} \left\{ -\alpha_{Exp} ~\theta -(\alpha_{Exp} ~\theta)^2/2 - \cdots\right\} \\
-&amp; \approx \eta~ \theta + \frac{\alpha_{Exp}}{2}(\eta ~\theta^2 ) 
-= H_{Var}(X). 
+&amp; \approx \eta~ \theta + \frac{\alpha_{Exp}}{2}(\eta ~\theta^2 )
+= H_{Var}(X).
 \end{array}
 \]</span></p>
 </div>
@@ -1922,7 +1926,7 @@ properties of premium principles.</p>
 }
 \]</span></p>
 <p>This is simply a subset of the many properties quoted in the actuarial
-literature. For example, the review paper of <span class="citation"><a href="#ref-young2014premium" role="doc-biblioref">Young</a> (<a href="#ref-young2014premium" role="doc-biblioref">2014</a>)</span> lists 15
+literature. For example, the review paper of <span class="citation">Young (<a href="#ref-young2014premium">2014</a>)</span> lists 15
 properties. See also the properties described as <em>coherent axioms</em> that
 we introduce for risk measures in Section <a href="ChapPortMgt.html#S:RiskMeasure">13.3</a>.</p>
 <p>Some of the properties listed in <a href="#tab:10.2">Table 10.2</a> are mild in the
@@ -2045,7 +2049,8 @@ time to the average accident date of the proposed rate program.</p></li>
 <p>We also need to adjust premiums for the effect of rate changes. We refer
 to this adjustment as “on-leveling.” There are two common approaches to
 on-leveling.</p>
-<p>The Parallelogram Method: Premium on-level factors use historical rate
+<ul>
+<li>The Parallelogram Method: Premium on-level factors use historical rate
 change calculations. For example, if the company adopted a +10% rate
 change on 1 July 2022, then the 2022 earned premium would need to be
 adjusted by +7.5%. - Policies written prior to 1 July 2022 would need to
@@ -2053,7 +2058,8 @@ be adjusted by +10%; - For the premium earned after 1 July 2022, half
 would be earned on policies written under the old rate levels and
 require the 10% adjustment and half would be written on policies written
 under the higher rate levels and require no adjustment. The weighted
-average of these adjustments if +7.5%.</p>
+average of these adjustments if +7.5%.</li>
+</ul>
 <!-- NOTE TO BRIAN: Do you want me to expand on this parallelogram method, provide a reference, or do we have it elsewhere. -->
 <ul>
 <li>Extension of Exposures: The extension of exposures method is a more
@@ -2105,7 +2111,7 @@ information:</p>
 <p><span class="math display">\[
 \text{Experience Period Loss Ratio} = 65\% \times \dfrac{1.05}{1.075 \times 1.02} = 62.2\%\\
 \text{Target Loss Ratio} = 0.99 - 6.5\% - 25\% - 6.1\% = 61.4\%\\
-\text{Complement of Credibility} = 0.614 \times \dfrac{1.05}{1.02} = 63.2\%\\ 
+\text{Complement of Credibility} = 0.614 \times \dfrac{1.05}{1.02} = 63.2\%\\
 \text{Credibility-weighted loss ratio} = 62.2\% \times 80\% + 63.2\% \times (1 - 80\%) = 62.4\%\\
 \text{Indicated loss ratio} = 62.4\% / 61.4\% = 1.016
 \]</span></p>
@@ -2118,18 +2124,18 @@ information:</p>
 this book and an introduction to pricing and ratemaking for practicing
 actuaries. For readers interested in learning practical aspects of
 pricing, we recommend introductions by the Society of Actuaries in
-<span class="citation"><a href="#ref-friedland2013fundamentals" role="doc-biblioref">Friedland</a> (<a href="#ref-friedland2013fundamentals" role="doc-biblioref">2013</a>)</span> and by the Casualty Actuarial Society in
-<span class="citation"><a href="#ref-werner2016basic" role="doc-biblioref">Werner and Modlin</a> (<a href="#ref-werner2016basic" role="doc-biblioref">2016</a>)</span>. For a classic risk management introduction to pricing,
-see <span class="citation"><a href="#ref-niehaus2003risk" role="doc-biblioref">Niehaus and Harrington</a> (<a href="#ref-niehaus2003risk" role="doc-biblioref">2003</a>)</span>. See also <span class="citation"><a href="#ref-finger2006risk" role="doc-biblioref">Finger</a> (<a href="#ref-finger2006risk" role="doc-biblioref">2006</a>)</span> and <span class="citation"><a href="#ref-frees2014frequency" role="doc-biblioref">Frees</a> (<a href="#ref-frees2014frequency" role="doc-biblioref">2014</a>)</span>.</p>
-<p><span class="citation"><a href="#ref-buhlmann1985premium" role="doc-biblioref">Bühlmann</a> (<a href="#ref-buhlmann1985premium" role="doc-biblioref">1985</a>)</span> was the first in the academic literature to argue
+<span class="citation">Friedland (<a href="#ref-friedland2013fundamentals">2013</a>)</span> and by the Casualty Actuarial Society in
+<span class="citation">Werner and Modlin (<a href="#ref-werner2016basic">2016</a>)</span>. For a classic risk management introduction to pricing,
+see <span class="citation">Niehaus and Harrington (<a href="#ref-niehaus2003risk">2003</a>)</span>. See also <span class="citation">Finger (<a href="#ref-finger2006risk">2006</a>)</span> and <span class="citation">Frees (<a href="#ref-frees2014frequency">2014</a>)</span>.</p>
+<p><span class="citation">Bühlmann (<a href="#ref-buhlmann1985premium">1985</a>)</span> was the first in the academic literature to argue
 that pricing should be done first at the portfolio level (he referred to
 this as a <em>top down</em> approach) which would be subsequently reconciled
 with pricing of individual contracts. See also the discussion in
-<span class="citation"><a href="#ref-kaas2008modern" role="doc-biblioref">Kaas et al.</a> (<a href="#ref-kaas2008modern" role="doc-biblioref">2008</a>)</span>, Chapter 5.</p>
+<span class="citation">Kaas et al. (<a href="#ref-kaas2008modern">2008</a>)</span>, Chapter 5.</p>
 <p>For more background on pricing principles, a classic treatment is by
-<span class="citation"><a href="#ref-gerber1979introduction" role="doc-biblioref">Gerber</a> (<a href="#ref-gerber1979introduction" role="doc-biblioref">1979</a>)</span> with a more modern approach in <span class="citation"><a href="#ref-kaas2008modern" role="doc-biblioref">Kaas et al.</a> (<a href="#ref-kaas2008modern" role="doc-biblioref">2008</a>)</span>.
+<span class="citation">Gerber (<a href="#ref-gerber1979introduction">1979</a>)</span> with a more modern approach in <span class="citation">Kaas et al. (<a href="#ref-kaas2008modern">2008</a>)</span>.
 For more discussion of pricing from a financial economics viewpoint, see
-<span class="citation"><a href="#ref-bauer2013financial" role="doc-biblioref">Bauer, Phillips, and Zanjani</a> (<a href="#ref-bauer2013financial" role="doc-biblioref">2013</a>)</span>.</p>
+<span class="citation">Bauer, Phillips, and Zanjani (<a href="#ref-bauer2013financial">2013</a>)</span>.</p>
 <ul>
 <li><strong>Edward (Jed) Frees</strong>, University of Wisconsin-Madison, and
 <strong>José Garrido</strong>, Concordia University were the principal authors of
@@ -2396,7 +2402,7 @@ gitbook.start({
     var script = document.createElement("script");
     script.type = "text/javascript";
     var src = "true";
-    if (src === "" || src === "true") src = "https://mathjax.rstudio.com/latest/MathJax.js?config=TeX-MML-AM_CHTML";
+    if (src === "" || src === "true") src = "https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.9/latest.js?config=TeX-MML-AM_CHTML";
     if (location.protocol !== "file:")
       if (/^https?:/.test(src))
         src = src.replace(/^https?:/, '');

@@ -6,7 +6,7 @@
   <meta http-equiv="X-UA-Compatible" content="IE=edge" />
   <title>Chapter 14 Loss Reserving | Loss Data Analytics   Second Edition</title>
   <meta name="description" content="Loss Data Analytics is an interactive, online, freely available text. - The online version will contain many interactive objects (quizzes, computer demonstrations, interactive graphs, video, and the like) to promote deeper learning. - A subset of the book will be available in pdf format for low-cost printing. - The online text will be available in multiple languages to promote access to a worldwide audience." />
-  <meta name="generator" content="bookdown 0.27 and GitBook 2.6.7" />
+  <meta name="generator" content="bookdown 0.39 and GitBook 2.6.7" />
 
   <meta property="og:title" content="Chapter 14 Loss Reserving | Loss Data Analytics   Second Edition" />
   <meta property="og:type" content="book" />
@@ -515,7 +515,7 @@ code span.al { color: #ff0000; font-weight: bold; } /* Alert */
 code span.an { color: #60a0b0; font-weight: bold; font-style: italic; } /* Annotation */
 code span.at { color: #7d9029; } /* Attribute */
 code span.bn { color: #40a070; } /* BaseN */
-code span.bu { } /* BuiltIn */
+code span.bu { color: #008000; } /* BuiltIn */
 code span.cf { color: #007020; font-weight: bold; } /* ControlFlow */
 code span.ch { color: #4070a0; } /* Char */
 code span.cn { color: #880000; } /* Constant */
@@ -528,7 +528,7 @@ code span.er { color: #ff0000; font-weight: bold; } /* Error */
 code span.ex { } /* Extension */
 code span.fl { color: #40a070; } /* Float */
 code span.fu { color: #06287e; } /* Function */
-code span.im { } /* Import */
+code span.im { color: #008000; font-weight: bold; } /* Import */
 code span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Information */
 code span.kw { color: #007020; font-weight: bold; } /* Keyword */
 code span.op { color: #666666; } /* Operator */
@@ -542,6 +542,10 @@ code span.vs { color: #4070a0; } /* VerbatimString */
 code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warning */
 </style>
 
+<style type="text/css">
+  
+  div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+</style>
 <style type="text/css">
 /* Used with Pandoc 2.11+ new --citeproc when CSL is used */
 div.csl-bib-body { }
@@ -1048,7 +1052,7 @@ div.csl-indent {
 <li class="chapter" data-level="16.1" data-path="ChapDependenceModel.html"><a href="ChapDependenceModel.html#S:Measures"><i class="fa fa-check"></i><b>16.1</b> Classic Measures of Scalar Associations</a>
 <ul>
 <li class="chapter" data-level="16.1.1" data-path="ChapDependenceModel.html"><a href="ChapDependenceModel.html#association-measures-for-quantitative-variables"><i class="fa fa-check"></i><b>16.1.1</b> Association Measures for Quantitative Variables</a></li>
-<li class="chapter" data-level="16.1.2" data-path="ChapDependenceModel.html"><a href="ChapDependenceModel.html#rank-based-measures"><i class="fa fa-check"></i><b>16.1.2</b> Rank Based Measures</a></li>
+<li class="chapter" data-level="16.1.2" data-path="ChapDependenceModel.html"><a href="ChapDependenceModel.html#Sec:RankMeasures"><i class="fa fa-check"></i><b>16.1.2</b> Rank Based Measures</a></li>
 <li class="chapter" data-level="16.1.3" data-path="ChapDependenceModel.html"><a href="ChapDependenceModel.html#Sec:tdc"><i class="fa fa-check"></i><b>16.1.3</b> Tail Dependence Coefficients</a></li>
 </ul></li>
 <li class="chapter" data-level="16.2" data-path="ChapDependenceModel.html"><a href="ChapDependenceModel.html#S:Copula"><i class="fa fa-check"></i><b>16.2</b> Introduction to Copulas</a>
@@ -1276,13 +1280,13 @@ Figure 14.5: <strong>From Granular Data to Run-off Triangle</strong>
 </div>
 <div id="run-off-triangles" class="section level3 hasAnchor" number="14.2.2">
 <h3><span class="header-section-number">14.2.2</span> Run-off Triangles<a href="ChapLossReserves.html#run-off-triangles" class="anchor-section" aria-label="Anchor link to header"></a></h3>
-<p>A first example of a <a href="#" class="tooltip" style="color:green"><em>run-off triangle</em><span style="font-size:8pt">Triangular display of loss reserve data. Accident or occurrence periods on one axis (often vertical) with development periods on the other (often horizontal). Also known as a development triangle.</span></a> with incremental payments is displayed in Figure <a href="ChapLossReserves.html#fig:tikz-triangle">14.6</a> (taken from <span class="citation"><a href="#ref-WuthrichMerz2008" role="doc-biblioref">Wüthrich and Merz</a> (<a href="#ref-WuthrichMerz2008" role="doc-biblioref">2008</a>)</span>, Table 2.2, also used in <span class="citation"><a href="#ref-WuthrichMerz2015" role="doc-biblioref">Wüthrich and Merz</a> (<a href="#ref-WuthrichMerz2015" role="doc-biblioref">2015</a>)</span>, Table 1.4). Accident years (or years of occurrence) are shown on the vertical axis and run from 2004 up to 2013. These refer to the year during which the insured event occurred. The horizontal axis indicates the payment delay in years since occurrence of the insured event. <em>0 delay</em> is used for payments made in the year of occurrence of the accident or insured event. <em>One year</em> of delay is used for payments made in the year after occurrence of the accident.</p>
+<p>A first example of a <a href="#" class="tooltip" style="color:green"><em>run-off triangle</em><span style="font-size:8pt">Triangular display of loss reserve data. Accident or occurrence periods on one axis (often vertical) with development periods on the other (often horizontal). Also known as a development triangle.</span></a> with incremental payments is displayed in Figure <a href="ChapLossReserves.html#fig:tikz-triangle">14.6</a> (taken from <span class="citation">Wüthrich and Merz (<a href="#ref-WuthrichMerz2008">2008</a>)</span>, Table 2.2, also used in <span class="citation">Wüthrich and Merz (<a href="#ref-WuthrichMerz2015">2015</a>)</span>, Table 1.4). Accident years (or years of occurrence) are shown on the vertical axis and run from 2004 up to 2013. These refer to the year during which the insured event occurred. The horizontal axis indicates the payment delay in years since occurrence of the insured event. <em>0 delay</em> is used for payments made in the year of occurrence of the accident or insured event. <em>One year</em> of delay is used for payments made in the year after occurrence of the accident.</p>
 
 <a id="tikz-triangle"></a>
 <div class="figure" style="text-align: center"><span style="display:block;" id="fig:tikz-triangle"></span>
 <img src="LossDataAnalytics_files/figure-html/tikz-triangle-1.png" alt="A Run-off Triangle with Incremental Payment Data. Source: Wüthrich and Merz (2008), Table 2.2." width="960" />
 <p class="caption">
-Figure 14.6: <strong>A Run-off Triangle with Incremental Payment Data.</strong> <em>Source: <span class="citation"><a href="#ref-WuthrichMerz2008" role="doc-biblioref">Wüthrich and Merz</a> (<a href="#ref-WuthrichMerz2008" role="doc-biblioref">2008</a>)</span>, Table 2.2.</em>
+Figure 14.6: <strong>A Run-off Triangle with Incremental Payment Data.</strong> <em>Source: <span class="citation">Wüthrich and Merz (<a href="#ref-WuthrichMerz2008">2008</a>)</span>, Table 2.2.</em>
 </p>
 </div>
 <p>For example, cell <span class="math inline">\((2004, 0)\)</span> in the above triangle displays the number <span class="math inline">\(5,947\)</span>, the total amount paid in the year 2004 for all claims occurring in year 2004. Thus, it is the total amount paid with 0 years of delay on all claims that occurred in the year 2004. Similarly, the number in cell <span class="math inline">\((2012,1)\)</span> displays the total <span class="math inline">\(2,357.9\)</span> paid in the year 2013 for all claims that occurred in year 2012.</p>
@@ -1291,7 +1295,7 @@ Figure 14.6: <strong>A Run-off Triangle with Incremental Payment Data.</strong> 
 <div class="figure" style="text-align: center"><span style="display:block;" id="fig:tikz-cum-triangle"></span>
 <img src="LossDataAnalytics_files/figure-html/tikz-cum-triangle-1.png" alt="A Run-off Triangle with Cumulative Payment Data. Source: Wüthrich and Merz (2008), Table 2.2." width="960" />
 <p class="caption">
-Figure 14.7: <strong>A Run-off Triangle with Cumulative Payment Data.</strong> <em>Source: <span class="citation"><a href="#ref-WuthrichMerz2008" role="doc-biblioref">Wüthrich and Merz</a> (<a href="#ref-WuthrichMerz2008" role="doc-biblioref">2008</a>)</span>, Table 2.2.</em>
+Figure 14.7: <strong>A Run-off Triangle with Cumulative Payment Data.</strong> <em>Source: <span class="citation">Wüthrich and Merz (<a href="#ref-WuthrichMerz2008">2008</a>)</span>, Table 2.2.</em>
 </p>
 </div>
 <p>Whereas the triangle in Figure <a href="ChapLossReserves.html#fig:tikz-triangle">14.6</a> displays incremental payment data, the Figure <a href="ChapLossReserves.html#fig:tikz-cum-triangle">14.7</a> shows the same information in cumulative format. Now, cell <span class="math inline">\((2004,1)\)</span> displays the total claim amount paid <em>up to</em> payment delay 1 for all claims that occurred in year 2004. Therefore, it is the sum of the amount paid in 2004 and the amount paid in 2005 on accidents that occurred in 2004.</p>
@@ -1320,7 +1324,7 @@ Figure 14.7: <strong>A Run-off Triangle with Cumulative Payment Data.</strong> <
 <div class="figure" style="text-align: center"><span style="display:block;" id="fig:tikz-math-triangle"></span>
 <img src="LossDataAnalytics_files/figure-html/tikz-math-triangle-1.png" alt="Mathematical notation for a run-off triangle. Source: Wüthrich and Merz (2008)" width="960" />
 <p class="caption">
-Figure 14.8: <strong>Mathematical notation for a run-off triangle.</strong> <em>Source:</em> <span class="citation"><a href="#ref-WuthrichMerz2008" role="doc-biblioref">Wüthrich and Merz</a> (<a href="#ref-WuthrichMerz2008" role="doc-biblioref">2008</a>)</span>
+Figure 14.8: <strong>Mathematical notation for a run-off triangle.</strong> <em>Source:</em> <span class="citation">Wüthrich and Merz (<a href="#ref-WuthrichMerz2008">2008</a>)</span>
 </p>
 </div>
 <p>The random variable <span class="math inline">\(X_{ij}\)</span> denotes the incremental claims paid in development period <span class="math inline">\(j\)</span> on claims from accident year <span class="math inline">\(i\)</span>. Thus, <span class="math inline">\(X_{ij}\)</span> is the total amount paid in development year <span class="math inline">\(j\)</span> for all claims that happened in occurrence year <span class="math inline">\(i\)</span>. These payments are actually paid out in accounting or calendar year <span class="math inline">\(i+j\)</span>. Taking a cumulative point of view, <span class="math inline">\(C_{ij}\)</span> is the cumulative amount paid up until (and including) development year <span class="math inline">\(j\)</span> for accidents that occurred in year <span class="math inline">\(i\)</span>. Ultimately, a total amount <span class="math inline">\(C_{iJ}\)</span> is paid in the final development year <span class="math inline">\(J\)</span> for claims that occurred in accident year <span class="math inline">\(i\)</span>. In this chapter time is expressed in years, though other time units can be used as well, e.g. six-month periods or quarters.</p>
@@ -1333,21 +1337,21 @@ the ultimate claim amount for occurrence year <span class="math inline">\(i\)</s
 <p><span class="math display">\[\begin{eqnarray*}
 \mathcal{R}^{(0)}_{i} = \sum_{\ell=I-i+1}^{I-1} X_{i\ell} = C_{i,I}-C_{i,I-i}.
 \end{eqnarray*}\]</span></p>
-<p>We express the reserve either as a sum of incremental data, the <span class="math inline">\(X_{i\ell}\)</span>, or as a difference between cumulative numbers. In the latter case the outstanding amount is the ultimate cumulative amount <span class="math inline">\(C_{i,I}\)</span> minus the most recently observed cumulative amount <span class="math inline">\(C_{i,I-i}\)</span>. Following <span class="citation"><a href="#ref-WuthrichMerz2015" role="doc-biblioref">Wüthrich and Merz</a> (<a href="#ref-WuthrichMerz2015" role="doc-biblioref">2015</a>)</span>, the notation <span class="math inline">\(\mathcal{R}^{(0)}_{i}\)</span> refers to the reserve for occurrence year <span class="math inline">\(i\)</span> where <span class="math inline">\(i=1,\ldots,I\)</span>. The superscript <span class="math inline">\((0)\)</span> refers to the evaluation of the reserve at the present moment, say <span class="math inline">\(\tau = 0\)</span>. We understand <span class="math inline">\(\tau = 0\)</span> at the end of occurrence year <span class="math inline">\(I\)</span>, the most recent calendar year for which data are observed and registered.</p>
+<p>We express the reserve either as a sum of incremental data, the <span class="math inline">\(X_{i\ell}\)</span>, or as a difference between cumulative numbers. In the latter case the outstanding amount is the ultimate cumulative amount <span class="math inline">\(C_{i,I}\)</span> minus the most recently observed cumulative amount <span class="math inline">\(C_{i,I-i}\)</span>. Following <span class="citation">Wüthrich and Merz (<a href="#ref-WuthrichMerz2015">2015</a>)</span>, the notation <span class="math inline">\(\mathcal{R}^{(0)}_{i}\)</span> refers to the reserve for occurrence year <span class="math inline">\(i\)</span> where <span class="math inline">\(i=1,\ldots,I\)</span>. The superscript <span class="math inline">\((0)\)</span> refers to the evaluation of the reserve at the present moment, say <span class="math inline">\(\tau = 0\)</span>. We understand <span class="math inline">\(\tau = 0\)</span> at the end of occurrence year <span class="math inline">\(I\)</span>, the most recent calendar year for which data are observed and registered.</p>
 </div>
 </div>
 <div id="S:Rcode" class="section level3 hasAnchor" number="14.2.4">
 <h3><span class="header-section-number">14.2.4</span> R Code to Summarize Loss Reserve Data<a href="ChapLossReserves.html#S:Rcode" class="anchor-section" aria-label="Anchor link to header"></a></h3>
-<p>We use the <code>ChainLadder</code> package <span class="citation">(<a href="#ref-R-chainladder" role="doc-biblioref">Gesmann et al. 2019</a>)</span> to import run-off triangles in <code>R</code> and to explore the trends present in these triangles. The package’s vignette nicely documents its functions for working with triangular data. First, we explore two ways to import a triangle.</p>
+<p>We use the <code>ChainLadder</code> package <span class="citation">(<a href="#ref-R-chainladder">Gesmann et al. 2019</a>)</span> to import run-off triangles in <code>R</code> and to explore the trends present in these triangles. The package’s vignette nicely documents its functions for working with triangular data. First, we explore two ways to import a triangle.</p>
 <div id="long-format-data" class="section level4 unnumbered hasAnchor">
 <h4>Long Format Data<a href="ChapLossReserves.html#long-format-data" class="anchor-section" aria-label="Anchor link to header"></a></h4>
-<p>The dataset <code>triangle_W_M_long.txt</code> stores the cumulative run-off triangle from <span class="citation"><a href="#ref-WuthrichMerz2008" role="doc-biblioref">Wüthrich and Merz</a> (<a href="#ref-WuthrichMerz2008" role="doc-biblioref">2008</a>)</span> (Table 2.2) in long format. That is: each cell in the triangle is one row in this data set, and three features are stored: the payment size (cumulative, in this example), the year of occurrence (<span class="math inline">\(i\)</span>) and the payment delay (<span class="math inline">\(j\)</span>). We import the <a href="#" class="tooltip" style="color:green"><em>.txt</em><span style="font-size:8pt">Text file</span></a> file and store the resulting data frame as <code>my_triangle_long</code>:</p>
+<p>The dataset <code>triangle_W_M_long.txt</code> stores the cumulative run-off triangle from <span class="citation">Wüthrich and Merz (<a href="#ref-WuthrichMerz2008">2008</a>)</span> (Table 2.2) in long format. That is: each cell in the triangle is one row in this data set, and three features are stored: the payment size (cumulative, in this example), the year of occurrence (<span class="math inline">\(i\)</span>) and the payment delay (<span class="math inline">\(j\)</span>). We import the <a href="#" class="tooltip" style="color:green"><em>.txt</em><span style="font-size:8pt">Text file</span></a> file and store the resulting data frame as <code>my_triangle_long</code>:</p>
 <h5 style="text-align: center;">
 <a id="displayCode.TriangleText.1" href="javascript:togglecode('toggleCode.TriangleText.1','displayCode.TriangleText.1');"><i><strong>R Code for Importing Text Data</strong></i></a>
 </h5>
 <div id="toggleCode.TriangleText.1" style="display: none">
-<div class="sourceCode" id="cb197"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb197-1"><a href="ChapLossReserves.html#cb197-1" aria-hidden="true" tabindex="-1"></a>my_triangle_long <span class="ot">&lt;-</span> <span class="fu">read.table</span>(<span class="st">&quot;Data/triangle_W_M_long.txt&quot;</span>, <span class="at">header =</span> <span class="cn">TRUE</span>)</span>
-<span id="cb197-2"><a href="ChapLossReserves.html#cb197-2" aria-hidden="true" tabindex="-1"></a><span class="fu">head</span>(my_triangle_long)</span></code></pre></div>
+<div class="sourceCode" id="cb197"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb197-1"><a href="ChapLossReserves.html#cb197-1" tabindex="-1"></a>my_triangle_long <span class="ot">&lt;-</span> <span class="fu">read.table</span>(<span class="st">&quot;Data/triangle_W_M_long.txt&quot;</span>, <span class="at">header =</span> <span class="cn">TRUE</span>)</span>
+<span id="cb197-2"><a href="ChapLossReserves.html#cb197-2" tabindex="-1"></a><span class="fu">head</span>(my_triangle_long)</span></code></pre></div>
 <pre><code>   payment origin dev
 1  5946975   2004   0
 2  9668212   2004   1
@@ -1361,8 +1365,8 @@ the ultimate claim amount for occurrence year <span class="math inline">\(i\)</s
 <a id="displayCode.TriangleText.2" href="javascript:togglecode('toggleCode.TriangleText.2','displayCode.TriangleText.2');"><i><strong>R Code for Transforming to Triangular Display</strong></i></a>
 </h5>
 <div id="toggleCode.TriangleText.2" style="display: none">
-<div class="sourceCode" id="cb199"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb199-1"><a href="ChapLossReserves.html#cb199-1" aria-hidden="true" tabindex="-1"></a>my_triangle <span class="ot">&lt;-</span> <span class="fu">as.triangle</span>(my_triangle_long, <span class="at">origin =</span> <span class="st">&quot;origin&quot;</span>, <span class="at">dev =</span> <span class="st">&quot;dev&quot;</span>, <span class="at">value =</span> <span class="st">&quot;payment&quot;</span>)</span>
-<span id="cb199-2"><a href="ChapLossReserves.html#cb199-2" aria-hidden="true" tabindex="-1"></a><span class="fu">str</span>(my_triangle)</span></code></pre></div>
+<div class="sourceCode" id="cb199"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb199-1"><a href="ChapLossReserves.html#cb199-1" tabindex="-1"></a>my_triangle <span class="ot">&lt;-</span> <span class="fu">as.triangle</span>(my_triangle_long, <span class="at">origin =</span> <span class="st">&quot;origin&quot;</span>, <span class="at">dev =</span> <span class="st">&quot;dev&quot;</span>, <span class="at">value =</span> <span class="st">&quot;payment&quot;</span>)</span>
+<span id="cb199-2"><a href="ChapLossReserves.html#cb199-2" tabindex="-1"></a><span class="fu">str</span>(my_triangle)</span></code></pre></div>
 <pre><code> &#39;triangle&#39; int [1:10, 1:10] 5946975 6346756 6269090 5863015 5778885 6184793 5600184 5288066 5290793 5675568 ...
  - attr(*, &quot;dimnames&quot;)=List of 2
   ..$ origin: chr [1:10] &quot;2004&quot; &quot;2005&quot; &quot;2006&quot; &quot;2007&quot; ...
@@ -1373,7 +1377,7 @@ the ultimate claim amount for occurrence year <span class="math inline">\(i\)</s
 <a id="displayCode.TriangleText.3" href="javascript:togglecode('toggleCode.TriangleText.3','displayCode.TriangleText.3');"><i><strong>R Code for Displaying Triangular Data</strong></i></a>
 </h5>
 <div id="toggleCode.TriangleText.3" style="display: none">
-<div class="sourceCode" id="cb201"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb201-1"><a href="ChapLossReserves.html#cb201-1" aria-hidden="true" tabindex="-1"></a><span class="fu">round</span>(my_triangle<span class="sc">/</span><span class="dv">1000</span>, <span class="at">digits =</span> <span class="dv">0</span>)</span></code></pre></div>
+<div class="sourceCode" id="cb201"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb201-1"><a href="ChapLossReserves.html#cb201-1" tabindex="-1"></a><span class="fu">round</span>(my_triangle<span class="sc">/</span><span class="dv">1000</span>, <span class="at">digits =</span> <span class="dv">0</span>)</span></code></pre></div>
 <pre><code>      dev
 origin    0    1     2     3     4     5     6     7     8     9
   2004 5947 9668 10564 10772 10978 11041 11106 11121 11132 11148
@@ -1395,18 +1399,17 @@ origin    0    1     2     3     4     5     6     7     8     9
 <a id="displayCode.TriangleCSV.1" href="javascript:togglecode('toggleCode.TriangleCSV.1','displayCode.TriangleCSV.1');"><i><strong>R Code for Importing Triangular Data</strong></i></a>
 </h5>
 <div id="toggleCode.TriangleCSV.1" style="display: none">
-<div class="sourceCode" id="cb203"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb203-1"><a href="ChapLossReserves.html#cb203-1" aria-hidden="true" tabindex="-1"></a>my_triangle_csv <span class="ot">&lt;-</span> <span class="fu">read.csv2</span>(<span class="st">&quot;Data/triangle_W_M.csv&quot;</span>, <span class="at">header =</span> <span class="cn">FALSE</span>)</span>
-<span id="cb203-2"><a href="ChapLossReserves.html#cb203-2" aria-hidden="true" tabindex="-1"></a>my_triangle_matrix <span class="ot">&lt;-</span> <span class="fu">as.matrix</span>(my_triangle_csv)</span>
-<span id="cb203-3"><a href="ChapLossReserves.html#cb203-3" aria-hidden="true" tabindex="-1"></a><span class="fu">dimnames</span>(my_triangle_matrix) <span class="ot">&lt;-</span> <span class="fu">list</span>(<span class="at">origin =</span> <span class="dv">2004</span><span class="sc">:</span><span class="dv">2013</span>, <span class="at">dev =</span> <span class="dv">0</span><span class="sc">:</span>(<span class="fu">ncol</span>(my_triangle_matrix) <span class="sc">-</span></span>
-<span id="cb203-4"><a href="ChapLossReserves.html#cb203-4" aria-hidden="true" tabindex="-1"></a>    <span class="dv">1</span>))</span></code></pre></div>
+<div class="sourceCode" id="cb203"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb203-1"><a href="ChapLossReserves.html#cb203-1" tabindex="-1"></a>my_triangle_csv <span class="ot">&lt;-</span> <span class="fu">read.csv2</span>(<span class="st">&quot;Data/triangle_W_M.csv&quot;</span>, <span class="at">header =</span> <span class="cn">FALSE</span>)</span>
+<span id="cb203-2"><a href="ChapLossReserves.html#cb203-2" tabindex="-1"></a>my_triangle_matrix <span class="ot">&lt;-</span> <span class="fu">as.matrix</span>(my_triangle_csv)</span>
+<span id="cb203-3"><a href="ChapLossReserves.html#cb203-3" tabindex="-1"></a><span class="fu">dimnames</span>(my_triangle_matrix) <span class="ot">&lt;-</span> <span class="fu">list</span>(<span class="at">origin =</span> <span class="dv">2004</span> <span class="sc">:</span> <span class="dv">2013</span>, <span class="at">dev =</span> <span class="dv">0</span><span class="sc">:</span>(<span class="fu">ncol</span>(my_triangle_matrix)<span class="sc">-</span><span class="dv">1</span>))</span></code></pre></div>
 </div>
 <p>We inspect the triangle:</p>
 <h5 style="text-align: center;">
 <a id="displayCode.TriangleCSV.2" href="javascript:togglecode('toggleCode.TriangleCSV.2','displayCode.TriangleCSV.2');"><i><strong>R Code for Displaying Triangular Data</strong></i></a>
 </h5>
 <div id="toggleCode.TriangleCSV.2" style="display: none">
-<div class="sourceCode" id="cb204"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb204-1"><a href="ChapLossReserves.html#cb204-1" aria-hidden="true" tabindex="-1"></a>my_triangle <span class="ot">&lt;-</span> <span class="fu">as.triangle</span>(my_triangle_matrix)</span>
-<span id="cb204-2"><a href="ChapLossReserves.html#cb204-2" aria-hidden="true" tabindex="-1"></a><span class="fu">round</span>(my_triangle<span class="sc">/</span><span class="dv">1000</span>, <span class="at">digits =</span> <span class="dv">0</span>)</span></code></pre></div>
+<div class="sourceCode" id="cb204"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb204-1"><a href="ChapLossReserves.html#cb204-1" tabindex="-1"></a>my_triangle <span class="ot">&lt;-</span> <span class="fu">as.triangle</span>(my_triangle_matrix) </span>
+<span id="cb204-2"><a href="ChapLossReserves.html#cb204-2" tabindex="-1"></a><span class="fu">round</span>(my_triangle<span class="sc">/</span><span class="dv">1000</span>, <span class="at">digits =</span> <span class="dv">0</span>)</span></code></pre></div>
 <pre><code>      dev
 origin    0    1     2     3     4     5     6     7     8     9
   2004 5947 9668 10564 10772 10978 11041 11106 11121 11132 11148
@@ -1428,8 +1431,8 @@ origin    0    1     2     3     4     5     6     7     8     9
 <a id="displayCode.TriangleCSV.2" href="javascript:togglecode('toggleCode.TriangleCSV.2','displayCode.TriangleCSV.2');"><i><strong>R Code for Switching from Cumulative to Incremental Display</strong></i></a>
 </h5>
 <div id="toggleCode.TriangleCSV.2" style="display: none">
-<div class="sourceCode" id="cb206"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb206-1"><a href="ChapLossReserves.html#cb206-1" aria-hidden="true" tabindex="-1"></a>my_triangle_incr <span class="ot">&lt;-</span> <span class="fu">cum2incr</span>(my_triangle)</span>
-<span id="cb206-2"><a href="ChapLossReserves.html#cb206-2" aria-hidden="true" tabindex="-1"></a><span class="fu">round</span>(my_triangle_incr<span class="sc">/</span><span class="dv">1000</span>, <span class="at">digits =</span> <span class="dv">0</span>)</span></code></pre></div>
+<div class="sourceCode" id="cb206"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb206-1"><a href="ChapLossReserves.html#cb206-1" tabindex="-1"></a>my_triangle_incr <span class="ot">&lt;-</span> <span class="fu">cum2incr</span>(my_triangle) </span>
+<span id="cb206-2"><a href="ChapLossReserves.html#cb206-2" tabindex="-1"></a><span class="fu">round</span>(my_triangle_incr<span class="sc">/</span><span class="dv">1000</span>, <span class="at">digits =</span> <span class="dv">0</span>)</span></code></pre></div>
 <pre><code>      dev
 origin    0    1   2   3   4   5  6  7  8  9
   2004 5947 3721 896 208 207  62 66 15 11 16
@@ -1449,7 +1452,7 @@ origin    0    1   2   3   4   5  6  7  8  9
 <h4>Visualizing Triangles<a href="ChapLossReserves.html#visualizing-triangles" class="anchor-section" aria-label="Anchor link to header"></a></h4>
 <p>To explore the evolution of the cumulative payments per occurrence year, Figure <a href="ChapLossReserves.html#fig:plottriangle">14.9</a> shows <code>my_triangle</code> using the <code>plot</code> function available for objects of type <code>triangle</code> in the <code>ChainLadder</code> package. Each line in this plot depicts an occurrence year (from 2004 to 2013, labelled as 1 to 10). Development periods are labelled from 1 to 10 (instead of 0 to 9, as used above).</p>
 
-<div class="sourceCode" id="cb208"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb208-1"><a href="ChapLossReserves.html#cb208-1" aria-hidden="true" tabindex="-1"></a><span class="fu">plot</span>(my_triangle)</span></code></pre></div>
+<div class="sourceCode" id="cb208"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb208-1"><a href="ChapLossReserves.html#cb208-1" tabindex="-1"></a><span class="fu">plot</span>(my_triangle)</span></code></pre></div>
 <div class="figure" style="text-align: center"><span style="display:block;" id="fig:plottriangle"></span>
 <img src="LossDataAnalytics_files/figure-html/plottriangle-1.png" alt="Claim Development by Occurrence Year" width="80%" />
 <p class="caption">
@@ -1457,32 +1460,32 @@ Figure 14.9: <strong>Claim Development by Occurrence Year</strong>
 </p>
 </div>
 <p>Alternatively, the <code>lattice</code> argument creates one plot per occurrence year.</p>
-<div class="sourceCode" id="cb209"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb209-1"><a href="ChapLossReserves.html#cb209-1" aria-hidden="true" tabindex="-1"></a><span class="fu">plot</span>(my_triangle, <span class="at">lattice =</span> <span class="cn">TRUE</span>)</span></code></pre></div>
+<div class="sourceCode" id="cb209"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb209-1"><a href="ChapLossReserves.html#cb209-1" tabindex="-1"></a><span class="fu">plot</span>(my_triangle, <span class="at">lattice =</span> <span class="cn">TRUE</span>)</span></code></pre></div>
 <p><img src="LossDataAnalytics_files/figure-html/plot_triangle_lattice-1.png" width="80%" style="display: block; margin: auto;" /></p>
 <p>Instead of plotting the cumulative triangle stored in <code>my_triangle</code>, we can plot the incremental run-off triangle.</p>
-<div class="sourceCode" id="cb210"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb210-1"><a href="ChapLossReserves.html#cb210-1" aria-hidden="true" tabindex="-1"></a><span class="fu">plot</span>(my_triangle_incr)</span></code></pre></div>
+<div class="sourceCode" id="cb210"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb210-1"><a href="ChapLossReserves.html#cb210-1" tabindex="-1"></a><span class="fu">plot</span>(my_triangle_incr)</span></code></pre></div>
 <p><img src="LossDataAnalytics_files/figure-html/plot_triangle_incr-1.png" width="80%" style="display: block; margin: auto;" /></p>
-<div class="sourceCode" id="cb211"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb211-1"><a href="ChapLossReserves.html#cb211-1" aria-hidden="true" tabindex="-1"></a><span class="fu">plot</span>(my_triangle_incr, <span class="at">lattice =</span> <span class="cn">TRUE</span>)</span></code></pre></div>
+<div class="sourceCode" id="cb211"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb211-1"><a href="ChapLossReserves.html#cb211-1" tabindex="-1"></a><span class="fu">plot</span>(my_triangle_incr, <span class="at">lattice =</span> <span class="cn">TRUE</span>)</span></code></pre></div>
 <p><img src="LossDataAnalytics_files/figure-html/plot_triangle_incr-2.png" width="80%" style="display: block; margin: auto;" /></p>
 </div>
 </div>
 </div>
 <div id="S:Chain-ladder" class="section level2 hasAnchor" number="14.3">
 <h2><span class="header-section-number">14.3</span> The Chain-Ladder Method<a href="ChapLossReserves.html#S:Chain-ladder" class="anchor-section" aria-label="Anchor link to header"></a></h2>
-<p>The most widely used method to estimate outstanding loss reserves is the so-called <a href="#" class="tooltip" style="color:green"><em>chain-ladder method</em><span style="font-size:8pt">An algorithm for predicting incomplete losses to their ultimate cumulative value. The name refers to the chaining of a sequence of (year-to-year development) factors into a ladder of factors.</span></a>. The origins of this method are obscure but was firmly entrenched in practical applications by the early 1970’s, <span class="citation"><a href="#ref-taylor1986claims" role="doc-biblioref">G. C. Taylor</a> (<a href="#ref-taylor1986claims" role="doc-biblioref">1986</a>)</span>. As will be seen, the name refers to the chaining of a sequence of (year-to-year development) factors into a ladder of factors; immature losses climb toward maturity when multiplied by this concatenation of ratios, hence the apt descriptor <em>chain-ladder method.</em> We will start with exploring the chain-ladder method in its deterministic or algorithmic version, hence without making any stochastic assumptions. Then we will describe Mack’s distribution-free chain-ladder model.</p>
+<p>The most widely used method to estimate outstanding loss reserves is the so-called <a href="#" class="tooltip" style="color:green"><em>chain-ladder method</em><span style="font-size:8pt">An algorithm for predicting incomplete losses to their ultimate cumulative value. The name refers to the chaining of a sequence of (year-to-year development) factors into a ladder of factors.</span></a>. The origins of this method are obscure but was firmly entrenched in practical applications by the early 1970’s, <span class="citation">G. C. Taylor (<a href="#ref-taylor1986claims">1986</a>)</span>. As will be seen, the name refers to the chaining of a sequence of (year-to-year development) factors into a ladder of factors; immature losses climb toward maturity when multiplied by this concatenation of ratios, hence the apt descriptor <em>chain-ladder method.</em> We will start with exploring the chain-ladder method in its deterministic or algorithmic version, hence without making any stochastic assumptions. Then we will describe Mack’s distribution-free chain-ladder model.</p>
 <div id="S:DeterministicCL" class="section level3 hasAnchor" number="14.3.1">
 <h3><span class="header-section-number">14.3.1</span> The Deterministic Chain-Ladder<a href="ChapLossReserves.html#S:DeterministicCL" class="anchor-section" aria-label="Anchor link to header"></a></h3>
 <p>The deterministic chain-ladder method focuses on the run-off triangle in cumulative form. Recall that a cell <span class="math inline">\((i,j)\)</span> in this triangle displays the cumulative amount paid up until development period <span class="math inline">\(j\)</span> for claims that occurred in year <span class="math inline">\(i\)</span>. The chain-ladder method assumes that <strong>development factors</strong> <span class="math inline">\(f_j\)</span> (also called age-to-age factors, link ratios or chain-ladder factors) exist such that</p>
 <p><span class="math display">\[
 C_{i,j+1} = f_j \times C_{i,j}.
 \]</span></p>
-<p>Thus, the development factor tells you how the cumulative amount in development year <span class="math inline">\(j\)</span> grows to the cumulative amount in year <span class="math inline">\(j+1\)</span>. We highlight the cumulative amount in period 0 in blue and the cumulative amount in period 1 in red on the Figure <a href="ChapLossReserves.html#fig:tikz-cum-triangle-cl1">14.10</a> taken from <span class="citation"><a href="#ref-WuthrichMerz2008" role="doc-biblioref">Wüthrich and Merz</a> (<a href="#ref-WuthrichMerz2008" role="doc-biblioref">2008</a>)</span> (Table 2.2, also used in <span class="citation"><a href="#ref-WuthrichMerz2015" role="doc-biblioref">Wüthrich and Merz</a> (<a href="#ref-WuthrichMerz2015" role="doc-biblioref">2015</a>)</span>, Table 1.4).</p>
+<p>Thus, the development factor tells you how the cumulative amount in development year <span class="math inline">\(j\)</span> grows to the cumulative amount in year <span class="math inline">\(j+1\)</span>. We highlight the cumulative amount in period 0 in blue and the cumulative amount in period 1 in red on the Figure <a href="ChapLossReserves.html#fig:tikz-cum-triangle-cl1">14.10</a> taken from <span class="citation">Wüthrich and Merz (<a href="#ref-WuthrichMerz2008">2008</a>)</span> (Table 2.2, also used in <span class="citation">Wüthrich and Merz (<a href="#ref-WuthrichMerz2015">2015</a>)</span>, Table 1.4).</p>
 
 <a id="tikz-cum-triangle-cl1"></a>
 <div class="figure" style="text-align: center"><span style="display:block;" id="fig:tikz-cum-triangle-cl1"></span>
 <img src="LossDataAnalytics_files/figure-html/tikz-cum-triangle-cl1-1.png" alt="A Run-off Triangle with Cumulative Payment Data Highlighting the Cumulative Amount in Period 0 in Blue and the Cumulative Amount in Period 1 in Red. Source: Wüthrich and Merz (2008), Table 2.2." width="960" />
 <p class="caption">
-Figure 14.10: <strong>A Run-off Triangle with Cumulative Payment Data Highlighting the Cumulative Amount in Period 0 in Blue and the Cumulative Amount in Period 1 in Red.</strong> <em>Source: <span class="citation"><a href="#ref-WuthrichMerz2008" role="doc-biblioref">Wüthrich and Merz</a> (<a href="#ref-WuthrichMerz2008" role="doc-biblioref">2008</a>)</span>, Table 2.2.</em>
+Figure 14.10: <strong>A Run-off Triangle with Cumulative Payment Data Highlighting the Cumulative Amount in Period 0 in Blue and the Cumulative Amount in Period 1 in Red.</strong> <em>Source: <span class="citation">Wüthrich and Merz (<a href="#ref-WuthrichMerz2008">2008</a>)</span>, Table 2.2.</em>
 </p>
 </div>
 <p>The chain-ladder method then presents an intuitive recipe to estimate or calculate these development factors. Since the first development factor <span class="math inline">\(f_0\)</span> describes the development of the cumulative claim amount from development period 0 to development period 1, it can be estimated as the ratio of the cumulative amounts in red and the cumulative amounts in blue, highlighted in the Figure <a href="ChapLossReserves.html#fig:tikz-cum-triangle-cl1">14.10</a>. We then obtain the following estimate <span class="math inline">\(\hat{f}_0^{CL}\)</span> for the first development factor <span class="math inline">\(f_0\)</span>, given observations <span class="math inline">\(\mathcal{D}_I\)</span>:</p>
@@ -1499,7 +1502,7 @@ Going forward with this reasoning, the next development factor <span class="math
 <div class="figure" style="text-align: center"><span style="display:block;" id="fig:tikz-cum-triangle-cl2"></span>
 <img src="LossDataAnalytics_files/figure-html/tikz-cum-triangle-cl2-1.png" alt="A Run-off Triangle with Cumulative Payment Data Highlighting the Cumulative Amount in Period 1 in Blue and the Cumulative Amount in Period 2 in Red. Source: Wüthrich and Merz (2008), Table 2.2." width="960" />
 <p class="caption">
-Figure 14.11: <strong>A Run-off Triangle with Cumulative Payment Data Highlighting the Cumulative Amount in Period 1 in Blue and the Cumulative Amount in Period 2 in Red.</strong> <em>Source: <span class="citation"><a href="#ref-WuthrichMerz2008" role="doc-biblioref">Wüthrich and Merz</a> (<a href="#ref-WuthrichMerz2008" role="doc-biblioref">2008</a>)</span>, Table 2.2.</em>
+Figure 14.11: <strong>A Run-off Triangle with Cumulative Payment Data Highlighting the Cumulative Amount in Period 1 in Blue and the Cumulative Amount in Period 2 in Red.</strong> <em>Source: <span class="citation">Wüthrich and Merz (<a href="#ref-WuthrichMerz2008">2008</a>)</span>, Table 2.2.</em>
 </p>
 </div>
 <p>The mathematical notation of the estimate <span class="math inline">\(\hat{f}_1^{CL}\)</span> for the next development factor <span class="math inline">\(f_1\)</span>, given observations <span class="math inline">\(\mathcal{D}_I\)</span>, equals:</p>
@@ -1520,7 +1523,7 @@ Note that for <span class="math inline">\(\hat{C}_{10,2}\)</span> you actually u
 <div class="figure" style="text-align: center"><span style="display:block;" id="fig:tikz-cum-triangle-cl3"></span>
 <img src="LossDataAnalytics_files/figure-html/tikz-cum-triangle-cl3-1.png" alt="A Run-off Triangle with Cumulative Payment Data Including Predictions in Italic Source: Wüthrich and Merz (2008), Table 2.2." width="960" />
 <p class="caption">
-Figure 14.12: <strong>A Run-off Triangle with Cumulative Payment Data Including Predictions in Italic</strong> <em>Source: <span class="citation"><a href="#ref-WuthrichMerz2008" role="doc-biblioref">Wüthrich and Merz</a> (<a href="#ref-WuthrichMerz2008" role="doc-biblioref">2008</a>)</span>, Table 2.2.</em>
+Figure 14.12: <strong>A Run-off Triangle with Cumulative Payment Data Including Predictions in Italic</strong> <em>Source: <span class="citation">Wüthrich and Merz (<a href="#ref-WuthrichMerz2008">2008</a>)</span>, Table 2.2.</em>
 </p>
 </div>
 <p>Eventually we need to estimate the values in the final column. The last development factor <span class="math inline">\(f_8\)</span> measures the growth from development period 8 to development period 9 in the triangle. Since only the first row in the triangle has both cells observed, this last factor is estimated as the ratio of the value in red and the value in blue in Figure <a href="ChapLossReserves.html#fig:tikz-cum-triangle-cl3b">14.13</a>.</p>
@@ -1529,7 +1532,7 @@ Figure 14.12: <strong>A Run-off Triangle with Cumulative Payment Data Including 
 <div class="figure" style="text-align: center"><span style="display:block;" id="fig:tikz-cum-triangle-cl3b"></span>
 <img src="LossDataAnalytics_files/figure-html/tikz-cum-triangle-cl3b-1.png" alt="A Run-off Triangle with Cumulative Payment Data Highlighting the Cumulative Amount in Period 8 in Blue and the Cumulative Amount in Period 9 in Red. Source: Wüthrich and Merz (2008), Table 2.2." width="960" />
 <p class="caption">
-Figure 14.13: <strong>A Run-off Triangle with Cumulative Payment Data Highlighting the Cumulative Amount in Period 8 in Blue and the Cumulative Amount in Period 9 in Red.</strong> <em>Source: <span class="citation"><a href="#ref-WuthrichMerz2008" role="doc-biblioref">Wüthrich and Merz</a> (<a href="#ref-WuthrichMerz2008" role="doc-biblioref">2008</a>)</span>, Table 2.2.</em>
+Figure 14.13: <strong>A Run-off Triangle with Cumulative Payment Data Highlighting the Cumulative Amount in Period 8 in Blue and the Cumulative Amount in Period 9 in Red.</strong> <em>Source: <span class="citation">Wüthrich and Merz (<a href="#ref-WuthrichMerz2008">2008</a>)</span>, Table 2.2.</em>
 </p>
 </div>
 <p>Given observations <span class="math inline">\(\mathcal{D}_I\)</span>, this factor estimate <span class="math inline">\(\hat{f}^{CL}_{8}\)</span> is equal to:</p>
@@ -1552,7 +1555,7 @@ where <span class="math inline">\(C_{i,I-i}\)</span> is on the last observed dia
 <div class="figure" style="text-align: center"><span style="display:block;" id="fig:tikz-cum-triangle-cl4"></span>
 <img src="LossDataAnalytics_files/figure-html/tikz-cum-triangle-cl4-1.png" alt="A Run-off Triangle with Cumulative Payment Data Including Predictions in Italic Source: Wüthrich and Merz (2008), Table 2.2." width="960" />
 <p class="caption">
-Figure 14.14: <strong>A Run-off Triangle with Cumulative Payment Data Including Predictions in Italic</strong> <em>Source: <span class="citation"><a href="#ref-WuthrichMerz2008" role="doc-biblioref">Wüthrich and Merz</a> (<a href="#ref-WuthrichMerz2008" role="doc-biblioref">2008</a>)</span>, Table 2.2.</em>
+Figure 14.14: <strong>A Run-off Triangle with Cumulative Payment Data Including Predictions in Italic</strong> <em>Source: <span class="citation">Wüthrich and Merz (<a href="#ref-WuthrichMerz2008">2008</a>)</span>, Table 2.2.</em>
 </p>
 </div>
 <p>The numbers in the last column show the estimates for the ultimate claim amounts. The estimate for the outstanding claim amount <span class="math inline">\(\hat{\mathcal{R}}_i^{CL}\)</span> for a particular occurrence period <span class="math inline">\(i=I-J+1,\ldots, I\)</span> is then given by the difference between the ultimate claim amount and the cumulative amount as observed on the most recent diagonal:</p>
@@ -1572,7 +1575,7 @@ Figure 14.15: <strong>Reserves per Occurence Period and for Total</strong>
 <div id="macks-distribution-free-chain-ladder-model" class="section level3 hasAnchor" number="14.3.2">
 <h3><span class="header-section-number">14.3.2</span> Mack’s Distribution-Free Chain-Ladder Model<a href="ChapLossReserves.html#macks-distribution-free-chain-ladder-model" class="anchor-section" aria-label="Anchor link to header"></a></h3>
 <p>At this stage, the traditional chain-ladder method provides a point estimator <span class="math inline">\(\hat{C}^{CL}_{iJ}\)</span> for the forecast of <span class="math inline">\(C_{iJ}\)</span>, using the information <span class="math inline">\(\mathcal{D}_I\)</span>. Since the chain-ladder method is a purely deterministic and intuitively natural algorithm to complete a run-off triangle, we are not able to determine how reliable that point estimator is or to model the variation of the future payments. To answer such questions an underlying stochastic model that reproduces the chain-ladder reserve estimates is needed.</p>
-<p>In this section we will focus on the distribution-free chain-ladder model as an underlying stochastic model, introduced in <span class="citation"><a href="#ref-Mack1993" role="doc-biblioref">Mack</a> (<a href="#ref-Mack1993" role="doc-biblioref">1993</a>)</span>. This method allows us to estimate the standard errors of the chain-ladder predictions. In the next Section <a href="ChapLossReserves.html#S:GLMs">14.4</a>, generalized linear models are used to develop a fully stochastic approach for predicting the outstanding reserve.</p>
+<p>In this section we will focus on the distribution-free chain-ladder model as an underlying stochastic model, introduced in <span class="citation">Mack (<a href="#ref-Mack1993">1993</a>)</span>. This method allows us to estimate the standard errors of the chain-ladder predictions. In the next Section <a href="ChapLossReserves.html#S:GLMs">14.4</a>, generalized linear models are used to develop a fully stochastic approach for predicting the outstanding reserve.</p>
 <p>In Mack’s approach the following conditions (without assuming a distribution) hold:</p>
 <ul>
 <li><p>Cumulative claims <span class="math inline">\((C_{ij})_{j=0,\ldots,J}\)</span> are independent over different occurrence periods <span class="math inline">\(i\)</span>.</p></li>
@@ -1628,7 +1631,7 @@ The weights are again equal to <span class="math inline">\(C_{i,j}\)</span> and 
 <p>We use this expression either as an estimator for the conditional expectation of the ultimate claim amount (given the observed upper triangle) or as a predictor for the ultimate claim amount as a random variable (given the observed upper triangle).</p>
 <p>In statistics the simplest measure to analyze the uncertainty that comes with a point estimate or prediction is the <em>Mean Squared Error of Prediction</em> (<em>MSEP</em>). Here we consider a conditional <em>MSEP</em>, conditional on the data observed in the upper triangle:</p>
 <p><span class="math display">\[
-MSEP_{C_{iJ}|\mathcal{D}_I}\left(\hat{C}_{iJ}^{CL}\right) = E\left[\left(C_{iJ}-\hat{C}_{iJ}^{CL}\right)^2|\mathcal{D}_I\right]. 
+MSEP_{C_{iJ}|\mathcal{D}_I}\left(\hat{C}_{iJ}^{CL}\right) = E\left[\left(C_{iJ}-\hat{C}_{iJ}^{CL}\right)^2|\mathcal{D}_I\right].
 \]</span>
 This conditional <em>MSEP</em> measures:</p>
 <ul>
@@ -1639,7 +1642,7 @@ This conditional <em>MSEP</em> measures:</p>
 <p><span class="math display">\[
 \begin{array}{rl}
 MSEP_{\hat{\mathcal{R}}^{I}_{i}|\mathcal{D}_I}(\hat{\mathcal{R}}^{I}_i) &amp;= E[(\hat{\mathcal{R}}^I_i-\mathcal{R}^I_i)^2|\mathcal{D}_I] \\
-&amp;= E[(\hat{C}^{CL}_{iJ}-C_{iJ})^2|\mathcal{D}_I] = MSEP(\hat{C}_{iJ}). 
+&amp;= E[(\hat{C}^{CL}_{iJ}-C_{iJ})^2|\mathcal{D}_I] = MSEP(\hat{C}_{iJ}).
 \end{array}
 \]</span>
 The reason for this equivalence is the fact that the reserve is the ultimate claim amount minus the most recently observed claim amount. The latter is observed and used in both <span class="math inline">\(\mathcal{R}^I_i\)</span> and <span class="math inline">\(\hat{\mathcal{R}}^I_i\)</span>.</p>
@@ -1657,7 +1660,7 @@ E\left[ \left( C_{iJ} - \hat{C}_{iJ} \right)^2 | \mathcal{D}_I\right] \\
 \mathrm{E}~(X-a)^2 = \text{Var}(X)+\left[\mathrm{E}(X)-a\right]^2.
 \]</span></p>
 <p>Applied to the expression of the <em>MSEP</em> you treat <span class="math inline">\(\hat{C}_{i,J}\)</span> as fixed because you work conditionally on the data in the upper triangle and <span class="math inline">\(\hat{C}_{i,J}\)</span> only uses information from this upper triangle.</p>
-<p><span class="citation"><a href="#ref-Mack1993" role="doc-biblioref">Mack</a> (<a href="#ref-Mack1993" role="doc-biblioref">1993</a>)</span> then derived the important formula for the conditional <em>MSEP</em> in the distribution-free chain-ladder model for a single occurrence period <span class="math inline">\(i\)</span>:</p>
+<p><span class="citation">Mack (<a href="#ref-Mack1993">1993</a>)</span> then derived the important formula for the conditional <em>MSEP</em> in the distribution-free chain-ladder model for a single occurrence period <span class="math inline">\(i\)</span>:</p>
 <p><span class="math display">\[
 \widehat{MSEP_{C_{iJ}|\mathcal{D}_I}}  =
 \left(\hat{C}_{iJ}^{CL}\right)^2 \sum_{j=I-i}^{J-1} \left[ \frac{\hat{\sigma}_j^2}{(\hat{f}_j^{CL})^2} \left(\frac{1}{\hat{C}^{CL}_{ij}}+\frac{1}{\sum_{n=1}^{I-j-1}C_{nj}}\right)\right].
@@ -1667,7 +1670,7 @@ E\left[ \left( C_{iJ} - \hat{C}_{iJ} \right)^2 | \mathcal{D}_I\right] \\
 <p><span class="math display">\[
 \begin{array}{ll}
 \widehat{MSEP_{\sum_{i=1}^I \hat{C}^{CL}_{iJ}}}\left( \sum_{i=1}^I \hat{C}^{CL}_{iJ}  \right) \\
- \ \ \ \ \ \sum_{i=1}^I \widehat{MSEP_{C_{iJ}|\mathcal{D}_I}}\left( \hat{C}^{CL}_{iJ} \right)
+\ \ \ \ \ \sum_{i=1}^I \widehat{MSEP_{C_{iJ}|\mathcal{D}_I}}\left( \hat{C}^{CL}_{iJ} \right)
 \color{blue}{+2 \sum_{1\leq i&lt; k \leq I} \hat{C}_{iJ}^{CL} \hat{C}_{kJ}^{CL}
 \sum_{j=I-i}^{J-1} \frac{ \hat{\sigma}_j^2/\left( \hat{f}_j^{\text{CL}} \right)^2 }{ \sum_{n=1}^{I-j-1} C_{nj} }}.
 \end{array}
@@ -1676,13 +1679,13 @@ The result is the sum of the <em>MSEP</em>s per occurrence period plus a covaria
 </div>
 <div id="r-code-for-chain-ladder-predictions" class="section level3 hasAnchor" number="14.3.3">
 <h3><span class="header-section-number">14.3.3</span> R code for Chain-Ladder Predictions<a href="ChapLossReserves.html#r-code-for-chain-ladder-predictions" class="anchor-section" aria-label="Anchor link to header"></a></h3>
-<p>We use the object <code>my_triangle</code> of type <code>triangle</code> that was created in Section <a href="ChapLossReserves.html#S:Rcode">14.2.4</a>. The distribution-free chain-ladder model of <span class="citation"><a href="#ref-Mack1993" role="doc-biblioref">Mack</a> (<a href="#ref-Mack1993" role="doc-biblioref">1993</a>)</span> is implemented in the <code>ChainLadder</code> package <span class="citation">(<a href="#ref-R-chainladder" role="doc-biblioref">Gesmann et al. 2019</a>)</span> (as a special form of weighted least squares) and can be applied on the data <code>my_triangle</code> to predict outstanding claim amounts and to estimate the standard error around those forecasts.</p>
+<p>We use the object <code>my_triangle</code> of type <code>triangle</code> that was created in Section <a href="ChapLossReserves.html#S:Rcode">14.2.4</a>. The distribution-free chain-ladder model of <span class="citation">Mack (<a href="#ref-Mack1993">1993</a>)</span> is implemented in the <code>ChainLadder</code> package <span class="citation">(<a href="#ref-R-chainladder">Gesmann et al. 2019</a>)</span> (as a special form of weighted least squares) and can be applied on the data <code>my_triangle</code> to predict outstanding claim amounts and to estimate the standard error around those forecasts.</p>
 <h5 style="text-align: center;">
 <a id="displayCode.MackModel.1" href="javascript:togglecode('toggleCode.MackModel.1','displayCode.MackModel.1');"><i><strong>R Code for Mack Model Forecasts</strong></i></a>
 </h5>
 <div id="toggleCode.MackModel.1" style="display: none">
-<div class="sourceCode" id="cb212"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb212-1"><a href="ChapLossReserves.html#cb212-1" aria-hidden="true" tabindex="-1"></a>CL <span class="ot">&lt;-</span> <span class="fu">MackChainLadder</span>(my_triangle)</span>
-<span id="cb212-2"><a href="ChapLossReserves.html#cb212-2" aria-hidden="true" tabindex="-1"></a>CL</span></code></pre></div>
+<div class="sourceCode" id="cb212"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb212-1"><a href="ChapLossReserves.html#cb212-1" tabindex="-1"></a>CL <span class="ot">&lt;-</span> <span class="fu">MackChainLadder</span>(my_triangle)</span>
+<span id="cb212-2"><a href="ChapLossReserves.html#cb212-2" tabindex="-1"></a>CL</span></code></pre></div>
 <pre><code>MackChainLadder(Triangle = my_triangle)
 
          Latest Dev.To.Date   Ultimate      IBNR Mack.S.E CV(IBNR)
@@ -1704,7 +1707,7 @@ Ultimate: 98,788,397.77
 IBNR:      6,047,063.77
 Mack.S.E     462,977.83
 CV(IBNR):          0.08</code></pre>
-<div class="sourceCode" id="cb214"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb214-1"><a href="ChapLossReserves.html#cb214-1" aria-hidden="true" tabindex="-1"></a><span class="fu">round</span>(<span class="fu">summary</span>(CL)<span class="sc">$</span>Totals)</span></code></pre></div>
+<div class="sourceCode" id="cb214"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb214-1"><a href="ChapLossReserves.html#cb214-1" tabindex="-1"></a><span class="fu">round</span>(<span class="fu">summary</span>(CL)<span class="sc">$</span>Totals)</span></code></pre></div>
 <pre><code>             Totals
 Latest:    92741334
 Dev:              1
@@ -1714,14 +1717,14 @@ Mack S.E.:   462978
 CV(IBNR):         0</code></pre>
 </div>
 <p>The development factors are obtained as follows:</p>
-<div class="sourceCode" id="cb216"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb216-1"><a href="ChapLossReserves.html#cb216-1" aria-hidden="true" tabindex="-1"></a><span class="fu">round</span>(CL<span class="sc">$</span>f, <span class="at">digits =</span> <span class="dv">4</span>)</span></code></pre></div>
+<div class="sourceCode" id="cb216"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb216-1"><a href="ChapLossReserves.html#cb216-1" tabindex="-1"></a><span class="fu">round</span>(CL<span class="sc">$</span>f,<span class="at">digits =</span> <span class="dv">4</span>)</span></code></pre></div>
 <pre><code> [1] 1.4925 1.0778 1.0229 1.0148 1.0070 1.0051 1.0011 1.0010 1.0014 1.0000</code></pre>
 <p>We can also print the complete run-off triangle (including predictions).</p>
 <h5 style="text-align: center;">
 <a id="displayCode.MackModel.1" href="javascript:togglecode('toggleCode.MackModel.1','displayCode.MackModel.1');"><i><strong>R Code for Mack Model Completed Triangle</strong></i></a>
 </h5>
 <div id="toggleCode.MackModel.1" style="display: none">
-<div class="sourceCode" id="cb218"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb218-1"><a href="ChapLossReserves.html#cb218-1" aria-hidden="true" tabindex="-1"></a>CL<span class="sc">$</span>FullTriangle</span></code></pre></div>
+<div class="sourceCode" id="cb218"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb218-1"><a href="ChapLossReserves.html#cb218-1" tabindex="-1"></a>CL<span class="sc">$</span>FullTriangle</span></code></pre></div>
 <pre><code>      dev
 origin       0          1           2           3           4           5
   2004 5946975 9668212.00 10563929.00 10771690.00 10978394.00 11040518.00
@@ -1748,15 +1751,15 @@ origin           6           7           8           9
   2013  9592312.75  9602676.24  9612727.89  9626383.25</code></pre>
 </div>
 <p>The <a href="#" class="tooltip" style="color:green"><em>MSEP</em><span style="font-size:8pt">Mean Squared Error of Prediction</span></a> for the total reserve across all occurrence periods is given by:</p>
-<div class="sourceCode" id="cb220"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb220-1"><a href="ChapLossReserves.html#cb220-1" aria-hidden="true" tabindex="-1"></a>CL<span class="sc">$</span>Total.Mack.S.E<span class="sc">^</span><span class="dv">2</span></span></code></pre></div>
+<div class="sourceCode" id="cb220"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb220-1"><a href="ChapLossReserves.html#cb220-1" tabindex="-1"></a>CL<span class="sc">$</span>Total.Mack.S.E<span class="sc">^</span><span class="dv">2</span></span></code></pre></div>
 <pre><code>           9 
 214348469061 </code></pre>
 <p>It is strongly advised to validate Mack’s assumptions by checking that there are no trends in the residual plots. The last four plots that we obtain with the following command show respectively the standardized residuals versus the fitted values, the origin period, the calendar period and the development period.</p>
-<div class="sourceCode" id="cb222"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb222-1"><a href="ChapLossReserves.html#cb222-1" aria-hidden="true" tabindex="-1"></a><span class="fu">plot</span>(CL)</span></code></pre></div>
+<div class="sourceCode" id="cb222"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb222-1"><a href="ChapLossReserves.html#cb222-1" tabindex="-1"></a><span class="fu">plot</span>(CL)</span></code></pre></div>
 <p><img src="LossDataAnalytics_files/figure-html/ResidualPlot-1.png" width="672" style="display: block; margin: auto;" /></p>
 <p>The top left-hand plot is a bar-chart of the latest claims position plus IBNR and Mack’s standard error by occurrence period. The top right-hand plot shows the forecasted development patterns for all occurrence periods (starting with 1 for the oldest occurrence period).</p>
 <p>When setting the argument <code>lattice=TRUE</code> we obtain a plot of the development, including the prediction and estimated standard errors by occurrence period:</p>
-<div class="sourceCode" id="cb223"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb223-1"><a href="ChapLossReserves.html#cb223-1" aria-hidden="true" tabindex="-1"></a><span class="fu">plot</span>(CL, <span class="at">lattice =</span> <span class="cn">TRUE</span>)</span></code></pre></div>
+<div class="sourceCode" id="cb223"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb223-1"><a href="ChapLossReserves.html#cb223-1" tabindex="-1"></a><span class="fu">plot</span>(CL, <span class="at">lattice=</span><span class="cn">TRUE</span>)</span></code></pre></div>
 <p><img src="LossDataAnalytics_files/figure-html/PlotLattice-1.png" width="672" style="display: block; margin: auto;" /></p>
 </div>
 </div>
@@ -1823,17 +1826,17 @@ Similarly, a cell in the lower triangle will be predicted as</p>
 </div>
 <div id="further-readings-and-references-2" class="section level4 unnumbered hasAnchor">
 <h4>Further Readings and References<a href="ChapLossReserves.html#further-readings-and-references-2" class="anchor-section" aria-label="Anchor link to header"></a></h4>
-<p>As displayed in Figure <a href="ChapLossReserves.html#fig:tikz-run-off">14.1</a>, similar timelines and visualizations are discussed (among others) in <span class="citation"><a href="#ref-WuthrichMerz2008" role="doc-biblioref">Wüthrich and Merz</a> (<a href="#ref-WuthrichMerz2008" role="doc-biblioref">2008</a>)</span>, <span class="citation"><a href="#ref-AntonioPlat2014" role="doc-biblioref">Antonio and Plat</a> (<a href="#ref-AntonioPlat2014" role="doc-biblioref">2014</a>)</span> and <span class="citation"><a href="#ref-WuthrichMerz2015" role="doc-biblioref">Wüthrich and Merz</a> (<a href="#ref-WuthrichMerz2015" role="doc-biblioref">2015</a>)</span>.</p>
+<p>As displayed in Figure <a href="ChapLossReserves.html#fig:tikz-run-off">14.1</a>, similar timelines and visualizations are discussed (among others) in <span class="citation">Wüthrich and Merz (<a href="#ref-WuthrichMerz2008">2008</a>)</span>, <span class="citation">Antonio and Plat (<a href="#ref-AntonioPlat2014">2014</a>)</span> and <span class="citation">Wüthrich and Merz (<a href="#ref-WuthrichMerz2015">2015</a>)</span>.</p>
 <p>Over time actuaries started to think about possible underlying models and we mention some important contributions:</p>
 <ul>
-<li><span class="citation"><a href="#ref-Kremer1982" role="doc-biblioref">Kremer</a> (<a href="#ref-Kremer1982" role="doc-biblioref">1982</a>)</span>: two-way ANOVA</li>
-<li><span class="citation"><a href="#ref-Kremer1984" role="doc-biblioref">Kremer</a> (<a href="#ref-Kremer1984" role="doc-biblioref">1984</a>)</span>, <span class="citation"><a href="#ref-Mack1991" role="doc-biblioref">Mack</a> (<a href="#ref-Mack1991" role="doc-biblioref">1991</a>)</span>: Poisson model</li>
-<li><span class="citation"><a href="#ref-Mack1993" role="doc-biblioref">Mack</a> (<a href="#ref-Mack1993" role="doc-biblioref">1993</a>)</span>: distribution-free chain-ladder model</li>
-<li><span class="citation"><a href="#ref-Renshaw1989" role="doc-biblioref">A. E. Renshaw</a> (<a href="#ref-Renshaw1989" role="doc-biblioref">1989</a>)</span>; <span class="citation"><a href="#ref-RenshawVerrall1998" role="doc-biblioref">A. Renshaw and Verrall</a> (<a href="#ref-RenshawVerrall1998" role="doc-biblioref">1998</a>)</span>: over-dispersed Poisson model</li>
-<li><span class="citation"><a href="#ref-Gisler2006" role="doc-biblioref">Gisler</a> (<a href="#ref-Gisler2006" role="doc-biblioref">2006</a>)</span>; <span class="citation"><a href="#ref-GislerWuthrich2008" role="doc-biblioref">Gisler and Wüthrich</a> (<a href="#ref-GislerWuthrich2008" role="doc-biblioref">2008</a>)</span>; <span class="citation"><a href="#ref-Buhlmann2009" role="doc-biblioref">Bühlmann et al.</a> (<a href="#ref-Buhlmann2009" role="doc-biblioref">2009</a>)</span>: Bayesian chain-ladder model.</li>
+<li><span class="citation">Kremer (<a href="#ref-Kremer1982">1982</a>)</span>: two-way ANOVA</li>
+<li><span class="citation">Kremer (<a href="#ref-Kremer1984">1984</a>)</span>, <span class="citation">Mack (<a href="#ref-Mack1991">1991</a>)</span>: Poisson model</li>
+<li><span class="citation">Mack (<a href="#ref-Mack1993">1993</a>)</span>: distribution-free chain-ladder model</li>
+<li><span class="citation">A. E. Renshaw (<a href="#ref-Renshaw1989">1989</a>)</span>; <span class="citation">A. Renshaw and Verrall (<a href="#ref-RenshawVerrall1998">1998</a>)</span>: over-dispersed Poisson model</li>
+<li><span class="citation">Gisler (<a href="#ref-Gisler2006">2006</a>)</span>; <span class="citation">Gisler and Wüthrich (<a href="#ref-GislerWuthrich2008">2008</a>)</span>; <span class="citation">Bühlmann et al. (<a href="#ref-Buhlmann2009">2009</a>)</span>: Bayesian chain-ladder model.</li>
 </ul>
-<p>The various stochastic models proposed in actuarial literature rely on different assumptions and have different model properties, but have in common that they provide exactly the chain-ladder reserve estimates. For more information we also refer to <span class="citation"><a href="#ref-MackVenter2000" role="doc-biblioref">Mack and Venter</a> (<a href="#ref-MackVenter2000" role="doc-biblioref">2000</a>)</span> and to the lively discussion that was published in <em>ASTIN Bulletin: Journal of the International Actuarial Association</em> in 2006 <span class="citation">(<a href="#ref-Venter2006" role="doc-biblioref">Gary G. Venter 2006</a>)</span>.</p>
-<p>To read more about exponential families and generalized linear models, see, for example, <span class="citation"><a href="#ref-McCullaghNelder89" role="doc-biblioref">McCullagh and Nelder</a> (<a href="#ref-McCullaghNelder89" role="doc-biblioref">1989</a>)</span> and <span class="citation"><a href="#ref-WuthrichMerz2008" role="doc-biblioref">Wüthrich and Merz</a> (<a href="#ref-WuthrichMerz2008" role="doc-biblioref">2008</a>)</span>. We refer to <span class="citation">(<a href="#ref-Kremer1982" role="doc-biblioref">Kremer 1982</a>)</span>, <span class="citation">(<a href="#ref-RenshawVerrall1998" role="doc-biblioref">A. Renshaw and Verrall 1998</a>)</span> and <span class="citation">(<a href="#ref-EnglandVerrall2002" role="doc-biblioref">England and Verrall 2002</a>)</span>, and the overviews in <span class="citation">(<a href="#ref-Taylor2000" role="doc-biblioref">G. Taylor 2000</a>)</span>, <span class="citation">(<a href="#ref-WuthrichMerz2008" role="doc-biblioref">Wüthrich and Merz 2008</a>)</span> and <span class="citation">(<a href="#ref-WuthrichMerz2015" role="doc-biblioref">Wüthrich and Merz 2015</a>)</span> for more details on the discussed GLMs. XXX presents alternative distributional assumptions and specifications of the linear predictor.</p>
+<p>The various stochastic models proposed in actuarial literature rely on different assumptions and have different model properties, but have in common that they provide exactly the chain-ladder reserve estimates. For more information we also refer to <span class="citation">Mack and Venter (<a href="#ref-MackVenter2000">2000</a>)</span> and to the lively discussion that was published in <em>ASTIN Bulletin: Journal of the International Actuarial Association</em> in 2006 <span class="citation">(<a href="#ref-Venter2006">Gary G. Venter 2006</a>)</span>.</p>
+<p>To read more about exponential families and generalized linear models, see, for example, <span class="citation">McCullagh and Nelder (<a href="#ref-McCullaghNelder89">1989</a>)</span> and <span class="citation">Wüthrich and Merz (<a href="#ref-WuthrichMerz2008">2008</a>)</span>. We refer to <span class="citation">(<a href="#ref-Kremer1982">Kremer 1982</a>)</span>, <span class="citation">(<a href="#ref-RenshawVerrall1998">A. Renshaw and Verrall 1998</a>)</span> and <span class="citation">(<a href="#ref-EnglandVerrall2002">England and Verrall 2002</a>)</span>, and the overviews in <span class="citation">(<a href="#ref-Taylor2000">G. Taylor 2000</a>)</span>, <span class="citation">(<a href="#ref-WuthrichMerz2008">Wüthrich and Merz 2008</a>)</span> and <span class="citation">(<a href="#ref-WuthrichMerz2015">Wüthrich and Merz 2015</a>)</span> for more details on the discussed GLMs. XXX presents alternative distributional assumptions and specifications of the linear predictor.</p>
 
 </div>
 </div>
@@ -1876,11 +1879,11 @@ Mack, Thomas, and Gary Venter. 2000. <span>“A Comparison of Stochastic Models 
 <div id="ref-McCullaghNelder89" class="csl-entry">
 McCullagh, Peter, and John A. Nelder. 1989. <em>Generalized Linear Models, Second Edition</em>. Chapman and Hall/CRC Monographs on Statistics and Applied Probability Series. Chapman &amp; Hall, London.
 </div>
-<div id="ref-RenshawVerrall1998" class="csl-entry">
-Renshaw, A., and R. Verrall. 1998. <span>“A Stochastic Model Underlying the Chain-Ladder Technique.”</span> <em>British Actuarial Journal</em> 4/4: 903–23.
-</div>
 <div id="ref-Renshaw1989" class="csl-entry">
 Renshaw, Arthur E. 1989. <span>“Chain Ladder and Interactive Modelling.(claims Reserving and GLIM).”</span> <em>Journal of the Institute of Actuaries</em> 116 (3): 559–87.
+</div>
+<div id="ref-RenshawVerrall1998" class="csl-entry">
+Renshaw, A., and R. Verrall. 1998. <span>“A Stochastic Model Underlying the Chain-Ladder Technique.”</span> <em>British Actuarial Journal</em> 4/4: 903–23.
 </div>
 <div id="ref-Taylor2000" class="csl-entry">
 Taylor, G. 2000. <em>Loss Reserving: An Actuarial Perspective</em>. Kluwer Academic Publishers.
@@ -1964,7 +1967,7 @@ gitbook.start({
     var script = document.createElement("script");
     script.type = "text/javascript";
     var src = "true";
-    if (src === "" || src === "true") src = "https://mathjax.rstudio.com/latest/MathJax.js?config=TeX-MML-AM_CHTML";
+    if (src === "" || src === "true") src = "https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.9/latest.js?config=TeX-MML-AM_CHTML";
     if (location.protocol !== "file:")
       if (/^https?:/.test(src))
         src = src.replace(/^https?:/, '');

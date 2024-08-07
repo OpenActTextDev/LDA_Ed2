@@ -541,10 +541,7 @@ further-reading-and-references-1
 ChapDependenceModel
 S:Measures
 association-measures-for-quantitative-variables
-pearson-correlation
-rank-based-measures
-Sec:Spearman
-Sec:Kendall
+Sec:RankMeasures
 Sec:tdc
 S:Copula
 definition-of-a-copula

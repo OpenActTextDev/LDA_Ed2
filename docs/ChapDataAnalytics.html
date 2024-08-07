@@ -6,7 +6,7 @@
   <meta http-equiv="X-UA-Compatible" content="IE=edge" />
   <title>Chapter 2 Introduction to Data Analytics | Loss Data Analytics   Second Edition</title>
   <meta name="description" content="Loss Data Analytics is an interactive, online, freely available text. - The online version will contain many interactive objects (quizzes, computer demonstrations, interactive graphs, video, and the like) to promote deeper learning. - A subset of the book will be available in pdf format for low-cost printing. - The online text will be available in multiple languages to promote access to a worldwide audience." />
-  <meta name="generator" content="bookdown 0.27 and GitBook 2.6.7" />
+  <meta name="generator" content="bookdown 0.39 and GitBook 2.6.7" />
 
   <meta property="og:title" content="Chapter 2 Introduction to Data Analytics | Loss Data Analytics   Second Edition" />
   <meta property="og:type" content="book" />
@@ -515,7 +515,7 @@ code span.al { color: #ff0000; font-weight: bold; } /* Alert */
 code span.an { color: #60a0b0; font-weight: bold; font-style: italic; } /* Annotation */
 code span.at { color: #7d9029; } /* Attribute */
 code span.bn { color: #40a070; } /* BaseN */
-code span.bu { } /* BuiltIn */
+code span.bu { color: #008000; } /* BuiltIn */
 code span.cf { color: #007020; font-weight: bold; } /* ControlFlow */
 code span.ch { color: #4070a0; } /* Char */
 code span.cn { color: #880000; } /* Constant */
@@ -528,7 +528,7 @@ code span.er { color: #ff0000; font-weight: bold; } /* Error */
 code span.ex { } /* Extension */
 code span.fl { color: #40a070; } /* Float */
 code span.fu { color: #06287e; } /* Function */
-code span.im { } /* Import */
+code span.im { color: #008000; font-weight: bold; } /* Import */
 code span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Information */
 code span.kw { color: #007020; font-weight: bold; } /* Keyword */
 code span.op { color: #666666; } /* Operator */
@@ -542,6 +542,10 @@ code span.vs { color: #4070a0; } /* VerbatimString */
 code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warning */
 </style>
 
+<style type="text/css">
+  
+  div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+</style>
 <style type="text/css">
 /* Used with Pandoc 2.11+ new --citeproc when CSL is used */
 div.csl-bib-body { }
@@ -1048,7 +1052,7 @@ div.csl-indent {
 <li class="chapter" data-level="16.1" data-path="ChapDependenceModel.html"><a href="ChapDependenceModel.html#S:Measures"><i class="fa fa-check"></i><b>16.1</b> Classic Measures of Scalar Associations</a>
 <ul>
 <li class="chapter" data-level="16.1.1" data-path="ChapDependenceModel.html"><a href="ChapDependenceModel.html#association-measures-for-quantitative-variables"><i class="fa fa-check"></i><b>16.1.1</b> Association Measures for Quantitative Variables</a></li>
-<li class="chapter" data-level="16.1.2" data-path="ChapDependenceModel.html"><a href="ChapDependenceModel.html#rank-based-measures"><i class="fa fa-check"></i><b>16.1.2</b> Rank Based Measures</a></li>
+<li class="chapter" data-level="16.1.2" data-path="ChapDependenceModel.html"><a href="ChapDependenceModel.html#Sec:RankMeasures"><i class="fa fa-check"></i><b>16.1.2</b> Rank Based Measures</a></li>
 <li class="chapter" data-level="16.1.3" data-path="ChapDependenceModel.html"><a href="ChapDependenceModel.html#Sec:tdc"><i class="fa fa-check"></i><b>16.1.3</b> Tail Dependence Coefficients</a></li>
 </ul></li>
 <li class="chapter" data-level="16.2" data-path="ChapDependenceModel.html"><a href="ChapDependenceModel.html#S:Copula"><i class="fa fa-check"></i><b>16.2</b> Introduction to Copulas</a>
@@ -1224,15 +1228,15 @@ Second Edition</a>
 <p><strong>Data analysis</strong> involves inspecting, cleansing, transforming, and modeling data to discover useful information to suggest conclusions and make decisions. Data analysis has a long history. In 1962, statistician John Tukey defined data analysis as:</p>
 <blockquote>
 <p>procedures for analyzing data, techniques for interpreting the results of such procedures, ways of planning the gathering of data to make its analysis easier, more precise or more accurate, and all the machinery and results of (mathematical) statistics which apply to analyzing data.</p>
-<p>— <span class="citation">(<a href="#ref-tukey1962data" role="doc-biblioref">Tukey 1962</a>)</span></p>
+<p>— <span class="citation">(<a href="#ref-tukey1962data">Tukey 1962</a>)</span></p>
 </blockquote>
 <div id="key-data-analytic-concepts" class="section level3 hasAnchor" number="2.1.1">
 <h3><span class="header-section-number">2.1.1</span> Key Data Analytic Concepts<a href="ChapDataAnalytics.html#key-data-analytic-concepts" class="anchor-section" aria-label="Anchor link to header"></a></h3>
 <p>Underpinning the elements of data analytics are the following key concepts:</p>
 <ul>
-<li><strong>Data Driven</strong>. As described in Section <a href="ChapIntro.html#S:DataDriven">1.1.2</a>, the conclusions and decisions made through a data analytic process depend heavily on data inputs. In comparison, econometricians have long recognized the difference between a data-driven model and a structural model, the latter being one that represents an explicit interplay between economic theory and stochastic models, <span class="citation"><a href="#ref-goldberger1972structural" role="doc-biblioref">Goldberger</a> (<a href="#ref-goldberger1972structural" role="doc-biblioref">1972</a>)</span> .</li>
+<li><strong>Data Driven</strong>. As described in Section <a href="ChapIntro.html#S:DataDriven">1.1.2</a>, the conclusions and decisions made through a data analytic process depend heavily on data inputs. In comparison, econometricians have long recognized the difference between a data-driven model and a structural model, the latter being one that represents an explicit interplay between economic theory and stochastic models, <span class="citation">Goldberger (<a href="#ref-goldberger1972structural">1972</a>)</span> .</li>
 <li><strong>EDA</strong> - exploratory data analysis - and <strong>CDA</strong> - confirmatory data analysis. Although some techniques overlap, e.g., taking the average of a dataset, these two approaches to analyzing data have different purposes. The purpose of EDA is to reveal aspects or patterns in the data without reference to any particular model. In contrast, CDA techniques use data to substantiate, or confirm, aspects or patterns in a model. See Section <a href="ChapDataAnalytics.html#S:EDACDA">2.3.2</a> for further discussions.</li>
-<li><strong>Estimation</strong> and <strong>Prediction</strong>. Recall the traditional triad of statistical inference: hypothesis testing, parameter estimation, and prediction. Medical statisticians test the efficacy of a new drug and econometricians estimate parameters of an economic relationship. In insurance, one also uses hypothesis testing and parameter estimation. Moreover, predictions of yet to be realized random outcomes are critical for financial risk management (e.g., pricing) of existing risks in future periods, as well as not yet observed risks in a current period, cf. <span class="citation"><a href="#ref-frees2015analytics" role="doc-biblioref">Frees</a> (<a href="#ref-frees2015analytics" role="doc-biblioref">2015</a>)</span>.</li>
+<li><strong>Estimation</strong> and <strong>Prediction</strong>. Recall the traditional triad of statistical inference: hypothesis testing, parameter estimation, and prediction. Medical statisticians test the efficacy of a new drug and econometricians estimate parameters of an economic relationship. In insurance, one also uses hypothesis testing and parameter estimation. Moreover, predictions of yet to be realized random outcomes are critical for financial risk management (e.g., pricing) of existing risks in future periods, as well as not yet observed risks in a current period, cf. <span class="citation">Frees (<a href="#ref-frees2015analytics">2015</a>)</span>.</li>
 <li><strong>Model Complexity,</strong> <strong>Parsimony,</strong> and <strong>Interpretability</strong>. A model is a mathematical representation of reality that, in statistics, is calibrated using a data set. One concern is the <em>complexity</em> of the model where the complexity may involve the number of parameters used to define the model, the number of variables upon which it relies, and the intricacies of relationships among the parameters and variables. As a rule of thumb, we will see that the more complex is the model, the better it fares in fitting a set of data (and hence at estimation) but the worse it fares in predicting new outcomes. Other things being equal, a model with fewer parameters is said to be <em>parsimonious</em> and hence less complex. Moreover, a parsimonious model is typically easier to interpret than a comparable model that is more complex. Complexity hinders our ability to understand the inner workings of a model, its interpretability, and will be a key ingredient in our comparisons of data versus algorithmic models in Section <a href="ChapDataAnalytics.html#S:DataAlgorithm">2.1.2</a>.</li>
 <li><strong>Parametric</strong> and <strong>Nonparametric</strong> models. Many models, including stochastic distributions, are known with the exception of a limited number of quantities known as parameters. For example, the mean and variance are parameters that determine a normal distribution. In contrast, other models may not rely on parameters; these are simply known as <em>nonparametric</em> models. Naturally, there is also a host of models that rely on parameters for some parts of the distribution and are distribution-free for other portions; these are referred to as <em>semi-parametric</em> models. Parametric and nonparametric approaches have different strengths and limitations; neither is strictly better than the other. We start the discussion in Section <a href="ChapDataAnalytics.html#S:ParametricNonP">2.3.3.1</a> to explain under what circumstances you might prefer one approach to another.</li>
 <li><strong>Robustness</strong> means that a model, test, or procedure is resistant to unanticipated deviations in model assumptions or the data used to calibrate the model. When interpreting findings, it is natural to ask questions about how the results react to changes in assumptions or data, that is, the robustness of the results.</li>
@@ -1240,7 +1244,7 @@ Second Edition</a>
 <li><strong>Big Data</strong>. This is about the process of using special methods and tools that can extract information rapidly from massive data. Examples of big data include text documents, videos, and audio files that are also known as <em>unstructured</em> data. <a href="#tab:2.1">Table 2.1</a> summarizes new types of data sources that lead to new data. As part of the analytics trends, different types of algorithms lead to new software for handling new types of data. See Section <a href="ChapDataAnalytics.html#Sec:BigDataAnalysis">2.5.4</a> for further discussions.</li>
 </ul>
 <p><a id=tab:2.1></a></p>
-<p>Table 2.1. <strong>Analytic Trends</strong> (from <span class="citation"><a href="#ref-Frees2019" role="doc-biblioref">Frees and Gao</a> (<a href="#ref-Frees2019" role="doc-biblioref">2019</a>)</span>)</p>
+<p>Table 2.1. <strong>Analytic Trends</strong> (from <span class="citation">Frees and Gao (<a href="#ref-Frees2019">2019</a>)</span>)</p>
 <p><span class="math display">\[
 {\small
 \begin{array}{l|l}
@@ -1263,7 +1267,7 @@ Second Edition</a>
 <div id="S:DataAlgorithm" class="section level3 hasAnchor" number="2.1.2">
 <h3><span class="header-section-number">2.1.2</span> Data versus Algorithmic Modeling<a href="ChapDataAnalytics.html#S:DataAlgorithm" class="anchor-section" aria-label="Anchor link to header"></a></h3>
 <p>There are two cultures for the use of statistical modeling to reach conclusions from data: the data modeling culture and the algorithmic modeling culture. In the data modeling culture, data are assumed to be generated by a given stochastic model. In the algorithmic modeling culture, the data mechanism is treated as unknown and algorithmic models are used.</p>
-<p><a href="#" class="tooltip" style="color:green"><em>Data modeling</em><span style="font-size:8pt">Assumes data generated comes from a stochastic data model</span></a> allows statisticians to analyze data and acquire information about the data mechanisms. However, <span class="citation"><a href="#ref-breiman2001modeling" role="doc-biblioref">Breiman</a> (<a href="#ref-breiman2001modeling" role="doc-biblioref">2001</a>)</span> argued that the focus on data modeling in the statistical community has led to some side effects such as:</p>
+<p><a href="#" class="tooltip" style="color:green"><em>Data modeling</em><span style="font-size:8pt">Assumes data generated comes from a stochastic data model</span></a> allows statisticians to analyze data and acquire information about the data mechanisms. However, <span class="citation">Breiman (<a href="#ref-breiman2001modeling">2001</a>)</span> argued that the focus on data modeling in the statistical community has led to some side effects such as:</p>
 <ul>
 <li>It produced irrelevant theory and questionable scientific conclusions.</li>
 <li>It kept statisticians from using algorithmic models that might be more suitable.</li>
@@ -1307,23 +1311,23 @@ Second Edition</a>
 <p><span class="math display">\[
 {\small
 \begin{array}{c|c|c|c|c}\hline
-\textbf{I. Scoping} &amp;\textbf{II. Data}&amp; \textbf{III. Model} &amp; \textbf{IV. Validation} &amp; 
-\textbf{V. Determine} \\ 
-\textbf{Phase} &amp;\textbf{ Splitting}&amp; \textbf{ Development} &amp;   &amp; 
+\textbf{I. Scoping} &amp;\textbf{II. Data}&amp; \textbf{III. Model} &amp; \textbf{IV. Validation} &amp;
+\textbf{V. Determine} \\
+\textbf{Phase} &amp;\textbf{ Splitting}&amp; \textbf{ Development} &amp;   &amp;
 \textbf{Implications} \\ \hline
-\text{Use background} &amp;\text{Split the}&amp; \text{Select a candidate} &amp; \text{Repeat Phase III} &amp; 
+\text{Use background} &amp;\text{Split the}&amp; \text{Select a candidate} &amp; \text{Repeat Phase III} &amp;
 \text{Use knowledge gained} \\
-\text{knowledge and} &amp;\text{data into}&amp; \text{model} &amp; \text{ to determine several} &amp; 
+\text{knowledge and} &amp;\text{data into}&amp; \text{model} &amp; \text{ to determine several} &amp;
 \text{from exploring the data,} \\
- \text{theory to} &amp;\text{training}&amp; &amp;\text{candidate models}  &amp; 
+\text{theory to} &amp;\text{training}&amp; &amp;\text{candidate models}  &amp;
 \text{fitting and predicting} \\
- \text{define goals} &amp;\text{and testing}&amp;&amp;&amp; \text{the models to make} \\ 
-&amp;\text{portions}&amp;&amp;&amp; \text{data-informed statements} \\ 
-&amp;&amp;&amp;&amp; \text{about the project goals} \\ \\ 
+\text{define goals} &amp;\text{and testing}&amp;&amp;&amp; \text{the models to make} \\
+&amp;\text{portions}&amp;&amp;&amp; \text{data-informed statements} \\
+&amp;&amp;&amp;&amp; \text{about the project goals} \\ \\
 \text{Prepare, collect,}&amp;&amp;\text{Select variables to} &amp;\text{Assess each model}  \\
 \text{and revise data}&amp;&amp;\text{ be used with the} &amp; \text{using the testing}&amp;  \\
-&amp;&amp;\text{candidate model} &amp; \text{portion of the data}&amp;  \\ 
-&amp;&amp; &amp; \text{ to determine its}&amp;  \\ 
+&amp;&amp;\text{candidate model} &amp; \text{portion of the data}&amp;  \\
+&amp;&amp; &amp; \text{ to determine its}&amp;  \\
 &amp;&amp; &amp; \text{predictive capabilities}&amp;  \\\\
 \text{EDA}&amp;&amp;\text{Evaluate model fit}
 &amp;&amp;\\
@@ -1349,7 +1353,7 @@ Second Edition</a>
 <div id="ii.-data-splitting" class="section level4 unnumbered hasAnchor">
 <h4>II. Data Splitting<a href="ChapDataAnalytics.html#ii.-data-splitting" class="anchor-section" aria-label="Anchor link to header"></a></h4>
 <p>Although optional, splitting the data into training and testing portions has some important advantages. If the available dataset is sufficiently large, one can split the data into a portion used to calibrate one or more candidate models, the training portion, and another portion that can be used for testing, that is, evaluating the predictive capabilities of the model. The data splitting procedure guards against overfitting a model and emphasizes predictive aspects of a model. For many applications, the splitting is done randomly to mitigate unanticipated sources of bias. For some applications such as insurance, it is common to use data from an earlier time period to predict, or <em>forecast</em>, future behavior. For example, with the Section <a href="ChapIntro.html#S:LGPIF">1.3</a> Wisconsin Property Fund data, one might use 2006-2010 data for training and 2011 data for assessing predictions.</p>
-<p>For large datasets, some analysts prefer to split the data into three portions, one for training (model estimation), one for validation (estimate prediction error for model selection), and one for testing (assessment of the generalization error of the final chosen model), c.f. <span class="citation"><a href="#ref-hastie2009elements" role="doc-biblioref">Hastie, Tibshirani, and Friedman</a> (<a href="#ref-hastie2009elements" role="doc-biblioref">2009</a>)</span> (Chapter 7). In contrast, for moderate and smaller datasets, it is common to use <a href="#" class="tooltip" style="color:green"><em>cross-validation</em><span style="font-size:8pt">A model validation procedure in which the data sample is partitioned into subsamples, where splits are formed by separately taking each subsample as the out-of-sample dataset.</span></a> techniques where one repeatedly splits the dataset into training and testing portions and then averages results over many applications. These techniques are described further in Chapter <a href="ChapSimulation.html#ChapSimulation">8</a>.</p>
+<p>For large datasets, some analysts prefer to split the data into three portions, one for training (model estimation), one for validation (estimate prediction error for model selection), and one for testing (assessment of the generalization error of the final chosen model), c.f. <span class="citation">Hastie, Tibshirani, and Friedman (<a href="#ref-hastie2009elements">2009</a>)</span> (Chapter 7). In contrast, for moderate and smaller datasets, it is common to use <a href="#" class="tooltip" style="color:green"><em>cross-validation</em><span style="font-size:8pt">A model validation procedure in which the data sample is partitioned into subsamples, where splits are formed by separately taking each subsample as the out-of-sample dataset.</span></a> techniques where one repeatedly splits the dataset into training and testing portions and then averages results over many applications. These techniques are described further in Chapter <a href="ChapSimulation.html#ChapSimulation">8</a>.</p>
 </div>
 <div id="iii.-model-development" class="section level4 unnumbered hasAnchor">
 <h4>III. Model Development<a href="ChapDataAnalytics.html#iii.-model-development" class="anchor-section" aria-label="Anchor link to header"></a></h4>
@@ -1439,7 +1443,7 @@ Second Edition</a>
 <p><span class="math display">\[
 \small{
 \begin{array}{lll} \hline
- &amp; \textbf{EDA} &amp; \textbf{CDA} \\\hline
+&amp; \textbf{EDA} &amp; \textbf{CDA} \\\hline
 \text{Data} &amp; \text{Observational data} &amp; \text{Experimental data}\\[3mm]
 \text{Goal} &amp; \text{Pattern recognition,}  &amp; \text{Hypothesis testing,}  \\
 &amp; \text{formulate hypotheses} &amp; \text{estimation, prediction} \\[3mm]
@@ -1464,7 +1468,7 @@ Second Edition</a>
 <div id="S:expred" class="section level4 hasAnchor" number="2.3.3.2">
 <h4><span class="header-section-number">2.3.3.2</span> Explanation versus Prediction<a href="ChapDataAnalytics.html#S:expred" class="anchor-section" aria-label="Anchor link to header"></a></h4>
 <p>There are two goals in data analysis: explanation and prediction. In some scientific areas such as economics, psychology, and environmental science, the focus of data analysis is to explain the causal relationships between the input variables and the response variable. In other scientific areas such as natural language processing, bioinformatics, and actuarial science, the focus of data analysis is to predict what the responses are going to be given the input variables.</p>
-<p><span class="citation"><a href="#ref-shmueli2010model" role="doc-biblioref">Shmueli</a> (<a href="#ref-shmueli2010model" role="doc-biblioref">2010</a>)</span> discussed in detail the distinction between explanatory modeling and predictive modeling. <a href="#" class="tooltip" style="color:green"><em>Explanatory modeling</em><span style="font-size:8pt">Process where the modeling goal is to identify variables with meaningful and statistically significant relationships and test hypotheses</span></a> is commonly used for theory building and testing and is typically done as follows:</p>
+<p><span class="citation">Shmueli (<a href="#ref-shmueli2010model">2010</a>)</span> discussed in detail the distinction between explanatory modeling and predictive modeling. <a href="#" class="tooltip" style="color:green"><em>Explanatory modeling</em><span style="font-size:8pt">Process where the modeling goal is to identify variables with meaningful and statistically significant relationships and test hypotheses</span></a> is commonly used for theory building and testing and is typically done as follows:</p>
 <ul>
 <li>State the prevailing theory.</li>
 <li>State causal hypotheses, which are given in terms of theoretical constructs rather than measurable variables. A causal diagram is usually included to illustrate the hypothesized causal relationship between the theoretical constructs.</li>
@@ -1478,7 +1482,7 @@ Second Edition</a>
 <div id="S:ModelSelection" class="section level3 hasAnchor" number="2.3.4">
 <h3><span class="header-section-number">2.3.4</span> Model Selection<a href="ChapDataAnalytics.html#S:ModelSelection" class="anchor-section" aria-label="Anchor link to header"></a></h3>
 <p>Although hypothesis testing is one approach to model selection that is viable in many fields, it does have its drawbacks. For example, the asymmetry between the null and alternative hypotheses raises issues; hypothesis testing is biased towards a null hypothesis unless there is strong evidence to the contrary.</p>
-<p>For modeling insurance activities, it is typically preferable to estimate the predictive power of various models and select a model with the best predictive power. The motivation for this is that we want good model selection methods achieve a balance between goodness of fit and parsimony. This is a trade-off because on the one hand, better fits to the data can be achieved by adding more parameters, making the model more complex and less parsimonious. On the other hand, models with fewer parameters (parsimonious) are attractive because of their simplicity and interpretability; they are also less subject to estimation variability and so can yield more accurate predictions, <span class="citation"><a href="#ref-ruppert2003semiparametric" role="doc-biblioref">Ruppert, Wand, and Carroll</a> (<a href="#ref-ruppert2003semiparametric" role="doc-biblioref">2003</a>)</span>.</p>
+<p>For modeling insurance activities, it is typically preferable to estimate the predictive power of various models and select a model with the best predictive power. The motivation for this is that we want good model selection methods achieve a balance between goodness of fit and parsimony. This is a trade-off because on the one hand, better fits to the data can be achieved by adding more parameters, making the model more complex and less parsimonious. On the other hand, models with fewer parameters (parsimonious) are attractive because of their simplicity and interpretability; they are also less subject to estimation variability and so can yield more accurate predictions, <span class="citation">Ruppert, Wand, and Carroll (<a href="#ref-ruppert2003semiparametric">2003</a>)</span>.</p>
 <p>One way of measuring this balance is through information criteria such as Akaike’s Information Criterion (<a href="#" class="tooltip" style="color:green"><em>AIC</em><span style="font-size:8pt">A goodness of fit measure of a statistical model that describes how well it fits a set of observations.</span></a>) and the Bayesian Information Criterion (<a href="#" class="tooltip" style="color:green"><em>BIC</em><span style="font-size:8pt">Bayesian information criterion</span></a>). These measures each contain a component that summarizes how well the model fits the data, a <a href="#" class="tooltip" style="color:green"><em>goodness of fit</em><span style="font-size:8pt">A measure used to assess how well a statistical model fits the data, usually by summarizing the discrepancy between the observations and the expected values under the model.</span></a> piece, plus a component to penalize the complexity of the model.</p>
 <p>Although attractive due to their simplicity, there are drawbacks to these measures. In particular, both rely on knowledge of the underlying distribution of the outcomes (or at least good estimates). A more robust approach is to split a data set in a portion that can used to calibrate a model, the <em>training</em> portion, and another portion used to quantify the predictive power of the model, the <em>test</em> portion. It is more robust in the sense that it does not rely on any distributional assumptions and can be used to validate general models.</p>
 <p>The data splitting approach is attractive because it directly aligns with the concept of assessing predictive power and can be used in general, and complex, situations. However, it does introduce additional variability into the process by introducing extra randomness of the uncertainty of which observations fall into the training and testing portions. To mitigate this problem, it is common to use an approach known as <em>cross-validation.</em> To illustrate, suppose that one randomly partitions a dataset into five subsets of roughly equivalent sizes</p>
@@ -1491,122 +1495,57 @@ Second Edition</a>
 <p>Results are summarized in Table <a href="ChapDataAnalytics.html#tab:Example231">2.1</a> for three fitted models. These are the “Community Rating” corresponding to using the overall mean, the “Two Levels” corresponding to using two averages, and the “Six Levels” corresponding to using an average for each level of the categorical variable. The data set of size 100 was randomly split into five folds; for each fold, the other folds were used to train/estimate the model and then that fold was used to assess predictions. The first five rows of Table <a href="ChapDataAnalytics.html#tab:Example231">2.1</a> give the results of the root mean square error for each fold. The sixth row provides the average over the five folds and the last row gives a similar result for another goodness of fit statistic, the <span class="math inline">\(AIC\)</span>. This approach is known as “cross-validation” that will be described in greater detail in Chapters <a href="ChapModelSelection.html#ChapModelSelection">6</a> and <a href="ChapSimulation.html#ChapSimulation">8</a>.</p>
 <p>Table <a href="ChapDataAnalytics.html#tab:Example231">2.1</a> shows that in each case the “Two Level” model has the lowest root mean square error and <span class="math inline">\(AIC\)</span>, indicating that it is the preferred model. The overfit model with six levels came in second and the underfit model, community rating, was a distant third. This analysis demonstrates techniques for selecting the appropriate model. Unlike analysis of real data, in this demonstration we enjoyed the additional luxury of knowing that we got things correct because we in fact generated the data - an approach that analysts often use to develop analytic procedures prior to utilizing the procedures on real data.</p>
 <table>
-<caption>
-<span id="tab:Example231">Table 2.1: </span><strong>Under- and Over-Fitting of Models</strong>
-</caption>
+<caption><span id="tab:Example231">Table 2.1: </span><strong>Under- and Over-Fitting of Models</strong></caption>
 <thead>
-<tr>
-<th style="text-align:left;">
-</th>
-<th style="text-align:right;">
-Community Rating
-</th>
-<th style="text-align:right;">
-Two Levels
-</th>
-<th style="text-align:right;">
-Six Levels
-</th>
+<tr class="header">
+<th align="left"></th>
+<th align="right">Community Rating</th>
+<th align="right">Two Levels</th>
+<th align="right">Six Levels</th>
 </tr>
 </thead>
 <tbody>
-<tr>
-<td style="text-align:left;">
-Rmse - Fold 1
-</td>
-<td style="text-align:right;">
-1.318
-</td>
-<td style="text-align:right;">
-1.192
-</td>
-<td style="text-align:right;">
-1.239
-</td>
+<tr class="odd">
+<td align="left">Rmse - Fold 1</td>
+<td align="right">1.318</td>
+<td align="right">1.192</td>
+<td align="right">1.239</td>
 </tr>
-<tr>
-<td style="text-align:left;">
-Rmse - Fold 2
-</td>
-<td style="text-align:right;">
-1.034
-</td>
-<td style="text-align:right;">
-0.972
-</td>
-<td style="text-align:right;">
-1.023
-</td>
+<tr class="even">
+<td align="left">Rmse - Fold 2</td>
+<td align="right">1.034</td>
+<td align="right">0.972</td>
+<td align="right">1.023</td>
 </tr>
-<tr>
-<td style="text-align:left;">
-Rmse - Fold 3
-</td>
-<td style="text-align:right;">
-0.816
-</td>
-<td style="text-align:right;">
-0.660
-</td>
-<td style="text-align:right;">
-0.759
-</td>
+<tr class="odd">
+<td align="left">Rmse - Fold 3</td>
+<td align="right">0.816</td>
+<td align="right">0.660</td>
+<td align="right">0.759</td>
 </tr>
-<tr>
-<td style="text-align:left;">
-Rmse - Fold 4
-</td>
-<td style="text-align:right;">
-0.807
-</td>
-<td style="text-align:right;">
-0.796
-</td>
-<td style="text-align:right;">
-0.824
-</td>
+<tr class="even">
+<td align="left">Rmse - Fold 4</td>
+<td align="right">0.807</td>
+<td align="right">0.796</td>
+<td align="right">0.824</td>
 </tr>
-<tr>
-<td style="text-align:left;">
-Rmse - Fold 5
-</td>
-<td style="text-align:right;">
-0.886
-</td>
-<td style="text-align:right;">
-0.539
-</td>
-<td style="text-align:right;">
-0.671
-</td>
+<tr class="odd">
+<td align="left">Rmse - Fold 5</td>
+<td align="right">0.886</td>
+<td align="right">0.539</td>
+<td align="right">0.671</td>
 </tr>
-<tr>
-<td style="text-align:left;">
-Rmse - Average
-</td>
-<td style="text-align:right;">
-0.972
-</td>
-<td style="text-align:right;">
-0.832
-</td>
-<td style="text-align:right;">
-0.903
-</td>
+<tr class="even">
+<td align="left">Rmse - Average</td>
+<td align="right">0.972</td>
+<td align="right">0.832</td>
+<td align="right">0.903</td>
 </tr>
-<tr>
-<td style="text-align:left;">
-AIC - Average
-</td>
-<td style="text-align:right;">
-227.171
-</td>
-<td style="text-align:right;">
-206.769
-</td>
-<td style="text-align:right;">
-211.333
-</td>
+<tr class="odd">
+<td align="left">AIC - Average</td>
+<td align="right">227.171</td>
+<td align="right">206.769</td>
+<td align="right">211.333</td>
 </tr>
 </tbody>
 </table>
@@ -1614,45 +1553,47 @@ AIC - Average
 <a id="displayCode.Example231.Hide" href="javascript:togglecode('toggleCode.Example231.Hide','displayCode.Example231.Hide');"><i><strong>Show Example 2.3.1 R Code</strong></i></a>
 </h5>
 <div id="toggleCode.Example231.Hide" style="display: none">
-<div class="sourceCode" id="cb30"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb30-1"><a href="ChapDataAnalytics.html#cb30-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Generate the Data</span></span>
-<span id="cb30-2"><a href="ChapDataAnalytics.html#cb30-2" aria-hidden="true" tabindex="-1"></a>rmse <span class="ot">&lt;-</span> Metrics<span class="sc">::</span>rmse</span>
-<span id="cb30-3"><a href="ChapDataAnalytics.html#cb30-3" aria-hidden="true" tabindex="-1"></a>n <span class="ot">&lt;-</span> <span class="dv">100</span></span>
-<span id="cb30-4"><a href="ChapDataAnalytics.html#cb30-4" aria-hidden="true" tabindex="-1"></a><span class="fu">set.seed</span>(<span class="dv">1234</span>)</span>
-<span id="cb30-5"><a href="ChapDataAnalytics.html#cb30-5" aria-hidden="true" tabindex="-1"></a>u <span class="ot">&lt;-</span> <span class="fu">sample</span>(<span class="dv">6</span>, n, <span class="at">replace =</span> <span class="cn">TRUE</span>)</span>
-<span id="cb30-6"><a href="ChapDataAnalytics.html#cb30-6" aria-hidden="true" tabindex="-1"></a>x1 <span class="ot">&lt;-</span> <span class="fu">as.factor</span>((u <span class="sc">==</span> <span class="dv">4</span>) <span class="sc">+</span> (u <span class="sc">==</span> <span class="dv">5</span>))</span>
-<span id="cb30-7"><a href="ChapDataAnalytics.html#cb30-7" aria-hidden="true" tabindex="-1"></a>x2 <span class="ot">&lt;-</span> <span class="fu">as.factor</span>(u)</span>
-<span id="cb30-8"><a href="ChapDataAnalytics.html#cb30-8" aria-hidden="true" tabindex="-1"></a>y <span class="ot">&lt;-</span> <span class="dv">1</span> <span class="sc">*</span> (x1 <span class="sc">==</span> <span class="dv">1</span>) <span class="sc">+</span> <span class="fu">rnorm</span>(n, <span class="at">sd =</span> <span class="dv">1</span>)</span>
-<span id="cb30-9"><a href="ChapDataAnalytics.html#cb30-9" aria-hidden="true" tabindex="-1"></a>xyData <span class="ot">&lt;-</span> <span class="fu">data.frame</span>(x1, x2, y)</span>
-<span id="cb30-10"><a href="ChapDataAnalytics.html#cb30-10" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb30-11"><a href="ChapDataAnalytics.html#cb30-11" aria-hidden="true" tabindex="-1"></a>n <span class="ot">&lt;-</span> <span class="fu">nrow</span>(xyData)</span>
-<span id="cb30-12"><a href="ChapDataAnalytics.html#cb30-12" aria-hidden="true" tabindex="-1"></a><span class="fu">set.seed</span>(<span class="dv">123</span>)</span>
-<span id="cb30-13"><a href="ChapDataAnalytics.html#cb30-13" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb30-14"><a href="ChapDataAnalytics.html#cb30-14" aria-hidden="true" tabindex="-1"></a><span class="co"># Number of folds</span></span>
-<span id="cb30-15"><a href="ChapDataAnalytics.html#cb30-15" aria-hidden="true" tabindex="-1"></a>k <span class="ot">&lt;-</span> <span class="dv">5</span></span>
-<span id="cb30-16"><a href="ChapDataAnalytics.html#cb30-16" aria-hidden="true" tabindex="-1"></a>splt <span class="ot">&lt;-</span> <span class="fu">split</span>(<span class="fu">sample</span>(n), <span class="dv">1</span><span class="sc">:</span>k)</span>
-<span id="cb30-17"><a href="ChapDataAnalytics.html#cb30-17" aria-hidden="true" tabindex="-1"></a>Rmse.mat <span class="ot">&lt;-</span> <span class="fu">matrix</span>(<span class="dv">0</span>, <span class="at">nrow =</span> k, <span class="at">ncol =</span> <span class="dv">3</span>) <span class="ot">-&gt;</span> AIC.mat</span>
-<span id="cb30-18"><a href="ChapDataAnalytics.html#cb30-18" aria-hidden="true" tabindex="-1"></a><span class="cf">for</span> (i <span class="cf">in</span> <span class="dv">1</span><span class="sc">:</span>k) {</span>
-<span id="cb30-19"><a href="ChapDataAnalytics.html#cb30-19" aria-hidden="true" tabindex="-1"></a>    test.id <span class="ot">&lt;-</span> splt[[i]]</span>
-<span id="cb30-20"><a href="ChapDataAnalytics.html#cb30-20" aria-hidden="true" tabindex="-1"></a>    test <span class="ot">&lt;-</span> xyData[test.id, ]</span>
-<span id="cb30-21"><a href="ChapDataAnalytics.html#cb30-21" aria-hidden="true" tabindex="-1"></a>    train <span class="ot">&lt;-</span> xyData[<span class="sc">-</span>test.id, ]</span>
-<span id="cb30-22"><a href="ChapDataAnalytics.html#cb30-22" aria-hidden="true" tabindex="-1"></a>    model0 <span class="ot">&lt;-</span> <span class="fu">lm</span>(y <span class="sc">~</span> <span class="dv">1</span>, <span class="at">data =</span> train)</span>
-<span id="cb30-23"><a href="ChapDataAnalytics.html#cb30-23" aria-hidden="true" tabindex="-1"></a>    model1 <span class="ot">&lt;-</span> <span class="fu">lm</span>(y <span class="sc">~</span> x1, <span class="at">data =</span> train)</span>
-<span id="cb30-24"><a href="ChapDataAnalytics.html#cb30-24" aria-hidden="true" tabindex="-1"></a>    model2 <span class="ot">&lt;-</span> <span class="fu">lm</span>(y <span class="sc">~</span> x2, <span class="at">data =</span> train)</span>
-<span id="cb30-25"><a href="ChapDataAnalytics.html#cb30-25" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb30-26"><a href="ChapDataAnalytics.html#cb30-26" aria-hidden="true" tabindex="-1"></a>    Rmse.mat[i, <span class="dv">1</span>] <span class="ot">&lt;-</span> <span class="fu">rmse</span>(test<span class="sc">$</span>y, <span class="fu">predict</span>(model0, test))</span>
-<span id="cb30-27"><a href="ChapDataAnalytics.html#cb30-27" aria-hidden="true" tabindex="-1"></a>    Rmse.mat[i, <span class="dv">2</span>] <span class="ot">&lt;-</span> <span class="fu">rmse</span>(test<span class="sc">$</span>y, <span class="fu">predict</span>(model1, test))</span>
-<span id="cb30-28"><a href="ChapDataAnalytics.html#cb30-28" aria-hidden="true" tabindex="-1"></a>    Rmse.mat[i, <span class="dv">3</span>] <span class="ot">&lt;-</span> <span class="fu">rmse</span>(test<span class="sc">$</span>y, <span class="fu">predict</span>(model2, test))</span>
-<span id="cb30-29"><a href="ChapDataAnalytics.html#cb30-29" aria-hidden="true" tabindex="-1"></a>    AIC.mat[i, <span class="dv">1</span>] <span class="ot">&lt;-</span> <span class="fu">AIC</span>(model0)</span>
-<span id="cb30-30"><a href="ChapDataAnalytics.html#cb30-30" aria-hidden="true" tabindex="-1"></a>    AIC.mat[i, <span class="dv">2</span>] <span class="ot">&lt;-</span> <span class="fu">AIC</span>(model1)</span>
-<span id="cb30-31"><a href="ChapDataAnalytics.html#cb30-31" aria-hidden="true" tabindex="-1"></a>    AIC.mat[i, <span class="dv">3</span>] <span class="ot">&lt;-</span> <span class="fu">AIC</span>(model2)</span>
-<span id="cb30-32"><a href="ChapDataAnalytics.html#cb30-32" aria-hidden="true" tabindex="-1"></a>}</span>
-<span id="cb30-33"><a href="ChapDataAnalytics.html#cb30-33" aria-hidden="true" tabindex="-1"></a>OutMat <span class="ot">&lt;-</span> <span class="fu">rbind</span>(<span class="fu">round</span>(Rmse.mat, <span class="at">digits =</span> <span class="dv">3</span>), <span class="fu">round</span>(<span class="fu">colMeans</span>(Rmse.mat), <span class="at">digits =</span> <span class="dv">3</span>),</span>
-<span id="cb30-34"><a href="ChapDataAnalytics.html#cb30-34" aria-hidden="true" tabindex="-1"></a>    <span class="fu">round</span>(<span class="fu">colMeans</span>(AIC.mat), <span class="at">digits =</span> <span class="dv">3</span>))</span>
-<span id="cb30-35"><a href="ChapDataAnalytics.html#cb30-35" aria-hidden="true" tabindex="-1"></a><span class="fu">colnames</span>(OutMat) <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="st">&quot;Community Rating&quot;</span>, <span class="st">&quot;Two Levels&quot;</span>, <span class="st">&quot;Six Levels&quot;</span>)</span>
-<span id="cb30-36"><a href="ChapDataAnalytics.html#cb30-36" aria-hidden="true" tabindex="-1"></a><span class="fu">row.names</span>(OutMat) <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="st">&quot;Rmse - Fold 1&quot;</span>, <span class="st">&quot;Rmse - Fold 2&quot;</span>, <span class="st">&quot;Rmse - Fold 3&quot;</span>, <span class="st">&quot;Rmse - Fold 4&quot;</span>,</span>
-<span id="cb30-37"><a href="ChapDataAnalytics.html#cb30-37" aria-hidden="true" tabindex="-1"></a>    <span class="st">&quot;Rmse - Fold 5&quot;</span>, <span class="st">&quot;Rmse - Average&quot;</span>, <span class="st">&quot;AIC - Average&quot;</span>)</span>
-<span id="cb30-38"><a href="ChapDataAnalytics.html#cb30-38" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb30-39"><a href="ChapDataAnalytics.html#cb30-39" aria-hidden="true" tabindex="-1"></a>knitr<span class="sc">::</span><span class="fu">kable</span>(OutMat, <span class="at">caption =</span> <span class="st">&quot;**Under- and Over-Fitting of Models**&quot;</span>, <span class="at">booktabs =</span> T)</span></code></pre></div>
+<div class="sourceCode" id="cb30"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb30-1"><a href="ChapDataAnalytics.html#cb30-1" tabindex="-1"></a><span class="co"># Generate the Data</span></span>
+<span id="cb30-2"><a href="ChapDataAnalytics.html#cb30-2" tabindex="-1"></a>rmse <span class="ot">&lt;-</span> Metrics<span class="sc">::</span>rmse</span>
+<span id="cb30-3"><a href="ChapDataAnalytics.html#cb30-3" tabindex="-1"></a>n <span class="ot">&lt;-</span> <span class="dv">100</span></span>
+<span id="cb30-4"><a href="ChapDataAnalytics.html#cb30-4" tabindex="-1"></a><span class="fu">set.seed</span>(<span class="dv">1234</span>)</span>
+<span id="cb30-5"><a href="ChapDataAnalytics.html#cb30-5" tabindex="-1"></a>u <span class="ot">&lt;-</span> <span class="fu">sample</span>(<span class="dv">6</span>, n, <span class="at">replace =</span> <span class="cn">TRUE</span>)</span>
+<span id="cb30-6"><a href="ChapDataAnalytics.html#cb30-6" tabindex="-1"></a>x1 <span class="ot">&lt;-</span> <span class="fu">as.factor</span>((u <span class="sc">==</span> <span class="dv">4</span>) <span class="sc">+</span> (u <span class="sc">==</span><span class="dv">5</span>)   )</span>
+<span id="cb30-7"><a href="ChapDataAnalytics.html#cb30-7" tabindex="-1"></a>x2 <span class="ot">&lt;-</span> <span class="fu">as.factor</span>(u)</span>
+<span id="cb30-8"><a href="ChapDataAnalytics.html#cb30-8" tabindex="-1"></a>y <span class="ot">&lt;-</span> <span class="dv">1</span><span class="sc">*</span> (x1<span class="sc">==</span><span class="dv">1</span>) <span class="sc">+</span> <span class="fu">rnorm</span>(n, <span class="at">sd =</span> <span class="dv">1</span>)</span>
+<span id="cb30-9"><a href="ChapDataAnalytics.html#cb30-9" tabindex="-1"></a>xyData <span class="ot">&lt;-</span> <span class="fu">data.frame</span>(x1, x2, y)</span>
+<span id="cb30-10"><a href="ChapDataAnalytics.html#cb30-10" tabindex="-1"></a></span>
+<span id="cb30-11"><a href="ChapDataAnalytics.html#cb30-11" tabindex="-1"></a>n <span class="ot">&lt;-</span> <span class="fu">nrow</span>(xyData)</span>
+<span id="cb30-12"><a href="ChapDataAnalytics.html#cb30-12" tabindex="-1"></a><span class="fu">set.seed</span>(<span class="dv">123</span>)</span>
+<span id="cb30-13"><a href="ChapDataAnalytics.html#cb30-13" tabindex="-1"></a></span>
+<span id="cb30-14"><a href="ChapDataAnalytics.html#cb30-14" tabindex="-1"></a><span class="co"># Number of folds</span></span>
+<span id="cb30-15"><a href="ChapDataAnalytics.html#cb30-15" tabindex="-1"></a>k <span class="ot">&lt;-</span> <span class="dv">5</span></span>
+<span id="cb30-16"><a href="ChapDataAnalytics.html#cb30-16" tabindex="-1"></a>splt <span class="ot">&lt;-</span> <span class="fu">split</span>(<span class="fu">sample</span>(n), <span class="dv">1</span><span class="sc">:</span>k) </span>
+<span id="cb30-17"><a href="ChapDataAnalytics.html#cb30-17" tabindex="-1"></a>Rmse.mat <span class="ot">&lt;-</span> <span class="fu">matrix</span>(<span class="dv">0</span>, <span class="at">nrow=</span>k, <span class="at">ncol=</span><span class="dv">3</span>) <span class="ot">-&gt;</span> AIC.mat</span>
+<span id="cb30-18"><a href="ChapDataAnalytics.html#cb30-18" tabindex="-1"></a><span class="cf">for</span> (i <span class="cf">in</span> <span class="dv">1</span><span class="sc">:</span>k) {</span>
+<span id="cb30-19"><a href="ChapDataAnalytics.html#cb30-19" tabindex="-1"></a>  test.id<span class="ot">&lt;-</span> splt[[i]] </span>
+<span id="cb30-20"><a href="ChapDataAnalytics.html#cb30-20" tabindex="-1"></a>  test   <span class="ot">&lt;-</span> xyData[test.id, ]</span>
+<span id="cb30-21"><a href="ChapDataAnalytics.html#cb30-21" tabindex="-1"></a>  train  <span class="ot">&lt;-</span> xyData[<span class="sc">-</span>test.id, ]</span>
+<span id="cb30-22"><a href="ChapDataAnalytics.html#cb30-22" tabindex="-1"></a>  model0 <span class="ot">&lt;-</span> <span class="fu">lm</span>(y <span class="sc">~</span> <span class="dv">1</span>, <span class="at">data =</span> train)</span>
+<span id="cb30-23"><a href="ChapDataAnalytics.html#cb30-23" tabindex="-1"></a>  model1 <span class="ot">&lt;-</span> <span class="fu">lm</span>(y <span class="sc">~</span> x1, <span class="at">data =</span> train)</span>
+<span id="cb30-24"><a href="ChapDataAnalytics.html#cb30-24" tabindex="-1"></a>  model2 <span class="ot">&lt;-</span> <span class="fu">lm</span>(y <span class="sc">~</span> x2, <span class="at">data =</span> train)</span>
+<span id="cb30-25"><a href="ChapDataAnalytics.html#cb30-25" tabindex="-1"></a></span>
+<span id="cb30-26"><a href="ChapDataAnalytics.html#cb30-26" tabindex="-1"></a>  Rmse.mat[i,<span class="dv">1</span>] <span class="ot">&lt;-</span> <span class="fu">rmse</span>(test<span class="sc">$</span>y, <span class="fu">predict</span>(model0, test))</span>
+<span id="cb30-27"><a href="ChapDataAnalytics.html#cb30-27" tabindex="-1"></a>  Rmse.mat[i,<span class="dv">2</span>] <span class="ot">&lt;-</span> <span class="fu">rmse</span>(test<span class="sc">$</span>y, <span class="fu">predict</span>(model1, test))</span>
+<span id="cb30-28"><a href="ChapDataAnalytics.html#cb30-28" tabindex="-1"></a>  Rmse.mat[i,<span class="dv">3</span>] <span class="ot">&lt;-</span> <span class="fu">rmse</span>(test<span class="sc">$</span>y, <span class="fu">predict</span>(model2, test))</span>
+<span id="cb30-29"><a href="ChapDataAnalytics.html#cb30-29" tabindex="-1"></a>  AIC.mat[i,<span class="dv">1</span>]  <span class="ot">&lt;-</span> <span class="fu">AIC</span>(model0)</span>
+<span id="cb30-30"><a href="ChapDataAnalytics.html#cb30-30" tabindex="-1"></a>  AIC.mat[i,<span class="dv">2</span>]  <span class="ot">&lt;-</span> <span class="fu">AIC</span>(model1)</span>
+<span id="cb30-31"><a href="ChapDataAnalytics.html#cb30-31" tabindex="-1"></a>  AIC.mat[i,<span class="dv">3</span>]  <span class="ot">&lt;-</span> <span class="fu">AIC</span>(model2)</span>
+<span id="cb30-32"><a href="ChapDataAnalytics.html#cb30-32" tabindex="-1"></a>}</span>
+<span id="cb30-33"><a href="ChapDataAnalytics.html#cb30-33" tabindex="-1"></a>OutMat <span class="ot">&lt;-</span> <span class="fu">rbind</span>(<span class="fu">round</span>(Rmse.mat, <span class="at">digits=</span><span class="dv">3</span>),</span>
+<span id="cb30-34"><a href="ChapDataAnalytics.html#cb30-34" tabindex="-1"></a>                <span class="fu">round</span>(<span class="fu">colMeans</span>(Rmse.mat), <span class="at">digits=</span><span class="dv">3</span>),</span>
+<span id="cb30-35"><a href="ChapDataAnalytics.html#cb30-35" tabindex="-1"></a>                <span class="fu">round</span>(<span class="fu">colMeans</span>(AIC.mat), <span class="at">digits=</span><span class="dv">3</span>) )</span>
+<span id="cb30-36"><a href="ChapDataAnalytics.html#cb30-36" tabindex="-1"></a><span class="fu">colnames</span>(OutMat) <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="st">&quot;Community Rating&quot;</span>, <span class="st">&quot;Two Levels&quot;</span>, <span class="st">&quot;Six Levels&quot;</span>)</span>
+<span id="cb30-37"><a href="ChapDataAnalytics.html#cb30-37" tabindex="-1"></a><span class="fu">row.names</span>(OutMat) <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="st">&quot;Rmse - Fold 1&quot;</span>, <span class="st">&quot;Rmse - Fold 2&quot;</span>, <span class="st">&quot;Rmse - Fold 3&quot;</span>, </span>
+<span id="cb30-38"><a href="ChapDataAnalytics.html#cb30-38" tabindex="-1"></a>                       <span class="st">&quot;Rmse - Fold 4&quot;</span>, <span class="st">&quot;Rmse - Fold 5&quot;</span>, <span class="st">&quot;Rmse - Average&quot;</span>, </span>
+<span id="cb30-39"><a href="ChapDataAnalytics.html#cb30-39" tabindex="-1"></a>                       <span class="st">&quot;AIC - Average&quot;</span>)</span>
+<span id="cb30-40"><a href="ChapDataAnalytics.html#cb30-40" tabindex="-1"></a></span>
+<span id="cb30-41"><a href="ChapDataAnalytics.html#cb30-41" tabindex="-1"></a>knitr<span class="sc">::</span><span class="fu">kable</span>(OutMat, <span class="at">caption =</span> <span class="st">&quot;**Under- and Over-Fitting of Models**&quot;</span>, <span class="at">booktabs =</span> T) </span></code></pre></div>
 <hr />
 </div>
 <div id="surveyElement2Data3">
@@ -1687,14 +1628,14 @@ AIC - Average
 <p>Just as with a single variable in Section <a href="ChapDataAnalytics.html#S:SingleVarAnalytics">2.3</a>, with many variables analysts follow the same structure of identifying variables, exploring data, constructing and selecting models. However, the potential applications become much richer when considering many variables. With many potential applications, it is natural that techniques for data analysis have developed in different but overlapping fields; these fields include statistics, machine learning, pattern recognition, and data mining.</p>
 <ul>
 <li>Statistics is a field that addresses reliable ways of gathering data and making inferences.</li>
-<li>The term <a href="#" class="tooltip" style="color:green"><em>machine learning</em><span style="font-size:8pt">Study of algorithms and statistical models that perform a specific task without using explicit instructions, relying on patterns and inference</span></a> was coined by Samuel in 1959 <span class="citation">(<a href="#ref-samuel1959ml" role="doc-biblioref">Samuel 1959</a>)</span>. Originally, machine learning referred to the field of study where computers have the ability to learn without being explicitly programmed. Nowadays, machine learning has evolved to a broad field of study where computational methods use experience (i.e., the past information available for analysis) to improve performance or to make accurate predictions.</li>
-<li>Originating in engineering, <a href="#" class="tooltip" style="color:green"><em>pattern recognition</em><span style="font-size:8pt">Automated recognition of patterns and regularities in data</span></a> is a field that is closely related to machine learning, which grew out of computer science. In fact, pattern recognition and machine learning can be considered to be two facets of the same field <span class="citation">(<a href="#ref-bishop2007" role="doc-biblioref">Bishop 2007</a>)</span>.</li>
-<li><a href="#" class="tooltip" style="color:green"><em>Data mining</em><span style="font-size:8pt">Process of collecting, cleaning, processing, analyzing, and discovering patterns and useful insights from large data sets</span></a> is a field that concerns collecting, cleaning, processing, analyzing, and gaining useful insights from data <span class="citation">(<a href="#ref-aggarwal2015" role="doc-biblioref">Aggarwal 2015</a>)</span>.</li>
+<li>The term <a href="#" class="tooltip" style="color:green"><em>machine learning</em><span style="font-size:8pt">Study of algorithms and statistical models that perform a specific task without using explicit instructions, relying on patterns and inference</span></a> was coined by Samuel in 1959 <span class="citation">(<a href="#ref-samuel1959ml">Samuel 1959</a>)</span>. Originally, machine learning referred to the field of study where computers have the ability to learn without being explicitly programmed. Nowadays, machine learning has evolved to a broad field of study where computational methods use experience (i.e., the past information available for analysis) to improve performance or to make accurate predictions.</li>
+<li>Originating in engineering, <a href="#" class="tooltip" style="color:green"><em>pattern recognition</em><span style="font-size:8pt">Automated recognition of patterns and regularities in data</span></a> is a field that is closely related to machine learning, which grew out of computer science. In fact, pattern recognition and machine learning can be considered to be two facets of the same field <span class="citation">(<a href="#ref-bishop2007">Bishop 2007</a>)</span>.</li>
+<li><a href="#" class="tooltip" style="color:green"><em>Data mining</em><span style="font-size:8pt">Process of collecting, cleaning, processing, analyzing, and discovering patterns and useful insights from large data sets</span></a> is a field that concerns collecting, cleaning, processing, analyzing, and gaining useful insights from data <span class="citation">(<a href="#ref-aggarwal2015">Aggarwal 2015</a>)</span>.</li>
 </ul>
 <div id="supervised-and-unsupervised-learning" class="section level3 hasAnchor" number="2.4.1">
 <h3><span class="header-section-number">2.4.1</span> Supervised and Unsupervised Learning<a href="ChapDataAnalytics.html#supervised-and-unsupervised-learning" class="anchor-section" aria-label="Anchor link to header"></a></h3>
 <p>With multiple variables, the essential tasks of identifying variable types, exploring data, and selecting models are similar in principle to that described for single variables in Section <a href="ChapDataAnalytics.html#S:SingleVarAnalytics">2.3</a>. When exploring data in multiple dimensions, additional considerations such as clustering like observations and reducing the dimension arise. As these considerations will not arise in the applications in this book, we provide only a brief introduction in Technical Supplement Section <a href="ChapDataAnalytics.html#S:MultiEDA">2.6.1</a>.</p>
-<p>The construction of models differs dramatically when comparing single to multiple variable modeling. With many variables, we have the opportunity to think about some of them as “inputs” and others “outputs” of a system. Models based on input and output variables are known as <a href="#" class="tooltip" style="color:green"><em>supervised learning methods</em><span style="font-size:8pt">Model that predicts a response target variable using explanatory predictors as input</span></a> or as <a href="#" class="tooltip" style="color:green"><em>regression methods</em><span style="font-size:8pt">Classical supervised learning method where the response may be continuous, binary, or a mixture of discrete and continuous</span></a>. <a href="#tab:2.3">Table 2.3</a> gives a list of common names for different types of variables <span class="citation">(<a href="#ref-frees2009regression" role="doc-biblioref">Frees 2009</a>)</span>. When the target variable is a categorical variable, supervised learning methods are called <a href="#" class="tooltip" style="color:green"><em>classification methods</em><span style="font-size:8pt">Supervised learning method where the response is a categorical variable</span></a>.</p>
+<p>The construction of models differs dramatically when comparing single to multiple variable modeling. With many variables, we have the opportunity to think about some of them as “inputs” and others “outputs” of a system. Models based on input and output variables are known as <a href="#" class="tooltip" style="color:green"><em>supervised learning methods</em><span style="font-size:8pt">Model that predicts a response target variable using explanatory predictors as input</span></a> or as <a href="#" class="tooltip" style="color:green"><em>regression methods</em><span style="font-size:8pt">Classical supervised learning method where the response may be continuous, binary, or a mixture of discrete and continuous</span></a>. <a href="#tab:2.3">Table 2.3</a> gives a list of common names for different types of variables <span class="citation">(<a href="#ref-frees2009regression">Frees 2009</a>)</span>. When the target variable is a categorical variable, supervised learning methods are called <a href="#" class="tooltip" style="color:green"><em>classification methods</em><span style="font-size:8pt">Supervised learning method where the response is a categorical variable</span></a>.</p>
 <p><a id=tab:2.3></a></p>
 <p>Table 2.3. <strong>Common Names of Different Variables</strong></p>
 <p><span class="math display">\[
@@ -1712,7 +1653,7 @@ AIC - Average
 \end{array}
 }
 \]</span></p>
-<p>Methods for data analysis can be divided into two types <span class="citation">(<a href="#ref-abbott2014" role="doc-biblioref">Abbott 2014</a>; <a href="#ref-james2013introduction" role="doc-biblioref">James et al. 2013</a>)</span>: supervised learning methods and unsupervised learning methods. <a href="#" class="tooltip" style="color:green"><em>Unsupervised learning methods</em><span style="font-size:8pt">Models that work with explanatory variables only to describe patterns or groupings</span></a> work where our data are treated the same and there is no artificial divide between “inputs” and “outputs.” As a result, unsupervised learning methods are particularly useful at the exploratory stage of an analysis.</p>
+<p>Methods for data analysis can be divided into two types <span class="citation">(<a href="#ref-abbott2014">Abbott 2014</a>; <a href="#ref-james2013introduction">James et al. 2013</a>)</span>: supervised learning methods and unsupervised learning methods. <a href="#" class="tooltip" style="color:green"><em>Unsupervised learning methods</em><span style="font-size:8pt">Models that work with explanatory variables only to describe patterns or groupings</span></a> work where our data are treated the same and there is no artificial divide between “inputs” and “outputs.” As a result, unsupervised learning methods are particularly useful at the exploratory stage of an analysis.</p>
 </div>
 <div id="algorithmic-modeling" class="section level3 hasAnchor" number="2.4.2">
 <h3><span class="header-section-number">2.4.2</span> Algorithmic Modeling<a href="ChapDataAnalytics.html#algorithmic-modeling" class="anchor-section" aria-label="Anchor link to header"></a></h3>
@@ -1732,13 +1673,13 @@ f(x_{i1}, \ldots, x_{ik}) = \beta_1 x_{i1} + \cdots + \beta_k x_{ik} = {\bf x}_i
 \]</span></p>
 <p>The <em>OLS</em> estimates are historically prominent in part because of their ease of computation and interpretation. Naturally, a squared difference such as <span class="math inline">\((y_i - {\bf x}_i^{\prime} \boldsymbol \beta)^2\)</span> is not the only way to measure the deviation between a target <span class="math inline">\(y_i\)</span> and an estimate <span class="math inline">\({\bf x}_i^{\prime} \boldsymbol \beta\)</span>. In general, analysts use the term <em>loss function</em> <span class="math inline">\(l(y_i, {\bf x}_i^{\prime} \boldsymbol \beta)\)</span> to measure this deviation; as an alternative, it is not uncommon to use an absolute deviation.</p>
 <p><strong>Algorithmic Modeling Culture.</strong> As introduced in Section <a href="ChapDataAnalytics.html#S:DataAlgorithm">2.1.2</a>, a culture has developed across widespread communities that emphasizes algorithmic fitting particularly in complex problems such as voice, image, and handwriting recognition. Algorithmic methods are especially useful when the goal is prediction, as noted in Section <a href="ChapDataAnalytics.html#S:expred">2.3.3.2</a>. Many of these algorithms take an approach similar to linear regression. As examples, other widely used algorithmic fitting methods include ridge and lasso regression, as well as regularization methods.</p>
-<p><strong>Ridge Regression.</strong> One limitation of <em>OLS</em> is that it tends to overfit, particularly when the number of regression coefficients <span class="math inline">\(k\)</span> becomes large. In fact, with <span class="math inline">\(k=n\)</span> one gets an exact match between the targets <span class="math inline">\(y_i\)</span> and the predictor function. A modification introduced in 1970 by <span class="citation"><a href="#ref-hoerl1970ridge" role="doc-biblioref">Hoerl and Kennard</a> (<a href="#ref-hoerl1970ridge" role="doc-biblioref">1970</a>)</span> is known as <em>ridge regression</em> where one determines regression coefficients <span class="math inline">\(\boldsymbol \beta\)</span> as in equation <a href="ChapDataAnalytics.html#eq:OLSSolution">(2.1)</a> although subject to the constraint that <span class="math inline">\(\sum_{j=1}^p |\beta_j |^2 \le c_{ridge}\)</span>, where <span class="math inline">\(c_{ridge}\)</span> is an appropriately chosen constant. Naturally, if <span class="math inline">\(c_{ridge}\)</span> is very large, then the constraint has no effect and the ridge estimates equal the <em>OLS</em> solution. However, as <span class="math inline">\(c_{ridge}\)</span> becomes small, it reduces the size of the regression coefficients. In this sense, the ridge regression estimator is said to be “shrunk towards zero.”</p>
+<p><strong>Ridge Regression.</strong> One limitation of <em>OLS</em> is that it tends to overfit, particularly when the number of regression coefficients <span class="math inline">\(k\)</span> becomes large. In fact, with <span class="math inline">\(k=n\)</span> one gets an exact match between the targets <span class="math inline">\(y_i\)</span> and the predictor function. A modification introduced in 1970 by <span class="citation">Hoerl and Kennard (<a href="#ref-hoerl1970ridge">1970</a>)</span> is known as <em>ridge regression</em> where one determines regression coefficients <span class="math inline">\(\boldsymbol \beta\)</span> as in equation <a href="ChapDataAnalytics.html#eq:OLSSolution">(2.1)</a> although subject to the constraint that <span class="math inline">\(\sum_{j=1}^p |\beta_j |^2 \le c_{ridge}\)</span>, where <span class="math inline">\(c_{ridge}\)</span> is an appropriately chosen constant. Naturally, if <span class="math inline">\(c_{ridge}\)</span> is very large, then the constraint has no effect and the ridge estimates equal the <em>OLS</em> solution. However, as <span class="math inline">\(c_{ridge}\)</span> becomes small, it reduces the size of the regression coefficients. In this sense, the ridge regression estimator is said to be “shrunk towards zero.”</p>
 <p>Adding the constraint on the size of the coefficients can mean smaller and more stable coefficients when compared to <em>OLS</em>. As such, ridge regression is particularly useful when dealing with high-dimensional datasets, where the number of predictors is very large compared to the number of observations. In the actuarial applications, we might have a portfolio of only a few thousand risks that we wish to model. With ridge regression, we can utilize millions of variables as potential inputs to develop predictive models.</p>
 <p><strong>Lasso Regression.</strong> Similar to ridge regression, one can determine regression coefficients <span class="math inline">\(\boldsymbol \beta\)</span> as in equation <a href="ChapDataAnalytics.html#eq:OLSSolution">(2.1)</a> although subject to the constraint that <span class="math inline">\(\sum_{j=1}^p |\beta_j | \le c_{lasso}\)</span>, where <span class="math inline">\(c_{lasso}\)</span> is an appropriately chosen constant. This procedure is known as <em>lasso regression.</em> Here, one uses absolute values in the constraint function (although still squared errors for the loss function).</p>
 <p>The lasso overcomes an important limitation of ridge regression. With ridge regression, we might reduce the size of the constant <span class="math inline">\(c_{ridge}\)</span> that forces the regression coefficient to become small but does not ensure that they become zero. In contrast, the lasso ensures that trivial regression coefficients become zero. In the linear regression approximation, a zero regression coefficient means that the variable drops from the function approximation, thus reducing model complexity.</p>
 <p><strong>Regularization</strong>. Both the ridge and lasso regressions are constrained minimization problems. It is not too hard to show that they can be written as</p>
 <p><span class="math display">\[
-{\small \text{minimize}}_{\boldsymbol \beta} \left( 
+{\small \text{minimize}}_{\boldsymbol \beta} \left(
 \frac{1}{n} \sum_{i=1}^n (y_i - {\bf x}_i^{\prime} \boldsymbol \beta)^2 +
 LM \sum_{j=1}^p |\beta_j |^s \right) ,
 \]</span></p>
@@ -1749,10 +1690,10 @@ LM \sum_{j=1}^p |\beta_j |^s \right) ,
 <p>One way to motivate an algorithmic development is through the use of a data model introduced in Section <a href="ChapDataAnalytics.html#S:DataAlgorithm">2.1.2</a>. Here, we can also think of this as a “probability” or “likelihood” based model, in that our main goal is to understand the target (<span class="math inline">\(Y\)</span>) distribution, typically in terms of the explanatory variables. Thus, data models are particularly useful for the goal of explanation previously discussed in Section <a href="ChapDataAnalytics.html#S:expred">2.3.3.2</a>.</p>
 <p>Data models were initially developed in the early twentieth century through the work of R.A. Fisher and E.P. George Box (among many, many others) whose work focused on data as the result of experiments with a small number of outcomes and even fewer explanatory (control) variables.</p>
 <p><strong>Linear Regression.</strong> The (algorithmic) linear regression with <em>OLS</em> estimates can be motivated using a probabilistic framework, as follows. We can think of the target variable <span class="math inline">\(y_i\)</span> as having a normal distribution with unknown variance and a mean equal to <span class="math inline">\({\bf x}_i^{\prime} \boldsymbol \beta\)</span>, a linear combination of the explanatory variables. Assuming independence among observations, it can be shown that the maximum likelihood estimates are equivalent to the <em>OLS</em> estimates determine in equation <a href="ChapDataAnalytics.html#eq:OLSSolution">(2.1)</a>.</p>
-<p>Maximum likelihood estimation is used extensively in this text, <em>you can get a quick overview in Chapter 18 Appendix C.</em> For additional background on <em>OLS</em> and maximum likelihood in the linear regression case see, for example, <span class="citation"><a href="#ref-frees2009regression" role="doc-biblioref">Frees</a> (<a href="#ref-frees2009regression" role="doc-biblioref">2009</a>)</span> for more details.</p>
+<p>Maximum likelihood estimation is used extensively in this text, <em>you can get a quick overview in Chapter 18 Appendix C.</em> For additional background on <em>OLS</em> and maximum likelihood in the linear regression case see, for example, <span class="citation">Frees (<a href="#ref-frees2009regression">2009</a>)</span> for more details.</p>
 <p><strong>Poisson Regression.</strong> In the case where the target variable <span class="math inline">\(Y\)</span> represents a count (such as the number of insurance losses), then it is common to use a Poisson distribution to represent the likelihood of potential outcomes. The Poisson has only one parameter, the mean, and if explanatory variables are available, then one can take the mean to equal <span class="math inline">\(\exp\left({\bf x}_i^{\prime} \boldsymbol \beta\right)\)</span>. One motivation for using the exponential (<span class="math inline">\(\exp(\cdot)\)</span>) function is that it ensures that estimated means are non-negative (a necessary condition for the Poisson distribution). When maximum likelihood is used to estimate the regression coefficients, then this is known as <em>Poisson regression.</em></p>
 <p><strong>Generalized Linear Model.</strong> The <a href="#" class="tooltip" style="color:green"><em>generalized linear model</em><span style="font-size:8pt">Supervised model that generalizes linear regression by allowing the linear component to be related to the response variable via a link function and by allowing the variance of each measurement to be a function of its predicted value</span></a> (<em>GLM</em>) consists of a wide family of regression models that include linear and Poisson regression models as special cases. In a <em>GLM</em>, the mean of the target variable is assumed to be a function of a linear combination of the explanatory variables. As with a Poisson regression, the mean can vary by observations by allowing some parameters to change yet the regression parameters <span class="math inline">\(\boldsymbol{\beta}\)</span> are assumed to be constant.</p>
-<p>In a <em>GLM</em>, the target variable is assumed to follow a distribution from the <em>linear exponential family</em>, a collection of distributions that includes the normal, Poisson, Bernoulli, Weibull, and others. Thus, a <em>GLM</em> is one way of developing a broader class that includes linear and Poisson regression. Using a Bernoulli distribution, it also includes zero-one target variables resulting in what is known as <em>logistic regression.</em> Thus, the <em>GLM</em> provides a unifying framework to handle different types of target variables, including discrete and continuous variables. Extensions to other distributions that are not part of linear exponential family, such as a Pareto distribution, are also possible. But, <em>GLMs</em> have historically been found useful because their form permits efficient calculation of estimators (through what is known as <em>iterative reweighted least squares</em>). For more information about <em>GLM</em>s, readers are referred to <span class="citation"><a href="#ref-Dejong08" role="doc-biblioref">De Jong and Heller</a> (<a href="#ref-Dejong08" role="doc-biblioref">2008</a>)</span> and <span class="citation"><a href="#ref-frees2009regression" role="doc-biblioref">Frees</a> (<a href="#ref-frees2009regression" role="doc-biblioref">2009</a>)</span>.</p>
+<p>In a <em>GLM</em>, the target variable is assumed to follow a distribution from the <em>linear exponential family</em>, a collection of distributions that includes the normal, Poisson, Bernoulli, Weibull, and others. Thus, a <em>GLM</em> is one way of developing a broader class that includes linear and Poisson regression. Using a Bernoulli distribution, it also includes zero-one target variables resulting in what is known as <em>logistic regression.</em> Thus, the <em>GLM</em> provides a unifying framework to handle different types of target variables, including discrete and continuous variables. Extensions to other distributions that are not part of linear exponential family, such as a Pareto distribution, are also possible. But, <em>GLMs</em> have historically been found useful because their form permits efficient calculation of estimators (through what is known as <em>iterative reweighted least squares</em>). For more information about <em>GLM</em>s, readers are referred to <span class="citation">De Jong and Heller (<a href="#ref-Dejong08">2008</a>)</span> and <span class="citation">Frees (<a href="#ref-frees2009regression">2009</a>)</span>.</p>
 <div id="surveyElement2Data4">
 
 </div>
@@ -1788,7 +1729,7 @@ LM \sum_{j=1}^p |\beta_j |^s \right) ,
 <p>The prior sections of this chapter provide the foundations of data considerations needed for the rest of this book. However, for readers who wish to specialize in data analytics, the following subsections provide a useful starting point for further study.</p>
 <div id="data-types" class="section level3 hasAnchor" number="2.5.1">
 <h3><span class="header-section-number">2.5.1</span> Data Types<a href="ChapDataAnalytics.html#data-types" class="anchor-section" aria-label="Anchor link to header"></a></h3>
-<p>In terms of how data are collected, data can be divided into two types <span class="citation">(<a href="#ref-hox2005data" role="doc-biblioref">Hox and Boeije 2005</a>)</span>: primary and secondary data. Primary data are the original data that are collected for a specific research problem. Secondary data are data originally collected for a different purpose and reused for another research problem. A major advantage of using primary data is that the theoretical constructs, the research design, and the data collection strategy can be tailored to the underlying research question to ensure that data collected help to solve the problem. A disadvantage of using primary data is that data collection can be costly and time consuming. Using secondary data has the advantage of lower cost and faster access to relevant information. However, using secondary data may not be optimal for the research question under consideration.</p>
+<p>In terms of how data are collected, data can be divided into two types <span class="citation">(<a href="#ref-hox2005data">Hox and Boeije 2005</a>)</span>: primary and secondary data. Primary data are the original data that are collected for a specific research problem. Secondary data are data originally collected for a different purpose and reused for another research problem. A major advantage of using primary data is that the theoretical constructs, the research design, and the data collection strategy can be tailored to the underlying research question to ensure that data collected help to solve the problem. A disadvantage of using primary data is that data collection can be costly and time consuming. Using secondary data has the advantage of lower cost and faster access to relevant information. However, using secondary data may not be optimal for the research question under consideration.</p>
 <p>In terms of the degree of organization, data can be also divided into two types: structured data and unstructured data. <a href="#" class="tooltip" style="color:green"><em>Structured data</em><span style="font-size:8pt">Data that can be organized into a repository format, typically a database</span></a> have a predictable and regularly occurring format. In contrast, <a href="#" class="tooltip" style="color:green"><em>unstructured data</em><span style="font-size:8pt">Data that is not in a predefined format, most notably text, audio visual</span></a> lack any regularly occurring format and have no structure that is recognizable to a computer. Structured data consist of records, attributes, keys, and indices and are typically managed by a database management system such as IBM DB2, Oracle, MySQL, and Microsoft SQL Server. As a result, most units of structured data can be located quickly and easily. Unstructured data have many different forms and variations. One common form of unstructured data is text. Accessing unstructured data can be awkward. To find a given unit of data in a long text, for example, a sequential search is usually performed.</p>
 </div>
 <div id="data-structures-and-storage" class="section level3 hasAnchor" number="2.5.2">
@@ -1797,7 +1738,7 @@ LM \sum_{j=1}^p |\beta_j |^s \right) ,
 <p><span class="math display">\[
 \begin{matrix}
 \begin{array}{lllll} \hline
- &amp; V_1 &amp; V_2 &amp; \cdots &amp; V_d \  
+&amp; V_1 &amp; V_2 &amp; \cdots &amp; V_d \  
 \\\hline
 \textbf{x}_1 &amp; x_{11} &amp; x_{12} &amp; \cdots &amp; x_{1d} \\
 \textbf{x}_2 &amp; x_{21} &amp; x_{22} &amp; \cdots &amp; x_{2d} \\
@@ -1809,11 +1750,11 @@ LM \sum_{j=1}^p |\beta_j |^s \right) ,
 \]</span></p>
 <p>In other words, structured data can be organized into a table consisting of rows and columns. Typically, each row represents a record and each column represents an attribute. A table can be decomposed into several tables that can be stored in a relational database such as the Microsoft SQL Server. The SQL (Structured Query Language) can be used to access and modify the data easily and efficiently.</p>
 <p>Unstructured data do not follow a regular format. Examples of unstructured data include documents, videos, and audio files. Most of the data we encounter are unstructured data. In fact, the term “big data” was coined to reflect this fact. Traditional relational databases cannot meet the challenges on the varieties and scales brought by massive unstructured data nowadays. NoSQL databases have been used to store massive unstructured data.</p>
-<p>There are three main NoSQL databases <span class="citation">(<a href="#ref-chen2014b" role="doc-biblioref">Chen et al. 2014</a>)</span>: key-value databases, column-oriented databases, and document-oriented databases. <a href="#" class="tooltip" style="color:green"><em>Key-value databases</em><span style="font-size:8pt">Data storage method that stores amd finds records using a unique key hash</span></a> use a simple data model and store data according to key values. Modern key-value databases have higher expandability and smaller query response times than relational databases. Examples of key-value databases include Dynamo used by Amazon and Voldemort used by LinkedIn. <a href="#" class="tooltip" style="color:green"><em>Column-oriented databases</em><span style="font-size:8pt">Data storage method that stores records by column instead of by row</span></a> store and process data according to columns rather than rows. The columns and rows are segmented in multiple nodes to achieve expandability. Examples of column-oriented databases include BigTable developed by Google and Cassandra developed by FaceBook. <a href="#" class="tooltip" style="color:green"><em>Document databases</em><span style="font-size:8pt">Data storage method that uses the document metadata for search and retrieval, also known as semi-structured data</span></a> are designed to support more complex data forms than those stored in key-value databases. Examples of document databases include MongoDB, SimpleDB, and CouchDB. MongoDB is an open-source document-oriented database that stores documents as binary objects. SimpleDB is a distributed NoSQL database used by Amazon. CouchDB is another open-source document-oriented database.</p>
+<p>There are three main NoSQL databases <span class="citation">(<a href="#ref-chen2014b">Chen et al. 2014</a>)</span>: key-value databases, column-oriented databases, and document-oriented databases. <a href="#" class="tooltip" style="color:green"><em>Key-value databases</em><span style="font-size:8pt">Data storage method that stores amd finds records using a unique key hash</span></a> use a simple data model and store data according to key values. Modern key-value databases have higher expandability and smaller query response times than relational databases. Examples of key-value databases include Dynamo used by Amazon and Voldemort used by LinkedIn. <a href="#" class="tooltip" style="color:green"><em>Column-oriented databases</em><span style="font-size:8pt">Data storage method that stores records by column instead of by row</span></a> store and process data according to columns rather than rows. The columns and rows are segmented in multiple nodes to achieve expandability. Examples of column-oriented databases include BigTable developed by Google and Cassandra developed by FaceBook. <a href="#" class="tooltip" style="color:green"><em>Document databases</em><span style="font-size:8pt">Data storage method that uses the document metadata for search and retrieval, also known as semi-structured data</span></a> are designed to support more complex data forms than those stored in key-value databases. Examples of document databases include MongoDB, SimpleDB, and CouchDB. MongoDB is an open-source document-oriented database that stores documents as binary objects. SimpleDB is a distributed NoSQL database used by Amazon. CouchDB is another open-source document-oriented database.</p>
 </div>
 <div id="data-cleaning" class="section level3 hasAnchor" number="2.5.3">
 <h3><span class="header-section-number">2.5.3</span> Data Cleaning<a href="ChapDataAnalytics.html#data-cleaning" class="anchor-section" aria-label="Anchor link to header"></a></h3>
-<p>Raw data usually need to be cleaned before useful analysis can be conducted. In particular, the following areas need attention when preparing data for analysis <span class="citation">(<a href="#ref-janert2010" role="doc-biblioref">Janert 2010</a>)</span>:</p>
+<p>Raw data usually need to be cleaned before useful analysis can be conducted. In particular, the following areas need attention when preparing data for analysis <span class="citation">(<a href="#ref-janert2010">Janert 2010</a>)</span>:</p>
 <ul>
 <li><strong>Missing values.</strong> It is common to have missing values in raw data. Depending on the situation, we can discard the record, discard the variable, or impute the missing values.</li>
 <li><strong>Outliers.</strong> Raw data may contain unusual data points such as outliers. We need to handle outliers carefully. We cannot just remove outliers without knowing the reason for their existence. Although sometimes outliers can be simple mistakes such as those caused by clerical errors, sometimes their unusual behavior can point to precisely the type of effect that we are looking for.</li>
@@ -1822,11 +1763,11 @@ LM \sum_{j=1}^p |\beta_j |^s \right) ,
 <li><strong>Duplicate records.</strong> Raw data may contain duplicate records. Duplicate records should be recognized and removed. This task may not be trivial depending on what you consider “duplicate.”</li>
 <li><strong>Merging datasets.</strong> Raw data may come from different sources. In such cases, we need to merge data from different sources to ensure compatibility.</li>
 </ul>
-<p>For more information about how to handle data in <code>R</code>, readers are referred to <span class="citation"><a href="#ref-forte2015" role="doc-biblioref">Forte</a> (<a href="#ref-forte2015" role="doc-biblioref">2015</a>)</span> and <span class="citation"><a href="#ref-buttrey2017" role="doc-biblioref">Buttrey and Whitaker</a> (<a href="#ref-buttrey2017" role="doc-biblioref">2017</a>)</span>.</p>
+<p>For more information about how to handle data in <code>R</code>, readers are referred to <span class="citation">Forte (<a href="#ref-forte2015">2015</a>)</span> and <span class="citation">Buttrey and Whitaker (<a href="#ref-buttrey2017">2017</a>)</span>.</p>
 </div>
 <div id="Sec:BigDataAnalysis" class="section level3 hasAnchor" number="2.5.4">
 <h3><span class="header-section-number">2.5.4</span> Big Data Analysis<a href="ChapDataAnalytics.html#Sec:BigDataAnalysis" class="anchor-section" aria-label="Anchor link to header"></a></h3>
-<p>Unlike traditional data analysis, big data analysis employs additional methods and tools that can extract information rapidly from massive data. In particular, big data analysis uses the following processing methods <span class="citation">(<a href="#ref-chen2014b" role="doc-biblioref">Chen et al. 2014</a>)</span>:</p>
+<p>Unlike traditional data analysis, big data analysis employs additional methods and tools that can extract information rapidly from massive data. In particular, big data analysis uses the following processing methods <span class="citation">(<a href="#ref-chen2014b">Chen et al. 2014</a>)</span>:</p>
 <ul>
 <li>A <strong>bloom filter</strong> is a space-efficient probabilistic data structure that is used to determine whether an element belongs to a set. It has the advantages of high space efficiency and high query speed. A drawback of using bloom filter is that there is a certain nonrecognition rate.</li>
 <li><strong>Hashing</strong> is a method that transforms data into fixed-length numerical values through a hash function. It has the advantages of rapid reading and writing. However, sound hash functions are difficult to find.</li>
@@ -1834,12 +1775,12 @@ LM \sum_{j=1}^p |\beta_j |^s \right) ,
 <li>A <strong>trie,</strong> also called digital tree, is a method to improve query efficiency by using common prefixes of character strings to reduce comparisons among character strings.</li>
 <li><strong>Parallel computing</strong> uses multiple computing resources to complete a computation task. Parallel computing tools include Message Passing Interface (MPI), MapReduce, and Dryad.</li>
 </ul>
-<p>Big data analysis can be conducted in the following levels <span class="citation">(<a href="#ref-chen2014b" role="doc-biblioref">Chen et al. 2014</a>)</span>: memory-level, business intelligence (BI) level, and massive level. Memory-level analysis is conducted when data can be loaded to the memory of a cluster of computers. Current hardware can handle hundreds of gigabytes (GB) of data in memory. BI level analysis can be conducted when data surpass the memory level. It is common for BI level analysis products to support data over terabytes (TB). Massive level analysis is conducted when data surpass the capabilities of products for BI level analysis. Usually Hadoop and MapReduce are used in massive level analysis.</p>
+<p>Big data analysis can be conducted in the following levels <span class="citation">(<a href="#ref-chen2014b">Chen et al. 2014</a>)</span>: memory-level, business intelligence (BI) level, and massive level. Memory-level analysis is conducted when data can be loaded to the memory of a cluster of computers. Current hardware can handle hundreds of gigabytes (GB) of data in memory. BI level analysis can be conducted when data surpass the memory level. It is common for BI level analysis products to support data over terabytes (TB). Massive level analysis is conducted when data surpass the capabilities of products for BI level analysis. Usually Hadoop and MapReduce are used in massive level analysis.</p>
 </div>
 <div id="ethical-issues" class="section level3 hasAnchor" number="2.5.5">
 <h3><span class="header-section-number">2.5.5</span> Ethical Issues<a href="ChapDataAnalytics.html#ethical-issues" class="anchor-section" aria-label="Anchor link to header"></a></h3>
-<p>Analysts may face ethical issues and dilemmas during the data analysis process. In some fields, ethical issues and dilemmas include participant consent, benefits, risk, confidentiality, and <a href="#" class="tooltip" style="color:green"><em>data ownership</em><span style="font-size:8pt">Governance process that details legal ownership of enterprise-wide data and outlines who has ability to create, edit, modify, share and restrict access to the data</span></a> <span class="citation">(<a href="#ref-miles2014" role="doc-biblioref">Miles, Hberman, and Sdana 2014</a>)</span>. For example, regarding privacy and confidentiality, one might confront the following questions: How do we make sure that the information is kept confidentially? How do we verify where raw data and analysis results are stored? How will we have access to them? These questions should be addressed and documented in explicit confidentiality agreements.</p>
-<p>Within the insurance sector, discrimination, privacy, and confidentiality are major concerns. Discrimination in insurance is particularly difficult because the entire industry is based on “discriminating,” or classifying, insureds into homogeneous categories for the purposes of risk sharing. Many variables that insurers use are seemingly innocuous (e.g., blindness for auto insurance), yet others can be viewed as “wrong” (e.g., religious affiliation), “unfair” (e.g., onset of cancer for health insurance), “sensitive” (e.g., marital status), or “mysterious” (e.g., Artificial Intelligence produced). Regulators and policymakers decide whether it is not permitted to use a variable for classification. In part because they depend on differing attitudes, perspectives can vary dramatically across jurisdictions. For example, gender-based pricing of auto insurance is permitted in all but a handful of U.S. states (the exceptions being Hawaii, Massachusetts, Montana, North Carolina, Pennsylvania, and, as of 2019, California) yet not permitted within the European Union. Moreover, for personal lines such as auto and homeowners, availability of big data may also lead to issues regarding <em>proxy discrimination</em>. Proxy discrimination occurs when a surrogate, or proxy, is used in place of a prohibited trait such as race or gender, see, for example, <span class="citation"><a href="#ref-frees2021discriminating" role="doc-biblioref">Frees and Huang</a> (<a href="#ref-frees2021discriminating" role="doc-biblioref">2021</a>)</span>.</p>
+<p>Analysts may face ethical issues and dilemmas during the data analysis process. In some fields, ethical issues and dilemmas include participant consent, benefits, risk, confidentiality, and <a href="#" class="tooltip" style="color:green"><em>data ownership</em><span style="font-size:8pt">Governance process that details legal ownership of enterprise-wide data and outlines who has ability to create, edit, modify, share and restrict access to the data</span></a> <span class="citation">(<a href="#ref-miles2014">Miles, Hberman, and Sdana 2014</a>)</span>. For example, regarding privacy and confidentiality, one might confront the following questions: How do we make sure that the information is kept confidentially? How do we verify where raw data and analysis results are stored? How will we have access to them? These questions should be addressed and documented in explicit confidentiality agreements.</p>
+<p>Within the insurance sector, discrimination, privacy, and confidentiality are major concerns. Discrimination in insurance is particularly difficult because the entire industry is based on “discriminating,” or classifying, insureds into homogeneous categories for the purposes of risk sharing. Many variables that insurers use are seemingly innocuous (e.g., blindness for auto insurance), yet others can be viewed as “wrong” (e.g., religious affiliation), “unfair” (e.g., onset of cancer for health insurance), “sensitive” (e.g., marital status), or “mysterious” (e.g., Artificial Intelligence produced). Regulators and policymakers decide whether it is not permitted to use a variable for classification. In part because they depend on differing attitudes, perspectives can vary dramatically across jurisdictions. For example, gender-based pricing of auto insurance is permitted in all but a handful of U.S. states (the exceptions being Hawaii, Massachusetts, Montana, North Carolina, Pennsylvania, and, as of 2019, California) yet not permitted within the European Union. Moreover, for personal lines such as auto and homeowners, availability of big data may also lead to issues regarding <em>proxy discrimination</em>. Proxy discrimination occurs when a surrogate, or proxy, is used in place of a prohibited trait such as race or gender, see, for example, <span class="citation">Frees and Huang (<a href="#ref-frees2021discriminating">2021</a>)</span>.</p>
 <div id="surveyElement2Data5">
 
 </div>
@@ -1874,11 +1815,11 @@ LM \sum_{j=1}^p |\beta_j |^s \right) ,
 <div id="further-readings-and-references" class="section level4 unnumbered hasAnchor">
 <h4>Further Readings and References<a href="ChapDataAnalytics.html#further-readings-and-references" class="anchor-section" aria-label="Anchor link to header"></a></h4>
 <ul>
-<li><span class="citation"><a href="#ref-stigler1986history" role="doc-biblioref">Stigler</a> (<a href="#ref-stigler1986history" role="doc-biblioref">1986</a>)</span> gives a definitive account of the early contributions of Boscovich, Legendre and Gauss.</li>
-<li><span class="citation"><a href="#ref-breiman2001modeling" role="doc-biblioref">Breiman</a> (<a href="#ref-breiman2001modeling" role="doc-biblioref">2001</a>)</span> compares the data modeling and the algorithmic modeling cultures.</li>
-<li><span class="citation"><a href="#ref-good1983data" role="doc-biblioref">Good</a> (<a href="#ref-good1983data" role="doc-biblioref">1983</a>)</span> compares the two phases of data analysis, exploratory data analysis (EDA) and confirmatory data analysis (CDA)</li>
-<li>See, for example, <span class="citation"><a href="#ref-breiman2001modeling" role="doc-biblioref">Breiman</a> (<a href="#ref-breiman2001modeling" role="doc-biblioref">2001</a>)</span> and <span class="citation"><a href="#ref-shmueli2010model" role="doc-biblioref">Shmueli</a> (<a href="#ref-shmueli2010model" role="doc-biblioref">2010</a>)</span>, for more discussions of the two goals in data analysis: explanation and prediction.</li>
-<li>Comparisons of structured data and unstructured data can be found in <span class="citation"><a href="#ref-inmon2014" role="doc-biblioref">Inmon and Linstedt</a> (<a href="#ref-inmon2014" role="doc-biblioref">2014</a>)</span>, <span class="citation"><a href="#ref-leary2013bigdata" role="doc-biblioref">O’Leary</a> (<a href="#ref-leary2013bigdata" role="doc-biblioref">2013</a>)</span> ,<span class="citation"><a href="#ref-hashem2015bigdata" role="doc-biblioref">Hashem et al.</a> (<a href="#ref-hashem2015bigdata" role="doc-biblioref">2015</a>)</span>, <span class="citation"><a href="#ref-abdullah2013data" role="doc-biblioref">Abdullah and Ahmad</a> (<a href="#ref-abdullah2013data" role="doc-biblioref">2013</a>)</span>, and <span class="citation"><a href="#ref-pries2015" role="doc-biblioref">Pries and Dunnigan</a> (<a href="#ref-pries2015" role="doc-biblioref">2015</a>)</span>, among others.</li>
+<li><span class="citation">Stigler (<a href="#ref-stigler1986history">1986</a>)</span> gives a definitive account of the early contributions of Boscovich, Legendre and Gauss.</li>
+<li><span class="citation">Breiman (<a href="#ref-breiman2001modeling">2001</a>)</span> compares the data modeling and the algorithmic modeling cultures.</li>
+<li><span class="citation">Good (<a href="#ref-good1983data">1983</a>)</span> compares the two phases of data analysis, exploratory data analysis (EDA) and confirmatory data analysis (CDA)</li>
+<li>See, for example, <span class="citation">Breiman (<a href="#ref-breiman2001modeling">2001</a>)</span> and <span class="citation">Shmueli (<a href="#ref-shmueli2010model">2010</a>)</span>, for more discussions of the two goals in data analysis: explanation and prediction.</li>
+<li>Comparisons of structured data and unstructured data can be found in <span class="citation">Inmon and Linstedt (<a href="#ref-inmon2014">2014</a>)</span>, <span class="citation">O’Leary (<a href="#ref-leary2013bigdata">2013</a>)</span> ,<span class="citation">Hashem et al. (<a href="#ref-hashem2015bigdata">2015</a>)</span>, <span class="citation">Abdullah and Ahmad (<a href="#ref-abdullah2013data">2013</a>)</span>, and <span class="citation">Pries and Dunnigan (<a href="#ref-pries2015">2015</a>)</span>, among others.</li>
 </ul>
 </div>
 <div id="S:MultiEDA" class="section level3 hasAnchor" number="2.6.1">
@@ -1894,11 +1835,11 @@ Z_{i} = \textbf{e}_i&#39; \textbf{X} =\sum_{j=1}^d e_{ij} X_j,
 <p><span class="math display">\[
 \frac{\mathrm{Var~}{(Z_i)}}{ \sum_{j=1}^{d} \mathrm{Var~}{(Z_j)}} = \frac{\lambda_i}{\lambda_1+\lambda_2+\cdots+\lambda_d}.
 \]</span></p>
-<p>For more information about PCA, readers are referred to <span class="citation"><a href="#ref-mirkin2011" role="doc-biblioref">Mirkin</a> (<a href="#ref-mirkin2011" role="doc-biblioref">2011</a>)</span>.</p>
+<p>For more information about PCA, readers are referred to <span class="citation">Mirkin (<a href="#ref-mirkin2011">2011</a>)</span>.</p>
 </div>
 <div id="cluster-analysis" class="section level4 hasAnchor" number="2.6.1.2">
 <h4><span class="header-section-number">2.6.1.2</span> Cluster Analysis<a href="ChapDataAnalytics.html#cluster-analysis" class="anchor-section" aria-label="Anchor link to header"></a></h4>
-<p><a href="#" class="tooltip" style="color:green"><em>Cluster analysis</em><span style="font-size:8pt">Unsupervised learning method that aims to splot data into homogenous groups using a similarity measure</span></a> (aka data clustering) refers to the process of dividing a dataset into homogeneous groups or clusters such that points in the same cluster are similar and points from different clusters are quite distinct <span class="citation">(<a href="#ref-gan2007" role="doc-biblioref">Gan, Ma, and Wu 2007</a>; <a href="#ref-gan2011" role="doc-biblioref">Gan 2011</a>)</span>. Data clustering is one of the most popular tools for exploratory data analysis and has found its applications in many scientific areas.</p>
+<p><a href="#" class="tooltip" style="color:green"><em>Cluster analysis</em><span style="font-size:8pt">Unsupervised learning method that aims to splot data into homogenous groups using a similarity measure</span></a> (aka data clustering) refers to the process of dividing a dataset into homogeneous groups or clusters such that points in the same cluster are similar and points from different clusters are quite distinct <span class="citation">(<a href="#ref-gan2007">Gan, Ma, and Wu 2007</a>; <a href="#ref-gan2011">Gan 2011</a>)</span>. Data clustering is one of the most popular tools for exploratory data analysis and has found its applications in many scientific areas.</p>
 <p>During the past several decades, many clustering algorithms have been proposed. Among these clustering algorithms, the <span class="math inline">\(k\)</span>-means algorithm is perhaps the most well-known algorithm due to its simplicity. To describe the <a href="#" class="tooltip" style="color:green"><em>k-means algorithm</em><span style="font-size:8pt">Type of clustering that aims to partition data into k mutually exclusive clusters by assigning observations to the cluster with the nearest centroid</span></a>, let <span class="math inline">\(X=\{\textbf{x}_1,\textbf{x}_2,\ldots,\textbf{x}_n\}\)</span> be a dataset containing <span class="math inline">\(n\)</span> points, each of which is described by <span class="math inline">\(d\)</span> numerical features. Given a desired number of clusters <span class="math inline">\(k\)</span>, the <span class="math inline">\(k\)</span>-means algorithm aims at minimizing the following objective function:</p>
 <p><span class="math display">\[
 P(U,Z) = \sum_{l=1}^k\sum_{i=1}^n u_{il} \Vert \textbf{x}_i-\textbf{z}_l\Vert^2,
@@ -1910,18 +1851,18 @@ u_{il}\in \{0,1\},\quad i=1,2,\ldots,n,\:l=1,2,\ldots,k,
 <p><span class="math display">\[
 \sum_{l=1}^k u_{il}=1,\quad i=1,2,\ldots,n.
 \]</span></p>
-<p>The <span class="math inline">\(k\)</span>-means algorithm employs an iterative procedure to minimize the objective function. It repeatedly updates the partition matrix <span class="math inline">\(U\)</span> and the cluster centers <span class="math inline">\(Z\)</span> alternately until some stop criterion is met. For more information about <span class="math inline">\(k\)</span>-means, readers are referred to <span class="citation"><a href="#ref-gan2007" role="doc-biblioref">Gan, Ma, and Wu</a> (<a href="#ref-gan2007" role="doc-biblioref">2007</a>)</span> and <span class="citation"><a href="#ref-mirkin2011" role="doc-biblioref">Mirkin</a> (<a href="#ref-mirkin2011" role="doc-biblioref">2011</a>)</span>.</p>
+<p>The <span class="math inline">\(k\)</span>-means algorithm employs an iterative procedure to minimize the objective function. It repeatedly updates the partition matrix <span class="math inline">\(U\)</span> and the cluster centers <span class="math inline">\(Z\)</span> alternately until some stop criterion is met. For more information about <span class="math inline">\(k\)</span>-means, readers are referred to <span class="citation">Gan, Ma, and Wu (<a href="#ref-gan2007">2007</a>)</span> and <span class="citation">Mirkin (<a href="#ref-mirkin2011">2011</a>)</span>.</p>
 </div>
 </div>
 <div id="tree-based-models" class="section level3 hasAnchor" number="2.6.2">
 <h3><span class="header-section-number">2.6.2</span> Tree-based Models<a href="ChapDataAnalytics.html#tree-based-models" class="anchor-section" aria-label="Anchor link to header"></a></h3>
-<p><a href="#" class="tooltip" style="color:green"><em>Decision trees</em><span style="font-size:8pt">Modeling technique that uses a tree-like model of decisions to divide the sample space into non-overlapping regions to make predictions</span></a>, also known as tree-based models, involve dividing the predictor space (i.e., the space formed by independent variables) into a number of simple regions and using the mean or the mode of the region for prediction <span class="citation">(<a href="#ref-breiman1984" role="doc-biblioref">Breiman et al. 1984</a>)</span>. There are two types of tree-based models: classification trees and regression trees. When the dependent variable is categorical, the resulting tree models are called classification trees. When the dependent variable is continuous, the resulting tree models are called regression trees.</p>
+<p><a href="#" class="tooltip" style="color:green"><em>Decision trees</em><span style="font-size:8pt">Modeling technique that uses a tree-like model of decisions to divide the sample space into non-overlapping regions to make predictions</span></a>, also known as tree-based models, involve dividing the predictor space (i.e., the space formed by independent variables) into a number of simple regions and using the mean or the mode of the region for prediction <span class="citation">(<a href="#ref-breiman1984">Breiman et al. 1984</a>)</span>. There are two types of tree-based models: classification trees and regression trees. When the dependent variable is categorical, the resulting tree models are called classification trees. When the dependent variable is continuous, the resulting tree models are called regression trees.</p>
 <p>The process of building classification trees is similar to that of building regression trees. Here we only briefly describe how to build a regression tree. To do that, the predictor space is divided into non-overlapping regions such that the following objective function</p>
 <p><span class="math display">\[
 f(R_1,R_2,\ldots,R_J) = \sum_{j=1}^J \sum_{i=1}^n I_{R_j}(\textbf{x}_i)(y_i - \mu_j)^2
 \]</span></p>
 <p>is minimized, where <span class="math inline">\(I\)</span> is an indicator function, <span class="math inline">\(R_j\)</span> denotes the set of indices of the observations that belong to the <span class="math inline">\(j\)</span>th box, <span class="math inline">\(\mu_j\)</span> is the mean response of the observations in the <span class="math inline">\(j\)</span>th box, <span class="math inline">\(\textbf{x}_i\)</span> is the vector of predictor values for the <span class="math inline">\(i\)</span>th observation, and <span class="math inline">\(y_i\)</span> is the response value for the <span class="math inline">\(i\)</span>th observation.</p>
-<p>In terms of predictive accuracy, decision trees generally do not perform to the level of other regression and classification models. However, tree-based models may outperform linear models when the relationship between the response and the predictors is nonlinear. For more information about decision trees, readers are referred to <span class="citation"><a href="#ref-breiman1984" role="doc-biblioref">Breiman et al.</a> (<a href="#ref-breiman1984" role="doc-biblioref">1984</a>)</span> and <span class="citation"><a href="#ref-mitchell1997" role="doc-biblioref">Mitchell</a> (<a href="#ref-mitchell1997" role="doc-biblioref">1997</a>)</span>.</p>
+<p>In terms of predictive accuracy, decision trees generally do not perform to the level of other regression and classification models. However, tree-based models may outperform linear models when the relationship between the response and the predictors is nonlinear. For more information about decision trees, readers are referred to <span class="citation">Breiman et al. (<a href="#ref-breiman1984">1984</a>)</span> and <span class="citation">Mitchell (<a href="#ref-mitchell1997">1997</a>)</span>.</p>
 <!-- ###Statistical Inference -->
 </div>
 <div id="technical-supplement-some-r-functions" class="section level3 hasAnchor" number="2.6.3">
@@ -1945,7 +1886,7 @@ f(R_1,R_2,\ldots,R_J) = \sum_{j=1}^J \sum_{i=1}^n I_{R_j}(\textbf{x}_i)(y_i - \m
 \end{array}
 }
 \]</span></p>
-<p><a href="#tab:2.4">Table 2.4</a> lists a few <code>R</code> functions for different data analysis tasks. Readers can go to the <code>R</code> documentation to learn how to use these functions. There are also other <code>R</code> packages that do similar things. However, the functions listed in this table provide good starting points for readers to conduct data analysis in <code>R</code>. For analyzing large datasets in <code>R</code> in an efficient way, readers are referred to <span class="citation"><a href="#ref-daroczi2015" role="doc-biblioref">Daroczi</a> (<a href="#ref-daroczi2015" role="doc-biblioref">2015</a>)</span>.</p>
+<p><a href="#tab:2.4">Table 2.4</a> lists a few <code>R</code> functions for different data analysis tasks. Readers can go to the <code>R</code> documentation to learn how to use these functions. There are also other <code>R</code> packages that do similar things. However, the functions listed in this table provide good starting points for readers to conduct data analysis in <code>R</code>. For analyzing large datasets in <code>R</code> in an efficient way, readers are referred to <span class="citation">Daroczi (<a href="#ref-daroczi2015">2015</a>)</span>.</p>
 <hr />
 <p><a rel="license" href="http://creativecommons.org/licenses/by/4.0/"><img alt="Creative Commons License" style="border-width:0" src="https://i.creativecommons.org/l/by/4.0/88x31.png" /></a><br />This work is licensed under a <a rel="license" href="http://creativecommons.org/licenses/by/4.0/">Creative Commons Attribution 4.0 International License</a>.</p>
 
@@ -2129,7 +2070,7 @@ gitbook.start({
     var script = document.createElement("script");
     script.type = "text/javascript";
     var src = "true";
-    if (src === "" || src === "true") src = "https://mathjax.rstudio.com/latest/MathJax.js?config=TeX-MML-AM_CHTML";
+    if (src === "" || src === "true") src = "https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.9/latest.js?config=TeX-MML-AM_CHTML";
     if (location.protocol !== "file:")
       if (/^https?:/.test(src))
         src = src.replace(/^https?:/, '');

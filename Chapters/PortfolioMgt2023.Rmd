@@ -14,7 +14,7 @@
 
 In previous chapters, our analyses primarily focused on the contract level, which represents agreements between policyholders and insurers. Insurers maintain and manage `r Gloss('portfolios')`, which are essentially collections of these individual contracts. Conceptually, one can liken an insurance company to nothing more than a collection, or portfolio, of insurance contracts. Similar to banking and investments, there are management decisions that are made exclusively at the portfolio level. Within this chapter, we address three crucial actuarial tasks: quantifying the impact of extreme events, determining overall portfolio risk, and managing insurance portfolios through reinsurance.
 
-`r Gloss('Insurance portfolios')`, representing the obligations of insurers, pique our interest primarily due to the probabilities associated with significant outcomes. These outcomes often translate to unusually large obligations, frequently stemming from unforeseen consequences of **climate-related risks**. For instance, consider the freezing rain event of 1998 that swept through eastern Ontario and southwestern Quebec, lasting six days. This calamity resulted in double the typical precipitation for the region during an ice storm and gave rise to a catastrophe, triggering over 840,000 insurance claims. Astonishingly, this number exceeded the claims filed in the wake of Hurricane Andrew, one of North America's most extensive natural disasters. The catastrophe led to insurance settlements exceeding 1.44 billion Canadian dollars, marking the highest loss burden in Canada's history. Such incidents are not isolated; similar catastrophic events, like Hurricane Harvey, Superstorm Sandy, the 2011 Japanese earthquake and tsunami, have also caused extreme insurance losses. In our exploration of extreme events in insurance, we introduce the concept of heavy-tailed distributions in Section \@ref(S:Tails).
+`r Gloss('Insurance portfolios')`, representing the obligations of insurers, pique our interest primarily due to the probabilities associated with significant outcomes. These outcomes often translate to unusually large obligations. To illustrate, within property and casualty insurance, large obligations frequently stem from unforeseen consequences of **climate-related risks**. For instance, consider the freezing rain event of 1998 that swept through eastern Ontario and southwestern Quebec, lasting six days. This calamity resulted in double the typical precipitation for the region during an ice storm and gave rise to a catastrophe, triggering over 840,000 insurance claims. Astonishingly, this number exceeded the claims filed in the wake of Hurricane Andrew, one of North America's most extensive natural disasters. The catastrophe led to insurance settlements exceeding 1.44 billion Canadian dollars, marking the highest loss burden in Canada's history. Such incidents are not isolated; similar catastrophic events, like Hurricane Harvey, Superstorm Sandy, the 2011 Japanese earthquake and tsunami, have also caused extreme insurance losses. In our exploration of extreme events in insurance, we introduce the concept of heavy-tailed distributions in Section \@ref(S:Tails).
 
 Insurance companies engage in the buying and selling of risks as if they were commodities. As we explored in Chapter \@ref(ChapPremiumFoundations), greater uncertainty associated with risks typically translates into higher prices. In that chapter, pricing principles were introduced to quantify the magnitude of these risks. Furthermore, insurance portfolios represent the obligations of a company and, although they are not traded on a marketplace, they require careful management. One crucial aspect of this management is aligning the size of the obligations with an equivalent amount of assets. The subsequent Chapter \@ref(ChapLossReserves) on loss reserves offers practical methods for achieving this alignment. Additionally, insurers need to assess the extent of their obligations for purposes such as capacity planning, policy formulation, and maintaining a balanced product portfolio that fosters revenue growth while managing volatility. To facilitate these tasks, Section \@ref(S:RiskMeasure) introduces risk measures that succinctly capture the uncertainty inherent in the distribution of an insurance portfolio.
 
@@ -372,15 +372,14 @@ By the definition of $VaR$, we thus have then
 
 Let us now conclude the current subsection by an open discussion of the $VaR$ measure.  Some advantages of utilizing $VaR$ include  
 
-* possessing a practically meaningful interpretation,
-* relatively simple to compute for many distributions with closed-form distribution functions, and
-* no additional assumption is required for the computation of $VaR$.
+* possessing a practically meaningful interpretation, and
+* relatively simple to compute for many distributions with closed-form distribution functions.
 
 On the other hand, the limitations of $VaR$ can be particularly pronounced for some risk management practices.  We report some of them herein:  
 
 * the selection of the confidence level $q\in (0,1)$ is highly subjective, while the $VaR$ can be very sensitive to the choice of $q$ (e.g., in Example `r chapnum`.3.4, $VaR_{0.95}[X]=3$ and $VaR_{0.950001}[X]=4$);
 * the scenarios/loss information that are above the $(1-q)\times 100\%$ worst event, are completely neglected;
-* as will be seen in Section \@ref(Sec:CoherentRiskMeasure), the $VaR$ is not a coherent risk measure (specifically, the $VaR$ measure does not satisfy the subadditivity axiom, meaning that diversification benefits may not be fully reflected).
+* as will be seen in Section \@ref(Sec:CoherentRiskMeasure), the $VaR$ is not a coherent risk measure.
 
 The $VaR$ represents the $(1-q)\times100\%$ chance maximal loss. One major drawback of the $VaR$ measure is that it does not reflect the extremal losses occurring beyond the $(1-q)\times100\%$ chance worst scenario.  For illustrative purposes, let us consider the following slightly unrealistic yet inspiring example.  
 
@@ -410,8 +409,6 @@ $$
 The $ES$ effectively resolves most of the limitations of $VaR$ outlined in the previous subsection.  First, due to the averaging effect, the $ES$ may be less sensitive to the change of confidence level compared with $VaR$.  Second, all the extremal losses that are above the $(1-q)\times 100\%$ worst probable event are taken in account.
 
 
-
-
 There are a few other forms of the $ES$ that will be useful to us. For notional convenience, we write $\pi_q = VaR_q[X]$ and have
 
 \begin{equation}
@@ -424,7 +421,7 @@ ES_{q}(X) &= \frac{1}{1-q} \int_{q}^{1} VaR_{a}(X) d a & \text{Expected Shortfal
 (\#eq:ESExpressions)  
 \end{equation}
 
-The equalities in Display \@ref(eq:ESExpressions) hold under some additional (mild) assumptions on the continuity of the distribution function. As we are interested in applications to portfolios, we employ such assumptions in this chapter which allows us to describe alternative ways of thinking about these measures. For example, from the third expression, we see that $ES$ can also be interpreted to be the expected amount given that the loss exceeds the $VaR_{q}$. 
+The equalities in Display \@ref(eq:ESExpressions) hold under some additional (mild) assumptions on the continuity of the distribution function at the point $\pi_q$. As we are interested in applications to portfolios, we employ such assumptions in this chapter which allows us to describe alternative ways of thinking about these measures. For example, from the third expression, we see that $ES$ can also be interpreted to be the expected amount given that the loss exceeds the $VaR_{q}$. 
 
 Naturally, analysts may work with distributions where the assumptions of continuity do not hold, such as discrete distributions (see the examples Chapter 3). For these distributions, 
 Display \@ref(eq:ESExpressions) provides a definition for some alternative risk measures, the *Tail value-at-risk* and the *Conditional value-at-risk*. You can learn more about these alternative risk measures in the references given in Section \@ref(Sec:PortfolioFurtherReadings). 
@@ -716,6 +713,11 @@ You can check that $\Pr[X\leq Y]=1$, but $\mathrm{SD}(X)=\sqrt{4^2\cdot 0.25\cdo
 *** 
 
 We have so far checked that $\mathrm{E}[\cdot]$ is a coherent risk measure and that $\mathrm{SD}(\cdot)$ is not. [Exercise 13.1] asks you to study the coherent property for the standard deviation principle \@ref(eq:SD-principle) which is a linear combination of coherent and incoherent risk measures. 
+
+It turns out that the $VaR$ is not a coherent risk measure. Specifically, the $VaR$ measure does not satisfy the subadditivity axiom, meaning that diversification benefits may not be fully reflected.
+
+In contrast, $ES$ is a coherent risk measure and thus is able to more accurately capture the diversification effects of insurance portfolio. Herein, we do not intend to provide the proof of the coherent feature for $ES$, which is considered to be challenging technically.
+
 
 
 ```{r child = './Quizzes/Quiz13A3.html', eval = QUIZ}
@@ -1558,7 +1560,7 @@ Some of the examples from this chapter were borrowed from @clark1996basics, @klu
 -  **Edward (Jed) Frees**, University of Wisconsin-Madison, and **Jianxi Su**, Purdue University were the principal authors of the initial version of this chapter. 
    - Chapter reviewers include: Fei Huang, Hirokazu (Iwahiro) Iwasawa, Peng Shi, Ranee Thiagarajah, Ping Wang, and Chengguo Weng.
 -  **Edward (Jed) Frees**, University of Wisconsin-Madison and Australian National University, is the author of the second edition of this chapter. Email: jfrees@bus.wisc.edu for chapter comments and suggested improvements.
-
+   - Chapter reviewers include Chengguo Weng.
 
 
 

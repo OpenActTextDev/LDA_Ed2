@@ -6,7 +6,7 @@
   <meta http-equiv="X-UA-Compatible" content="IE=edge" />
   <title>Chapter 4 Modeling Loss Severity | Loss Data Analytics   Second Edition</title>
   <meta name="description" content="Loss Data Analytics is an interactive, online, freely available text. - The online version will contain many interactive objects (quizzes, computer demonstrations, interactive graphs, video, and the like) to promote deeper learning. - A subset of the book will be available in pdf format for low-cost printing. - The online text will be available in multiple languages to promote access to a worldwide audience." />
-  <meta name="generator" content="bookdown 0.27 and GitBook 2.6.7" />
+  <meta name="generator" content="bookdown 0.39 and GitBook 2.6.7" />
 
   <meta property="og:title" content="Chapter 4 Modeling Loss Severity | Loss Data Analytics   Second Edition" />
   <meta property="og:type" content="book" />
@@ -515,7 +515,7 @@ code span.al { color: #ff0000; font-weight: bold; } /* Alert */
 code span.an { color: #60a0b0; font-weight: bold; font-style: italic; } /* Annotation */
 code span.at { color: #7d9029; } /* Attribute */
 code span.bn { color: #40a070; } /* BaseN */
-code span.bu { } /* BuiltIn */
+code span.bu { color: #008000; } /* BuiltIn */
 code span.cf { color: #007020; font-weight: bold; } /* ControlFlow */
 code span.ch { color: #4070a0; } /* Char */
 code span.cn { color: #880000; } /* Constant */
@@ -528,7 +528,7 @@ code span.er { color: #ff0000; font-weight: bold; } /* Error */
 code span.ex { } /* Extension */
 code span.fl { color: #40a070; } /* Float */
 code span.fu { color: #06287e; } /* Function */
-code span.im { } /* Import */
+code span.im { color: #008000; font-weight: bold; } /* Import */
 code span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Information */
 code span.kw { color: #007020; font-weight: bold; } /* Keyword */
 code span.op { color: #666666; } /* Operator */
@@ -542,6 +542,10 @@ code span.vs { color: #4070a0; } /* VerbatimString */
 code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warning */
 </style>
 
+<style type="text/css">
+  
+  div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+</style>
 <style type="text/css">
 /* Used with Pandoc 2.11+ new --citeproc when CSL is used */
 div.csl-bib-body { }
@@ -1048,7 +1052,7 @@ div.csl-indent {
 <li class="chapter" data-level="16.1" data-path="ChapDependenceModel.html"><a href="ChapDependenceModel.html#S:Measures"><i class="fa fa-check"></i><b>16.1</b> Classic Measures of Scalar Associations</a>
 <ul>
 <li class="chapter" data-level="16.1.1" data-path="ChapDependenceModel.html"><a href="ChapDependenceModel.html#association-measures-for-quantitative-variables"><i class="fa fa-check"></i><b>16.1.1</b> Association Measures for Quantitative Variables</a></li>
-<li class="chapter" data-level="16.1.2" data-path="ChapDependenceModel.html"><a href="ChapDependenceModel.html#rank-based-measures"><i class="fa fa-check"></i><b>16.1.2</b> Rank Based Measures</a></li>
+<li class="chapter" data-level="16.1.2" data-path="ChapDependenceModel.html"><a href="ChapDependenceModel.html#Sec:RankMeasures"><i class="fa fa-check"></i><b>16.1.2</b> Rank Based Measures</a></li>
 <li class="chapter" data-level="16.1.3" data-path="ChapDependenceModel.html"><a href="ChapDependenceModel.html#Sec:tdc"><i class="fa fa-check"></i><b>16.1.3</b> Tail Dependence Coefficients</a></li>
 </ul></li>
 <li class="chapter" data-level="16.2" data-path="ChapDependenceModel.html"><a href="ChapDependenceModel.html#S:Copula"><i class="fa fa-check"></i><b>16.2</b> Introduction to Copulas</a>
@@ -1257,9 +1261,9 @@ Given <span class="math inline">\(\Gamma\left( r + 1 \right) = r\Gamma\left( r \
 <p><span class="math display">\[
 \begin{array}{ll}
 \text{Skewness}  &amp;= \frac{\mathrm{E}\left\lbrack {(X - \mu_{1}^{\prime})}^{3} \right\rbrack}{{\left( \mathrm{Var}X \right)}^{3/2}} = \frac{\mu_{3}^{\prime} - 3\mu_{2}^{\prime}\mu_{1}^{\prime} + 2{\mu_{1}^{\prime}}^{3}}{{\left(\mathrm{Var} X \right)}^{3/2}} \\
- &amp;= \frac{\left( \alpha + 2 \right)\left( \alpha + 1 \right)\alpha\theta^{3} - 3\left( \alpha + 1 \right)\alpha^{2}\theta^{3} + 2\alpha^{3}\theta^{3}}{\left( \alpha\theta^{2} \right)^{3/2}} \\
- &amp;= \frac{2}{\alpha^{1/2}} = 1.
- \end{array}
+&amp;= \frac{\left( \alpha + 2 \right)\left( \alpha + 1 \right)\alpha\theta^{3} - 3\left( \alpha + 1 \right)\alpha^{2}\theta^{3} + 2\alpha^{3}\theta^{3}}{\left( \alpha\theta^{2} \right)^{3/2}} \\
+&amp;= \frac{2}{\alpha^{1/2}} = 1.
+\end{array}
 \]</span></p>
 <p>Hence, <span class="math inline">\(\alpha = 4\)</span>. Since, <span class="math inline">\(\mathrm{E}\left( X \right) = \alpha\theta = 8\)</span>, then <span class="math inline">\(\theta = 2\)</span> and finally, <span class="math inline">\(\mathrm{Var}\left( X \right) = \alpha\theta^{2} = 16\)</span>.</p>
 </div>
@@ -1299,7 +1303,7 @@ Let <span class="math inline">\(X_{1}, \ldots, X_{n}\)</span> be <a href="#" cla
 <p><strong>Solution.</strong></p>
 <p>The <em>mgf</em> of <span class="math inline">\(S\)</span> is
 <span class="math display">\[
-M_{S}(t) = \text{E}\left( e^{\text{tS}} \right) = \mathrm{E}\left( e^{t\sum_{i = 1}^{n}X_{i}} \right) 
+M_{S}(t) = \text{E}\left( e^{\text{tS}} \right) = \mathrm{E}\left( e^{t\sum_{i = 1}^{n}X_{i}} \right)
 = \mathrm{E}\left( \prod_{i = 1}^{n}e^{tX_{i}} \right) .
 \]</span>
 Using independence, we get<br />
@@ -1308,7 +1312,7 @@ M_{S}(t) = \prod_{i = 1}^{n}{\mathrm{E}\left( e^{tX_{i}} \right) = \prod_{i = 1}
 \]</span></p>
 <p>The moment generating function of the gamma distribution <span class="math inline">\(X_i\)</span> is <span class="math inline">\(M_{X_i}(t) = (1-\theta t)^{\alpha_i}\)</span>. Then,
 <span class="math display">\[
-M_{S}(t) = \prod_{i = 1}^{n}\left( 1 - \theta t \right)^{- \alpha_{i}} = \left( 1 - \theta t \right)^{- \sum_{i = 1}^{n}\alpha_{i}} . 
+M_{S}(t) = \prod_{i = 1}^{n}\left( 1 - \theta t \right)^{- \alpha_{i}} = \left( 1 - \theta t \right)^{- \sum_{i = 1}^{n}\alpha_{i}} .
 \]</span>
 This indicates that the distribution of <span class="math inline">\(S\)</span> is gamma with parameters <span class="math inline">\(\sum_{i = 1}^{n}\alpha_{i}\)</span> and <span class="math inline">\(\theta\)</span>.</p>
 <p>This is a demonstration of how we can use the uniqueness property of the moment generating function to determine the probability distribution of a function of random variables.</p>
@@ -1321,7 +1325,7 @@ Hence, <span class="math inline">\(\mathrm{Var}\left( S \right) = \alpha\theta^{
 <hr />
 <p>One can also use the moment generating function to compute the probability generating function</p>
 <p><span class="math display">\[
-P_{X}(z) = \mathrm{E}\left( z^{X} \right) = M_{X}\left( \log z \right) . 
+P_{X}(z) = \mathrm{E}\left( z^{X} \right) = M_{X}\left( \log z \right) .
 \]</span></p>
 <p>As introduced in Section <a href="ChapFrequency-Modeling.html#S:generating-functions">3.2.2</a>, the probability generating function is more useful for discrete random variables.</p>
 <hr />
@@ -1395,29 +1399,28 @@ Figure 4.1: <strong>Gamma Densities</strong>. The left-hand panel is with shape=
 <a id="displayCode.gamma.1" href="javascript:togglecode('toggleCode.gamma.1','displayCode.gamma.1');"><i><strong>R Code for Gamma Density Plots</strong></i></a>
 </h5>
 <div id="toggleCode.gamma.1" style="display: none">
-<div class="sourceCode" id="cb44"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb44-1"><a href="ChapSeverity.html#cb44-1" aria-hidden="true" tabindex="-1"></a><span class="fu">par</span>(<span class="at">mfrow =</span> <span class="fu">c</span>(<span class="dv">1</span>, <span class="dv">2</span>), <span class="at">mar =</span> <span class="fu">c</span>(<span class="dv">4</span>, <span class="dv">4</span>, <span class="fl">0.1</span>, <span class="fl">0.1</span>))</span>
-<span id="cb44-2"><a href="ChapSeverity.html#cb44-2" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb44-3"><a href="ChapSeverity.html#cb44-3" aria-hidden="true" tabindex="-1"></a><span class="co"># Varying Scale Gamma Densities</span></span>
-<span id="cb44-4"><a href="ChapSeverity.html#cb44-4" aria-hidden="true" tabindex="-1"></a>scaleparam <span class="ot">&lt;-</span> <span class="fu">seq</span>(<span class="dv">100</span>, <span class="dv">250</span>, <span class="at">by =</span> <span class="dv">50</span>)</span>
-<span id="cb44-5"><a href="ChapSeverity.html#cb44-5" aria-hidden="true" tabindex="-1"></a>shapeparam <span class="ot">&lt;-</span> <span class="dv">2</span><span class="sc">:</span><span class="dv">5</span></span>
-<span id="cb44-6"><a href="ChapSeverity.html#cb44-6" aria-hidden="true" tabindex="-1"></a>x <span class="ot">&lt;-</span> <span class="fu">seq</span>(<span class="dv">0</span>, <span class="dv">1000</span>, <span class="at">by =</span> <span class="dv">1</span>)</span>
-<span id="cb44-7"><a href="ChapSeverity.html#cb44-7" aria-hidden="true" tabindex="-1"></a>fgamma <span class="ot">&lt;-</span> <span class="fu">dgamma</span>(x, <span class="at">shape =</span> <span class="dv">2</span>, <span class="at">scale =</span> scaleparam[<span class="dv">1</span>])</span>
-<span id="cb44-8"><a href="ChapSeverity.html#cb44-8" aria-hidden="true" tabindex="-1"></a><span class="fu">plot</span>(x, fgamma, <span class="at">type =</span> <span class="st">&quot;l&quot;</span>, <span class="at">ylab =</span> <span class="st">&quot;Gamma Density&quot;</span>)</span>
-<span id="cb44-9"><a href="ChapSeverity.html#cb44-9" aria-hidden="true" tabindex="-1"></a><span class="cf">for</span> (k <span class="cf">in</span> <span class="dv">2</span><span class="sc">:</span><span class="fu">length</span>(scaleparam)) {</span>
-<span id="cb44-10"><a href="ChapSeverity.html#cb44-10" aria-hidden="true" tabindex="-1"></a>    fgamma <span class="ot">&lt;-</span> <span class="fu">dgamma</span>(x, <span class="at">shape =</span> <span class="dv">2</span>, <span class="at">scale =</span> scaleparam[k])</span>
-<span id="cb44-11"><a href="ChapSeverity.html#cb44-11" aria-hidden="true" tabindex="-1"></a>    <span class="fu">lines</span>(x, fgamma, <span class="at">col =</span> k)</span>
-<span id="cb44-12"><a href="ChapSeverity.html#cb44-12" aria-hidden="true" tabindex="-1"></a>}</span>
-<span id="cb44-13"><a href="ChapSeverity.html#cb44-13" aria-hidden="true" tabindex="-1"></a><span class="fu">legend</span>(<span class="st">&quot;topright&quot;</span>, <span class="fu">c</span>(<span class="st">&quot;scale=100&quot;</span>, <span class="st">&quot;scale=150&quot;</span>, <span class="st">&quot;scale=200&quot;</span>, <span class="st">&quot;scale=250&quot;</span>), <span class="at">lty =</span> <span class="dv">1</span>,</span>
-<span id="cb44-14"><a href="ChapSeverity.html#cb44-14" aria-hidden="true" tabindex="-1"></a>    <span class="at">col =</span> <span class="dv">1</span><span class="sc">:</span><span class="dv">4</span>)</span>
-<span id="cb44-15"><a href="ChapSeverity.html#cb44-15" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb44-16"><a href="ChapSeverity.html#cb44-16" aria-hidden="true" tabindex="-1"></a><span class="co"># Varying Shape Gamma Densities</span></span>
-<span id="cb44-17"><a href="ChapSeverity.html#cb44-17" aria-hidden="true" tabindex="-1"></a>fgamma <span class="ot">&lt;-</span> <span class="fu">dgamma</span>(x, <span class="at">shape =</span> shapeparam[<span class="dv">1</span>], <span class="at">scale =</span> <span class="dv">100</span>)</span>
-<span id="cb44-18"><a href="ChapSeverity.html#cb44-18" aria-hidden="true" tabindex="-1"></a><span class="fu">plot</span>(x, fgamma, <span class="at">type =</span> <span class="st">&quot;l&quot;</span>, <span class="at">ylab =</span> <span class="st">&quot;Gamma Density&quot;</span>)</span>
-<span id="cb44-19"><a href="ChapSeverity.html#cb44-19" aria-hidden="true" tabindex="-1"></a><span class="cf">for</span> (k <span class="cf">in</span> <span class="dv">2</span><span class="sc">:</span><span class="fu">length</span>(shapeparam)) {</span>
-<span id="cb44-20"><a href="ChapSeverity.html#cb44-20" aria-hidden="true" tabindex="-1"></a>    fgamma <span class="ot">&lt;-</span> <span class="fu">dgamma</span>(x, <span class="at">shape =</span> shapeparam[k], <span class="at">scale =</span> <span class="dv">100</span>)</span>
-<span id="cb44-21"><a href="ChapSeverity.html#cb44-21" aria-hidden="true" tabindex="-1"></a>    <span class="fu">lines</span>(x, fgamma, <span class="at">col =</span> k)</span>
-<span id="cb44-22"><a href="ChapSeverity.html#cb44-22" aria-hidden="true" tabindex="-1"></a>}</span>
-<span id="cb44-23"><a href="ChapSeverity.html#cb44-23" aria-hidden="true" tabindex="-1"></a><span class="fu">legend</span>(<span class="st">&quot;topright&quot;</span>, <span class="fu">c</span>(<span class="st">&quot;shape=2&quot;</span>, <span class="st">&quot;shape=3&quot;</span>, <span class="st">&quot;shape=4&quot;</span>, <span class="st">&quot;shape=5&quot;</span>), <span class="at">lty =</span> <span class="dv">1</span>, <span class="at">col =</span> <span class="dv">1</span><span class="sc">:</span><span class="dv">4</span>)</span></code></pre></div>
+<div class="sourceCode" id="cb44"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb44-1"><a href="ChapSeverity.html#cb44-1" tabindex="-1"></a><span class="fu">par</span>(<span class="at">mfrow=</span><span class="fu">c</span>(<span class="dv">1</span>, <span class="dv">2</span>), <span class="at">mar =</span> <span class="fu">c</span>(<span class="dv">4</span>, <span class="dv">4</span>, .<span class="dv">1</span>, .<span class="dv">1</span>))</span>
+<span id="cb44-2"><a href="ChapSeverity.html#cb44-2" tabindex="-1"></a></span>
+<span id="cb44-3"><a href="ChapSeverity.html#cb44-3" tabindex="-1"></a><span class="co"># Varying Scale Gamma Densities</span></span>
+<span id="cb44-4"><a href="ChapSeverity.html#cb44-4" tabindex="-1"></a>scaleparam <span class="ot">&lt;-</span> <span class="fu">seq</span>(<span class="dv">100</span>, <span class="dv">250</span>, <span class="at">by =</span> <span class="dv">50</span>)</span>
+<span id="cb44-5"><a href="ChapSeverity.html#cb44-5" tabindex="-1"></a>shapeparam <span class="ot">&lt;-</span> <span class="dv">2</span><span class="sc">:</span><span class="dv">5</span></span>
+<span id="cb44-6"><a href="ChapSeverity.html#cb44-6" tabindex="-1"></a>x <span class="ot">&lt;-</span> <span class="fu">seq</span>(<span class="dv">0</span>, <span class="dv">1000</span>, <span class="at">by =</span> <span class="dv">1</span>)</span>
+<span id="cb44-7"><a href="ChapSeverity.html#cb44-7" tabindex="-1"></a>fgamma <span class="ot">&lt;-</span> <span class="fu">dgamma</span>(x, <span class="at">shape =</span> <span class="dv">2</span>, <span class="at">scale =</span> scaleparam[<span class="dv">1</span>])</span>
+<span id="cb44-8"><a href="ChapSeverity.html#cb44-8" tabindex="-1"></a><span class="fu">plot</span>(x, fgamma, <span class="at">type =</span> <span class="st">&quot;l&quot;</span>, <span class="at">ylab =</span> <span class="st">&quot;Gamma Density&quot;</span>)</span>
+<span id="cb44-9"><a href="ChapSeverity.html#cb44-9" tabindex="-1"></a><span class="cf">for</span>(k <span class="cf">in</span> <span class="dv">2</span><span class="sc">:</span><span class="fu">length</span>(scaleparam)){</span>
+<span id="cb44-10"><a href="ChapSeverity.html#cb44-10" tabindex="-1"></a>  fgamma <span class="ot">&lt;-</span> <span class="fu">dgamma</span>(x,<span class="at">shape =</span> <span class="dv">2</span>, <span class="at">scale =</span> scaleparam[k])</span>
+<span id="cb44-11"><a href="ChapSeverity.html#cb44-11" tabindex="-1"></a>  <span class="fu">lines</span>(x,fgamma, <span class="at">col =</span> k)</span>
+<span id="cb44-12"><a href="ChapSeverity.html#cb44-12" tabindex="-1"></a>}</span>
+<span id="cb44-13"><a href="ChapSeverity.html#cb44-13" tabindex="-1"></a><span class="fu">legend</span>(<span class="st">&quot;topright&quot;</span>, <span class="fu">c</span>(<span class="st">&quot;scale=100&quot;</span>, <span class="st">&quot;scale=150&quot;</span>, <span class="st">&quot;scale=200&quot;</span>, <span class="st">&quot;scale=250&quot;</span>), <span class="at">lty=</span><span class="dv">1</span>, <span class="at">col =</span> <span class="dv">1</span><span class="sc">:</span><span class="dv">4</span>)</span>
+<span id="cb44-14"><a href="ChapSeverity.html#cb44-14" tabindex="-1"></a></span>
+<span id="cb44-15"><a href="ChapSeverity.html#cb44-15" tabindex="-1"></a><span class="co"># Varying Shape Gamma Densities</span></span>
+<span id="cb44-16"><a href="ChapSeverity.html#cb44-16" tabindex="-1"></a>fgamma <span class="ot">&lt;-</span> <span class="fu">dgamma</span>(x, <span class="at">shape =</span> shapeparam[<span class="dv">1</span>], <span class="at">scale =</span> <span class="dv">100</span>)</span>
+<span id="cb44-17"><a href="ChapSeverity.html#cb44-17" tabindex="-1"></a><span class="fu">plot</span>(x, fgamma, <span class="at">type =</span> <span class="st">&quot;l&quot;</span>, <span class="at">ylab =</span> <span class="st">&quot;Gamma Density&quot;</span>)</span>
+<span id="cb44-18"><a href="ChapSeverity.html#cb44-18" tabindex="-1"></a><span class="cf">for</span>(k <span class="cf">in</span> <span class="dv">2</span><span class="sc">:</span><span class="fu">length</span>(shapeparam)){</span>
+<span id="cb44-19"><a href="ChapSeverity.html#cb44-19" tabindex="-1"></a>  fgamma <span class="ot">&lt;-</span> <span class="fu">dgamma</span>(x,<span class="at">shape =</span> shapeparam[k], <span class="at">scale =</span> <span class="dv">100</span>)</span>
+<span id="cb44-20"><a href="ChapSeverity.html#cb44-20" tabindex="-1"></a>  <span class="fu">lines</span>(x,fgamma, <span class="at">col =</span> k)</span>
+<span id="cb44-21"><a href="ChapSeverity.html#cb44-21" tabindex="-1"></a>}</span>
+<span id="cb44-22"><a href="ChapSeverity.html#cb44-22" tabindex="-1"></a><span class="fu">legend</span>(<span class="st">&quot;topright&quot;</span>, <span class="fu">c</span>(<span class="st">&quot;shape=2&quot;</span>, <span class="st">&quot;shape=3&quot;</span>, <span class="st">&quot;shape=4&quot;</span>, <span class="st">&quot;shape=5&quot;</span>), <span class="at">lty=</span><span class="dv">1</span>, <span class="at">col =</span> <span class="dv">1</span><span class="sc">:</span><span class="dv">4</span>)</span></code></pre></div>
 </div>
 <p>When <span class="math inline">\(\alpha = 1\)</span> the gamma reduces to an <a href="#" class="tooltip" style="color:green"><em>exponential distribution</em><span style="font-size:8pt">A single parameter continous probability distribution that is defined by its rate parameter</span></a> and when <span class="math inline">\(\alpha = \frac{n}{2}\)</span> and <span class="math inline">\(\theta = 2\)</span> the gamma reduces to a <a href="#" class="tooltip" style="color:green"><em>chi-square distribution</em><span style="font-size:8pt">A common distribution used in chi-square tests for determining goodness of fit of observed data to a theorized distribution</span></a> with <span class="math inline">\(n\)</span> degrees of freedom. As we will see in Section <a href="CAppA.html#S:AppA:HT">17.4</a>, the chi-square distribution is used extensively in statistical hypothesis testing.</p>
 <p>The distribution function of the gamma model is the <em>incomplete gamma function</em>, denoted by <span class="math inline">\(\Gamma\left(\alpha; \frac{x}{\theta} \right)\)</span>, and defined as
@@ -1453,29 +1456,26 @@ Figure 4.2: <strong>Pareto Densities</strong>. The left-hand panel is with scale
 <a id="displayCode.Pareto.1" href="javascript:togglecode('toggleCode.Pareto.1','displayCode.Pareto.1');"><i><strong>R Code for Pareto Density Plots</strong></i></a>
 </h5>
 <div id="toggleCode.Pareto.1" style="display: none">
-<div class="sourceCode" id="cb45"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb45-1"><a href="ChapSeverity.html#cb45-1" aria-hidden="true" tabindex="-1"></a><span class="fu">par</span>(<span class="at">mfrow =</span> <span class="fu">c</span>(<span class="dv">1</span>, <span class="dv">2</span>), <span class="at">mar =</span> <span class="fu">c</span>(<span class="dv">4</span>, <span class="dv">4</span>, <span class="fl">0.1</span>, <span class="fl">0.1</span>))</span>
-<span id="cb45-2"><a href="ChapSeverity.html#cb45-2" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb45-3"><a href="ChapSeverity.html#cb45-3" aria-hidden="true" tabindex="-1"></a><span class="co"># Varying Scale Pareto Densities</span></span>
-<span id="cb45-4"><a href="ChapSeverity.html#cb45-4" aria-hidden="true" tabindex="-1"></a>x <span class="ot">&lt;-</span> <span class="fu">seq</span>(<span class="dv">1</span>, <span class="dv">3000</span>, <span class="at">by =</span> <span class="dv">1</span>)</span>
-<span id="cb45-5"><a href="ChapSeverity.html#cb45-5" aria-hidden="true" tabindex="-1"></a>scaleparam <span class="ot">&lt;-</span> <span class="fu">seq</span>(<span class="dv">2000</span>, <span class="dv">3500</span>, <span class="dv">500</span>)</span>
-<span id="cb45-6"><a href="ChapSeverity.html#cb45-6" aria-hidden="true" tabindex="-1"></a>shapeparam <span class="ot">&lt;-</span> <span class="dv">1</span><span class="sc">:</span><span class="dv">4</span></span>
-<span id="cb45-7"><a href="ChapSeverity.html#cb45-7" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb45-8"><a href="ChapSeverity.html#cb45-8" aria-hidden="true" tabindex="-1"></a><span class="co"># varying the shape parameter</span></span>
-<span id="cb45-9"><a href="ChapSeverity.html#cb45-9" aria-hidden="true" tabindex="-1"></a><span class="fu">plot</span>(x, actuar<span class="sc">::</span><span class="fu">dpareto</span>(x, <span class="at">shape =</span> shapeparam[<span class="dv">1</span>], <span class="at">scale =</span> <span class="dv">2000</span>), <span class="at">ylim =</span> <span class="fu">c</span>(<span class="dv">0</span>, <span class="fl">0.002</span>),</span>
-<span id="cb45-10"><a href="ChapSeverity.html#cb45-10" aria-hidden="true" tabindex="-1"></a>    <span class="at">type =</span> <span class="st">&quot;l&quot;</span>, <span class="at">ylab =</span> <span class="st">&quot;Pareto density&quot;</span>)</span>
-<span id="cb45-11"><a href="ChapSeverity.html#cb45-11" aria-hidden="true" tabindex="-1"></a><span class="cf">for</span> (k <span class="cf">in</span> <span class="dv">2</span><span class="sc">:</span><span class="fu">length</span>(shapeparam)) {</span>
-<span id="cb45-12"><a href="ChapSeverity.html#cb45-12" aria-hidden="true" tabindex="-1"></a>    <span class="fu">lines</span>(x, actuar<span class="sc">::</span><span class="fu">dpareto</span>(x, <span class="at">shape =</span> shapeparam[k], <span class="at">scale =</span> <span class="dv">2000</span>), <span class="at">col =</span> k)</span>
-<span id="cb45-13"><a href="ChapSeverity.html#cb45-13" aria-hidden="true" tabindex="-1"></a>}</span>
-<span id="cb45-14"><a href="ChapSeverity.html#cb45-14" aria-hidden="true" tabindex="-1"></a><span class="fu">legend</span>(<span class="st">&quot;topright&quot;</span>, <span class="fu">c</span>(<span class="fu">expression</span>(alpha <span class="sc">~</span> <span class="st">&quot;=1&quot;</span>), <span class="fu">expression</span>(alpha <span class="sc">~</span> <span class="st">&quot;=2&quot;</span>), <span class="fu">expression</span>(alpha <span class="sc">~</span></span>
-<span id="cb45-15"><a href="ChapSeverity.html#cb45-15" aria-hidden="true" tabindex="-1"></a>    <span class="st">&quot;=3&quot;</span>), <span class="fu">expression</span>(alpha <span class="sc">~</span> <span class="st">&quot;=4&quot;</span>)), <span class="at">lty =</span> <span class="dv">1</span>, <span class="at">col =</span> <span class="dv">1</span><span class="sc">:</span><span class="dv">4</span>)</span>
-<span id="cb45-16"><a href="ChapSeverity.html#cb45-16" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb45-17"><a href="ChapSeverity.html#cb45-17" aria-hidden="true" tabindex="-1"></a><span class="co"># Varying Shape Pareto Densities</span></span>
-<span id="cb45-18"><a href="ChapSeverity.html#cb45-18" aria-hidden="true" tabindex="-1"></a><span class="fu">plot</span>(x, actuar<span class="sc">::</span><span class="fu">dpareto</span>(x, <span class="at">shape =</span> <span class="dv">3</span>, <span class="at">scale =</span> scaleparam[<span class="dv">1</span>]), <span class="at">type =</span> <span class="st">&quot;l&quot;</span>, <span class="at">ylab =</span> <span class="st">&quot;Pareto density&quot;</span>)</span>
-<span id="cb45-19"><a href="ChapSeverity.html#cb45-19" aria-hidden="true" tabindex="-1"></a><span class="cf">for</span> (k <span class="cf">in</span> <span class="dv">2</span><span class="sc">:</span><span class="fu">length</span>(scaleparam)) {</span>
-<span id="cb45-20"><a href="ChapSeverity.html#cb45-20" aria-hidden="true" tabindex="-1"></a>    <span class="fu">lines</span>(x, actuar<span class="sc">::</span><span class="fu">dpareto</span>(x, <span class="at">shape =</span> <span class="dv">3</span>, <span class="at">scale =</span> scaleparam[k]), <span class="at">col =</span> k)</span>
-<span id="cb45-21"><a href="ChapSeverity.html#cb45-21" aria-hidden="true" tabindex="-1"></a>}</span>
-<span id="cb45-22"><a href="ChapSeverity.html#cb45-22" aria-hidden="true" tabindex="-1"></a><span class="fu">legend</span>(<span class="st">&quot;topright&quot;</span>, <span class="fu">c</span>(<span class="fu">expression</span>(theta <span class="sc">~</span> <span class="st">&quot;=2000&quot;</span>), <span class="fu">expression</span>(theta <span class="sc">~</span> <span class="st">&quot;=2500&quot;</span>), <span class="fu">expression</span>(theta <span class="sc">~</span></span>
-<span id="cb45-23"><a href="ChapSeverity.html#cb45-23" aria-hidden="true" tabindex="-1"></a>    <span class="st">&quot;=3000&quot;</span>), <span class="fu">expression</span>(theta <span class="sc">~</span> <span class="st">&quot;=3500&quot;</span>)), <span class="at">lty =</span> <span class="dv">1</span>, <span class="at">col =</span> <span class="dv">1</span><span class="sc">:</span><span class="dv">4</span>)</span></code></pre></div>
+<div class="sourceCode" id="cb45"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb45-1"><a href="ChapSeverity.html#cb45-1" tabindex="-1"></a><span class="fu">par</span>(<span class="at">mfrow=</span><span class="fu">c</span>(<span class="dv">1</span>, <span class="dv">2</span>), <span class="at">mar =</span> <span class="fu">c</span>(<span class="dv">4</span>, <span class="dv">4</span>, .<span class="dv">1</span>, .<span class="dv">1</span>))</span>
+<span id="cb45-2"><a href="ChapSeverity.html#cb45-2" tabindex="-1"></a></span>
+<span id="cb45-3"><a href="ChapSeverity.html#cb45-3" tabindex="-1"></a><span class="co"># Varying Scale Pareto Densities</span></span>
+<span id="cb45-4"><a href="ChapSeverity.html#cb45-4" tabindex="-1"></a>x <span class="ot">&lt;-</span> <span class="fu">seq</span>(<span class="dv">1</span>, <span class="dv">3000</span>, <span class="at">by =</span> <span class="dv">1</span>)</span>
+<span id="cb45-5"><a href="ChapSeverity.html#cb45-5" tabindex="-1"></a>scaleparam <span class="ot">&lt;-</span> <span class="fu">seq</span>(<span class="dv">2000</span>, <span class="dv">3500</span>, <span class="dv">500</span>)</span>
+<span id="cb45-6"><a href="ChapSeverity.html#cb45-6" tabindex="-1"></a>shapeparam <span class="ot">&lt;-</span> <span class="dv">1</span><span class="sc">:</span><span class="dv">4</span></span>
+<span id="cb45-7"><a href="ChapSeverity.html#cb45-7" tabindex="-1"></a></span>
+<span id="cb45-8"><a href="ChapSeverity.html#cb45-8" tabindex="-1"></a><span class="co"># varying the shape parameter</span></span>
+<span id="cb45-9"><a href="ChapSeverity.html#cb45-9" tabindex="-1"></a><span class="fu">plot</span>(x, actuar<span class="sc">::</span><span class="fu">dpareto</span>(x, <span class="at">shape =</span> shapeparam[<span class="dv">1</span>], <span class="at">scale =</span> <span class="dv">2000</span>), <span class="at">ylim=</span><span class="fu">c</span>(<span class="dv">0</span>,<span class="fl">0.002</span>),<span class="at">type =</span> <span class="st">&quot;l&quot;</span>, <span class="at">ylab =</span> <span class="st">&quot;Pareto density&quot;</span>)</span>
+<span id="cb45-10"><a href="ChapSeverity.html#cb45-10" tabindex="-1"></a><span class="cf">for</span>(k <span class="cf">in</span> <span class="dv">2</span><span class="sc">:</span><span class="fu">length</span>(shapeparam)){</span>
+<span id="cb45-11"><a href="ChapSeverity.html#cb45-11" tabindex="-1"></a>  <span class="fu">lines</span>(x, actuar<span class="sc">::</span><span class="fu">dpareto</span>(x, <span class="at">shape =</span> shapeparam[k], <span class="at">scale =</span> <span class="dv">2000</span>), <span class="at">col =</span> k)</span>
+<span id="cb45-12"><a href="ChapSeverity.html#cb45-12" tabindex="-1"></a>}</span>
+<span id="cb45-13"><a href="ChapSeverity.html#cb45-13" tabindex="-1"></a><span class="fu">legend</span>(<span class="st">&quot;topright&quot;</span>, <span class="fu">c</span>(<span class="fu">expression</span>(alpha<span class="sc">~</span><span class="st">&#39;=1&#39;</span>), <span class="fu">expression</span>(alpha<span class="sc">~</span><span class="st">&#39;=2&#39;</span>), <span class="fu">expression</span>(alpha<span class="sc">~</span><span class="st">&#39;=3&#39;</span>), <span class="fu">expression</span>(alpha<span class="sc">~</span><span class="st">&#39;=4&#39;</span>)), <span class="at">lty=</span><span class="dv">1</span>, <span class="at">col =</span> <span class="dv">1</span><span class="sc">:</span><span class="dv">4</span>)</span>
+<span id="cb45-14"><a href="ChapSeverity.html#cb45-14" tabindex="-1"></a></span>
+<span id="cb45-15"><a href="ChapSeverity.html#cb45-15" tabindex="-1"></a><span class="co"># Varying Shape Pareto Densities</span></span>
+<span id="cb45-16"><a href="ChapSeverity.html#cb45-16" tabindex="-1"></a><span class="fu">plot</span>(x, actuar<span class="sc">::</span><span class="fu">dpareto</span>(x, <span class="at">shape =</span> <span class="dv">3</span>, <span class="at">scale =</span> scaleparam[<span class="dv">1</span>]), <span class="at">type =</span> <span class="st">&quot;l&quot;</span>, <span class="at">ylab =</span> <span class="st">&quot;Pareto density&quot;</span>)</span>
+<span id="cb45-17"><a href="ChapSeverity.html#cb45-17" tabindex="-1"></a><span class="cf">for</span>(k <span class="cf">in</span> <span class="dv">2</span><span class="sc">:</span><span class="fu">length</span>(scaleparam)){</span>
+<span id="cb45-18"><a href="ChapSeverity.html#cb45-18" tabindex="-1"></a>  <span class="fu">lines</span>(x, actuar<span class="sc">::</span><span class="fu">dpareto</span>(x, <span class="at">shape =</span> <span class="dv">3</span>, <span class="at">scale =</span> scaleparam[k]), <span class="at">col =</span> k)</span>
+<span id="cb45-19"><a href="ChapSeverity.html#cb45-19" tabindex="-1"></a>}</span>
+<span id="cb45-20"><a href="ChapSeverity.html#cb45-20" tabindex="-1"></a><span class="fu">legend</span>(<span class="st">&quot;topright&quot;</span>, <span class="fu">c</span>(<span class="fu">expression</span>(theta<span class="sc">~</span><span class="st">&#39;=2000&#39;</span>), <span class="fu">expression</span>(theta<span class="sc">~</span><span class="st">&#39;=2500&#39;</span>), <span class="fu">expression</span>(theta<span class="sc">~</span><span class="st">&#39;=3000&#39;</span>), <span class="fu">expression</span>(theta<span class="sc">~</span><span class="st">&#39;=3500&#39;</span>)), <span class="at">lty=</span><span class="dv">1</span>, <span class="at">col =</span> <span class="dv">1</span><span class="sc">:</span><span class="dv">4</span>)</span></code></pre></div>
 </div>
 <p>The distribution function of the Pareto distribution is given by
 <span class="math display">\[
@@ -1530,26 +1530,22 @@ Figure 4.3: <strong>Weibull Densities</strong>. The left-hand panel is with shap
 <a id="displayCode.Weibull.1" href="javascript:togglecode('toggleCode.Weibull.1','displayCode.Weibull.1');"><i><strong>R Code for Weibull Density Plots</strong></i></a>
 </h5>
 <div id="toggleCode.Weibull.1" style="display: none">
-<div class="sourceCode" id="cb46"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb46-1"><a href="ChapSeverity.html#cb46-1" aria-hidden="true" tabindex="-1"></a><span class="fu">par</span>(<span class="at">mfrow =</span> <span class="fu">c</span>(<span class="dv">1</span>, <span class="dv">2</span>), <span class="at">mar =</span> <span class="fu">c</span>(<span class="dv">4</span>, <span class="dv">4</span>, <span class="fl">0.1</span>, <span class="fl">0.1</span>))</span>
-<span id="cb46-2"><a href="ChapSeverity.html#cb46-2" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb46-3"><a href="ChapSeverity.html#cb46-3" aria-hidden="true" tabindex="-1"></a><span class="co"># Varying Scale Weibull Densities</span></span>
-<span id="cb46-4"><a href="ChapSeverity.html#cb46-4" aria-hidden="true" tabindex="-1"></a>z <span class="ot">&lt;-</span> <span class="fu">seq</span>(<span class="dv">0</span>, <span class="dv">400</span>, <span class="at">by =</span> <span class="dv">1</span>)</span>
-<span id="cb46-5"><a href="ChapSeverity.html#cb46-5" aria-hidden="true" tabindex="-1"></a>scaleparam <span class="ot">&lt;-</span> <span class="fu">seq</span>(<span class="dv">50</span>, <span class="dv">200</span>, <span class="dv">50</span>)</span>
-<span id="cb46-6"><a href="ChapSeverity.html#cb46-6" aria-hidden="true" tabindex="-1"></a>shapeparam <span class="ot">&lt;-</span> <span class="fu">seq</span>(<span class="fl">1.5</span>, <span class="dv">3</span>, <span class="fl">0.5</span>)</span>
-<span id="cb46-7"><a href="ChapSeverity.html#cb46-7" aria-hidden="true" tabindex="-1"></a><span class="fu">plot</span>(z, <span class="fu">dweibull</span>(z, <span class="at">shape =</span> <span class="dv">3</span>, <span class="at">scale =</span> scaleparam[<span class="dv">1</span>]), <span class="at">type =</span> <span class="st">&quot;l&quot;</span>, <span class="at">ylab =</span> <span class="st">&quot;Weibull density&quot;</span>)</span>
-<span id="cb46-8"><a href="ChapSeverity.html#cb46-8" aria-hidden="true" tabindex="-1"></a><span class="cf">for</span> (k <span class="cf">in</span> <span class="dv">2</span><span class="sc">:</span><span class="fu">length</span>(scaleparam)) {</span>
-<span id="cb46-9"><a href="ChapSeverity.html#cb46-9" aria-hidden="true" tabindex="-1"></a>    <span class="fu">lines</span>(z, <span class="fu">dweibull</span>(z, <span class="at">shape =</span> <span class="dv">3</span>, <span class="at">scale =</span> scaleparam[k]), <span class="at">col =</span> k)</span>
-<span id="cb46-10"><a href="ChapSeverity.html#cb46-10" aria-hidden="true" tabindex="-1"></a>}</span>
-<span id="cb46-11"><a href="ChapSeverity.html#cb46-11" aria-hidden="true" tabindex="-1"></a><span class="fu">legend</span>(<span class="st">&quot;topright&quot;</span>, <span class="fu">c</span>(<span class="st">&quot;scale=50&quot;</span>, <span class="st">&quot;scale=100&quot;</span>, <span class="st">&quot;scale=150&quot;</span>, <span class="st">&quot;scale=200&quot;</span>), <span class="at">lty =</span> <span class="dv">1</span>,</span>
-<span id="cb46-12"><a href="ChapSeverity.html#cb46-12" aria-hidden="true" tabindex="-1"></a>    <span class="at">col =</span> <span class="dv">1</span><span class="sc">:</span><span class="dv">4</span>)</span>
-<span id="cb46-13"><a href="ChapSeverity.html#cb46-13" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb46-14"><a href="ChapSeverity.html#cb46-14" aria-hidden="true" tabindex="-1"></a><span class="co"># Varying Shape Weibull Densities</span></span>
-<span id="cb46-15"><a href="ChapSeverity.html#cb46-15" aria-hidden="true" tabindex="-1"></a><span class="fu">plot</span>(z, <span class="fu">dweibull</span>(z, <span class="at">shape =</span> shapeparam[<span class="dv">1</span>], <span class="at">scale =</span> <span class="dv">100</span>), <span class="at">ylim =</span> <span class="fu">c</span>(<span class="dv">0</span>, <span class="fl">0.012</span>), <span class="at">type =</span> <span class="st">&quot;l&quot;</span>,</span>
-<span id="cb46-16"><a href="ChapSeverity.html#cb46-16" aria-hidden="true" tabindex="-1"></a>    <span class="at">ylab =</span> <span class="st">&quot;Weibull density&quot;</span>)</span>
-<span id="cb46-17"><a href="ChapSeverity.html#cb46-17" aria-hidden="true" tabindex="-1"></a><span class="cf">for</span> (k <span class="cf">in</span> <span class="dv">2</span><span class="sc">:</span><span class="fu">length</span>(shapeparam)) {</span>
-<span id="cb46-18"><a href="ChapSeverity.html#cb46-18" aria-hidden="true" tabindex="-1"></a>    <span class="fu">lines</span>(z, <span class="fu">dweibull</span>(z, <span class="at">shape =</span> shapeparam[k], <span class="at">scale =</span> <span class="dv">100</span>), <span class="at">col =</span> k)</span>
-<span id="cb46-19"><a href="ChapSeverity.html#cb46-19" aria-hidden="true" tabindex="-1"></a>}</span>
-<span id="cb46-20"><a href="ChapSeverity.html#cb46-20" aria-hidden="true" tabindex="-1"></a><span class="fu">legend</span>(<span class="st">&quot;topright&quot;</span>, <span class="fu">c</span>(<span class="st">&quot;shape=1.5&quot;</span>, <span class="st">&quot;shape=2&quot;</span>, <span class="st">&quot;shape=2.5&quot;</span>, <span class="st">&quot;shape=3&quot;</span>), <span class="at">lty =</span> <span class="dv">1</span>, <span class="at">col =</span> <span class="dv">1</span><span class="sc">:</span><span class="dv">4</span>)</span></code></pre></div>
+<div class="sourceCode" id="cb46"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb46-1"><a href="ChapSeverity.html#cb46-1" tabindex="-1"></a><span class="fu">par</span>(<span class="at">mfrow=</span><span class="fu">c</span>(<span class="dv">1</span>, <span class="dv">2</span>), <span class="at">mar =</span> <span class="fu">c</span>(<span class="dv">4</span>, <span class="dv">4</span>, .<span class="dv">1</span>, .<span class="dv">1</span>))</span>
+<span id="cb46-2"><a href="ChapSeverity.html#cb46-2" tabindex="-1"></a></span>
+<span id="cb46-3"><a href="ChapSeverity.html#cb46-3" tabindex="-1"></a><span class="co"># Varying Scale Weibull Densities</span></span>
+<span id="cb46-4"><a href="ChapSeverity.html#cb46-4" tabindex="-1"></a>z<span class="ot">&lt;-</span> <span class="fu">seq</span>(<span class="dv">0</span>,<span class="dv">400</span>,<span class="at">by=</span><span class="dv">1</span>)</span>
+<span id="cb46-5"><a href="ChapSeverity.html#cb46-5" tabindex="-1"></a>scaleparam <span class="ot">&lt;-</span> <span class="fu">seq</span>(<span class="dv">50</span>,<span class="dv">200</span>,<span class="dv">50</span>)</span>
+<span id="cb46-6"><a href="ChapSeverity.html#cb46-6" tabindex="-1"></a>shapeparam <span class="ot">&lt;-</span> <span class="fu">seq</span>(<span class="fl">1.5</span>,<span class="dv">3</span>,<span class="fl">0.5</span>)</span>
+<span id="cb46-7"><a href="ChapSeverity.html#cb46-7" tabindex="-1"></a><span class="fu">plot</span>(z, <span class="fu">dweibull</span>(z, <span class="at">shape =</span> <span class="dv">3</span>, <span class="at">scale =</span> scaleparam[<span class="dv">1</span>]), <span class="at">type =</span> <span class="st">&quot;l&quot;</span>, <span class="at">ylab =</span> <span class="st">&quot;Weibull density&quot;</span>)</span>
+<span id="cb46-8"><a href="ChapSeverity.html#cb46-8" tabindex="-1"></a><span class="cf">for</span>(k <span class="cf">in</span> <span class="dv">2</span><span class="sc">:</span><span class="fu">length</span>(scaleparam)){</span>
+<span id="cb46-9"><a href="ChapSeverity.html#cb46-9" tabindex="-1"></a>  <span class="fu">lines</span>(z,<span class="fu">dweibull</span>(z,<span class="at">shape =</span> <span class="dv">3</span>, <span class="at">scale =</span> scaleparam[k]), <span class="at">col =</span> k)}</span>
+<span id="cb46-10"><a href="ChapSeverity.html#cb46-10" tabindex="-1"></a><span class="fu">legend</span>(<span class="st">&quot;topright&quot;</span>, <span class="fu">c</span>(<span class="st">&quot;scale=50&quot;</span>, <span class="st">&quot;scale=100&quot;</span>, <span class="st">&quot;scale=150&quot;</span>, <span class="st">&quot;scale=200&quot;</span>), <span class="at">lty=</span><span class="dv">1</span>, <span class="at">col =</span> <span class="dv">1</span><span class="sc">:</span><span class="dv">4</span>)</span>
+<span id="cb46-11"><a href="ChapSeverity.html#cb46-11" tabindex="-1"></a></span>
+<span id="cb46-12"><a href="ChapSeverity.html#cb46-12" tabindex="-1"></a><span class="co"># Varying Shape Weibull Densities</span></span>
+<span id="cb46-13"><a href="ChapSeverity.html#cb46-13" tabindex="-1"></a><span class="fu">plot</span>(z, <span class="fu">dweibull</span>(z, <span class="at">shape =</span> shapeparam[<span class="dv">1</span>], <span class="at">scale =</span> <span class="dv">100</span>), <span class="at">ylim=</span><span class="fu">c</span>(<span class="dv">0</span>,<span class="fl">0.012</span>), <span class="at">type =</span> <span class="st">&quot;l&quot;</span>, <span class="at">ylab =</span> <span class="st">&quot;Weibull density&quot;</span>)</span>
+<span id="cb46-14"><a href="ChapSeverity.html#cb46-14" tabindex="-1"></a><span class="cf">for</span>(k <span class="cf">in</span> <span class="dv">2</span><span class="sc">:</span><span class="fu">length</span>(shapeparam)){</span>
+<span id="cb46-15"><a href="ChapSeverity.html#cb46-15" tabindex="-1"></a>  <span class="fu">lines</span>(z,<span class="fu">dweibull</span>(z,<span class="at">shape =</span> shapeparam[k], <span class="at">scale =</span> <span class="dv">100</span>), <span class="at">col =</span> k)}</span>
+<span id="cb46-16"><a href="ChapSeverity.html#cb46-16" tabindex="-1"></a><span class="fu">legend</span>(<span class="st">&quot;topright&quot;</span>, <span class="fu">c</span>(<span class="st">&quot;shape=1.5&quot;</span>, <span class="st">&quot;shape=2&quot;</span>, <span class="st">&quot;shape=2.5&quot;</span>, <span class="st">&quot;shape=3&quot;</span>), <span class="at">lty=</span><span class="dv">1</span>, <span class="at">col =</span> <span class="dv">1</span><span class="sc">:</span><span class="dv">4</span>)</span></code></pre></div>
 </div>
 <p>The distribution function of the Weibull distribution is given by
 <span class="math display">\[
@@ -1596,7 +1592,7 @@ Solving for <span class="math inline">\(\pi_{0.99}\)</span>, we get <span class=
 </div>
 <div id="the-generalized-beta-distribution-of-the-second-kind" class="section level3 hasAnchor" number="4.2.4">
 <h3><span class="header-section-number">4.2.4</span> The Generalized Beta Distribution of the Second Kind<a href="ChapSeverity.html#the-generalized-beta-distribution-of-the-second-kind" class="anchor-section" aria-label="Anchor link to header"></a></h3>
-<p>The <a href="#" class="tooltip" style="color:green"><em>Generalized Beta Distribution of the Second Kind</em><span style="font-size:8pt">A 4-parameter flexible distribution that encompasses many common distributions</span></a> (<em>GB2</em>) was introduced by <span class="citation"><a href="#ref-venter1983transformed" role="doc-biblioref">G. Venter</a> (<a href="#ref-venter1983transformed" role="doc-biblioref">1983</a>)</span> in the context of insurance loss modeling and by <span class="citation"><a href="#ref-mcdonald1984some" role="doc-biblioref">McDonald</a> (<a href="#ref-mcdonald1984some" role="doc-biblioref">1984</a>)</span> as an income and wealth distribution. It is a four-parameter, very flexible, distribution that can model positively as well as negatively skewed distributions.</p>
+<p>The <a href="#" class="tooltip" style="color:green"><em>Generalized Beta Distribution of the Second Kind</em><span style="font-size:8pt">A 4-parameter flexible distribution that encompasses many common distributions</span></a> (<em>GB2</em>) was introduced by <span class="citation">G. Venter (<a href="#ref-venter1983transformed">1983</a>)</span> in the context of insurance loss modeling and by <span class="citation">McDonald (<a href="#ref-mcdonald1984some">1984</a>)</span> as an income and wealth distribution. It is a four-parameter, very flexible, distribution that can model positively as well as negatively skewed distributions.</p>
 <p>The continuous variable <span class="math inline">\(X\)</span> is said to have the <em>GB2</em> distribution with parameters <span class="math inline">\(\sigma\)</span>, <span class="math inline">\(\theta\)</span>, <span class="math inline">\(\alpha_1\)</span> and <span class="math inline">\(\alpha_2\)</span> if its <em>pdf</em> is given by</p>
 <p><span class="math display" id="eq:GB2Distn">\[\begin{equation}
 f_{X}\left( x \right) = \frac{(x/\theta)^{\alpha_2/\sigma}}{x \sigma~\mathrm{B}\left( \alpha_1,\alpha_2\right)\left\lbrack 1 + \left( x/\theta \right)^{1/\sigma} \right\rbrack^{\alpha_1 + \alpha_2}} \ \ \ \text{for } x &gt; 0,
@@ -1716,7 +1712,7 @@ f_{Y}(y) = \frac{1}{\tau} y^{(1/ \tau) - 1} f_{X}\left( y^{1/ \tau} \right).
 \]</span>
 On the other hand, if <span class="math inline">\(\tau &lt; 0\)</span>, then the distribution function of <span class="math inline">\(Y\)</span> is given by
 <span class="math display">\[
-F_{Y}\left( y \right) = \Pr\left( Y \leq y \right) = \Pr\left( X^{\tau} \leq y \right) = \Pr\left( X \geq y^{1/ \tau} \right) = 1 - F_{X}\left( y^{1/ \tau} \right), 
+F_{Y}\left( y \right) = \Pr\left( Y \leq y \right) = \Pr\left( X^{\tau} \leq y \right) = \Pr\left( X \geq y^{1/ \tau} \right) = 1 - F_{X}\left( y^{1/ \tau} \right),
 \]</span>
 and</p>
 <p><span class="math display">\[
@@ -1755,7 +1751,7 @@ where <span class="math inline">\(\alpha = \frac{1}{\tau}\)</span> and <span cla
 <p><span class="math display">\[
 \frac{G_1}{G_2} = \frac{0.5G_1}{0.5G_2}  = F
 \]</span></p>
-<p>has an <span class="math inline">\(F\)</span>-distribution with numerator degrees of freedom <span class="math inline">\(2\alpha_1\)</span> and denominator degrees of freedom <span class="math inline">\(2\alpha_2\)</span>. Thus, a random variable <span class="math inline">\(X\)</span> with a <em>GB2</em> distribution can be expressed as <span class="math inline">\(X = \theta \left(\frac{G_1}{G_2}\right)^{\sigma}= \theta ~ F^{\sigma}\)</span>. With this, you can think of a <em>GB2</em> as a “power <span class="math inline">\(F\)</span>” or a “generalized <span class="math inline">\(F\)</span>,” as it is sometimes known in the literature.</p>
+<p>has an <span class="math inline">\(F\)</span>-distribution with numerator degrees of freedom <span class="math inline">\(2\alpha_1\)</span> and denominator degrees of freedom <span class="math inline">\(2\alpha_2\)</span>. Thus, a random variable <span class="math inline">\(X\)</span> with a <em>GB2</em> distribution can be expressed as <span class="math inline">\(X = \theta \left(\frac{G_1}{G_2}\right)^{\sigma}= \theta ~ F^{\sigma}\)</span>. With this, you can think of a <em>GB2</em> as a “power <span class="math inline">\(F\)</span>” or a “generalized <span class="math inline">\(F\)</span>”, as it is sometimes known in the literature.</p>
 <p>Simulation, discussed in Chapter <a href="ChapSimulation.html#ChapSimulation">8</a>, provides a direct application of this result. Suppose we know how to simulate an outcome with an <span class="math inline">\(F-distribution\)</span> (that is easy to do using, for example, the <code>R</code> function <code>rf(n,df1,df2)</code>), say <span class="math inline">\(F\)</span>. Then we raise it to the power <span class="math inline">\(\sigma\)</span> and multiply it by <span class="math inline">\(\theta\)</span> so that <span class="math inline">\(\theta ~ F^{\sigma}\)</span> is an outcome that has a <em>GB2</em> distribution.</p>
 <p>Residual analysis provides another direct application. Suppose we have an outcome, say <span class="math inline">\(X\)</span>, that we think comes from a <em>GB2</em> distribution. Then we can examine the transformed version <span class="math inline">\(X^{\ast} = \left(X/\theta\right)^{1/\sigma}\)</span>. If the original specification is correct, then <span class="math inline">\(X^{\ast}\)</span> has an <span class="math inline">\(F-\)</span> distribution and there are many well-known techniques, some described in Chapter <a href="ChapModelSelection.html#ChapModelSelection">6</a>, for verifying this assertion.</p>
 <hr />
@@ -1775,7 +1771,7 @@ f_{Y}(y) = \frac{1}{y}f_{X}\left( \log y \right).
 As an important special case, suppose that <span class="math inline">\(X\)</span> is normally distributed with mean <span class="math inline">\(\mu\)</span> and variance <span class="math inline">\(\sigma^2\)</span>. Then, the distribution of <span class="math inline">\(Y = e^X\)</span> is</p>
 <p><span class="math display">\[
 f_{Y}(y) = \frac{1}{y}f_{X}\left( \log y \right)
-= \frac{1}{y \sigma \sqrt{2 \pi}} \exp \left\{-\frac{1}{2}\left(\frac{ \log y - \mu}{\sigma}\right)^2\right\}. 
+= \frac{1}{y \sigma \sqrt{2 \pi}} \exp \left\{-\frac{1}{2}\left(\frac{ \log y - \mu}{\sigma}\right)^2\right\}.
 \]</span>
 This is known as a <em>lognormal</em> distribution.</p>
 <p><strong>Example 4.3.4. Actuarial Exam Question.</strong>
@@ -1872,7 +1868,7 @@ F_{X}\left( x \right) = \int_{-\infty}^{\infty}{F_{X}\left(x \left| \theta \righ
 \mathrm{E}\left( X^{k} \right) = \int_{-\infty}^{\infty}{\mathrm{E}\left( X^{k}\left| \theta \right.  \right)g_{\Theta}(\theta)}d \theta,
 \]</span>
 <span class="math display">\[
-M_{X}(t) = \mathrm{E}\left( e^{t X} \right) = \int_{-\infty}^{\infty}{\mathrm{E}\left( e^{ tx}\left| \theta \right.  \right)g_{\Theta}(\theta)}d \theta, 
+M_{X}(t) = \mathrm{E}\left( e^{t X} \right) = \int_{-\infty}^{\infty}{\mathrm{E}\left( e^{ tx}\left| \theta \right.  \right)g_{\Theta}(\theta)}d \theta,
 \]</span>
 respectively.</p>
 <p>The <span class="math inline">\(k\)</span>-th raw moment of the mixture distribution can be rewritten as
@@ -1918,7 +1914,7 @@ f_{X}\left( x \right) = \int f_{X}\left( x |\theta \right) ~g_{\Theta}(\theta) d
 f_{X}\left( x \right) = \left\{ \begin{matrix}
 \int_{0}^{x}{\frac{1}{50}e^{- \frac{\theta}{5}}d\theta = \frac{1}{10}\left( 1 - e^{- \frac{x}{5}} \right)} &amp; 0 \leq x \leq 10, \\
 \int_{x - 10}^{x}{\frac{1}{50}e^{- \frac{\theta}{5}} d\theta} = \frac{1}{10}\left( e^{- \frac{\left( x - 10 \right)}{5}} - e^{- \frac{x}{5}} \right) &amp; 10 &lt; x &lt; \infty. \\
-\end{matrix} \right.\ 
+\end{matrix} \right.\
 \]</span></p>
 <p>One can use this to derive the mean and variance of the unconditional distribution. Alternatively, start with the conditional mean and variance of <span class="math inline">\(X\)</span>, given by</p>
 <p><span class="math display">\[
@@ -1926,7 +1922,7 @@ f_{X}\left( x \right) = \left\{ \begin{matrix}
 \]</span>
 and
 <span class="math display">\[
-\mathrm{Var}\left(  X | \theta \right)= \frac{\left\lbrack \left( \theta + 10 \right) - \theta \right\rbrack^{2}}{12} = \frac{100}{12}, 
+\mathrm{Var}\left(  X | \theta \right)= \frac{\left\lbrack \left( \theta + 10 \right) - \theta \right\rbrack^{2}}{12} = \frac{100}{12},
 \]</span>
 respectively. With these, the unconditional mean and variance of <span class="math inline">\(X\)</span> are given by</p>
 <p><span class="math display">\[
@@ -1935,7 +1931,7 @@ respectively. With these, the unconditional mean and variance of <span class="ma
 <p>and</p>
 <p><span class="math display">\[
 \mathrm{Var}\left( X \right) = \mathrm{E}\left\lbrack V\left( X\left| \Theta \right.  \right) \right\rbrack + \mathrm{Var}\left\lbrack \mathrm{E}\left( X\left| \Theta \right.  \right) \right\rbrack \\
-= \mathrm{E}\left( \frac{100}{12} \right) + \mathrm{Var}\left( \Theta + 5 \right) = 8.33 + \mathrm{Var}\left( \Theta \right) = 33.33. 
+= \mathrm{E}\left( \frac{100}{12} \right) + \mathrm{Var}\left( \Theta + 5 \right) = 8.33 + \mathrm{Var}\left( \Theta \right) = 33.33.
 \]</span></p>
 </div>
 <hr />
@@ -2008,7 +2004,7 @@ s^2 = \frac{1}{n-1} \sum_{i=1}^n \left(X_i - \overline{X}\right)^2.
 \begin{aligned}
 F_n(x)
 &amp;=  \frac{1}{n} \sum_{i=1}^n I\left(X_i \le x\right) \\
-&amp;=  \frac{\text{number of observations less than or equal to }x}{n} . 
+&amp;=  \frac{\text{number of observations less than or equal to }x}{n} .
 \end{aligned}
 \]</span>
 As <span class="math inline">\(F_n(\cdot)\)</span> is based on only observations and does not assume a parametric family for the distribution, it is nonparametric and also known as the <a href="#" class="tooltip" style="color:green"><em>empirical distribution function</em><span style="font-size:8pt">The empirical distribution is a non-parametric estimate of the underlying distribution of a random variable. it directly uses the data observations to construct the distribution, with each observed data point in a size-n sample having probability 1/n. </span></a>. It is also known as the <em>empirical cumulative distribution function</em> and, in <code>R</code>, one can use the <code>ecdf(.)</code> function to compute it.</p>
@@ -2055,9 +2051,9 @@ Figure 4.4: <strong>Empirical Distribution Function of a Toy Example</strong>
 <a id="displayCode.Toy.4f" href="javascript:togglecode('toggleCode.Toy.4f','displayCode.Toy.4f');"><i><strong>Show R Code</strong></i></a>
 </h5>
 <div id="toggleCode.Toy.4f" style="display: none">
-<div class="sourceCode" id="cb47"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb47-1"><a href="ChapSeverity.html#cb47-1" aria-hidden="true" tabindex="-1"></a>(xExample <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="dv">10</span>, <span class="fu">rep</span>(<span class="dv">15</span>, <span class="dv">3</span>), <span class="dv">20</span>, <span class="fu">rep</span>(<span class="dv">23</span>, <span class="dv">4</span>), <span class="dv">30</span>))</span>
-<span id="cb47-2"><a href="ChapSeverity.html#cb47-2" aria-hidden="true" tabindex="-1"></a>PercentilesxExample <span class="ot">&lt;-</span> <span class="fu">ecdf</span>(xExample)</span>
-<span id="cb47-3"><a href="ChapSeverity.html#cb47-3" aria-hidden="true" tabindex="-1"></a><span class="fu">plot</span>(PercentilesxExample, <span class="at">main =</span> <span class="st">&quot;&quot;</span>, <span class="at">xlab =</span> <span class="st">&quot;x&quot;</span>)</span></code></pre></div>
+<div class="sourceCode" id="cb47"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb47-1"><a href="ChapSeverity.html#cb47-1" tabindex="-1"></a>(xExample <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="dv">10</span>,<span class="fu">rep</span>(<span class="dv">15</span>,<span class="dv">3</span>),<span class="dv">20</span>,<span class="fu">rep</span>(<span class="dv">23</span>,<span class="dv">4</span>),<span class="dv">30</span>))</span>
+<span id="cb47-2"><a href="ChapSeverity.html#cb47-2" tabindex="-1"></a>PercentilesxExample <span class="ot">&lt;-</span> <span class="fu">ecdf</span>(xExample)</span>
+<span id="cb47-3"><a href="ChapSeverity.html#cb47-3" tabindex="-1"></a><span class="fu">plot</span>(PercentilesxExample, <span class="at">main=</span><span class="st">&quot;&quot;</span>,<span class="at">xlab=</span><span class="st">&quot;x&quot;</span>)</span></code></pre></div>
 </div>
 </div>
 <div id="S:MS:QuantileEstimator" class="section level4 hasAnchor" number="4.4.1.3">
@@ -2095,8 +2091,8 @@ Determine quantiles corresponding to the 20th, 50th, and 95th percentiles.</p>
 <div id="toggleExample.4.4.2" style="display: none">
 <p><strong>Solution</strong>.
 Consider Figure <a href="ChapSeverity.html#fig:EDFToy">4.4</a>. The case of <span class="math inline">\(q=0.20\)</span> corresponds to the middle panel of Figure Figure <a href="ChapSeverity.html#fig:Quantile2">4.6</a>, so the 20th percentile is 15. The case of <span class="math inline">\(q=0.50\)</span> corresponds to the right panel, so the median is any number between 20 and 23 inclusive. Many software packages use the average 21.5 (e.g. <code>R</code>, as seen below). For the 95th percentile, the solution is 30. We can see from Figure <a href="ChapSeverity.html#fig:EDFToy">4.4</a> that 30 also corresponds to the 99th and the 99.99th percentiles.</p>
-<div class="sourceCode" id="cb48"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb48-1"><a href="ChapSeverity.html#cb48-1" aria-hidden="true" tabindex="-1"></a>xExample <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="dv">10</span>, <span class="fu">rep</span>(<span class="dv">15</span>, <span class="dv">3</span>), <span class="dv">20</span>, <span class="fu">rep</span>(<span class="dv">23</span>, <span class="dv">4</span>), <span class="dv">30</span>)</span>
-<span id="cb48-2"><a href="ChapSeverity.html#cb48-2" aria-hidden="true" tabindex="-1"></a><span class="fu">quantile</span>(xExample, <span class="at">probs =</span> <span class="fu">c</span>(<span class="fl">0.2</span>, <span class="fl">0.5</span>, <span class="fl">0.95</span>), <span class="at">type =</span> <span class="dv">6</span>)</span></code></pre></div>
+<div class="sourceCode" id="cb48"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb48-1"><a href="ChapSeverity.html#cb48-1" tabindex="-1"></a>xExample <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="dv">10</span>,<span class="fu">rep</span>(<span class="dv">15</span>,<span class="dv">3</span>),<span class="dv">20</span>,<span class="fu">rep</span>(<span class="dv">23</span>,<span class="dv">4</span>),<span class="dv">30</span>)</span>
+<span id="cb48-2"><a href="ChapSeverity.html#cb48-2" tabindex="-1"></a><span class="fu">quantile</span>(xExample, <span class="at">probs=</span><span class="fu">c</span>(<span class="fl">0.2</span>, <span class="fl">0.5</span>, <span class="fl">0.95</span>), <span class="at">type=</span><span class="dv">6</span>)</span></code></pre></div>
 <pre><code> 20%  50%  95% 
 15.0 21.5 30.0 </code></pre>
 </div>
@@ -2151,7 +2147,7 @@ f_n(x) = \frac{1}{2nb} \sum_{i=1}^n I(x-b &lt; X_i \le x + b)
 <hr />
 </div>
 <p>More generally, define the <a href="#" class="tooltip" style="color:green"><em>kernel density estimator</em><span style="font-size:8pt">A nonparametric estimator of the density function of a random variable.</span></a> of the <a href="#" class="tooltip" style="color:green"><em>pdf</em><span style="font-size:8pt">Probability density function</span></a> at <span class="math inline">\(x\)</span> as</p>
-<p><span class="math display" id="eq:kernelDens">\[\begin{equation} 
+<p><span class="math display" id="eq:kernelDens">\[\begin{equation}
 f_n(x) = \frac{1}{nb} \sum_{i=1}^n w\left(\frac{x-X_i}{b}\right) ,
 \tag{4.5}
 \end{equation}\]</span></p>
@@ -2188,16 +2184,16 @@ Figure 4.7: <strong>Histogram of Logarithmic Property Claims with Superimposed K
 <a id="displayCode.kpdf" href="javascript:togglecode('toggleCode.kpdf','displayCode.kpdf');"><i><strong>Show R Code</strong></i></a>
 </h5>
 <div id="toggleCode.kpdf" style="display: none">
-<div class="sourceCode" id="cb50"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb50-1"><a href="ChapSeverity.html#cb50-1" aria-hidden="true" tabindex="-1"></a>ClaimLev <span class="ot">&lt;-</span> <span class="fu">read.csv</span>(<span class="st">&quot;Data/CLAIMLEVEL.csv&quot;</span>, <span class="at">header=</span><span class="cn">TRUE</span>); <span class="co">#nrow(ClaimLev); # 6258</span></span>
-<span id="cb50-2"><a href="ChapSeverity.html#cb50-2" aria-hidden="true" tabindex="-1"></a>ClaimData<span class="ot">&lt;-</span><span class="fu">subset</span>(ClaimLev,Year<span class="sc">==</span><span class="dv">2010</span>);     <span class="co">#2010 subset</span></span>
-<span id="cb50-3"><a href="ChapSeverity.html#cb50-3" aria-hidden="true" tabindex="-1"></a><span class="co">#Density Comparison</span></span>
-<span id="cb50-4"><a href="ChapSeverity.html#cb50-4" aria-hidden="true" tabindex="-1"></a><span class="fu">hist</span>(<span class="fu">log</span>(ClaimData<span class="sc">$</span>Claim), <span class="at">main=</span><span class="st">&quot;&quot;</span>, <span class="at">ylim=</span><span class="fu">c</span>(<span class="dv">0</span>,.<span class="dv">35</span>),<span class="at">xlab=</span><span class="st">&quot;Log Expenditures&quot;</span>, <span class="at">freq=</span><span class="cn">FALSE</span>, <span class="at">col=</span><span class="st">&quot;lightgray&quot;</span>)</span>
-<span id="cb50-5"><a href="ChapSeverity.html#cb50-5" aria-hidden="true" tabindex="-1"></a><span class="fu">lines</span>(<span class="fu">density</span>(<span class="fu">log</span>(ClaimData<span class="sc">$</span>Claim)), <span class="at">col=</span><span class="st">&quot;blue&quot;</span>,<span class="at">lwd=</span><span class="fl">2.5</span>)</span>
-<span id="cb50-6"><a href="ChapSeverity.html#cb50-6" aria-hidden="true" tabindex="-1"></a><span class="fu">lines</span>(<span class="fu">density</span>(<span class="fu">log</span>(ClaimData<span class="sc">$</span>Claim), <span class="at">bw=</span><span class="dv">1</span>), <span class="at">col=</span><span class="st">&quot;green&quot;</span>)</span>
-<span id="cb50-7"><a href="ChapSeverity.html#cb50-7" aria-hidden="true" tabindex="-1"></a><span class="fu">lines</span>(<span class="fu">density</span>(<span class="fu">log</span>(ClaimData<span class="sc">$</span>Claim), <span class="at">bw=</span>.<span class="dv">1</span>), <span class="at">col=</span><span class="st">&quot;red&quot;</span>, <span class="at">lty=</span><span class="dv">3</span>)</span>
-<span id="cb50-8"><a href="ChapSeverity.html#cb50-8" aria-hidden="true" tabindex="-1"></a><span class="fu">legend</span>(<span class="st">&quot;topright&quot;</span>, <span class="fu">c</span>(<span class="st">&quot;b=0.3255 (default)&quot;</span>, <span class="st">&quot;b=0.1&quot;</span>, <span class="st">&quot;b=1.0&quot;</span>), <span class="at">lty=</span><span class="fu">c</span>(<span class="dv">1</span>,<span class="dv">3</span>,<span class="dv">1</span>), <span class="at">lwd=</span><span class="fu">c</span>(<span class="fl">2.5</span>,<span class="dv">1</span>,<span class="dv">1</span>),</span>
-<span id="cb50-9"><a href="ChapSeverity.html#cb50-9" aria-hidden="true" tabindex="-1"></a>       <span class="at">col=</span><span class="fu">c</span>(<span class="st">&quot;blue&quot;</span>, <span class="st">&quot;red&quot;</span>, <span class="st">&quot;green&quot;</span>), <span class="at">cex=</span><span class="dv">1</span>)</span>
-<span id="cb50-10"><a href="ChapSeverity.html#cb50-10" aria-hidden="true" tabindex="-1"></a><span class="co">#density(log(ClaimData$Claim))$bw   ##default bandwidth</span></span></code></pre></div>
+<div class="sourceCode" id="cb50"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb50-1"><a href="ChapSeverity.html#cb50-1" tabindex="-1"></a>ClaimLev <span class="ot">&lt;-</span> <span class="fu">read.csv</span>(<span class="st">&quot;Data/CLAIMLEVEL.csv&quot;</span>, <span class="at">header=</span><span class="cn">TRUE</span>); <span class="co">#nrow(ClaimLev); # 6258</span></span>
+<span id="cb50-2"><a href="ChapSeverity.html#cb50-2" tabindex="-1"></a>ClaimData<span class="ot">&lt;-</span><span class="fu">subset</span>(ClaimLev,Year<span class="sc">==</span><span class="dv">2010</span>);     <span class="co">#2010 subset</span></span>
+<span id="cb50-3"><a href="ChapSeverity.html#cb50-3" tabindex="-1"></a><span class="co">#Density Comparison</span></span>
+<span id="cb50-4"><a href="ChapSeverity.html#cb50-4" tabindex="-1"></a><span class="fu">hist</span>(<span class="fu">log</span>(ClaimData<span class="sc">$</span>Claim), <span class="at">main=</span><span class="st">&quot;&quot;</span>, <span class="at">ylim=</span><span class="fu">c</span>(<span class="dv">0</span>,.<span class="dv">35</span>),<span class="at">xlab=</span><span class="st">&quot;Log Expenditures&quot;</span>, <span class="at">freq=</span><span class="cn">FALSE</span>, <span class="at">col=</span><span class="st">&quot;lightgray&quot;</span>)</span>
+<span id="cb50-5"><a href="ChapSeverity.html#cb50-5" tabindex="-1"></a><span class="fu">lines</span>(<span class="fu">density</span>(<span class="fu">log</span>(ClaimData<span class="sc">$</span>Claim)), <span class="at">col=</span><span class="st">&quot;blue&quot;</span>,<span class="at">lwd=</span><span class="fl">2.5</span>)</span>
+<span id="cb50-6"><a href="ChapSeverity.html#cb50-6" tabindex="-1"></a><span class="fu">lines</span>(<span class="fu">density</span>(<span class="fu">log</span>(ClaimData<span class="sc">$</span>Claim), <span class="at">bw=</span><span class="dv">1</span>), <span class="at">col=</span><span class="st">&quot;green&quot;</span>)</span>
+<span id="cb50-7"><a href="ChapSeverity.html#cb50-7" tabindex="-1"></a><span class="fu">lines</span>(<span class="fu">density</span>(<span class="fu">log</span>(ClaimData<span class="sc">$</span>Claim), <span class="at">bw=</span>.<span class="dv">1</span>), <span class="at">col=</span><span class="st">&quot;red&quot;</span>, <span class="at">lty=</span><span class="dv">3</span>)</span>
+<span id="cb50-8"><a href="ChapSeverity.html#cb50-8" tabindex="-1"></a><span class="fu">legend</span>(<span class="st">&quot;topright&quot;</span>, <span class="fu">c</span>(<span class="st">&quot;b=0.3255 (default)&quot;</span>, <span class="st">&quot;b=0.1&quot;</span>, <span class="st">&quot;b=1.0&quot;</span>), <span class="at">lty=</span><span class="fu">c</span>(<span class="dv">1</span>,<span class="dv">3</span>,<span class="dv">1</span>), <span class="at">lwd=</span><span class="fu">c</span>(<span class="fl">2.5</span>,<span class="dv">1</span>,<span class="dv">1</span>),</span>
+<span id="cb50-9"><a href="ChapSeverity.html#cb50-9" tabindex="-1"></a>       <span class="at">col=</span><span class="fu">c</span>(<span class="st">&quot;blue&quot;</span>, <span class="st">&quot;red&quot;</span>, <span class="st">&quot;green&quot;</span>), <span class="at">cex=</span><span class="dv">1</span>)</span>
+<span id="cb50-10"><a href="ChapSeverity.html#cb50-10" tabindex="-1"></a><span class="co">#density(log(ClaimData$Claim))$bw   ##default bandwidth</span></span></code></pre></div>
 </div>
 <hr />
 <p>Nonparametric density estimators, such as the kernel estimator, are regularly used in practice. The concept can also be extended to give smooth versions of an empirical distribution function. Given the definition of the kernel density estimator, the <em>kernel estimator of the distribution function</em> can be found as</p>
@@ -2263,7 +2259,7 @@ X_i &amp; \frac{x-X_i}{b} &amp; w\left(\frac{x-X_i}{b} \right) \\
 For the 2010 property fund, there are <span class="math inline">\(n=1,377\)</span> individual claims (in thousands of dollars) with</p>
 <p><span class="math display">\[m_1 = \frac{1}{n} \sum_{i=1}^n X_i = 26.62259 \ \ \ \
 \text{and} \ \ \ \
- m_2 = \frac{1}{n} \sum_{i=1}^n X_i^2 = 136154.6 .\]</span>
+m_2 = \frac{1}{n} \sum_{i=1}^n X_i^2 = 136154.6 .\]</span>
 Fit the parameters of the gamma and Pareto distributions using the method of moments.</p>
 <h5 style="text-align: center;">
 <a id="displayExample.4.4.6" href="javascript:toggleEX('toggleExample.4.4.6','displayExample.4.4.6');"><i><strong>Show Example Solution</strong></i></a>
@@ -2283,7 +2279,7 @@ To fit a gamma distribution, we have <span class="math inline">\(\mu_1 = \alpha 
 <p>In contrast, now assume a Pareto distribution so that <span class="math inline">\(\mu_1 = \theta/(\alpha -1)\)</span> and <span class="math inline">\(\mu_2^{\prime} = 2\theta^2/((\alpha-1)(\alpha-2) )\)</span>. Note that this expression for <span class="math inline">\(\mu_2^{\prime}\)</span> is only valid for <span class="math inline">\(\alpha&gt;2\)</span>. Easy algebra shows</p>
 <p><span class="math display">\[\alpha = 1+ \frac{\mu_2^{\prime}}{\mu_2^{\prime}-\mu_1^2} \ \ \ \
 \text{and} \ \ \ \ \
- \theta = (\alpha-1)\mu_1.\]</span></p>
+\theta = (\alpha-1)\mu_1.\]</span></p>
 <p>Thus, the method of moment estimators are</p>
 <p><span class="math display">\[
 \begin{aligned}
@@ -2389,7 +2385,7 @@ This yields
 \begin{array}{ll}
 \frac{ \partial}{\partial \alpha } l(\alpha ) &amp;=    5  \log 500 + 5 / \alpha -  \sum_{i=1}^5 \log x_i
 =_{set} 0 \Rightarrow \\
- \hat{\alpha}_{MLE} &amp;= \frac{5}{\sum_{i=1}^5 \log x_i - 5  \log 500 } = 2.453 .
+\hat{\alpha}_{MLE} &amp;= \frac{5}{\sum_{i=1}^5 \log x_i - 5  \log 500 } = 2.453 .
 \end{array}
 \]</span></p>
 <p>Naturally, there are many problems where it is not practical to use hand calculations for optimization. Fortunately there are many statistical routines available such as the <code>R</code> function <code>optim</code>.</p>
@@ -2397,11 +2393,9 @@ This yields
 <a id="displayCode.optim.1" href="javascript:togglecode('toggleCode.optim.1','displayCode.optim.1');"><i><strong>R Code for Optimization</strong></i></a>
 </h5>
 <div id="toggleCode.optim.1" style="display: none">
-<div class="sourceCode" id="cb51"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb51-1"><a href="ChapSeverity.html#cb51-1" aria-hidden="true" tabindex="-1"></a>c1 <span class="ot">&lt;-</span> <span class="fu">log</span>(<span class="dv">521</span>) <span class="sc">+</span> <span class="fu">log</span>(<span class="dv">658</span>) <span class="sc">+</span> <span class="fu">log</span>(<span class="dv">702</span>) <span class="sc">+</span> <span class="fu">log</span>(<span class="dv">819</span>) <span class="sc">+</span> <span class="fu">log</span>(<span class="dv">1217</span>)</span>
-<span id="cb51-2"><a href="ChapSeverity.html#cb51-2" aria-hidden="true" tabindex="-1"></a>nloglike <span class="ot">&lt;-</span> <span class="cf">function</span>(alpha) {</span>
-<span id="cb51-3"><a href="ChapSeverity.html#cb51-3" aria-hidden="true" tabindex="-1"></a>    <span class="sc">-</span>(<span class="dv">5</span> <span class="sc">*</span> alpha <span class="sc">*</span> <span class="fu">log</span>(<span class="dv">500</span>) <span class="sc">+</span> <span class="dv">5</span> <span class="sc">*</span> <span class="fu">log</span>(alpha) <span class="sc">-</span> (alpha <span class="sc">+</span> <span class="dv">1</span>) <span class="sc">*</span> c1)</span>
-<span id="cb51-4"><a href="ChapSeverity.html#cb51-4" aria-hidden="true" tabindex="-1"></a>}</span>
-<span id="cb51-5"><a href="ChapSeverity.html#cb51-5" aria-hidden="true" tabindex="-1"></a>MLE <span class="ot">&lt;-</span> <span class="fu">optim</span>(<span class="at">par =</span> <span class="dv">1</span>, <span class="at">fn =</span> nloglike)<span class="sc">$</span>par</span></code></pre></div>
+<div class="sourceCode" id="cb51"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb51-1"><a href="ChapSeverity.html#cb51-1" tabindex="-1"></a>c1 <span class="ot">&lt;-</span> <span class="fu">log</span>(<span class="dv">521</span>)<span class="sc">+</span><span class="fu">log</span>(<span class="dv">658</span>)<span class="sc">+</span><span class="fu">log</span>(<span class="dv">702</span>)<span class="sc">+</span><span class="fu">log</span>(<span class="dv">819</span>)<span class="sc">+</span><span class="fu">log</span>(<span class="dv">1217</span>)</span>
+<span id="cb51-2"><a href="ChapSeverity.html#cb51-2" tabindex="-1"></a>nloglike <span class="ot">&lt;-</span> <span class="cf">function</span>(alpha){<span class="sc">-</span>(<span class="dv">5</span><span class="sc">*</span>alpha<span class="sc">*</span><span class="fu">log</span>(<span class="dv">500</span>)<span class="sc">+</span><span class="dv">5</span><span class="sc">*</span><span class="fu">log</span>(alpha)<span class="sc">-</span>(alpha<span class="sc">+</span><span class="dv">1</span>)<span class="sc">*</span>c1)}</span>
+<span id="cb51-3"><a href="ChapSeverity.html#cb51-3" tabindex="-1"></a>MLE <span class="ot">&lt;-</span> <span class="fu">optim</span>(<span class="at">par=</span><span class="dv">1</span>, <span class="at">fn=</span>nloglike)<span class="sc">$</span>par</span></code></pre></div>
 <hr />
 </div>
 <p>This code confirms our hand calculation result where the maximum likelihood estimator is <span class="math inline">\(\alpha_{MLE} =\)</span> 2.453125.</p>
@@ -2464,7 +2458,7 @@ L\left( \mu,\sigma \right) = \prod_{i = 1}^{6}{f_{X_{i}}\left( x_{i} \right)} = 
 \]</span></p>
 <p>Taking a logarithm yields the loglikelihood function, <span class="math inline">\(\log L \left( \mu,\sigma \right)\)</span>, which is the sum of the individual logarithms.</p>
 <p><span class="math display">\[
-\log L\left( \mu,\sigma \right) 
+\log L\left( \mu,\sigma \right)
 = - 6 \log \sigma - 3 \log \left( 2\pi \right) - \sum_{i = 1}^{6}\log x_{i} - \frac{1}{2}\sum_{i = 1}^{6}\left( \frac{\log x_{i} - \mu}{\sigma} \right)^{2}.
 \]</span></p>
 <p>The first partial derivatives are</p>
@@ -2483,12 +2477,12 @@ L\left( \mu,\sigma \right) = \prod_{i = 1}^{6}{f_{X_{i}}\left( x_{i} \right)} = 
 \]</span></p>
 <p>These yield the estimates</p>
 <p><span class="math display">\[
-\hat{\mu} = \frac{\sum_{i = 1}^{6}{\log x_{i}}}{6} = 9.38 \ \ \ \text{and} \ \ \ 
+\hat{\mu} = \frac{\sum_{i = 1}^{6}{\log x_{i}}}{6} = 9.38 \ \ \ \text{and} \ \ \
 {\hat{\sigma}}^{2} = \frac{\sum_{i = 1}^{6}\left( \log x_{i} - \hat{\mu} \right)^{2}}{6} = 5.12 .
 \]</span></p>
 <p>To check that these estimates maximize, and do not minimize, the likelihood, you may also wish to compute the second partial derivatives. These are</p>
 <p><span class="math display">\[
-\frac{\partial^{2}\log L\left( \mu,\sigma \right)}{\partial\mu^{2}} = \frac{- 6}{\sigma^{2}}, \ \ \ \ 
+\frac{\partial^{2}\log L\left( \mu,\sigma \right)}{\partial\mu^{2}} = \frac{- 6}{\sigma^{2}}, \ \ \ \
 \frac{\partial^{2}\log L\left( \mu,\sigma \right)}{\partial\mu\partial\sigma} = \frac{- 2}{\sigma^{3}}\sum_{i = 1}^{6}\left( \log x_{i} - \mu \right)
 \]</span></p>
 <p>and</p>
@@ -2619,70 +2613,70 @@ and
 <a id="displayExample.4.4.12" href="javascript:toggleEX('toggleExample.4.4.12','displayExample.4.4.12');"><i><strong>Show Example Solution</strong></i></a>
 </h5>
 <div id="toggleExample.4.4.12" style="display: none">
-<div class="sourceCode" id="cb52"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb52-1"><a href="ChapSeverity.html#cb52-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(VGAM)</span>
-<span id="cb52-2"><a href="ChapSeverity.html#cb52-2" aria-hidden="true" tabindex="-1"></a>claim_lev <span class="ot">&lt;-</span> <span class="fu">read.csv</span>(<span class="st">&quot;Data/CLAIMLEVEL.csv&quot;</span>, <span class="at">header =</span> <span class="cn">TRUE</span>) </span>
-<span id="cb52-3"><a href="ChapSeverity.html#cb52-3" aria-hidden="true" tabindex="-1"></a>claim_data <span class="ot">&lt;-</span> <span class="fu">subset</span>(claim_lev, Year <span class="sc">==</span> <span class="dv">2010</span>); </span>
-<span id="cb52-4"><a href="ChapSeverity.html#cb52-4" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb52-5"><a href="ChapSeverity.html#cb52-5" aria-hidden="true" tabindex="-1"></a><span class="co"># Inference assuming a GB2 Distribution - this is more complicated</span></span>
-<span id="cb52-6"><a href="ChapSeverity.html#cb52-6" aria-hidden="true" tabindex="-1"></a><span class="co"># The likelihood function of GB2 distribution (negative for optimization)</span></span>
-<span id="cb52-7"><a href="ChapSeverity.html#cb52-7" aria-hidden="true" tabindex="-1"></a>lik_gb2 <span class="ot">&lt;-</span> <span class="cf">function</span> (param) {</span>
-<span id="cb52-8"><a href="ChapSeverity.html#cb52-8" aria-hidden="true" tabindex="-1"></a>  a_1 <span class="ot">&lt;-</span> param[<span class="dv">1</span>]</span>
-<span id="cb52-9"><a href="ChapSeverity.html#cb52-9" aria-hidden="true" tabindex="-1"></a>  a_2 <span class="ot">&lt;-</span> param[<span class="dv">2</span>]</span>
-<span id="cb52-10"><a href="ChapSeverity.html#cb52-10" aria-hidden="true" tabindex="-1"></a>  mu <span class="ot">&lt;-</span> param[<span class="dv">3</span>]</span>
-<span id="cb52-11"><a href="ChapSeverity.html#cb52-11" aria-hidden="true" tabindex="-1"></a>  sigma <span class="ot">&lt;-</span> param[<span class="dv">4</span>]</span>
-<span id="cb52-12"><a href="ChapSeverity.html#cb52-12" aria-hidden="true" tabindex="-1"></a>  yt <span class="ot">&lt;-</span> (<span class="fu">log</span>(claim_data<span class="sc">$</span>Claim) <span class="sc">-</span> mu) <span class="sc">/</span> sigma</span>
-<span id="cb52-13"><a href="ChapSeverity.html#cb52-13" aria-hidden="true" tabindex="-1"></a>  logexpyt <span class="ot">&lt;-</span> <span class="fu">ifelse</span>(yt <span class="sc">&gt;</span> <span class="dv">23</span>, yt, <span class="fu">log</span>(<span class="dv">1</span> <span class="sc">+</span> <span class="fu">exp</span>(yt)))</span>
-<span id="cb52-14"><a href="ChapSeverity.html#cb52-14" aria-hidden="true" tabindex="-1"></a>  logdens <span class="ot">&lt;-</span> a_1 <span class="sc">*</span> yt <span class="sc">-</span> <span class="fu">log</span>(sigma) <span class="sc">-</span> <span class="fu">log</span>(<span class="fu">beta</span>(a_1,a_2)) <span class="sc">-</span> </span>
-<span id="cb52-15"><a href="ChapSeverity.html#cb52-15" aria-hidden="true" tabindex="-1"></a>    (a_1<span class="sc">+</span>a_2) <span class="sc">*</span> logexpyt <span class="sc">-</span> <span class="fu">log</span>(claim_data<span class="sc">$</span>Claim) </span>
-<span id="cb52-16"><a href="ChapSeverity.html#cb52-16" aria-hidden="true" tabindex="-1"></a>  <span class="fu">return</span>(<span class="sc">-</span><span class="fu">sum</span>(logdens))</span>
-<span id="cb52-17"><a href="ChapSeverity.html#cb52-17" aria-hidden="true" tabindex="-1"></a>}</span>
-<span id="cb52-18"><a href="ChapSeverity.html#cb52-18" aria-hidden="true" tabindex="-1"></a><span class="co"># &quot;optim&quot; is a general purpose minimization function</span></span>
-<span id="cb52-19"><a href="ChapSeverity.html#cb52-19" aria-hidden="true" tabindex="-1"></a>gb2_bop <span class="ot">&lt;-</span> <span class="fu">optim</span>(<span class="fu">c</span>(<span class="dv">1</span>, <span class="dv">1</span>, <span class="dv">0</span>, <span class="dv">1</span>), lik_gb2, <span class="at">method =</span> <span class="fu">c</span>(<span class="st">&quot;L-BFGS-B&quot;</span>), </span>
-<span id="cb52-20"><a href="ChapSeverity.html#cb52-20" aria-hidden="true" tabindex="-1"></a>                 <span class="at">lower =</span> <span class="fu">c</span>(<span class="fl">0.01</span>, <span class="fl">0.01</span>, <span class="sc">-</span><span class="dv">500</span>, <span class="fl">0.01</span>), </span>
-<span id="cb52-21"><a href="ChapSeverity.html#cb52-21" aria-hidden="true" tabindex="-1"></a>                 <span class="at">upper =</span> <span class="fu">c</span>(<span class="dv">500</span>, <span class="dv">500</span>, <span class="dv">500</span>, <span class="dv">500</span>), <span class="at">hessian =</span> <span class="cn">TRUE</span>)</span>
-<span id="cb52-22"><a href="ChapSeverity.html#cb52-22" aria-hidden="true" tabindex="-1"></a><span class="co"># Nonparametric Plot</span></span>
-<span id="cb52-23"><a href="ChapSeverity.html#cb52-23" aria-hidden="true" tabindex="-1"></a><span class="fu">plot</span>(<span class="fu">density</span>(<span class="fu">log</span>(claim_data<span class="sc">$</span>Claim)), <span class="at">main =</span> <span class="st">&quot;&quot;</span>, <span class="at">xlab =</span> <span class="st">&quot;Log Expenditures&quot;</span>,</span>
-<span id="cb52-24"><a href="ChapSeverity.html#cb52-24" aria-hidden="true" tabindex="-1"></a>     <span class="at">ylim =</span> <span class="fu">c</span>(<span class="dv">0</span> ,<span class="fl">0.37</span>))</span>
-<span id="cb52-25"><a href="ChapSeverity.html#cb52-25" aria-hidden="true" tabindex="-1"></a>x <span class="ot">&lt;-</span> <span class="fu">seq</span>(<span class="dv">0</span>, <span class="dv">15</span>, <span class="at">by =</span> <span class="fl">0.01</span>)</span>
-<span id="cb52-26"><a href="ChapSeverity.html#cb52-26" aria-hidden="true" tabindex="-1"></a><span class="co">#Exponential</span></span>
-<span id="cb52-27"><a href="ChapSeverity.html#cb52-27" aria-hidden="true" tabindex="-1"></a>fit.exp <span class="ot">&lt;-</span> <span class="fu">vglm</span>(Claim <span class="sc">~</span> <span class="dv">1</span>, exponential, <span class="at">data =</span> claim_data)</span>
-<span id="cb52-28"><a href="ChapSeverity.html#cb52-28" aria-hidden="true" tabindex="-1"></a>theta <span class="ot">=</span> <span class="dv">1</span> <span class="sc">/</span> <span class="fu">exp</span>(<span class="fu">coef</span>(fit.exp))</span>
-<span id="cb52-29"><a href="ChapSeverity.html#cb52-29" aria-hidden="true" tabindex="-1"></a>fexp_ex <span class="ot">&lt;-</span> <span class="fu">dgamma</span>(<span class="fu">exp</span>(x), <span class="at">scale =</span> <span class="fu">exp</span>(<span class="sc">-</span><span class="fu">coef</span>(fit.exp)), <span class="at">shape =</span> <span class="dv">1</span>) <span class="sc">*</span> <span class="fu">exp</span>(x)</span>
-<span id="cb52-30"><a href="ChapSeverity.html#cb52-30" aria-hidden="true" tabindex="-1"></a><span class="fu">lines</span>(x, fexp_ex, <span class="at">col =</span> <span class="st">&quot;red&quot;</span>, <span class="at">lty =</span><span class="dv">2</span>)</span>
-<span id="cb52-31"><a href="ChapSeverity.html#cb52-31" aria-hidden="true" tabindex="-1"></a><span class="co"># Inference assuming a gamma distribution</span></span>
-<span id="cb52-32"><a href="ChapSeverity.html#cb52-32" aria-hidden="true" tabindex="-1"></a>fit.gamma <span class="ot">&lt;-</span> <span class="fu">vglm</span>(Claim <span class="sc">~</span> <span class="dv">1</span>, <span class="at">family =</span> gamma2, <span class="at">data =</span> claim_data)</span>
-<span id="cb52-33"><a href="ChapSeverity.html#cb52-33" aria-hidden="true" tabindex="-1"></a>theta <span class="ot">&lt;-</span> <span class="fu">exp</span>(<span class="fu">coef</span>(fit.gamma)[<span class="dv">1</span>]) <span class="sc">/</span> <span class="fu">exp</span>(<span class="fu">coef</span>(fit.gamma)[<span class="dv">2</span>])  <span class="co"># theta = mu / alpha</span></span>
-<span id="cb52-34"><a href="ChapSeverity.html#cb52-34" aria-hidden="true" tabindex="-1"></a>alpha <span class="ot">&lt;-</span> <span class="fu">exp</span>(<span class="fu">coef</span>(fit.gamma)[<span class="dv">2</span>]) </span>
-<span id="cb52-35"><a href="ChapSeverity.html#cb52-35" aria-hidden="true" tabindex="-1"></a>fgamma_ex <span class="ot">&lt;-</span> <span class="fu">dgamma</span>(<span class="fu">exp</span>(x), <span class="at">shape =</span> alpha, <span class="at">scale =</span> theta) <span class="sc">*</span> <span class="fu">exp</span>(x)</span>
-<span id="cb52-36"><a href="ChapSeverity.html#cb52-36" aria-hidden="true" tabindex="-1"></a><span class="fu">lines</span>(x, fgamma_ex, <span class="at">col =</span> <span class="st">&quot;blue&quot;</span>, <span class="at">lty =</span><span class="dv">3</span>)</span>
-<span id="cb52-37"><a href="ChapSeverity.html#cb52-37" aria-hidden="true" tabindex="-1"></a><span class="co">#Pareto</span></span>
-<span id="cb52-38"><a href="ChapSeverity.html#cb52-38" aria-hidden="true" tabindex="-1"></a>fit.pareto <span class="ot">&lt;-</span> <span class="fu">vglm</span>(Claim <span class="sc">~</span> <span class="dv">1</span>, paretoII, <span class="at">loc =</span> <span class="dv">0</span>, <span class="at">data =</span> claim_data)</span>
-<span id="cb52-39"><a href="ChapSeverity.html#cb52-39" aria-hidden="true" tabindex="-1"></a>fpareto_ex <span class="ot">&lt;-</span> <span class="fu">dparetoII</span>(<span class="fu">exp</span>(x), <span class="at">loc =</span> <span class="dv">0</span>, <span class="at">shape =</span> <span class="fu">exp</span>(<span class="fu">coef</span>(fit.pareto)[<span class="dv">2</span>]), </span>
-<span id="cb52-40"><a href="ChapSeverity.html#cb52-40" aria-hidden="true" tabindex="-1"></a>                        <span class="at">scale =</span> <span class="fu">exp</span>(<span class="fu">coef</span>(fit.pareto)[<span class="dv">1</span>])) <span class="sc">*</span> <span class="fu">exp</span>(x)</span>
-<span id="cb52-41"><a href="ChapSeverity.html#cb52-41" aria-hidden="true" tabindex="-1"></a><span class="fu">lines</span>(x, fpareto_ex, <span class="at">col =</span> <span class="st">&quot;purple&quot;</span>)</span>
-<span id="cb52-42"><a href="ChapSeverity.html#cb52-42" aria-hidden="true" tabindex="-1"></a><span class="co"># Lognormal</span></span>
-<span id="cb52-43"><a href="ChapSeverity.html#cb52-43" aria-hidden="true" tabindex="-1"></a>fit.LN <span class="ot">&lt;-</span> <span class="fu">vglm</span>(Claim <span class="sc">~</span> <span class="dv">1</span>, <span class="at">family =</span> lognormal, <span class="at">data =</span> claim_data)</span>
-<span id="cb52-44"><a href="ChapSeverity.html#cb52-44" aria-hidden="true" tabindex="-1"></a>flnorm_ex <span class="ot">&lt;-</span> <span class="fu">dlnorm</span>(<span class="fu">exp</span>(x), <span class="at">mean =</span> <span class="fu">coef</span>(fit.LN)[<span class="dv">1</span>],</span>
-<span id="cb52-45"><a href="ChapSeverity.html#cb52-45" aria-hidden="true" tabindex="-1"></a>                    <span class="at">sd =</span> <span class="fu">exp</span>(<span class="fu">coef</span>(fit.LN)[<span class="dv">2</span>])) <span class="sc">*</span> <span class="fu">exp</span>(x)</span>
-<span id="cb52-46"><a href="ChapSeverity.html#cb52-46" aria-hidden="true" tabindex="-1"></a><span class="fu">lines</span>(x, flnorm_ex, <span class="at">col =</span> <span class="st">&quot;lightblue&quot;</span>)</span>
-<span id="cb52-47"><a href="ChapSeverity.html#cb52-47" aria-hidden="true" tabindex="-1"></a><span class="co"># Density for GB II</span></span>
-<span id="cb52-48"><a href="ChapSeverity.html#cb52-48" aria-hidden="true" tabindex="-1"></a>gb2_density <span class="ot">&lt;-</span> <span class="cf">function</span> (x) {</span>
-<span id="cb52-49"><a href="ChapSeverity.html#cb52-49" aria-hidden="true" tabindex="-1"></a>  a_1 <span class="ot">&lt;-</span> gb2_bop<span class="sc">$</span>par[<span class="dv">1</span>]</span>
-<span id="cb52-50"><a href="ChapSeverity.html#cb52-50" aria-hidden="true" tabindex="-1"></a>  a_2 <span class="ot">&lt;-</span> gb2_bop<span class="sc">$</span>par[<span class="dv">2</span>]</span>
-<span id="cb52-51"><a href="ChapSeverity.html#cb52-51" aria-hidden="true" tabindex="-1"></a>  mu <span class="ot">&lt;-</span> gb2_bop<span class="sc">$</span>par[<span class="dv">3</span>]</span>
-<span id="cb52-52"><a href="ChapSeverity.html#cb52-52" aria-hidden="true" tabindex="-1"></a>  sigma <span class="ot">&lt;-</span> gb2_bop<span class="sc">$</span>par[<span class="dv">4</span>]</span>
-<span id="cb52-53"><a href="ChapSeverity.html#cb52-53" aria-hidden="true" tabindex="-1"></a>  xt <span class="ot">&lt;-</span> (<span class="fu">log</span>(x) <span class="sc">-</span> mu) <span class="sc">/</span> sigma</span>
-<span id="cb52-54"><a href="ChapSeverity.html#cb52-54" aria-hidden="true" tabindex="-1"></a>  logexpxt <span class="ot">&lt;-</span> <span class="fu">ifelse</span> (xt <span class="sc">&gt;</span> <span class="dv">23</span>, yt, <span class="fu">log</span>(<span class="dv">1</span> <span class="sc">+</span> <span class="fu">exp</span>(xt)))</span>
-<span id="cb52-55"><a href="ChapSeverity.html#cb52-55" aria-hidden="true" tabindex="-1"></a>  logdens <span class="ot">&lt;-</span> a_1 <span class="sc">*</span> xt <span class="sc">-</span> <span class="fu">log</span>(sigma) <span class="sc">-</span> <span class="fu">log</span>(<span class="fu">beta</span>(a_1, a_2)) <span class="sc">-</span> </span>
-<span id="cb52-56"><a href="ChapSeverity.html#cb52-56" aria-hidden="true" tabindex="-1"></a>    (a_1<span class="sc">+</span>a_2) <span class="sc">*</span> logexpxt <span class="sc">-</span><span class="fu">log</span>(x) </span>
-<span id="cb52-57"><a href="ChapSeverity.html#cb52-57" aria-hidden="true" tabindex="-1"></a>  <span class="fu">exp</span>(logdens)</span>
-<span id="cb52-58"><a href="ChapSeverity.html#cb52-58" aria-hidden="true" tabindex="-1"></a>  }</span>
-<span id="cb52-59"><a href="ChapSeverity.html#cb52-59" aria-hidden="true" tabindex="-1"></a>fGB2_ex <span class="ot">=</span> <span class="fu">gb2_density</span>(<span class="fu">exp</span>(x)) <span class="sc">*</span> <span class="fu">exp</span>(x)</span>
-<span id="cb52-60"><a href="ChapSeverity.html#cb52-60" aria-hidden="true" tabindex="-1"></a><span class="fu">lines</span>(x, fGB2_ex, <span class="at">col=</span><span class="st">&quot;green&quot;</span>)</span>
-<span id="cb52-61"><a href="ChapSeverity.html#cb52-61" aria-hidden="true" tabindex="-1"></a><span class="fu">legend</span>(<span class="st">&quot;topleft&quot;</span>, <span class="fu">c</span>(<span class="st">&quot;log(Expend)&quot;</span>, <span class="st">&quot;Exponential&quot;</span>, <span class="st">&quot;Gamma&quot;</span>, <span class="st">&quot;Pareto&quot;</span>, </span>
-<span id="cb52-62"><a href="ChapSeverity.html#cb52-62" aria-hidden="true" tabindex="-1"></a>                    <span class="st">&quot;Lognormal&quot;</span>, <span class="st">&quot;GB2&quot;</span>), <span class="at">cex=</span><span class="fl">0.8</span>,</span>
-<span id="cb52-63"><a href="ChapSeverity.html#cb52-63" aria-hidden="true" tabindex="-1"></a>       <span class="at">lty =</span> <span class="fu">c</span>(<span class="dv">4</span>,<span class="dv">2</span>,<span class="dv">3</span>,<span class="dv">1</span>,<span class="dv">1</span>,<span class="dv">1</span>), <span class="co">#4 is &quot;longdash&quot;</span></span>
-<span id="cb52-64"><a href="ChapSeverity.html#cb52-64" aria-hidden="true" tabindex="-1"></a>       <span class="at">col =</span> <span class="fu">c</span>(<span class="st">&quot;black&quot;</span>,<span class="st">&quot;red&quot;</span>,<span class="st">&quot;blue&quot;</span>,<span class="st">&quot;purple&quot;</span>,<span class="st">&quot;lightblue&quot;</span>,<span class="st">&quot;green&quot;</span>))</span></code></pre></div>
+<div class="sourceCode" id="cb52"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb52-1"><a href="ChapSeverity.html#cb52-1" tabindex="-1"></a><span class="fu">library</span>(VGAM)</span>
+<span id="cb52-2"><a href="ChapSeverity.html#cb52-2" tabindex="-1"></a>claim_lev <span class="ot">&lt;-</span> <span class="fu">read.csv</span>(<span class="st">&quot;Data/CLAIMLEVEL.csv&quot;</span>, <span class="at">header =</span> <span class="cn">TRUE</span>) </span>
+<span id="cb52-3"><a href="ChapSeverity.html#cb52-3" tabindex="-1"></a>claim_data <span class="ot">&lt;-</span> <span class="fu">subset</span>(claim_lev, Year <span class="sc">==</span> <span class="dv">2010</span>); </span>
+<span id="cb52-4"><a href="ChapSeverity.html#cb52-4" tabindex="-1"></a></span>
+<span id="cb52-5"><a href="ChapSeverity.html#cb52-5" tabindex="-1"></a><span class="co"># Inference assuming a GB2 Distribution - this is more complicated</span></span>
+<span id="cb52-6"><a href="ChapSeverity.html#cb52-6" tabindex="-1"></a><span class="co"># The likelihood function of GB2 distribution (negative for optimization)</span></span>
+<span id="cb52-7"><a href="ChapSeverity.html#cb52-7" tabindex="-1"></a>lik_gb2 <span class="ot">&lt;-</span> <span class="cf">function</span> (param) {</span>
+<span id="cb52-8"><a href="ChapSeverity.html#cb52-8" tabindex="-1"></a>  a_1 <span class="ot">&lt;-</span> param[<span class="dv">1</span>]</span>
+<span id="cb52-9"><a href="ChapSeverity.html#cb52-9" tabindex="-1"></a>  a_2 <span class="ot">&lt;-</span> param[<span class="dv">2</span>]</span>
+<span id="cb52-10"><a href="ChapSeverity.html#cb52-10" tabindex="-1"></a>  mu <span class="ot">&lt;-</span> param[<span class="dv">3</span>]</span>
+<span id="cb52-11"><a href="ChapSeverity.html#cb52-11" tabindex="-1"></a>  sigma <span class="ot">&lt;-</span> param[<span class="dv">4</span>]</span>
+<span id="cb52-12"><a href="ChapSeverity.html#cb52-12" tabindex="-1"></a>  yt <span class="ot">&lt;-</span> (<span class="fu">log</span>(claim_data<span class="sc">$</span>Claim) <span class="sc">-</span> mu) <span class="sc">/</span> sigma</span>
+<span id="cb52-13"><a href="ChapSeverity.html#cb52-13" tabindex="-1"></a>  logexpyt <span class="ot">&lt;-</span> <span class="fu">ifelse</span>(yt <span class="sc">&gt;</span> <span class="dv">23</span>, yt, <span class="fu">log</span>(<span class="dv">1</span> <span class="sc">+</span> <span class="fu">exp</span>(yt)))</span>
+<span id="cb52-14"><a href="ChapSeverity.html#cb52-14" tabindex="-1"></a>  logdens <span class="ot">&lt;-</span> a_1 <span class="sc">*</span> yt <span class="sc">-</span> <span class="fu">log</span>(sigma) <span class="sc">-</span> <span class="fu">log</span>(<span class="fu">beta</span>(a_1,a_2)) <span class="sc">-</span> </span>
+<span id="cb52-15"><a href="ChapSeverity.html#cb52-15" tabindex="-1"></a>    (a_1<span class="sc">+</span>a_2) <span class="sc">*</span> logexpyt <span class="sc">-</span> <span class="fu">log</span>(claim_data<span class="sc">$</span>Claim) </span>
+<span id="cb52-16"><a href="ChapSeverity.html#cb52-16" tabindex="-1"></a>  <span class="fu">return</span>(<span class="sc">-</span><span class="fu">sum</span>(logdens))</span>
+<span id="cb52-17"><a href="ChapSeverity.html#cb52-17" tabindex="-1"></a>}</span>
+<span id="cb52-18"><a href="ChapSeverity.html#cb52-18" tabindex="-1"></a><span class="co"># &quot;optim&quot; is a general purpose minimization function</span></span>
+<span id="cb52-19"><a href="ChapSeverity.html#cb52-19" tabindex="-1"></a>gb2_bop <span class="ot">&lt;-</span> <span class="fu">optim</span>(<span class="fu">c</span>(<span class="dv">1</span>, <span class="dv">1</span>, <span class="dv">0</span>, <span class="dv">1</span>), lik_gb2, <span class="at">method =</span> <span class="fu">c</span>(<span class="st">&quot;L-BFGS-B&quot;</span>), </span>
+<span id="cb52-20"><a href="ChapSeverity.html#cb52-20" tabindex="-1"></a>                 <span class="at">lower =</span> <span class="fu">c</span>(<span class="fl">0.01</span>, <span class="fl">0.01</span>, <span class="sc">-</span><span class="dv">500</span>, <span class="fl">0.01</span>), </span>
+<span id="cb52-21"><a href="ChapSeverity.html#cb52-21" tabindex="-1"></a>                 <span class="at">upper =</span> <span class="fu">c</span>(<span class="dv">500</span>, <span class="dv">500</span>, <span class="dv">500</span>, <span class="dv">500</span>), <span class="at">hessian =</span> <span class="cn">TRUE</span>)</span>
+<span id="cb52-22"><a href="ChapSeverity.html#cb52-22" tabindex="-1"></a><span class="co"># Nonparametric Plot</span></span>
+<span id="cb52-23"><a href="ChapSeverity.html#cb52-23" tabindex="-1"></a><span class="fu">plot</span>(<span class="fu">density</span>(<span class="fu">log</span>(claim_data<span class="sc">$</span>Claim)), <span class="at">main =</span> <span class="st">&quot;&quot;</span>, <span class="at">xlab =</span> <span class="st">&quot;Log Expenditures&quot;</span>,</span>
+<span id="cb52-24"><a href="ChapSeverity.html#cb52-24" tabindex="-1"></a>     <span class="at">ylim =</span> <span class="fu">c</span>(<span class="dv">0</span> ,<span class="fl">0.37</span>))</span>
+<span id="cb52-25"><a href="ChapSeverity.html#cb52-25" tabindex="-1"></a>x <span class="ot">&lt;-</span> <span class="fu">seq</span>(<span class="dv">0</span>, <span class="dv">15</span>, <span class="at">by =</span> <span class="fl">0.01</span>)</span>
+<span id="cb52-26"><a href="ChapSeverity.html#cb52-26" tabindex="-1"></a><span class="co">#Exponential</span></span>
+<span id="cb52-27"><a href="ChapSeverity.html#cb52-27" tabindex="-1"></a>fit.exp <span class="ot">&lt;-</span> <span class="fu">vglm</span>(Claim <span class="sc">~</span> <span class="dv">1</span>, exponential, <span class="at">data =</span> claim_data)</span>
+<span id="cb52-28"><a href="ChapSeverity.html#cb52-28" tabindex="-1"></a>theta <span class="ot">=</span> <span class="dv">1</span> <span class="sc">/</span> <span class="fu">exp</span>(<span class="fu">coef</span>(fit.exp))</span>
+<span id="cb52-29"><a href="ChapSeverity.html#cb52-29" tabindex="-1"></a>fexp_ex <span class="ot">&lt;-</span> <span class="fu">dgamma</span>(<span class="fu">exp</span>(x), <span class="at">scale =</span> <span class="fu">exp</span>(<span class="sc">-</span><span class="fu">coef</span>(fit.exp)), <span class="at">shape =</span> <span class="dv">1</span>) <span class="sc">*</span> <span class="fu">exp</span>(x)</span>
+<span id="cb52-30"><a href="ChapSeverity.html#cb52-30" tabindex="-1"></a><span class="fu">lines</span>(x, fexp_ex, <span class="at">col =</span> <span class="st">&quot;red&quot;</span>, <span class="at">lty =</span><span class="dv">2</span>)</span>
+<span id="cb52-31"><a href="ChapSeverity.html#cb52-31" tabindex="-1"></a><span class="co"># Inference assuming a gamma distribution</span></span>
+<span id="cb52-32"><a href="ChapSeverity.html#cb52-32" tabindex="-1"></a>fit.gamma <span class="ot">&lt;-</span> <span class="fu">vglm</span>(Claim <span class="sc">~</span> <span class="dv">1</span>, <span class="at">family =</span> gamma2, <span class="at">data =</span> claim_data)</span>
+<span id="cb52-33"><a href="ChapSeverity.html#cb52-33" tabindex="-1"></a>theta <span class="ot">&lt;-</span> <span class="fu">exp</span>(<span class="fu">coef</span>(fit.gamma)[<span class="dv">1</span>]) <span class="sc">/</span> <span class="fu">exp</span>(<span class="fu">coef</span>(fit.gamma)[<span class="dv">2</span>])  <span class="co"># theta = mu / alpha</span></span>
+<span id="cb52-34"><a href="ChapSeverity.html#cb52-34" tabindex="-1"></a>alpha <span class="ot">&lt;-</span> <span class="fu">exp</span>(<span class="fu">coef</span>(fit.gamma)[<span class="dv">2</span>]) </span>
+<span id="cb52-35"><a href="ChapSeverity.html#cb52-35" tabindex="-1"></a>fgamma_ex <span class="ot">&lt;-</span> <span class="fu">dgamma</span>(<span class="fu">exp</span>(x), <span class="at">shape =</span> alpha, <span class="at">scale =</span> theta) <span class="sc">*</span> <span class="fu">exp</span>(x)</span>
+<span id="cb52-36"><a href="ChapSeverity.html#cb52-36" tabindex="-1"></a><span class="fu">lines</span>(x, fgamma_ex, <span class="at">col =</span> <span class="st">&quot;blue&quot;</span>, <span class="at">lty =</span><span class="dv">3</span>)</span>
+<span id="cb52-37"><a href="ChapSeverity.html#cb52-37" tabindex="-1"></a><span class="co">#Pareto</span></span>
+<span id="cb52-38"><a href="ChapSeverity.html#cb52-38" tabindex="-1"></a>fit.pareto <span class="ot">&lt;-</span> <span class="fu">vglm</span>(Claim <span class="sc">~</span> <span class="dv">1</span>, paretoII, <span class="at">loc =</span> <span class="dv">0</span>, <span class="at">data =</span> claim_data)</span>
+<span id="cb52-39"><a href="ChapSeverity.html#cb52-39" tabindex="-1"></a>fpareto_ex <span class="ot">&lt;-</span> <span class="fu">dparetoII</span>(<span class="fu">exp</span>(x), <span class="at">loc =</span> <span class="dv">0</span>, <span class="at">shape =</span> <span class="fu">exp</span>(<span class="fu">coef</span>(fit.pareto)[<span class="dv">2</span>]), </span>
+<span id="cb52-40"><a href="ChapSeverity.html#cb52-40" tabindex="-1"></a>                        <span class="at">scale =</span> <span class="fu">exp</span>(<span class="fu">coef</span>(fit.pareto)[<span class="dv">1</span>])) <span class="sc">*</span> <span class="fu">exp</span>(x)</span>
+<span id="cb52-41"><a href="ChapSeverity.html#cb52-41" tabindex="-1"></a><span class="fu">lines</span>(x, fpareto_ex, <span class="at">col =</span> <span class="st">&quot;purple&quot;</span>)</span>
+<span id="cb52-42"><a href="ChapSeverity.html#cb52-42" tabindex="-1"></a><span class="co"># Lognormal</span></span>
+<span id="cb52-43"><a href="ChapSeverity.html#cb52-43" tabindex="-1"></a>fit.LN <span class="ot">&lt;-</span> <span class="fu">vglm</span>(Claim <span class="sc">~</span> <span class="dv">1</span>, <span class="at">family =</span> lognormal, <span class="at">data =</span> claim_data)</span>
+<span id="cb52-44"><a href="ChapSeverity.html#cb52-44" tabindex="-1"></a>flnorm_ex <span class="ot">&lt;-</span> <span class="fu">dlnorm</span>(<span class="fu">exp</span>(x), <span class="at">mean =</span> <span class="fu">coef</span>(fit.LN)[<span class="dv">1</span>],</span>
+<span id="cb52-45"><a href="ChapSeverity.html#cb52-45" tabindex="-1"></a>                    <span class="at">sd =</span> <span class="fu">exp</span>(<span class="fu">coef</span>(fit.LN)[<span class="dv">2</span>])) <span class="sc">*</span> <span class="fu">exp</span>(x)</span>
+<span id="cb52-46"><a href="ChapSeverity.html#cb52-46" tabindex="-1"></a><span class="fu">lines</span>(x, flnorm_ex, <span class="at">col =</span> <span class="st">&quot;lightblue&quot;</span>)</span>
+<span id="cb52-47"><a href="ChapSeverity.html#cb52-47" tabindex="-1"></a><span class="co"># Density for GB II</span></span>
+<span id="cb52-48"><a href="ChapSeverity.html#cb52-48" tabindex="-1"></a>gb2_density <span class="ot">&lt;-</span> <span class="cf">function</span> (x) {</span>
+<span id="cb52-49"><a href="ChapSeverity.html#cb52-49" tabindex="-1"></a>  a_1 <span class="ot">&lt;-</span> gb2_bop<span class="sc">$</span>par[<span class="dv">1</span>]</span>
+<span id="cb52-50"><a href="ChapSeverity.html#cb52-50" tabindex="-1"></a>  a_2 <span class="ot">&lt;-</span> gb2_bop<span class="sc">$</span>par[<span class="dv">2</span>]</span>
+<span id="cb52-51"><a href="ChapSeverity.html#cb52-51" tabindex="-1"></a>  mu <span class="ot">&lt;-</span> gb2_bop<span class="sc">$</span>par[<span class="dv">3</span>]</span>
+<span id="cb52-52"><a href="ChapSeverity.html#cb52-52" tabindex="-1"></a>  sigma <span class="ot">&lt;-</span> gb2_bop<span class="sc">$</span>par[<span class="dv">4</span>]</span>
+<span id="cb52-53"><a href="ChapSeverity.html#cb52-53" tabindex="-1"></a>  xt <span class="ot">&lt;-</span> (<span class="fu">log</span>(x) <span class="sc">-</span> mu) <span class="sc">/</span> sigma</span>
+<span id="cb52-54"><a href="ChapSeverity.html#cb52-54" tabindex="-1"></a>  logexpxt <span class="ot">&lt;-</span> <span class="fu">ifelse</span> (xt <span class="sc">&gt;</span> <span class="dv">23</span>, yt, <span class="fu">log</span>(<span class="dv">1</span> <span class="sc">+</span> <span class="fu">exp</span>(xt)))</span>
+<span id="cb52-55"><a href="ChapSeverity.html#cb52-55" tabindex="-1"></a>  logdens <span class="ot">&lt;-</span> a_1 <span class="sc">*</span> xt <span class="sc">-</span> <span class="fu">log</span>(sigma) <span class="sc">-</span> <span class="fu">log</span>(<span class="fu">beta</span>(a_1, a_2)) <span class="sc">-</span> </span>
+<span id="cb52-56"><a href="ChapSeverity.html#cb52-56" tabindex="-1"></a>    (a_1<span class="sc">+</span>a_2) <span class="sc">*</span> logexpxt <span class="sc">-</span><span class="fu">log</span>(x) </span>
+<span id="cb52-57"><a href="ChapSeverity.html#cb52-57" tabindex="-1"></a>  <span class="fu">exp</span>(logdens)</span>
+<span id="cb52-58"><a href="ChapSeverity.html#cb52-58" tabindex="-1"></a>  }</span>
+<span id="cb52-59"><a href="ChapSeverity.html#cb52-59" tabindex="-1"></a>fGB2_ex <span class="ot">=</span> <span class="fu">gb2_density</span>(<span class="fu">exp</span>(x)) <span class="sc">*</span> <span class="fu">exp</span>(x)</span>
+<span id="cb52-60"><a href="ChapSeverity.html#cb52-60" tabindex="-1"></a><span class="fu">lines</span>(x, fGB2_ex, <span class="at">col=</span><span class="st">&quot;green&quot;</span>)</span>
+<span id="cb52-61"><a href="ChapSeverity.html#cb52-61" tabindex="-1"></a><span class="fu">legend</span>(<span class="st">&quot;topleft&quot;</span>, <span class="fu">c</span>(<span class="st">&quot;log(Expend)&quot;</span>, <span class="st">&quot;Exponential&quot;</span>, <span class="st">&quot;Gamma&quot;</span>, <span class="st">&quot;Pareto&quot;</span>, </span>
+<span id="cb52-62"><a href="ChapSeverity.html#cb52-62" tabindex="-1"></a>                    <span class="st">&quot;Lognormal&quot;</span>, <span class="st">&quot;GB2&quot;</span>), <span class="at">cex=</span><span class="fl">0.8</span>,</span>
+<span id="cb52-63"><a href="ChapSeverity.html#cb52-63" tabindex="-1"></a>       <span class="at">lty =</span> <span class="fu">c</span>(<span class="dv">4</span>,<span class="dv">2</span>,<span class="dv">3</span>,<span class="dv">1</span>,<span class="dv">1</span>,<span class="dv">1</span>), <span class="co">#4 is &quot;longdash&quot;</span></span>
+<span id="cb52-64"><a href="ChapSeverity.html#cb52-64" tabindex="-1"></a>       <span class="at">col =</span> <span class="fu">c</span>(<span class="st">&quot;black&quot;</span>,<span class="st">&quot;red&quot;</span>,<span class="st">&quot;blue&quot;</span>,<span class="st">&quot;purple&quot;</span>,<span class="st">&quot;lightblue&quot;</span>,<span class="st">&quot;green&quot;</span>))</span></code></pre></div>
 </div>
 
 <div class="figure" style="text-align: center"><span style="display:block;" id="fig:MLEComparea"></span>
@@ -2731,43 +2725,42 @@ Figure 4.9: <strong>Density Comparisons for the Wisconsin Property Fund</strong>
 <a id="displayCode.Travel.2" href="javascript:togglecode('toggleCode.Travel.2','displayCode.Travel.2');"><i><strong>Solutions for Exercise 4.1</strong></i></a>
 </h5>
 <div id="toggleCode.Travel.2" style="display: none">
-<div class="sourceCode" id="cb53"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb53-1"><a href="ChapSeverity.html#cb53-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Part a.</span></span>
-<span id="cb53-2"><a href="ChapSeverity.html#cb53-2" aria-hidden="true" tabindex="-1"></a>TravelClaims <span class="ot">&lt;-</span> <span class="fu">read.csv</span>(<span class="st">&quot;Data</span><span class="sc">\\</span><span class="st">ANUTravelClaims2022.csv&quot;</span>, <span class="at">header =</span> T)</span>
-<span id="cb53-3"><a href="ChapSeverity.html#cb53-3" aria-hidden="true" tabindex="-1"></a>TravelClaimsGT10 <span class="ot">&lt;-</span> <span class="fu">subset</span>(TravelClaims, Incurred.Loss <span class="sc">&gt;=</span> <span class="dv">10</span>)</span>
-<span id="cb53-4"><a href="ChapSeverity.html#cb53-4" aria-hidden="true" tabindex="-1"></a>X <span class="ot">&lt;-</span> TravelClaimsGT10<span class="sc">$</span>Incurred.Loss</span>
-<span id="cb53-5"><a href="ChapSeverity.html#cb53-5" aria-hidden="true" tabindex="-1"></a><span class="fu">par</span>(<span class="at">mfrow =</span> <span class="fu">c</span>(<span class="dv">1</span>, <span class="dv">2</span>))</span>
-<span id="cb53-6"><a href="ChapSeverity.html#cb53-6" aria-hidden="true" tabindex="-1"></a><span class="fu">plot</span>(<span class="fu">density</span>(X), <span class="at">main =</span> <span class="st">&quot;&quot;</span>, <span class="at">xlab =</span> <span class="st">&quot;Claims&quot;</span>)</span>
-<span id="cb53-7"><a href="ChapSeverity.html#cb53-7" aria-hidden="true" tabindex="-1"></a><span class="fu">plot</span>(<span class="fu">density</span>(<span class="fu">log</span>(X)), <span class="at">main =</span> <span class="st">&quot;&quot;</span>, <span class="at">xlab =</span> <span class="st">&quot;Log Claims&quot;</span>)</span></code></pre></div>
+<div class="sourceCode" id="cb53"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb53-1"><a href="ChapSeverity.html#cb53-1" tabindex="-1"></a><span class="co"># Part a.</span></span>
+<span id="cb53-2"><a href="ChapSeverity.html#cb53-2" tabindex="-1"></a>TravelClaims <span class="ot">&lt;-</span> <span class="fu">read.csv</span>(<span class="st">&quot;Data</span><span class="sc">\\</span><span class="st">ANUTravelClaims2022.csv&quot;</span>,<span class="at">header=</span>T)</span>
+<span id="cb53-3"><a href="ChapSeverity.html#cb53-3" tabindex="-1"></a>TravelClaimsGT10 <span class="ot">&lt;-</span> <span class="fu">subset</span>(TravelClaims, Incurred.Loss  <span class="sc">&gt;=</span> <span class="dv">10</span>)</span>
+<span id="cb53-4"><a href="ChapSeverity.html#cb53-4" tabindex="-1"></a>X <span class="ot">&lt;-</span> TravelClaimsGT10<span class="sc">$</span>Incurred.Loss</span>
+<span id="cb53-5"><a href="ChapSeverity.html#cb53-5" tabindex="-1"></a><span class="fu">par</span>(<span class="at">mfrow=</span><span class="fu">c</span>(<span class="dv">1</span>, <span class="dv">2</span>))</span>
+<span id="cb53-6"><a href="ChapSeverity.html#cb53-6" tabindex="-1"></a><span class="fu">plot</span>(<span class="fu">density</span>(X), <span class="at">main =</span> <span class="st">&quot;&quot;</span>, <span class="at">xlab =</span> <span class="st">&quot;Claims&quot;</span>)</span>
+<span id="cb53-7"><a href="ChapSeverity.html#cb53-7" tabindex="-1"></a><span class="fu">plot</span>(<span class="fu">density</span>(<span class="fu">log</span>(X)), <span class="at">main =</span> <span class="st">&quot;&quot;</span>, <span class="at">xlab =</span> <span class="st">&quot;Log Claims&quot;</span>)</span></code></pre></div>
 <p><img src="LossDataAnalytics_files/figure-html/unnamed-chunk-54-1.png" width="672" style="display: block; margin: auto;" /></p>
-<div class="sourceCode" id="cb54"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb54-1"><a href="ChapSeverity.html#cb54-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Part b.</span></span>
-<span id="cb54-2"><a href="ChapSeverity.html#cb54-2" aria-hidden="true" tabindex="-1"></a>y <span class="ot">&lt;-</span> <span class="fu">seq</span>(<span class="dv">0</span>, <span class="dv">15</span>, <span class="at">by =</span> <span class="fl">0.01</span>)</span>
-<span id="cb54-3"><a href="ChapSeverity.html#cb54-3" aria-hidden="true" tabindex="-1"></a><span class="fu">plot</span>(<span class="fu">density</span>(<span class="fu">log</span>(X)), <span class="at">main =</span> <span class="st">&quot;&quot;</span>, <span class="at">xlab =</span> <span class="st">&quot;Log Claims&quot;</span>)</span>
-<span id="cb54-4"><a href="ChapSeverity.html#cb54-4" aria-hidden="true" tabindex="-1"></a>fit.norm <span class="ot">&lt;-</span> <span class="fu">dnorm</span>(y, <span class="at">mean =</span> <span class="fu">mean</span>(<span class="fu">log</span>(X)), <span class="at">sd =</span> <span class="fu">sd</span>(<span class="fu">log</span>(X)))</span>
-<span id="cb54-5"><a href="ChapSeverity.html#cb54-5" aria-hidden="true" tabindex="-1"></a><span class="fu">lines</span>(y, fit.norm, <span class="at">col =</span> <span class="st">&quot;green&quot;</span>, <span class="at">lty =</span> <span class="dv">7</span>)</span></code></pre></div>
+<div class="sourceCode" id="cb54"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb54-1"><a href="ChapSeverity.html#cb54-1" tabindex="-1"></a><span class="co"># Part b.</span></span>
+<span id="cb54-2"><a href="ChapSeverity.html#cb54-2" tabindex="-1"></a>y <span class="ot">&lt;-</span> <span class="fu">seq</span>(<span class="dv">0</span>, <span class="dv">15</span>, <span class="at">by =</span> <span class="fl">0.01</span>)</span>
+<span id="cb54-3"><a href="ChapSeverity.html#cb54-3" tabindex="-1"></a><span class="fu">plot</span>(<span class="fu">density</span>(<span class="fu">log</span>(X)), <span class="at">main =</span> <span class="st">&quot;&quot;</span>, <span class="at">xlab =</span> <span class="st">&quot;Log Claims&quot;</span>) </span>
+<span id="cb54-4"><a href="ChapSeverity.html#cb54-4" tabindex="-1"></a>fit.norm <span class="ot">&lt;-</span> <span class="fu">dnorm</span>(y, <span class="at">mean =</span> <span class="fu">mean</span>(<span class="fu">log</span>(X)), <span class="at">sd =</span> <span class="fu">sd</span>(<span class="fu">log</span>(X)) )</span>
+<span id="cb54-5"><a href="ChapSeverity.html#cb54-5" tabindex="-1"></a><span class="fu">lines</span>(y, fit.norm, <span class="at">col =</span> <span class="st">&quot;green&quot;</span>, <span class="at">lty =</span><span class="dv">7</span>)</span></code></pre></div>
 <p><img src="LossDataAnalytics_files/figure-html/unnamed-chunk-55-1.png" width="672" style="display: block; margin: auto;" /></p>
-<div class="sourceCode" id="cb55"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb55-1"><a href="ChapSeverity.html#cb55-1" aria-hidden="true" tabindex="-1"></a>fit.norm <span class="ot">&lt;-</span> <span class="fu">dnorm</span>(y, <span class="at">mean =</span> <span class="fu">mean</span>(<span class="fu">log</span>(X)), <span class="at">sd =</span> <span class="fu">sd</span>(<span class="fu">log</span>(X)))</span></code></pre></div>
-<div class="sourceCode" id="cb56"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb56-1"><a href="ChapSeverity.html#cb56-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Part c.</span></span>
-<span id="cb56-2"><a href="ChapSeverity.html#cb56-2" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(VGAM)</span>
-<span id="cb56-3"><a href="ChapSeverity.html#cb56-3" aria-hidden="true" tabindex="-1"></a><span class="co"># Pareto</span></span>
-<span id="cb56-4"><a href="ChapSeverity.html#cb56-4" aria-hidden="true" tabindex="-1"></a>fit.pareto <span class="ot">&lt;-</span> <span class="fu">vglm</span>(X <span class="sc">~</span> <span class="dv">1</span>, paretoII, <span class="at">loc =</span> <span class="dv">0</span>)</span>
-<span id="cb56-5"><a href="ChapSeverity.html#cb56-5" aria-hidden="true" tabindex="-1"></a><span class="fu">coef</span>(fit.pareto)</span></code></pre></div>
+<div class="sourceCode" id="cb55"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb55-1"><a href="ChapSeverity.html#cb55-1" tabindex="-1"></a>fit.norm <span class="ot">&lt;-</span> <span class="fu">dnorm</span>(y, <span class="at">mean =</span> <span class="fu">mean</span>(<span class="fu">log</span>(X)), <span class="at">sd =</span> <span class="fu">sd</span>(<span class="fu">log</span>(X)) )</span></code></pre></div>
+<div class="sourceCode" id="cb56"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb56-1"><a href="ChapSeverity.html#cb56-1" tabindex="-1"></a><span class="co"># Part c.</span></span>
+<span id="cb56-2"><a href="ChapSeverity.html#cb56-2" tabindex="-1"></a><span class="fu">library</span>(VGAM)</span>
+<span id="cb56-3"><a href="ChapSeverity.html#cb56-3" tabindex="-1"></a><span class="co">#Pareto</span></span>
+<span id="cb56-4"><a href="ChapSeverity.html#cb56-4" tabindex="-1"></a>fit.pareto <span class="ot">&lt;-</span> <span class="fu">vglm</span>(X <span class="sc">~</span> <span class="dv">1</span>, paretoII, <span class="at">loc =</span> <span class="dv">0</span> )</span>
+<span id="cb56-5"><a href="ChapSeverity.html#cb56-5" tabindex="-1"></a><span class="fu">coef</span>(fit.pareto)</span></code></pre></div>
 <pre><code>(Intercept):1 (Intercept):2 
      7.275646      0.718753 </code></pre>
-<div class="sourceCode" id="cb58"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb58-1"><a href="ChapSeverity.html#cb58-1" aria-hidden="true" tabindex="-1"></a>loglikPareto <span class="ot">&lt;-</span> <span class="cf">function</span>(parms) {</span>
-<span id="cb58-2"><a href="ChapSeverity.html#cb58-2" aria-hidden="true" tabindex="-1"></a>    r <span class="ot">&lt;-</span> parms[<span class="dv">1</span>]</span>
-<span id="cb58-3"><a href="ChapSeverity.html#cb58-3" aria-hidden="true" tabindex="-1"></a>    beta <span class="ot">&lt;-</span> parms[<span class="dv">2</span>]</span>
-<span id="cb58-4"><a href="ChapSeverity.html#cb58-4" aria-hidden="true" tabindex="-1"></a>    nloglike <span class="ot">&lt;-</span> <span class="sc">-</span><span class="fu">sum</span>(<span class="fu">log</span>(VGAM<span class="sc">::</span><span class="fu">dparetoII</span>(X, <span class="at">loc =</span> <span class="dv">0</span>, <span class="at">shape =</span> <span class="fu">exp</span>(parms[<span class="dv">2</span>]), <span class="at">scale =</span> <span class="fu">exp</span>(parms[<span class="dv">1</span>]))))</span>
-<span id="cb58-5"><a href="ChapSeverity.html#cb58-5" aria-hidden="true" tabindex="-1"></a>    <span class="fu">return</span>(nloglike)</span>
-<span id="cb58-6"><a href="ChapSeverity.html#cb58-6" aria-hidden="true" tabindex="-1"></a>}</span>
-<span id="cb58-7"><a href="ChapSeverity.html#cb58-7" aria-hidden="true" tabindex="-1"></a>Pareto.exp <span class="ot">&lt;-</span> <span class="fu">optim</span>(<span class="at">par =</span> <span class="fu">c</span>(<span class="dv">1</span>, <span class="dv">1</span>), loglikPareto)</span>
-<span id="cb58-8"><a href="ChapSeverity.html#cb58-8" aria-hidden="true" tabindex="-1"></a>Pareto.exp<span class="sc">$</span>par</span></code></pre></div>
+<div class="sourceCode" id="cb58"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb58-1"><a href="ChapSeverity.html#cb58-1" tabindex="-1"></a>loglikPareto <span class="ot">&lt;-</span> <span class="cf">function</span> (parms){ </span>
+<span id="cb58-2"><a href="ChapSeverity.html#cb58-2" tabindex="-1"></a>  r    <span class="ot">&lt;-</span>  parms[<span class="dv">1</span>]</span>
+<span id="cb58-3"><a href="ChapSeverity.html#cb58-3" tabindex="-1"></a>  beta <span class="ot">&lt;-</span>  parms[<span class="dv">2</span>]</span>
+<span id="cb58-4"><a href="ChapSeverity.html#cb58-4" tabindex="-1"></a>  nloglike  <span class="ot">&lt;-</span> <span class="sc">-</span><span class="fu">sum</span>(<span class="fu">log</span>(VGAM<span class="sc">::</span><span class="fu">dparetoII</span>(X, <span class="at">loc =</span> <span class="dv">0</span>, <span class="at">shape =</span> <span class="fu">exp</span>(parms[<span class="dv">2</span>]), <span class="at">scale =</span> <span class="fu">exp</span>(parms[<span class="dv">1</span>])) ))</span>
+<span id="cb58-5"><a href="ChapSeverity.html#cb58-5" tabindex="-1"></a>  <span class="fu">return</span>(nloglike)</span>
+<span id="cb58-6"><a href="ChapSeverity.html#cb58-6" tabindex="-1"></a>} </span>
+<span id="cb58-7"><a href="ChapSeverity.html#cb58-7" tabindex="-1"></a>Pareto.exp     <span class="ot">&lt;-</span> <span class="fu">optim</span>(<span class="at">par =</span> <span class="fu">c</span>(<span class="dv">1</span>,<span class="dv">1</span>), loglikPareto)</span>
+<span id="cb58-8"><a href="ChapSeverity.html#cb58-8" tabindex="-1"></a>Pareto.exp<span class="sc">$</span>par</span></code></pre></div>
 <pre><code>[1] 7.2751491 0.7187598</code></pre>
-<div class="sourceCode" id="cb60"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb60-1"><a href="ChapSeverity.html#cb60-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Part d.</span></span>
-<span id="cb60-2"><a href="ChapSeverity.html#cb60-2" aria-hidden="true" tabindex="-1"></a>fpareto_ex <span class="ot">&lt;-</span> VGAM<span class="sc">::</span><span class="fu">dparetoII</span>(<span class="fu">exp</span>(y), <span class="at">loc =</span> <span class="dv">0</span>, <span class="at">shape =</span> <span class="fu">exp</span>(<span class="fu">coef</span>(fit.pareto)[<span class="dv">2</span>]),</span>
-<span id="cb60-3"><a href="ChapSeverity.html#cb60-3" aria-hidden="true" tabindex="-1"></a>    <span class="at">scale =</span> <span class="fu">exp</span>(<span class="fu">coef</span>(fit.pareto)[<span class="dv">1</span>])) <span class="sc">*</span> <span class="fu">exp</span>(y)</span>
-<span id="cb60-4"><a href="ChapSeverity.html#cb60-4" aria-hidden="true" tabindex="-1"></a><span class="fu">plot</span>(<span class="fu">density</span>(<span class="fu">log</span>(X)), <span class="at">main =</span> <span class="st">&quot;&quot;</span>, <span class="at">xlab =</span> <span class="st">&quot;Log Claims&quot;</span>)</span>
-<span id="cb60-5"><a href="ChapSeverity.html#cb60-5" aria-hidden="true" tabindex="-1"></a><span class="fu">lines</span>(y, fit.norm, <span class="at">col =</span> <span class="st">&quot;green&quot;</span>, <span class="at">lty =</span> <span class="dv">7</span>)</span>
-<span id="cb60-6"><a href="ChapSeverity.html#cb60-6" aria-hidden="true" tabindex="-1"></a><span class="fu">lines</span>(y, fpareto_ex, <span class="at">col =</span> <span class="st">&quot;purple&quot;</span>, <span class="at">lty =</span> <span class="dv">7</span>)</span></code></pre></div>
+<div class="sourceCode" id="cb60"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb60-1"><a href="ChapSeverity.html#cb60-1" tabindex="-1"></a><span class="co"># Part d.</span></span>
+<span id="cb60-2"><a href="ChapSeverity.html#cb60-2" tabindex="-1"></a>fpareto_ex <span class="ot">&lt;-</span> VGAM<span class="sc">::</span><span class="fu">dparetoII</span>(<span class="fu">exp</span>(y), <span class="at">loc =</span> <span class="dv">0</span>, <span class="at">shape =</span> <span class="fu">exp</span>(<span class="fu">coef</span>(fit.pareto)[<span class="dv">2</span>]), <span class="at">scale =</span> <span class="fu">exp</span>(<span class="fu">coef</span>(fit.pareto)[<span class="dv">1</span>])) <span class="sc">*</span> <span class="fu">exp</span>(y)</span>
+<span id="cb60-3"><a href="ChapSeverity.html#cb60-3" tabindex="-1"></a><span class="fu">plot</span>(<span class="fu">density</span>(<span class="fu">log</span>(X)), <span class="at">main =</span> <span class="st">&quot;&quot;</span>, <span class="at">xlab =</span> <span class="st">&quot;Log Claims&quot;</span>) </span>
+<span id="cb60-4"><a href="ChapSeverity.html#cb60-4" tabindex="-1"></a><span class="fu">lines</span>(y, fit.norm, <span class="at">col =</span> <span class="st">&quot;green&quot;</span>, <span class="at">lty =</span><span class="dv">7</span>)</span>
+<span id="cb60-5"><a href="ChapSeverity.html#cb60-5" tabindex="-1"></a><span class="fu">lines</span>(y, fpareto_ex, <span class="at">col =</span> <span class="st">&quot;purple&quot;</span>, <span class="at">lty =</span><span class="dv">7</span>)</span></code></pre></div>
 <p><img src="LossDataAnalytics_files/figure-html/unnamed-chunk-57-1.png" width="672" style="display: block; margin: auto;" /></p>
 </div>
 <p><strong>Exercise 4.2. Wisconsin Property Fund.</strong> Replicate the real-data example introduced in <a href="../docs/ChapSeverity.html#Ex:44.12">Example 4.4.12</a> using the techniques demonstrated in Exercise 4.1.</p>
@@ -2784,36 +2777,38 @@ Figure 4.10: <strong>Distribution of Group Personal Accident Losses with Superim
 <a id="displayCode.GPA.2" href="javascript:togglecode('toggleCode.GPA.2','displayCode.GPA.2');"><i><strong>Solutions for Exercise 4.3</strong></i></a>
 </h5>
 <div id="toggleCode.GPA.2" style="display: none">
-<div class="sourceCode" id="cb61"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb61-1"><a href="ChapSeverity.html#cb61-1" aria-hidden="true" tabindex="-1"></a>GPAClaims <span class="ot">&lt;-</span> <span class="fu">read.csv</span>(<span class="st">&quot;Data</span><span class="sc">\\</span><span class="st">ANUGroupPersonalAccidentClaims2022.csv&quot;</span>, <span class="at">header =</span> T)</span>
-<span id="cb61-2"><a href="ChapSeverity.html#cb61-2" aria-hidden="true" tabindex="-1"></a>GPAClaimsGT10 <span class="ot">&lt;-</span> <span class="fu">subset</span>(GPAClaims, Incurred.Loss <span class="sc">&gt;=</span> <span class="dv">10</span>)</span>
-<span id="cb61-3"><a href="ChapSeverity.html#cb61-3" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb61-4"><a href="ChapSeverity.html#cb61-4" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(VGAM)</span>
-<span id="cb61-5"><a href="ChapSeverity.html#cb61-5" aria-hidden="true" tabindex="-1"></a>x <span class="ot">&lt;-</span> <span class="fu">seq</span>(<span class="dv">0</span>, <span class="dv">15</span>, <span class="at">by =</span> <span class="fl">0.01</span>)</span>
-<span id="cb61-6"><a href="ChapSeverity.html#cb61-6" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb61-7"><a href="ChapSeverity.html#cb61-7" aria-hidden="true" tabindex="-1"></a><span class="co"># Inference assuming a gamma distribution</span></span>
-<span id="cb61-8"><a href="ChapSeverity.html#cb61-8" aria-hidden="true" tabindex="-1"></a>fit.gamma <span class="ot">&lt;-</span> <span class="fu">vglm</span>(Incurred.Loss <span class="sc">~</span> <span class="dv">1</span>, <span class="at">family =</span> gamma2, <span class="at">data =</span> GPAClaimsGT10)</span>
-<span id="cb61-9"><a href="ChapSeverity.html#cb61-9" aria-hidden="true" tabindex="-1"></a>theta <span class="ot">&lt;-</span> <span class="fu">exp</span>(<span class="fu">coef</span>(fit.gamma)[<span class="dv">1</span>])<span class="sc">/</span><span class="fu">exp</span>(<span class="fu">coef</span>(fit.gamma)[<span class="dv">2</span>])  <span class="co"># theta = mu / alpha</span></span>
-<span id="cb61-10"><a href="ChapSeverity.html#cb61-10" aria-hidden="true" tabindex="-1"></a>alpha <span class="ot">&lt;-</span> <span class="fu">exp</span>(<span class="fu">coef</span>(fit.gamma)[<span class="dv">2</span>])</span>
-<span id="cb61-11"><a href="ChapSeverity.html#cb61-11" aria-hidden="true" tabindex="-1"></a>fgamma_ex <span class="ot">&lt;-</span> <span class="fu">dgamma</span>(<span class="fu">exp</span>(x), <span class="at">shape =</span> alpha, <span class="at">scale =</span> theta) <span class="sc">*</span> <span class="fu">exp</span>(x)</span>
-<span id="cb61-12"><a href="ChapSeverity.html#cb61-12" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb61-13"><a href="ChapSeverity.html#cb61-13" aria-hidden="true" tabindex="-1"></a><span class="co"># Pareto</span></span>
-<span id="cb61-14"><a href="ChapSeverity.html#cb61-14" aria-hidden="true" tabindex="-1"></a>fit.pareto <span class="ot">&lt;-</span> <span class="fu">vglm</span>(Incurred.Loss <span class="sc">~</span> <span class="dv">1</span>, paretoII, <span class="at">loc =</span> <span class="dv">0</span>, <span class="at">data =</span> GPAClaimsGT10)</span>
-<span id="cb61-15"><a href="ChapSeverity.html#cb61-15" aria-hidden="true" tabindex="-1"></a>fpareto_ex <span class="ot">&lt;-</span> <span class="fu">dparetoII</span>(<span class="fu">exp</span>(x), <span class="at">loc =</span> <span class="dv">0</span>, <span class="at">shape =</span> <span class="fu">exp</span>(<span class="fu">coef</span>(fit.pareto)[<span class="dv">2</span>]), <span class="at">scale =</span> <span class="fu">exp</span>(<span class="fu">coef</span>(fit.pareto)[<span class="dv">1</span>])) <span class="sc">*</span></span>
-<span id="cb61-16"><a href="ChapSeverity.html#cb61-16" aria-hidden="true" tabindex="-1"></a>    <span class="fu">exp</span>(x)</span>
-<span id="cb61-17"><a href="ChapSeverity.html#cb61-17" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb61-18"><a href="ChapSeverity.html#cb61-18" aria-hidden="true" tabindex="-1"></a><span class="co"># Lognormal</span></span>
-<span id="cb61-19"><a href="ChapSeverity.html#cb61-19" aria-hidden="true" tabindex="-1"></a>fit.LN <span class="ot">&lt;-</span> <span class="fu">vglm</span>(Incurred.Loss <span class="sc">~</span> <span class="dv">1</span>, <span class="at">family =</span> lognormal, <span class="at">data =</span> GPAClaimsGT10)</span>
-<span id="cb61-20"><a href="ChapSeverity.html#cb61-20" aria-hidden="true" tabindex="-1"></a>flnorm_ex <span class="ot">&lt;-</span> <span class="fu">dlnorm</span>(<span class="fu">exp</span>(x), <span class="at">mean =</span> <span class="fu">coef</span>(fit.LN)[<span class="dv">1</span>], <span class="at">sd =</span> <span class="fu">exp</span>(<span class="fu">coef</span>(fit.LN)[<span class="dv">2</span>])) <span class="sc">*</span></span>
-<span id="cb61-21"><a href="ChapSeverity.html#cb61-21" aria-hidden="true" tabindex="-1"></a>    <span class="fu">exp</span>(x)</span>
-<span id="cb61-22"><a href="ChapSeverity.html#cb61-22" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb61-23"><a href="ChapSeverity.html#cb61-23" aria-hidden="true" tabindex="-1"></a><span class="fu">plot</span>(<span class="fu">density</span>(<span class="fu">log</span>(GPAClaimsGT10<span class="sc">$</span>Incurred.Loss)), <span class="at">main =</span> <span class="st">&quot;&quot;</span>, <span class="at">xlab =</span> <span class="st">&quot;Log Claims&quot;</span>, <span class="at">ylim =</span> <span class="fu">c</span>(<span class="dv">0</span>,</span>
-<span id="cb61-24"><a href="ChapSeverity.html#cb61-24" aria-hidden="true" tabindex="-1"></a>    <span class="fl">0.4</span>))</span>
-<span id="cb61-25"><a href="ChapSeverity.html#cb61-25" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb61-26"><a href="ChapSeverity.html#cb61-26" aria-hidden="true" tabindex="-1"></a><span class="fu">lines</span>(x, fgamma_ex, <span class="at">col =</span> <span class="st">&quot;blue&quot;</span>, <span class="at">lty =</span> <span class="dv">2</span>)</span>
-<span id="cb61-27"><a href="ChapSeverity.html#cb61-27" aria-hidden="true" tabindex="-1"></a><span class="fu">lines</span>(x, fpareto_ex, <span class="at">col =</span> <span class="st">&quot;purple&quot;</span>, <span class="at">lty =</span> <span class="dv">3</span>)</span>
-<span id="cb61-28"><a href="ChapSeverity.html#cb61-28" aria-hidden="true" tabindex="-1"></a><span class="fu">lines</span>(x, flnorm_ex, <span class="at">col =</span> <span class="st">&quot;green&quot;</span>, <span class="at">lty =</span> <span class="dv">3</span>)</span>
-<span id="cb61-29"><a href="ChapSeverity.html#cb61-29" aria-hidden="true" tabindex="-1"></a><span class="fu">legend</span>(<span class="st">&quot;topleft&quot;</span>, <span class="fu">c</span>(<span class="st">&quot;log(Claim)&quot;</span>, <span class="st">&quot;Gamma&quot;</span>, <span class="st">&quot;Pareto&quot;</span>, <span class="st">&quot;Lognormal&quot;</span>), <span class="at">cex =</span> <span class="fl">0.8</span>, <span class="at">lty =</span> <span class="fu">c</span>(<span class="dv">1</span>,</span>
-<span id="cb61-30"><a href="ChapSeverity.html#cb61-30" aria-hidden="true" tabindex="-1"></a>    <span class="dv">2</span>, <span class="dv">3</span>, <span class="dv">4</span>, <span class="dv">1</span>, <span class="dv">1</span>), <span class="at">col =</span> <span class="fu">c</span>(<span class="st">&quot;black&quot;</span>, <span class="st">&quot;blue&quot;</span>, <span class="st">&quot;purple&quot;</span>, <span class="st">&quot;green&quot;</span>))</span></code></pre></div>
+<div class="sourceCode" id="cb61"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb61-1"><a href="ChapSeverity.html#cb61-1" tabindex="-1"></a>GPAClaims <span class="ot">&lt;-</span> <span class="fu">read.csv</span>(<span class="st">&quot;Data</span><span class="sc">\\</span><span class="st">ANUGroupPersonalAccidentClaims2022.csv&quot;</span>,<span class="at">header=</span>T)</span>
+<span id="cb61-2"><a href="ChapSeverity.html#cb61-2" tabindex="-1"></a>GPAClaimsGT10 <span class="ot">&lt;-</span> <span class="fu">subset</span>(GPAClaims, Incurred.Loss <span class="sc">&gt;=</span><span class="dv">10</span>)</span>
+<span id="cb61-3"><a href="ChapSeverity.html#cb61-3" tabindex="-1"></a></span>
+<span id="cb61-4"><a href="ChapSeverity.html#cb61-4" tabindex="-1"></a><span class="fu">library</span>(VGAM)</span>
+<span id="cb61-5"><a href="ChapSeverity.html#cb61-5" tabindex="-1"></a>x <span class="ot">&lt;-</span> <span class="fu">seq</span>(<span class="dv">0</span>, <span class="dv">15</span>, <span class="at">by =</span> <span class="fl">0.01</span>)</span>
+<span id="cb61-6"><a href="ChapSeverity.html#cb61-6" tabindex="-1"></a></span>
+<span id="cb61-7"><a href="ChapSeverity.html#cb61-7" tabindex="-1"></a><span class="co"># Inference assuming a gamma distribution</span></span>
+<span id="cb61-8"><a href="ChapSeverity.html#cb61-8" tabindex="-1"></a>fit.gamma <span class="ot">&lt;-</span> <span class="fu">vglm</span>(Incurred.Loss <span class="sc">~</span> <span class="dv">1</span>, <span class="at">family =</span> gamma2, <span class="at">data =</span> GPAClaimsGT10)</span>
+<span id="cb61-9"><a href="ChapSeverity.html#cb61-9" tabindex="-1"></a>theta <span class="ot">&lt;-</span> <span class="fu">exp</span>(<span class="fu">coef</span>(fit.gamma)[<span class="dv">1</span>]) <span class="sc">/</span> <span class="fu">exp</span>(<span class="fu">coef</span>(fit.gamma)[<span class="dv">2</span>])  <span class="co"># theta = mu / alpha</span></span>
+<span id="cb61-10"><a href="ChapSeverity.html#cb61-10" tabindex="-1"></a>alpha <span class="ot">&lt;-</span> <span class="fu">exp</span>(<span class="fu">coef</span>(fit.gamma)[<span class="dv">2</span>]) </span>
+<span id="cb61-11"><a href="ChapSeverity.html#cb61-11" tabindex="-1"></a>fgamma_ex <span class="ot">&lt;-</span> <span class="fu">dgamma</span>(<span class="fu">exp</span>(x), <span class="at">shape =</span> alpha, <span class="at">scale =</span> theta) <span class="sc">*</span> <span class="fu">exp</span>(x)</span>
+<span id="cb61-12"><a href="ChapSeverity.html#cb61-12" tabindex="-1"></a></span>
+<span id="cb61-13"><a href="ChapSeverity.html#cb61-13" tabindex="-1"></a><span class="co">#Pareto</span></span>
+<span id="cb61-14"><a href="ChapSeverity.html#cb61-14" tabindex="-1"></a>fit.pareto <span class="ot">&lt;-</span> <span class="fu">vglm</span>(Incurred.Loss <span class="sc">~</span> <span class="dv">1</span>, paretoII, <span class="at">loc =</span> <span class="dv">0</span>, <span class="at">data =</span> GPAClaimsGT10)</span>
+<span id="cb61-15"><a href="ChapSeverity.html#cb61-15" tabindex="-1"></a>fpareto_ex <span class="ot">&lt;-</span> <span class="fu">dparetoII</span>(<span class="fu">exp</span>(x), <span class="at">loc =</span> <span class="dv">0</span>, <span class="at">shape =</span> <span class="fu">exp</span>(<span class="fu">coef</span>(fit.pareto)[<span class="dv">2</span>]), </span>
+<span id="cb61-16"><a href="ChapSeverity.html#cb61-16" tabindex="-1"></a>                        <span class="at">scale =</span> <span class="fu">exp</span>(<span class="fu">coef</span>(fit.pareto)[<span class="dv">1</span>])) <span class="sc">*</span> <span class="fu">exp</span>(x)</span>
+<span id="cb61-17"><a href="ChapSeverity.html#cb61-17" tabindex="-1"></a></span>
+<span id="cb61-18"><a href="ChapSeverity.html#cb61-18" tabindex="-1"></a><span class="co"># Lognormal</span></span>
+<span id="cb61-19"><a href="ChapSeverity.html#cb61-19" tabindex="-1"></a>fit.LN <span class="ot">&lt;-</span> <span class="fu">vglm</span>(Incurred.Loss <span class="sc">~</span> <span class="dv">1</span>, <span class="at">family =</span> lognormal, <span class="at">data =</span> GPAClaimsGT10)</span>
+<span id="cb61-20"><a href="ChapSeverity.html#cb61-20" tabindex="-1"></a>flnorm_ex <span class="ot">&lt;-</span> <span class="fu">dlnorm</span>(<span class="fu">exp</span>(x), <span class="at">mean =</span> <span class="fu">coef</span>(fit.LN)[<span class="dv">1</span>],</span>
+<span id="cb61-21"><a href="ChapSeverity.html#cb61-21" tabindex="-1"></a>                    <span class="at">sd =</span> <span class="fu">exp</span>(<span class="fu">coef</span>(fit.LN)[<span class="dv">2</span>])) <span class="sc">*</span> <span class="fu">exp</span>(x)</span>
+<span id="cb61-22"><a href="ChapSeverity.html#cb61-22" tabindex="-1"></a></span>
+<span id="cb61-23"><a href="ChapSeverity.html#cb61-23" tabindex="-1"></a><span class="fu">plot</span>(<span class="fu">density</span>(<span class="fu">log</span>(GPAClaimsGT10<span class="sc">$</span>Incurred.Loss)), <span class="at">main =</span> <span class="st">&quot;&quot;</span>, <span class="at">xlab =</span> <span class="st">&quot;Log Claims&quot;</span>, </span>
+<span id="cb61-24"><a href="ChapSeverity.html#cb61-24" tabindex="-1"></a>           <span class="at">ylim =</span> <span class="fu">c</span>(<span class="dv">0</span>,<span class="fl">0.4</span>)) </span>
+<span id="cb61-25"><a href="ChapSeverity.html#cb61-25" tabindex="-1"></a></span>
+<span id="cb61-26"><a href="ChapSeverity.html#cb61-26" tabindex="-1"></a><span class="fu">lines</span>(x, fgamma_ex, <span class="at">col =</span> <span class="st">&quot;blue&quot;</span>, <span class="at">lty =</span><span class="dv">2</span>)</span>
+<span id="cb61-27"><a href="ChapSeverity.html#cb61-27" tabindex="-1"></a><span class="fu">lines</span>(x, fpareto_ex, <span class="at">col =</span> <span class="st">&quot;purple&quot;</span>, <span class="at">lty =</span><span class="dv">3</span>)</span>
+<span id="cb61-28"><a href="ChapSeverity.html#cb61-28" tabindex="-1"></a><span class="fu">lines</span>(x, flnorm_ex, <span class="at">col =</span> <span class="st">&quot;green&quot;</span>, <span class="at">lty =</span><span class="dv">3</span>)</span>
+<span id="cb61-29"><a href="ChapSeverity.html#cb61-29" tabindex="-1"></a><span class="fu">legend</span>(<span class="st">&quot;topleft&quot;</span>, <span class="fu">c</span>(<span class="st">&quot;log(Claim)&quot;</span>, <span class="st">&quot;Gamma&quot;</span>, <span class="st">&quot;Pareto&quot;</span>, </span>
+<span id="cb61-30"><a href="ChapSeverity.html#cb61-30" tabindex="-1"></a>                    <span class="st">&quot;Lognormal&quot;</span>), <span class="at">cex=</span><span class="fl">0.8</span>,</span>
+<span id="cb61-31"><a href="ChapSeverity.html#cb61-31" tabindex="-1"></a>       <span class="at">lty =</span> <span class="fu">c</span>(<span class="dv">1</span>,<span class="dv">2</span>,<span class="dv">3</span>,<span class="dv">4</span>,<span class="dv">1</span>,<span class="dv">1</span>),</span>
+<span id="cb61-32"><a href="ChapSeverity.html#cb61-32" tabindex="-1"></a>       <span class="at">col =</span> <span class="fu">c</span>(<span class="st">&quot;black&quot;</span>,<span class="st">&quot;blue&quot;</span>,<span class="st">&quot;purple&quot;</span>,<span class="st">&quot;green&quot;</span>)) </span></code></pre></div>
 </div>
 </div>
 <div id="LM-further-reading-and-resources" class="section level2 hasAnchor" number="4.6">
@@ -2828,7 +2823,7 @@ Figure 4.10: <strong>Distribution of Group Personal Accident Losses with Superim
 </div>
 <div id="further-readings-and-references-1" class="section level4 unnumbered hasAnchor">
 <h4>Further Readings and References<a href="ChapSeverity.html#further-readings-and-references-1" class="anchor-section" aria-label="Anchor link to header"></a></h4>
-<p>Notable contributions include: <span class="citation"><a href="#ref-cummins1991managing" role="doc-biblioref">Cummins and Derrig</a> (<a href="#ref-cummins1991managing" role="doc-biblioref">2012</a>)</span>, <span class="citation"><a href="#ref-frees2008hierarchical" role="doc-biblioref">Frees and Valdez</a> (<a href="#ref-frees2008hierarchical" role="doc-biblioref">2008</a>)</span>, <span class="citation"><a href="#ref-klugman2012" role="doc-biblioref">Klugman, Panjer, and Willmot</a> (<a href="#ref-klugman2012" role="doc-biblioref">2012</a>)</span>, <span class="citation"><a href="#ref-kreer2015goodness" role="doc-biblioref">Kreer et al.</a> (<a href="#ref-kreer2015goodness" role="doc-biblioref">2015</a>)</span>, <span class="citation"><a href="#ref-mcdonald1984some" role="doc-biblioref">McDonald</a> (<a href="#ref-mcdonald1984some" role="doc-biblioref">1984</a>)</span>, <span class="citation"><a href="#ref-mcdonald1995generalization" role="doc-biblioref">McDonald and Xu</a> (<a href="#ref-mcdonald1995generalization" role="doc-biblioref">1995</a>)</span>, <span class="citation"><a href="#ref-tevet2016applying" role="doc-biblioref">Tevet</a> (<a href="#ref-tevet2016applying" role="doc-biblioref">2016</a>)</span>, and <span class="citation"><a href="#ref-venter1983transformed" role="doc-biblioref">G. Venter</a> (<a href="#ref-venter1983transformed" role="doc-biblioref">1983</a>)</span>.</p>
+<p>Notable contributions include: <span class="citation">Cummins and Derrig (<a href="#ref-cummins1991managing">2012</a>)</span>, <span class="citation">Frees and Valdez (<a href="#ref-frees2008hierarchical">2008</a>)</span>, <span class="citation">Klugman, Panjer, and Willmot (<a href="#ref-klugman2012">2012</a>)</span>, <span class="citation">Kreer et al. (<a href="#ref-kreer2015goodness">2015</a>)</span>, <span class="citation">McDonald (<a href="#ref-mcdonald1984some">1984</a>)</span>, <span class="citation">McDonald and Xu (<a href="#ref-mcdonald1995generalization">1995</a>)</span>, <span class="citation">Tevet (<a href="#ref-tevet2016applying">2016</a>)</span>, and <span class="citation">G. Venter (<a href="#ref-venter1983transformed">1983</a>)</span>.</p>
 <p>If you would like additional practice with <code>R</code> coding, please visit our companion <a href="https://openacttexts.github.io/LDACourse1">LDA Short Course</a>. In particular, see the <a href="https://openacttexts.github.io/LDACourse1/modeling-loss-severity.html">Modeling Loss Severity Chapter</a>.</p>
 
 </div>
@@ -2927,7 +2922,7 @@ gitbook.start({
     var script = document.createElement("script");
     script.type = "text/javascript";
     var src = "true";
-    if (src === "" || src === "true") src = "https://mathjax.rstudio.com/latest/MathJax.js?config=TeX-MML-AM_CHTML";
+    if (src === "" || src === "true") src = "https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.9/latest.js?config=TeX-MML-AM_CHTML";
     if (location.protocol !== "file:")
       if (/^https?:/.test(src))
         src = src.replace(/^https?:/, '');

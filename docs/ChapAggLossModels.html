@@ -6,7 +6,7 @@
   <meta http-equiv="X-UA-Compatible" content="IE=edge" />
   <title>Chapter 7 Aggregate Loss Models | Loss Data Analytics   Second Edition</title>
   <meta name="description" content="Loss Data Analytics is an interactive, online, freely available text. - The online version will contain many interactive objects (quizzes, computer demonstrations, interactive graphs, video, and the like) to promote deeper learning. - A subset of the book will be available in pdf format for low-cost printing. - The online text will be available in multiple languages to promote access to a worldwide audience." />
-  <meta name="generator" content="bookdown 0.27 and GitBook 2.6.7" />
+  <meta name="generator" content="bookdown 0.39 and GitBook 2.6.7" />
 
   <meta property="og:title" content="Chapter 7 Aggregate Loss Models | Loss Data Analytics   Second Edition" />
   <meta property="og:type" content="book" />
@@ -515,7 +515,7 @@ code span.al { color: #ff0000; font-weight: bold; } /* Alert */
 code span.an { color: #60a0b0; font-weight: bold; font-style: italic; } /* Annotation */
 code span.at { color: #7d9029; } /* Attribute */
 code span.bn { color: #40a070; } /* BaseN */
-code span.bu { } /* BuiltIn */
+code span.bu { color: #008000; } /* BuiltIn */
 code span.cf { color: #007020; font-weight: bold; } /* ControlFlow */
 code span.ch { color: #4070a0; } /* Char */
 code span.cn { color: #880000; } /* Constant */
@@ -528,7 +528,7 @@ code span.er { color: #ff0000; font-weight: bold; } /* Error */
 code span.ex { } /* Extension */
 code span.fl { color: #40a070; } /* Float */
 code span.fu { color: #06287e; } /* Function */
-code span.im { } /* Import */
+code span.im { color: #008000; font-weight: bold; } /* Import */
 code span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Information */
 code span.kw { color: #007020; font-weight: bold; } /* Keyword */
 code span.op { color: #666666; } /* Operator */
@@ -542,6 +542,10 @@ code span.vs { color: #4070a0; } /* VerbatimString */
 code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warning */
 </style>
 
+<style type="text/css">
+  
+  div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+</style>
 <style type="text/css">
 /* Used with Pandoc 2.11+ new --citeproc when CSL is used */
 div.csl-bib-body { }
@@ -1048,7 +1052,7 @@ div.csl-indent {
 <li class="chapter" data-level="16.1" data-path="ChapDependenceModel.html"><a href="ChapDependenceModel.html#S:Measures"><i class="fa fa-check"></i><b>16.1</b> Classic Measures of Scalar Associations</a>
 <ul>
 <li class="chapter" data-level="16.1.1" data-path="ChapDependenceModel.html"><a href="ChapDependenceModel.html#association-measures-for-quantitative-variables"><i class="fa fa-check"></i><b>16.1.1</b> Association Measures for Quantitative Variables</a></li>
-<li class="chapter" data-level="16.1.2" data-path="ChapDependenceModel.html"><a href="ChapDependenceModel.html#rank-based-measures"><i class="fa fa-check"></i><b>16.1.2</b> Rank Based Measures</a></li>
+<li class="chapter" data-level="16.1.2" data-path="ChapDependenceModel.html"><a href="ChapDependenceModel.html#Sec:RankMeasures"><i class="fa fa-check"></i><b>16.1.2</b> Rank Based Measures</a></li>
 <li class="chapter" data-level="16.1.3" data-path="ChapDependenceModel.html"><a href="ChapDependenceModel.html#Sec:tdc"><i class="fa fa-check"></i><b>16.1.3</b> Tail Dependence Coefficients</a></li>
 </ul></li>
 <li class="chapter" data-level="16.2" data-path="ChapDependenceModel.html"><a href="ChapDependenceModel.html#S:Copula"><i class="fa fa-check"></i><b>16.2</b> Introduction to Copulas</a>
@@ -1276,7 +1280,7 @@ S_n=X_1 +X_2 +\cdots+X_n ,
 \begin{aligned}
     {\rm Var}(S_n) &amp;= \sum_{i=1}^{n} {\rm Var}(X_i) \\
     P_{S_n}(z) &amp;= \prod_{i=1}^{n}P_{X_i}(z) \\
-    M_{S_n}(t) &amp;= \prod_{i=1}^{n}M_{X_i}(t), 
+    M_{S_n}(t) &amp;= \prod_{i=1}^{n}M_{X_i}(t),
 \end{aligned}
 \]</span></p>
 <p>where <span class="math inline">\(P_{S_n}(\cdot)\)</span> and <span class="math inline">\(M_{S_n}(\cdot)\)</span> are the probability generating function (<em>pgf</em>) and the moment generating function (<em>mgf</em>) of <span class="math inline">\(S_n\)</span>, respectively. The distribution of each <span class="math inline">\(X_i\)</span> contains a probability mass at zero, corresponding to the event of no claims from the <span class="math inline">\(i\)</span>th contract. One strategy to incorporate the zero mass in the distribution is to use the two-part framework:
@@ -1300,11 +1304,11 @@ A special case of the above model is when <span class="math inline">\(B_i\)</spa
 <p><strong>Example 7.2.1. Actuarial Exam Question.</strong>
 An insurance company sold 300 fire insurance policies as follows:</p>
 <p><span class="math display">\[
-{\small 
+{\small
 \begin{matrix}
     \begin{array}{c c c} \hline
         \text{Number of} &amp; \text{Policy} &amp; \text{Probability of}\\
-        \text{Policies} &amp;  \text{Maximum} &amp;  \text{Claim Per Policy}\\ 
+        \text{Policies} &amp;  \text{Maximum} &amp;  \text{Claim Per Policy}\\
         &amp; (M_i) &amp; (q_i) \\ \hline
         100 &amp; 400 &amp; 0.05\\
         200 &amp; 300 &amp; 0.06\\ \hline
@@ -1324,7 +1328,7 @@ An insurance company sold 300 fire insurance policies as follows:</p>
 <p><strong>Solution.</strong>
 The aggregate claims are <span class="math inline">\(S_{300} = X_1+\cdots+X_{300}\)</span>, where <span class="math inline">\(X_1, \ldots, X_{300}\)</span> are independent but not identically distributed. Policy claims amounts are uniformly distributed on <span class="math inline">\((0,M_i)\)</span>, so the mean claim amount is <span class="math inline">\(M_i/2\)</span> and the variance is <span class="math inline">\(M_i^2/12\)</span>. Thus, for policy <span class="math inline">\(i=1,\ldots,300\)</span>, we have
 <span class="math display">\[
-{\small 
+{\small
 \begin{matrix}
     \begin{array}{ccccc} \hline
         \text{Number of} &amp; \text{Policy} &amp; \text{Probability of} &amp; \text{Mean} &amp; \text{Variance}\\
@@ -1383,7 +1387,7 @@ we can write <span class="math inline">\(X_i=I_i\times B_i\)</span> with <span c
 <p><strong>Example 7.2.2.</strong>
 An insurance company sold a portfolio of 100 independent homeowners insurance policies, each of which has claim frequency following a zero-modified Poisson distribution, as follows:</p>
 <p><span class="math display">\[
-{\small 
+{\small
 \begin{matrix}
     \begin{array}{cccc} \hline
         \text{Type of} &amp; \text{Number of}  &amp; \text{Probability of} &amp; \lambda \\
@@ -1435,8 +1439,8 @@ Note that equivalently, we could have calculated the mean and variance of an ind
 <h3><span class="header-section-number">7.2.2</span> Aggregate Loss Distribution<a href="ChapAggLossModels.html#aggregate-loss-distribution" class="anchor-section" aria-label="Anchor link to header"></a></h3>
 <p>To understand the distribution of the aggregate loss, one could use the <a href="#" class="tooltip" style="color:green"><em>central limit theorem</em><span style="font-size:8pt">Given certain conditions, the arithmetic mean of a large number of replications of independent random variables, each with a finite mean and variance, will be approximately normally distributed, regardless of the underlying distribution.</span></a> to approximate the distribution of <span class="math inline">\(S_n\)</span> for large <span class="math inline">\(n\)</span>. Denote <span class="math inline">\(\mu_{S_n}={\rm E}(S_n)\)</span> and <span class="math inline">\(\sigma^2_{S_n}={\rm Var}(S_n)\)</span> and let <span class="math inline">\(Z\sim N(0,1)\)</span>, a standard normal random variable with <a href="#" class="tooltip" style="color:green"><em>cdf</em><span style="font-size:8pt">Cumulative distribution function</span></a> <span class="math inline">\(\Phi\)</span>. Then the <em>cdf</em> of <span class="math inline">\(S_n\)</span> can be approximated as follows:
 <span class="math display">\[\begin{aligned}
- F_{S_n}(s) &amp;= {\rm Pr}({S_n}\leq s) = \Pr \left( \frac{S_n - \mu_{S_n}}{\sigma_{S_n}} \leq \frac{s-\mu_{S_n}}{\sigma_{S_n}} \right) \\
- &amp;\approx \Pr\left( Z \leq \frac{s-\mu_{S_n}}{\sigma_{S_n}} \right) = \Phi \left(\frac{s-\mu_{S_n}}{\sigma_{S_n}}\right) .
+F_{S_n}(s) &amp;= {\rm Pr}({S_n}\leq s) = \Pr \left( \frac{S_n - \mu_{S_n}}{\sigma_{S_n}} \leq \frac{s-\mu_{S_n}}{\sigma_{S_n}} \right) \\
+&amp;\approx \Pr\left( Z \leq \frac{s-\mu_{S_n}}{\sigma_{S_n}} \right) = \Phi \left(\frac{s-\mu_{S_n}}{\sigma_{S_n}}\right) .
 \end{aligned}\]</span></p>
 <hr />
 <p><strong>Example 7.2.3. Actuarial Exam Question - Follow-Up.</strong>
@@ -1479,7 +1483,7 @@ F_X^{\ast 2} \left(x \right) &amp;=&amp; \Pr(X_1 + X_2 \le x) = \mathrm{E}_{X_2}
 F^{\ast n}\left(x\right) &amp;=&amp; \Pr(S_n \le x) = \Pr(S_{n-1} + X_n \le x)\\
 &amp;=&amp;\mathrm{E}_{X_n} \left[ \Pr(S_{n-1} \le x - X_n|X_n) \right] \\
 &amp;=&amp;\mathrm{E}_X \left[ F^{\ast(n-1)}(x - X) \right] \\
-&amp;=&amp; 
+&amp;=&amp;
 \left\{\begin{array}{ll}
 \int_{0}^{x} F^{\ast(n-1)}(x-y)f(y)dy &amp; \text{for continuous } X_i \text{&#39;s} \\
 \sum_{y \le x} F^{\ast(n-1)}(x-y)f(y) &amp; \text{for discrete } X_i \text{&#39;s} \\
@@ -1609,7 +1613,7 @@ The number of accidents follows a Poisson distribution with mean 12. Each accide
 </h5>
 <div id="toggleExample.5.3.1" style="display: none">
 <p><strong>Solution.</strong>
-<span class="math display">\[\begin{aligned} 
+<span class="math display">\[\begin{aligned}
 &amp; \mathrm{E}(X^2) = 1^2 \left( \frac{1}{2}\right) + 2^2\left(\frac{1}{3} \right) + 3^2\left(\frac{1}{6}\right)
 = \frac{10}{3} \\
 \Rightarrow &amp;\mathrm{Var}(S_N) = \lambda \ \mathrm{E}(X^2) = 12\left(\frac{10}{3}\right) = 40 .
@@ -1630,7 +1634,7 @@ The number of accidents follows a Poisson distribution with mean 12. Each accide
 <p>In general, the moments of <span class="math inline">\(S_N\)</span> can be derived from its moment generating function (<em>mgf</em>). Because <span class="math inline">\(X_i\)</span>’s are <em>iid</em>, we denote the <em>mgf</em> of <span class="math inline">\(X\)</span> as <span class="math inline">\(M_{X}(t) = \mathrm{E~}(e^{tX})\)</span>. Using the law of iterated expectations, the <em>mgf</em> of <span class="math inline">\(S_N\)</span> is</p>
 <p><span class="math display">\[\begin{aligned}
 M_{S_N}(t) &amp;= \mathrm{E}(e^{t S_N})=\mathrm{E}_N[~\mathrm{E}(e^{tS_N}|N)~]\\
-&amp;= \mathrm{E}_N \left[ ~\mathrm{E}\left( e^{t(X_1+\cdots+X_N)}\right) ~\right] = 
+&amp;= \mathrm{E}_N \left[ ~\mathrm{E}\left( e^{t(X_1+\cdots+X_N)}\right) ~\right] =
 \mathrm{E}_N \left[ \mathrm{E}(e^{tX_1})\cdots\mathrm{E}(e^{tX_N}) \right] ~~~~ \text{since } X_i \text{&#39;s are independent} \\
 &amp;= \mathrm{E}_N[~(M_{X}(t))^N~] .
 \end{aligned}\]</span></p>
@@ -1660,7 +1664,7 @@ M_{S_N}(t) &amp;= P_N[M_X(t)] = e^{\lambda(M_{X}(t) - 1)}.
 <p>Taking derivatives yields
 <span class="math display">\[\begin{aligned}
 M_{S_N}&#39;(t) &amp;= e^{\lambda(M_{X}(t) - 1)}~ \lambda~ M_{X}&#39;(t) = M_{S_N}(t) ~\lambda ~M_{X}&#39;(t)\\
-M_{S_N}&#39;&#39;(t) &amp;= M_{S_N}(t) ~\lambda~ M_{X}&#39;&#39;(t) + [~M_{S_N}(t)~\lambda~ M_{X}&#39;(t)~] ~\lambda~ M_{X}&#39;(t) . 
+M_{S_N}&#39;&#39;(t) &amp;= M_{S_N}(t) ~\lambda~ M_{X}&#39;&#39;(t) + [~M_{S_N}(t)~\lambda~ M_{X}&#39;(t)~] ~\lambda~ M_{X}&#39;(t) .
 \end{aligned}\]</span></p>
 <p>Evaluating these at <span class="math inline">\(t=0\)</span> yields
 <span class="math display">\[\begin{aligned}
@@ -1673,7 +1677,7 @@ M_{S_N}&#39;&#39;(t) &amp;= M_{S_N}(t) ~\lambda~ M_{X}&#39;&#39;(t) + [~M_{S_N}(
 <p><strong>Example 7.3.2. Actuarial Exam Question.</strong>
 You are the producer of a television quiz show that gives cash prizes. The number of prizes, <span class="math inline">\(N\)</span>, and prize amount, <span class="math inline">\(X\)</span>, have the following distributions:</p>
 <p><span class="math display">\[
-{\small 
+{\small
 \begin{matrix}
 \begin{array}{ccccc}\hline
     n &amp; \Pr(N=n) &amp; &amp; x &amp; \Pr(X=x)\\ \hline
@@ -1771,27 +1775,27 @@ F_{S_N}(3) &amp;= p_0 + F^{\ast 1}(3) \ p_1 + F^{\ast 2}(3) \ p_2 + F^{\ast 3}(3
 <a id="displayCode.Ex634A.Hide" href="javascript:togglecode('toggleCode.Ex634A.Hide','displayCode.Ex634A.Hide');"><i><strong>R Code for Data Retrieval and Parameter Estimation</strong></i></a>
 </h5>
 <div id="toggleCode.Ex634A.Hide" style="display: none">
-<div class="sourceCode" id="cb76"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb76-1"><a href="ChapAggLossModels.html#cb76-1" aria-hidden="true" tabindex="-1"></a>datraw <span class="ot">&lt;-</span> <span class="fu">read.csv</span>(<span class="st">&quot;Data/WiscPropFund.csv&quot;</span>)</span>
-<span id="cb76-2"><a href="ChapAggLossModels.html#cb76-2" aria-hidden="true" tabindex="-1"></a><span class="co"># remove extreme observations to speed up the evaluation of distribution of</span></span>
-<span id="cb76-3"><a href="ChapAggLossModels.html#cb76-3" aria-hidden="true" tabindex="-1"></a><span class="co"># aggregate losses</span></span>
-<span id="cb76-4"><a href="ChapAggLossModels.html#cb76-4" aria-hidden="true" tabindex="-1"></a>index <span class="ot">&lt;-</span> <span class="fu">which</span>(datraw<span class="sc">$</span>Freq <span class="sc">&lt;</span> <span class="dv">100</span> <span class="sc">&amp;</span> datraw<span class="sc">$</span>BCClaim <span class="sc">&lt;</span> <span class="dv">250000</span>)</span>
-<span id="cb76-5"><a href="ChapAggLossModels.html#cb76-5" aria-hidden="true" tabindex="-1"></a>dat <span class="ot">&lt;-</span> datraw[index, ]</span>
-<span id="cb76-6"><a href="ChapAggLossModels.html#cb76-6" aria-hidden="true" tabindex="-1"></a><span class="co"># head(dat,n=3) tail(dat,n=3)</span></span>
-<span id="cb76-7"><a href="ChapAggLossModels.html#cb76-7" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb76-8"><a href="ChapAggLossModels.html#cb76-8" aria-hidden="true" tabindex="-1"></a><span class="co"># Assume a Poisson for claim frequency</span></span>
-<span id="cb76-9"><a href="ChapAggLossModels.html#cb76-9" aria-hidden="true" tabindex="-1"></a>lambda <span class="ot">&lt;-</span> <span class="fu">mean</span>(dat<span class="sc">$</span>Freq)</span>
-<span id="cb76-10"><a href="ChapAggLossModels.html#cb76-10" aria-hidden="true" tabindex="-1"></a><span class="fu">print</span>(lambda)</span></code></pre></div>
+<div class="sourceCode" id="cb76"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb76-1"><a href="ChapAggLossModels.html#cb76-1" tabindex="-1"></a>datraw <span class="ot">&lt;-</span> <span class="fu">read.csv</span>(<span class="st">&quot;Data/WiscPropFund.csv&quot;</span>)</span>
+<span id="cb76-2"><a href="ChapAggLossModels.html#cb76-2" tabindex="-1"></a><span class="co"># remove extreme observations to speed up the evaluation of distribution of aggregate losses</span></span>
+<span id="cb76-3"><a href="ChapAggLossModels.html#cb76-3" tabindex="-1"></a>index  <span class="ot">&lt;-</span> <span class="fu">which</span>(datraw<span class="sc">$</span>Freq <span class="sc">&lt;</span> <span class="dv">100</span> <span class="sc">&amp;</span> datraw<span class="sc">$</span>BCClaim <span class="sc">&lt;</span> <span class="fl">2.5e5</span>)</span>
+<span id="cb76-4"><a href="ChapAggLossModels.html#cb76-4" tabindex="-1"></a>dat    <span class="ot">&lt;-</span> datraw[index,]</span>
+<span id="cb76-5"><a href="ChapAggLossModels.html#cb76-5" tabindex="-1"></a><span class="co"># head(dat,n=3)</span></span>
+<span id="cb76-6"><a href="ChapAggLossModels.html#cb76-6" tabindex="-1"></a><span class="co"># tail(dat,n=3)</span></span>
+<span id="cb76-7"><a href="ChapAggLossModels.html#cb76-7" tabindex="-1"></a></span>
+<span id="cb76-8"><a href="ChapAggLossModels.html#cb76-8" tabindex="-1"></a><span class="co"># Assume a Poisson for claim frequency</span></span>
+<span id="cb76-9"><a href="ChapAggLossModels.html#cb76-9" tabindex="-1"></a>lambda <span class="ot">&lt;-</span> <span class="fu">mean</span>(dat<span class="sc">$</span>Freq)</span>
+<span id="cb76-10"><a href="ChapAggLossModels.html#cb76-10" tabindex="-1"></a><span class="fu">print</span>(lambda)</span></code></pre></div>
 <pre><code>[1] 0.7350519</code></pre>
-<div class="sourceCode" id="cb78"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb78-1"><a href="ChapAggLossModels.html#cb78-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Assume a gamma for claim severity</span></span>
-<span id="cb78-2"><a href="ChapAggLossModels.html#cb78-2" aria-hidden="true" tabindex="-1"></a>index <span class="ot">&lt;-</span> <span class="fu">which</span>(dat<span class="sc">$</span>BCClaim <span class="sc">&gt;</span> <span class="dv">0</span>)</span>
-<span id="cb78-3"><a href="ChapAggLossModels.html#cb78-3" aria-hidden="true" tabindex="-1"></a>n <span class="ot">&lt;-</span> dat<span class="sc">$</span>Freq[index]</span>
-<span id="cb78-4"><a href="ChapAggLossModels.html#cb78-4" aria-hidden="true" tabindex="-1"></a>xbar <span class="ot">&lt;-</span> dat<span class="sc">$</span>BCClaim[index]<span class="sc">/</span>dat<span class="sc">$</span>Freq[index]</span>
-<span id="cb78-5"><a href="ChapAggLossModels.html#cb78-5" aria-hidden="true" tabindex="-1"></a>fit <span class="ot">&lt;-</span> <span class="fu">glm</span>(xbar <span class="sc">~</span> <span class="dv">1</span>, <span class="at">family =</span> <span class="fu">Gamma</span>(<span class="at">link =</span> <span class="st">&quot;log&quot;</span>), <span class="at">weight =</span> <span class="dv">1</span><span class="sc">/</span>n)</span>
-<span id="cb78-6"><a href="ChapAggLossModels.html#cb78-6" aria-hidden="true" tabindex="-1"></a>mu <span class="ot">&lt;-</span> <span class="fu">unname</span>(<span class="fu">exp</span>(fit<span class="sc">$</span>coefficients))</span>
-<span id="cb78-7"><a href="ChapAggLossModels.html#cb78-7" aria-hidden="true" tabindex="-1"></a>phi <span class="ot">&lt;-</span> <span class="fu">summary</span>(fit)<span class="sc">$</span>dispersion</span>
-<span id="cb78-8"><a href="ChapAggLossModels.html#cb78-8" aria-hidden="true" tabindex="-1"></a>a <span class="ot">=</span> <span class="dv">1</span><span class="sc">/</span>phi</span>
-<span id="cb78-9"><a href="ChapAggLossModels.html#cb78-9" aria-hidden="true" tabindex="-1"></a>s <span class="ot">=</span> mu <span class="sc">*</span> phi</span>
-<span id="cb78-10"><a href="ChapAggLossModels.html#cb78-10" aria-hidden="true" tabindex="-1"></a><span class="fu">print</span>(<span class="fu">c</span>(a, s))</span></code></pre></div>
+<div class="sourceCode" id="cb78"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb78-1"><a href="ChapAggLossModels.html#cb78-1" tabindex="-1"></a><span class="co"># Assume a gamma for claim severity</span></span>
+<span id="cb78-2"><a href="ChapAggLossModels.html#cb78-2" tabindex="-1"></a>index  <span class="ot">&lt;-</span> <span class="fu">which</span>(dat<span class="sc">$</span>BCClaim<span class="sc">&gt;</span><span class="dv">0</span>)</span>
+<span id="cb78-3"><a href="ChapAggLossModels.html#cb78-3" tabindex="-1"></a>n      <span class="ot">&lt;-</span> dat<span class="sc">$</span>Freq[index]</span>
+<span id="cb78-4"><a href="ChapAggLossModels.html#cb78-4" tabindex="-1"></a>xbar   <span class="ot">&lt;-</span> dat<span class="sc">$</span>BCClaim[index] <span class="sc">/</span> dat<span class="sc">$</span>Freq[index]</span>
+<span id="cb78-5"><a href="ChapAggLossModels.html#cb78-5" tabindex="-1"></a>fit    <span class="ot">&lt;-</span> <span class="fu">glm</span>( xbar<span class="sc">~</span><span class="dv">1</span>, <span class="at">family=</span><span class="fu">Gamma</span>(<span class="at">link=</span><span class="st">&#39;log&#39;</span>), <span class="at">weight=</span><span class="dv">1</span><span class="sc">/</span>n )</span>
+<span id="cb78-6"><a href="ChapAggLossModels.html#cb78-6" tabindex="-1"></a>mu     <span class="ot">&lt;-</span> <span class="fu">unname</span>( <span class="fu">exp</span>(fit<span class="sc">$</span>coefficients) )</span>
+<span id="cb78-7"><a href="ChapAggLossModels.html#cb78-7" tabindex="-1"></a>phi    <span class="ot">&lt;-</span> <span class="fu">summary</span>(fit)<span class="sc">$</span>dispersion</span>
+<span id="cb78-8"><a href="ChapAggLossModels.html#cb78-8" tabindex="-1"></a>a <span class="ot">=</span> <span class="dv">1</span><span class="sc">/</span>phi</span>
+<span id="cb78-9"><a href="ChapAggLossModels.html#cb78-9" tabindex="-1"></a>s <span class="ot">=</span> mu<span class="sc">*</span>phi</span>
+<span id="cb78-10"><a href="ChapAggLossModels.html#cb78-10" tabindex="-1"></a><span class="fu">print</span>(<span class="fu">c</span>(a,s))</span></code></pre></div>
 <pre><code>[1]     0.4105387 33593.0594708</code></pre>
 </div>
 <p>With the parameter estimates in place, we are now in a position to calculate distribution of <span class="math inline">\(S=X_1+X_2+\cdots+X_N\)</span> using convolution method. Figure <a href="ChapAggLossModels.html#fig:WiscPropAggLoss">7.1</a> summarizes the aggregate loss distribution. The following block of code demonstrates its calculation.</p>
@@ -1799,32 +1803,31 @@ F_{S_N}(3) &amp;= p_0 + F^{\ast 1}(3) \ p_1 + F^{\ast 2}(3) \ p_2 + F^{\ast 3}(3
 <a id="displayCode.Ex634B.Hide" href="javascript:togglecode('toggleCode.Ex634B.Hide','displayCode.Ex634B.Hide');"><i><strong>R Code for to Compute the Aggregate Loss Distribution using the Convolution Method</strong></i></a>
 </h5>
 <div id="toggleCode.Ex634B.Hide" style="display: none">
-<div class="sourceCode" id="cb80"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb80-1"><a href="ChapAggLossModels.html#cb80-1" aria-hidden="true" tabindex="-1"></a>Nmax <span class="ot">&lt;-</span> <span class="dv">1000</span></span>
-<span id="cb80-2"><a href="ChapAggLossModels.html#cb80-2" aria-hidden="true" tabindex="-1"></a><span class="co"># CDF</span></span>
-<span id="cb80-3"><a href="ChapAggLossModels.html#cb80-3" aria-hidden="true" tabindex="-1"></a>FAgg <span class="ot">&lt;-</span> <span class="cf">function</span>(y) {</span>
-<span id="cb80-4"><a href="ChapAggLossModels.html#cb80-4" aria-hidden="true" tabindex="-1"></a>    re <span class="ot">&lt;-</span> <span class="fu">dpois</span>(<span class="dv">0</span>, lambda)</span>
-<span id="cb80-5"><a href="ChapAggLossModels.html#cb80-5" aria-hidden="true" tabindex="-1"></a>    <span class="cf">for</span> (i <span class="cf">in</span> <span class="dv">1</span><span class="sc">:</span>Nmax) {</span>
-<span id="cb80-6"><a href="ChapAggLossModels.html#cb80-6" aria-hidden="true" tabindex="-1"></a>        re <span class="ot">&lt;-</span> re <span class="sc">+</span> <span class="fu">dpois</span>(i, lambda) <span class="sc">*</span> <span class="fu">pgamma</span>(y, <span class="at">shape =</span> i <span class="sc">*</span> a, <span class="at">scale =</span> s)</span>
-<span id="cb80-7"><a href="ChapAggLossModels.html#cb80-7" aria-hidden="true" tabindex="-1"></a>    }</span>
-<span id="cb80-8"><a href="ChapAggLossModels.html#cb80-8" aria-hidden="true" tabindex="-1"></a>    re <span class="ot">&lt;-</span> <span class="fu">ifelse</span>(y <span class="sc">&lt;</span> <span class="dv">0</span>, <span class="cn">NA</span>, re)</span>
-<span id="cb80-9"><a href="ChapAggLossModels.html#cb80-9" aria-hidden="true" tabindex="-1"></a>    <span class="fu">return</span>(re)</span>
-<span id="cb80-10"><a href="ChapAggLossModels.html#cb80-10" aria-hidden="true" tabindex="-1"></a>}</span>
-<span id="cb80-11"><a href="ChapAggLossModels.html#cb80-11" aria-hidden="true" tabindex="-1"></a><span class="co"># PDF</span></span>
-<span id="cb80-12"><a href="ChapAggLossModels.html#cb80-12" aria-hidden="true" tabindex="-1"></a>fAgg <span class="ot">&lt;-</span> <span class="cf">function</span>(y) {</span>
-<span id="cb80-13"><a href="ChapAggLossModels.html#cb80-13" aria-hidden="true" tabindex="-1"></a>    re <span class="ot">&lt;-</span> <span class="fu">dpois</span>(<span class="dv">0</span>, lambda)</span>
-<span id="cb80-14"><a href="ChapAggLossModels.html#cb80-14" aria-hidden="true" tabindex="-1"></a>    <span class="cf">for</span> (i <span class="cf">in</span> <span class="dv">1</span><span class="sc">:</span>Nmax) {</span>
-<span id="cb80-15"><a href="ChapAggLossModels.html#cb80-15" aria-hidden="true" tabindex="-1"></a>        re <span class="ot">&lt;-</span> re <span class="sc">+</span> <span class="fu">dpois</span>(i, lambda) <span class="sc">*</span> <span class="fu">dgamma</span>(y <span class="sc">*</span> (y <span class="sc">&gt;</span> <span class="dv">0</span>) <span class="sc">-</span> <span class="dv">1</span> <span class="sc">*</span> (y <span class="sc">&lt;=</span> <span class="dv">0</span>), <span class="at">shape =</span> i <span class="sc">*</span></span>
-<span id="cb80-16"><a href="ChapAggLossModels.html#cb80-16" aria-hidden="true" tabindex="-1"></a>            a, <span class="at">scale =</span> s)</span>
-<span id="cb80-17"><a href="ChapAggLossModels.html#cb80-17" aria-hidden="true" tabindex="-1"></a>    }</span>
-<span id="cb80-18"><a href="ChapAggLossModels.html#cb80-18" aria-hidden="true" tabindex="-1"></a>    re <span class="ot">&lt;-</span> <span class="fu">ifelse</span>(y <span class="sc">&lt;</span> <span class="dv">0</span>, <span class="cn">NA</span>, re)</span>
-<span id="cb80-19"><a href="ChapAggLossModels.html#cb80-19" aria-hidden="true" tabindex="-1"></a>    <span class="fu">return</span>(re)</span>
-<span id="cb80-20"><a href="ChapAggLossModels.html#cb80-20" aria-hidden="true" tabindex="-1"></a>}</span>
-<span id="cb80-21"><a href="ChapAggLossModels.html#cb80-21" aria-hidden="true" tabindex="-1"></a><span class="co"># Numerical examples</span></span>
-<span id="cb80-22"><a href="ChapAggLossModels.html#cb80-22" aria-hidden="true" tabindex="-1"></a>obs <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="sc">-</span><span class="dv">1</span>, <span class="dv">0</span>, <span class="dv">1</span>, <span class="dv">10</span>, <span class="dv">100</span>, <span class="dv">1000</span>, <span class="dv">10000</span>, <span class="dv">100000</span>, <span class="dv">1000000</span>)</span>
-<span id="cb80-23"><a href="ChapAggLossModels.html#cb80-23" aria-hidden="true" tabindex="-1"></a><span class="fu">FAgg</span>(obs)</span></code></pre></div>
+<div class="sourceCode" id="cb80"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb80-1"><a href="ChapAggLossModels.html#cb80-1" tabindex="-1"></a>Nmax <span class="ot">&lt;-</span> <span class="dv">1000</span></span>
+<span id="cb80-2"><a href="ChapAggLossModels.html#cb80-2" tabindex="-1"></a><span class="co"># CDF</span></span>
+<span id="cb80-3"><a href="ChapAggLossModels.html#cb80-3" tabindex="-1"></a>FAgg <span class="ot">&lt;-</span> <span class="cf">function</span>(y){</span>
+<span id="cb80-4"><a href="ChapAggLossModels.html#cb80-4" tabindex="-1"></a>  re <span class="ot">&lt;-</span> <span class="fu">dpois</span>(<span class="dv">0</span>,lambda)</span>
+<span id="cb80-5"><a href="ChapAggLossModels.html#cb80-5" tabindex="-1"></a>  <span class="cf">for</span> (i <span class="cf">in</span> <span class="dv">1</span><span class="sc">:</span>Nmax){</span>
+<span id="cb80-6"><a href="ChapAggLossModels.html#cb80-6" tabindex="-1"></a>    re <span class="ot">&lt;-</span> re <span class="sc">+</span> <span class="fu">dpois</span>(i,lambda)<span class="sc">*</span><span class="fu">pgamma</span>(y,<span class="at">shape=</span>i<span class="sc">*</span>a,<span class="at">scale=</span>s)  </span>
+<span id="cb80-7"><a href="ChapAggLossModels.html#cb80-7" tabindex="-1"></a>  }</span>
+<span id="cb80-8"><a href="ChapAggLossModels.html#cb80-8" tabindex="-1"></a>  re <span class="ot">&lt;-</span> <span class="fu">ifelse</span>(y<span class="sc">&lt;</span><span class="dv">0</span>,<span class="cn">NA</span>,re)</span>
+<span id="cb80-9"><a href="ChapAggLossModels.html#cb80-9" tabindex="-1"></a>  <span class="fu">return</span>(re)</span>
+<span id="cb80-10"><a href="ChapAggLossModels.html#cb80-10" tabindex="-1"></a>}</span>
+<span id="cb80-11"><a href="ChapAggLossModels.html#cb80-11" tabindex="-1"></a><span class="co"># PDF</span></span>
+<span id="cb80-12"><a href="ChapAggLossModels.html#cb80-12" tabindex="-1"></a>fAgg <span class="ot">&lt;-</span> <span class="cf">function</span>(y){</span>
+<span id="cb80-13"><a href="ChapAggLossModels.html#cb80-13" tabindex="-1"></a>  re <span class="ot">&lt;-</span> <span class="fu">dpois</span>(<span class="dv">0</span>,lambda)</span>
+<span id="cb80-14"><a href="ChapAggLossModels.html#cb80-14" tabindex="-1"></a>  <span class="cf">for</span> (i <span class="cf">in</span> <span class="dv">1</span><span class="sc">:</span>Nmax){</span>
+<span id="cb80-15"><a href="ChapAggLossModels.html#cb80-15" tabindex="-1"></a>    re <span class="ot">&lt;-</span> re <span class="sc">+</span> <span class="fu">dpois</span>(i,lambda)<span class="sc">*</span><span class="fu">dgamma</span>(y<span class="sc">*</span>(y<span class="sc">&gt;</span><span class="dv">0</span>)<span class="sc">-</span><span class="dv">1</span><span class="sc">*</span>(y<span class="sc">&lt;=</span><span class="dv">0</span>),<span class="at">shape=</span>i<span class="sc">*</span>a,<span class="at">scale=</span>s)  </span>
+<span id="cb80-16"><a href="ChapAggLossModels.html#cb80-16" tabindex="-1"></a>  }</span>
+<span id="cb80-17"><a href="ChapAggLossModels.html#cb80-17" tabindex="-1"></a>  re <span class="ot">&lt;-</span> <span class="fu">ifelse</span>(y<span class="sc">&lt;</span><span class="dv">0</span>,<span class="cn">NA</span>,re)</span>
+<span id="cb80-18"><a href="ChapAggLossModels.html#cb80-18" tabindex="-1"></a>  <span class="fu">return</span>(re)</span>
+<span id="cb80-19"><a href="ChapAggLossModels.html#cb80-19" tabindex="-1"></a>}</span>
+<span id="cb80-20"><a href="ChapAggLossModels.html#cb80-20" tabindex="-1"></a><span class="co"># Numerical examples</span></span>
+<span id="cb80-21"><a href="ChapAggLossModels.html#cb80-21" tabindex="-1"></a>obs <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="sc">-</span><span class="dv">1</span>,<span class="dv">0</span>,<span class="fl">1e0</span>,<span class="fl">1e1</span>,<span class="fl">1e2</span>,<span class="fl">1e3</span>,<span class="fl">1e4</span>,<span class="fl">1e5</span>,<span class="fl">1e6</span>) </span>
+<span id="cb80-22"><a href="ChapAggLossModels.html#cb80-22" tabindex="-1"></a><span class="fu">FAgg</span>(obs) </span></code></pre></div>
 <pre><code>[1]        NA 0.4794806 0.4850164 0.4938350 0.5171242 0.5805764 0.7526858
 [8] 0.9882363 1.0000000</code></pre>
-<div class="sourceCode" id="cb82"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb82-1"><a href="ChapAggLossModels.html#cb82-1" aria-hidden="true" tabindex="-1"></a><span class="fu">fAgg</span>(obs)</span></code></pre></div>
+<div class="sourceCode" id="cb82"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb82-1"><a href="ChapAggLossModels.html#cb82-1" tabindex="-1"></a><span class="fu">fAgg</span>(obs) </span></code></pre></div>
 <pre><code>[1]        NA 0.4794806 0.4817642 0.4800771 0.4796397 0.4795246 0.4794917
 [8] 0.4794809 0.4794806</code></pre>
 </div>
@@ -1841,7 +1844,7 @@ Figure 7.1: <strong>Aggregate Loss Distribution for Wisconsin Property Fund Buil
 <p><strong>Example 7.3.5. Actuarial Exam Question.</strong>
 You are given:</p>
 <p><span class="math display">\[
-{\small 
+{\small
 \begin{matrix}
   \begin{array}{ c | c  c }
     \hline
@@ -1917,19 +1920,19 @@ We have claim frequency <span class="math inline">\(N \sim Poi(\lambda = 25)\)</
 is known as the <em>net stop-loss premium</em>.</p>
 <p>To calculate the net stop-loss premium, we have</p>
 <p><span class="math display">\[\begin{eqnarray*}
-\mathrm{E}(S_N-d)_+ 
+\mathrm{E}(S_N-d)_+
 &amp;=&amp;
 \left\{\begin{array}{ll}
 \int_{d}^{\infty}(s-d) f_{S_N}(s) ds&amp; \text{for continuous } S_N\\
- \sum_{s&gt;d}(s-d) f_{S_N}(s) &amp; \text{for discrete } S_N\\
- \end{array}\right.\\
+\sum_{s&gt;d}(s-d) f_{S_N}(s) &amp; \text{for discrete } S_N\\
+\end{array}\right.\\
 &amp;=&amp; \mathrm{E}(S_N) - \mathrm{E}(S_N\wedge d)\\
 \end{eqnarray*}\]</span></p>
 <hr />
 <p><strong>Example 7.3.7. Actuarial Exam Question.</strong>
 In a given week, the number of projects that require you to work overtime has a geometric distribution with <span class="math inline">\(\beta=2\)</span>. For each project, the distribution of the number of overtime hours in the week, <span class="math inline">\(X\)</span>, is as follows:</p>
 <p><span class="math display">\[
-{\small 
+{\small
 \begin{matrix}
 \begin{array}{ccc} \hline
     x &amp;  &amp; f(x)\\ \hline
@@ -1989,7 +1992,7 @@ This assumes that the support of <span class="math inline">\(S_N\)</span> is equ
 \end{aligned}\]</span></p>
 <p>Thus,
 <span class="math display">\[\begin{aligned}
-\mathrm{E}\left[ \left(S_N-(j+1) \right) _{+}\right] - \mathrm{E}\left[ ( S_N-j )_{+} \right] 
+\mathrm{E}\left[ \left(S_N-(j+1) \right) _{+}\right] - \mathrm{E}\left[ ( S_N-j )_{+} \right]
 &amp;= \left\{\mathrm{E}(S_N) - \mathrm{E}(S_N\wedge (j+1)) \right\}   -  \left\{\mathrm{E}(S_N) - \mathrm{E}(S_N\wedge j) \right\} \\
 &amp;= \mathrm{E}\left(S_N \wedge j \right) - \mathrm{E}\left[ S \wedge (j+1) \right]
 \end{aligned}\]</span></p>
@@ -2226,39 +2229,35 @@ f_{S_N} (3) &amp;= \frac{4}{5} \left[ f_X(1) f_{S_N}(2) + f_X(2)f_{S_N}(1) + f_X
 <div id="toggleCode.Ex642A.Hide" style="display: none">
 
 
-<div class="sourceCode" id="cb84"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb84-1"><a href="ChapAggLossModels.html#cb84-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Discretized severity distribution</span></span>
-<span id="cb84-2"><a href="ChapAggLossModels.html#cb84-2" aria-hidden="true" tabindex="-1"></a>round_any <span class="ot">=</span> <span class="cf">function</span>(y, accuracy, <span class="at">f =</span> round) {</span>
-<span id="cb84-3"><a href="ChapAggLossModels.html#cb84-3" aria-hidden="true" tabindex="-1"></a>    <span class="fu">f</span>(y<span class="sc">/</span>accuracy) <span class="sc">*</span> accuracy</span>
-<span id="cb84-4"><a href="ChapAggLossModels.html#cb84-4" aria-hidden="true" tabindex="-1"></a>}</span>
-<span id="cb84-5"><a href="ChapAggLossModels.html#cb84-5" aria-hidden="true" tabindex="-1"></a><span class="co"># round to $1000</span></span>
-<span id="cb84-6"><a href="ChapAggLossModels.html#cb84-6" aria-hidden="true" tabindex="-1"></a>acc <span class="ot">&lt;-</span> <span class="dv">1000</span></span>
-<span id="cb84-7"><a href="ChapAggLossModels.html#cb84-7" aria-hidden="true" tabindex="-1"></a>xbar_disc <span class="ot">&lt;-</span> <span class="fu">round_any</span>(xbar, acc)<span class="sc">/</span>acc</span>
-<span id="cb84-8"><a href="ChapAggLossModels.html#cb84-8" aria-hidden="true" tabindex="-1"></a>dSev <span class="ot">&lt;-</span> <span class="cf">function</span>(y) {</span>
-<span id="cb84-9"><a href="ChapAggLossModels.html#cb84-9" aria-hidden="true" tabindex="-1"></a>    re <span class="ot">&lt;-</span> <span class="fu">ecdf</span>(xbar_disc)(y) <span class="sc">-</span> <span class="fu">ecdf</span>(xbar_disc)(y <span class="sc">-</span> <span class="dv">1</span>)</span>
-<span id="cb84-10"><a href="ChapAggLossModels.html#cb84-10" aria-hidden="true" tabindex="-1"></a>    re</span>
-<span id="cb84-11"><a href="ChapAggLossModels.html#cb84-11" aria-hidden="true" tabindex="-1"></a>}</span>
-<span id="cb84-12"><a href="ChapAggLossModels.html#cb84-12" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb84-13"><a href="ChapAggLossModels.html#cb84-13" aria-hidden="true" tabindex="-1"></a>Fs0 <span class="ot">&lt;-</span> <span class="cf">function</span>(y) {</span>
-<span id="cb84-14"><a href="ChapAggLossModels.html#cb84-14" aria-hidden="true" tabindex="-1"></a>    <span class="cf">if</span> (y <span class="sc">&lt;</span> <span class="dv">0</span>)</span>
-<span id="cb84-15"><a href="ChapAggLossModels.html#cb84-15" aria-hidden="true" tabindex="-1"></a>        <span class="fu">return</span>(<span class="cn">NA</span>)</span>
-<span id="cb84-16"><a href="ChapAggLossModels.html#cb84-16" aria-hidden="true" tabindex="-1"></a>    y_scale <span class="ot">&lt;-</span> <span class="fu">round_any</span>(y, acc)<span class="sc">/</span>acc</span>
-<span id="cb84-17"><a href="ChapAggLossModels.html#cb84-17" aria-hidden="true" tabindex="-1"></a>    y_scale <span class="ot">&lt;-</span> <span class="fu">ifelse</span>(y_scale <span class="sc">&gt;</span> <span class="fu">max</span>(xbar_disc), <span class="fu">max</span>(xbar_disc), y_scale)</span>
-<span id="cb84-18"><a href="ChapAggLossModels.html#cb84-18" aria-hidden="true" tabindex="-1"></a>    s.out <span class="ot">&lt;-</span> <span class="fu">rep</span>(<span class="cn">NA</span>, y_scale <span class="sc">+</span> <span class="dv">1</span>)</span>
-<span id="cb84-19"><a href="ChapAggLossModels.html#cb84-19" aria-hidden="true" tabindex="-1"></a>    s.out[<span class="dv">1</span>] <span class="ot">&lt;-</span> <span class="fu">exp</span>(<span class="sc">-</span>lambda)</span>
-<span id="cb84-20"><a href="ChapAggLossModels.html#cb84-20" aria-hidden="true" tabindex="-1"></a>    <span class="cf">if</span> (y_scale <span class="sc">&gt;</span> <span class="dv">0</span>) {</span>
-<span id="cb84-21"><a href="ChapAggLossModels.html#cb84-21" aria-hidden="true" tabindex="-1"></a>        <span class="cf">for</span> (i <span class="cf">in</span> <span class="dv">1</span><span class="sc">:</span>y_scale) {</span>
-<span id="cb84-22"><a href="ChapAggLossModels.html#cb84-22" aria-hidden="true" tabindex="-1"></a>            re <span class="ot">&lt;-</span> <span class="dv">0</span></span>
-<span id="cb84-23"><a href="ChapAggLossModels.html#cb84-23" aria-hidden="true" tabindex="-1"></a>            <span class="cf">for</span> (j <span class="cf">in</span> <span class="dv">1</span><span class="sc">:</span>i) {</span>
-<span id="cb84-24"><a href="ChapAggLossModels.html#cb84-24" aria-hidden="true" tabindex="-1"></a>                re <span class="ot">&lt;-</span> re <span class="sc">+</span> j <span class="sc">*</span> <span class="fu">dSev</span>(j) <span class="sc">*</span> s.out[i <span class="sc">+</span> <span class="dv">1</span> <span class="sc">-</span> j]</span>
-<span id="cb84-25"><a href="ChapAggLossModels.html#cb84-25" aria-hidden="true" tabindex="-1"></a>            }</span>
-<span id="cb84-26"><a href="ChapAggLossModels.html#cb84-26" aria-hidden="true" tabindex="-1"></a>            s.out[i <span class="sc">+</span> <span class="dv">1</span>] <span class="ot">&lt;-</span> re <span class="sc">*</span> lambda<span class="sc">/</span>i</span>
-<span id="cb84-27"><a href="ChapAggLossModels.html#cb84-27" aria-hidden="true" tabindex="-1"></a>        }</span>
-<span id="cb84-28"><a href="ChapAggLossModels.html#cb84-28" aria-hidden="true" tabindex="-1"></a>    }</span>
-<span id="cb84-29"><a href="ChapAggLossModels.html#cb84-29" aria-hidden="true" tabindex="-1"></a>    <span class="fu">return</span>(<span class="fu">sum</span>(s.out))</span>
-<span id="cb84-30"><a href="ChapAggLossModels.html#cb84-30" aria-hidden="true" tabindex="-1"></a>}</span>
-<span id="cb84-31"><a href="ChapAggLossModels.html#cb84-31" aria-hidden="true" tabindex="-1"></a>Fs <span class="ot">&lt;-</span> <span class="cf">function</span>(y) <span class="fu">sapply</span>(y, Fs0)</span>
-<span id="cb84-32"><a href="ChapAggLossModels.html#cb84-32" aria-hidden="true" tabindex="-1"></a>obs <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="sc">-</span><span class="dv">1</span>, <span class="dv">0</span>, <span class="dv">1</span>, <span class="dv">10</span>, <span class="dv">100</span>, <span class="dv">1000</span>, <span class="dv">10000</span>, <span class="dv">100000</span>, <span class="dv">1000000</span>)</span>
-<span id="cb84-33"><a href="ChapAggLossModels.html#cb84-33" aria-hidden="true" tabindex="-1"></a><span class="fu">Fs</span>(obs)</span></code></pre></div>
+<div class="sourceCode" id="cb84"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb84-1"><a href="ChapAggLossModels.html#cb84-1" tabindex="-1"></a><span class="co"># Discretized severity distribution</span></span>
+<span id="cb84-2"><a href="ChapAggLossModels.html#cb84-2" tabindex="-1"></a>round_any <span class="ot">=</span> <span class="cf">function</span>(y, accuracy, <span class="at">f=</span>round){<span class="fu">f</span>(y<span class="sc">/</span> accuracy) <span class="sc">*</span> accuracy}</span>
+<span id="cb84-3"><a href="ChapAggLossModels.html#cb84-3" tabindex="-1"></a><span class="co"># round to $1000</span></span>
+<span id="cb84-4"><a href="ChapAggLossModels.html#cb84-4" tabindex="-1"></a>acc <span class="ot">&lt;-</span> <span class="fl">1e3</span></span>
+<span id="cb84-5"><a href="ChapAggLossModels.html#cb84-5" tabindex="-1"></a>xbar_disc <span class="ot">&lt;-</span> <span class="fu">round_any</span>(xbar,acc)<span class="sc">/</span>acc</span>
+<span id="cb84-6"><a href="ChapAggLossModels.html#cb84-6" tabindex="-1"></a>dSev <span class="ot">&lt;-</span> <span class="cf">function</span>(y){</span>
+<span id="cb84-7"><a href="ChapAggLossModels.html#cb84-7" tabindex="-1"></a>  re <span class="ot">&lt;-</span> <span class="fu">ecdf</span>(xbar_disc)(y) <span class="sc">-</span> <span class="fu">ecdf</span>(xbar_disc)(y<span class="dv">-1</span>)</span>
+<span id="cb84-8"><a href="ChapAggLossModels.html#cb84-8" tabindex="-1"></a>  re</span>
+<span id="cb84-9"><a href="ChapAggLossModels.html#cb84-9" tabindex="-1"></a>}</span>
+<span id="cb84-10"><a href="ChapAggLossModels.html#cb84-10" tabindex="-1"></a></span>
+<span id="cb84-11"><a href="ChapAggLossModels.html#cb84-11" tabindex="-1"></a>Fs0 <span class="ot">&lt;-</span> <span class="cf">function</span>(y){</span>
+<span id="cb84-12"><a href="ChapAggLossModels.html#cb84-12" tabindex="-1"></a>  <span class="cf">if</span> (y<span class="sc">&lt;</span><span class="dv">0</span>) <span class="fu">return</span>(<span class="cn">NA</span>)</span>
+<span id="cb84-13"><a href="ChapAggLossModels.html#cb84-13" tabindex="-1"></a>  y_scale <span class="ot">&lt;-</span> <span class="fu">round_any</span>(y,acc)<span class="sc">/</span>acc</span>
+<span id="cb84-14"><a href="ChapAggLossModels.html#cb84-14" tabindex="-1"></a>  y_scale <span class="ot">&lt;-</span> <span class="fu">ifelse</span>(y_scale<span class="sc">&gt;</span><span class="fu">max</span>(xbar_disc), <span class="fu">max</span>(xbar_disc), y_scale)</span>
+<span id="cb84-15"><a href="ChapAggLossModels.html#cb84-15" tabindex="-1"></a>  s.out <span class="ot">&lt;-</span> <span class="fu">rep</span>(<span class="cn">NA</span>,y_scale<span class="sc">+</span><span class="dv">1</span>)</span>
+<span id="cb84-16"><a href="ChapAggLossModels.html#cb84-16" tabindex="-1"></a>  s.out[<span class="dv">1</span>] <span class="ot">&lt;-</span> <span class="fu">exp</span>(<span class="sc">-</span>lambda)</span>
+<span id="cb84-17"><a href="ChapAggLossModels.html#cb84-17" tabindex="-1"></a>  <span class="cf">if</span> (y_scale<span class="sc">&gt;</span><span class="dv">0</span>) {</span>
+<span id="cb84-18"><a href="ChapAggLossModels.html#cb84-18" tabindex="-1"></a>  <span class="cf">for</span> (i <span class="cf">in</span> <span class="dv">1</span><span class="sc">:</span>y_scale){</span>
+<span id="cb84-19"><a href="ChapAggLossModels.html#cb84-19" tabindex="-1"></a>    re <span class="ot">&lt;-</span> <span class="dv">0</span>  </span>
+<span id="cb84-20"><a href="ChapAggLossModels.html#cb84-20" tabindex="-1"></a>    <span class="cf">for</span> (j <span class="cf">in</span> <span class="dv">1</span><span class="sc">:</span>i){</span>
+<span id="cb84-21"><a href="ChapAggLossModels.html#cb84-21" tabindex="-1"></a>    re <span class="ot">&lt;-</span> re <span class="sc">+</span> j<span class="sc">*</span><span class="fu">dSev</span>(j)<span class="sc">*</span>s.out[i<span class="sc">+</span><span class="dv">1</span><span class="sc">-</span>j]  </span>
+<span id="cb84-22"><a href="ChapAggLossModels.html#cb84-22" tabindex="-1"></a>    }</span>
+<span id="cb84-23"><a href="ChapAggLossModels.html#cb84-23" tabindex="-1"></a>    s.out[i<span class="sc">+</span><span class="dv">1</span>] <span class="ot">&lt;-</span> re<span class="sc">*</span>lambda<span class="sc">/</span>i</span>
+<span id="cb84-24"><a href="ChapAggLossModels.html#cb84-24" tabindex="-1"></a>  }}</span>
+<span id="cb84-25"><a href="ChapAggLossModels.html#cb84-25" tabindex="-1"></a>  <span class="fu">return</span>(<span class="fu">sum</span>(s.out))</span>
+<span id="cb84-26"><a href="ChapAggLossModels.html#cb84-26" tabindex="-1"></a>}</span>
+<span id="cb84-27"><a href="ChapAggLossModels.html#cb84-27" tabindex="-1"></a>Fs <span class="ot">&lt;-</span> <span class="cf">function</span>(y) <span class="fu">sapply</span>(y,Fs0)</span>
+<span id="cb84-28"><a href="ChapAggLossModels.html#cb84-28" tabindex="-1"></a>obs <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="sc">-</span><span class="dv">1</span>,<span class="dv">0</span>,<span class="fl">1e0</span>,<span class="fl">1e1</span>,<span class="fl">1e2</span>,<span class="fl">1e3</span>,<span class="fl">1e4</span>,<span class="fl">1e5</span>,<span class="fl">1e6</span>) </span>
+<span id="cb84-29"><a href="ChapAggLossModels.html#cb84-29" tabindex="-1"></a><span class="fu">Fs</span>(obs)</span></code></pre></div>
 <pre><code>[1]        NA 0.4794806 0.4794806 0.4794806 0.4794806 0.5262996 0.7918355
 [8] 0.9734452 0.9851471</code></pre>
 </div>
@@ -2297,27 +2296,26 @@ Recall Example 7.3.5 with an individual’s claim frequency <span class="math in
 <div id="toggleExample.5.4.3" style="display: none">
 <p><strong>Solution.</strong>
 We follow the algorithm for the collective risk model, where we first simulate frequencies <span class="math inline">\(n_1,\ldots,n_{10000}\)</span>, and conditional on <span class="math inline">\(n_j,~j=1,\ldots,10000\)</span>, simulate each individual loss <span class="math inline">\(x_{ij},~i=1,\ldots n_j\)</span>.</p>
-<div class="sourceCode" id="cb86"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb86-1"><a href="ChapAggLossModels.html#cb86-1" aria-hidden="true" tabindex="-1"></a><span class="fu">set.seed</span>(<span class="dv">4321</span>)  <span class="co"># For reproducibility of results</span></span>
-<span id="cb86-2"><a href="ChapAggLossModels.html#cb86-2" aria-hidden="true" tabindex="-1"></a>m <span class="ot">&lt;-</span> <span class="dv">10000</span>  <span class="co"># Number of observations to simulate</span></span>
-<span id="cb86-3"><a href="ChapAggLossModels.html#cb86-3" aria-hidden="true" tabindex="-1"></a>lambda <span class="ot">&lt;-</span> <span class="dv">25</span>  <span class="co"># Parameter for frequency distribution N</span></span>
-<span id="cb86-4"><a href="ChapAggLossModels.html#cb86-4" aria-hidden="true" tabindex="-1"></a>a <span class="ot">&lt;-</span> <span class="dv">5</span></span>
-<span id="cb86-5"><a href="ChapAggLossModels.html#cb86-5" aria-hidden="true" tabindex="-1"></a>b <span class="ot">&lt;-</span> <span class="dv">95</span>  <span class="co"># Parameters for severity distribution X</span></span>
-<span id="cb86-6"><a href="ChapAggLossModels.html#cb86-6" aria-hidden="true" tabindex="-1"></a>S <span class="ot">&lt;-</span> <span class="fu">rep</span>(<span class="cn">NA</span>, m)  <span class="co"># Initialize an empty vector to store S observations</span></span>
-<span id="cb86-7"><a href="ChapAggLossModels.html#cb86-7" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb86-8"><a href="ChapAggLossModels.html#cb86-8" aria-hidden="true" tabindex="-1"></a>n <span class="ot">&lt;-</span> <span class="fu">rpois</span>(m, lambda)  <span class="co"># Generate m=10000 observations of N from Poisson</span></span>
-<span id="cb86-9"><a href="ChapAggLossModels.html#cb86-9" aria-hidden="true" tabindex="-1"></a><span class="cf">for</span> (j <span class="cf">in</span> <span class="dv">1</span><span class="sc">:</span>m) {</span>
-<span id="cb86-10"><a href="ChapAggLossModels.html#cb86-10" aria-hidden="true" tabindex="-1"></a>    n_j <span class="ot">&lt;-</span> n[j]  <span class="co"># Given each n_j (j=1,...,m), generate n_j observations of X from uniform</span></span>
-<span id="cb86-11"><a href="ChapAggLossModels.html#cb86-11" aria-hidden="true" tabindex="-1"></a>    x_j <span class="ot">&lt;-</span> <span class="fu">runif</span>(n_j, <span class="at">min =</span> a, <span class="at">max =</span> b)</span>
-<span id="cb86-12"><a href="ChapAggLossModels.html#cb86-12" aria-hidden="true" tabindex="-1"></a>    s_j <span class="ot">&lt;-</span> <span class="fu">sum</span>(x_j)  <span class="co"># Calculate the aggregate loss s_j</span></span>
-<span id="cb86-13"><a href="ChapAggLossModels.html#cb86-13" aria-hidden="true" tabindex="-1"></a>    S[j] <span class="ot">&lt;-</span> s_j  <span class="co"># Store s_j in the vector of observations</span></span>
-<span id="cb86-14"><a href="ChapAggLossModels.html#cb86-14" aria-hidden="true" tabindex="-1"></a>}</span>
-<span id="cb86-15"><a href="ChapAggLossModels.html#cb86-15" aria-hidden="true" tabindex="-1"></a><span class="fu">mean</span>(S)  <span class="co"># Compare to theoretical value of 1,250</span></span></code></pre></div>
+<div class="sourceCode" id="cb86"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb86-1"><a href="ChapAggLossModels.html#cb86-1" tabindex="-1"></a><span class="fu">set.seed</span>(<span class="dv">4321</span>)  <span class="co"># For reproducibility of results</span></span>
+<span id="cb86-2"><a href="ChapAggLossModels.html#cb86-2" tabindex="-1"></a>m <span class="ot">&lt;-</span> <span class="dv">10000</span>      <span class="co"># Number of observations to simulate</span></span>
+<span id="cb86-3"><a href="ChapAggLossModels.html#cb86-3" tabindex="-1"></a>lambda <span class="ot">&lt;-</span> <span class="dv">25</span>    <span class="co"># Parameter for frequency distribution N</span></span>
+<span id="cb86-4"><a href="ChapAggLossModels.html#cb86-4" tabindex="-1"></a>a <span class="ot">&lt;-</span> <span class="dv">5</span>; b <span class="ot">&lt;-</span> <span class="dv">95</span> <span class="co"># Parameters for severity distribution X</span></span>
+<span id="cb86-5"><a href="ChapAggLossModels.html#cb86-5" tabindex="-1"></a>S <span class="ot">&lt;-</span> <span class="fu">rep</span>(<span class="cn">NA</span>, m) <span class="co"># Initialize an empty vector to store S observations</span></span>
+<span id="cb86-6"><a href="ChapAggLossModels.html#cb86-6" tabindex="-1"></a></span>
+<span id="cb86-7"><a href="ChapAggLossModels.html#cb86-7" tabindex="-1"></a>n <span class="ot">&lt;-</span> <span class="fu">rpois</span>(m, lambda) <span class="co"># Generate m=10000 observations of N from Poisson</span></span>
+<span id="cb86-8"><a href="ChapAggLossModels.html#cb86-8" tabindex="-1"></a><span class="cf">for</span>(j <span class="cf">in</span> <span class="dv">1</span><span class="sc">:</span>m){ </span>
+<span id="cb86-9"><a href="ChapAggLossModels.html#cb86-9" tabindex="-1"></a>  n_j <span class="ot">&lt;-</span> n[j] <span class="co"># Given each n_j (j=1,...,m), generate n_j observations of X from uniform</span></span>
+<span id="cb86-10"><a href="ChapAggLossModels.html#cb86-10" tabindex="-1"></a>  x_j <span class="ot">&lt;-</span> <span class="fu">runif</span>(n_j, <span class="at">min=</span>a, <span class="at">max=</span>b)</span>
+<span id="cb86-11"><a href="ChapAggLossModels.html#cb86-11" tabindex="-1"></a>  s_j <span class="ot">&lt;-</span> <span class="fu">sum</span>(x_j) <span class="co"># Calculate the aggregate loss s_j</span></span>
+<span id="cb86-12"><a href="ChapAggLossModels.html#cb86-12" tabindex="-1"></a>  S[j] <span class="ot">&lt;-</span> s_j <span class="co"># Store s_j in the vector of observations</span></span>
+<span id="cb86-13"><a href="ChapAggLossModels.html#cb86-13" tabindex="-1"></a>}</span>
+<span id="cb86-14"><a href="ChapAggLossModels.html#cb86-14" tabindex="-1"></a><span class="fu">mean</span>(S) <span class="co"># Compare to theoretical value of 1,250</span></span></code></pre></div>
 <pre><code>[1] 1248.09</code></pre>
-<div class="sourceCode" id="cb88"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb88-1"><a href="ChapAggLossModels.html#cb88-1" aria-hidden="true" tabindex="-1"></a><span class="fu">var</span>(S)  <span class="co"># Compare to theoretical value of 79,375</span></span></code></pre></div>
+<div class="sourceCode" id="cb88"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb88-1"><a href="ChapAggLossModels.html#cb88-1" tabindex="-1"></a><span class="fu">var</span>(S)  <span class="co"># Compare to theoretical value of 79,375</span></span></code></pre></div>
 <pre><code>[1] 77441.22</code></pre>
-<div class="sourceCode" id="cb90"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb90-1"><a href="ChapAggLossModels.html#cb90-1" aria-hidden="true" tabindex="-1"></a><span class="fu">mean</span>(S <span class="sc">&gt;</span> <span class="dv">2000</span>)  <span class="co"># Proportion of simulated observations s_j that are &gt; 2000</span></span></code></pre></div>
+<div class="sourceCode" id="cb90"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb90-1"><a href="ChapAggLossModels.html#cb90-1" tabindex="-1"></a><span class="fu">mean</span>(S<span class="sc">&gt;</span><span class="dv">2000</span>) <span class="co"># Proportion of simulated observations s_j that are &gt; 2000</span></span></code></pre></div>
 <pre><code>[1] 0.0062</code></pre>
-<div class="sourceCode" id="cb92"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb92-1"><a href="ChapAggLossModels.html#cb92-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Compare to normal approximation method of 0.003884</span></span></code></pre></div>
+<div class="sourceCode" id="cb92"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb92-1"><a href="ChapAggLossModels.html#cb92-1" tabindex="-1"></a><span class="co"># Compare to normal approximation method of 0.003884</span></span></code></pre></div>
 <p>Using simulation, we estimate the mean and variance of the aggregate claims to be approximately 1248 and 77441 respectively, compared to the theoretical values of 1,250 and 79,375. In addition, we estimate the probability that aggregate losses exceed 2000 to be 0.0062, compared to the normal approximation estimate of 0.003884.</p>
 <p>We can assess the appropriateness of the normal approximation by comparing the empirical distribution of the simulated aggregate losses to the density of the normal distribution used for the normal approximation, <span class="math inline">\(N(\mu=1,250~, ~\sigma^2=79,375)\)</span>:</p>
 <p><img src="LossDataAnalytics_files/figure-html/unnamed-chunk-82-1.png" width="70%" style="display: block; margin: auto;" /></p>
@@ -2375,7 +2373,7 @@ So <span class="math inline">\(S\sim NB(\beta,nr)\)</span>.</p>
 <p><strong>Example 7.5.1.</strong>
 Assume that the number of claims for each vehicle is Poisson with mean <span class="math inline">\(\lambda\)</span>. Given the following data on the observed number of claims for each household, calculate the <a href="#" class="tooltip" style="color:green"><em>MLE</em><span style="font-size:8pt">Maximum likelihood estimate</span></a> of <span class="math inline">\(\lambda\)</span>.</p>
 <p><span class="math display">\[
-{\small 
+{\small
 \begin{matrix}
 \begin{array}{c|c|c}
   \hline
@@ -2589,7 +2587,7 @@ S &amp;= Y^L_1 + \cdots + Y^L_{N^L} \\
 <p><strong>Example 7.5.5. Actuarial Exam Question.</strong>
 A group dental policy has a negative binomial claim count distribution with mean 300 and variance 800. Ground-up severity is given by the following table:</p>
 <p><span class="math display">\[
-{\small 
+{\small
 \begin{matrix}
   \begin{array}{ c | c }
     \hline
@@ -2761,7 +2759,7 @@ Putting this together, we produce the same answer using the per payment basis as
 <p>To see this, note that
 <span class="math display">\[\begin{aligned}
 \mathrm{E}\left[ \mathrm{Var}(X_i | I_i) \right] &amp;= \mathrm{Var}(X_i|I_i=0) ~ \Pr(I_i=0) + \mathrm{Var}(X_i|I_i=1) ~ \Pr(I_i=1) \\
-&amp;= q_i ~ \sigma_i^2 + (1-q_i) ~ (0) = q_i ~ \sigma_i^2, 
+&amp;= q_i ~ \sigma_i^2 + (1-q_i) ~ (0) = q_i ~ \sigma_i^2,
 \end{aligned}\]</span></p>
 <p>and
 <span class="math display">\[\begin{aligned}
@@ -2793,7 +2791,7 @@ M_{S_n}(t) &amp;= \prod_{i=1}^n ~ M_{X_i}(t) ~~~~ \text{from the independence of
 <h3>TS 7.A.2. Relationship Between Probability Generating Functions of <span class="math inline">\(X_i\)</span> and <span class="math inline">\(X_i^T\)</span><a href="ChapAggLossModels.html#ts-7.a.2.-relationship-between-probability-generating-functions-of-x_i-and-x_it" class="anchor-section" aria-label="Anchor link to header"></a></h3>
 <p>Let <span class="math inline">\(X_i\)</span> belong to the <span class="math inline">\((a,b,0)\)</span> class with <em>pmf</em> <span class="math inline">\(p_{ik} = \Pr(X_i = k)\)</span> for <span class="math inline">\(k=0,1,\ldots\)</span> and <span class="math inline">\(X_i^T\)</span> be the associated zero-truncated distribution in the <span class="math inline">\((a,b,1)\)</span> class with <em>pmf</em> <span class="math inline">\(p_{ik}^T = p_{ik}/(1-p_{i0})\)</span> for <span class="math inline">\(k=1,2,\ldots\)</span>. Then the relationship between the <em>pgf</em> of <span class="math inline">\(X_i\)</span> and the <em>pgf</em> of <span class="math inline">\(X_i^T\)</span> is shown by</p>
 <p><span class="math display">\[\begin{aligned}
-P_{X_i}(z) &amp;= \mathrm{E~}(z^{X_i}) = \mathrm{E}\left[  \mathrm{E}\left( z^{X_i} | X_i \right) \right] ~~~~ \text{from the law of iterated expectations} \\ 
+P_{X_i}(z) &amp;= \mathrm{E~}(z^{X_i}) = \mathrm{E}\left[  \mathrm{E}\left( z^{X_i} | X_i \right) \right] ~~~~ \text{from the law of iterated expectations} \\
 &amp;= \mathrm{E}\left( z^{X_i} | X_i=0 \right)~ \Pr(X_i=0) + \mathrm{E}\left( z^{X_i} | X_i&gt;0 \right) ~ \Pr(X_i&gt;0) \\
 &amp;= (1)~ p_{i0} + \mathrm{E}(z^{X_i^T}) ~ (1-p_{i0}) ~~~~ \text{since } (X_i | X_i&gt;0) \text{ is the zero-truncated random variable } X_i^T \\
 &amp;= p_{i0} +(1-p_{i0}) P_{X_i^{T}}(z) .
@@ -2813,7 +2811,7 @@ M_{X}(t) &amp;=\frac{1}{1-\theta t} .
 <p><span class="math display">\[
 \begin{aligned}
 M_{S_N}(t) &amp;= P_N [M_{X}(t)] = \frac{1}{1 - \beta \left( \frac{1}{1-\theta t} - 1\right)} \\
-&amp;= \frac{1}{1 - \beta \left( \frac{\theta t}{1-\theta t} \right)} + 1 - 1 
+&amp;= \frac{1}{1 - \beta \left( \frac{\theta t}{1-\theta t} \right)} + 1 - 1
 = 1+ \frac{\beta \left( \frac{\theta t}{1-\theta t} \right)}{1 - \beta \left( \frac{\theta t}{1-\theta t} \right)} \\
 &amp;= 1 + \frac{\beta \theta t}{(1-\theta t) - \beta \theta t} = 1+ \frac{\beta \theta t}{1-\theta t (1+\beta)} \cdot \frac{1+\beta}{1+\beta} \\
 &amp;= 1 + \frac{\beta}{1+\beta} \left[ \frac{\theta (1+\beta) t}{1-\theta(1+\beta)t} \right] \\
@@ -2907,7 +2905,7 @@ gitbook.start({
     var script = document.createElement("script");
     script.type = "text/javascript";
     var src = "true";
-    if (src === "" || src === "true") src = "https://mathjax.rstudio.com/latest/MathJax.js?config=TeX-MML-AM_CHTML";
+    if (src === "" || src === "true") src = "https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.9/latest.js?config=TeX-MML-AM_CHTML";
     if (location.protocol !== "file:")
       if (/^https?:/.test(src))
         src = src.replace(/^https?:/, '');
