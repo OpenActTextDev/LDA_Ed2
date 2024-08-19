@@ -43,6 +43,8 @@ library('CASdatasets')
 library('insuranceData')
 library('ggplot2')
 library(nimble)
+library("gridExtra")
+library("grid")
 
 # Install as needed
 

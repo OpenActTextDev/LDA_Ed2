@@ -487,7 +487,7 @@ where:
 
 The superscript `(t)` indicates that the ultimate claim estimate for
 accident year $i$ is adjusted to the level of the prospective program
-period $t$. We discussed these adjustments in Section \@ref(S:S:LossAdj). The following equation demonstrates this process of adjustment.
+period $t$. We discussed these adjustments in Section \@ref(S:LossAdj). The following equation demonstrates this process of adjustment.
 
 $$
 \text{Claims and Claims Expenses}_{i}^{(t)} =  C_i^{\text{x}LL, \text{x}Cat} \times T_{i}^{(t)} \times LL \times CP \times UE\\
