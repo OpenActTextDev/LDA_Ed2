@@ -54,37 +54,112 @@ We also wish to acknowledge the support and sponsorship of the [International As
 
 The project goal is to have the actuarial community author our textbooks in a collaborative fashion. The following contributors have taken a leadership role in developing *Loss Data Analytics*.
 
+***
+
+```{r echo = FALSE}
+AuthorTitle <- function(PicName){ if(PdfEval==TRUE){knitr::asis_output(paste("\\textbf{", PicName,"}"))}}
+
+```
+
+
 <img src = "ContributorPics\ZeinabAmin.jpg" width = "150" height = "180" style = "float:right; margin-left: 10px; margin-top: 7px" />
+
+```{r eval = PdfEval, echo = FALSE, out.width="20%", out.height="30%" ,fig.pos='h', fig.align = 'center'}
+knitr::include_graphics("ContributorPics/ZeinabAmin.jpg")
+```
+
+\begin{center}
+`r AuthorTitle('Zeinab Amin')`
+\end{center}
 
 - **Zeinab Amin** is a Professor at the Department of Mathematics and Actuarial Science and Associate Provost for Assessment and Accreditation at the American University in Cairo (AUC). Amin holds a PhD in Statistics and is an Associate of the Society of Actuaries. Amin is the recipient of the 2016 Excellence in Academic Service Award and the 2009 Excellence in Teaching Award from AUC. Amin has designed and taught a variety of statistics and actuarial science courses. Amin’s current area of research includes quantitative risk assessment, reliability assessment, general statistical modelling, and Bayesian statistics.
 
 - **Katrien Antonio**, KU Leuven
 
+***
+
+\newpage
+
 <img src = "ContributorPics\JFBegin.jpg" width = "150" height = "180" style = "float:right; margin-left: 10px; margin-top: 7px" />
+
+```{r eval = PdfEval, echo = FALSE, out.width="20%", out.height="30%" ,fig.pos='h', fig.align = 'center'}
+knitr::include_graphics("ContributorPics/JFBegin.jpg")
+```
+
+\begin{center}
+`r AuthorTitle('Jean-François Bégin')`
+\end{center}
 
 - **Jean-François Bégin** is an Assistant Professor in the Department of Statistics and Actuarial Science at Simon Fraser University in British Columbia, Canada. Bégin holds a PhD in Financial Engineering from HEC Montréal, Canada, and is a Fellow of the Society of Actuaries and of the Canadian Institute of Actuaries. His current research interests include financial modelling, financial econometrics, Bayesian statistics, filtering methods, credit risk, option pricing, and pension economics. Bégin has designed and taught a variety of actuarial finance and actuarial communication courses. 
 
 - **Jan Beirlant**, KU Leuven
 
+***
+
 <img src = "ContributorPics\Charpentier.jpg" width = "150" height = "160" style = "float:right; margin-left: 10px; margin-top: 7px" />
+
+```{r eval = PdfEval, echo = FALSE, out.width="20%", out.height="30%" ,fig.pos='h', fig.align = 'center'}
+knitr::include_graphics("ContributorPics/Charpentier.jpg")
+```
+
+\begin{center}
+`r AuthorTitle('Arthur Charpentier')`
+\end{center}
 
 - **Arthur Charpentier** is a professor in the Department of Mathematics at the Universit&eacute; du Qu&eacute;bec &aacute; Montr&eacute;al. Prior to that, he worked at a large general insurance company in Hong Kong, China, and the French Federation of Insurers in Paris, France. He received a MS on mathematical economics at Universit&eacute; Paris Dauphine and a MS in actuarial science at ENSAE (National School of Statistics) in Paris, and a PhD degree from KU Leuven, Belgium. His research interests include econometrics, applied probability and actuarial science. He has published several books (the most recent one on *Computational Actuarial Science with R*, CRC) and papers on a variety of topics. He is a Fellow of the French Institute of Actuaries, and was in charge of the 'Data Science for Actuaries' program from 2015 to 2018.
 
 
 <img src = "ContributorPics\PhotoGaryDean.jpg" width = "150" height = "160" style = "float:right; margin-left: 10px; margin-top: 7px" />
 
+```{r eval = PdfEval, echo = FALSE, out.width="20%", out.height="30%" ,fig.pos='h', fig.align = 'center'}
+knitr::include_graphics("ContributorPics/PhotoGaryDean.jpg")
+```
+
+\begin{center}
+`r AuthorTitle('Curtis Gary Dean')`
+\end{center}
+
+
 - **Curtis Gary Dean** is the Lincoln Financial Distinguished Professor of Actuarial Science at Ball State University. He is a Fellow of the Casualty Actuarial Society and a CFA charterholder.  He has extensive practical experience as an actuary at American States Insurance, SAFECO, and Travelers.  He has served the CAS and actuarial profession as chair of the Examination Committee, first editor-in-chief for *Variance: Advancing the Science of Risk*, and as a member of the Board of Directors and the Executive Council.  He contributed a chapter to *Predictive Modeling Applications in Actuarial Science* published by Cambridge University Press.
 
 <img src = "ContributorPics\Frees_Jed2018_150x188.jpg" width = "150" height = "180" style = "float:right; margin-left: 10px; margin-top: 7px" />
 
+```{r eval = PdfEval, echo = FALSE, out.width="20%", out.height="30%" ,fig.pos='h', fig.align = 'center'}
+knitr::include_graphics("ContributorPics/Frees_Jed2018_150x188.jpg")
+```
+
+\begin{center}
+`r AuthorTitle('Edward (Jed) Frees')`
+\end{center}
+
+
 - **Edward (Jed) Frees** is an emeritus professor, formerly the Hickman-Larson Chair of Actuarial Science at the University of Wisconsin-Madison. He is a Fellow of both the Society of Actuaries and the American Statistical Association. He has published extensively (a four-time winner of the Halmstad and Prize for best paper published in the actuarial literature) and has written three books. He also is a co-editor of the two-volume series *Predictive Modeling Applications in Actuarial Science* published by Cambridge University Press.
 
+\newpage
 
 <img src = "ContributorPics\GuojunGan.jpg" width = "150" height = "170" style = "float:right; margin-left: 10px; margin-top: 7px" />
+
+```{r eval = PdfEval, echo = FALSE, out.width="20%", out.height="30%" ,fig.pos='h', fig.align = 'center'}
+knitr::include_graphics("ContributorPics/GuojunGan.jpg")
+```
+
+\begin{center}
+`r AuthorTitle('Guojun Gan')`
+\end{center}
+
 
 - **Guojun Gan** is an associate professor in the Department of Mathematics at the University of Connecticut, where he has been since August 2014. Prior to that, he worked at a large life insurance company in Toronto, Canada for six years. He received a BS degree from Jilin University, Changchun, China, in 2001 and MS and PhD degrees from York University, Toronto, Canada, in 2003 and 2007, respectively. His research interests include data mining and actuarial science. He has published several books and papers on a variety of topics, including data clustering, variable annuity, mathematical finance, applied statistics, and VBA programming.
 
 <img src = "ContributorPics\Gao_Lisa_150x188.jpg" width = "150" height = "180" style = "float:right; margin-left: 10px; margin-top: 7px" />
+
+```{r eval = PdfEval, echo = FALSE, out.width="20%", out.height="30%" ,fig.pos='h', fig.align = 'center'}
+knitr::include_graphics("ContributorPics/Gao_Lisa_150x188.jpg")
+```
+
+\begin{center}
+`r AuthorTitle('Lisa Gao')`
+\end{center}
+
 
 - **Lisa Gao** is a PhD candidate in the Risk and Insurance department at the University of Wisconsin-Madison. She holds a BMath in Actuarial Science and Statistics from the University of Waterloo and is an Associate of the Society of Actuaries.  
 
@@ -94,7 +169,18 @@ The project goal is to have the actuarial community author our textbooks in a co
 
 <br/>
 
+***
+
 <img src = "ContributorPics\Larry2018.png" width = "150" height = "150" style = "float:right; margin-left: 10px; margin-top: 7px" />
+
+```{r eval = PdfEval, echo = FALSE, out.width="20%", out.height="30%" ,fig.pos='h', fig.align = 'center'}
+knitr::include_graphics("ContributorPics/Larry2018.png")
+```
+
+\begin{center}
+`r AuthorTitle('Lei (Larry) Hua')`
+\end{center}
+
 
 - **Lei (Larry) Hua** is an Associate Professor of Actuarial Science at Northern Illinois University. He earned a PhD degree in Statistics from the University of British Columbia. He is an Associate of the Society of Actuaries. His research work focuses on multivariate dependence modeling for non-Gaussian phenomena and innovative applications for financial and insurance industries.
 
@@ -102,23 +188,70 @@ The project goal is to have the actuarial community author our textbooks in a co
 
 <img src = "ContributorPics\Noriszura.jpg" width = "150" height = "150" style = "float:right; margin-left: 10px; margin-top: 7px" />
 
+```{r eval = PdfEval, echo = FALSE, out.width="20%", out.height="30%" ,fig.pos='h', fig.align = 'center'}
+knitr::include_graphics("ContributorPics/Noriszura.jpg")
+```
+
+\begin{center}
+`r AuthorTitle('Noriszura Ismail')`
+\end{center}
+
+
 - **Noriszura Ismail** is a Professor and Head of Actuarial Science Program, Universiti Kebangsaan Malaysia (UKM). She specializes in Risk Modelling and Applied Statistics. She obtained her BSc and MSc (Actuarial Science) in 1991 and 1993 from University of Iowa, and her PhD (Statistics) in 2007 from UKM. She also passed several papers from Society of Actuaries in 1994. She has received several research grants from Ministry of Higher Education Malaysia (MOHE) and UKM, totaling about MYR1.8 million. She has successfully supervised and co-supervised several PhD students (13 completed and 11 on-going). She currently has about 180 publications, consisting of 88 journals and 95 proceedings.
 
 <img src = "ContributorPics\JosephKimPic.jpg" width = "150" height = "150" style = "float:right; margin-left: 10px; margin-top: 7px" />
+
+```{r eval = PdfEval, echo = FALSE, out.width="20%", out.height="30%" ,fig.pos='h', fig.align = 'center'}
+knitr::include_graphics("ContributorPics/JosephKimPic.jpg")
+```
+
+\begin{center}
+`r AuthorTitle('Joseph H.T. Kim')`
+\end{center}
+
 
 - **Joseph H.T. Kim**, Ph.D., FSA, CERA, is Associate Professor of Applied Statistics at Yonsei University, Seoul, Korea. He holds a Ph.D. degree in Actuarial Science from the University of Waterloo, at which he taught as Assistant Professor. He also worked in the life insurance industry. He has published papers in *Insurance Mathematics and Economics*, *Journal of Risk and Insurance*, *Journal of Banking and Finance*, *ASTIN Bulletin*, and *North American Actuarial Journal*, among others. 
 
 
 <img src = "ContributorPics\Okine_A.jpg" width = "150" height = "150" style = "float:right; margin-left: 10px; margin-top: 7px" />
 
+```{r eval = PdfEval, echo = FALSE, out.width="20%", out.height="30%" ,fig.pos='h', fig.align = 'center'}
+knitr::include_graphics("ContributorPics/Okine_A.jpg")
+```
+
+\begin{center}
+`r AuthorTitle('Nii-Armah Okine')`
+\end{center}
+
+
 - **Nii-Armah Okine** is an assistant professor at the Mathematical Sciences Department at Appalachian State University.  He holds a Ph.D. in Business (Actuarial Science) from the University of Wisconsin - Madison and obtained his master’s degree in Actuarial science from Illinois State University. His research interest includes micro-level reserving, joint longitudinal-survival modeling, dependence modeling, micro-insurance, and machine learning.
 
 
 <img src = "ContributorPics\RajSahasrabuddhe.jpg" width = "150" height = "170" style = "float:right; margin-left: 10px; margin-top: 7px" />
 
+```{r eval = PdfEval, echo = FALSE, out.width="30%", out.height="50%" ,fig.pos='h', fig.align = 'center'}
+knitr::include_graphics("ContributorPics/RajSahasrabuddhe.jpg")
+```
+
+\begin{center}
+`r AuthorTitle('Rajesh (Raj) Sahasrabuddhe')`
+\end{center}
+
+
 -  **Rajesh (Raj) Sahasrabuddhe** is a Partner and Philadelphia Office Leader with Oliver Wyman Actuarial Consulting. Raj is a Fellow of the Casualty Actuarial Society (CAS), an Associate of the Canadian Institute of Actuaries, and a Member of the American Academy of Actuaries. Raj has been an active volunteer with CAS Admissions committees throughout his career, including a term as Chairperson of the Syllabus Committee from 2010 to 2013. He currently serves on the MAS-II Examination Committee. He has authored or co-authored papers that have appeared on syllabi for both the CAS and Society of Actuaries.
 
+\newpage
+
 <img src = "ContributorPics\Selin_pictureA.png" width = "150" height = "150" style = "float:right; margin-left: 10px; margin-top: 7px" />
+
+```{r eval = PdfEval, echo = FALSE, out.width="20%", out.height="30%" ,fig.pos='h', fig.align = 'center'}
+knitr::include_graphics("ContributorPics/Selin_pictureA.png")
+```
+
+\begin{center}
+`r AuthorTitle('Emine Selin Sarıdaş')`
+\end{center}
+
 
 - **Emine Selin Sarıdaş** is a doctoral candidate in the Statistics department of Mimar Sinan University. She holds a bachelor degree in Actuarial Science with a minor in Economics and a master degree in Actuarial Science from Hacettepe University. Her research interest includes dependence modeling, regression, loss models and life contingencies. 
 
@@ -126,19 +259,59 @@ The project goal is to have the actuarial community author our textbooks in a co
 
 <img src = "ContributorPics\Shi_Peng_150x188.jpg" width = "150" height = "180" style = "float:right; margin-left: 10px; margin-top: 7px" />
 
+```{r eval = PdfEval, echo = FALSE, out.width="20%", out.height="30%" ,fig.pos='h', fig.align = 'center'}
+knitr::include_graphics("ContributorPics/Shi_Peng_150x188.jpg")
+```
+
+\begin{center}
+`r AuthorTitle('Peng Shi')`
+\end{center}
+
+
 - **Peng Shi** is an associate professor in the Risk and Insurance Department at the Wisconsin School of Business. He is also the Charles & Laura Albright Professor in Business and Finance. Professor Shi is an Associate of the Casualty Actuarial Society (ACAS) and a Fellow of the Society of Actuaries (FSA). He received a Ph.D. in actuarial science from the University of Wisconsin-Madison. His research interests are problems at the intersection of insurance and statistics. He has won several research awards, including the Charles A. Hachemeister Prize, the Ronald Bornhuetter Loss Reserve Prize, and the American Risk and Insurance Association Prize.
 
+
+\newpage
+
+
 <img src = "ContributorPics\Shyamal.jpg" width = "150" height = "180" style = "float:right; margin-left: 10px; margin-top: 7px" />
+
+```{r eval = PdfEval, echo = FALSE, out.width="20%", out.height="30%" ,fig.pos='h', fig.align = 'center'}
+knitr::include_graphics("ContributorPics/Shyamal.jpg")
+```
+
+\begin{center}
+`r AuthorTitle('Nariankadu D. Shyamalkumar (Shyamal)')`
+\end{center}
+
 
 - **Nariankadu D. Shyamalkumar (Shyamal)** is an associate professor in the Department of Statistics and Actuarial Science at The University of Iowa. He is an Associate of the Society of Actuaries, and has volunteered in various elected and non-elected roles within the SoA. Having a broad theoretical interest as well as interest in computing, he has published in prominent actuarial, computer science, probability theory, and statistical journals. Moreover, he has worked in the financial industry, and since then served as an independent consultant to the insurance industry. He has experience educating actuaries in both Mexico and the US, serving in the roles of directing an undergraduate program, and as a graduate  adviser for both masters and doctoral students. 
 
 
 <img src = "ContributorPics\jianxi_m.jpg" width = "150" height = "180" style = "float:right; margin-left: 10px; margin-top: 7px" />
 
+```{r eval = PdfEval, echo = FALSE, out.width="20%", out.height="30%" ,fig.pos='h', fig.align = 'center'}
+knitr::include_graphics("ContributorPics/jianxi_m.jpg")
+```
+
+\begin{center}
+`r AuthorTitle('Jianxi Su')`
+\end{center}
+
+
 - **Jianxi Su** is an Assistant Professor at the Department of Statistics at Purdue University. He is the Associate Director of Purdue’s Actuarial Science. Prior to joining Purdue in 2016, he completed the PhD at York University (2012-2015). He obtained the Fellow of the Society of Actuaries (FSA) in 2017. His research expertise are in dependence modelling, risk management, and pricing. During the PhD candidature, Jianxi also worked as a research associate at the Model Validation and ORSA Implementation team of Sun Life Financial (Toronto office).
 
 
 <img src = "ContributorPics\ChongItTan.jpg" width = "150" height = "180" style = "float:right; margin-left: 10px; margin-top: 7px" />
+
+```{r eval = PdfEval, echo = FALSE, out.width="20%", out.height="30%" ,fig.pos='h', fig.align = 'center'}
+knitr::include_graphics("ContributorPics/ChongItTan.jpg")
+```
+
+\begin{center}
+`r AuthorTitle('Chong It Tan')`
+\end{center}
+
 
 - **Chong It Tan** is a senior lecturer at Macquarie University in Australia, where he has served as the undergraduate actuarial program director since 2018. He obtained his PhD in 2015 from Nanyang Technological University in Singapore. He is a fully qualified actuary, holding the credentials from both the US Society of Actuaries and Australian Actuaries Institute. His major research interests are mortality modelling, longevity risk management and bonus-malus systems. 
 
@@ -146,11 +319,31 @@ The project goal is to have the actuarial community author our textbooks in a co
 
 <img src = "ContributorPics\TimVerdonck.jpg" width = "150" height = "170" style = "float:right; margin-left: 10px; margin-top: 7px" />
 
+```{r eval = PdfEval, echo = FALSE, out.width="20%", out.height="30%" ,fig.pos='h', fig.align = 'center'}
+knitr::include_graphics("ContributorPics/TimVerdonck.jpg")
+```
+
+\begin{center}
+`r AuthorTitle('Tim Verdonck')`
+\end{center}
+
+
 - **Tim Verdonck** is associate professor at the University of Antwerp. He has a degree in Mathematics and a PhD in Science: Mathematics, obtained at the University of Antwerp. During his PhD he successfully took the Master in Insurance and the Master in Financial and Actuarial Engineering, both at KU Leuven. His research focuses on the adaptation and application of robust statistical methods for insurance and finance data.
 
 <br/>
 
+\newpage
+
 <img src = "ContributorPics\krupaviswanathan2.jpg" width = "150" height = "180" style = "float:right; margin-left: 10px; margin-top: 7px" />
+
+```{r eval = PdfEval, echo = FALSE, out.width="20%", out.height="30%" ,fig.pos='h', fig.align = 'center'}
+knitr::include_graphics("ContributorPics/krupaviswanathan2.jpg")
+```
+
+\begin{center}
+`r AuthorTitle('Krupa Viswanathan')`
+\end{center}
+
 
 - **Krupa Viswanathan** is an Associate Professor in the Risk, Insurance and Healthcare Management Department in the Fox School of Business, Temple University.  She is an Associate of the Society of Actuaries. She teaches courses in Actuarial Science and Risk Management at the undergraduate and graduate levels. Her research interests include corporate governance of insurance companies, capital management, and sentiment analysis. She received her Ph.D. from The Wharton School of the University of Pennsylvania.
 
@@ -210,9 +403,10 @@ Our goal is to have the actuarial community author our textbooks in a collaborat
 *  Maggie Lee, Macquarie University, and Anh Vu (then at University of New South Wales) contributed the end of the section quizzes.
 *  Jeffrey Zheng, Temple University, Lu Yang (University of Amsterdam), and Paul Johnson, University of Wisconsin-Madison, led the work on the glossary.
 
-## Version  {-}
+## Version Number {-}
 
--  This is **Version 1.1**, August 2020. Edited by Edward (Jed) Frees and Paul Johnson.
+-  This is **Version 2.0**, October 2024. Edited by Hélène Cossette, Edward (Jed) Frees, Brian Hartman, and Tim Higgins.
+-  Version 1.1, August 2020. Edited by Edward (Jed) Frees and Paul Johnson.
 -  Version 1.0, January 2020, was edited by Edward (Jed) Frees.
 
 You can also access pdf and epub (current and older) versions of the text in our [Offline versions of the text](https://ewfrees.github.io/Loss-Data-Analytics/DownloadOffline.html).
@@ -226,7 +420,7 @@ In developing this book, we are emphasizing the [online version](https://openact
 
 `r HideRCode('SeverityFig.1Intro',"R Code for Frequency Table")`
 
-```{r, echo=SHOW_PDF, eval=FALSE}
+```{r, echo=HtmlEval, eval=FALSE}
 Insample <- read.csv("Insample.csv", header=T,  na.strings=c("."), 
                       stringsAsFactors=FALSE)
 Insample2010 <- subset(Insample, Year==2010)
@@ -244,6 +438,10 @@ Freely available, interactive textbooks represent a new venture in actuarial edu
 
 
 <a rel="license" href="http://creativecommons.org/licenses/by/4.0/"><img alt="Creative Commons License" style="border-width:0" src="https://i.creativecommons.org/l/by/4.0/88x31.png" /></a><br />This work is licensed under a <a rel="license" href="http://creativecommons.org/licenses/by/4.0/">Creative Commons Attribution 4.0 International License</a>.
+
+
+
+\mainmatter
 
 
 

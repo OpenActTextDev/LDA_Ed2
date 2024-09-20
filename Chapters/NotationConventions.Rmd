@@ -36,6 +36,7 @@ pmf & \text{probability mass function} \\ \hline
 \end{array}
 $$
 
+\newpage
 
 ## Common Statistical Symbols and Operators  {#S:StatSymbols}
 
@@ -43,8 +44,8 @@ Here is a list of commonly used statistical symbols and operators, including the
 
 $$
 \begin{array}{cl}  \hline
-I(\cdot) & \text{binary indicator function (}I\text{). For example, }I(A) \text{ is one if an outcome in event} \\
-& \ \ \ \ \  A \text{ occurs and is 0 otherwise.} \\
+I(\cdot) & \text{binary indicator function (}I\text{). For example, }I(A) \text{ is one} \\
+& \ \ \ \ \  A \text{ if an outcome in event occurs and is 0 otherwise.} \\
 \Pr(\cdot) & \text{probability }(\backslash{\tt{Pr}}) \\
 \mathrm{E}(\cdot)  & {\text{expectation operator }} (\backslash{\tt{mathrm\{E\}}}). {\text{ For example, }} \mathrm{E}(X)=\mathrm{E}~X {\text{ is the }} \\
 & \ \ \ \ \ {\text{expected value of the random variable }}X,{\text{ commonly denoted by }}\mu. \\
@@ -69,7 +70,7 @@ H_a \text{ or }H_1 & \text{alternative hypothesis} \\
 \end{array}
 $$
 
-  
+\newpage  
   
 ## Common Mathematical Symbols and Functions  {#S:Symbols}
 

@@ -1,5 +1,21 @@
 
-`r chapnum = 10`
+<!-- # Chap 1 -->
+
+<!-- # Chap 2 -->
+
+<!-- # Chap 3 -->
+
+<!-- # Chap 4 -->
+
+<!-- # Chap 5 -->
+
+<!-- # Chap 6 -->
+
+<!-- # Chap 7 -->
+
+<!-- # Chap 8 -->
+
+<!-- # Chap 9 -->
 
 # Premium Foundations {#ChapPremiumFoundations}
 
@@ -7,20 +23,19 @@
 premiums, is an important task for actuaries and other data analysts.
 This chapter introduces the foundations for pricing non-life products.
 
-
 The presentation of this chapter follows the premium equation.
 
--   In Section \@ref(S:DataSources), we first present the sources of
+-   In Section \@ref(S:Sec102), we first present the sources of
     information that support premium development.
 -   We discuss this development of the pure premiums in Section
-    \@ref(S:PurePremium).
--   In Section \@ref(S:Expenses), we discuss fixed and variable
+    \@ref(S:Sec105).
+-   In Section \@ref(S:Sec106), we discuss fixed and variable
     non-claim expenses.
--   In Section \@ref(S:Profit), we discuss the provision for profit.
--   Section \@ref(S:PricingPrinciples) summarizes alternative premium
+-   In Section \@ref(S:Sec1073), we discuss the provision for profit.
+-   Section \@ref(S:Sec109) summarizes alternative premium
     principles that incorporate uncertainty into our pricing.
 
-## Introduction to Ratemaking {#S:IntroductionRatemaking}
+## Introduction to Ratemaking {#S:Sec101}
 
 ***
 
@@ -92,27 +107,28 @@ revenue source that provides for
     vary by premium (such as sales commissions), and those that do not
     (such as building costs and employee salaries). We include those
     costs through the Fixed Expenses and Variable Expense Rate of the
-    \@ref(eq:dPremiumEquation).
--   Profit - An insurer requires capital to support operations. The
-    capital provider will reasonably expect to earn a profit from
-    insuring risk. Insurers have two sources of profit: underwriting
-    income and investment income.
+    \@ref(eq:eq102).
+-   Profit - An insurer requires capital to support operations. The capital provider will reasonably expect to earn a profit from insuring risk. Insurers have two sources of profit: underwriting income and investment income.
 
 We formalize this relationship in our simplified premium equation.
-
-$$
 \begin{equation}
 \small{
 \text{Premium} = \dfrac{\text{Pure Premiums} + \text{Fixed Expenses} }{1 - \text{Variable Expense Rate} - \text{Profit}}
-\\
-\text{where:}\\
-\text{Pure Premiums} = \dfrac{\text{Estimated Claims and Claims Adjustment Expense}}{\text{Exposures}}\\
-\text{or:}\\
-\text{Pure Premiums} = \dfrac{\text{Estimated Claim Counts}}{\text{Exposures}} \times \dfrac{\text{Estimated Claims and Claims Adjustment Expense}}{\text{Estimated Claim Counts}}\\
-}(\#eq:SimpPremiumEquation)
+}
+(\#eq:eq101)
 \end{equation}
-$$ 
-
+where
+$$
+\small{
+\text{Pure Premiums} = \dfrac{\text{Estimated Claims and Claims Adjustment Expense}}{\text{Exposures}}
+}
+$$
+or
+$$
+\small{
+\text{Pure Premiums} = \dfrac{\text{Estimated Claim Counts}}{\text{Exposures}} \times \dfrac{\text{Estimated Claims and Claims Adjustment Expense}}{\text{Estimated Claim Counts}}\\
+}
+$$
 This simplified premium equation promotes a general understanding of
 the Relationship of insurance costs and revenue. We refer to this
 equation as the simplified premium equation because (i) it does not
@@ -121,9 +137,9 @@ combine consideration of claims and claims adjustment expenses. We will
 refine the simplified premium equation to consider these items later in
 this chapter.
 
-We observe that the *pure premium* in equation \@ref(eq:SimpPremiumEquation) is a ratio of claims and exposures. We discuss the development of the claims provision in Section \@ref(S:Claims) and the development of exposures in Section \@ref(S:ExposureToRisk).
+We observe that the *pure premium* in equation \@ref(eq:eq101) is a ratio of claims and exposures. We discuss the development of the claims provision in Section \@ref(S:Sec103) and the development of exposures in Section \@ref(S:Sec104).
 
-## Data Sources {#S:DataSources}
+## Data Sources {#S:Sec102}
 
 ***
 
@@ -161,7 +177,7 @@ develop the information needed for financial reports. As described in
 this chapter, insurers’ actuaries will also use this information to
 develop the premiums.
 
-## Claims {#S:Claims}
+## Claims {#S:Sec103}
 
 ***
 
@@ -210,7 +226,7 @@ Also, there are two categories of claim adjustment expenses.
     or premiums, or a combination thereof. We discuss unallocated claims
     adjustment expenses separately in Section \@ref(S:ULAE).
 
-### Estimated Ultimate Claims {#S:Ultimate}
+### Estimated Ultimate Claims {#S:Sec1031}
 
 Recall that a claim is the amount paid or payable to claimants under the
 terms of insurance policies. In more detail, one can consider *paid claims*, those losses for a particular period that have actually been paid to claimants. When there is an expectation that payment will be made in
@@ -233,9 +249,9 @@ where:
 -   $E[N]$ is the projected ultimate number of claims.
 
 We note the frequency-severity alternatives to support our discussion of
-trends in Section \@ref(S:LossTrending).
+trends in the following section.
 
-### Adjustments to Claims and Allocated Claims Adjustment Expenses {#S:LossAdj}
+### Adjustments to Claims and Allocated Claims Adjustment Expenses {#S:Sec1032}
 
 In this section, we review adjustments to experience period ultimate
 claims that are required to support the development of prospective
@@ -243,7 +259,7 @@ rates. These adjustments include trending, large loss adjustments and
 provisions for catastrophes. Finally, we discuss approaches to
 incorporate unallocated claims adjustment expense.
 
-#### Trending {#S:LossTrending}
+#### Trending {-}
 
 Each of the years of the experience period has a different underlying
 cost level; our goal is to estimate claims at the cost level of the
@@ -278,7 +294,7 @@ pure premium trend is effectively a combination of the frequency and
 severity trends, direct analysis of pure premiums may mask underlying
 changes in frequency and severity when they are inversely correlated.
 
-#### Large Loss and Catastrophe Provisions {#S:LargeLossCat}
+#### Large Loss and Catastrophe Provisions {-}
 
 Consider, for example, if a five-year experience period included a
 one-in-20-year event. If we did not adjust the data, we would
@@ -305,7 +321,7 @@ below for other non-claim expenses. Generally, insurers estimate $UE$ by
 reviewing historical ratios of those payments to claims and allocated
 claims adjustment expense payments.
 
-## Exposures {#S:ExposureToRisk}
+## Exposures {#S:Sec104}
 
 ***
 
@@ -335,17 +351,19 @@ exposures, the rates $R_1, \ldots, R_n$ are from the same distribution.
 Here, we interpret the rate $R_i = C_i/E_i$ as the loss divided by
 exposure.
 
-[Table 10.5.1](#tab:10.3) provides a few examples.
+[Table 10.5.1](#tab:10.5.1) provides a few examples.
 
 <a id=tab:10.5.1></a>
 
-Table 10.5.1 **Commonly used Exposures in Different Types of Insurance**
+[Table 10.5.1]: ./ChapPremiumFoundations.html#tab:10.5.1
+
+[Table 10.5.1]{#tab:10.5.1}. **Commonly used Exposures in Different Types of Insurance**
 
 $$
 \small{
 \begin{matrix}
 \begin{array}{ll}
-\text{Type of Insurance} & \text{Exposure Basis} \\\hline
+\textit{Type of Insurance} & \textit{Exposure Basis} \\\hline
 \text{Personal Automobile} &  \text{Earned Car Year, Amount of Insurance Coverage} \\
 \text{Homeowners} &  \text{Earned House Year, Amount of Insurance Coverage}\\
 \text{Workers Compensation}  & \text{Payroll}\\
@@ -360,7 +378,7 @@ $$
 }
 $$
 
-### Criteria for Choosing an Exposure {#S:ExposureCriteria}
+### Criteria for Choosing an Exposure {#S:Sec1041}
 
 An exposure base should meet the following criteria. It should:
 
@@ -387,7 +405,7 @@ typically the amount of insurance coverage. As property values grow with
 inflation, so will the amount of insurance coverage. Thus, rates quoted
 on a per amount of insurance coverage are less sensitive to inflation.
 
-### Written and Earned Exposures {#S:WrErExposures}
+### Written and Earned Exposures {#S:Sec1042}
 
 In developing premiums and rates, it’s important that we use claims
 information and exposure information that is comparable. Most ratemaking
@@ -398,12 +416,14 @@ underlying policy was written. For example, a 12-month policy issued on
 1 July 2019 insures claims events in 2019 or 2020, and the claims are
 assigned to the year of the event. Generally, we earn premiums and
 exposures on a pro-rata as to time basis as presented in [Table
-10.2.1](#tab:10.2.), which displays illustrative calculations for a
+10.5.2](#tab:10.5.2), which displays illustrative calculations for a
 portfolio of four illustrative policies.
 
 <a id=tab:10.5.2></a>
 
-Table 10.5.2 **Exposures for Four 12-Month Policies**
+[Table 10.5.2]: ./ChapPremiumFoundations.html#tab:10.5.2
+
+[Table 10.5.2]{#tab:10.5.2}. **Exposures for Four 12-Month Policies**
 
 $$
 \small{
@@ -425,13 +445,14 @@ $$
 }
 $$
 
-### Adjustments to Exposures {#S:ExpAdj}
 
-#### Exposure Trend {#S:ExpTrend}
+### Adjustments to Exposures {#S:Sec1043}
+
+#### Exposure Trend {-}
 
 Sometimes exposure units are inflation sensitive. For example, payroll is a common exposure base for workers compensation coverage. Even if the insured firm does not grow, it's payroll may increase due to wage inflation. We refer to the  adjustment applied to inflation sensitive exposures as exposure trend. 
 
-## Pure Premiums {#S:PurePremium}
+## Pure Premiums {#S:Sec105}
 
 
 ***
@@ -443,7 +464,7 @@ In this section, you will learn how to:
 ***
 
 
-The *pure premium* in equation \@ref(eq:SimpPremiumEquation) is a random
+The *pure premium* in equation \@ref(eq:eq101) is a random
 variable, and so, as a baseline, we use the *expected costs* to
 determine rates. To develop our initial understanding, we will consider
 the insurer that enters into many contracts with risks that are similar
@@ -462,7 +483,7 @@ average premiums to recognize various risk characteristics. In Chapter
 \@ref(ChapBonusMalus), we present approaches to develop premiums that
 consider the claim experience of an individual insured.
 
-### Experience Period {#S:ExperPeriod}
+### Experience Period {#S:Sec1051}
 
 To develop expected pure premiums, actuaries will typically review
 claims and exposure experience over a multi-year (typically three to
@@ -470,7 +491,7 @@ seven years) period. The use of a multi-year period smooths the
 year-to-year randomness. We refer to this multi-year period as the
 experience period.
 
-### Expected Pure Premium {#S:ExpPurePrem}
+### Expected Pure Premium {#S:Sec1052}
 
 The expected pure premium is generally calculated as the weighted
 average of the observations in the experience period. The weights
@@ -487,13 +508,13 @@ where:
 
 The superscript `(t)` indicates that the ultimate claim estimate for
 accident year $i$ is adjusted to the level of the prospective program
-period $t$. We discussed these adjustments in Section \@ref(S:LossAdj). The following equation demonstrates this process of adjustment.
-
+period $t$. We discussed these adjustments in Section \@ref(S:Sec1032). The following equation demonstrates this process of adjustment.
 $$
-\text{Claims and Claims Expenses}_{i}^{(t)} =  C_i^{\text{x}LL, \text{x}Cat} \times T_{i}^{(t)} \times LL \times CP \times UE\\
-\text{Exposure}_{i}^{(t)} =  \text{Exposure}_i\times E_{i}^{(t)}
+\begin{array}{ll}
+\text{Claims and Claims Expenses}_{i}^{(t)} &=  C_i^{\text{x}LL, \text{x}Cat} \times T_{i}^{(t)} \times LL \times CP \times UE \\
+\text{Exposure}_{i}^{(t)}&=  \text{Exposure}_i\times E_{i}^{(t)}
+\end{array}
 $$
-
 where:
 
 -   $C_i^{\text{x}LL, \text{x}Cat}$ is the estimated ultimate claims for
@@ -508,7 +529,7 @@ where:
 
 We discussed these adjustments earlier in this chapter.
 
-## Non-Claim Expenses {#S:Expenses}
+## Non-Claim Expenses {#S:Sec106}
 
 ***
 
@@ -532,7 +553,7 @@ historical expense ratios, budgeted amounts, or financial forecasts.
 We include fixed expenses in our premium equation on a per-exposure
 basis and we include variable expenses as a rate per unit premium.
 
-## Investment Income {#S:InvInc}
+## Investment Income {#S:Sec107}
 
 ***
 
@@ -550,13 +571,13 @@ the required rate of return, the premiums will also need to include an
 `r Gloss('underwriting profit')` provision.
 
 
-As we described, we presented a simplified premium equation in Section \@ref(S:ExpPurePrem) to promote the
+As we described, we presented a simplified premium equation in Section \@ref(S:Sec1052) to promote the
 understanding of the claims and expense provisions in Section
-\@ref(S:Claims) and exposures in Section \@ref(S:Expenses). We now
+\@ref(S:Sec103) and exposures in Section \@ref(S:Sec106). We now
 refine the equation to consider investment income. We now consider the
 other source of an insurer's profit, investment income.
 
-### Investment Income on Policyholder Cash Flows
+### Investment Income on Policyholder Cash Flows {#S:Sec1071}
 
 We first consider policyholder cash flows, i.e., premiums, claims, claim
 adjustment expenses, and non-claim expenses. We consider investment
@@ -581,15 +602,11 @@ We can rewrite our premium equation to capture the discounting. We
 replace the unity in the denominator with a premium delay factor and we
 discount the claims and claims adjustments expenses (in the pure
 premium) and non-claim expenses.
-
 $$
-\begin{equation}
 \small{
-\text{Premium} = \dfrac{\text{Discounted Pure Premiums} + \text{Discounted Fixed Expenses}} {\text{Premium Delay} - \text{Variable Expense Rate} - \text{Profit}}\\
-}(\#eq:dPremiumEquation)
-\end{equation}
+\text{Premium} = \dfrac{\text{Discounted Pure Premiums} + \text{Discounted Fixed Expenses}} {\text{Premium Delay} - \text{Variable Expense Rate} - \text{Profit}} .\\
+}
 $$
-
 We recognize that the discounting effect on the numerator is
 significantly greater than the effect on the denominator. As a result,
 consideration of investment income on policyholder cash flows serves to
@@ -599,13 +616,14 @@ The consideration of profit serves in the denominator serves to increase
 the required premium. We now turn to the determination of that profit
 provision.
 
-### Investment Income on Surplus {#S:InvIncSurplus}
+### Investment Income on Surplus {#S:Sec1072}
 
 The insurer’s surplus is also comprised of invested assets which provide
 a rate of return. In ratemaking we assume that the investment income on
 surplus is earned over the policy term, generally 12 months. Investment income of surplus will reduce the required profit provision. For example, if the insurer were able to earn a rate of return on assets of 5% per annum, then the insurer would realize a return of 2.5% of premiums assuming a 2:1 premium: surplus ratio.
 
-### The Underwriting Profit Provisions {#S:Profit}
+### The Underwriting Profit Provisions {#S:Sec1073}
+
 An insurer requires capital to support operations. The insured pays a
 premium for the promise of the insurer to pay a claim in the future.
 Capital serves as protection for the policyholder in the event that
@@ -627,16 +645,15 @@ basis. We have to convert that return to a “percent of premium basis” to
 include in our premium equation. For example, if we assume a 2:1
 premium:surplus ratio, a required after-tax rate of return of 12% and a
 tax rate of 30%, then the profit provision in the premium would be:
-
 $$
-\begin{equation}
-\dfrac{12\%~\text{after tax return}}{\text{surplus}} \times \dfrac{1 \times \text{surplus}}{2 \times \text{premium}} \times \dfrac{1~\text{pre-tax}}{0.7~\text{after tax}} = \dfrac{8.6\%~\text{pre-tax return}}{\text{premium}}
-\end{equation} 
-$$
+\begin{array}{ll}
+\dfrac{12\%~\text{after tax return}}{\text{surplus}} &\times \dfrac{1 \times \text{surplus}}{2 \times \text{premium}} \times \dfrac{1~\text{pre-tax}}{0.7~\text{after tax}} \\~\\
+&= \dfrac{8.6\%~\text{pre-tax return}}{\text{premium}} .
+\end{array}
+$$ 
+We can then reduce the required underwriting profit to consider investment income on surplus. Using the example of Section \@ref(S:Sec1072), the resulting required underwriting profit provision would reduce from 8.6% to 6.1%.
 
-We can then reduce the required underwriting profit to consider investment income on surplus. Using the example of Section \@ref(S:InvIncSurplus), the resulting required underwriting profit provision would reduce from 8.6% to 6.1%.
-
-## The Premium Equation
+## The Premium Equation  {#S:Sec108}
 
 ***
 
@@ -647,19 +664,15 @@ In this section, you learn how to:
 
 ***
 
-We can now remove the simplifying assumptions included in Equation \@ref(eq:SimpPremiumEquation) and provide our final premium equation. The term "pure premium" can be used to refer to rate per exposure unit of provision for claims costs included in the premium for an insured (which may have a quantum of exposure more or less than one exposure unit). In this section, we use the later definition.
-
-
-$$
+We can now remove the simplifying assumptions included in Equation \@ref(eq:eq101) and provide our final premium equation. The term "pure premium" can be used to refer to rate per exposure unit of provision for claims costs included in the premium for an insured (which may have a quantum of exposure more or less than one exposure unit). In this section, we use the latter definition.
 \begin{equation}
 \small{
-\text{Premium} = \dfrac{\text{Discounted Pure Premium} + \text{Discounted Fixed Expenses}} {\text{Premium Delay} - \text{Variable Expense Rate} - \text{Required Underwriting Profit}}\\
+\text{Premium} = \dfrac{\text{Discounted Pure Premium} + \text{Discounted Fixed Expenses}} {\text{Premium Delay} - \text{Variable Expense Rate} - \text{Required Underwriting Profit}} .\\
 \\
-}(\#eq:dPremiumEquation)
+}(\#eq:eq102)
 \end{equation}
-$$
 
-## Pricing Principles {#S:PricingPrinciples}
+## Pricing Principles {#S:Sec109}
 
 ***
 
@@ -685,7 +698,7 @@ cover a range of potential applications, this section describes general
 premium principles and their properties that one can use to decide
 whether or not a specific principle is applicable in a given situation.
 
-### Premium Principles
+### Premium Principles  {#S:Sec1091}
 
 The prior sections of this chapter introduce traditional actuarial
 pricing principles that provide a price based only target rates of
@@ -697,30 +710,32 @@ there exists some rule (which in mathematics is known as a
 *functional*), say $H$, that takes $F(\cdot)$ into the positive real
 line, denoted as $P = H(F)$. For notation purposes, it is often
 convenient to substitute the random variable $X$ for its distribution
-function and write $P = H(X)$. [Table 10.1](#tab:10.1) provides several
+function and write $P = H(X)$. [Table 10.8.1](#tab:10.8.1) provides several
 examples.
 
 <a id=tab:10.8.1></a>
 
-Table 10.8.1 **Common Premium Principles**
+[Table 10.8.1]: ./ChapPremiumFoundations.html#tab:10.8.1
+
+[Table 10.8.1]{#tab:10.8.1}. **Common Premium Principles**
 
 $$
 \small{
 \begin{array}{ll}
-\text{Description } & \text{Definition } (H(X)) \\\hline
+\textit{Description } & \textit{Definition } (H(X)) \\\hline
 \text{Net (pure) premium} &  {\rm E}[X] \\
 \text{Expected value} & (1+\alpha){\rm E}[X]\\
 \text{Standard deviation}  & {\rm E}[X]+\alpha ~SD(X)\\
 \text{Variance} & {\rm E}[X]+\alpha ~{\rm Var}(X)\\
 \text{Zero utility}  & \text{solution of }u(w) = {\rm E} [u(w + P - X)]\\
-\text{Exponential}  & \frac{1}{\alpha} \log {\rm E} [e^{\alpha X}]\\
+\text{Exponential}  & \frac{1}{\alpha} \log {\rm E} [e^{\alpha X}]\\ ~\\
 \hline
 \end{array}
 }
 $$
 
 A premium principle is similar to a `r Gloss('risk measure')` that is
-introduced in Section \@ref(S:RiskMeasure). Mathematically, both are
+introduced in Section \@ref(S:Sec133). Mathematically, both are
 rules that map the loss `r Gloss('rv')` of interest to a numerical
 value. From a practical viewpoint, a premium principle provides a guide
 as to how much an insurer will charge for accepting a risk $X$. In
@@ -736,9 +751,7 @@ explicit loading for uncertainty through the risk parameter
 $\alpha \ge 0$. For the principle of zero utility, we think of an
 insurer with utility function $u(\cdot)$ and wealth *w* as being
 indifferent to accepting and not accepting risk $X$. In this case, $P$
-is known as an indifference price or, in economics, a reservation price.
-With exponential utility, the principle of zero utility reduces to the
-exponential premium principle, that is, assuming
+is known as an indifference price or, in economics, a reservation price. With exponential utility, the principle of zero utility reduces to the exponential premium principle, that is, assuming
 $u(x) = (1-e^{-\alpha x})/\alpha$.
 
 For small values of the risk parameters, the variance principle is
@@ -748,8 +761,7 @@ the following special case.
 ***
 
 **Special Case: Gamma Distribution**. Consider a loss that is gamma
-distributed with parameters $\eta$ and $\theta$ (we usually use $\alpha$
-for the location parameter but, to distinguish it from the risk
+distributed with parameters $\eta$ and $\theta$ (we usually use $\alpha$ for the location parameter but, to distinguish it from the risk
 parameter, for this example we call it $\eta$). From the Appendix
 Chapter \@ref(ChapSummaryDistributions), the mean is $\eta~ \theta$ and
 the variance is $\eta ~\theta^2$. Using $\alpha_{Var}$ for the risk
@@ -759,13 +771,11 @@ appendix, it is straightforward to derive the well-known moment
 generating function, $M(t) = {\rm E} [e^{tX}] = (1-t\theta)^{-\eta}$.
 With this and a risk parameter $\alpha_{Exp}$, we may express the
 exponential premium as
-
 $$
 H_{Exp}(X) = \frac{-\eta}{\alpha_{Exp}} \log\left(1-\alpha_{Exp} \theta\right).
 $$ To see the relationship between $H_{Exp}(X)$ and $H_{Var}(X)$, we
 choose $\alpha_{Exp} = 2 \alpha_{Var}$. With an approximation from
 calculus ($\log(1-x) = -x - x^2/2 - x^3/3 - \cdots$), we write
-
 $$
 \begin{array}{ll}
 H_{Exp}(X) &= \frac{-\eta}{\alpha_{Exp}} \log\left(1-\alpha_{Exp} ~\theta\right) 
@@ -775,20 +785,21 @@ H_{Exp}(X) &= \frac{-\eta}{\alpha_{Exp}} \log\left(1-\alpha_{Exp} ~\theta\right)
 \end{array}
 $$
 
-### Properties of Premium Principles
+### Properties of Premium Principles  {#S:Sec1092}
 
 Properties of premium principles help guide the selection of a premium
-principle in applications. [Table 10.2](#tab:10.2) provides examples of
-properties of premium principles.
+principle in applications. [Table 10.8.2](#tab:10.8.2) provides examples of properties of premium principles.
 
 <a id=tab:10.8.2></a>
 
-Table 10.8.2 **Common Properties of Premium Principles**
+[Table 10.8.2]: ./ChapPremiumFoundations.html#tab:10.8.2
+
+[Table 10.8.2]{#tab:10.8.2}. **Common Properties of Premium Principles**
 
 $$
 \small{
 \begin{array}{ll}
-\text{Description } & \text{Definition }\\\hline
+\textit{Description } & \textit{Definition }\\\hline
 \text{Nonnegative loading} & H(X) \ge {\rm E}[X] \\
 \text{Additivity} & H(X_1+X_2) = H(X_1) + H(X_2), \text{ for independent }X_1, X_2  \\
 \text{Scale invariance}  & H(cX) = c H(X), \text{ for }c \ge 0 \\
@@ -798,13 +809,12 @@ $$
 \end{array}
 }
 $$
-
 This is simply a subset of the many properties quoted in the actuarial
 literature. For example, the review paper of @young2014premium lists 15
 properties. See also the properties described as *coherent axioms* that
-we introduce for risk measures in Section \@ref(S:RiskMeasure).
+we introduce for risk measures in Section \@ref(S:Sec133).
 
-Some of the properties listed in [Table 10.2](#tab:10.2) are mild in the
+Some of the properties listed in [Table 10.8.2](#tab:10.8.2) are mild in the
 sense that they will nearly always be satisfied. For example, the *no
 rip-off* property indicates that the premium charge will be smaller than
 the largest or "maximal" value of the loss $X$ (here, we use the
@@ -827,7 +837,7 @@ linear pricing. It is easy to check that this principle holds for the
 expected value and standard deviation principles, although not for the
 variance and exponential principles.
 
-## Reviewing Rate Adequacy {#S:ReviewRates}
+## Reviewing Rate Adequacy {#S:Sec1010}
 
 After establishing the initial premiums, insurance company actuaries
 will perform rate reviews to measure the current adequacy of those
@@ -841,7 +851,7 @@ purpose of the rate is to test whether the experience of the rate
 program is consistent with loss and expense assumptions underlying the
 current rates.
 
-### The Loss Ratio Method
+### The Loss Ratio Method  {#S:Sec10101}
 
 The "loss ratio method" is a common approach to assess rate adequacy.
 The `r Gloss('loss ratio')` is the ratio of loss to the premium.
@@ -862,35 +872,43 @@ We calculate rate changes by comparing the loss ratio of the experience
 period to the target loss ratio. This adjustment factor is then applied
 to current rates to determine new indicated rates.
 
-### Target Loss Ratio
+### Target Loss Ratio {#S:Sec10102}
 
-Let us return to equation \@ref(eq:dPremiumEquation). Noting that the
-"pure premium" is the provision for loss in the rates, we have the
-following:
-
+Let us return to equation \@ref(eq:eq102). Noting that the
+"pure premium" is the provision for loss in the rates, we can start with
 $$
-\begin{equation}
 \small{
-\text{Premium} = \dfrac{\text{Discounted Losses} + \text{Discounted Fixed Expenses} }{\text{Premium Delay} - \text{Variable Expense Rate} - \text{Profit}}\\
-\text{Premium Delay - Variable Expense Rate - Profit} = \dfrac{\text{Discounted Losses}}{\text{Premium}} + \dfrac{\text{Discounted Fixed Expenses}}{\text{Premium}}\\
-\text{Premium Delay - Variable Expense Rate - Profit} - \dfrac{\text{Discounted Fixed Expenses}}{\text{Premium}} = \dfrac{\text{Discounted Losses}}{\text{Premium}}\\
-\text{Premium Delay - Variable Expense Rate - Profit} - \dfrac{\text{Discounted Fixed Expenses}}{\text{Premium}} = \text{Target Discounted Loss Ratio}\\
+\begin{array}{ll}
+\text{Premium} &= \dfrac{\text{Discounted Losses} + \text{Discounted Fixed Expenses} }{\text{Premium Delay} - \text{Variable Expense Rate} - \text{Profit}}
+\end{array}
 }
-\end{equation}
-$$ For simplification, we will not repeat that the components of the
+$$
+With this, we have
+$$
+\small{
+\begin{array}{ll}
+\text{Premium Delay} &\text{-   Variable Expense Rate - Profit} \\
+& = \dfrac{\text{Discounted Losses}}{\text{Premium}} + \dfrac{\text{Discounted Fixed Expenses}}{\text{Premium}}\\
+\text{Premium Delay} &\text{ -   Variable Expense Rate - Profit} - \dfrac{\text{Discounted Fixed Expenses}}{\text{Premium}} \\
+&= \dfrac{\text{Discounted Losses}}{\text{Premium}}\\
+&= \text{Target Discounted Loss Ratio} .\\
+\end{array}
+}
+$$
+For simplification, we will not repeat that the components of the
 rate change factor are discounted. In the loss ratio method, we compare
 the projected loss ratio to the target loss ratio. A projected loss
 ratio that exceeds the target loss ratio implies the need for a rate
 increase. A projected loss ratio that is less than the target loss ratio
 implies the need for a rate decrease.
 
-### Experience Period Loss Ratios
+### Experience Period Loss Ratios {#S:Sec10103}
 
 Earlier in this section, we described the required adjustments to
 estimate premiums. We apply those same adjustments to the experience
 period loss ratios.
 
-### Adjustments to Loss
+### Adjustments to Loss {#S:Sec10104}
 
 -   As with the development of pure premiums described above, actuaries
     will typically review claims experience over a multi-year (typically
@@ -906,7 +924,7 @@ period loss ratios.
     
 -   We need to adjust the experience period losses to the cost level of
     the proposed rate program. We discussed this trend adjustment in
-    Section \@ref(S:LossAdj). We apply the trend factor from the
+    Section \@ref(S:Sec1032). We apply the trend factor from the
     average accident date of the experience period to the average
     accident date of the proposed rate program. For example, if we are
     estimating rates that will underlie twelve month policies written in
@@ -925,7 +943,7 @@ period loss ratios.
     accident year 2022 is 1 July 2022 - so 3.5 years is the distance in
     time to the average accident date of the proposed rate program.
 
-### Premium On-Level Adjustment
+### Premium On-Level Adjustment {#S:Sec10105}
 
 We also need to adjust premiums for the effect of rate changes. We refer
 to this adjustment as "on-leveling." There are two common approaches to
@@ -952,7 +970,7 @@ average of these adjustments if +7.5%.
     may be different. The extension of exposures does not rely on those
     average rate changes and instead relies only on current rates.
 
-### Premium Trend
+### Premium Trend {#S:Sec10106}
 
 Experience period premiums must also be adjusted for for premium trend,
 and the basis of premium must match the loss trend. For example,
@@ -962,7 +980,7 @@ claims experience and may underlie the data used to measure loss trend.
 If we are considering these changes in the loss trend, then we also need
 to consider the effect of higher limit purchases in premium trend.
 
-### Credibility
+### Credibility {#S:Sec10107}
 
 Oftentimes, the experience being reviewed is not "fully credible." That
 is, the predictive value of the data is limited. We, therefore, need to
@@ -986,21 +1004,25 @@ information:
 -   Premium Delay Factor = 0.99
 -   Projected fixed expense ratio = 6.5%
 -   Variable expense = 25%
--   Target UW profit = 6.1%
+-   Target UW profit = 6.1% .
 
 With these assumptions, the indicated change factor can be calculated as
 
 $$
+\small{
+\begin{array}{ll}
 \text{Experience Period Loss Ratio} = 65\% \times \dfrac{1.05}{1.075 \times 1.02} = 62.2\%\\
 \text{Target Loss Ratio} = 0.99 - 6.5\% - 25\% - 6.1\% = 61.4\%\\
 \text{Complement of Credibility} = 0.614 \times \dfrac{1.05}{1.02} = 63.2\%\\ 
 \text{Credibility-weighted loss ratio} = 62.2\% \times 80\% + 63.2\% \times (1 - 80\%) = 62.4\%\\
-\text{Indicated loss ratio} = 62.4\% / 61.4\% = 1.016
+\text{Indicated loss ratio} = 62.4\% / 61.4\% = 1.016 .
+\end{array}
+}
 $$
 
 This means that overall average rate level should be increased by 1.6%.
 
-## Further Resources and Contributors
+## Further Resources and Contributors {#S:Sec1011}
 
 This chapter serves as a bridge between the technical introduction of
 this book and an introduction to pricing and ratemaking for practicing
@@ -1031,7 +1053,7 @@ For more discussion of pricing from a financial economics viewpoint, see
     [rajesh1004\@gmail.com](mailto:rajesh1004@gmail.com){.email} for
     chapter comments and suggested improvements.
 
-### TS 10.A. Rate Regulation {.unnumbered}
+### TS 10.A. Rate Regulation {-}
 
 Insurance regulation helps to ensure the financial stability of insurers
 and to protect consumers. Insurers receive premiums in return for
@@ -1039,7 +1061,7 @@ promises to pay in the event of a contingent (insured) event. Like other
 financial institutions such as banks, there is a strong public interest
 in promoting the continuing viability of insurers.
 
-#### Market Conduct {.unnumbered}
+#### Market Conduct {-}
 
 To help protect consumers, regulators impose administrative rules on the
 behavior of market participants. These rules, known as
@@ -1066,7 +1088,7 @@ businesses). Market conduct also includes *competition policy
 regulation*, designed to ensure an efficient and competitive marketplace
 that offers low prices to consumers.
 
-#### Rate Regulation {.unnumbered}
+#### Rate Regulation {-}
 
 *Rate regulation* helps guide the development of premiums and so is the
 focus of this chapter. As with other aspects of market conduct
@@ -1094,7 +1116,7 @@ and affordability, which are not explicitly included in the guiding
 principles, have been assuming greater importance in regulatory
 decisions.
 
-#### Rates are Not Unfairly Discriminatory {.unnumbered}
+#### Rates are Not Unfairly Discriminatory {-}
 
 Some government regulations of insurance restrict the amount, or level,
 of premium rates. These are based on the first two of the three guiding
@@ -1142,7 +1164,7 @@ on what constitutes a "fair" rating variable in unique ways by
 establishing the magnitude of price differences when using variables
 under discussion.
 
-#### Types of Rate Regulation {.unnumbered}
+#### Types of Rate Regulation {-}
 
 There are several methods, that vary by the level of scrutiny, by which
 regulators may restrict the rates that insurers offer.

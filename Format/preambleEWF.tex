@@ -4,6 +4,25 @@
 \usepackage{amsmath}
 
 \usepackage{color}
+
+\usepackage{mdframed}
+\usepackage{xcolor}
+\definecolor{lightgray}{gray}{0.98}
+
+% Custom environment for background box
+\newmdenv[
+  backgroundcolor=lightgray,
+  skipabove=10pt,
+  skipbelow=10pt,
+  leftmargin=0,
+  rightmargin=0,
+  innerleftmargin=10pt,
+  innerrightmargin=10pt,
+  innertopmargin=10pt,
+  innerbottommargin=10pt
+]{graybox}
+
+
 \usepackage{framed}
 \setlength{\fboxsep}{.8em}
 
@@ -12,9 +31,20 @@
   \color{white}
   \begin{shaded}}
  {\end{shaded}}
-
-
+ 
+% \newenvironment{greybox}{
+%   \definecolor{shadecolor}{rgb}{0.9, 0.9, 0.9}  % light grey??
+%   \color{white}
+%   \begin{shaded}}
+%  {\end{shaded}}
+ 
 % \usepackage[left=1in,top=1in,right=1in,bottom=1in]{geometry}
+
+\usepackage{caption}
+\captionsetup[figureNoLabel]{labelformat=empty, justification=raggedright}
+
+%\usepackage{wrapfig}
+
 \usepackage{amsfonts}
 \usepackage{amsmath}
 \usepackage{amssymb}

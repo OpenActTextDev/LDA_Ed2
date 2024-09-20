@@ -1,3 +1,14 @@
+<!-- # Chap 1 -->
+
+<!-- # Chap 2 -->
+
+<!-- # Chap 3 -->
+
+<!-- # Chap 4 -->
+
+<!-- # Chap 5 -->
+
+
 # Model Selection {#ChapModelSelection}
 
 *Chapter Preview*. Model selection is a fundamental aspect of statistical modeling. In this chapter, the process of model selection is summarized, including tools for model comparisons and diagnostics. In addition to nonparametric tools for model selection based on marginal distributions of outcomes ignoring explanatory variables, this chapter underscores the idea that model selection is an iterative process in which models are cyclically (re)formulated and tested for appropriateness before using them for inference. After an overview, we describe the `r Gloss('model selection')` process based on:
@@ -9,7 +20,7 @@
 
 Although our focus is predominantly on data from continuous distributions, the same process can be used for discrete versions or data that come from a hybrid combination of discrete and continuous distributions.
 
-------------------------------------------------------------------------
+***
 
 In this chapter, you learn how to:
 
@@ -18,11 +29,11 @@ In this chapter, you learn how to:
 -   Outline steps needed to select a parametric model 
 -   Describe pitfalls of model selection based purely on in-sample data when compared to the advantages of out-of-sample model validation
 
-------------------------------------------------------------------------
+***
 
-## Tools for Model Selection and Diagnostics {#S:MS:ToolsModelSelection}
+## Tools for Model Selection and Diagnostics {#S:Sec61}
 
-Section \@ref(S:MS:NonParEst) introduced nonparametric estimators in
+Section \@ref(S:Sec411) introduced nonparametric estimators in
 which there was no parametric form assumed about the underlying
 distributions. However, in many actuarial applications, analysts seek to
 employ a parametric fit of a distribution for ease of explanation and
@@ -49,15 +60,15 @@ point ways to improving the parametric specification. Procedures geared
 towards assessing the validity of a model are known as
 `r Gloss('model diagnostics')`.
 
-### Graphical Comparison of Distributions {#S:MS:GraphComparison}
+### Graphical Comparison of Distributions {#S:Sec611}
 
-We have already seen the technique of overlaying graphs for comparison purposes. To reinforce the application of this technique, Figure \@ref(fig:ComparisonCDFPDF) compares the empirical distribution to two parametric fitted distributions for log claims from the Property Fund data introduced in Section \@ref(S:LGPIF). The left panel shows the distribution functions of claims distributions. The dots forming an "S-shaped" curve represent the empirical distribution function at each observation. The thick blue curve gives corresponding values for the fitted gamma distribution and the light purple is for the fitted Pareto distribution. Because the Pareto is much closer to the empirical distribution function than the gamma, this provides evidence that the Pareto is the better model for this dataset. The right panel gives similar information for the density function and provides a consistent message. Based (only) on
+We have already seen the technique of overlaying graphs for comparison purposes. To reinforce the application of this technique, Figure \@ref(fig:Fig61) compares the empirical distribution to two parametric fitted distributions for log claims from the Property Fund data introduced in Section \@ref(S:LGPIF). The left panel shows the distribution functions of claims distributions. The dots forming an "S-shaped" curve represent the empirical distribution function at each observation. The thick blue curve gives corresponding values for the fitted gamma distribution and the light purple is for the fitted Pareto distribution. Because the Pareto is much closer to the empirical distribution function than the gamma, this provides evidence that the Pareto is the better model for this dataset. The right panel gives similar information for the density function and provides a consistent message. Based (only) on
 these figures, the Pareto distribution is the clear choice for the
 analyst.
 
-(ref:ComparisonCDFPDF) **Nonparametric Versus Fitted Parametric Distribution and Density Functions. The left-hand panel compares distribution functions, with the dots corresponding to the empirical distribution, the thick blue curve corresponding to the fitted gamma and the light purple curve corresponding to the fitted Pareto. The right hand panel compares these three distributions summarized using probability density functions. **
+(ref:Fig61) **Nonparametric Versus Fitted Parametric Distribution and Density Functions.** The left-hand panel compares distribution functions, with the dots corresponding to the empirical distribution, the thick blue curve corresponding to the fitted gamma and the light purple curve corresponding to the fitted Pareto. The right hand panel compares these three distributions summarized using probability density functions.
 
-```{r ComparisonCDFPDF, warning=FALSE, message=FALSE, echo=FALSE, fig.cap='(ref:ComparisonCDFPDF)', out.width='80%', fig.asp=.60, fig.align='center'}
+```{r Fig61,  echo=FALSE, fig.cap='(ref:Fig61)', out.width='100%', fig.asp=.60}
 library(MASS)
 library(VGAM)
 ClaimLev <- read.csv("Data/CLAIMLEVEL.csv", header=TRUE); #nrow(ClaimLev); # 6258
@@ -95,11 +106,11 @@ legend("topright", c("log(claims)", "Gamma","Pareto"), lty=1, cex=0.6,col = c("b
 ```
 
 For another way to compare the appropriateness of two fitted models, consider the `r Gloss("probability-probability (pp) plot")`. A $pp$ plot compares cumulative probabilities under two models. For our purposes, these two models are the nonparametric empirical distribution function
-and the parametric fitted model. Figure \@ref(fig:PPPlot) shows $pp$ plots for the Property Fund data. The fitted gamma is on the left and the fitted Pareto is on the right, compared to the same empirical distribution function of the data. The straight line represents equality between the two distributions being compared, so points close to the line are desirable. As seen in earlier demonstrations, the Pareto is much closer to the empirical distribution than the gamma, providing additional evidence that the Pareto is the better model.
+and the parametric fitted model. Figure \@ref(fig:Fig62) shows $pp$ plots for the Property Fund data. The fitted gamma is on the left and the fitted Pareto is on the right, compared to the same empirical distribution function of the data. The straight line represents equality between the two distributions being compared, so points close to the line are desirable. As seen in earlier demonstrations, the Pareto is much closer to the empirical distribution than the gamma, providing additional evidence that the Pareto is the better model.
 
-(ref:PPPlot) **Probability-Probability ($pp$) Plots. The horizontal axis gives the empirical distribution function at each observation. In the left-hand panel, the corresponding distribution function for the gamma is shown in the vertical axis. The right-hand panel shows the fitted Pareto distribution. Lines of $y=x$ are superimposed.**
+(ref:Fig62) **Probability-Probability ($pp$) Plots.** The horizontal axis gives the empirical distribution function at each observation. In the left-hand panel, the corresponding distribution function for the gamma is shown in the vertical axis. The right-hand panel shows the fitted Pareto distribution. Lines of $y=x$ are superimposed.
 
-```{r PPPlot, message=FALSE, warning=FALSE, echo=FALSE, fig.cap='(ref:PPPlot)', out.width='80%', fig.asp=0.60, fig.align='center'}
+```{r Fig62,  echo=FALSE, fig.cap='(ref:Fig62)', out.width='100%', fig.asp=0.60}
 #  PP Plot
 par(mfrow=c(1, 2))
 Fgamma_ex = pgamma(ClaimData$Claim, shape = alpha, scale=theta)
@@ -116,23 +127,20 @@ abline(0,1)
 
 A $pp$ plot is useful in part because no artificial scaling is required,
 such as with the overlaying of densities in Figure
-\@ref(fig:ComparisonCDFPDF), in which we switched to the log scale to
-better visualize the data. The Chapter 6 *Technical Supplement A.1*
-introduces a variation of the $pp$ plot known as a
-`r Gloss('Lorenz curve')`; this is an important tool for assessing
-income inequality. Furthermore, $pp$ plots are available in multivariate
+\@ref(fig:Fig61), in which we switched to the log scale to
+better visualize the data. Note further that $pp$ plots are available in multivariate
 settings where more than one outcome variable is available. However, a
 limitation of the $pp$ plot is that, because it plots *cumulative*
 distribution functions, it can sometimes be difficult to detect *where*
 a fitted parametric distribution is deficient. As an alternative, it is
 common to use a `r Gloss("quantile-quantile (qq) plot")`, as
-demonstrated in Figure \@ref(fig:QQPlot).
+demonstrated in Figure \@ref(fig:Fig63).
 
 A $qq$ plot compares two fitted models through their quantiles. As
 with $pp$ plots, we compare the nonparametric to a parametric fitted
 model. Quantiles may be evaluated at each point of the dataset, or on a
 grid (e.g., at $0, 0.001, 0.002, \ldots, 0.999, 1.000$), depending on
-the application. In Figure \@ref(fig:QQPlot), for each point on the
+the application. In Figure \@ref(fig:Fig63), for each point on the
 aforementioned grid, the horizontal axis displays the empirical quantile
 and the vertical axis displays the corresponding fitted parametric
 quantile (gamma for the upper two panels, Pareto for the lower two).
@@ -145,9 +153,9 @@ Furthermore, the lower-right panel suggests that the Pareto distribution
 does a good job with large claims, but provides a poorer fit for small
 claims.
 
-(ref:QQPlot) **Quantile-Quantile ($qq$) Plots. The horizontal axis gives the empirical quantiles at each observation. The right-hand panels they are graphed on a logarithmic basis. The vertical axis gives the quantiles from the fitted distributions; gamma quantiles are in the upper panels, Pareto quantiles are in the lower panels.**
+(ref:Fig63) **Quantile-Quantile ($qq$) Plots.** The horizontal axis gives the empirical quantiles at each observation. The right-hand panels they are graphed on a logarithmic basis. The vertical axis gives the quantiles from the fitted distributions; gamma quantiles are in the upper panels, Pareto quantiles are in the lower panels.
 
-```{r QQPlot, warning=FALSE, message=FALSE, echo=FALSE, fig.cap='(ref:QQPlot)', out.width='80%', fig.asp=0.90, fig.align='center'}
+```{r Fig63, echo=FALSE, fig.cap='(ref:Fig63)', out.width='80%', fig.asp=0.90}
 #q-q plot
 options(scipen=10)
 par(mfrow=c(2, 2))
@@ -165,28 +173,30 @@ plot(log(empquant), log(Paretoquant), xlab="Log Emp Quantile", ylab="Log Pareto 
 abline(0,1)
 ```
 
-------------------------------------------------------------------------
 
-**Example 6.1.1. Actuarial Exam Question.** The graph below shows a $pp$
-plot of a fitted distribution compared to a sample.
 
-```{r, echo=FALSE, warning=FALSE, message=FALSE, fig.cap='', out.width='40%', fig.asp=1, fig.align='center'}
+
+**Example 6.1.1. Actuarial Exam Question.** Figure \@ref(fig:Fig64) shows a $pp$ plot of a fitted distribution compared to a sample.
+
+
+(ref:Fig64) **Example 6.1.1 Plot** 
+
+```{r Fig64,  echo=FALSE, fig.cap='(ref:Fig64)', out.width='40%', fig.asp=1}
 # set of points
 x <- c(    0, 0.1, 0.2,  0.25, 0.4,  0.5,  0.6,  0.7,  0.8, 0.85, 0.9,  1)
 y <- c(-0.05, 0.3, 0.23, 0.25, 0.33, 0.38, 0.41, 0.46, 0.7, 0.85, 0.95, 1)
 lo <- loess(y~x)
 xl <- seq(min(x),max(x), (max(x) - min(x))/1000)
 plot(xl, predict(lo,xl), type="l", xlab="Sample", ylab="Fitted", cex.lab=1.5, cex.axis=1.5)
-
 abline(0,1)
+
 ```
 
-Comment on the two distributions with respect to left tail, right tail,
-and median probabilities.
+Comment on the two distributions with respect to left tail, right tail, and median probabilities.
 
 `r HideExample('6.1.1', 'Show Example Solution')`
 
-**Solution.** The tail of the fitted distribution is too thick on the
+`r SolnBegin()` The tail of the fitted distribution is too thick on the
 left, too thin on the right, and the fitted distribution has less
 probability around the median than the sample. To see this, recall that
 the $pp$ plot graphs the cumulative distribution of two distributions on
@@ -202,19 +212,25 @@ to 0.6 on the horizontal axis (thus looking at the middle 20% of the
 data), the $pp$ plot increases from about 0.3 to 0.4. This indicates
 that the model puts only about 10% of the probability in this range.
 
+`r SolnEnd()`
+
 </div>
 
-------------------------------------------------------------------------
+***
 
-### Statistical Comparison of Distributions {#S:MS:Tools:Stats}
+### Statistical Comparison of Distributions {#S:Sec612}
 
 When selecting a model, it is helpful to make the graphical displays presented. However, for reporting results, it can be effective to supplement the graphical displays with selected statistics that
 summarize model goodness of fit. [Table 6.1](#tab:6.1) provides three commonly used `r Gloss('goodness of fit statistics')`. In this table, $F_n$ is the empirical distribution, $F$ is the fitted or hypothesized
 distribution, and $F_i^* = F(x_i)$.
 
+\newpage
+
 <a id=tab:6.1></a>
 
-Table 6.1. **Three Goodness of Fit Statistics**
+[Table 6.1]: ./ChapModelSelection.html#tab:6.1 
+
+[Table 6.1]{#tab:6.1}. **Three Goodness of Fit Statistics**
 
 $$
 {\small
@@ -244,27 +260,25 @@ over the range of values, although weighted by the inverse of the
 variance. It therefore places greater emphasis on the tails of the
 distribution (i.e when $F(x)$ or $1-F(x)=S(x)$ is small).
 
-------------------------------------------------------------------------
+***
 
 **Example 6.1.2. Actuarial Exam Question (modified).** A sample of claim
 payments is:
-
 $$
 \begin{array}{ccccc}
 29 & 64 & 90 & 135 & 182  \\
 \end{array}
 $$
-
 Compare the empirical claims distribution to an exponential distribution
 with mean $100$ by calculating the value of the Kolmogorov-Smirnov test
 statistic.
 
 `r HideExample('6.1.2', 'Show Example Solution')`
 
-**Solution.** For an exponential distribution with mean $100$, the
+r SolnBegin()`  For an exponential distribution with mean $100$, the
 cumulative distribution function is $F(x)=1-e^{-x/100}$. Thus,
-
 $$
+\small{
 \begin{array}{ccccc}
 \hline
 x & F(x) & F_n(x) & F_n(x-) & \max(|F(x)-F_n(x)|,|F(x)-F_n(x-)|) \\
@@ -276,27 +290,30 @@ x & F(x) & F_n(x) & F_n(x-) & \max(|F(x)-F_n(x)|,|F(x)-F_n(x-)|) \\
 182 & 0.8380 & 1   & 0.8 & \max(0.1620, 0.0380) = 0.1620 \\
 \hline
 \end{array}
+}
 $$
-
 The Kolmogorov-Smirnov test statistic is therefore
-
 $$
 KS = \max(0.2517, 0.2727, 0.1934, 0.1408, 0.1620) = 0.2727 .
 $$
 
+r SolnEnd()` 
+
+***
+
 </div>
 
-#### Pearson's chi-square test {#S:Pearsons}
+#### Pearson's chi-square test {-}
 
 In this section we introduce another goodness of fit test - Pearson's chi-square test - which can be used for testing whether a discrete distribution provides a good fit to discrete data. For more details on the `r Gloss("Pearson's chi-square test")`, at an introductory mathematical statistics level, we refer the reader to Section 9.1 of @zimmerman2015.
 
-To illustrate application of the Pearson's chi-square test, we use the example introduced in Section \@ref(S:freq-real-example): In $1993$, a portfolio of $n=7,483$ automobile insurance policies from a major Singaporean insurance company had the distribution of auto accidents per policyholder as given in [Table 6.2].
+To illustrate application of the Pearson's chi-square test, we use the example introduced in Section \@ref(S:Sec37): In $1993$, a portfolio of $n=7,483$ automobile insurance policies from a major Singaporean insurance company had the distribution of auto accidents per policyholder as given in [Table 6.2](#tab:6.2).
 
 <a id=tab:6.2></a>  
 
-[Table 6.2]: \#tab:6.2
+[Table 6.2]: ./ChapModelSelection.html#tab:6.2
 
-Table 6.2. **Singaporean Automobile Accident Data**
+[Table 6.2]{#tab:6.2}. **Singaporean Automobile Accident Data**
 
 $$
 \small{
@@ -314,13 +331,13 @@ If we a fit a Poisson distribution, then the *mle* for $\lambda$, the Poisson me
 \[
 \overline{N} = \frac{0\cdot 6996 + 1 \cdot 455 + 2 \cdot 28 + 3 \cdot 4 + 4 \cdot 0}{7483} = 0.06989.
 \]
-Now if we use Poisson ($\hat{\lambda}_{MLE}$) as the fitted distribution, then a tabular comparison of the fitted counts and observed counts is given by [Table 6.3] below, where $\hat{p}_k$ represents the estimated probabilities under the fitted Poisson distribution. 
+Now if we use Poisson ($\hat{\lambda}_{MLE}$) as the fitted distribution, then a tabular comparison of the fitted counts and observed counts is given by [Table 6.3](#tab:6.3), where $\hat{p}_k$ represents the estimated probabilities under the fitted Poisson distribution. 
 
 <a id=tab:6.3></a>  
 
-[Table 6.3]: \#tab:6.3
+[Table 6.3]: ./ChapModelSelection.html#tab:6.3
 
-Table 6.3. **Comparison of Observed to Fitted Counts: Singaporean Auto Data**
+[Table 6.3]{#tab:6.3}. **Comparison of Observed to Fitted Counts: Singaporean Auto Data**
 
 $$
 \small{
@@ -352,12 +369,16 @@ The motivation for the above statistic derives from the fact that
 \]
 has a limiting `r Gloss('chi-square distribution', '2.7')` with $K-1$ degrees of freedom if $p_k$, $k=1,\ldots,K$ are the true cell probabilities. Now suppose that only the summarized data represented by $m_k$, $k=1,\ldots,K$ is available. Further, if $p_k$'s are functions of $s$ parameters, replacing $p_k$'s by any *efficiently* estimated probabilities $\widehat{p}_k$'s results in the statistic continuing to have a limiting chi-square distribution but with degrees of freedom given by $K-1-s$. Such efficient estimates can be derived for example by using the *mle* method (with a `r Gloss('multinomial likelihood')`) or by estimating the $s$ parameters which minimizes the Pearson's chi-square statistic above. For example, the `R` code below does calculate an estimate for $\lambda$ doing the latter and results in the estimate $0.06623153$, close but different from the *mle* of $\lambda$ using the full data:
 
+`r CodeFontSmall()`
+
+```{verbatim}
+m  <- c(6996,455,28,4,0);
+op <- m/sum(m);
+g  <- function(lam){ sum( (op-c(dpois(0:3,lam),1-ppois(3,lam)) )^2) };
+optim( sum(op*(0:4)), g, method="Brent", lower=0, upper=10)$par
 ```
-m<-c(6996,455,28,4,0);
-op<-m/sum(m);
-g<-function(lam){sum((op-c(dpois(0:3,lam),1-ppois(3,lam)))^2)};
-optim(sum(op*(0:4)),g,method="Brent",lower=0,upper=10)$par
-```
+
+`r CodeFontLarge()`
 
 When one uses the full data to estimate the probabilities, the asymptotic distribution is *in between* chi-square distributions with parameters $K-1$ and $K-1-s$. In practice it is common to ignore this subtlety and assume the limiting chi-square has $K-1-s$ degrees of freedom. Interestingly, this practical shortcut works quite well in the case of the Poisson distribution. 
 
@@ -366,16 +387,16 @@ For the Singaporean auto data the Pearson's chi-square statistic equals $41.98$ 
 In the above, we started with the cells as given in the above tabular summary. In practice, a relevant question is how to define the cells so that the chi-square distribution is a good approximation to the finite sample distribution of the statistic.  A rule of thumb is to define the cells in such a way to have at least $80\%$, if not all, of the cells having expected counts greater than $5$. Also, it is clear that a larger number of cells results in a higher power of the test, and hence a simple rule of thumb is to maximize the number of cells such that each cell has at least 5 observations. 
 
 
-## Iterative Model Selection {#S:MS:Iterative:Selection}
+## Iterative Model Selection {#S:Sec62}
 
 In our model development, we examine the data graphically, hypothesize a
 model structure, and compare the data to a candidate model in order to
 formulate an improved model. @box1980sampling describes this as an
-*iterative process* which is shown in Figure \@ref(fig:Iterative).
+*iterative process* which is shown in Figure \@ref(fig:Fig65).
 
-(ref:Iterative) **Iterative Model Specification Process**
+(ref:Fig65) **Iterative Model Specification Process**
 
-```{r Iterative, echo=FALSE, fig.cap='(ref:Iterative)', out.width='80%', fig.align='center'}
+```{r Fig65, echo=FALSE, fig.cap='(ref:Fig65)', out.width='80%'}
 knitr::include_graphics("Figures/F5Iterative.png")
 ```
 
@@ -403,9 +424,9 @@ data to it. Third, theoretical properties of the model are also
 important for inferring general relationships based on the behavior of
 the data.
 
-## Model Selection Based on a Training Dataset {#S:MS:Tools:Stats:Likelihood}
+## Model Selection Based on a Training Dataset {#S:Sec63}
 
-As introduced in Section \@ref(S:Process), it is common to refer to a
+As introduced in Section \@ref(S:Sec22), it is common to refer to a
 dataset used for fitting the model as a *training* or an *in-sample*
 dataset. Techniques available for selecting a model depend upon whether
 the outcomes $X$ are discrete, continuous, or a hybrid of the two,
@@ -413,7 +434,7 @@ although the principles are the same.
 
 **Graphical and other Basic Summary Measures.** Begin by summarizing the
 data graphically and with statistics that do not rely on a specific
-parametric form, as summarized in Section \@ref(S:MS:NonParEst).
+parametric form, as summarized in Section \@ref(S:Sec441).
 Specifically, you will want to graph both the empirical distribution and
 density functions. Particularly for loss data that contain many zeros
 and that can be skewed, deciding on the appropriate scale (e.g.,
@@ -431,7 +452,7 @@ into the modeling process.
 
 Critique the candidate parametric model numerically and graphically. For
 the graphs, utilize the tools introduced in Section
-\@ref(S:MS:ToolsModelSelection) such as $pp$ and $qq$ plots. For the
+\@ref(S:Sec61) such as $pp$ and $qq$ plots. For the
 numerical assessments, examine the statistical significance of
 parameters and try to eliminate parameters that do not provide
 additional information. In addition to statistical significance of
@@ -440,7 +461,7 @@ parameters, you may use the following model comparison tools.
 **Likelihood Ratio Tests.** For comparing model fits, if one model is a
 subset of another, then a likelihood ratio test may be employed; the
 general approach to likelihood ratio testing is described in Appendix
-Sections \@ref(S:AppA:HT:LRT) and \@ref(S:AppC:MLEModelVal).
+Sections \@ref(S:Sec1743) and \@ref(S:Sec191).
 
 **Goodness of Fit Statistics.** Generally, models are not proper subsets
 of one another in which case overall goodness of fit statistics are
@@ -449,14 +470,14 @@ goodness of statistic. The most widely used examples are Akaike's
 Information Criterion (*AIC*) and the (Schwarz) Bayesian Information
 Criterion (*BIC*); they are widely cited because they can be readily
 generalized to multivariate settings. Appendix Section
-\@ref(S:AppA:HT:IC) provides a summary of these statistics.
+\@ref(S:Sec1744) provides a summary of these statistics.
 
-For selecting the appropriate distribution, statistics that compare a parametric fit to a nonparametric alternative, summarized in Section \@ref(S:MS:Tools:Stats), are useful for model comparison. For discrete
+For selecting the appropriate distribution, statistics that compare a parametric fit to a nonparametric alternative, summarized in Section \@ref(S:Sec612), are useful for model comparison. For discrete
 data, a *goodness of fit* statistic is generally preferred as it is more intuitive and simpler to explain.
 
-## Model Selection Based on a Test Dataset
+## Model Selection Based on a Test Dataset {#S:Sec64}
 
-`r Gloss('Model validation')` introduced in Section \@ref(S:Process) is
+`r Gloss('Model validation')` introduced in Section \@ref(S:Sec22) is
 the process of confirming that the proposed model is appropriate based
 on a *test* or an *out-of-sample* dataset, especially in light of the
 purposes of the investigation. Model validation is important since the
@@ -476,7 +497,7 @@ training dataset as experience from one year that is used to predict the
 behavior of the next year's test dataset.
 
 We can respond to these criticisms by using a technique known as
-**out-of-sample validation**. The ideal situation is to have available
+*out-of-sample validation*. The ideal situation is to have available
 two sets of data, one for training, or model development, and the other
 for testing, or model validation. We initially develop one or several
 models on the first dataset that we call *candidate* models. Then, the
@@ -486,14 +507,14 @@ unaffected by the procedures used to formulate the model.
 
 **Random Split of the Data.** Unfortunately, rarely will two sets of
 data be available to the investigator. As mentioned in Section
-\@ref(S:Process), we can implement the validation process by splitting
-the dataset into **training** and **test** subsamples, respectively.
-Figure \@ref(fig:ModelValidation) illustrates this splitting of the
+\@ref(S:Sec22), we can implement the validation process by splitting
+the dataset into *training* and *test* subsamples, respectively.
+Figure \@ref(fig:Fig66) illustrates this splitting of the
 data.
 
-(ref:ModelValidation) **Model Validation. A dataset is randomly split into two subsamples.**
+(ref:Fig66) **Model Validation.** A dataset is randomly split into two subsamples.
 
-```{r ModelValidation, echo=FALSE, fig.cap='(ref:ModelValidation)', out.width='60%', fig.align='center'}
+```{r Fig66, echo=FALSE, fig.cap='(ref:Fig66)', out.width='80%'}
 par(mai=c(0,0.1,0,0))
 plot.new()
 plot.window(xlim=c(0,18),ylim=c(-10,10))
@@ -540,7 +561,7 @@ a tendency to select more complicated models than needed. For example,
 we might select a four parameter GB2, generalized beta of the second
 kind, distribution when only a two parameter Pareto is needed.
 Information criteria such as `r Gloss('AIC')` and `r Gloss('BIC')`
-introduced in Appendix Section \@ref(S:AppA:HT:IC) include penalties for
+introduced in Appendix Section \@ref(S:Sec1744) include penalties for
 model complexity and thus provide protection against over-fitting, but
 using a test sample may also help achieve parsimonious models. From a
 quote often attributed to Albert Einstein, we want to "use the simplest
@@ -559,7 +580,7 @@ datasets using the models fitted from training data.
 
 `r HideRCode('ValidationKS.1','Show R Code for Kolmogorov-Smirnov model validation')`
 
-```{r warning = FALSE, message = FALSE, comment = "",  echo=SHOW_PDF}
+```{r  echo=HtmlEval}
 library(MASS)
 library(VGAM)
 library(goftest)
@@ -617,38 +638,33 @@ model selection, one uses the training sample to develop an estimate of
 $\mathrm{g}$, say, $\hat{\mathrm{g}}$, and then calibrate the average
 distance from the observed outcomes to the predictions using a criterion
 of the form
-
-```{=tex}
 \begin{equation}
 \frac{1}{n}\sum_i \mathrm{d}(y_i,\hat{\mathrm{g}}\left(x_{i1}, \ldots, x_{ik}\right) ) .
 (\#eq:OutSampleCriter)
 \end{equation}
-```
 Here, "d" is some measure of distance and the sum $i$ is over the test
 data. The function $\mathrm{g}$ may not have an analytical form and can
 be estimated for each observation using the different different types of
 algorithms and models introduced earlier in Section
-\@ref(S:ManyVarAnalytics). In many regression applications, it is common
+\@ref(S:Sec24). In many regression applications, it is common
 to use the squared Euclidean distance of the form
 $\mathrm{d}(y_i,\mathrm{g}) = (y_i-\mathrm{g})^2$ under which the
-criterion in equation \@ref(eq:OutSampleCriter) is called the **mean
-squared error (MSE)**. Using data simulated from linear models, Example
-2.3.1 uses the **root mean squared error (Rmse)** which is the squared
+criterion in equation \@ref(eq:OutSampleCriter) is called the *mean squared error ($MSE$)*. Using data simulated from linear models, Example
+2.3.1 uses the *root mean squared error (Rmse)* which is the squared
 root of the MSE. From equation \@ref(eq:OutSampleCriter), the MSE
 criteria works the best for linear models under normal distributions
 with constant variance, as minimizing MSE is equivalent to the maximum
 likelihood and least squares criterion in training data. In data
 analytics and linear regression, one may consider transformations of the
 outcome variable in order for the MSE criteria to work more effectively.
-In actuarial applications, the **mean absolute error (MAE)** under the
+In actuarial applications, the *mean absolute error ($MAE$)* under the
 Euclidean distance $\mathrm{d}(y_i,\mathrm{g}) = |y_i-\mathrm{g}|$ may
 be preferred because of the skewed nature of loss data. For right-skewed
 outcomes, it may require a larger sample size for the validation
 statistics to pickup the correct model when large outlying values of $y$
 can have a large effect on the measures. 
 
-Following Example 2.3.1, we use simulated data in Examples 6.4.2 through 6.4.4 to compare the AIC
-information criteria from Appendix Chapter \@ref(S:AppA:HT:IC) with
+Following Example 2.3.1, we use simulated data in Examples 6.4.2 through 6.4.4 to compare the AIC information criteria from Appendix Chapter \@ref(S:Sec1744) with
 out-of-sample MSE and MAE criterion for selecting the distribution and
 input variables for outcomes that are respectively from normal and
 right-skewed distributions including lognormal and gamma distributions.
@@ -663,10 +679,25 @@ that represents the average absolute error for out-of-sample prediction,
 and do not necessarily guarantee correct selection of the underlying
 data generating mechanism.
 
-------------------------------------------------------------------------
+***
 
-**Example 6.4.2. In-sample AIC and out-of-sample MSE for normal
-outcomes**. Example 2.3.1 assumes that there is a set of claims that
+`r HideRCode('Tab62.2Silly',"")`
+
+```{r  eval = HtmlEval, echo = FALSE}
+s=2
+knitr::kable(s, caption = "Silly. Create a table just to update the counter...")
+knitr::kable(s, caption = "Silly. Create a table just to update the counter...")
+knitr::kable(s, caption = "Silly. Create a table just to update the counter...")
+
+```
+
+\setcounter{table}{3}
+
+</div>
+
+
+
+**Example 6.4.2. In-sample AIC and out-of-sample MSE for normal outcomes**. Example 2.3.1 assumes that there is a set of claims that
 potentially varies by a single categorical variable with six levels. To
 illustrating in-sample over-fitting, it also assumes that two of the six
 levels share a common mean that differs from rest of levels. For Example
@@ -677,16 +708,14 @@ introduced in the next section. Here, we may use the same data
 generation mechanism to compare the performance of in-sample AIC with
 the in-sample and out-of-sample Rmse criteria. In particular, we
 generate a total of 200 samples and split them equally into the training
-and test datasets. From the output table, we observe the two-level model
-was correctly selected by both in-sample AIC and out-of-sample MSE
+and test datasets. From Table \@ref(tab:Tab64), we observe the two-level model was correctly selected by both in-sample AIC and out-of-sample MSE
 criteria, whereas in-sample MSE prefers an over-fitted model with six
 levels. Thus, due to concerns of model over-fitting, we do not use
 in-sample distance measures such as the MSE and MAE criterion that
 favors more complicated models.
 
-`r HideRCode('ValidationStat.1','Show R Code for model validation statistics')`
 
-```{r warning = FALSE, message = FALSE, comment = "",  echo=SHOW_PDF}
+```{r Tab64, echo=FALSE}
 library(Metrics)
 
 rmse <- Metrics::rmse
@@ -700,7 +729,6 @@ xyData <- data.frame(x1, x2, y)
 
 # Use training data to fit the models, and training and test data to obtain MSE
 train.id <- sample(n, n/2)  # indices for training data
-
 Rmse.train <- rep(NA, 3) -> Rmse.test -> AIC.train
 
 test <- xyData[-train.id, ]
@@ -719,26 +747,36 @@ AIC.train[1] <- AIC(model0)
 AIC.train[2] <- AIC(model1)
 AIC.train[3] <- AIC(model2)
 
-OutMat <- rbind(round(Rmse.train, digits = 3), round(Rmse.test, digits = 3),
-    round(AIC.train, digits = 3))
+OutMat <- rbind(round(Rmse.train, digits = 3), 
+                round(Rmse.test, digits = 3),
+                round(AIC.train, digits = 3) )
 colnames(OutMat) <- c("Community Rating", "Two Levels", "Six Levels")
 row.names(OutMat) <- c("Rmse - Train", "Rmse - Test", "AIC - Train")
 
-knitr::kable(OutMat, caption = "**Model Selection based on MSE and AIC for normal outputs**", booktabs = T)
+
+TableGen1(TableData=OutMat,
+         TextTitle= 'Model Selection based on MSE and AIC for normal outputs',
+         Align='c', Digits=3, ColumnSpec=1:3,
+         ColWidth = ColWidth5)
     
+```
+
+`r HideRCode('Example642.Hide','Show R Code for Example 6.4.2')`
+
+
+```{r eval=FALSE, ref.label = 'Tab64', echo = HtmlEval}
 ```
 
 </div>
 
-------------------------------------------------------------------------
+***
 
-**Example 6.4.3. MSE and MAE for right-skewed outcomes - lognormal
-claims**. For claims modeling, one may wonder how the MSE and MAE types
+**Example 6.4.3. MSE and MAE for right-skewed outcomes - lognormal claims**. For claims modeling, one may wonder how the MSE and MAE types
 of criterion may perform for right-skewed data. Using the same data
 generating procedure, we may generate lognormal claim amounts by
 exponentiating the normal outcomes from the previous example. We fit the
-lognormal claim amounts with gamma and lognormal regression commonly
-used for ratemaking and claims analytics. For the specific data
+lognormal claim amounts with lognormal and gamma regression commonly
+used for ratemaking and claims analytics. Results are summarized in Tables \@ref(tab:Tab65) and \@ref(tab:Tab66), respectively. For the specific data
 generating mechanism, we observe that it requires a larger sample size
 for out-of-sample Rmse and MAE to select the correct distributional form
 and mean structure, when compared with in-sample AIC criteria. The AIC
@@ -748,9 +786,9 @@ output, precautions need to be taken when using model validation
 statistics that may be sensitive to large claim values, particularly
 when the sample size is relatively small.
 
-`r HideRCode('ValidationStat.2','Show R Code for model validation statistics for lognormal outputs')`
+\newpage
 
-```{r warning = FALSE, message = FALSE, comment = "",  echo=SHOW_PDF}
+```{r Tab65, echo=FALSE}
 library(Metrics)
 n <- 1000
 set.seed(12345)
@@ -800,8 +838,13 @@ OutMat <- rbind(round(Rmse.train, digits = 3), round(Rmse.test, digits = 3),
 colnames(OutMat) <- c("Community Rating", "Two Levels", "Six Levels")
 row.names(OutMat) <- c("Rmse - Train", "Rmse - Test", "MAE - Train", "MAE - Test", "AIC - Train")
 
-knitr::kable(OutMat, caption = "**Model Selection based on in-sample AIC and out-of-sample MSE and MAE from lognormal model**", booktabs = T)
+TableGen1(TableData=OutMat,
+         TextTitle= 'Model Selection based on in-sample AIC and out-of-sample MSE and MAE from lognormal model',
+         Align='c', Digits=3, ColumnSpec=1:3,
+         ColWidth = ColWidth5)
+```
 
+```{r Tab66, echo=FALSE}
 # fit gamma models
 model0 <- glm(exp.y ~ 1, data = train, family = Gamma(link=log))
 model1 <- glm(exp.y ~ x1, data = train, family = Gamma(link=log))
@@ -831,12 +874,29 @@ OutMat <- rbind(round(Rmse.train, digits = 3), round(Rmse.test, digits = 3),
 colnames(OutMat) <- c("Community Rating", "Two Levels", "Six Levels")
 row.names(OutMat) <- c("Rmse - Train", "Rmse - Test", "MAE - Train", "MAE - Test", "AIC - Train")
 
-knitr::kable(OutMat, caption = "**Model Selection based on in-sample AIC and out-of-sample MSE and MAE from gamma model**", booktabs = T)
+TableGen1(TableData=OutMat,
+         TextTitle= 'Model Selection based on in-sample AIC and out-of-sample MSE and MAE from gamma model',
+         Align='c', Digits=3, ColumnSpec=1:3,
+         ColWidth = ColWidth5)
+
+```
+
+
+`r HideRCode('Example643.Hide','Show R Code for Example 6.4.3')`
+
+
+```{r eval=FALSE, ref.label = 'Tab65', echo = HtmlEval}
+```
+
+
+```{r eval=FALSE, ref.label = 'Tab66', echo = HtmlEval}
 ```
 
 </div>
 
-------------------------------------------------------------------------
+
+
+***
 
 **Example 6.4.4. MSE and MAE for right-skewed outcomes - gamma claims**.
 For right-skewed outcomes, we may be interested in studying how the MSE
@@ -844,10 +904,8 @@ and MAE types of measures work for another loss severity distribution,
 the gamma distribution, that is widely used in ratemaking and claims
 analytics. Here, we use a similar mean structure for generating claims
 amounts based on a gamma regression with the log link function. We fit
-the data using gamma regression and lognormal regression. For gamma
-outcomes, the table shows that out-of-sample MSE and MAE criterion fail
-to select the correct distributional form or the mean structure even
-with a total of 1000 samples. By changing the gamma shape parameter, you
+the data using lognormal and gamma  regression. Results are summarized in Tables \@ref(tab:Tab67) and \@ref(tab:Tab68), respectively.  For gamma
+outcomes, Table \@ref(tab:Tab68) shows that out-of-sample MSE and MAE criterion fail to select the correct distributional form or the mean structure even with a total of 1000 samples. By changing the gamma shape parameter, you
 may see that the out-of-sample MSE and MAE criterion work in certain
 settings for correctly selecting the distributional form or the mean
 structure, but the performance of such model validation statistics does
@@ -857,9 +915,7 @@ be working consistently in selecting the correct distribution and mean
 structure for the data generated from gamma distributions, even with a
 smaller sample size of 200.
 
-`r HideRCode('ValidationStat.3','Show R Code for model validation statistics for gamma outputs')`
-
-```{r warning = FALSE, message = FALSE, comment = "",  echo=SHOW_PDF}
+```{r Tab67, echo=FALSE}
 library(Metrics)
 n <- 1000
 set.seed(12345)
@@ -912,7 +968,14 @@ OutMat <- rbind(round(Rmse.train, digits = 3), round(Rmse.test, digits = 3),
 colnames(OutMat) <- c("Community Rating", "Two Levels", "Six Levels")
 row.names(OutMat) <- c("Rmse - Train", "Rmse - Test", "MAE - Train", "MAE - Test", "AIC - Train")
 
-knitr::kable(OutMat, caption = "**Model Selection based on in-sample AIC and out-of-sample MSE and MAE from lognormal model**", booktabs = T)
+TableGen1(TableData=OutMat,
+         TextTitle= 'Model Selection based on in-sample AIC and out-of-sample MSE and MAE from lognormal model',
+         Align='c', Digits=3, ColumnSpec=1:3,
+         ColWidth = ColWidth5)
+
+```
+
+```{r Tab68, echo=FALSE}
 
 # fit gamma models
 model0 <- glm(y ~ 1, data = train, family = Gamma(link=log))
@@ -943,21 +1006,26 @@ OutMat <- rbind(round(Rmse.train, digits = 3), round(Rmse.test, digits = 3),
 colnames(OutMat) <- c("Community Rating", "Two Levels", "Six Levels")
 row.names(OutMat) <- c("Rmse - Train", "Rmse - Test", "MAE - Train", "MAE - Test", "AIC - Train")
 
-knitr::kable(OutMat, caption = "**Model Selection based on in-sample AIC and out-of-sample MSE and MAE from gamma model**", booktabs = T)
-
-
+TableGen1(TableData=OutMat,
+         TextTitle= 'Model Selection based on in-sample AIC and out-of-sample MSE and MAE from gamma model',
+         Align='c', Digits=3, ColumnSpec=1:3,
+         ColWidth = ColWidth5)
     
+```
+
+
+`r HideRCode('Example644.Hide','Show R Code for Example 6.4.4')`
+
+```{r eval=FALSE, ref.label = 'Tab67', echo = HtmlEval}
+```
+
+
+```{r eval=FALSE, ref.label = 'Tab68', echo = HtmlEval}
 ```
 
 </div>
 
-Chapter \@ref(ChapPremiumFoundations) describes another measure, the
-`r Gloss('Gini index', '4.2')`, that may be useful in actuarial
-applications particularly when there is a large proportion of zeros in
-claims data (corresponding to no claims) that may invalidate the
-aforementioned model validation statistics.
-
-## Model Selection Based on Cross-Validation {#S:MS:Cross-Validation}
+## Model Selection Based on Cross-Validation {#S:Sec65}
 
 Although out-of-sample validation is the gold standard in predictive
 modeling, it is not always practical to do so. The main reason is that
@@ -971,7 +1039,7 @@ outcomes and large outcomes may have a great influence on the parameter
 estimates.
 
 **Cross-Validation Procedure.** Alternatively, one may use
-**cross-validation**, as follows.
+*cross-validation*, as follows.
 
 -   The procedure begins by using a random mechanism to split the data
     into $K$ subsets of roughly equal size known as *folds*, where
@@ -999,10 +1067,9 @@ out-of-sample prediction to see whether the MSE and MAE types of
 criterion work for right-skewed distributions based on lognormal and
 gamma regression with a log link function.
 
-------------------------------------------------------------------------
+***
 
-**Example 6.5.1. Cross-validation in right-skewed outcomes - lognormal
-claims** For lognormal claims, we use the data generating mechanism from
+**Example 6.5.1. Cross-validation in right-skewed outcomes - lognormal claims** For lognormal claims, we use the data generating mechanism from
 Example 6.4.3 to generate a total of 100 samples, and use the k-fold
 cross validation procedure in Example 2.3.1 to select the distributional
 form and mean structure. Using cross-validation, we note that both AIC
@@ -1010,9 +1077,9 @@ and out-of-sample MSE and MAE seem to be working for selecting the model
 with the correct distribution and mean structure, even with a total of
 100 samples.
 
-`r HideRCode('ValidationStat.4','Show R Code for cross-validation with lognormal outputs')`
 
-```{r warning = FALSE, message = FALSE, comment = "",  echo=SHOW_PDF}
+
+```{r Tab69, echo=FALSE}
 library(Metrics)
 n <- 100
 set.seed(1234)
@@ -1055,8 +1122,13 @@ row.names(OutMat) <- c("Rmse - Fold 1", "Rmse - Fold 2", "Rmse - Fold 3", "Rmse 
     "Rmse - Fold 5", "Rmse - Average","MAE - Fold 1", "MAE - Fold 2", "MAE - Fold 3", "MAE - Fold 4",
     "MAE - Fold 5", "MAE - Average", "AIC - Average")
 
-knitr::kable(OutMat, caption = "**Cross-validation based on in-sample AIC, and out-of-sample MSE and MAE from lognormal model**", booktabs = T)
+TableGen1(TableData=OutMat,
+         TextTitle= 'Cross-validation based on in-sample AIC, and out-of-sample MSE and MAE from lognormal model',
+         Align='c', Digits=3, ColumnSpec=1:3,
+         ColWidth = ColWidth5)
+```
 
+```{r Tab610, echo=FALSE}
 # gamma model
 for (i in 1:k) {
     test.id <- splt[[i]]
@@ -1085,17 +1157,30 @@ row.names(OutMat) <- c("Rmse - Fold 1", "Rmse - Fold 2", "Rmse - Fold 3", "Rmse 
     "MAE - Fold 5", "MAE - Average", "AIC - Average")
 
 
-knitr::kable(OutMat, caption = "**Cross-validation based on in-sample AIC, and out-of-sample MSE and MAE from gamma model**", booktabs = T)
+TableGen1(TableData=OutMat,
+         TextTitle= 'Cross-validation based on in-sample AIC, and out-of-sample MSE and MAE from gamma model',
+         Align='c', Digits=3, ColumnSpec=1:3,
+         ColWidth = ColWidth5)
 
+```
+
+
+`r HideRCode('Example651.Hide','Show R Code for Example 6.5.1')`
+
+
+```{r eval=FALSE, ref.label = 'Tab69', echo = HtmlEval}
+```
+
+
+```{r eval=FALSE, ref.label = 'Tab610', echo = HtmlEval}
 ```
 
 </div>
 
-------------------------------------------------------------------------
+***
 
-**Example 6.5.2. Cross-validation in right-skewed outcomes - gamma
-claims** For gamma claims, we use the data generating mechanism from
-Example 6.4.4 to generate a total of 100 samples, and use the k-fold
+**Example 6.5.2. Cross-validation in right-skewed outcomes - gamma claims** For gamma claims, we use the data generating mechanism from
+Example 6.4.4 to generate a total of 100 samples, and use the $k$-fold
 cross validation procedure to select the distributional form and mean
 structure. Using cross-validation, we note that in-sample AIC seems to
 be working for selecting the model with the correct distribution and
@@ -1103,9 +1188,7 @@ mean structure, while out-of-sample MSE and MAE seem to fail in
 selecting the distributional form or the mean structure correctly even
 after we increase the sample size to 1000.
 
-`r HideRCode('ValidationStat.5','Show R Code for cross-validation with gamma outputs')`
-
-```{r warning = FALSE, message = FALSE, comment = "",  echo=SHOW_PDF}
+```{r  Tab611, echo=FALSE}
 library(Metrics)
 n <- 1000
 set.seed(1234)
@@ -1151,8 +1234,14 @@ row.names(OutMat) <- c("Rmse - Fold 1", "Rmse - Fold 2", "Rmse - Fold 3", "Rmse 
     "Rmse - Fold 5", "Rmse - Average","MAE - Fold 1", "MAE - Fold 2", "MAE - Fold 3", "MAE - Fold 4",
     "MAE - Fold 5", "MAE - Average", "AIC - Average")
 
-knitr::kable(OutMat, caption = "**Cross-validation based on in-sample AIC, and out-of-sample MSE and MAE from lognormal model**", booktabs = T)
+TableGen1(TableData=OutMat,
+         TextTitle= 'Cross-validation based on in-sample AIC, and out-of-sample MSE and MAE from lognormal model',
+         Align='c', Digits=3, ColumnSpec=1:3,
+         ColWidth = ColWidth5)
+```
 
+
+```{r  Tab612, echo=FALSE}
 # gamma model
 for (i in 1:k) {
     test.id <- splt[[i]]
@@ -1181,41 +1270,54 @@ row.names(OutMat) <- c("Rmse - Fold 1", "Rmse - Fold 2", "Rmse - Fold 3", "Rmse 
     "MAE - Fold 5", "MAE - Average", "AIC - Average")
 
 
-knitr::kable(OutMat, caption = "**Cross-validation based on in-sample AIC, and out-of-sample MSE and MAE from gamma model**", booktabs = T)
+TableGen1(TableData=OutMat,
+         TextTitle= 'Cross-validation based on in-sample AIC, and out-of-sample MSE and MAE from gamma model',
+         Align='c', Digits=3, ColumnSpec=1:3,
+         ColWidth = ColWidth5)
 
 ```
 
-</div>
 
+`r HideRCode('Example652.Hide','Show R Code for Example 6.5.2')`
+
+
+```{r eval=FALSE, ref.label = 'Tab611', echo = HtmlEval}
+```
+
+
+```{r eval=FALSE, ref.label = 'Tab612', echo = HtmlEval}
+```
+
+</div>
 Cross-validation is widely used because it retains the predictive flavor
 of the out-of-sample model validation process but, due to the re-use of
 the data, is more stable over random samples. In addition, Example
-8.3.1 in Chapter \@ref(ChapSimulation) uses the Wisconsin Property Fund to
+8.4.1 in Chapter \@ref(ChapSimulation) uses the Wisconsin Property Fund to
 perform k-fold cross-validation of the gamma and Pareto models based on
 the Kolmogorov-Smirnov goodness of fit statistic. Additional information
 and examples regarding re-sampling procedures including leave-one-out
 cross-validation and bootstrap can also be found in Chapter
 \@ref(ChapSimulation).
 
-## Model Selection for Modified Data {#S:MS:Modified-Data}
+## Model Selection for Modified Data {#S:Sec66}
 
 So far we have discussed model selection using unmodified data.
 For modified data including grouped, censored and truncated data, you
 learned parametric and nonparametric estimation of distribution
-functions in Section \@ref(S:MS:ModifiedData1). For model selection, the
-tools from Section \@ref(S:MS:ToolsModelSelection) can be extended to cases
+functions in Chapter \@ref(ChapClaimSeverity). For model selection, the
+tools from Section \@ref(S:Sec61) can be extended to cases
 of modified data.
 
 For selection of distributions, the nonparametric tools introduced in
-Section \@ref(S:MS:ToolsModelSelection) are based on estimated
+Section \@ref(S:Sec61) are based on estimated
 parametric and nonparametric distribution functions, and thus can be
 extended to modified data for which both types of estimators exist.
 
 For graphical comparisons, the $pp$ and $qq$ plots introduced earlier
 can be created for modified data by plotting the parametric estimates
-from Section \@ref(S:MS:ModifiedData1) against nonparametric estimates
+from Section \@ref(S:Sec52) against nonparametric estimates
 of the probability or distribution functions from Section
-\@ref(S:MS:NonParModified). For example, the `qqPlotCensored` and
+\@ref(S:Sec53). For example, the `qqPlotCensored` and
 `qqtrunc` functions in `R` generate $qq$ plots respectively for censored
 (left or right) and truncated data, whereas the `probPlot` function
 creates both $pp$ and $qq$ plots with a larger selection of
@@ -1228,17 +1330,20 @@ package `GofCens`.
 **Example 6.6.1. Bodily Injury Claims and $qq$-Plots.** For the Boston auto bodily injury claims data from Example 5.3.2, we include the full dataset with right-censoring, and use the $qq$-plot to compare the estimated
 quantiles from lognormal, normal and exponential distributions with
 those from the nonparametric Kaplan-Meier method. From the $qq$-plots in
-Figure \@ref(fig:qqCensored), the lognormal distribution seems
+Figure \@ref(fig:Fig67), the lognormal distribution seems
 to fit the censored data much better those based on the normal and
 exponential distributions.
 
-(ref:qqCensored) **Quantile-Quantile ($qq$) Plots for Bodily Injury Claims. The horizontal axis gives the empirical quantiles at each observation. The vertical axis gives the quantiles from the fitted distributions; lognormal quantiles are in the left-hand panel, normal quantiles are in the middle, and exponential in the left-hand panel.**
+(ref:Fig67) **Quantile-Quantile ($qq$) Plots for Bodily Injury Claims.** The horizontal axis gives the empirical quantiles at each observation. The vertical axis gives the quantiles from the fitted distributions; lognormal quantiles are in the left-hand panel, normal quantiles are in the middle, and exponential in the right-hand panel.
 
 
-```{r qqCensored, fig.cap='(ref:qqCensored)', echo = FALSE, warning=FALSE, out.width='150%', fig.asp=0.40}
+```{r Fig67, fig.cap='(ref:Fig67)', echo = FALSE, out.width='100%', fig.asp=0.40}
 library(GofCens)
 library(grid)
 library(gridExtra)
+library(gridGraphics)
+library(ggplot2)
+
 # Example from Derrig et al
 #  "Applications of resampling methods in actuarial practice"
 #  CAS Proceedings 2001
@@ -1247,23 +1352,27 @@ BIData$Censored <- 1*(BIData$AmountPaid >= BIData$PolicyLimit)
 BIDataUncensored <- subset(BIData, Censored == 0) 
 UnCensored <- 1*(BIData$AmountPaid < BIData$PolicyLimit)
 
-library(gridGraphics)
-library(ggplot2)
 ## qq-plot for lognormal distribution
-plot1 <- grid.grabExpr(GofCens::probPlot(BIData$AmountPaid, cens = UnCensored, distr = "lognormal", plots = "QQ", ggp=TRUE,prnt = FALSE, mtitle=F, main=""))
+plot1 <- grid.grabExpr(GofCens::probPlot(BIData$AmountPaid, 
+                cens = UnCensored, distr = "lognormal", plots = "QQ",
+                ggp=TRUE,prnt = FALSE, mtitle=F, main=""))
 ## qq-plot for normal distribution
-plot2 <- grid.grabExpr(GofCens::probPlot(BIData$AmountPaid, cens = UnCensored, distr = "normal", plots = "QQ", ggp=TRUE,prnt = FALSE, mtitle=F, main=""))
+plot2 <- grid.grabExpr(GofCens::probPlot(BIData$AmountPaid, 
+                cens = UnCensored, distr = "normal", plots = "QQ",
+                ggp=TRUE,prnt = FALSE, mtitle=F, main=""))
 ## qq-plot for exponential distribution
-plot3 <- grid.grabExpr(GofCens::probPlot(BIData$AmountPaid, cens = UnCensored, distr = "exponential", plots = "QQ", ggp=TRUE,prnt = FALSE, mtitle=F, main=""))
+plot3 <- grid.grabExpr(GofCens::probPlot(BIData$AmountPaid, 
+                cens = UnCensored, distr = "exponential", plots = "QQ",
+                ggp=TRUE,prnt = FALSE, mtitle=F, main=""))
 
 # Arrange the captured plots side by side
 grid.arrange(plot1, plot2, plot3, ncol = 3)
 
 ```
 
-`r HideRCode('qqCensored.4f', 'Show R Code')`
+`r HideRCode('Fig67.4f', 'Show R Code')`
 
-```{r ref.label = 'qqCensored', eval = FALSE, echo = SHOW_PDF}
+```{r ref.label = 'Fig67', eval = FALSE, echo = HtmlEval}
 ```
 
 </div>
@@ -1271,54 +1380,61 @@ grid.arrange(plot1, plot2, plot3, ncol = 3)
 
 
 In addition to graphical tools, you may use tools from Section
-\@ref(S:MS:Tools:Stats) for statistical comparisons of models fitted
+\@ref(S:Sec612) for statistical comparisons of models fitted
 from modified data based on parametric and nonparametric estimates of
 distribution functions. For example, the `R` package `GofCens` provides
 functions calculating the three goodness of fit statistics from Section
-\@ref(S:MS:Tools:Stats) for both right-censored and unmodified data. The
+\@ref(S:Sec612) for both right-censored and unmodified data. The
 `R` package `truncgof`, on the other hand, provides functions for
 calculating the three goodness of fit statistics for left-truncated
 data.
 
-**Example 6.6.2. Bodily Injury Claims and Goodness of Fit Stastistics.** For the Boston auto bodily injury claims with right-censoring, we may use the goodness of fit statistics to evaluate the fitted lognormal, normal and exponential
-distributions. For the Kolmogorov-Smirnov, Cramer-von
+**Example 6.6.2. Bodily Injury Claims and Goodness of Fit Stastistics.** For the Boston auto bodily injury claims with right-censoring, we may use the goodness of fit statistics to evaluate the fitted lognormal, normal and exponential distributions. For the Kolmogorov-Smirnov, Cramer-von
 Mises and Anderson-Darling statistics, the lognormal distribution gives
 values that are much lower than those from normal and exponential
 distributions. The conclusion from the goodness of fit statistics is
 consistent to that revealed by the $qq$ plots.
-aaa
 
 
-```{r KsCensored, fig.cap='(ref:KsCensored)', fig.align='center', echo = FALSE}
+```{r KsCensored, echo = FALSE, eval = FALSE}
 library(GofCens)
-#BIData <- read.csv("C:/Users/a1727618/OneDrive - Northern Illinois University/LDABOOK/LDA_Ed2-main/Data/DerrigResampling.csv", header =T)
-
-
 UnCensored <- 1*(BIData$AmountPaid < BIData$PolicyLimit)
-par(mfrow=c(2, 2))
+#par(mfrow=c(2, 2))
 ## Kolmogorov-Smirnov test for lognormal distribution
 KS.ln <- gofcens(BIData$AmountPaid, cens = UnCensored, distr = "lognormal")
-
 ## Kolmogorov-Smirnov test for normal distribution
 KS.norm <- gofcens(BIData$AmountPaid, cens = UnCensored, distr = "normal")
-
 ## Kolmogorov-Smirnov test for exponential distribution
 KS.exp <- gofcens(BIData$AmountPaid, cens = UnCensored, distr = "exponential")
 
+save(KS.ln, KS.norm, KS.exp, file= "../IntermediateCalcs/ModelSelectionChapter/Example662.Rdata")
 
+```
+
+```{r Table610, echo = FALSE}
+
+load(file= "IntermediateCalcs/ModelSelectionChapter/Example662.Rdata")
 OutMat <- rbind(round(KS.ln$Test[1:3], digits = 3), round(KS.norm$Test[1:3], digits = 3),
                 round(KS.exp$Test[1:3], digits = 3) )
 colnames(OutMat) <- c("Kolmogorov-Smirnov", "Cramer-von Mises", "Anderson-Darling")
 row.names(OutMat) <- c("Lognormal", "Normal", "Exponential")
 
+TableGen1(TableData=OutMat,
+         TextTitle= 'Nonparametric goodness of fit statistics for right-censored Bodily Injury Claims',
+         Align='c', Digits=3, ColumnSpec=1:3,
+         ColWidth = ColWidth5)
 
-knitr::kable(OutMat, caption = "**Nonparametric goodness of fit statistics for right-censored Bodily Injury Claims**", booktabs = T)
 
 ```
 
+
+
 `r HideRCode('KsCensored.4f', 'Show R Code')`
 
-```{r ref.label = 'KsCensored', eval = FALSE, echo = SHOW_PDF}
+```{r ref.label = 'KsCensored', eval = FALSE, echo = HtmlEval}
+```
+
+```{r ref.label = 'Table610', eval = FALSE, echo = HtmlEval}
 ```
 
 
@@ -1326,7 +1442,7 @@ knitr::kable(OutMat, caption = "**Nonparametric goodness of fit statistics for r
 
 Other than selecting the distributional form, model comparison measures
 such as the likelihood ratio test and information criterion including
-the AIC from Section \@ref(S:MS:Tools:Stats:Likelihood) can be obtained
+the AIC from Section \@ref(S:Sec63) can be obtained
 for models fitted based on likelihood criteria based on the likelihood
 functions introduced earlier for modified data. For modified data, the
 `survreg` and `flexsurvreg` functions in `R` fit parametric regression
@@ -1336,19 +1452,25 @@ criterion such as AIC for in-sample model comparisons. For censored and
 truncated data, the functions also provide output of residuals that
 allow calculation of model validation statistics such as the MSE and MAE
 for the iterative model selection procedure introduced in Section
-\@ref(S:MS:Iterative:Selection).
+\@ref(S:Sec62).
 
 ```{r child = './Quizzes/Quiz42.html', eval = QUIZ}
 ```
 
-## Further Resources and Contributors {#MS:further-reading-and-resources}
+## Further Resources and Contributors 
 
 
-#### Contributors {.unnumbered}
+#### Contributors {-}
 
 -   **Lei (Larry) Hua** and **Michelle Xia**, Northern Illinois University, are the principal authors of the second edition of this chapter. 
--   **Edward W. (Jed) Frees** and **Lisa Gao**, University of Wisconsin-Madison, are the principal authors of the initial version of this chapter. Email:[jfrees\@bus.wisc.edu](mailto:jfrees@bus.wisc.edu){.email} for
-    chapter comments and suggested improvements.
+-   **Edward (Jed) Frees** and **Lisa Gao**, University of Wisconsin-Madison, are the principal authors of the initial version of this chapter. 
 -   Chapter reviewers include: Vytaras Brazauskas, Yvonne Chueh, Eren
     Dodd, Hirokazu (Iwahiro) Iwasawa, Joseph Kim, Andrew Kwon-Nakamura,
     Jiandong Ren, and Di (Cindy) Xu.
+    
+#### Further Readings and References {-}
+
+If you would like additional practice with `R` coding, please visit our companion [LDA Short Course](https://openacttexts.github.io/LDACourse1). In particular, see the [Model Selection and Estimation Chapter](https://openacttexts.github.io/LDACourse1/model-selection-and-estimation.html).
+
+    
+    

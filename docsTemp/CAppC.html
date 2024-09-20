@@ -1,0 +1,1037 @@
+<!DOCTYPE html>
+<html lang="" xml:lang="">
+<head>
+
+  <meta charset="utf-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <title>Chapter 3 Appendix C: Maximum Likelihood Theory | Loss Data Analytics   Second Edition</title>
+  <meta name="description" content="Loss Data Analytics is an interactive, online, freely available text. - The online version will contain many interactive objects (quizzes, computer demonstrations, interactive graphs, video, and the like) to promote deeper learning. - A subset of the book will be available in pdf format for low-cost printing. - The online text will be available in multiple languages to promote access to a worldwide audience." />
+  <meta name="generator" content="bookdown 0.39 and GitBook 2.6.7" />
+
+  <meta property="og:title" content="Chapter 3 Appendix C: Maximum Likelihood Theory | Loss Data Analytics   Second Edition" />
+  <meta property="og:type" content="book" />
+  
+  <meta property="og:description" content="Loss Data Analytics is an interactive, online, freely available text. - The online version will contain many interactive objects (quizzes, computer demonstrations, interactive graphs, video, and the like) to promote deeper learning. - A subset of the book will be available in pdf format for low-cost printing. - The online text will be available in multiple languages to promote access to a worldwide audience." />
+  <meta name="github-repo" content="https://github.com/openacttexts/Loss-Data-Analytics" />
+
+  <meta name="twitter:card" content="summary" />
+  <meta name="twitter:title" content="Chapter 3 Appendix C: Maximum Likelihood Theory | Loss Data Analytics   Second Edition" />
+  
+  <meta name="twitter:description" content="Loss Data Analytics is an interactive, online, freely available text. - The online version will contain many interactive objects (quizzes, computer demonstrations, interactive graphs, video, and the like) to promote deeper learning. - A subset of the book will be available in pdf format for low-cost printing. - The online text will be available in multiple languages to promote access to a worldwide audience." />
+  
+
+<meta name="author" content="An open text authored by the Actuarial Community" />
+
+
+
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="apple-mobile-web-app-capable" content="yes" />
+  <meta name="apple-mobile-web-app-status-bar-style" content="black" />
+  
+  
+<link rel="prev" href="CAppB.html"/>
+<link rel="next" href="ChapSummaryDistributions.html"/>
+<script src="libs/jquery-3.6.0/jquery-3.6.0.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/fuse.js@6.4.6/dist/fuse.min.js"></script>
+<link href="libs/gitbook-2.6.7/css/style.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-table.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-bookdown.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-highlight.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-search.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-fontsettings.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-clipboard.css" rel="stylesheet" />
+
+
+
+
+
+
+
+
+<link href="libs/anchor-sections-1.1.0/anchor-sections.css" rel="stylesheet" />
+<link href="libs/anchor-sections-1.1.0/anchor-sections-hash.css" rel="stylesheet" />
+<script src="libs/anchor-sections-1.1.0/anchor-sections.js"></script>
+<script src="libs/kePrint-0.0.1/kePrint.js"></script>
+<link href="libs/lightable-0.0.1/lightable.css" rel="stylesheet" />
+<link href="libs/bsTable-3.3.7/bootstrapTable.min.css" rel="stylesheet" />
+<script src="libs/bsTable-3.3.7/bootstrapTable.js"></script>
+
+<!-- Mathjax Version 2-->
+<script type='text/x-mathjax-config'>
+		MathJax.Hub.Config({
+			extensions: ['tex2jax.js'],
+			jax: ['input/TeX', 'output/HTML-CSS'],
+			tex2jax: {
+				inlineMath: [ ['$','$'], ['\\(','\\)'] ],
+				displayMath: [ ['$$','$$'], ['\\[','\\]'] ],
+				processEscapes: true
+			},
+			'HTML-CSS': { availableFonts: ['TeX'] }
+		});
+</script>
+
+<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.7/MathJax.js?config=TeX-AMS_HTML"> </script>
+
+
+<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+<script type="text/javascript" src="https://unpkg.com/survey-jquery/survey.jquery.min.js"></script>
+<link href="https://unpkg.com/survey-jquery/modern.min.css" type="text/css" rel="stylesheet">
+<script src="https://unpkg.com/showdown/dist/showdown.min.js"></script>
+
+
+<script>
+function markdownConverterEWF() {  
+//Create showdown markdown converter
+var converter = new showdown.Converter();
+converter.setOption('ghCompatibleHeaderId', true);
+survey
+    .onTextMarkdown
+    .add(function (survey, options) {
+        //convert the markdown text to html
+        var str = converter.makeHtml(options.text);
+        //remove root paragraphs <p></p>
+        str = str.substring(3);
+        str = str.substring(0, str.length - 4);
+        //set html
+        options.html = str;
+        MathJax.Hub.Queue(['Typeset',MathJax.Hub, 'options']);
+    });  
+};
+
+// Quiz Header info
+const jsonHeader = { 
+    showProgressBar: "bottom",
+    showTimerPanel: "none",
+    maxTimeToFinishPage: 10000,
+    maxTimeToFinish: 25000,
+    firstPageIsStarted: true,
+    startSurveyText: "Start Quiz" //,
+//    title: "Does This Make Sense?"
+}
+
+
+// One and Two question quizzes
+function jsonSummary1EWF(json) {  
+let jsonEnd1 = { 
+completedHtml: 
+json["pages"][1]["questions"][0]["name"]+ "<br>"+
+"<i>Question: </i>"+json["pages"][1]["questions"][0]["title"]+"<br>"+
+"<i>Answer: </i>"+json["pages"][1]["questions"][0]["correctAnswer"]
+};  
+return jsonEnd1;
+};
+
+
+function jsonSummary2EWF(json) {  
+let jsonEnd2 = { 
+completedHtml: 
+json["pages"][1]["questions"][0]["name"]+ "<br>"+
+"<i>Question: </i>"+json["pages"][1]["questions"][0]["title"]+"<br>"+
+"<i>Answer: </i>"+json["pages"][1]["questions"][0]["correctAnswer"]
++"<br>"+
+json["pages"][2]["questions"][0]["name"]+ "<br>"+
+"<i>Question: </i>"+json["pages"][2]["questions"][0]["title"]+"<br>"+
+"<i>Answer: </i>"+json["pages"][2]["questions"][0]["correctAnswer"]
+};  
+return jsonEnd2;
+};
+
+// Three, four, and five question quizzes
+function jsonSummary3EWF(json) {  
+let jsonEnd3 = { 
+completedHtml: 
+json["pages"][1]["questions"][0]["name"]+ "<br>"+
+"<i>Question: </i>"+json["pages"][1]["questions"][0]["title"]+"<br>"+
+"<i>Answer: </i>"+json["pages"][1]["questions"][0]["correctAnswer"]
++"<br>"+
+json["pages"][2]["questions"][0]["name"]+ "<br>"+
+"<i>Question: </i>"+json["pages"][2]["questions"][0]["title"]+"<br>"+
+"<i>Answer: </i>"+json["pages"][2]["questions"][0]["correctAnswer"]
++"<br>"+
+json["pages"][3]["questions"][0]["name"]+ "<br>"+
+"<i>Question: </i>"+json["pages"][3]["questions"][0]["title"]+"<br>"+
+"<i>Answer: </i>"+json["pages"][3]["questions"][0]["correctAnswer"]
+};  
+return jsonEnd3;
+};
+
+function jsonSummary4EWF(json) {  
+jsonEnd4 = jsonSummary3EWF(json);
+jsonEnd4.completedHtml = jsonEnd4.completedHtml +  
+"<br>"+
+json["pages"][4]["questions"][0]["name"]+ "<br>"+
+"<i>Question: </i>"+json["pages"][4]["questions"][0]["title"]+"<br>"+
+"<i>Answer: </i>"+json["pages"][4]["questions"][0]["correctAnswer"]
+;  
+return jsonEnd4;
+};
+
+function jsonSummary5EWF(json) {  
+jsonEnd5 = jsonSummary4EWF(json);
+jsonEnd5.completedHtml = jsonEnd5.completedHtml +  
+"<br>"+
+json["pages"][5]["questions"][0]["name"]+ "<br>"+
+"<i>Question: </i>"+json["pages"][5]["questions"][0]["title"]+"<br>"+
+"<i>Answer: </i>"+json["pages"][5]["questions"][0]["correctAnswer"]
+;  
+return jsonEnd5;
+};
+
+function jsonSummary6EWF(json) {  
+jsonEnd6 = jsonSummary5EWF(json);
+jsonEnd6.completedHtml = jsonEnd6.completedHtml +  
+"<br>"+
+json["pages"][6]["questions"][0]["name"]+ "<br>"+
+"<i>Question: </i>"+json["pages"][6]["questions"][0]["title"]+"<br>"+
+"<i>Answer: </i>"+json["pages"][6]["questions"][0]["correctAnswer"]
+;  
+return jsonEnd6;
+};
+
+function jsonSummary7EWF(json) {  
+jsonEnd7 = jsonSummary6EWF(json);
+jsonEnd7.completedHtml = jsonEnd7.completedHtml +  
+"<br>"+
+json["pages"][7]["questions"][0]["name"]+ "<br>"+
+"<i>Question: </i>"+json["pages"][7]["questions"][0]["title"]+"<br>"+
+"<i>Answer: </i>"+json["pages"][7]["questions"][0]["correctAnswer"]
+;  
+return jsonEnd7;
+};
+
+function jsonSummary8EWF(json) {  
+jsonEnd8 = jsonSummary7EWF(json);
+jsonEnd8.completedHtml = jsonEnd8.completedHtml +  
+"<br>"+
+json["pages"][8]["questions"][0]["name"]+ "<br>"+
+"<i>Question: </i>"+json["pages"][8]["questions"][0]["title"]+"<br>"+
+"<i>Answer: </i>"+json["pages"][8]["questions"][0]["correctAnswer"]
+;  
+return jsonEnd8;
+};
+
+function jsonSummary9EWF(json) {  
+jsonEnd9 = jsonSummary8EWF(json);
+jsonEnd9.completedHtml = jsonEnd9.completedHtml +  
+"<br>"+
+json["pages"][9]["questions"][0]["name"]+ "<br>"+
+"<i>Question: </i>"+json["pages"][9]["questions"][0]["title"]+"<br>"+
+"<i>Answer: </i>"+json["pages"][9]["questions"][0]["correctAnswer"]
+;  
+return jsonEnd9;
+};
+
+
+function jsonSummary10EWF(json) {  
+jsonEnd10 = jsonSummary9EWF(json);
+jsonEnd10.completedHtml = jsonEnd10.completedHtml +  
+"<br>"+
+json["pages"][10]["questions"][0]["name"]+ "<br>"+
+"<i>Question: </i>"+json["pages"][10]["questions"][0]["title"]+"<br>"+
+"<i>Answer: </i>"+json["pages"][10]["questions"][0]["correctAnswer"]
+;  
+return jsonEnd10;
+};
+
+
+function jsonSummary11EWF(json) {  
+jsonEnd11 = jsonSummary10EWF(json);
+jsonEnd11.completedHtml = jsonEnd11.completedHtml +  
+"<br>"+
+json["pages"][11]["questions"][0]["name"]+ "<br>"+
+"<i>Question: </i>"+json["pages"][11]["questions"][0]["title"]+"<br>"+
+"<i>Answer: </i>"+json["pages"][11]["questions"][0]["correctAnswer"]
+;  
+return jsonEnd11;
+};
+
+Survey.StylesManager.applyTheme("modern");
+
+</script>  
+<!-- This completes the code for the quizzes -->
+
+<!-- Various toggle functions used throughout --> 
+<script language="javascript">
+function toggle(id1,id2) {
+	var ele = document.getElementById(id1); var text = document.getElementById(id2);
+	if (ele.style.display == "block") {ele.style.display = "none"; text.innerHTML = "Show Solution";}
+		else {ele.style.display = "block"; text.innerHTML = "Hide Solution";}}
+function togglecode(id1,id2) {
+   var ele = document.getElementById(id1); var text = document.getElementById(id2);
+   if (ele.style.display == "block") {ele.style.display = "none"; text.innerHTML = "Show R Code";}
+      else {ele.style.display = "block"; text.innerHTML = "Hide R Code";}}
+function toggleEX(id1,id2) {
+   var ele = document.getElementById(id1); var text = document.getElementById(id2);
+   if (ele.style.display == "block") {ele.style.display = "none"; text.innerHTML = "Show Example";}
+      else {ele.style.display = "block"; text.innerHTML = "Hide Example";}}
+function toggleTheory(id1,id2) {
+   var ele = document.getElementById(id1); var text = document.getElementById(id2);
+   if (ele.style.display == "block") {ele.style.display = "none"; text.innerHTML = "Show Theory";}
+      else {ele.style.display = "block"; text.innerHTML = "Hide Theory";}}
+function toggleQuiz(id1,id2) {
+   var ele = document.getElementById(id1); var text = document.getElementById(id2);
+   if (ele.style.display == "block") {ele.style.display = "none"; text.innerHTML = "Show Quiz Solution";}
+      else {ele.style.display = "block"; text.innerHTML = "Hide Quiz Solution";}}      
+</script>
+
+<!-- A few functions for revealing definitions -->
+<script language="javascript">
+<!--   $( function() {
+    $("#tabs").tabs();
+  } ); -->
+
+$(document).ready(function(){
+    $('[data-toggle="tooltip"]').tooltip();
+});
+
+$(document).ready(function(){
+    $('[data-toggle="popover"]').popover(); 
+});
+</script>
+
+<script language="javascript">
+function openTab(evt, tabName) {
+    var i, tabcontent, tablinks;
+    tabcontent = document.getElementsByClassName("tabcontent");
+    for (i = 0; i < tabcontent.length; i++) {
+        tabcontent[i].style.display = "none";
+    }
+    tablinks = document.getElementsByClassName("tablinks");
+    for (i = 0; i < tablinks.length; i++) {
+        tablinks[i].className = tablinks[i].className.replace(" active", "");
+    }
+    document.getElementById(tabName).style.display = "block";
+    evt.currentTarget.className += " active";
+}
+
+// Get the element with id="defaultOpen" and click on it
+document.getElementById("defaultOpen").click();
+</script>
+
+<script>
+
+/* update total correct if #webex-total_correct exists */
+update_total_correct = function() {
+  console.log("webex: update total_correct");
+
+  if (t = document.getElementById("webex-total_correct")) {
+    var correct = document.getElementsByClassName("webex-correct").length;
+    var solvemes = document.getElementsByClassName("webex-solveme").length;
+    var radiogroups = document.getElementsByClassName("webex-radiogroup").length;
+    var selects = document.getElementsByClassName("webex-select").length;
+    
+    t.innerHTML = correct + " of " + (solvemes + radiogroups + selects) + " correct";
+  }
+}
+
+/* webex-solution button toggling function */
+b_func = function() {
+  console.log("webex: toggle hide");
+  
+  var cl = this.parentElement.classList;
+  if (cl.contains('open')) {
+    cl.remove("open");
+  } else {
+    cl.add("open");
+  }
+}
+
+/* function for checking solveme answers */
+solveme_func = function(e) {
+  console.log("webex: check solveme");
+
+  var real_answers = JSON.parse(this.dataset.answer);
+  var my_answer = this.value;
+  var cl = this.classList;
+  if (cl.contains("ignorecase")) {
+    my_answer = my_answer.toLowerCase();
+  }
+  if (cl.contains("nospaces")) {
+    my_answer = my_answer.replace(/ /g, "")
+  }
+
+  if (my_answer == "") {
+    cl.remove("webex-correct");
+    cl.remove("webex-incorrect");
+  } else if (real_answers.includes(my_answer)) {
+    cl.add("webex-correct");
+    cl.remove("webex-incorrect");
+  } else {
+    cl.add("webex-incorrect");
+    cl.remove("webex-correct");
+  }
+
+  // match numeric answers within a specified tolerance
+  if(this.dataset.tol > 0){
+    var tol = JSON.parse(this.dataset.tol);
+    var matches = real_answers.map(x => Math.abs(x - my_answer) < tol)
+    if (matches.reduce((a, b) => a + b, 0) > 0) {
+      cl.add("webex-correct");
+    } else {
+      cl.remove("webex-correct");
+    }
+  }
+
+  // added regex bit
+  if (cl.contains("regex")){
+    answer_regex = RegExp(real_answers.join("|"))
+    if (answer_regex.test(my_answer)) {
+      cl.add("webex-correct");
+    }
+  }
+
+  update_total_correct();
+}
+
+/* function for checking select answers */
+select_func = function(e) {
+  console.log("webex: check select");
+  
+  var cl = this.classList
+  
+  /* add style */
+  cl.remove("webex-incorrect");
+  cl.remove("webex-correct");
+  if (this.value == "answer") {
+    cl.add("webex-correct");
+  } else if (this.value != "blank") {
+    cl.add("webex-incorrect");
+  }
+  
+  update_total_correct();
+}
+
+/* function for checking radiogroups answers */
+radiogroups_func = function(e) {
+  console.log("webex: check radiogroups");
+
+  var checked_button = document.querySelector('input[name=' + this.id + ']:checked');
+  var cl = checked_button.parentElement.classList;
+  var labels = checked_button.parentElement.parentElement.children;
+  
+  /* get rid of styles */
+  for (i = 0; i < labels.length; i++) {
+    labels[i].classList.remove("webex-incorrect");
+    labels[i].classList.remove("webex-correct");
+  }
+  
+  /* add style */
+  if (checked_button.value == "answer") {
+    cl.add("webex-correct");
+  } else {
+    cl.add("webex-incorrect");
+  }
+  
+  update_total_correct();
+}
+
+window.onload = function() {
+  console.log("onload");
+  /* set up solution buttons */
+  var buttons = document.getElementsByTagName("button");
+
+  for (var i = 0; i < buttons.length; i++) {
+    if (buttons[i].parentElement.classList.contains('webex-solution')) {
+      buttons[i].onclick = b_func;
+    }
+  }
+
+  /* set up webex-solveme inputs */
+  var solveme = document.getElementsByClassName("webex-solveme");
+
+  for (var i = 0; i < solveme.length; i++) {
+    /* make sure input boxes don't auto-anything */
+    solveme[i].setAttribute("autocomplete","off");
+    solveme[i].setAttribute("autocorrect", "off");
+    solveme[i].setAttribute("autocapitalize", "off");
+    solveme[i].setAttribute("spellcheck", "false");
+    solveme[i].value = "";
+
+    /* adjust answer for ignorecase or nospaces */
+    var cl = solveme[i].classList;
+    var real_answer = solveme[i].dataset.answer;
+    if (cl.contains("ignorecase")) {
+      real_answer = real_answer.toLowerCase();
+    }
+    if (cl.contains("nospaces")) {
+      real_answer = real_answer.replace(/ /g, "");
+    }
+    solveme[i].dataset.answer = real_answer;
+
+    /* attach checking function */
+    solveme[i].onkeyup = solveme_func;
+    solveme[i].onchange = solveme_func;
+  }
+  
+  /* set up radiogroups */
+  var radiogroups = document.getElementsByClassName("webex-radiogroup");
+  for (var i = 0; i < radiogroups.length; i++) {
+    radiogroups[i].onchange = radiogroups_func;
+  }
+  
+  /* set up selects */
+  var selects = document.getElementsByClassName("webex-select");
+  for (var i = 0; i < selects.length; i++) {
+    selects[i].onchange = select_func;
+  }
+
+  update_total_correct();
+}
+
+</script>
+
+
+<style type="text/css">
+pre > code.sourceCode { white-space: pre; position: relative; }
+pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
+pre > code.sourceCode > span:empty { height: 1.2em; }
+.sourceCode { overflow: visible; }
+code.sourceCode > span { color: inherit; text-decoration: inherit; }
+pre.sourceCode { margin: 0; }
+@media screen {
+div.sourceCode { overflow: auto; }
+}
+@media print {
+pre > code.sourceCode { white-space: pre-wrap; }
+pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
+}
+pre.numberSource code
+  { counter-reset: source-line 0; }
+pre.numberSource code > span
+  { position: relative; left: -4em; counter-increment: source-line; }
+pre.numberSource code > span > a:first-child::before
+  { content: counter(source-line);
+    position: relative; left: -1em; text-align: right; vertical-align: baseline;
+    border: none; display: inline-block;
+    -webkit-touch-callout: none; -webkit-user-select: none;
+    -khtml-user-select: none; -moz-user-select: none;
+    -ms-user-select: none; user-select: none;
+    padding: 0 4px; width: 4em;
+    color: #aaaaaa;
+  }
+pre.numberSource { margin-left: 3em; border-left: 1px solid #aaaaaa;  padding-left: 4px; }
+div.sourceCode
+  {   }
+@media screen {
+pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
+}
+code span.al { color: #ff0000; font-weight: bold; } /* Alert */
+code span.an { color: #60a0b0; font-weight: bold; font-style: italic; } /* Annotation */
+code span.at { color: #7d9029; } /* Attribute */
+code span.bn { color: #40a070; } /* BaseN */
+code span.bu { color: #008000; } /* BuiltIn */
+code span.cf { color: #007020; font-weight: bold; } /* ControlFlow */
+code span.ch { color: #4070a0; } /* Char */
+code span.cn { color: #880000; } /* Constant */
+code span.co { color: #60a0b0; font-style: italic; } /* Comment */
+code span.cv { color: #60a0b0; font-weight: bold; font-style: italic; } /* CommentVar */
+code span.do { color: #ba2121; font-style: italic; } /* Documentation */
+code span.dt { color: #902000; } /* DataType */
+code span.dv { color: #40a070; } /* DecVal */
+code span.er { color: #ff0000; font-weight: bold; } /* Error */
+code span.ex { } /* Extension */
+code span.fl { color: #40a070; } /* Float */
+code span.fu { color: #06287e; } /* Function */
+code span.im { color: #008000; font-weight: bold; } /* Import */
+code span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Information */
+code span.kw { color: #007020; font-weight: bold; } /* Keyword */
+code span.op { color: #666666; } /* Operator */
+code span.ot { color: #007020; } /* Other */
+code span.pp { color: #bc7a00; } /* Preprocessor */
+code span.sc { color: #4070a0; } /* SpecialChar */
+code span.ss { color: #bb6688; } /* SpecialString */
+code span.st { color: #4070a0; } /* String */
+code span.va { color: #19177c; } /* Variable */
+code span.vs { color: #4070a0; } /* VerbatimString */
+code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warning */
+</style>
+
+<style type="text/css">
+  
+  div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+</style>
+<style type="text/css">
+/* Used with Pandoc 2.11+ new --citeproc when CSL is used */
+div.csl-bib-body { }
+div.csl-entry {
+  clear: both;
+}
+.hanging div.csl-entry {
+  margin-left:2em;
+  text-indent:-2em;
+}
+div.csl-left-margin {
+  min-width:2em;
+  float:left;
+}
+div.csl-right-inline {
+  margin-left:2em;
+  padding-left:1em;
+}
+div.csl-indent {
+  margin-left: 2em;
+}
+</style>
+
+<link rel="stylesheet" href="Format/style.css" type="text/css" />
+<link rel="stylesheet" href="includeWebex/webex.css" type="text/css" />
+</head>
+
+<body>
+
+
+
+  <div class="book without-animation with-summary font-size-2 font-family-1" data-basepath=".">
+
+    <div class="book-summary">
+      <nav role="navigation">
+
+<ul class="summary">
+<li><a href="./">Loss Data Analytics</a></li>
+
+<li class="divider"></li>
+<li class="chapter" data-level="" data-path="index.html"><a href="index.html"><i class="fa fa-check"></i>Preface</a>
+<ul>
+<li class="chapter" data-level="" data-path="index.html"><a href="index.html#acknowledgements"><i class="fa fa-check"></i>Acknowledgements</a></li>
+<li class="chapter" data-level="" data-path="index.html"><a href="index.html#contributors"><i class="fa fa-check"></i>Contributors</a></li>
+<li class="chapter" data-level="" data-path="index.html"><a href="index.html#reviewers"><i class="fa fa-check"></i>Reviewers</a>
+<ul>
+<li class="chapter" data-level="" data-path="index.html"><a href="index.html#other-collaborators"><i class="fa fa-check"></i>Other Collaborators</a></li>
+</ul></li>
+<li class="chapter" data-level="" data-path="index.html"><a href="index.html#version-number"><i class="fa fa-check"></i>Version Number</a></li>
+<li class="chapter" data-level="" data-path="index.html"><a href="index.html#for-our-readers"><i class="fa fa-check"></i>For our Readers</a></li>
+</ul></li>
+<li class="chapter" data-level="1" data-path="CAppA.html"><a href="CAppA.html"><i class="fa fa-check"></i><b>1</b> Appendix A: Review of Statistical Inference</a>
+<ul>
+<li class="chapter" data-level="1.1" data-path="CAppA.html"><a href="CAppA.html#S:Sec171"><i class="fa fa-check"></i><b>1.1</b> Basic Concepts</a>
+<ul>
+<li class="chapter" data-level="1.1.1" data-path="CAppA.html"><a href="CAppA.html#random-sampling"><i class="fa fa-check"></i><b>1.1.1</b> Random Sampling</a></li>
+<li class="chapter" data-level="1.1.2" data-path="CAppA.html"><a href="CAppA.html#sampling-distribution"><i class="fa fa-check"></i><b>1.1.2</b> Sampling Distribution</a></li>
+<li class="chapter" data-level="1.1.3" data-path="CAppA.html"><a href="CAppA.html#central-limit-theorem"><i class="fa fa-check"></i><b>1.1.3</b> Central Limit Theorem</a></li>
+</ul></li>
+<li class="chapter" data-level="1.2" data-path="CAppA.html"><a href="CAppA.html#S:Sec172"><i class="fa fa-check"></i><b>1.2</b> Point Estimation and Properties</a>
+<ul>
+<li class="chapter" data-level="1.2.1" data-path="CAppA.html"><a href="CAppA.html#method-of-moments-estimation"><i class="fa fa-check"></i><b>1.2.1</b> Method of Moments Estimation</a></li>
+<li class="chapter" data-level="1.2.2" data-path="CAppA.html"><a href="CAppA.html#S:Sec1722"><i class="fa fa-check"></i><b>1.2.2</b> Maximum Likelihood Estimation</a></li>
+</ul></li>
+<li class="chapter" data-level="1.3" data-path="CAppA.html"><a href="CAppA.html#S:Sec173"><i class="fa fa-check"></i><b>1.3</b> Interval Estimation</a>
+<ul>
+<li class="chapter" data-level="1.3.1" data-path="CAppA.html"><a href="CAppA.html#S:Sec1731"><i class="fa fa-check"></i><b>1.3.1</b> Exact Distribution for Normal Sample Mean</a></li>
+<li class="chapter" data-level="1.3.2" data-path="CAppA.html"><a href="CAppA.html#large-sample-properties-of-mle"><i class="fa fa-check"></i><b>1.3.2</b> Large-sample Properties of <em>MLE</em></a></li>
+<li class="chapter" data-level="1.3.3" data-path="CAppA.html"><a href="CAppA.html#confidence-interval"><i class="fa fa-check"></i><b>1.3.3</b> Confidence Interval</a></li>
+</ul></li>
+<li class="chapter" data-level="1.4" data-path="CAppA.html"><a href="CAppA.html#S:Sec174"><i class="fa fa-check"></i><b>1.4</b> Hypothesis Testing</a>
+<ul>
+<li class="chapter" data-level="1.4.1" data-path="CAppA.html"><a href="CAppA.html#basic-concepts"><i class="fa fa-check"></i><b>1.4.1</b> Basic Concepts</a></li>
+<li class="chapter" data-level="1.4.2" data-path="CAppA.html"><a href="CAppA.html#student-t-test-based-on-mle"><i class="fa fa-check"></i><b>1.4.2</b> Student-<em>t</em> test based on <em>mle</em></a></li>
+<li class="chapter" data-level="1.4.3" data-path="CAppA.html"><a href="CAppA.html#S:Sec1743"><i class="fa fa-check"></i><b>1.4.3</b> Likelihood Ratio Test</a></li>
+<li class="chapter" data-level="1.4.4" data-path="CAppA.html"><a href="CAppA.html#S:Sec1744"><i class="fa fa-check"></i><b>1.4.4</b> Information Criteria</a></li>
+</ul></li>
+</ul></li>
+<li class="chapter" data-level="2" data-path="CAppB.html"><a href="CAppB.html"><i class="fa fa-check"></i><b>2</b> Appendix B: Iterated Expectations</a>
+<ul>
+<li class="chapter" data-level="2.1" data-path="CAppB.html"><a href="CAppB.html#S:AppB:CD"><i class="fa fa-check"></i><b>2.1</b> Conditional Distribution and Conditional Expectation</a>
+<ul>
+<li class="chapter" data-level="2.1.1" data-path="CAppB.html"><a href="CAppB.html#conditional-distribution"><i class="fa fa-check"></i><b>2.1.1</b> Conditional Distribution</a></li>
+<li class="chapter" data-level="2.1.2" data-path="CAppB.html"><a href="CAppB.html#conditional-expectation-and-conditional-variance"><i class="fa fa-check"></i><b>2.1.2</b> Conditional Expectation and Conditional Variance</a></li>
+</ul></li>
+<li class="chapter" data-level="2.2" data-path="CAppB.html"><a href="CAppB.html#S:AppB:IE"><i class="fa fa-check"></i><b>2.2</b> Iterated Expectations and Total Variance</a>
+<ul>
+<li class="chapter" data-level="2.2.1" data-path="CAppB.html"><a href="CAppB.html#S:AppB:LIE"><i class="fa fa-check"></i><b>2.2.1</b> Law of Iterated Expectations</a></li>
+<li class="chapter" data-level="2.2.2" data-path="CAppB.html"><a href="CAppB.html#law-of-total-variance"><i class="fa fa-check"></i><b>2.2.2</b> Law of Total Variance</a></li>
+<li class="chapter" data-level="2.2.3" data-path="CAppB.html"><a href="CAppB.html#application"><i class="fa fa-check"></i><b>2.2.3</b> Application</a></li>
+</ul></li>
+<li class="chapter" data-level="2.3" data-path="CAppB.html"><a href="CAppB.html#S:AppConjugateDistributions"><i class="fa fa-check"></i><b>2.3</b> Conjugate Distributions</a>
+<ul>
+<li class="chapter" data-level="2.3.1" data-path="CAppB.html"><a href="CAppB.html#linear-exponential-family"><i class="fa fa-check"></i><b>2.3.1</b> Linear Exponential Family</a></li>
+<li class="chapter" data-level="2.3.2" data-path="CAppB.html"><a href="CAppB.html#S:IterExp:Conjugate"><i class="fa fa-check"></i><b>2.3.2</b> Conjugate Distributions</a></li>
+</ul></li>
+</ul></li>
+<li class="chapter" data-level="3" data-path="CAppC.html"><a href="CAppC.html"><i class="fa fa-check"></i><b>3</b> Appendix C: Maximum Likelihood Theory</a>
+<ul>
+<li class="chapter" data-level="3.1" data-path="CAppC.html"><a href="CAppC.html#S:Sec191"><i class="fa fa-check"></i><b>3.1</b> Likelihood Function</a>
+<ul>
+<li class="chapter" data-level="3.1.1" data-path="CAppC.html"><a href="CAppC.html#likelihood-and-log-likelihood-functions"><i class="fa fa-check"></i><b>3.1.1</b> Likelihood and Log-likelihood Functions</a></li>
+<li class="chapter" data-level="3.1.2" data-path="CAppC.html"><a href="CAppC.html#properties-of-likelihood-functions"><i class="fa fa-check"></i><b>3.1.2</b> Properties of Likelihood Functions</a></li>
+</ul></li>
+<li class="chapter" data-level="3.2" data-path="CAppC.html"><a href="CAppC.html#S:Sec192"><i class="fa fa-check"></i><b>3.2</b> Maximum Likelihood Estimators</a>
+<ul>
+<li class="chapter" data-level="3.2.1" data-path="CAppC.html"><a href="CAppC.html#definition-and-derivation-of-mle"><i class="fa fa-check"></i><b>3.2.1</b> Definition and Derivation of <em>MLE</em></a></li>
+<li class="chapter" data-level="3.2.2" data-path="CAppC.html"><a href="CAppC.html#asymptotic-properties-of-mle"><i class="fa fa-check"></i><b>3.2.2</b> Asymptotic Properties of <em>MLE</em></a></li>
+<li class="chapter" data-level="3.2.3" data-path="CAppC.html"><a href="CAppC.html#use-of-maximum-likelihood-estimation"><i class="fa fa-check"></i><b>3.2.3</b> Use of Maximum Likelihood Estimation</a></li>
+</ul></li>
+<li class="chapter" data-level="3.3" data-path="CAppC.html"><a href="CAppC.html#S:Sec193"><i class="fa fa-check"></i><b>3.3</b> Statistical Inference Based on Maximum Likelihood Estimation</a>
+<ul>
+<li class="chapter" data-level="3.3.1" data-path="CAppC.html"><a href="CAppC.html#hypothesis-testing"><i class="fa fa-check"></i><b>3.3.1</b> Hypothesis Testing</a></li>
+<li class="chapter" data-level="3.3.2" data-path="CAppC.html"><a href="CAppC.html#S:Sec1932"><i class="fa fa-check"></i><b>3.3.2</b> <em>MLE</em> and Model Validation</a></li>
+</ul></li>
+</ul></li>
+<li class="chapter" data-level="4" data-path="ChapSummaryDistributions.html"><a href="ChapSummaryDistributions.html"><i class="fa fa-check"></i><b>4</b> Appendix D: Summary of Distributions</a>
+<ul>
+<li class="chapter" data-level="4.1" data-path="ChapSummaryDistributions.html"><a href="ChapSummaryDistributions.html#S:DiscreteDistributions"><i class="fa fa-check"></i><b>4.1</b> Discrete Distributions</a>
+<ul>
+<li class="chapter" data-level="4.1.1" data-path="ChapSummaryDistributions.html"><a href="ChapSummaryDistributions.html#the-ab0-class"><i class="fa fa-check"></i><b>4.1.1</b> The <em>(a,b,0)</em> Class</a></li>
+<li class="chapter" data-level="4.1.2" data-path="ChapSummaryDistributions.html"><a href="ChapSummaryDistributions.html#the-ab1-class"><i class="fa fa-check"></i><b>4.1.2</b> The <em>(a,b,1)</em> Class</a></li>
+</ul></li>
+<li class="chapter" data-level="4.2" data-path="ChapSummaryDistributions.html"><a href="ChapSummaryDistributions.html#S:ContinuousDistributions"><i class="fa fa-check"></i><b>4.2</b> Continuous Distributions</a>
+<ul>
+<li class="chapter" data-level="4.2.1" data-path="ChapSummaryDistributions.html"><a href="ChapSummaryDistributions.html#one-parameter-distributions"><i class="fa fa-check"></i><b>4.2.1</b> One Parameter Distributions</a></li>
+<li class="chapter" data-level="4.2.2" data-path="ChapSummaryDistributions.html"><a href="ChapSummaryDistributions.html#two-parameter-distributions"><i class="fa fa-check"></i><b>4.2.2</b> Two Parameter Distributions</a></li>
+<li class="chapter" data-level="4.2.3" data-path="ChapSummaryDistributions.html"><a href="ChapSummaryDistributions.html#three-parameter-distributions"><i class="fa fa-check"></i><b>4.2.3</b> Three Parameter Distributions</a></li>
+<li class="chapter" data-level="4.2.4" data-path="ChapSummaryDistributions.html"><a href="ChapSummaryDistributions.html#four-parameter-distribution"><i class="fa fa-check"></i><b>4.2.4</b> Four Parameter Distribution</a></li>
+<li class="chapter" data-level="4.2.5" data-path="ChapSummaryDistributions.html"><a href="ChapSummaryDistributions.html#other-distributions"><i class="fa fa-check"></i><b>4.2.5</b> Other Distributions</a></li>
+<li class="chapter" data-level="4.2.6" data-path="ChapSummaryDistributions.html"><a href="ChapSummaryDistributions.html#distributions-with-finite-support"><i class="fa fa-check"></i><b>4.2.6</b> Distributions with Finite Support</a></li>
+</ul></li>
+<li class="chapter" data-level="4.3" data-path="ChapSummaryDistributions.html"><a href="ChapSummaryDistributions.html#limited-expected-values"><i class="fa fa-check"></i><b>4.3</b> Limited Expected Values</a></li>
+</ul></li>
+<li class="chapter" data-level="5" data-path="ChapNotationConvention.html"><a href="ChapNotationConvention.html"><i class="fa fa-check"></i><b>5</b> Appendix E: Conventions for Notation</a>
+<ul>
+<li class="chapter" data-level="5.1" data-path="ChapNotationConvention.html"><a href="ChapNotationConvention.html#S:General"><i class="fa fa-check"></i><b>5.1</b> General Conventions</a></li>
+<li class="chapter" data-level="5.2" data-path="ChapNotationConvention.html"><a href="ChapNotationConvention.html#S:Abbreviations"><i class="fa fa-check"></i><b>5.2</b> Abbreviations</a></li>
+<li class="chapter" data-level="5.3" data-path="ChapNotationConvention.html"><a href="ChapNotationConvention.html#S:StatSymbols"><i class="fa fa-check"></i><b>5.3</b> Common Statistical Symbols and Operators</a></li>
+<li class="chapter" data-level="5.4" data-path="ChapNotationConvention.html"><a href="ChapNotationConvention.html#S:Symbols"><i class="fa fa-check"></i><b>5.4</b> Common Mathematical Symbols and Functions</a></li>
+<li class="chapter" data-level="5.5" data-path="ChapNotationConvention.html"><a href="ChapNotationConvention.html#further-readings"><i class="fa fa-check"></i><b>5.5</b> Further Readings</a></li>
+</ul></li>
+<li class="chapter" data-level="" data-path="bibliography.html"><a href="bibliography.html"><i class="fa fa-check"></i>Bibliography</a></li>
+<li class="divider"></li>
+<li><a href="https://github.com/OpenActTexts/Loss-Data-Analytics" target="blank">Loss Data Analytics on GitHub</a></li>
+
+</ul>
+
+      </nav>
+    </div>
+
+    <div class="book-body">
+      <div class="body-inner">
+        <div class="book-header" role="navigation">
+          <h1>
+            <i class="fa fa-circle-o-notch fa-spin"></i><a href="./">Loss Data Analytics <br> Second Edition</a>
+          </h1>
+        </div>
+
+        <div class="page-wrapper" tabindex="-1" role="main">
+          <div class="page-inner">
+
+            <section class="normal" id="section-">
+<div id="CAppC" class="section level1 hasAnchor" number="3">
+<h1><span class="header-section-number">Chapter 3</span> Appendix C: Maximum Likelihood Theory<a href="CAppC.html#CAppC" class="anchor-section" aria-label="Anchor link to header"></a></h1>
+<p><em>Chapter Preview</em>. Appendix Chapter <a href="CAppA.html#CAppA">1</a> introduced the maximum likelihood theory regarding estimation of parameters from a parametric family. This appendix gives more specific examples and expands some of the concepts. Section <a href="CAppC.html#S:Sec191">3.1</a> reviews the definition of the likelihood function, and introduces its properties. Section <a href="CAppC.html#S:Sec192">3.2</a> reviews the maximum likelihood estimators, and extends their large-sample properties to the case where there are multiple parameters in the model. Section <a href="CAppC.html#S:Sec193">3.3</a> reviews statistical inference based on maximum likelihood estimators, with specific examples on cases with multiple parameters.</p>
+<div id="S:Sec191" class="section level2 hasAnchor" number="3.1">
+<h2><span class="header-section-number">3.1</span> Likelihood Function<a href="CAppC.html#S:Sec191" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<hr />
+<p>In this section, you learn</p>
+<ul>
+<li>the definitions of the likelihood function and the log-likelihood function</li>
+<li>the properties of the likelihood function</li>
+</ul>
+<hr />
+<p>From Appendix Chapter <a href="CAppA.html#CAppA">1</a>, the likelihood function is a function of parameters given the observed data. Here, we review the concepts of the likelihood function, and introduces its properties that are bases for maximum likelihood inference.</p>
+<div id="likelihood-and-log-likelihood-functions" class="section level3 hasAnchor" number="3.1.1">
+<h3><span class="header-section-number">3.1.1</span> Likelihood and Log-likelihood Functions<a href="CAppC.html#likelihood-and-log-likelihood-functions" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<p>Here, we give a brief review of the likelihood function and the log-likelihood function from Appendix Chapter <a href="CAppA.html#CAppA">1</a>. Let <span class="math inline">\(f(\cdot|\boldsymbol\theta)\)</span> be the probability function of <span class="math inline">\(X\)</span>, the probability mass function (pmf) if <span class="math inline">\(X\)</span> is discrete or the probability density function (pdf) if it is continuous. The likelihood is a function of the parameters (<span class="math inline">\(\boldsymbol \theta\)</span>) given the data (<span class="math inline">\(\mathbf{x}\)</span>). Hence, it is a function of the parameters with the data being fixed, rather than a function of the data with the parameters being fixed. The vector of data <span class="math inline">\(\mathbf{x}\)</span> is usually a realization of a <em>random sample</em> as defined in Appendix Chapter <a href="CAppA.html#CAppA">1</a>.</p>
+<p>Given a realized random sample <span class="math inline">\(\mathbf{x}=(x_1,x_2,\cdots,x_n)\)</span> of size <span class="math inline">\(n\)</span>, the <strong>likelihood function</strong> is defined as
+<span class="math display">\[
+L(\boldsymbol{\theta}|\mathbf{x})=f(\mathbf{x}|\boldsymbol{\theta})=\prod_{i=1}^nf(x_i|\boldsymbol{\theta}),
+\]</span>
+with the corresponding <strong>log-likelihood function</strong> given by
+<span class="math display">\[
+l(\boldsymbol{\theta}|\mathbf{x})=\log L(\boldsymbol{\theta}|\mathbf{x})=\sum_{i=1}^n\log f(x_i|\boldsymbol{\theta}),
+\]</span>
+where <span class="math inline">\(f(\mathbf{x}|\boldsymbol{\theta})\)</span> denotes the joint probability function of <span class="math inline">\(\mathbf{x}\)</span>. The log-likelihood function leads to an additive structure that is easy to work with.</p>
+<p>In Appendix Chapter <a href="CAppA.html#CAppA">1</a>, we have used the normal distribution to illustrate concepts of the likelihood function and the log-likelihood function. Here, we derive the likelihood and corresponding log-likelihood functions when the population distribution is from the Pareto distribution family.</p>
+<p><strong>Example – Pareto Distribution.</strong> Suppose that <span class="math inline">\(X_1, \ldots, X_n\)</span> represents a random sample from a single-parameter Pareto distribution with the <strong>cumulative distribution function</strong> given by
+<span class="math display">\[
+F(x) = \Pr(X_i\leq x)=1- \left(\frac{500}{x}\right)^{\alpha}, ~~~~ x&gt;500,
+\]</span>
+with parameter <span class="math inline">\(\theta = \alpha\)</span>.</p>
+<p>The corresponding probability density function is <span class="math inline">\(f(x) = 500^{\alpha} \alpha x^{-\alpha-1}\)</span> and the log-likelihood function can be derived as
+<span class="math display">\[
+l(\boldsymbol \alpha|\mathbf{x}) = \sum_{i=1}^n \log f(x_i;\alpha) = n \alpha \log 500 +n \log \alpha -(\alpha+1)  \sum_{i=1}^n \log x_i .
+\]</span></p>
+</div>
+<div id="properties-of-likelihood-functions" class="section level3 hasAnchor" number="3.1.2">
+<h3><span class="header-section-number">3.1.2</span> Properties of Likelihood Functions<a href="CAppC.html#properties-of-likelihood-functions" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<p>In mathematical statistics, the first derivative of the log-likelihood function with respect to the parameters, <span class="math inline">\(u(\boldsymbol\theta)=\partial l(\boldsymbol \theta|\mathbf{x})/\partial \boldsymbol \theta\)</span>, is referred to as the <strong>score function</strong>, or the <strong>score vector</strong> when there are multiple parameters in <span class="math inline">\(\boldsymbol\theta\)</span>. The score function or score vector can be written as
+<span class="math display">\[
+u(\boldsymbol\theta)=\frac{ \partial}{\partial \boldsymbol \theta} l(\boldsymbol \theta|\mathbf{x})
+    =\frac{ \partial}{\partial \boldsymbol \theta} \log \prod_{i=1}^n
+    f(x_i;\boldsymbol \theta ) =\sum_{i=1}^n \frac{
+    \partial}{\partial \boldsymbol \theta}
+    \log f(x_i;\boldsymbol \theta ),
+\]</span>
+where <span class="math inline">\(u(\boldsymbol\theta)=(u_1(\boldsymbol\theta),u_2(\boldsymbol\theta),\cdots,u_p(\boldsymbol\theta))\)</span> when <span class="math inline">\(\boldsymbol\theta=(\theta_1,\cdots,\theta_p)\)</span>, with the element <span class="math inline">\(u_k(\boldsymbol\theta)=\partial l(\boldsymbol \theta|\mathbf{x})/\partial \theta_k\)</span> being the partial derivative with respect to <span class="math inline">\(\theta_k\)</span> (<span class="math inline">\(k=1,2,\cdots,p\)</span>).</p>
+<p>The likelihood function has the following properties:</p>
+<ul>
+<li><p>One basic property of the likelihood function is that the expectation of the score function with respect to <span class="math inline">\(\mathbf{x}\)</span> is 0. That is,
+<span class="math display">\[
+\mathrm{E}[u(\boldsymbol\theta)]=\mathrm{E} \left[ \frac{ \partial}{\partial \boldsymbol \theta}
+  l(\boldsymbol \theta|\mathbf{x}) \right] = \mathbf 0 .
+\]</span>
+To illustrate this, we have
+<span class="math display">\[
+\begin{aligned}
+  \mathrm{E} \left[ \frac{ \partial}{\partial \boldsymbol \theta} l(\boldsymbol \theta|\mathbf{x}) \right]
+  &amp;= \mathrm{E} \left[ \frac{\frac{\partial}{\partial \boldsymbol \theta}f(\mathbf{x};\boldsymbol \theta)}{f(\mathbf{x};\boldsymbol \theta )}  \right]
+  = \int\frac{\partial}{\partial \boldsymbol \theta} f(\mathbf{y};\boldsymbol \theta ) d \mathbf y \\
+  &amp;= \frac{\partial}{\partial \boldsymbol \theta} \int f(\mathbf{y};\boldsymbol \theta ) d \mathbf y
+  = \frac{\partial}{\partial \boldsymbol \theta} 1 = \mathbf 0.\end{aligned}
+\]</span></p></li>
+<li><p>Denote by <span class="math inline">\(\frac{\partial^2}{\partial \boldsymbol \theta\partial \boldsymbol \theta&#39;} l(\boldsymbol \theta|\mathbf{x})\)</span> the second derivative of the log-likelihood function. This is a <span class="math inline">\(p\times p\)</span> matrix of second derivatives known as the hessian of the log-likelihood. Another basic property of the likelihood function is that the sum of the expectation of the hessian matrix and the expectation of the Kronecker product of the score vector and its transpose is <span class="math inline">\(\mathbf 0\)</span>. That is,
+<span class="math display">\[
+\mathrm{E} \left( \frac{ \partial^2 }{\partial \boldsymbol \theta\partial \boldsymbol \theta^{\prime}} l(\boldsymbol \theta|\mathbf{x}) \right) + \mathrm{E} \left( \frac{ \partial l(\boldsymbol \theta|\mathbf{x})}{\partial\boldsymbol \theta} \frac{ \partial l(\boldsymbol \theta|\mathbf{x})}{\partial\boldsymbol \theta^{\prime}}\right) = \mathbf 0.
+\]</span></p></li>
+<li><p>Define the <strong>Fisher information matrix</strong> as
+<span class="math display">\[
+\mathcal{I}(\boldsymbol \theta) = \mathrm{E} \left( \frac{ \partial
+l(\boldsymbol \theta|\mathbf{x})}{\partial \boldsymbol \theta} \frac{ \partial
+l(\boldsymbol \theta|\mathbf{x})}{\partial \boldsymbol \theta^{\prime}}
+  \right) = -\mathrm{E} \left( \frac{ \partial^2}{\partial \boldsymbol \theta
+\partial \boldsymbol \theta^{\prime}} l(\boldsymbol \theta|\mathbf{x}) \right).
+\]</span></p></li>
+</ul>
+<p>As the sample size <span class="math inline">\(n\)</span> goes to infinity, the score function (vector) converges in distribution to a <strong>normal distribution</strong> (or <strong>multivariate normal distribution</strong> when <span class="math inline">\(\boldsymbol \theta\)</span> contains multiple parameters) with mean <strong>0</strong> and variance (or covariance matrix in the multivariate case) given by <span class="math inline">\(\mathcal{I}(\boldsymbol \theta)\)</span>.</p>
+</div>
+</div>
+<div id="S:Sec192" class="section level2 hasAnchor" number="3.2">
+<h2><span class="header-section-number">3.2</span> Maximum Likelihood Estimators<a href="CAppC.html#S:Sec192" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<hr />
+<p>In this section, you learn</p>
+<ul>
+<li>the definition and derivation of the maximum likelihood estimator (<em>mle</em>) for parameters from a specific distribution family</li>
+<li>the properties of maximum likelihood estimators that ensure valid large-sample inference of the parameters</li>
+<li>why using the <em>mle</em>-based method, and what caution that needs to be taken</li>
+</ul>
+<hr />
+<p>In statistics, maximum likelihood estimators are values of the parameters <span class="math inline">\(\boldsymbol \theta\)</span> that are most likely to have been produced by the data.</p>
+<div id="definition-and-derivation-of-mle" class="section level3 hasAnchor" number="3.2.1">
+<h3><span class="header-section-number">3.2.1</span> Definition and Derivation of <em>MLE</em><a href="CAppC.html#definition-and-derivation-of-mle" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<p>Based on the definition given in Appendix Chapter <a href="CAppA.html#CAppA">1</a>, the value of <span class="math inline">\(\boldsymbol \theta\)</span>, say <span class="math inline">\(\hat{\boldsymbol \theta}_{mle}\)</span>,
+that maximizes the likelihood function, is called the <em>maximum likelihood estimator</em> (<em>mle</em>) of <span class="math inline">\(\boldsymbol \theta\)</span>.</p>
+<p>Because the log function <span class="math inline">\(\log(\cdot)\)</span> is a one-to-one function, we can also determine <span class="math inline">\(\hat{\boldsymbol{\theta}}_{mle}\)</span> by maximizing the log-likelihood
+function, <span class="math inline">\(l(\boldsymbol \theta|\mathbf{x})\)</span>. That is, the <em>mle</em> is defined as
+<span class="math display">\[
+\hat{\boldsymbol \theta}_{mle} = {\mbox{argmax}}_{\boldsymbol{\theta}\in\Theta}~l(\boldsymbol{\theta}|\mathbf{x}).
+\]</span>
+Given the analytical form of the likelihood function, the <em>mle</em> can be obtained by taking the first derivative of the log-likelihood function with respect to <span class="math inline">\(\boldsymbol{\theta}\)</span>, and setting the values of the partial derivatives to zero. That is, the <em>mle</em> are the solutions of the equations of
+<span class="math display">\[
+\frac{\partial l(\hat{\boldsymbol{\theta}}|\mathbf{x})}{\partial\hat{\boldsymbol{\theta}}}=\mathbf 0.
+\]</span></p>
+<hr />
+<p><strong>Example. Course C/Exam 4. May 2000, 21.</strong> You are given the following five observations: 521, 658, 702, 819, 1217. You use the single-parameter Pareto with cumulative distribution function:
+<span class="math display">\[
+F(x) = 1- \left(\frac{500}{x}\right)^{\alpha}, ~~~~ x&gt;500 .
+\]</span>
+Calculate the maximum likelihood estimate of the parameter <span class="math inline">\(\alpha\)</span>.</p>
+<h5 style="text-align: center;">
+<a id="displayExample.MLE.2" href="javascript:toggleEX('toggleExample.MLE.2','displayExample.MLE.2');"><i><strong>Show Example Solution</strong></i></a>
+</h5>
+<div id="toggleExample.MLE.2" style="display: none">
+<p><em>Example Solution.</em> With <span class="math inline">\(n=5\)</span>, the log-likelihood function is
+<span class="math display">\[
+l(\alpha|\mathbf{x} ) =  \sum_{i=1}^5 \log f(x_i;\alpha ) =  5 \alpha \log 500 + 5 \log \alpha
+-(\alpha+1) \sum_{i=1}^5 \log x_i.
+\]</span>
+Solving for the root of the score function yields
+<span class="math display">\[
+\begin{array}{ll}
+\frac{ \partial}{\partial \alpha } l(\alpha |\mathbf{x}) &amp;=    5  \log 500 + 5 / \alpha -  \sum_{i=1}^5 \log x_i \\
+&amp;=_{set} 0 \Rightarrow \hat{\alpha}_{mle} = \frac{5}{\sum_{i=1}^5 \log x_i - 5  \log 500 } = 2.453 .
+\end{array}
+\]</span></p>
+</div>
+<hr />
+</div>
+<div id="asymptotic-properties-of-mle" class="section level3 hasAnchor" number="3.2.2">
+<h3><span class="header-section-number">3.2.2</span> Asymptotic Properties of <em>MLE</em><a href="CAppC.html#asymptotic-properties-of-mle" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<p>From Appendix Chapter <a href="CAppA.html#CAppA">1</a>, the <a href="#" class="tooltip" style="color:green"><em>MLE</em><span style="font-size:8pt">Maximum likelihood estimate</span></a> has some nice large-sample properties, under certain regularity conditions. We presented the results for a single parameter in Appendix Chapter <a href="CAppA.html#CAppA">1</a>, but results are true for the case when <span class="math inline">\(\boldsymbol{\theta}\)</span> contains multiple parameters. In particular, we have the following results, in a general case when <span class="math inline">\(\boldsymbol{\theta}=(\theta_1,\theta_2,\cdots,\theta_p)\)</span>.</p>
+<ul>
+<li><p>The <em>mle</em> of a parameter <span class="math inline">\(\boldsymbol{\theta}\)</span>, <span class="math inline">\(\hat{\boldsymbol{\theta}}_{mle}\)</span>, is a <strong>consistent</strong> estimator. That is, the <em>mle</em> <span class="math inline">\(\hat{\boldsymbol{\theta}}_{mle}\)</span> converges in probability to the true value <span class="math inline">\(\boldsymbol{\theta}\)</span>, as the sample size <span class="math inline">\(n\)</span> goes to infinity.</p></li>
+<li><p>The <em>mle</em> has the <strong>asymptotic normality</strong> property, meaning that the estimator will converge in distribution to a multivariate normal distribution centered around the true value, when the sample size goes to infinity. Namely,
+<span class="math display">\[\sqrt{n}(\hat{\boldsymbol{\theta}}_{mle}-\boldsymbol{\theta})\rightarrow N\left(\mathbf 0,\,\boldsymbol{V}\right),\quad \mbox{as}\quad n\rightarrow \infty,\]</span>
+where <span class="math inline">\(\boldsymbol{V}\)</span> denotes the asymptotic variance (or covariance matrix) of the estimator. Hence, the <em>mle</em> <span class="math inline">\(\hat{\boldsymbol{\theta}}_{mle}\)</span> has an approximate normal distribution with mean <span class="math inline">\(\boldsymbol{\theta}\)</span> and covariance matrix <span class="math inline">\(\boldsymbol{V}/n\)</span>, when the sample size is large.</p></li>
+<li><p>The <em>mle</em> is <strong>efficient</strong>, meaning that it has the smallest asymptotic variance <span class="math inline">\(\boldsymbol{V}\)</span>, commonly referred to as the <strong>Cramer–Rao lower bound</strong>. In particular, the Cramer–Rao lower bound is the inverse of the Fisher information (matrix) <span class="math inline">\(\mathcal{I}(\boldsymbol{\theta})\)</span> defined earlier in this appendix. Hence, <span class="math inline">\(\mathrm{Var}(\hat{\boldsymbol{\theta}}_{mle})\)</span> can be estimated based on the observed Fisher information.</p></li>
+</ul>
+<p>Based on the above results, we may perform statistical inference based on the procedures defined in Appendix Chapter <a href="CAppA.html#CAppA">1</a>.</p>
+<hr />
+<p><strong>Example. Course C/Exam 4. Nov 2000, 13.</strong> A sample of ten
+observations comes from a parametric family
+<span class="math inline">\(f(x,; \theta_1, \theta_2)\)</span> with log-likelihood function
+<span class="math display">\[l(\theta_1, \theta_2)= \sum_{i=1}^{10} f(x_i; \theta_1, \theta_2) = -2.5 \theta_1^2 - 3
+    \theta_1 \theta_2 - \theta_2^2 + 5 \theta_1 + 2 \theta_2 + k,\]</span>
+where <span class="math inline">\(k\)</span> is a constant. Determine the estimated covariance matrix
+of the maximum likelihood estimator, <span class="math inline">\(\hat{\theta_1}, \hat{\theta_2}\)</span>.</p>
+<h5 style="text-align: center;">
+<a id="displayExample.COV.2" href="javascript:toggleEX('toggleExample.COV.2','displayExample.COV.2');"><i><strong>Show Example Solution</strong></i></a>
+</h5>
+<div id="toggleExample.COV.2" style="display: none">
+<p><em>Example Solution.</em> Denoting <span class="math inline">\(l=l(\theta_1, \theta_2)\)</span>, the hessian matrix of second derivatives is
+<span class="math display">\[
+\left(
+\begin{array}{cc}
+  \frac{ \partial ^2}{\partial \theta_1 ^2 } l &amp; \frac{ \partial ^2}{\partial \theta_1 \partial \theta_2 } l  \\
+  \frac{ \partial ^2}{\partial \theta_1 \partial \theta_2 } l &amp; \frac{ \partial ^2}{\partial \theta_1 ^2 } l
+\end{array} \right) =
+\left(
+\begin{array}{cc}
+  -5 &amp; -3  \\
+  -3 &amp; -2
+\end{array} \right)
+\]</span>
+Thus, the information matrix is:
+<span class="math display">\[
+\mathcal{I}(\theta_1, \theta_2) = -\mathrm{E} \left( \frac{ \partial^2}{\partial \boldsymbol \theta
+\partial \boldsymbol \theta^{\prime}} l(\boldsymbol \theta|\mathbf{x}) \right) = \left(
+\begin{array}{cc}
+  5 &amp; 3  \\
+  3 &amp; 2
+\end{array} \right)
+\]</span>
+and
+<span class="math display">\[
+\mathcal{I}^{-1}(\theta_1, \theta_2) = \frac{1}{5(2) - 3(3)}\left(
+\begin{array}{cc}
+  2 &amp; -3  \\
+  -3 &amp; 5
+\end{array} \right) = \left(
+\begin{array}{cc}
+  2 &amp; -3  \\
+  -3 &amp; 5
+\end{array} \right) .
+\]</span></p>
+</div>
+<hr />
+</div>
+<div id="use-of-maximum-likelihood-estimation" class="section level3 hasAnchor" number="3.2.3">
+<h3><span class="header-section-number">3.2.3</span> Use of Maximum Likelihood Estimation<a href="CAppC.html#use-of-maximum-likelihood-estimation" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<p>The method of maximum likelihood has many advantages over alternative methods such as the method of moments introduced in Appendix Chapter <a href="CAppA.html#CAppA">1</a>.</p>
+<ul>
+<li>It is a general tool that works in many situations. For example, we may be able to write out the closed-form likelihood function for censored and truncated data. Maximum likelihood estimation can be used for regression models including covariates, such as survival regression, generalized linear models and mixed models, that may include covariates that are time-dependent.</li>
+<li>From the efficiency of the <em>mle</em>, it is optimal, the best, in the sense that it has the smallest variance among the class of all unbiased estimators for large sample sizes.</li>
+<li>From the results on the asymptotic normality of the <em>mle</em>, we can obtain a large-sample distribution for the estimator, allowing users to assess the variability in the estimation and perform statistical inference on the parameters. The approach is less computationally extensive than re-sampling methods that require a large number of fittings of the model.</li>
+</ul>
+<p>Despite its numerous advantages, <em>mle</em> has its drawback in cases such as generalized linear models when it does not have a closed analytical form. In such cases, maximum likelihood estimators are computed iteratively using numerical optimization methods. For example, we may use the Newton-Raphson iterative algorithm or its variations for obtaining the <em>mle</em>. Iterative algorithms require starting values. For some problems, the choice of a close starting value is critical, particularly in cases where the likelihood function has local minimums or maximums. Hence, there may be a convergence issue when the starting value is far from the maximum. It is important to start from different values across the parameter space and compare the maximized likelihood or log-likelihood to make sure the algorithms have converged to a global maximum.</p>
+</div>
+</div>
+<div id="S:Sec193" class="section level2 hasAnchor" number="3.3">
+<h2><span class="header-section-number">3.3</span> Statistical Inference Based on Maximum Likelihood Estimation<a href="CAppC.html#S:Sec193" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<hr />
+<p>In this section, you learn how to</p>
+<ul>
+<li>perform hypothesis testing based on <em>mle</em> for cases where there are multiple parameters in <span class="math inline">\(\boldsymbol\theta\)</span></li>
+<li>perform likelihood ratio test for cases where there are multiple parameters in <span class="math inline">\(\boldsymbol\theta\)</span></li>
+</ul>
+<hr />
+<p>In Appendix Chapter <a href="CAppA.html#CAppA">1</a>, we have introduced maximum likelihood based methods for statistical inference when <span class="math inline">\(\boldsymbol\theta\)</span> contains a single parameter. Here, we will extend the results to cases where there are multiple parameters in <span class="math inline">\(\boldsymbol\theta\)</span>.</p>
+<div id="hypothesis-testing" class="section level3 hasAnchor" number="3.3.1">
+<h3><span class="header-section-number">3.3.1</span> Hypothesis Testing<a href="CAppC.html#hypothesis-testing" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<p>In Appendix Chapter <a href="CAppA.html#CAppA">1</a>, we defined hypothesis testing concerning the null hypothesis, a statement on the parameter(s) of a distribution or model. One important type of inference is to assess whether a parameter estimate is statistically significant, meaning whether the value of the parameter is zero or not.</p>
+<p>We have learned earlier that the <em>mle</em> <span class="math inline">\(\hat{\boldsymbol{\theta}}_{mle}\)</span> has a large-sample normal distribution with mean <span class="math inline">\(\boldsymbol \theta\)</span> and the variance-covariance matrix <span class="math inline">\(\mathcal{I}^{-1}(\boldsymbol \theta)\)</span>. Based on the multivariate normal distribution, the <span class="math inline">\(j\)</span>th element of <span class="math inline">\(\hat{\boldsymbol{\theta}}_{mle}\)</span>, say <span class="math inline">\(\hat{\theta}_{MLE,j}\)</span>, has a large-sample univariate normal distribution.</p>
+<p>Define <span class="math inline">\(se(\hat{\theta}_{MLE,j})\)</span>, the standard error (estimated
+standard deviation) to be the square root of the <span class="math inline">\(j\)</span>th diagonal element of <span class="math inline">\(\mathcal{I}^{-1}(\boldsymbol \theta)_{mle}\)</span>.
+To assess the null hypothesis that <span class="math inline">\(\theta_j=\theta_0\)</span>, we define the <span class="math inline">\(t\)</span>-statistic or <span class="math inline">\(t\)</span>-ratio to be
+<span class="math inline">\(t(\hat{\theta}_{MLE,j})=(\hat{\theta}_{MLE,j}-\theta_0)/se(\hat{\theta}_{MLE,j})\)</span>.</p>
+<p>Under the null hypothesis, it has a Student-<span class="math inline">\(t\)</span> distribution with degrees of freedom equal to <span class="math inline">\(n-p\)</span>, with <span class="math inline">\(p\)</span> being the dimension of
+<span class="math inline">\(\boldsymbol{\theta}\)</span>.</p>
+<p>For most actuarial applications, we have a large sample size <span class="math inline">\(n\)</span>, so the <span class="math inline">\(t\)</span>-distribution is very close to the (standard) normal distribution. In the case when <span class="math inline">\(n\)</span> is very large or when the standard error is known, the <span class="math inline">\(t\)</span>-statistic can be referred to as a <span class="math inline">\(z\)</span>-statistic or <span class="math inline">\(z\)</span>-score.</p>
+<p>Based on the results from Appendix Chapter <a href="CAppA.html#CAppA">1</a>, if the <span class="math inline">\(t\)</span>-statistic <span class="math inline">\(t(\hat{\theta}_{MLE,j})\)</span> exceeds a cut-off (in
+absolute value), then the test for the <span class="math inline">\(j\)</span> parameter <span class="math inline">\(\theta_j\)</span> is said to be statistically significant. If <span class="math inline">\(\theta_j\)</span> is the regression coefficient of the <span class="math inline">\(j\)</span> th independent variable, then we say that the <span class="math inline">\(j\)</span>th variable is statistically significant.</p>
+<p>For example, if we use a 5% significance level, then the cut-off value is 1.96 using a normal distribution approximation for cases with a large sample size. More generally, using a <span class="math inline">\(100 \alpha \%\)</span> significance level, then the cut-off is a <span class="math inline">\(100(1-\alpha/2)\%\)</span> quantile from a Student-<span class="math inline">\(t\)</span> distribution with the degree of freedom being <span class="math inline">\(n-p\)</span>.</p>
+<p>Another useful concept in hypothesis testing is the <span class="math inline">\(p\)</span>-value, shorthand for probability value. From the mathematical definition in Appendix Chapter <a href="CAppA.html#CAppA">1</a>, a <span class="math inline">\(p\)</span>-value is defined as the smallest significance level for which the null hypothesis would be rejected. Hence, the <span class="math inline">\(p\)</span>-value is a useful summary statistic for the data analyst to report because it allows the reader to understand the strength of statistical evidence concerning the deviation from the null hypothesis.</p>
+</div>
+<div id="S:Sec1932" class="section level3 hasAnchor" number="3.3.2">
+<h3><span class="header-section-number">3.3.2</span> <em>MLE</em> and Model Validation<a href="CAppC.html#S:Sec1932" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<p>In addition to hypothesis testing and interval estimation introduced in Appendix Chapter <a href="CAppA.html#CAppA">1</a> and the previous subsection, another important type of inference is selection of a model from two choices, where one choice is a special case of the other with certain parameters being restricted. For such two models with one being nested in the other, we have introduced the likelihood ratio test (LRT) in Appendix Chapter <a href="CAppA.html#CAppA">1</a>. Here, we will briefly review the process of performing a LRT based on a specific example of two alternative models.</p>
+<p>Suppose that we have a (large) model under which we derive the maximum likelihood estimator, <span class="math inline">\(\hat{\boldsymbol{\theta}}_{mle}\)</span>. Now assume that some of the <span class="math inline">\(p\)</span> elements in <span class="math inline">\(\boldsymbol \theta\)</span> are equal to zero and determine the maximum likelihood estimator over the remaining set, with the resulting estimator denoted <span class="math inline">\(\hat{\boldsymbol{\theta}}_{Reduced}\)</span>.</p>
+<p>Based on the definition in Appendix Chapter <a href="CAppA.html#CAppA">1</a>, the statistic,
+<span class="math inline">\(LRT= 2 \left( l(\hat{\boldsymbol{\theta}}_{mle}) - l(\hat{\boldsymbol{\theta}}_{Reduced}) \right)\)</span>, is called the likelihood ratio statistic. Under the null hypothesis that the reduced model is correct, the likelihood ratio has a chi-square distribution with degrees of freedom equal to <span class="math inline">\(d\)</span>, the number of variables set to zero.</p>
+<p>Such a test allows us to judge which of the two models is more likely to be correct, given the observed data. If the statistic <span class="math inline">\(LRT\)</span> is large relative to the critical value from the chi-square distribution, then we reject the reduced model in favor of the larger one. Details regarding the critical value and alternative methods based on information criteria are given in Appendix Chapter <a href="CAppA.html#CAppA">1</a>.</p>
+<div id="contributors-3" class="section level4 unnumbered hasAnchor">
+<h4>Contributors<a href="CAppC.html#contributors-3" class="anchor-section" aria-label="Anchor link to header"></a></h4>
+<ul>
+<li><strong>Lei (Larry) Hua</strong>, Northern Illinois University, and <strong>Edward (Jed) Frees</strong>, University of Wisconsin-Madison, are the principal authors of the initial version of this chapter. Email: <a href="mailto:lhua@niu.edu" class="email">lhua@niu.edu</a> or <a href="mailto:jfrees@bus.wisc.edu" class="email">jfrees@bus.wisc.edu</a> for chapter comments and suggested improvements.
+<ul>
+<li>The chapter was reviewed by Benjamin Côté.</li>
+</ul></li>
+</ul>
+
+</div>
+</div>
+</div>
+</div>
+            </section>
+
+          </div>
+        </div>
+      </div>
+<a href="CAppB.html" class="navigation navigation-prev " aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
+<a href="ChapSummaryDistributions.html" class="navigation navigation-next " aria-label="Next page"><i class="fa fa-angle-right"></i></a>
+    </div>
+  </div>
+<script src="libs/gitbook-2.6.7/js/app.min.js"></script>
+<script src="libs/gitbook-2.6.7/js/clipboard.min.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-search.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-sharing.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-fontsettings.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-bookdown.js"></script>
+<script src="libs/gitbook-2.6.7/js/jquery.highlight.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-clipboard.js"></script>
+<script>
+gitbook.require(["gitbook"], function(gitbook) {
+gitbook.start({
+"sharing": {
+"github": false,
+"facebook": true,
+"twitter": true,
+"linkedin": false,
+"weibo": false,
+"instapaper": false,
+"vk": false,
+"whatsapp": false,
+"all": ["facebook", "twitter", "linkedin", "weibo", "instapaper"]
+},
+"fontsettings": {
+"theme": "white",
+"family": "sans",
+"size": 2
+},
+"edit": {
+"link": null,
+"text": null
+},
+"history": {
+"link": null,
+"text": null
+},
+"view": {
+"link": null,
+"text": null
+},
+"download": ["LossDataAnalytics.pdf"],
+"search": {
+"engine": "fuse",
+"options": null
+},
+"toc": {
+"collapse": "subsection"
+}
+});
+});
+</script>
+
+<!-- dynamically load mathjax for compatibility with self-contained -->
+<script>
+  (function () {
+    var script = document.createElement("script");
+    script.type = "text/javascript";
+    var src = "true";
+    if (src === "" || src === "true") src = "https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.9/latest.js?config=TeX-MML-AM_CHTML";
+    if (location.protocol !== "file:")
+      if (/^https?:/.test(src))
+        src = src.replace(/^https?:/, '');
+    script.src = src;
+    document.getElementsByTagName("head")[0].appendChild(script);
+  })();
+</script>
+</body>
+
+</html>

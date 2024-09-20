@@ -111,8 +111,8 @@
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 
-\ExecuteOptions{letterpaper,10pt,twoside,onecolumn,final,openright}
-\ProcessOptions
+%\ExecuteOptions{letterpaper,10pt,twoside,onecolumn,final,openright}
+%\ProcessOptions
 
 %%%%%%%%%%%%%%%%%%%
 

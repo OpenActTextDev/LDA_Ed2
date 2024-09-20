@@ -1,16 +1,13 @@
 
-`r chapnum = 2`
 
 # Introduction to Data Analytics {#ChapDataAnalytics}
 
-*Chapter Preview*. 
+*Chapter Preview*. This introduction focuses on data analytics concepts relevant to insurance activities. As data analytics is used across various fields with different terminologies, we start in Section \@ref(S:Sec21) by describing the basic ingredients or elements of data analytics. Then, Section \@ref(S:Sec22) outlines a process an analyst can use to analyze insurance data. Many fields emphasize the development of data analytics with a focus on multiple variables, or "big" data. However, this often comes at the cost of excluding consideration of a single variable. So, Section \@ref(S:Sec23) introduces an approach we call "single variable analytics," which includes a description of variable types, exploratory versus confirmatory analysis, and elements of model construction and selection, all of which can be done in the context of a single variable. Building on this, Section \@ref(S:Sec24) explores the roles of supervised and unsupervised learning, which require the presence of many variables.
 
-This introduction focuses on data analytics concepts relevant to insurance activities. As data analytics is used across various fields with different terminologies, we start in Section \@ref(S:Elements) by describing the basic ingredients or elements of data analytics. Then, Section \@ref(S:Process) outlines a process an analyst can use to analyze insurance data. Many fields emphasize the development of data analytics with a focus on multiple variables, or "big" data. However, this often comes at the cost of excluding consideration of a single variable. So, Section \@ref(S:SingleVarAnalytics) introduces an approach we call "single variable analytics," which includes a description of variable types, exploratory versus confirmatory analysis, and elements of model construction and selection, all of which can be done in the context of a single variable. Building on this, Section \@ref(S:ManyVarAnalytics) explores the roles of supervised and unsupervised learning, which require the presence of many variables.
-
-The final section of this chapter, Section \@ref(S:DataLearn), offers a broader introduction to data considerations beyond the scope of this book, intended for budding analysts who want to use this chapter to build a foundation for further studies in data analytics. Additionally, the technical supplements introduce other standard ingredients of data analytics, such as principal components, cluster analysis, and tree-based regression models. While these topics are not necessary for this book, they are important in a broader analytics context.
+The final section of this chapter, Section \@ref(S:Sec25), offers a broader introduction to data considerations beyond the scope of this book, intended for budding analysts who want to use this chapter to build a foundation for further studies in data analytics. Additionally, the technical supplements introduce other standard ingredients of data analytics, such as principal components, cluster analysis, and tree-based regression models. While these topics are not necessary for this book, they are important in a broader analytics context.
 
 
-##  Elements of Data Analytics {#S:Elements}
+##  Elements of Data Analytics {#S:Sec21}
 
 ***
 In this section, you learn how to describe the essential ingredients of data analytics 
@@ -33,19 +30,21 @@ In this section, you learn how to describe the essential ingredients of data ana
 Underpinning the elements of data analytics are the following key concepts:
 
 *  **Data Driven**. As described in Section \@ref(S:DataDriven), the conclusions and decisions made through a data analytic process depend heavily on data inputs. In comparison, econometricians have long recognized the difference between a data-driven model and a structural model, the latter being one that represents an explicit interplay between economic theory and stochastic models, @goldberger1972structural .
-*  **EDA** - exploratory data analysis - and **CDA** - confirmatory data analysis. Although some techniques overlap, e.g., taking the average of a dataset, these two approaches to analyzing data  have different purposes. The purpose of EDA is to reveal aspects or patterns in the data without reference to any particular model. In contrast, CDA techniques use data to substantiate, or confirm, aspects or patterns in a model. See Section \@ref(S:EDACDA) for further discussions.
+*  **EDA** - exploratory data analysis - and **CDA** - confirmatory data analysis. Although some techniques overlap, e.g., taking the average of a dataset, these two approaches to analyzing data  have different purposes. The purpose of EDA is to reveal aspects or patterns in the data without reference to any particular model. In contrast, CDA techniques use data to substantiate, or confirm, aspects or patterns in a model. See Section \@ref(S:Sec232) for further discussions.
 *  **Estimation** and **Prediction**. Recall the traditional triad of statistical inference: hypothesis testing, parameter estimation, and prediction. Medical statisticians test the efficacy of a new drug and econometricians estimate parameters of an economic relationship. In insurance, one also uses hypothesis testing and parameter estimation. Moreover, predictions of yet to be realized random outcomes are critical for financial risk management (e.g., pricing) of existing risks in future periods, as well as not yet observed risks in a current period, cf. @frees2015analytics.
-*  **Model Complexity,** **Parsimony,** and **Interpretability**. A model is a mathematical representation of reality that, in statistics, is calibrated using a data set. One concern is the *complexity* of the model where the complexity may involve the number of parameters used to define the model, the number of variables upon which it relies, and the intricacies of relationships among the parameters and variables. As a rule of thumb, we will see that the more complex is the model, the better it fares in fitting a set of data (and hence at estimation) but the worse it fares in predicting new outcomes. Other things being equal, a model with fewer parameters is said to be *parsimonious* and hence less complex. Moreover, a parsimonious model is typically easier to interpret than a comparable model that is more complex. Complexity hinders our ability to understand the inner workings of a model, its interpretability, and will be a key ingredient in our comparisons of data versus algorithmic models in Section \@ref(S:DataAlgorithm).
-*  **Parametric** and **Nonparametric** models. Many models, including stochastic distributions, are known with the exception of a limited number of quantities known as parameters. For example, the mean and variance are parameters that determine a normal distribution. In contrast, other models may not rely on parameters;  these are simply known as *nonparametric* models. Naturally, there is also a host of models that rely on parameters for some parts of the distribution and are distribution-free for other portions; these are referred to as *semi-parametric* models. Parametric and nonparametric approaches have different strengths and limitations; neither is strictly better than the other. We start the discussion in Section \@ref(S:ParametricNonP) to explain under what circumstances you might prefer one approach to another.
+*  **Model Complexity,** **Parsimony,** and **Interpretability**. A model is a mathematical representation of reality that, in statistics, is calibrated using a data set. One concern is the *complexity* of the model where the complexity may involve the number of parameters used to define the model, the number of variables upon which it relies, and the intricacies of relationships among the parameters and variables. As a rule of thumb, we will see that the more complex is the model, the better it fares in fitting a set of data (and hence at estimation) but the worse it fares in predicting new outcomes. Other things being equal, a model with fewer parameters is said to be *parsimonious* and hence less complex. Moreover, a parsimonious model is typically easier to interpret than a comparable model that is more complex. Complexity hinders our ability to understand the inner workings of a model, its interpretability, and will be a key ingredient in our comparisons of data versus algorithmic models in Section \@ref(S:Sec212).
+*  **Parametric** and **Nonparametric** models. Many models, including stochastic distributions, are known with the exception of a limited number of quantities known as parameters. For example, the mean and variance are parameters that determine a normal distribution. In contrast, other models may not rely on parameters;  these are simply known as *nonparametric* models. Naturally, there is also a host of models that rely on parameters for some parts of the distribution and are distribution-free for other portions; these are referred to as *semi-parametric* models. Parametric and nonparametric approaches have different strengths and limitations; neither is strictly better than the other. We start the discussion in Section \@ref(S:Sec233) to explain under what circumstances you might prefer one approach to another.
 *  **Robustness** means that a model, test, or procedure is resistant to unanticipated deviations in model assumptions or the data used to calibrate the model. When interpreting findings, it is natural to ask questions about how the results react to changes in assumptions or data, that is, the robustness of the results.
 *  **Computational Statistics**. Historically, statistical modeling relied extensively on summary statistics that were not only easy to interpret but also easy to compute. With modern-day computing power, definitions of "easy to compute" have altered drastically paving the way for measures that were once deemed far too computationally intensive to be of practical use. Moreover, ideas of subsampling and resampling data (e.g., through cross-validation and bootstrapping) have introduced new methods for understanding statistical sampling errors and a model's predictive capabilities.
-*  **Big Data**. This is about the process of using special methods and tools that can extract information rapidly from massive data. Examples of big data include text documents, videos, and audio files that are also known as *unstructured* data. [Table 2.1] summarizes new types of data sources that lead to new data. As part of the analytics trends, different types of algorithms lead to new software for handling new types of data. See Section \@ref(Sec:BigDataAnalysis)  for further discussions.
+*  **Big Data**. This is about the process of using special methods and tools that can extract information rapidly from massive data. Examples of big data include text documents, videos, and audio files that are also known as *unstructured* data. [Table 2.1](#tab:2.1) summarizes new types of data sources that lead to new data. As part of the analytics trends, different types of algorithms lead to new software for handling new types of data. See Section \@ref(S:Sec254)  for further discussions.
+
+\newpage
 
 [Table 2.1]:\#tab:2.1
 
 <a id=tab:2.1></a>
 
-Table 2.1. **Analytic Trends**  (from @Frees2019)
+[Table 2.1]{#tab:2.1}. **Analytic Trends**  (from @Frees2019)
 
 $$
 {\small
@@ -69,7 +68,7 @@ $$
 
 
 
-### Data  versus Algorithmic Modeling {#S:DataAlgorithm}
+### Data  versus Algorithmic Modeling {#S:Sec212}
 
 There are two cultures for the use of statistical modeling to reach conclusions from data: the data modeling culture and the algorithmic modeling culture. In the data modeling culture, data are assumed to be generated by a given stochastic model. In the algorithmic modeling culture, the data mechanism is treated as unknown and algorithmic models are used.
 
@@ -87,7 +86,7 @@ There are two cultures for the use of statistical modeling to reach conclusions 
 
 
 
-## Data Analysis Process {#S:Process}
+## Data Analysis Process {#S:Sec22}
 
 ***
 In this section, you learn how to describe the data analysis process as five steps:  
@@ -100,21 +99,20 @@ In this section, you learn how to describe the data analysis process as five ste
 
 ***
 
-[Table 2.2] outlines common steps used when analyzing data associated with insurance activities.
+[Table 2.2](#tab:2.2) outlines common steps used when analyzing data associated with insurance activities.
 
 [Table 2.2]:\#tab:2.2
 
 <a id=tab:2.2></a>
 
-Table 2.2 **Data Analysis Process for Insurance Activities**
+[Table 2.2]{#tab:2.2} **Data Analysis Process for Insurance Activities**
 
 $$
-{\small
+{\scriptsize
 \begin{array}{c|c|c|c|c}\hline
 \textbf{I. Scoping} &\textbf{II. Data}& \textbf{III. Model} & \textbf{IV. Validation} & 
 \textbf{V. Determine} \\ 
-\textbf{Phase} &\textbf{ Splitting}& \textbf{ Development} &   & 
-\textbf{Implications} \\ \hline
+\textbf{Phase} &\textbf{ Splitting}& \textbf{ Development} &   & \textbf{Implications} \\ \hline
 \text{Use background} &\text{Split the}& \text{Select a candidate} & \text{Repeat Phase III} & 
 \text{Use knowledge gained} \\
 \text{knowledge and} &\text{data into}& \text{model} & \text{ to determine several} & 
@@ -123,19 +121,19 @@ $$
 \text{fitting and predicting} \\
  \text{define goals} &\text{and testing}&&& \text{the models to make} \\ 
 &\text{portions}&&& \text{data-informed statements} \\ 
-&&&& \text{about the project goals} \\ \\ 
+&&&& \text{about the project goals} \\ &&&& \\ 
 \text{Prepare, collect,}&&\text{Select variables to} &\text{Assess each model}  \\
 \text{and revise data}&&\text{ be used with the} & \text{using the testing}&  \\
 &&\text{candidate model} & \text{portion of the data}&  \\ 
 && & \text{ to determine its}&  \\ 
-&& & \text{predictive capabilities}&  \\\\
+&& & \text{predictive capabilities}&  \\ &&&& \\
 \text{EDA}&&\text{Evaluate model fit}
 &&\\
 \text{Explore the data}&&\text{using training data}
-&&\\ \\
-&&\text{Use deviations from}\\
-&&\text{ model fit to improve}\\
-&&\text{suggested models}\\
+&&\\  &&&& \\
+&&\text{Use deviations from}&&\\
+&&\text{ model fit to improve}&&\\
+&&\text{suggested models}&&\\
 \hline
 \end{array}
 }
@@ -147,7 +145,7 @@ $$
 Scoping, or problem formulation, can be divided into three components:
 
 *  **Use background knowledge and theory to define goals**. Insurance activity projects are commonly motivated by business pursuits that have been formulated to be consistent with background knowledge such as market conditions and theory such as a person's attitude towards risk-taking.
-*  **Prepare, collect, and revise data**. Getting the right data that gives insights into questions at hand is typically the most time-consuming aspect of most projects. Section \@ref(S:DataLearn) delves more into the devilish details of data structures, quality, cleaning, and so forth. 
+*  **Prepare, collect, and revise data**. Getting the right data that gives insights into questions at hand is typically the most time-consuming aspect of most projects. Section \@ref(S:Sec25) delves more into the devilish details of data structures, quality, cleaning, and so forth. 
 *  **EDA** - Exploring the data, without reference to any particular model, can reveal unsuspected aspects or patterns in the data. 
 
 These three components can be performed *iteratively*. For example, a question may suggest collecting certain data types. Then, a preliminary analysis of the data raises additional questions of interest that can lead to seeking more data - this cycle can be repeated many times. Note that this iterative approach differs from the traditional "scientific method" whereby the analyst develops a hypothesis, collects data, and then employs the data to test the hypothesis.
@@ -164,7 +162,7 @@ For large datasets, some analysts prefer to split the data into three portions, 
 The objective of the model development phase is to consider different types of model and provide the best fit for each "candidate" model. As with the scoping phase, developing a model is an iterative procedure.
 
 *  **Select a candidate model.** One starts with a model that, from the analyst's perspective, is a likely "candidate" to be the recommended model. Although analysts will focus on familiar models, such as through their past applications of a model or its acceptance in industry, in principle one remains open to all types of models.
-*  **Select variables to be used with the candidate model.** For simpler situations, only a single outcome, or variable, is of interest. However, many (if not most) situations deal with multivariate outcomes and, as will be seen in Section \@ref(S:ManyVarAnalytics), analysts give a great deal of thought as to which variables are considered inputs to a system and which variables can be treated as outcomes.
+*  **Select variables to be used with the candidate model.** For simpler situations, only a single outcome, or variable, is of interest. However, many (if not most) situations deal with multivariate outcomes and, as will be seen in Section \@ref(S:Sec24), analysts give a great deal of thought as to which variables are considered inputs to a system and which variables can be treated as outcomes.
 *  **Evaluate model fit on training data.** Given a candidate model based on one or more selected variables, the next step is to calibrate the model based on the training data and evaluate the model fit. Many measures of model fit are available - analysts should focus on those likely to be consistent with the project goals and intended audience of the data analysis process.
 *  **Use deviations from the model fit to suggest improvements to the candidate model.** When comparing the training data to model fits, it may be that certain patterns are revealed that suggest model improvements. In regression analysis, this tactic is known as *diagnostic checking.*
 
@@ -183,7 +181,7 @@ For data analytic projects associated with insurance activities, it is common to
 ```{r child = './Quizzes/Quiz2Data2.html', eval = QUIZ}
 ```
 
-## Single Variable Analytics {#S:SingleVarAnalytics}
+## Single Variable Analytics {#S:Sec23}
 
 
 ***
@@ -198,11 +196,11 @@ In this section, you learn how to describe analytics based on a single variable 
 
 Rather than starting with multiple variables consisting of inputs and outputs as is common in analytics, in this section we restrict considerations to a single variable. Single variable analytics is motivated by statistical data modeling. Moreover, as will be seen in Chapters 3-8, single variable analytics plays a prominent role in fundamental insurance and risk management applications.
 
-### Variable Types {#S:VarTypes}
+### Variable Types {#S:Sec231}
 
-This section describes basic variable types traditionally encountered in statistical data analysis. Section \@ref(S:DataLearn) will provide a framework for more extensive types that include big data.
+This section describes basic variable types traditionally encountered in statistical data analysis. Section \@ref(S:Sec25) will provide a framework for more extensive types that include big data.
 
-#### Qualitative Variables {#S:QuaVar}
+#### Qualitative Variables {-}
 
 A `r Gloss('qualitative')`, or `r Gloss('categorical variable')` is one for which the measurement denotes membership in a set of groups, or categories. For example, if you were coding in which area of the country an insured resides, you might use 1 for the northern part, 2 for southern, and 3 for everything else. Any analysis of categorical variables should not depend on the labeling of the categories. For example, instead of using a 1,2,3 for north, south, other, one should arrive at the same set of summary statistics if I used a 2,1,3 coding instead, interchanging north and south. 
 
@@ -210,10 +208,10 @@ In contrast, an `r Gloss('ordinal variable')` is a variation of categorical vari
 
 A `r Gloss('binary variable')` is a special type of categorical variable where there are only two categories commonly taken to be 0 and 1.
 
-Earlier, in the Section \@ref(S:LGPIF) case study, we saw in [Table 1.5] several examples of qualitative variables. These included the categorical `EntityType` and binary variables `NoClaimCredit` and `Fire5`. We also treated `AlarmCredit` as a categorical variable although some analysts may wish to explore its use as an ordinal variable.
+Earlier, in the Section \@ref(S:LGPIF) case study, we saw in [Table 1.5](#tab:1.5) several examples of qualitative variables. These included the categorical `EntityType` and binary variables `NoClaimCredit` and `Fire5`. We also treated `AlarmCredit` as a categorical variable although some analysts may wish to explore its use as an ordinal variable.
 
 
-#### Quantitative Variables {#S:QuanVar}
+#### Quantitative Variables {-}
 
 
 Unlike a qualitative variable, a `r Gloss('quantitative variable')` is one in which each numerical level is a realization from some scale so that the distance between any two levels of the scale takes on meaning. A `r Gloss('continuous variable')` is one that can take on any value within a finite interval. For example, one could represent a `r Gloss('policyholder')`'s age, weight, or income, as continuous variables. In contrast, a 
@@ -222,7 +220,7 @@ Unlike a qualitative variable, a `r Gloss('quantitative variable')` is one in wh
 Earlier, in the Section \@ref(S:LGPIF) case study, we encountered several examples of quantitative variables. These included the deductible (in logarithmic dollars), total building and content coverage (in logarithmic dollars), claim severity and claim frequency.
 
 
-#### Loss Data
+#### Loss Data {-}
 
 This introduction to data analytics is motivated by features of **loss data** that arise from, or are related to, obligations in insurance contracts. Loss data rarely arise from a bell-shaped normal distribution that has motivated the development of much of classical statistics. As a consequence, the treatment of data analytics in this text differs from that typically encountered in other introductions to data analytics.
 
@@ -235,16 +233,18 @@ What features of loss data warrant special treatment?
  
 
 
-### Exploratory versus Confirmatory {#S:EDACDA}
+### Exploratory versus Confirmatory {#S:Sec232}
 
 
-There are two phases of data analysis: `r Gloss('exploratory data analysis')` (EDA) and `r Gloss('confirmatory data analysis')` (CDA). [Table 2.2] summarizes some differences between EDA and CDA. EDA is usually applied to observational data with the goal of looking for patterns and formulating hypotheses. In contrast, CDA is often applied to experimental data (i.e., data obtained by means of a formal design of experiments) with the goal of quantifying the extent to which discrepancies between the model and the data could be expected to occur by chance. 
+There are two phases of data analysis: `r Gloss('exploratory data analysis')` (EDA) and `r Gloss('confirmatory data analysis')` (CDA). [Table 2.3](#tab:2.3) summarizes some differences between EDA and CDA. EDA is usually applied to observational data with the goal of looking for patterns and formulating hypotheses. In contrast, CDA is often applied to experimental data (i.e., data obtained by means of a formal design of experiments) with the goal of quantifying the extent to which discrepancies between the model and the data could be expected to occur by chance. 
 
-[Table 2.2]:\#tab:2.2
+\newpage
 
-<a id=tab:2.2></a>
+[Table 2.3]:\#tab:2.3
 
-Table 2.2. **Comparison of Exploratory Data Analysis and Confirmatory Data Analysis**
+<a id=tab:2.3></a>
+
+[Table 2.3]{#tab:2.3}. **Comparison of Exploratory Data Analysis and Confirmatory Data Analysis**
 
 $$
 \small{
@@ -264,20 +264,20 @@ $$
 As we have seen in the Section \@ref(S:LGPIF) case study, the techniques for single variable EDA include descriptive statistics (e.g., mean, median, standard deviation, quantiles) and summaries of distributions such as through histograms. In contrast, the techniques for CDA include the traditional statistical tools of inference, significance, and confidence.
 
 
-### Model Construction 
+### Model Construction {#S:Sec233}
 
-As we learned in Section \@ref(S:DataAlgorithm), models may have a stochastic basis from the statistical modeling paradigm or may simply be the result of an algorithm. When constructing a model, it is helpful to think about how it is parameterized and to identify the purpose of constructing the model.
+As we learned in Section \@ref(S:Sec212), models may have a stochastic basis from the statistical modeling paradigm or may simply be the result of an algorithm. When constructing a model, it is helpful to think about how it is parameterized and to identify the purpose of constructing the model.
 
-#### Parametric versus Nonparametric {#S:ParametricNonP}
+#### Parametric versus Nonparametric {-}
 
-Data analysis models can be parametric or nonparametric. Parametric models are representations that are known up to a few terms known as *parameters*. These may be representations of a stochastic distribution or simply an algorithm used to predict data outcomes. Typically, data are used to determine the parameters and in this way calibrate the model. In contrast, nonparametric methods make no such assumption of a known functional form. For example, Section \@ref(S:MS:NonParEst) will introduce nonparametric methods that do not assume distributions for the data and therefore are also called *distribution-free* methods.
+Data analysis models can be parametric or nonparametric. Parametric models are representations that are known up to a few terms known as *parameters*. These may be representations of a stochastic distribution or simply an algorithm used to predict data outcomes. Typically, data are used to determine the parameters and in this way calibrate the model. In contrast, nonparametric methods make no such assumption of a known functional form. For example, Section \@ref(S:Sec441) will introduce nonparametric methods that do not assume distributions for the data and therefore are also called *distribution-free* methods.
 
 Because a functional form is known with a parametric model, this approach works well when data size is relatively limited. This reasoning extends to the situation when one is considering many variables simultaneously so that the so-called "curse of dimensionality" effectively limits the sample size. For example if you are trying to determine the expected cost of automobile losses, you are likely to consider a driver's age, gender, driving location, type of vehicle, and dozens of other variables. Approaches that use some parametric relationships among these variables are common because a purely non-parametric approach would require data sets too large to be useful in practice.
 
 Nonparametric methods are very valuable particularly at the exploratory stages of an analysis where one tries to understand the distribution of each variable. Because nonparametric methods make fewer assumptions, they can be more flexible, more `r Gloss('robust', '13.2')`, and more applicable to non-quantitative data. However, a drawback of nonparametric methods is that it is more difficult to extrapolate findings outside of the observed domain of the data, a key consideration in *predictive modeling*.
 
 
-#### Explanation versus Prediction {#S:expred}
+#### Explanation versus Prediction {-}
 
 There are two goals in data analysis: explanation and prediction. In some scientific areas such as economics, psychology, and environmental science, the focus of data analysis is to explain the causal relationships between the input variables and the response variable. In other scientific areas such as natural language processing, bioinformatics, and actuarial science, the focus of data analysis is to predict what the responses are going to be given the input variables.
 
@@ -292,7 +292,7 @@ There are two goals in data analysis: explanation and prediction. In some scient
 In contrast, `r Gloss('predictive modeling')` is the process of applying a statistical model or data mining algorithm to data for the purpose of predicting new or future observations. Predictions include point predictions, interval predictions, regions, distributions, and rankings of new observations. A predictive model can be any method that produces predictions. 
 
  
-### Model Selection {#S:ModelSelection}
+### Model Selection {#S:Sec234}
 
 Although  hypothesis testing is one approach to model selection that is viable in many fields, it does have its drawbacks. For example, the asymmetry between the null and alternative hypotheses raises issues;  hypothesis testing is biased towards a null hypothesis unless there is strong evidence to the contrary.
 
@@ -310,16 +310,34 @@ $$
 
 Then, based on the first, third, fourth, and fifth subsets, estimate a model, use this fitted model to predict outcomes in the second, and compare the predictions to the held-out values in the test portion. Repeat this process by selecting each subset as the test portion, with the others being used for training, and take an average over the comparison which results in a cross-validation statistic. Cross-validation is used widely in modeling insurance activities and is described in more detail in Chapter 5.
 
+`r HideRCode('Table213.Silly',"")`
+
+```{r  eval = HtmlEval, echo = FALSE}
+s=2
+knitr::kable(s, caption = "Silly. Create a table just to update the counter...")
+
+knitr::kable(s, caption = "Silly. Create a table just to update the counter...")
+
+knitr::kable(s, caption = "Silly. Create a table just to update the counter...")
+
+```
+
+</div>
+
+\setcounter{table}{3}
+
+
+
 **Example 2.3.1. Under- and Over-Fitting.** Suppose that we have a set of claims that potentially varies by a single categorical variable with six levels. For example, in the Section \@ref(S:LGPIF)  case study there are six entity types. If each level is truly distinct, then in classical statistics one uses the level average to make predictions for future claims. Another option is to ignore information in the categorical variable and use the overall average to make predictions; this is known as a "community-rating" approach. 
 
-For illustrative purposes, we assume that two of the six levels are the same and are different from the others. For example, the [Table 1.6] summary statistics suggest that Schools and the Miscellaneous levels can be viewed similarly yet warrant a higher predicted claims amount than the other four levels. For illustrative purposes, we generated 100 claims that follow this pattern (using simulation techniques that will be described in Chapter \@ref(ChapSimulation)).
+For illustrative purposes, we assume that two of the six levels are the same and are different from the others. For example, the Table \@ref(tab:Tab16) summary statistics suggest that Schools and the Miscellaneous levels can be viewed similarly yet warrant a higher predicted claims amount than the other four levels. For illustrative purposes, we generated 100 claims that follow this pattern (using simulation techniques that will be described in Chapter \@ref(ChapSimulation)).
 
-Results are summarized in Table \@ref(tab:Example231) for three fitted models. These are the "Community Rating" corresponding to using the overall mean, the "Two Levels"  corresponding to using two averages, and the "Six Levels" corresponding to using an average for each level of the categorical variable. The data set of size 100 was randomly split into five folds; for each fold, the other folds were used to train/estimate the model and then that fold was used to assess predictions. The first five rows of Table \@ref(tab:Example231) give the results of the root mean square error for each fold. The sixth row provides the average over the five folds and the last row gives a similar result for another goodness of fit statistic, the $AIC$. This approach is known as "cross-validation" that will be described in greater detail in Chapters \@ref(ChapModelSelection) and \@ref(ChapSimulation).
+Results are summarized in Table \@ref(tab:Table24) for three fitted models. These are the "Community Rating" corresponding to using the overall mean, the "Two Levels"  corresponding to using two averages, and the "Six Levels" corresponding to using an average for each level of the categorical variable. The data set of size 100 was randomly split into five folds; for each fold, the other folds were used to train/estimate the model and then that fold was used to assess predictions. The first five rows of Table \@ref(tab:Table24) give the results of the root mean square error for each fold. The sixth row provides the average over the five folds and the last row gives a similar result for another goodness of fit statistic, the $AIC$. This approach is known as "cross-validation" that will be described in greater detail in Chapters \@ref(ChapModelSelection) and \@ref(ChapSimulation).
 
-Table \@ref(tab:Example231) shows that in each case the "Two Level" model has the lowest root mean square error and $AIC$, indicating that it is the preferred model. The overfit model with six levels came in second and the underfit model, community rating, was a distant third. This analysis demonstrates techniques for selecting the appropriate model. Unlike analysis of real data, in this demonstration we enjoyed the additional luxury of knowing that we got things correct because we in fact generated the data - an approach that analysts often use to develop analytic procedures prior to utilizing the procedures on real data.
+Table \@ref(tab:Table24) shows that in each case the "Two Level" model has the lowest root mean square error and $AIC$, indicating that it is the preferred model. The overfit model with six levels came in second and the underfit model, community rating, was a distant third. This analysis demonstrates techniques for selecting the appropriate model. Unlike analysis of real data, in this demonstration we enjoyed the additional luxury of knowing that we got things correct because we in fact generated the data - an approach that analysts often use to develop analytic procedures prior to utilizing the procedures on real data.
 
 
-```{r Example231, echo = FALSE}
+```{r Table24, echo = FALSE}
 # Generate the Data
 rmse <- Metrics::rmse
 n <- 100
@@ -360,13 +378,17 @@ row.names(OutMat) <- c("Rmse - Fold 1", "Rmse - Fold 2", "Rmse - Fold 3",
                        "Rmse - Fold 4", "Rmse - Fold 5", "Rmse - Average", 
                        "AIC - Average")
 
-knitr::kable(OutMat, caption = "**Under- and Over-Fitting of Models**", booktabs = T) 
+
+TableGen1(TableData=OutMat,
+         TextTitle= 'Under- and Over-Fitting of Models',
+         Align='c', Digits=3, ColumnSpec=1:3,
+         ColWidth = ColWidth5)
 
 ```
 
-`r HideRCode('Example231.Hide', 'Show Example 2.3.1 R Code')`
+`r HideRCode('Table24.Hide', 'Show Example 2.3.1 R Code')`
 
-```{r eval=FALSE, ref.label = 'Example231'}
+```{r eval=FALSE, ref.label = 'Table24', echo = HtmlEval}
 ```
 
 ***
@@ -378,9 +400,10 @@ knitr::kable(OutMat, caption = "**Under- and Over-Fitting of Models**", booktabs
 ```
 
 
-## Analytics with Many Variables  {#S:ManyVarAnalytics}
+## Analytics with Many Variables  {#S:Sec24}
 
 ***
+
 In this section, you learn how to describe analytics based on many variables in terms of 
 
 *  supervised and unsupervised learning, 
@@ -390,7 +413,7 @@ In this section, you learn how to describe analytics based on many variables in 
 ***
 
 
-Just as with a single variable in Section \@ref(S:SingleVarAnalytics), with many variables analysts follow the same structure of identifying variables, exploring data, constructing and selecting models. However, the potential applications become much richer when considering many variables. With many potential applications, it is natural that techniques for data analysis have developed in different but overlapping fields; these fields include statistics, machine learning, pattern recognition, and data mining. 
+Just as with a single variable in Section \@ref(S:Sec23), with many variables analysts follow the same structure of identifying variables, exploring data, constructing and selecting models. However, the potential applications become much richer when considering many variables. With many potential applications, it is natural that techniques for data analysis have developed in different but overlapping fields; these fields include statistics, machine learning, pattern recognition, and data mining. 
 
 *  Statistics is a field that addresses reliable ways of gathering data and making inferences. 
 *  The term `r Gloss('machine learning')`  was coined by Samuel in 1959 [@samuel1959ml]. Originally, machine learning referred to the field of study where computers have the ability to learn without being explicitly programmed. Nowadays, machine learning has evolved to a broad field of study where computational methods use experience (i.e., the past information available for analysis) to improve performance or to make accurate predictions. 
@@ -400,15 +423,15 @@ Just as with a single variable in Section \@ref(S:SingleVarAnalytics), with many
 
 ###  Supervised and Unsupervised Learning
 
-With multiple variables, the essential tasks of identifying variable types, exploring data, and selecting models are similar in principle to that described for single variables in Section \@ref(S:SingleVarAnalytics). When exploring data in multiple dimensions, additional considerations such as clustering like observations and reducing the dimension arise. As these considerations will not arise in the applications in this book, we provide only a brief introduction in Technical Supplement Section \@ref(S:MultiEDA).
+With multiple variables, the essential tasks of identifying variable types, exploring data, and selecting models are similar in principle to that described for single variables in Section \@ref(S:Sec23). When exploring data in multiple dimensions, additional considerations such as clustering like observations and reducing the dimension arise. As these considerations will not arise in the applications in this book, we provide only a brief introduction in Technical Supplement Section \@ref(S:Sec261).
 
-The construction of models differs dramatically when comparing single to multiple variable modeling. With many variables, we have the opportunity to think about some of them as "inputs" and others "outputs" of a system. Models based on input and output variables are known as `r Gloss('supervised learning methods')` or as `r Gloss('regression methods')`. [Table 2.3] gives a list of common names for different types of variables [@frees2009regression]. When the target variable is a categorical variable, supervised learning methods are called `r Gloss('classification methods')`.
+The construction of models differs dramatically when comparing single to multiple variable modeling. With many variables, we have the opportunity to think about some of them as "inputs" and others "outputs" of a system. Models based on input and output variables are known as `r Gloss('supervised learning methods')` or as `r Gloss('regression methods')`. [Table 2.5](#tab:2.5) gives a list of common names for different types of variables [@frees2009regression]. When the target variable is a categorical variable, supervised learning methods are called `r Gloss('classification methods')`.
 
-[Table 2.3]:\#tab:2.3
+[Table 2.5]:\#tab:2.5
 
-<a id=tab:2.3></a>
+<a id=tab:2.5></a>
 
-Table 2.3. **Common Names of Different Variables**
+[Table 2.5]{#tab:2.5}. **Common Names of Different Variables**
 
 $$
 \small{
@@ -436,26 +459,22 @@ Early data analysis traced the movements of orbits of bodies about the sun using
 The idea underpinning algorithmic fitting is easy to interpret. One variable, $Y$, is determined to be a target variable. Other variables, $X_1, X_2, \ldots, X_p$, are used to understand or explain the target $Y$. The goal is to determine an appropriate function $f(\cdot)$ so that $f(X_1, X_2, \ldots, X_k)$ is a useful predictor of $Y$.
 
 **Linear Regression.** To illustrate, consider the classic linear regression context. In this case, we have $n$ observations of a target and explanatory variables, with the $i$th observation denoted as $(x_{i1}, \ldots, x_{ik}, y_i) =$ $({\bf x}_i, y_i)$. One would like to determine a single function $f$ so that $f({\bf x}_i)$ is a reasonable approximation for $y_i$, for each $i$. For the linear regression, one restricts considerations to functions of the form
-
 $$
 f(x_{i1}, \ldots, x_{ik}) = \beta_1 x_{i1} + \cdots + \beta_k x_{ik} = {\bf x}_i^{\prime} \boldsymbol \beta.
 $$
-
 Here, $\boldsymbol \beta = (\beta_1, \ldots, \beta_k)'$ is a vector of *regression coefficients*. This function is *linear* in the explanatory variables that gives rise to the name `r Gloss('linear regression')`.
 
 The *ordinary least squares (OLS)* estimates are the solution of the following minimization problem,
-
 $$
 \begin{array}{cc}
 {\small \text{minimize}}_{\boldsymbol \beta}  & \frac{1}{n} \sum_{i=1}^n (y_i - {\bf x}_i^{\prime} \boldsymbol \beta)^2 .\\
 \end{array}
 (\#eq:OLSSolution)
 $$
-
 The *OLS* estimates are historically prominent in part because of their ease of computation and interpretation. Naturally, a squared difference such as $(y_i - {\bf x}_i^{\prime} \boldsymbol \beta)^2$ is not the only way to measure the deviation between a target $y_i$ and an estimate ${\bf x}_i^{\prime} \boldsymbol \beta$. In general, analysts use the term *loss function* $l(y_i, {\bf x}_i^{\prime} \boldsymbol \beta)$ to measure this deviation; as an alternative, it is not uncommon to use an absolute deviation.
 
 
-**Algorithmic Modeling Culture.** As introduced in Section \@ref(S:DataAlgorithm), a culture has developed across widespread communities that emphasizes algorithmic fitting particularly in complex problems such as voice, image, and handwriting recognition. Algorithmic methods are especially useful when the goal is prediction, as noted in Section \@ref(S:expred). Many of these algorithms take an approach  similar to linear regression. As examples, other widely used algorithmic fitting methods include ridge and lasso regression, as well as regularization methods.
+**Algorithmic Modeling Culture.** As introduced in Section \@ref(S:Sec212), a culture has developed across widespread communities that emphasizes algorithmic fitting particularly in complex problems such as voice, image, and handwriting recognition. Algorithmic methods are especially useful when the goal is prediction, as noted in Section \@ref(S:Sec233). Many of these algorithms take an approach  similar to linear regression. As examples, other widely used algorithmic fitting methods include ridge and lasso regression, as well as regularization methods.
 
 **Ridge Regression.** One limitation of *OLS* is that it tends to overfit, particularly when the number of regression coefficients $k$ becomes large. In fact, with $k=n$ one gets an exact match between the targets $y_i$ and the predictor function. A modification introduced in 1970 by @hoerl1970ridge is known as *ridge regression* where one determines regression coefficients $\boldsymbol \beta$ as in equation \@ref(eq:OLSSolution) although subject to the constraint that $\sum_{j=1}^p |\beta_j |^2 \le c_{ridge}$, where $c_{ridge}$ is an appropriately chosen constant. Naturally, if $c_{ridge}$ is very large, then the constraint has no effect and the ridge estimates equal the *OLS* solution. However, as $c_{ridge}$ becomes small, it reduces the size of the regression coefficients. In this sense, the ridge regression estimator is said to be “shrunk towards zero.” 
 
@@ -466,19 +485,17 @@ Adding the constraint on the size of the coefficients can mean smaller and more 
 The lasso overcomes an important limitation of ridge regression. With ridge regression, we might reduce the size of the constant $c_{ridge}$ that forces the regression coefficient to become small but does not ensure that they become zero. In contrast, the lasso ensures that trivial regression coefficients become zero. In the linear regression approximation, a zero regression coefficient means that the variable drops from the function approximation, thus reducing model complexity. 
 
 **Regularization**. Both the ridge and lasso regressions are constrained minimization problems. It is not too hard to show that they can be written  as
-
 $$
 {\small \text{minimize}}_{\boldsymbol \beta} \left( 
 \frac{1}{n} \sum_{i=1}^n (y_i - {\bf x}_i^{\prime} \boldsymbol \beta)^2 +
 LM \sum_{j=1}^p |\beta_j |^s \right) ,
 $$
-
 where $s=2$ is for ridge regression and $s=1$ is for lasso regression. We can interpret the first part inside the minimization operation as the goodness of fit and the second part as a penalty for size of the regression coefficients. As we have discussed, reducing the  coefficients can mean reducing modeling complexity. In this sense, this expression demonstrates a balance between goodness of fit and model complexity, controlled by the parameter $LM$ (In this case, because it is a constrained optimization problem, the parameter is a Lagrange multiplier.). The choice of $LM=0$ reduces to the *OLS* estimator that focuses on goodness of fit. As $LM$ becomes large, the focus moves away from the data (and hence goodness of fit). This is an example of a *regularization* method in data analytics, where one expresses a prior belief concerning the smoothness of functions used for our predictions.
 
 
 ### Data Modeling
 
-One way to motivate an algorithmic development is through the use of a data model introduced in Section \@ref(S:DataAlgorithm). Here, we can also think of this as a "probability" or "likelihood" based model, in that our main goal is to understand the target ($Y$) distribution, typically in terms of the explanatory variables. Thus, data models are particularly useful for the goal of explanation previously discussed in Section \@ref(S:expred).
+One way to motivate an algorithmic development is through the use of a data model introduced in Section \@ref(S:Sec212). Here, we can also think of this as a "probability" or "likelihood" based model, in that our main goal is to understand the target ($Y$) distribution, typically in terms of the explanatory variables. Thus, data models are particularly useful for the goal of explanation previously discussed in Section \@ref(S:Sec233).
 
 Data models were initially developed in the early twentieth century through the work of R.A. Fisher and E.P. George Box (among many, many others) whose work focused on data as the result of experiments with a small number of outcomes and even fewer explanatory (control) variables.
 
@@ -500,9 +517,10 @@ In a *GLM*, the target variable is assumed to follow a distribution from the *li
 ```
 
 
-## Data {#S:DataLearn}
+## Data {#S:Sec25}
 
 ***
+
 In this section, you learn how to describe data considerations in terms of 
 
 *  data types,
@@ -566,7 +584,7 @@ Raw data usually need to be cleaned before useful analysis can be conducted. In 
 For more information about how to handle data in `R`, readers are referred to @forte2015 and @buttrey2017.
 
 
-### Big Data Analysis {#Sec:BigDataAnalysis}
+### Big Data Analysis {#S:Sec254}
 
 Unlike traditional data analysis, big data analysis employs additional methods and tools that can extract information rapidly from massive data. In particular, big data analysis uses the following processing methods [@chen2014b]:
 
@@ -590,7 +608,7 @@ Within the insurance sector, discrimination, privacy, and confidentiality are ma
 ```
 
 
-## Further Resources and Contributors {#DS:further-reading-and-resources}
+## Further Resources and Contributors {#S:Sec26}
 
 #### Contributors {-}
 
@@ -607,47 +625,38 @@ Within the insurance sector, discrimination, privacy, and confidentiality are ma
 *  Comparisons of structured data and unstructured data can be found in @inmon2014, @leary2013bigdata ,@hashem2015bigdata, @abdullah2013data,  and @pries2015, among others.
 
 
-### Technical Supplement: Multivariate Exploratory Analysis {#S:MultiEDA}
+### Technical Supplement: Multivariate Exploratory Analysis {#S:Sec261}
 
 
-#### Principal Component Analysis
+#### Principal Component Analysis {-}
 
 `r Gloss('Principal component analysis')` (PCA) is a statistical procedure that transforms a dataset described by possibly correlated variables into a dataset described by linearly uncorrelated variables, which are called principal components and are ordered according to their variances. PCA is a technique for dimension reduction. If the original variables are highly correlated, then the first few principal components can account for most of the variation of the original data.  
 
 The principal components of the variables are related to the eigenvalues and eigenvectors of the covariance matrix of the variables. For $i=1,2,\ldots,d$, let $(\lambda_i, \textbf{e}_i)$ be the $i$th eigenvalue-eigenvector pair of the covariance matrix ${\Sigma}$ of $d$ variables $X_1,X_2,\ldots,X_d$  such that $\lambda_1\ge \lambda_2\ge \ldots\ge \lambda_d\ge 0$ and the eigenvectors are normalized. Then the $i$th principal component is given by
-
 $$
 Z_{i} = \textbf{e}_i' \textbf{X} =\sum_{j=1}^d e_{ij} X_j,
 $$
-
 where $\textbf{X}=(X_1,X_2,\ldots,X_d)'$. It can be shown that $\mathrm{Var~}{(Z_i)} = \lambda_i$. As a result, the proportion of variance explained by the $i$th principal component is calculated as
-
 $$
 \frac{\mathrm{Var~}{(Z_i)}}{ \sum_{j=1}^{d} \mathrm{Var~}{(Z_j)}} = \frac{\lambda_i}{\lambda_1+\lambda_2+\cdots+\lambda_d}.
 $$
-
 For more information about PCA, readers are referred to @mirkin2011.
 
-#### Cluster Analysis
+#### Cluster Analysis {-}
 
 `r Gloss('Cluster analysis')` (aka data clustering) refers to the process of dividing a dataset into homogeneous groups or clusters such that points in the same cluster are similar and points from different clusters are quite distinct [@gan2007;@gan2011]. Data clustering is one of the most popular tools for exploratory data analysis and has found its applications in many scientific areas. 
 
 During the past several decades, many clustering algorithms have been proposed. Among these clustering algorithms, the $k$-means algorithm is perhaps the most well-known algorithm due to its simplicity. To describe the `r Gloss('k-means algorithm')`, let $X=\{\textbf{x}_1,\textbf{x}_2,\ldots,\textbf{x}_n\}$ be a dataset containing $n$ points, each of which is described by $d$ numerical features. Given a desired number of clusters $k$, the $k$-means algorithm aims at minimizing the following objective function:
-
 $$
 P(U,Z) = \sum_{l=1}^k\sum_{i=1}^n u_{il} \Vert \textbf{x}_i-\textbf{z}_l\Vert^2,
 $$
-
 where $U=(u_{il})_{n\times k}$ is an $n\times k$ partition matrix, $Z=\{\textbf{z}_1,\textbf{z}_2,\ldots,\textbf{z}_k\}$ is a set of cluster centers, and $\Vert\cdot\Vert$ is the $L^2$ norm or Euclidean distance. The partition matrix $U$ satisfies the following conditions:
-
 $$
 u_{il}\in \{0,1\},\quad i=1,2,\ldots,n,\:l=1,2,\ldots,k,
 $$
-
 $$
 \sum_{l=1}^k u_{il}=1,\quad i=1,2,\ldots,n.
 $$
-
 The $k$-means algorithm employs an iterative procedure to minimize the objective function. It repeatedly updates the partition matrix $U$ and the cluster centers $Z$ alternately until some stop criterion is met. For more information about $k$-means, readers are referred to @gan2007 and @mirkin2011.
 
 
@@ -658,11 +667,9 @@ The $k$-means algorithm employs an iterative procedure to minimize the objective
 `r Gloss('Decision trees')`, also known as tree-based models, involve dividing the predictor space (i.e., the space formed by independent variables) into a number of simple regions and using the mean or the mode of the region for prediction [@breiman1984]. There are two types of tree-based models: classification trees and regression trees. When the dependent variable is categorical, the resulting tree models are called classification trees. When the dependent variable is continuous, the resulting tree models are called regression trees.
 
 The process of building classification trees is similar to that of building regression trees. Here we only briefly describe how to build a regression tree. To do that, the predictor space is divided into non-overlapping regions such that the following objective function 
-
 $$
 f(R_1,R_2,\ldots,R_J) = \sum_{j=1}^J \sum_{i=1}^n I_{R_j}(\textbf{x}_i)(y_i - \mu_j)^2
 $$
-
 is minimized, where $I$ is an indicator function, $R_j$ denotes the set of indices of the observations that belong to the $j$th box, $\mu_j$ is the mean response of the observations in the $j$th box, $\textbf{x}_i$ is the vector of predictor values for the $i$th observation, and $y_i$ is the response value for the $i$th observation. 
 
 In terms of predictive accuracy, decision trees generally do not perform to the level of other regression and classification models. However, tree-based models may outperform linear models when the relationship between the response and the predictors is nonlinear. For more information about decision trees, readers are referred to @breiman1984 and @mitchell1997. 
@@ -677,11 +684,13 @@ In terms of predictive accuracy, decision trees generally do not perform to the 
 
 `R` is an open-source software for statistical computing and graphics. The `R` software can be downloaded from the `R` project website at [https://www.r-project.org/](https://www.r-project.org/). In this section, we give some `R` function for data analysis, especially the data analysis tasks mentioned in previous sections. 
 
-[Table 2.4]:\#tab:2.4
+\newpage
 
-<a id=tab:2.4></a>
+[Table 2.6]:\#tab:2.6
 
-Table 2.4. **Some `R` Functions for Data Analysis**
+<a id=tab:2.6></a>
+
+[Table 2.6]{#tab:2.6}. **Some `R` Functions for Data Analysis**
 
 $$
 \small{
@@ -700,7 +709,7 @@ $$
 }
 $$
 
-[Table 2.4] lists a few `R` functions for different data analysis tasks. Readers can go to the `R` documentation to learn how to use these functions. There are also other `R` packages that do similar things. However, the functions listed in this table provide good starting points for readers to conduct data analysis in `R`. For analyzing large datasets in `R` in an efficient way, readers are referred to @daroczi2015. 
+[Table 2.6](#tab:2.6) lists a few `R` functions for different data analysis tasks. Readers can go to the `R` documentation to learn how to use these functions. There are also other `R` packages that do similar things. However, the functions listed in this table provide good starting points for readers to conduct data analysis in `R`. For analyzing large datasets in `R` in an efficient way, readers are referred to @daroczi2015. 
 
 
 ***

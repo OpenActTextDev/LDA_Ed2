@@ -1,0 +1,131 @@
+--- 
+title: "Constructing Insurable Risk Portfolios"
+author: Edward (Jed) Frees,  University of Wisconsin - Madison, Australian National University
+# author:
+# - name: <br> Edward (Jed) Frees, University of Wisconsin - Madison, Australian National University
+Affiliation:
+  orcid: 0000-0001-9605-9776
+site: bookdown::bookdown_site
+output:
+  bookdown::gitbook
+documentclass: krantz
+classoption: krantz2
+colorlinks: yes
+fontsize: 12pt
+biblio-style: econPeriod    
+bibliography: ["References/DependRetention2024.bib"]
+link-citations: yes
+description: "Development of a research monograph that provides quantitative tools to assess the relevance of dependence in insurance risk management."
+---
+
+```{r include=FALSE}
+knitr::opts_chunk$set(echo = TRUE, comment=NA, message = FALSE, warning = FALSE, fig.align="center", out.width='100%', fig.asp=0.60, results = 'asis')
+HtmlEval <- knitr:::is_html_output()
+PdfEval  <- knitr:::is_latex_output()
+# This set is for Online Supplements
+Ch1PdfEval  <- FALSE -> Ch2PdfEval -> Ch3PdfEval -> Ch4PdfEval -> Ch5PdfEval -> Ch6PdfEval -> Ch7PdfEval
+Ch8PdfEval  <- FALSE -> Ch9PdfEval -> Ch10PdfEval -> Ch11PdfEval -> Ch12PdfEval -> Ch13PdfEval -> Ch14PdfEval
+#  This set is for cross-referencing
+TRUE -> Ch1Eval -> Ch2Eval  -> Ch3Eval  
+TRUE -> Ch4Eval -> Ch5Eval -> Ch6Eval ->   Ch7Eval 
+TRUE -> Ch8Eval
+TRUE -> Ch9Eval   -> Ch10Eval
+TRUE -> Ch11Eval  -> Ch13Eval  -> Ch12Eval -> Ch14Eval
+
+DoublePrint <- FALSE
+
+ExerFontSmall <- function(A){ 
+  if(DoublePrint==FALSE){ '\\scalefont{0.9}' }}
+ExerFontLarge <- function(A){ 
+  if(DoublePrint==FALSE){ '\\scalefont{1.1111}' }}
+
+roundCom  <- function(number, digits) {
+  rounded_number <- round(number, digits)
+  formatted_number <- format(rounded_number, big.mark = ",", nsmall = digits)
+  return(formatted_number)
+}
+
+
+if (HtmlEval) { 
+  FigRed    = "red"        ;  FigBlue   = "blue"
+  FigGreen  = "green"      ;  FigLBlue  = "lightblue"
+  FigDBlue  = "darkblue"   ;  FigDGreen = "darkgreen"
+  FigLGreen = "lightgreen" ;  FigOrange = "orange"      
+  } else { 
+  FigRed    = "black"      ;  FigBlue   = "black"
+  FigGreen  = "black"      ;  FigLBlue  = "gray"
+  FigDBlue  = "black"      ;  FigDGreen = "gray"  
+  FigLGreen = "gray"       ;  FigOrange = "black"        
+  }
+
+printHtml <- function(A, B=""){if (HtmlEval) { A } else { B }}
+
+CrossRefEval <- FALSE
+printCrossRef<- function(A, B=""){if (CrossRefEval) { A } else { B }}
+ChapCrossRef<- function(ChapEval, A, B=""){if (ChapEval) { A } else { B }}
+
+PdfNote.fct <- function(A){ if(PdfEval==TRUE){knitr::asis_output(paste("*Note.*", A))}}
+
+```
+
+
+```{r echo = FALSE}
+#  Some Switches
+QUIZ              <- TRUE
+ANIMATION         <- TRUE
+SHOW_PDF          <- TRUE
+SHOW_EXAMPLE_SOLN <- TRUE
+SHOW_EXER_SOLN    <- TRUE
+ANIMATIONHOOK     <- 'gifski'
+GLOSSARY          <- FALSE
+DIST_TABLES_LATEX <- FALSE
+
+if (PdfEval){
+QUIZ              <- FALSE
+ANIMATION         <- FALSE
+SHOW_PDF          <- FALSE
+SHOW_EXER_SOLN    <- FALSE
+ANIMATIONHOOK     <- NULL
+GLOSSARY          <- TRUE
+DIST_TABLES_LATEX <- TRUE
+numAnimation = 1
+}
+# Switches that control the number of animations in Chapter 6
+# Use these for pdf output - maybe later
+#numAnimation = 1
+#numAnimation2 = 2
+#numAnimation3 = 2
+
+roundCom  <- function(number, digits) {
+  rounded_number <- round(number, digits)
+  formatted_number <- format(rounded_number, big.mark = ",", nsmall = digits)
+  return(formatted_number)
+}
+
+CodeFontSmall <- function(A){ '\\scalefont{0.75}'    }
+CodeFontLarge <- function(A){ '\\scalefont{1.33333}' }
+
+SolnBegin <- function(A){ if (HtmlEval) {                    knitr::asis_output(paste("*Example Solution.*")) } 
+  else { '\\begin{graybox}\\scalefont{0.90}
+    \\textbf{Example Solution.}' }  }
+SolnEnd <- function(A){ 
+   if (PdfEval) { '\\end{graybox}' } }
+
+LObjBegin <- function(A){ if (PdfEval){ '\\begin{graybox}' } else
+  {knitr::asis_output(paste("***")) } }
+LObjEnd <- function(A){  if (PdfEval) { '\\end{graybox}' } else
+  {knitr::asis_output(paste("***")) } }
+
+Refer <- function(A){
+if (PdfEval) { 'You can learn more about the R code for this example at the online version of this book, @LDA2025.' } }
+
+```
+
+
+
+
+# Preface {-}
+
+<p style="text-align:right;">
+*Date: `r format(Sys.Date(), "%d %B %Y")`*</p>
+

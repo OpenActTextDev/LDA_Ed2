@@ -78,7 +78,7 @@ contract initiation (arrival, time $\mathrm{t}_1$) and contract termination (dep
 
 (ref:StochOperations) **Timeline of a Typical Insurance Policy.** Arrows mark the occurrences of random events. Each x marks the time of scheduled events that are typically non-random.
 
-```{r StochOperations, fig.cap='(ref:StochOperations)', out.width='100%', fig.asp=.75, fig.align='center', echo=FALSE}
+```{r StochOperations, fig.cap='(ref:StochOperations)', out.width='100%', fig.asp=.75, echo=FALSE}
 plot.new() 
 par(mar = c(0,0,0,0), cex = 0.9)
 ytop <- 3.5
@@ -314,54 +314,74 @@ At a fundamental level, insurance companies accept premiums in exchange for prom
 
 In terms of money outgo to customers, an insurer is indifferent to having ten claims of 100 when compared to one claim of 1,000. Nonetheless, it is common for insurers to study how often claims arise, known as the *frequency* of claims. The frequency is important for expenses, but it also influences contractual parameters (such as deductibles and policy limits that are described later) that are written to limit amounts paid for each occurrence of an insured event. Frequency is routinely monitored by insurance regulators and can be a key driver in the overall indemnification obligation of the insurer. We shall consider the frequency and severity as the two main claim variables that we wish to understand, model, and manage.
 
-To illustrate, in 2010 there were 1,110 policyholders in the property fund who experienced a total of 1,377 claims. [Table 1.1] shows the distribution. Almost two-thirds (0.637) of the policyholders did not have any claims and an additional 18.8% had only one claim. The remaining 17.5% (=1 - 0.637 - 0.188) had more than one claim; the policyholder with the highest number recorded 239 claims. The average number of claims for this sample was 1.24 (=1377/1110).
+To illustrate, in 2010 there were 1,110 policyholders in the property fund who experienced a total of 1,377 claims. Table \@ref(tab:Tab11) shows the distribution. Almost two-thirds (0.637) of the policyholders did not have any claims and an additional 18.8% had only one claim. The remaining 17.5% (=1 - 0.637 - 0.188) had more than one claim; the policyholder with the highest number recorded 239 claims. The average number of claims for this sample was 1.24 (=1377/1110).
 
-<a id=tab:1.1></a> 
 
-[Table 1.1]: ../docs/ChapIntro.html#tab:1.1
-
-Table 1.1. **2010 Claims Frequency Distribution**
-
-  Type                                                                                             
-  ------------- ------ ------- ------- ------- ------- ------- ------- ------- ------- ----------- -------
-  Number             0       1       2       3       4       5       6       7       8   9 or more     Sum
-  Policies         707     209      86      40      18      12       9       4       6          19   1,110
-  Claims             0     209     172     120      72      60      54      28      48         617   1,377
-  Proportion     0.637   0.188   0.077   0.036   0.016   0.011   0.008   0.004   0.005       0.017   1.000
-  ------------- ------ ------- ------- ------- ------- ------- ------- ------- ------- ----------- -------
-
- 
-`r HideRCode('T:Frequency.1',"R Code for Frequency Table")`
-
-```{r, echo=SHOW_PDF, eval=FALSE}
-Insample <- read.csv("Insample.csv", header=T,  na.strings=c("."), stringsAsFactors=FALSE)
+```{r Tab11, echo=FALSE}
+Insample <- read.csv("Data/PropertyFundInsample.csv", header=T, na.strings=c("."), stringsAsFactors=FALSE)
 Insample2010 <- subset(Insample, Year==2010)
-table(Insample2010$Freq)
+temp <- table(Insample2010$Freq)
+TotFreq <- length(Insample2010$Freq) 
+Freq <- temp[1:9]
+NinePlusFreq <- TotFreq - sum(Freq)
+Number <- 0:8
+Claims <- Number * Freq
+TotClaims <- sum(Insample2010$Freq)
+NinePlusClaims <- TotClaims - sum(Claims)
+ProportionRow <- round(c(Freq/TotFreq, NinePlusFreq/TotFreq, 1),digits = 3)
+tableout <- rbind( c("Number", Number, "9 or more", "Sum"),
+                   c("Policies", Freq, NinePlusFreq, TotFreq),
+                   c("Claims", Claims, NinePlusClaims, TotClaims),
+                   c("Proportion", ProportionRow))
+
+colnames(tableout) <- NULL
+TableGen1(TableData=tableout,
+         TextTitle= '2010 Claims Frequency Distribution',
+         Align='c', Digits=3, ColumnSpec=1:8,
+         ColWidth = ColWidth10)
+
 ```
+
+
+`r HideRCode('Tab11.Hide',"R Code for Frequency Table")`
+
+```{r ref.label = 'Tab11', echo=HtmlEval, eval = FALSE}
+
+```
+
 </div>  
   
-
 For the severity distribution, a common approach is to examine the distribution of the sample of 1,377 claims. However, another common approach is to examine the distribution of the average claims of those policyholders with claims. In our 2010 sample, there were 403 (=1110-707) such policyholders. For 209 of these policyholders with one claim, the average claim equals the only claim they experienced. For the policyholder with highest frequency, the average claim is an average over 239 separately reported claim events. 
 
-[Table 1.2] summarizes the sample distribution of average severities from the 403 policyholders who made a claim; it shows that the average claim amount was 56,330 (all amounts are in U.S. Dollars). However, the average gives only a limited look at the distribution. More information can be gleaned from the summary statistics which show a very large claim in the amount of 12,920,000. Figure \@ref(fig:SeverityFig) provides further information about the distribution of sample claims, showing a distribution that is dominated by this single large claim so that the histogram is not very helpful. Even when removing the large claim, you will find a distribution that is skewed to the right. A generally accepted technique is to work with claims in logarithmic units especially for graphical purposes; the corresponding figure in the right-hand panel is much easier to interpret.
+Table \@ref(tab:Tab12) summarizes the sample distribution of average severities from the 403 policyholders who made a claim; it shows that the average claim amount was 56,330 (all amounts are in U.S. Dollars). However, the average gives only a limited look at the distribution. More information can be gleaned from the summary statistics which show a very large claim in the amount of 12,920,000. Figure \@ref(fig:SeverityFig) provides further information about the distribution of sample claims, showing a distribution that is dominated by this single large claim so that the histogram is not very helpful. Even when removing the large claim, you will find a distribution that is skewed to the right. A generally accepted technique is to work with claims in logarithmic units especially for graphical purposes; the corresponding figure in the right-hand panel is much easier to interpret.
 
-<a id=tab:1.2></a> 
+```{r Tab12, echo=FALSE}
+Insample <- read.csv("Data/PropertyFundInsample.csv", header=T, na.strings=c("."), stringsAsFactors=FALSE)
+Insample2010 <- subset(Insample, Year==2010)
+InsamplePos2010 <- subset(Insample2010, yAvg>0)
+tableout <- summary(InsamplePos2010$yAvg)
+names(tableout) <- c("Minimum", "First Quartile", "Median",
+                     "Mean", "Third Quartile", "Maximum")
+tableout <- roundCom(tableout, digits = 0)
+TableGen1(TableData=t(tableout),
+         TextTitle= '2010 Average Severity Distribution',
+         Align='c', Digits=0, ColumnSpec=1:4,
+         ColWidth = ColWidth5)
 
-[Table 1.2]: ../docs/ChapIntro.html#tab:1.2
+```
 
-Table 1.2. **2010 Average Severity Distribution**
+`r HideRCode('Tab12.Hide',"R Code for Average Severity Distribution")`
 
-  --------- ---------- -------- -------- ---------- ------------
-                 First                        Third 
-    Minimum   Quartile   Median     Mean   Quartile      Maximum
-  --------- ---------- -------- -------- ---------- ------------
-        167      2,226    4,951   56,330     11,900   12,920,000
-  --------- ---------- -------- -------- ---------- ------------
+```{r ref.label = 'Tab12', echo=HtmlEval, eval = FALSE}
+```
+
+</div>
+
 
   
 (ref:SeverityFig) **Distribution of Positive Average Severities**
 
-```{r SeverityFig, echo=FALSE, fig.cap='(ref:SeverityFig)', out.width='80%', fig.asp=.75, fig.align='center'}
+```{r SeverityFig, echo=FALSE, fig.cap='(ref:SeverityFig)', out.width='80%', fig.asp=.75}
 Insample <- read.csv("Data/PropertyFundInsample.csv", header=T, na.strings=c("."), stringsAsFactors=FALSE)
 Insample2010 <- subset(Insample, Year==2010)
 InsamplePos2010 <- subset(Insample2010, yAvg>0)
@@ -406,7 +426,7 @@ to examine outcomes from multiple years, thus increasing the sample
 size. We will discuss the strengths and limitations of this strategy
 later but, at this juncture, we just wish to show the reader how it works.
 
-Specifically, [Table 1.3] shows that we now consider
+Specifically, Table \@ref(tab:Tab13) shows that we now consider
 policies over five years of data, 2006, ..., 2010, inclusive. The
 data begins in 2006 because there was a shift in claim coding in 2005 so
 that comparisons with earlier years are not helpful. To mitigate the
@@ -415,33 +435,8 @@ claim means that not all of the obligations for the claim are known at the time 
 accident or in the workplace, it can take years before costs are fully
 known.
 
-<a id=tab:1.3></a> 
 
-[Table 1.3]: ../docs/ChapIntro.html#tab:1.3
-
-Table 1.3. **Claims Summary by Policyholder**
-
-  ------------------------------------------------------------------
-  Year            Average    Average         Average       Number of
-                Frequency   Severity        Coverage   Policyholders
-  -----------   ---------   --------      ----------   -------------
-  2006              0.951      9,695      32,498,186           1,154
-  
-  2007              1.167      6,544      35,275,949           1,138
-  
-  2008              0.974      5,311      37,267,485           1,125
-  
-  2009              1.219      4,572      40,355,382           1,112
-  
-  2010              1.241     20,452      41,242,070           1,110
-  ------------------------------------------------------------------
-
-
-[^1.1]: Note that the average severity in [Table 1.3] differs from that reported in [Table 1.2]. This is because the former includes policyholders with zero claims where as the latter does not. This is an important distinction that we will address in later portions of the text. 
-
-`r HideRCode('CoverageBC.1',"R Code for Claims Summary by Policyholder")`
-
-```{r, echo=SHOW_PDF, eval=FALSE}
+```{r Tab13, echo=FALSE}
 Insample <- read.csv("Data/PropertyFundInsample.csv", header=T, na.strings=c("."), stringsAsFactors=FALSE)
 library(doBy)
 T1A <- summaryBy(Freq ~ Year, data = Insample, 
@@ -450,13 +445,29 @@ T1B <- summaryBy(yAvg    ~ Year, data = Insample,
    FUN = function(x) { c(m = mean(x), num=length(x)) } )
 T1C <- summaryBy(BCcov    ~ Year, data = Insample,   
    FUN = function(x) { c(m = mean(x), num=length(x)) } )
-Table1In <- cbind(T1A[1],T1A[2],T1B[2],T1C[2],T1A[3])
-names(Table1In) <- c("Year", "Average Frequency","Average Severity", "Average","Number of Policyholders")
-Table1In
+tableout <- cbind(T1A[1],T1A[2],T1B[2],T1C[2],T1A[3])
+names(tableout) <- c("Year", "Average Frequency","Average Severity", "Average","Number of Policyholders")
+
+tableout[,3:5] <- roundCom(tableout[,3:5], digits = 0)
+TableGen1(TableData=tableout,
+         TextTitle= 'Claims Summary by Policyholder',
+         Align='c', Digits=3, ColumnSpec=1:4,
+         ColWidth = ColWidth5)
 ```
+
+
+
+`r HideRCode('Tab13.Hide',"R Code for Claims Summary by Policyholder")`
+
+```{r ref.label = 'Tab13', echo=HtmlEval, eval = FALSE}
+```
+
 </div>
 
-[Table 1.3] shows that the average claim varies over time,
+[^1.1]: Note that the average severity in Table \@ref(tab:Tab13) differs from that reported in Table \@ref(tab:Tab12). This is because the former includes policyholders with zero claims where as the latter does not. This is an important distinction that we will address in later portions of the text. 
+
+
+Table \@ref(tab:Tab13) shows that the average claim varies over time,
 especially with the high 2010 value (that we saw was due to a single large claim)[^1.1]. The
 total number of policyholders is steadily declining and, conversely, the
 coverage is steadily increasing. The coverage variable is the amount of
@@ -466,7 +477,7 @@ the coverage is our first rating variable. Other things being equal, we would
 expect that policyholders with larger coverage have larger claims.
 We will make this vague idea much more precise as we proceed, and also justify this expectation with data.
 
-For a different look at the 2006-2010 data, [Table 1.4]
+For a different look at the 2006-2010 data, Table \@ref(tab:Tab14)
 summarizes the distribution of our two outcomes, frequency and claims
 amount. In each case, the average exceeds the median, suggesting that
 the two distributions are right-skewed. In addition, the table
@@ -475,57 +486,53 @@ amount. The table also suggests that these variables also have
 right-skewed distributions.
 
 
-<a id=tab:1.4></a> 
+```{r Tab14, echo= FALSE}
+Insample <- read.csv("Data/PropertyFundInsample.csv", header=T, 
+                     na.strings=c("."), stringsAsFactors=FALSE)
+t1<- as.numeric(doBy::summaryBy(Freq ~ 1, data = Insample, 
+   FUN = function(x) { c(ma=min(x), m1=median(x),m=mean(x),mb=max(x)) } ) )
+t2 <- as.numeric(summaryBy(yAvg ~ 1, data = Insample, 
+   FUN = function(x) { c(ma=min(x), m1=median(x), m=mean(x),mb=max(x)) } ) )
+t3 <- as.numeric(summaryBy(Deduct ~ 1, data = Insample, 
+   FUN = function(x) { c(ma=min(x), m1=median(x), m=mean(x),mb=max(x)) } ) )
+t4 <- as.numeric(summaryBy(BCcov ~ 1, data = Insample, 
+   FUN = function(x) { c(ma=min(x), m1=median(x), m=mean(x),mb=max(x)) } ) )/1000
+tableout <- rbind(t1,t2,t3,t4) 
 
-[Table 1.4]: ../docs/ChapIntro.html#tab:1.4
+tableout[1:3,1] <- round(tableout[1:3,1],digits = 0)
+tableout[1,3] <- round(tableout[1,3],digits = 3)
+tableout[2:4,2:4] <- roundCom(tableout[2:4,2:4],digits = 0)
 
-Table 1.4. **Summary of Claim Frequency and Severity, Deductibles, and Coverages**
+colnames(tableout) <- c("Minimum", "Median","Average", "Maximum")
+rownames(tableout) <- c("Claim Frequency","Claim Severity",
+                        "Deductible","Coverage (000's)")
 
-  ------------------ --------- -------- --------- ------------
-                       Minimum   Median   Average      Maximum    
-  ------------------ --------- -------- --------- ------------
-  Claim Frequency            0        0     1.109          263
-  
-  Claim Severity             0        0     9,292   12,922,218
-  
-  Deductible               500    1,000     3,365      100,000 
-  
-  Coverage (000's)       8.937   11,354    37,281    2,444,797    
-  ------------------ --------- -------- --------- ------------
-  
-`r HideRCode('DeductCov.1',"R Code for Summary of Claim Frequency and Severity, Deductibles, and Coverages")`
+TableGen1(TableData=tableout,
+         TextTitle= 'Summary of Claim Frequency and Severity, Deductibles, and Coverages',
+         Align='c', Digits=3, ColumnSpec=1:4,
+         ColWidth = ColWidth5)
 
-```{r, echo=SHOW_PDF, eval=FALSE}
-Insample <- read.csv("Data/PropertyFundInsample.csv", header=T, na.strings=c("."), stringsAsFactors=FALSE)
-t1<- summaryBy(Insample$Freq ~ 1, data = Insample, 
-   FUN = function(x) { c(ma=min(x), m1=median(x),m=mean(x),mb=max(x)) } )
-names(t1) <- c("Minimum", "Median","Average", "Maximum")
-t2 <- summaryBy(Insample$yAvg ~ 1, data = Insample, 
-   FUN = function(x) { c(ma=min(x), m1=median(x), m=mean(x),mb=max(x)) } )
-names(t2) <- c("Minimum", "Median","Average", "Maximum")
-t3 <- summaryBy(Deduct ~ 1, data = Insample, 
-   FUN = function(x) { c(ma=min(x), m1=median(x), m=mean(x),mb=max(x)) } )
-names(t3) <- c("Minimum", "Median","Average", "Maximum")
-t4 <- summaryBy(BCcov/1000 ~ 1, data = Insample, 
-   FUN = function(x) { c(ma=min(x), m1=median(x), m=mean(x),mb=max(x)) } )
-names(t4) <- c("Minimum", "Median","Average", "Maximum")
-Table2 <- rbind(t1,t2,t3,t4)
-Table2a <- round(Table2,3)
-Rowlable <- rbind("Claim Frequency","Claim Severity","Deductible","Coverage (000's)")
-Table2aa <- cbind(Rowlable,as.matrix(Table2a))
-Table2aa
 ```
-</div>  
+
+
+
+`r HideRCode('Tab14.Hide',"R Code for Summary of Claim Frequency and Severity, Deductibles, and Coverages")`
+
+```{r ref.label = 'Tab14', echo=HtmlEval, eval = FALSE}
+```
+
+</div>
   
 
-[Table 1.5] describes the rating variables considered in this chapter. Hopefully, these are variables that you think might naturally be  related to claims outcomes. You can learn more about them in @frees2016multivariate. To handle the skewness, we henceforth focus on logarithmic transformations of coverage and deductibles. 
+[Table 1.5](#tab:1.5) describes the rating variables considered in this chapter. Hopefully, these are variables that you think might naturally be  related to claims outcomes. You can learn more about them in @frees2016multivariate. To handle the skewness, we henceforth focus on logarithmic transformations of coverage and deductibles. 
 
+\newpage
 
 <a id=tab:1.5></a> 
 
 [Table 1.5]: ../docs/ChapIntro.html#tab:1.5
 
-Table 1.5. **Description of Rating Variables**
+[Table 1.5]{#tab:1.5}. **Description of Rating Variables**
 
 $${\small \begin{matrix}
 \begin{array}{ l | l}
@@ -544,63 +551,35 @@ Variable 	& Description \\
 \hline
 \end{array}
 \end{matrix}}$$
-<!-- <Description of Rating Variables>(\#tab:VarDesc)  -->
+
+
+
+`r HideRCode('Tab15.2Silly',"")`
+
+```{r  eval = HtmlEval, echo = FALSE}
+s=2
+knitr::kable(s, caption = "Silly. Create a table just to update the counter...")
+```
+
+\setcounter{table}{5}
+
+</div>
 
 For the *alarm credit* variable, a zero means that no automatic smoke alarms exist in any of the main rooms. In the same way, a 5 means they exist in some of the main rooms and a 10 means they exist in all of the main rooms. At the 15 level, facilities are monitored on a 24 hours per day, 7 days per week basis by a police, fire, or security company. A *fire rating* is a similar type of score. It reflects how prepared a community and area is for fires. While it mainly focuses on the local fire departments and water supply, there are other factors that contribute to an area's score. This rating is used to determine how likely it is for a fire to do severe damage before help arrives with 1 being the best and 10 the worst.
 
 
-To get a sense of the relationship between the non-continuous rating variables and claims, [Table 1.6] relates the claims outcomes to these categorical variables. [Table 1.6] suggests substantial variation in the claim frequency and average severity of the claims by entity type. It also demonstrates higher frequency and severity for the  ${\tt Fire5}$ variable and the reverse for the ${\tt NoClaimCredit}$ variable. The relationship for the ${\tt Fire5}$ variable is counter-intuitive in that
+To get a sense of the relationship between the non-continuous rating variables and claims, Table \@ref(tab:Tab16) relates the claims outcomes to these categorical variables. Table \@ref(tab:Tab16) suggests substantial variation in the claim frequency and average severity of the claims by entity type. It also demonstrates higher frequency and severity for the  ${\tt Fire5}$ variable and the reverse for the ${\tt NoClaimCredit}$ variable. The relationship for the ${\tt Fire5}$ variable is counter-intuitive in that
 one would expect lower claim amounts for those policyholders in areas with better public protection (when the protection code is five or less). Naturally, there are other variables that influence this relationship. We will see that these background variables are accounted for in the subsequent multivariate regression analysis, which yields an intuitive, appealing (negative) sign for the ${\tt Fire5}$ variable.
 
 
-<a id=tab:1.6></a> 
 
-[Table 1.6]: ../docs/ChapIntro.html#tab:1.6
-
-Table 1.6. **Claims Summary by Entity Type, Fire Class, and No Claim Credit**
-
-  --------------------- ----------- ----------- ----------
-                          Number of       Claim    Average
-  Variable                 Policies   Frequency   Severity
-  --------------------- ----------- ----------- ----------
-  *EntityType* 
-  
-  Village                     1,341       0.452     10,645
-  
-  City                          793       1.941     16,924
-  
-  County                        328       4.899     15,453
-  
-  Misc                          609       0.186     43,036
-  
-  School                      1,597       1.434     64,346
-  
-  Town                          971       0.103     19,831
-  
-  *Fire*
-  
-  Fire5=0                     2,508       0.502     13,935
-  
-  Fire5=1                     3,131       1.596     41,421
-  
-  *No Claims Credit*
-  
-  NoClaimCredit=0             3,786       1.501     31,365
-  
-  NoClaimCredit=1             1,853       0.310     30,499
-  
-  **Total**                   5,639       1.109     31,206
-  --------------------- ----------- ----------- ----------
-
-
-`r HideRCode('ClaimRateVar.1',"R Code for Claims Summary by Entity Type, Fire Class, and No Claim Credit")`
-
-```{r, echo=SHOW_PDF, eval=FALSE}
+```{r Tab16, echo= FALSE}
 ByVarSumm<-function(datasub){
   tempA <- summaryBy(Freq    ~ 1 , data = datasub,   
      FUN = function(x) { c(m = mean(x), num=length(x)) } )
   datasub1 <-  subset(datasub, yAvg>0)
-  tempB <- summaryBy(yAvg   ~ 1, data = datasub1,FUN = function(x) { c(m = mean(x)) } )
+  tempB <- summaryBy(yAvg   ~ 1, data = datasub1, 
+                     FUN = function(x) { c(m = mean(x)) } )
   tempC <- merge(tempA,tempB,all.x=T)[c(2,1,3)]
   tempC1 <- as.matrix(tempC)
   return(tempC1)
@@ -627,18 +606,32 @@ datasub <-  subset(Insample, Insample$NoClaimCredit == 1);
 t10 <- ByVarSumm(datasub)
 t11 <- ByVarSumm(Insample)
 
-Tablea <- rbind(t1,t2,t3,t4,t5,t6,t7,t8,t9,t10,t11)
-Tableaa <- round(Tablea,3)
-Rowlable <- rbind("Village","City","County","Misc","School",
-          "Town","Fire5--No","Fire5--Yes","NoClaimCredit--No",
-        "NoClaimCredit--Yes","Total")
-Table4 <- cbind(Rowlable,as.matrix(Tableaa))
-Table4
+tableout <- rbind(t1,t2,t3,t4,t5,t6,t7,t8,t9,t10,t11)
+tableout[,2] <- round(tableout[,2], digits = 3)
+tableout[,c(1,3)] <- roundCom(tableout[,c(1,3)], digits = 0)
+rownames(tableout) <- c("Village", "City", "County", "Misc", "School",
+                        "Town","Fire5--No", "Fire5--Yes", "NoClaimCredit--No",
+                        "NoClaimCredit--Yes", "Total")
+colnames(tableout) <- c("Number of Policies", "Claim Frequency", 
+                        "Average Severity")
+TableGen1(TableData=tableout,
+         TextTitle= 'Claims Summary by Entity Type, Fire Class, and No Claim Credit',
+         Align='c', Digits=3, ColumnSpec=1:3,
+         ColWidth = ColWidth5)
+
 ```
+
+
+`r HideRCode('Tab16.Hide',"R Code for Claims Summary by Entity Type, Fire Class, and No Claim Credit")`
+
+
+```{r ref.label = 'Tab16', echo=HtmlEval, eval = FALSE}
+```
+
 </div>  
     
 
-[Table 1.7] shows the claims experience by alarm credit.
+Tables \@ref(tab:Tab17) and  \@ref(tab:Tab18) show the claims experience by alarm credit.
 It underscores the difficulty of examining variables individually. For
 example, when looking at the experience for all entities, we see that
 policyholders with no alarm credit have on average lower frequency and
@@ -647,60 +640,10 @@ by a fire station or security company) alarm credit. In particular, when
 we look at the entity type School, the frequency is 0.422 and the
 severity 25,523 for no alarm credit, whereas for the highest alarm level
 it is 2.008 and 85,140, respectively. This may simply imply that entities with more claims are the ones that are likely to have an alarm system. Summary
-tables do not examine multivariate effects; for example, [Table 1.6] ignores the effect of size (as we measure through
+tables do not examine multivariate effects; for example, Table \@ref(tab:Tab16) ignores the effect of size (as we measure through
 coverage amounts) that affect claims.
 
-<a id=tab:1.7></a> 
-
-[Table 1.7]: ../docs/ChapIntro.html#tab:1.7
-
-Table 1.7. **Claims Summary by Entity Type and Alarm Credit (AC) Category**
-
-  -----------------------------------------------------------------------------
-                    AC0        AC0        AC0         AC5        AC5        AC5
-  Entity          Claim       Avg.       Num.       Claim       Avg.       Num.
-  Type        Frequency   Severity   Policies   Frequency   Severity   Policies
-  --------- ----------- ---------- ---------- ----------- ---------- ----------
-  Village         0.326     11,078        829       0.278      8,086         54
-  
-  City            0.893      7,576        244       2.077      4,150         13
-  
-  County          2.140     16,013         50           -          -          1
-  
-  Misc            0.117     15,122        386       0.278     13,064         18
-  
-  School          0.422     25,523        294       0.410     14,575        122
-  
-  Town            0.083     25,257        808       0.194      3,937         31
-  
-  Total           0.318     15,118      2,611       0.431     10,762        239
-  -----------------------------------------------------------------------------
-
-  -----------------------------------------------------------------------------
-                   AC10      AC10        AC10        AC15       AC15       AC15
-  Entity          Claim       Avg.       Num.       Claim       Avg.       Num.
-  Type        Frequency   Severity   Policies   Frequency   Severity   Policies
-  
-  --------- ----------- ---------- ---------- ----------- ---------- ----------
-  Village         0.500      8,792         50       0.725     10,544        408
-  
-  City            1.258      8,625         31       2.485     20,470        505
-  
-  County          2.125     11,688          8       5.513     15,476        269
-  
-  Misc            0.077      3,923         26       0.341     87,021        179
-  
-  School          0.488     11,597        168       2.008     85,140      1,013
-  
-  Town            0.091      2,338         44       0.261      9,490         88
-  
-  Total           0.517     10,194        327       2.093     41,458      2,462
-  -----------------------------------------------------------------------------
-
-  
-`r HideRCode('RateAlarmCredit.1',"R Code for Claims Summary by Entity Type and Alarm Credit Category")`
-
-```{r, echo=SHOW_PDF, eval=FALSE}
+```{r Tab17, echo = FALSE}
 #Claims Summary by Entity Type and Alarm Credit
 ByVarSumm<-function(datasub){
   tempA <- summaryBy(Freq    ~ AC00 , data = datasub,   
@@ -734,17 +677,55 @@ datasub <-  subset(Insample, TypeTown == 1 & AlarmC ==ACnum);
 datasub <-  subset(Insample, AlarmC == ACnum);  
   t7 <- ByVarSumm(datasub)
 Tablea <- rbind(t1,t2,t3,t4,t5,t6,t7)
-Tableaa <- round(Tablea,3)
-Rowlable <- rbind("Village","City","County","Misc","School",
-                  "Town","Total")
-Table4 <- cbind(Rowlable,as.matrix(Tableaa))
+Table4 <- round(Tablea,3)
 }
 Table4a <- ByVarCredit(1)    #Claims Summary by Entity Type and Alarm Credit==00
 Table4b <- ByVarCredit(2)    #Claims Summary by Entity Type and Alarm Credit==05 
 Table4c <- ByVarCredit(3)    #Claims Summary by Entity Type and Alarm Credit==10
 Table4d <- ByVarCredit(4)    #Claims Summary by Entity Type and Alarm Credit==15
 
+Table17A <- cbind(Table4a, Table4b)
+Table17A[,c(2,5)] <- roundCom(Table17A[,c(2,5)], digits = 0)
+rownames(Table17A) <- c("Village","City","County","Misc",
+                        "School", "Town","Total")
+colnames(Table17A) <- c("AC0 Claim Frequency", "AC0 Avg. Severity", 
+                        "AC0 Num. Policies",
+                        "AC5 Claim Frequency", "AC5 Avg. Severity", 
+                        "AC5 Num. Policies")
+TableGen1(TableData=Table17A,
+         TextTitle= 'Claims Summary by Entity Type and Alarm Credit (AC) Categories 0 and 5',
+         Align='c', Digits=3, ColumnSpec=1:6,
+         ColWidth = ColWidth6)
 ```
+
+```{r Tab18, echo = FALSE}
+Table17B <- cbind(Table4c, Table4d)
+Table17B[,c(2,5)] <- roundCom(Table17B[,c(2,5)], digits = 0)
+rownames(Table17B) <- c("Village","City","County","Misc",
+                        "School", "Town","Total")
+colnames(Table17B) <- c("AC10 Claim Frequency", "AC10 Avg. Severity", 
+                        "AC10 Num. Policies",
+                        "AC15 Claim Frequency", "AC15 Avg. Severity", 
+                        "AC15 Num. Policies")
+TableGen1(TableData=Table17B,
+         TextTitle= 'Claims Summary by Entity Type and Alarm Credit (AC)
+Categories 10 and 15',
+         Align='c', Digits=3, ColumnSpec=1:6,
+         ColWidth = ColWidth6)
+
+```
+
+
+
+`r HideRCode('Tab17.Hide',"R Code for Claims Summary by Entity Type, Fire Class, and No Claim Credit")`
+
+```{r ref.label = 'Tab17', echo=HtmlEval, eval = FALSE}
+```
+
+
+```{r ref.label = 'Tab18', echo=HtmlEval, eval = FALSE}
+```
+
 </div>  
       
 
@@ -773,10 +754,10 @@ steady charge that local property managers could utilize in their
 budgets.
 
 Having a single price for all policyholders is nice but hardly seems
-fair. For example, [Table 1.6] suggests that schools have
+fair. For example, Table \@ref(tab:Tab16) suggests that schools have
 higher aggregate claims than other entities and so should pay more. However,
 simply doing the calculation on an entity by entity basis is not right
-either. For example, we saw in [Table 1.7] that had we
+either. For example, we saw in Tables \@ref(tab:Tab17) and  \@ref(tab:Tab18) that had we
 used this strategy, entities with a 15% alarm credit (for good behavior,
 having top alarm systems) would actually wind up paying more.
 
@@ -788,11 +769,11 @@ classification*.
 
 #### Renewing Insurance {-}
 
-Although property insurance is typically a one-year contract, [Table 1.3] suggests that policyholders tend to renew; this is
+Although property insurance is typically a one-year contract, Table \@ref(tab:Tab13) suggests that policyholders tend to renew; this is
 typical of general insurance. For renewing policyholders, in addition to
 their rating variables we have their claims history and this claims
 history can be a good predictor of future claims. For example, 
-[Table 1.6] shows that policyholders without a claim in the last
+Table \@ref(tab:Tab16) shows that policyholders without a claim in the last
 two years had much lower claim frequencies than those with at least one
 accident (0.310 compared to 1.501); a lower predicted frequency
 typically results in a lower premium. This is why it is common for
@@ -808,8 +789,7 @@ for the fund to purchase protection against such large unusual events?
 Another unusual feature of the 2010 experience noted earlier was the
 very large frequency of claims (239) for one policyholder. Given that
 there were only 1,377 claims that year, this means that a single
-policyholder had 17.4 % of the claims. These extreme features of the data suggests
-opportunities for managing claims, the subject of Chapter \@ref(ChapPortMgt).
+policyholder had 17.4 % of the claims. These extreme features of the data suggests opportunities for managing claims, the subject of Chapter \@ref(ChapPortMgt).
 
 #### Loss Reserving {-}
 
@@ -835,37 +815,38 @@ https://openacttexts.github.io/LDACourse1/introduction-to-loss-data-analytics.ht
 
 [Exercise 1.1]: ../docs/ChapIntro.html#Exer:1.1
 
-**Exercise 1.1. Corporate Travel.** Universities purchase corporate travel policies to cover employees and students traveling on official university business for a wide variety of accidents and incidents while away from the campus or primary workplace. This broad coverage includes medical care and evacuation, loss of personal property, extraction for political and weather related reasons, and more. These data represent experience from the Australian National University (ANU) and additional details can be found in [ANU's corporate travel policy](https://services.anu.edu.au/files/document-collection/TRAVEL%20INFORMATION%20-%20Travel%20Information%20Kit_July%202018.pdf). You can also learn more about this line of business from ANU's insurer, [Chubb Travel](https://www.chubb.com/au-en/business/business-travel-group-travel-insurance.html). The data provided are maintained by the insurer, Chubb, and were accessed on 29 July 2022. You can retrieve the data by going to Appendix Section \@ref(Sec:DataTravel).
+**[Exercise 1.1]{#Exer:1.1}. Corporate Travel.** Universities purchase corporate travel policies to cover employees and students traveling on official university business for a wide variety of accidents and incidents while away from the campus or primary workplace. This broad coverage includes medical care and evacuation, loss of personal property, extraction for political and weather related reasons, and more. These data represent experience from the Australian National University (ANU) and additional details can be found in [ANU's corporate travel policy](https://services.anu.edu.au/files/document-collection/TRAVEL%20INFORMATION%20-%20Travel%20Information%20Kit_July%202018.pdf). You can also learn more about this line of business from ANU's insurer, [Chubb Travel](https://www.chubb.com/au-en/business/business-travel-group-travel-insurance.html). The data provided are maintained by the insurer, Chubb, and were accessed on 29 July 2022. You can retrieve the data by going to Appendix Section \@ref(Sec:DataTravel).
 
-*a. Claim Frequency.* The travel data history is long and stable. This coverage began on 1 November 2006. [Table 1.8] shows the count of claims for years 2015-2019, inclusive. Produce a comparable table of claims frequency for the entire period. Comment on the unusual frequency surrounding the COVID pandemic.
 
-<a id=tab:1.8></a> 
 
-[Table 1.8]: ../docs/ChapIntro.html#tab:1.8
+*a. Claim Frequency.* The travel data history is long and stable. This coverage began on 1 November 2006. Table \@ref(tab:ExerTable) shows the count of claims for years 2015-2019, inclusive. Produce a comparable table of claims frequency for the entire period. Comment on the unusual frequency surrounding the COVID pandemic.
 
-Table 1.8. **2015-2019 Travel Claims Frequency**
 
-```{r TravelClaims1, echo = FALSE}
+```{r ExerTable, echo = FALSE}
 TravelClaims <- read.csv("Data/ANUTravelClaims2022.csv",header=T)
 tableTravel <- table(TravelClaims$UW.Year)
 tableTravelShort <- t(tableTravel[10:14])
 
-knitr::kable(tableTravelShort, align = "cccccccc", caption = NA)  
-
-# TableGen1(TableData=tableTravelShort,
-#          TextTitle=NA,
-#          Align='c', Digits=0, ColumnSpec=1:5,
-#          ColWidth = ColWidth5)
+TableGen1(TableData=tableTravelShort,
+         TextTitle= '2015-2019 Travel Claims Frequency',
+         Align='c', Digits=0, ColumnSpec=1:4,
+         ColWidth = ColWidth5)
 
 TravelClaimsGT10 <- subset(TravelClaims, Incurred.Loss  >= 10)
+
 ```
+
 
 *b. Adjust for Zero Claims.* From this data set, there are `r length(TravelClaims$Incurred.Loss)` incurred claims. Of these claims, there are `r sum(TravelClaims$Incurred.Loss==0)` zeros and an additional `r sum((TravelClaims$Incurred.Loss>0)*(TravelClaims$Incurred.Loss<10))` claims where the incurred claim is less than 10. We omit these claims in our analysis. Reproduce your part (a) analysis by omitting incurred claims less than 10.
 
-*c. Loss Distributions over Time.* There are `r length(TravelClaimsGT10$Incurred.Loss)` incurred losses in the dataset with all available years (yet omitting claims less than 10). Figure \@ref(fig:TravelClaims2) shows that the distribution of incurred losses is stable over the period 2015-2019, inclusive. Produce a comparable figure for the entire period. 
+
+*c. Loss Distributions over Time.* There are `r length(TravelClaimsGT10$Incurred.Loss)` incurred losses in the dataset with all available years (yet omitting claims less than 10). Figure \@ref(fig:Fig13) shows that the distribution of incurred losses is stable over the period 2015-2019, inclusive. Produce a comparable figure for the entire period. 
 
 
-```{r TravelClaims2, echo = FALSE, fig.cap='**Distribution of Travel Losses by Year**', out.width='60%', fig.asp=0.6}
+
+(ref:Fig13) **Distribution of Travel Losses by Year**
+
+```{r Fig13, echo = FALSE, fig.cap='(ref:Fig13)', out.width='60%', fig.asp=0.6}
 TravelClaimsGT10 <- subset(TravelClaims, Incurred.Loss  >= 10)
 TravelClaimsGT10Short <- subset(TravelClaimsGT10, UW.Year <2020 & UW.Year > 2014)
 
@@ -881,7 +862,7 @@ ggplot(data = TravelClaimsGT10Short, aes(x=factor(UW.Year), y = Incurred.Loss)) 
 
 `r HideRCode('TravelDataEx.1',"Solutions for the Travel Claims Exercise")`
 
-```{r}
+```{r Exer11, eval = HtmlEval, echo = HtmlEval}
 #a
 TravelClaims <- read.csv("Data/ANUTravelClaims2022.csv",header=T)
 tableTravel <- t(table(TravelClaims$UW.Year))
@@ -913,7 +894,7 @@ knitr::kable(sumTravelClaims , align = "cccccccc", caption = "**Travel Claims Su
 
 [Exercise 1.2]: ../docs/ChapIntro.html#Exer:1.2
 
-**Exercise 1.2. Group Personal Accident.** Group personal accident insurance offers financial protection in case of injury or death resulting from an incident that occurs on the job. Group personal accident offers insurance coverage and liability insurance protection against accidental death or injury. The insurance covers students and ANU's voluntary workers; ANU workers are covered through another system known as "workers' compensation."
+**[Exercise 1.2]{#Exer:1.2}. Group Personal Accident.** Group personal accident insurance offers financial protection in case of injury or death resulting from an incident that occurs on the job. Group personal accident offers insurance coverage and liability insurance protection against accidental death or injury. The insurance covers students and ANU's voluntary workers; ANU workers are covered through another system known as "workers' compensation."
 
 Several limits apply including 1,000,000 for the period of insurance, 600,000 for non-scheduled flights, and others. These limits were not reached in the data we consider. For this coverage, there is a "7 day excess" for weekly benefits but none for general benefits. The database documentation provided to us, and the data we provide, do not indicate whether the excess has been triggered; we have only paid claims. Because of the relatively small size of this class of insurance, we ignore the effects of deductibles for this line. 
 
@@ -925,41 +906,42 @@ GPAClaims <- read.csv("Data/ANUGroupPersonalAccidentClaims2022.csv",header=T)
 ```
 
 
-*a. Claim Frequency.* From this data set, there are `r length(GPAClaims$Incurred.Loss)` incurred claims. Of these claims, there are `r sum(GPAClaims$Incurred.Loss==0)` zeros and an additional `r sum((GPAClaims$Incurred.Loss>0)*(GPAClaims$Incurred.Loss<10))` claims where the incurred claim is less than 10. We omit these claims in our analysis. [Table 1.9] shows the count of claims for years 2015-2019, inclusive. Produce a comparable table of claims frequency for the entire period, omitting claims that are less than 10.
+*a. Claim Frequency.* From this data set, there are `r length(GPAClaims$Incurred.Loss)` incurred claims. Of these claims, there are `r sum(GPAClaims$Incurred.Loss==0)` zeros and an additional `r sum((GPAClaims$Incurred.Loss>0)*(GPAClaims$Incurred.Loss<10))` claims where the incurred claim is less than 10. We omit these claims in our analysis. Table \@ref(tab:Exer12) shows the count of claims for years 2015-2019, inclusive. Produce a comparable table of claims frequency for the entire period, omitting claims that are less than 10.
 
-<a id=tab:1.9></a> 
 
-[Table 1.9]: ../docs/ChapIntro.html#tab:1.9
-
-Table 1.9. **2015-2019 Group Personal Accident Claims Frequency**
-
-```{r GPAFreq1, echo = FALSE}
+```{r Exer12, echo = FALSE}
 GPAClaims <- read.csv("Data/ANUGroupPersonalAccidentClaims2022.csv",header=T)
 GPAClaimsGT10 <- subset(GPAClaims, Incurred.Loss >=10)
 GPAClaimsGT10Short <- subset(GPAClaimsGT10 , UW.Year <= 2019 & UW.Year >= 2015)
 tableGPAFreqShort <- table(GPAClaimsGT10Short$UW.Year)
 
-knitr::kable(t(tableGPAFreqShort), align = "cccccccc", caption = NA)
+TableGen1(TableData=t(tableGPAFreqShort),
+         TextTitle='2015-2019 Group Personal Accident Claims Frequency',
+         Align='c', Digits=0, ColumnSpec=1:4,
+         ColWidth = ColWidth5)
 
 
 ```
 
-*b. Skewness of Claims Severity Distribution*. The left-hand panel of Figure \@ref(fig:GPAClaim1) shows a histogram of incurred claims that reveals the right-skewed nature of this distribution. The right-hand panel shows the same claims but on the log (base 10) scale; this plot demonstrates that the log transform can symmetrize a distribution. These plots are for the 2015-2019 data. Replicate this work, using incurred claims for all available years (still omitting those less than 10).
+*b. Skewness of Claims Severity Distribution*. The left-hand panel of Figure \@ref(fig:Fig14) shows a histogram of incurred claims that reveals the right-skewed nature of this distribution. The right-hand panel shows the same claims but on the log (base 10) scale; this plot demonstrates that the log transform can symmetrize a distribution. These plots are for the 2015-2019 data. Replicate this work, using incurred claims for all available years (still omitting those less than 10).
 
 *c. Summary Statistics.* Produce summary statistics for both claims and log claims using all available years (still omitting those less than 10). Comment on the relationship between the mean and the median for both claims and log claims, relating this to the symmetry of the distributions observed in part (b).
 
 
-(ref:GPAClaim1) **Distribution of Incurred Claims 2015-2019**
+(ref:Fig14) **Distribution of Incurred Claims 2015-2019**
 
-```{r GPAClaim1, echo=FALSE, fig.cap='(ref:GPAClaim1)', out.width='80%', fig.asp=.6}
+```{r Fig14, echo=FALSE, fig.cap='(ref:Fig14)', out.width='80%', fig.asp=.6}
 par(mfrow=c(1, 2))
 hist(GPAClaimsGT10Short$Incurred.Loss, main="", xlab="Incurred Claims")
 hist(log10(GPAClaimsGT10Short$Incurred.Loss), main="", xlab="Logarithmic Incurred Claims")
 ```
 
-*d. Loss Distributions over Time.*  There are `r length(GPAClaimsGT10$Incurred.Loss)` incurred losses. Figure \@ref(fig:GPALossTime) indicates that the incurred losses are stable over the period 2015-2019, inclusive. Produce a comparable figure for the entire period and comment on the stability of the distribution.
+*d. Loss Distributions over Time.*  There are `r length(GPAClaimsGT10$Incurred.Loss)` incurred losses. Figure \@ref(fig:Fig15) indicates that the incurred losses are stable over the period 2015-2019, inclusive. Produce a comparable figure for the entire period and comment on the stability of the distribution.
 
-```{r GPALossTime, echo = FALSE, fig.cap='**Distribution of Group Personal Accident Losses by Year**', out.width='70%', fig.asp=0.6}
+
+(ref:Fig15) **Distribution of Group Personal Accident Losses by Year**
+
+```{r Fig15, echo = FALSE, fig.cap='(ref:Fig15)', out.width='70%', fig.asp=0.6}
 ggplot(data = GPAClaimsGT10Short, aes(x=factor(UW.Year), y = Incurred.Loss)) +
   geom_boxplot() + theme_bw() + xlab("Year") +
   scale_y_continuous(trans='log10')
@@ -969,7 +951,7 @@ ggplot(data = GPAClaimsGT10Short, aes(x=factor(UW.Year), y = Incurred.Loss)) +
 
 `r HideRCode('GPADataEx.1',"Solutions for the GPA Claims Exercise")`
 
-```{r}
+```{r Exer122, eval = HtmlEval, echo = HtmlEval}
 #a
 GPAClaims <- read.csv("Data/ANUGroupPersonalAccidentClaims2022.csv",header=T)
 GPAClaimsGT10 <- subset(GPAClaims, Incurred.Loss >=10)
@@ -1025,17 +1007,11 @@ Remove these claims in your analysis, so that there are `r length(AutoClaimsGT10
 
 *d. Year 2019*. In your analysis from the prior steps, you may have noticed the unusual aspects of year 2019. In that year, ANU suffered extensive damage from a hailstorm that increased the frequency of claims as well as the severity. Produce a histogram of paid claims for that year.
 
-*e. Deductibles.* For each event, or series of events arising from the one originating cause, ANU bears the amount of the excess in respect of each and every insured vehicle, unless stated otherwise. The standard deductible (or excess) in the dataset is 1000. However, a cursory examination of the dataset shows tremendous variation by vehicle and over time. Replicate [Table 1.10] that shows, for each year, the number of claims with zero excess, positive excess less than 1000, an excess equal to 1000, and an excess greater than 1000.
+*e. Deductibles.* For each event, or series of events arising from the one originating cause, ANU bears the amount of the excess in respect of each and every insured vehicle, unless stated otherwise. The standard deductible (or excess) in the dataset is 1000. However, a cursory examination of the dataset shows tremendous variation by vehicle and over time. Replicate Table \@ref(tab:Exer13A) that shows, for each year, the number of claims with zero excess, positive excess less than 1000, an excess equal to 1000, and an excess greater than 1000.
 
 
-<a id=tab:1.10></a> 
 
-[Table 1.10]: ../docs/ChapIntro.html#tab:1.10
-
-Table 1.10. **Motor Vehicle Excess by Year**
-
-
-```{r TableExcess, echo = FALSE}
+```{r  Exer13A, echo = FALSE}
 
 AutoClaims  <- read.csv("Data/ANUMotorClaims2022.csv",header=T)
 AutoClaimsGT10 <- subset(AutoClaims, Motor.Net.Incurred >= 10)
@@ -1056,7 +1032,10 @@ T5 <- summaryBy(Constant1  ~ UW.Year, data = AutoClaimsGT10, FUN = function(x) {
 TableOut <- cbind(T1, T2[2], T3[2], T4[2], T5[2])
 colnames(TableOut) <- c("UW.Year", "Num 0", "Num 0-1000", "Num = 1000", "Num >1000", "Total")
 
-knitr::kable(TableOut, align = "cccccccc", caption = NA)
+TableGen1(TableData=TableOut,
+         TextTitle= 'Motor Vehicle Excess by Year',
+         Align='c', Digits=0, ColumnSpec=1:4,
+         ColWidth = ColWidth5)
 
 ```
 
@@ -1066,7 +1045,7 @@ knitr::kable(TableOut, align = "cccccccc", caption = NA)
 
 `r HideRCode('MotorDataEx.1',"Solutions for the Motor Vehicle Claims Exercise")`
 
-```{r  out.width='70%', fig.asp=0.6}
+```{r   Exer13B, eval = HtmlEval, echo = HtmlEval, out.width='70%', fig.asp=0.6}
 #a
 AutoClaims  <- read.csv("Data/ANUMotorClaims2022.csv",header=T)
 length(AutoClaims$Motor.Net.Incurred) # Number of incurred claims 
@@ -1114,31 +1093,6 @@ knitr::kable(TableOut, align = "cccccccc", caption = "**Motor Vehicle Excess by 
 </div>
 
 
-`r HideExample('MotorData.1',"Details of the Motor Claims Data")`
-
-We provide summaries of this information simply so that readers can see what type of data are available for more in-depth analysis. Specifically, in addition to incurred losses, we also have the following information
-
-
-```{r}
-
-knitr::kable(summary(AutoClaims)[,-1]) 
-#%>%
- # kableExtra::kable_classic(font = 8, html_font = "Cambria")
-
-```
-
-
-```{r echo=F, eval=F}
-sumAuto<- t(summary(AutoClaimsGT10$Motor.Net.Incurred, digits = 0))
-knitr::kable(sumAuto, align = "cccccccc", caption = "**Motor Vehicle Incurred Losses**")
-
-```
-
-***
-
-</div>
-
-
 
 ## Further Resources and Contributors {#Intro-further-reading-and-resources}
 
@@ -1147,11 +1101,11 @@ If you would like additional practice with `R` coding, please visit our companio
 
 #### Contributor {-}
 
-- **Edward (Jed) Frees**, University of Wisconsin-Madison, is the principal author of the initial version of this chapter.
+- **Edward (Jed) Frees**, University of Wisconsin-Madison and Australian National University, is the principal author of the initial version and second edition of this chapter.  Email: jfrees@bus.wisc.edu for chapter comments and suggested improvements.
 - Chapter reviewers include: Yair Babad, Chunsheng Ban, Aaron Bruhn, Gordon Enderle, Hirokazu (Iwahiro) Iwasawa, Dalia Khalil, Bell Ouelega, Michelle Xia.
--  **Edward (Jed) Frees**, University of Wisconsin-Madison and Australian National University, is the author of the second edition of this chapter.  Email: jfrees@bus.wisc.edu for chapter comments and suggested improvements.
 
-This book introduces loss data analytic tools that are most relevant to actuaries and other financial risk analysts. We have also introduced you to many new insurance terms; more terms can be found at the @NAICGlossary. Here are a few references cited in the chapter.
+
+This book introduces loss data analytic tools that are most relevant to actuaries and other financial risk analysts. We have also introduced you to many new insurance terms; more terms can be found at the @NAICGlossary. 
 
 
 ***

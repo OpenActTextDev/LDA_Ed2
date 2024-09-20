@@ -1,0 +1,106 @@
+
+## A
+
+`r CodeFontSmall()`
+
+```{r }
+sample_x <- c(2.46,2.80,3.28,3.86,2.85,3.67,3.37,3.40,5.22,2.55,
+              2.79,4.50,3.37,2.88,1.44,2.56,2.00,2.07,2.19,1.77)
+summary(sample_x )
+```
+
+`r CodeFontLarge()`
+
+## B
+
+::: {.small}
+```{r size = "tiny" }
+sample_x <- c(2.46,2.80,3.28,3.86,2.85,3.67,3.37,3.40,5.22,2.55,
+              2.79,4.50,3.37,2.88,1.44,2.56,2.00,2.07,2.19,1.77)
+summary(sample_x )
+```
+:::
+
+## C
+
+```{r echo = FALSE, size = 'footnote'}
+sample_x <- c(2.46,2.80,3.28,3.86,2.85,3.67,3.37,3.40,5.22,2.55,
+              2.79,4.50,3.37,2.88,1.44,2.56,2.00,2.07,2.19,1.77)
+summary(sample_x )
+```
+
+
+Some text here
+
+
+## D
+
+```{r, echo=TRUE, size="footnotesize"}
+# Code chunk with a smaller font size
+summary(cars)
+```
+
+
+## Other
+
+The 25th percentile (the first quartile) turns out to be $0.78853$ and the 95th percentile is $50.98293$ (both in thousands of dollars). With two equations
+and two unknowns, the solution is
+
+We remark here that a numerical routine is required for these solutions as no analytic solution is available. Furthermore, recall that the maximum likelihood estimates are , so the percentile matching provides a better approximation for the Pareto distribution than the method of moments.
+
+The \textit{pdf} of $X$ is given by
+$$
+f_{X}\left( x \right) = \frac{\left( x / \theta \right)^{\alpha}}{x ~\Gamma\left( \alpha \right)} e^{- x / \theta}
+$$
+for $x > 0$. For $\alpha>0$, the $k$-th raw moment is
+$$
+\mu_{k}^{\prime} = \mathrm{E}\left( X^{k} \right) = \int_{0}^{\infty}{\frac{1}{\Gamma\left( \alpha \right)\theta^{\alpha}}x^{k + \alpha - 1}e^{- x / \theta} dx} = \frac{\Gamma\left( k + \alpha \right)}{\Gamma\left( \alpha \right)}\theta^{k}
+$$
+Given $\Gamma\left( r + 1 \right) = r\Gamma\left( r \right)$ and $\Gamma\left( 1 \right) = 1$, then $\mu_{1}^{\prime} = \mathrm{E}\left( X \right) = \alpha\theta$, $\mu_{2}^{\prime} = \mathrm{E}\left( X^{2} \right) = \left( \alpha + 1 \right)\alpha\theta^{2}$, $\mu_{3}^{\prime} = \mathrm{E}\left( X^{3} \right) = \left( \alpha + 2 \right)\left( \alpha + 1 \right)\alpha\theta^{3}$, and 
+$\mathrm{Var}\left( X \right) = (\alpha  + 1)\alpha\theta^2 - (\alpha\theta)^2 = \alpha\theta^{2}$.
+
+$$
+\begin{array}{ll}
+\text{Skewness}  &= \frac{\mathrm{E}\left\lbrack {(X - \mu_{1}^{\prime})}^{3} \right\rbrack}{{\left( \mathrm{Var}X \right)}^{3/2}} = \frac{\mu_{3}^{\prime} - 3\mu_{2}^{\prime}\mu_{1}^{\prime} + 2{\mu_{1}^{\prime}}^{3}}{{\left(\mathrm{Var} X \right)}^{3/2}} \\
+ &= \frac{\left( \alpha + 2 \right)\left( \alpha + 1 \right)\alpha\theta^{3} - 3\left( \alpha + 1 \right)\alpha^{2}\theta^{3} + 2\alpha^{3}\theta^{3}}{\left( \alpha\theta^{2} \right)^{3/2}} \\
+ &= \frac{2}{\alpha^{1/2}} = 1.
+ \end{array}
+$$
+Hence, $\alpha = 4$. Since, $\mathrm{E}\left( X \right) = \alpha\theta = 8$, then $\theta = 2$ and finally, $\mathrm{Var}\left( X \right) = \alpha\theta^{2} = 16$.
+
+
+
+
+**Example 4.4.7. Property Fund.** For the 2010 property fund, we illustrate matching on quantiles. In particular, the Pareto distribution is intuitively pleasing because of the closed-form solution for the quantiles. Recall that the distribution function for the Pareto distribution is 
+$$
+F(x) = 1 - \left(\frac{\theta}{x+\theta}\right)^{\alpha}.
+$$ 
+Easy algebra shows that we can express the quantile as 
+$$
+F^{-1}(q) = \theta \left( (1-q)^{-1/\alpha} -1 \right) ,
+$$
+for a fraction $q$, $0<q<1$.
+
+Determine estimates of the Pareto distribution parameters using the 25th and 95th empirical quantiles.
+
+
+`r HideExample('4.4.7', 'Show Example Solution')`
+
+
+`r SolnBegin()` The 25th percentile (the first quartile) turns out to be $0.78853$ and the 95th percentile is $50.98293$ (both in thousands of dollars). With two equations
+$$
+0.78853 = \theta \left( 1- (1-.25)^{-1/\alpha} \right) \ \ \ \ \text{and} \ \ \ \ 50.98293 = \theta \left( 1- (1-.75)^{-1/\alpha} \right)
+$$
+and two unknowns, the solution is \textbf{$\hat{\alpha} = 0.9412076$} and \textbf{$\hat{\theta} = 2.205617$} .
+
+We remark here that a numerical routine is required for these solutions as no analytic solution is available. Furthermore, recall that the maximum likelihood estimates are \textbf{$\hat{\alpha}_{MLE} =  0.9990936$} and \textbf{$\hat{\theta}_{MLE} = 2.2821147$}, so the percentile matching provides a better approximation for the Pareto distribution than the method of moments. `r SolnEnd()`
+
+</div>
+
+
+***
+
+
+
+\textbf{$\hat{\alpha}$}
+more text here
