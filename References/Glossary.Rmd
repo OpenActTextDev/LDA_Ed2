@@ -1,51 +1,64 @@
 
 
 ```{r echo = FALSE}
-#  Some Switches
-QUIZ = TRUE
-ANIMATION = TRUE
-SHOW_PDF = TRUE
-ANIMATIONHOOK <- 'gifski'
-GLOSSARY = FALSE
-DIST_TABLES_LATEX = FALSE
-
-```
-
-```{r echo = FALSE}
-library(kableExtra)
-```
-
-```{r echo = FALSE}
-#  Default Widths for Latex
+#  Default Widths for Latex if latexFont = 10
+#HtmlEval <- FALSE
+#PdfEval <- TRUE
+ColWidth3  <- "2.4cm"
 ColWidth4  <- "1.8cm"
 ColWidth5  <- "1.6cm"
+ColWidth55 <- "1.5cm"
 ColWidth6  <- "1.4cm"
 ColWidth7  <- "1.3cm"
 ColWidth8  <- "1.1cm"
 ColWidth9  <- "1.0cm"
 ColWidth10 <- "0.9cm"
+ColWidth11 <- "0.8cm"
+ColWidth12 <- "0.7cm"
 ColWidth14 <- "0.5cm"
+
+#  Default Widths for Latex if latexFont = 8
+#HtmlEval <- FALSE
+#PdfEval <- TRUE
   if (HtmlEval){
  #  Default Widths for HTML
-     ColWidth4  <- "3.6cm"
-     ColWidth5  <- "3.2cm"
-     ColWidth6  <- "2.8cm"
-     ColWidth7  <- "2.6cm"
+     # ColWidth3  <- "3.6cm"    
+     # ColWidth4  <- "3.6cm"
+     # ColWidth5  <- "3.2cm"
+     # ColWidth55 <- "3.0cm"
+     # ColWidth6  <- "2.8cm"
+     # ColWidth7  <- "2.6cm"
+     # ColWidth8  <- "2.2cm"
+     # ColWidth9  <- "2.0cm"
+     # ColWidth10 <- "1.8cm"
+     # ColWidth11 <- "1.7cm"   
+     # ColWidth12 <- "1.6cm"          
+     # ColWidth14 <- "1.0cm" }
+     ColWidth3  <- "3.6cm"    
+     ColWidth4  <- "3.2cm"
+     ColWidth5  <- "3.0cm"
+     ColWidth55 <- "2.8cm"
+     ColWidth6  <- "2.6cm"
+     ColWidth7  <- "2.4cm"
      ColWidth8  <- "2.2cm"
      ColWidth9  <- "2.0cm"
      ColWidth10 <- "1.8cm"
+     ColWidth11 <- "1.7cm"   
+     ColWidth12 <- "1.6cm"          
      ColWidth14 <- "1.0cm" }
+
 #  Function to Create a Style for Generating Tables
 TableGen1 <-function(TableData,TextTitle,Align=`r`, Digits=0, ColumnSpec=1,
                      ColumnSpec0=1, ColWidth0= "2.5cm", 
                      BorderRight=1, ColWidth= "1.5cm", latexFont = 10,
-                     Border_Right = FALSE){
+                     htmlFont = 12, Border_Right = FALSE){
   if (HtmlEval){
      TextTitle1 <- paste0('**', TextTitle,'**', collapse='')
      if (is.na(TextTitle)){TextTitle1 <- NA}
      kableExtra::kbl(TableData, caption=TextTitle1, align = Align,
                      booktabs = T, digits=Digits) %>%
-     kableExtra::kable_classic(full_width = F, font = 12, html_font = "Cambria") %>%
+     kableExtra::kable_classic(full_width = F, font = htmlFont, 
+                               html_font = "Cambria") %>%
      kable_styling(bootstrap_options = c("striped", "condensed"))  %>%
      kableExtra::column_spec(ColumnSpec0, width_min = ColWidth0) %>%
      kableExtra::column_spec(ColumnSpec,  width_min = ColWidth)    %>%
@@ -142,4 +155,26 @@ HideProofTheory <- function(arg1,arg2){
 }
 
 ```
+
+
+```{r echo = FALSE, eval = PdfEval}
+#Only return argument for glossary function
+Gloss <- function(term, section){
+  return(term)
+}
+
+HideExample <- function(arg1,arg2){
+  return("")
+}
+
+HideRCode <- function(arg1,arg2){
+  return("")
+}
+
+HideProofTheory <- function(arg1,arg2){
+  return("")
+}
+
+```
+
 

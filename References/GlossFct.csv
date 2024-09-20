@@ -136,6 +136,7 @@ bias-variance tradeoff,The tradeoff between model simplicity (underfitting; high
 model diagnostics,Procedures to assess the validity of a model,4.1,
 Probability-probability (pp) plot,A plot that compares two models through their cumulative probabilities.,4.1,
 Quantile-quantile (qq) plot,A plot that compares two models through their quantiles.,4.1,
+goodness of fit statistics,"A measure used to assess how well a statistical model fits the data, usually by summarizing the discrepancy between the observations and the expected values under the model.",4.1,
 goodness of fit,"A measure used to assess how well a statistical model fits the data, usually by summarizing the discrepancy between the observations and the expected values under the model.",4.1,
 method of moments,The estimation of population parameters by approximating parametric moments using empirical sample moments.,4.1,
 percentile matching,The estimation of population parameters by approximating parametric percentiles using empirical quantiles.,4.1,

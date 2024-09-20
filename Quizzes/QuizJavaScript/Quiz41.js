@@ -35,37 +35,9 @@ choices: [
 "90 percent"
 ],
 correctAnswer: "75 percent"
-}]}, 
+}]},
 {questions: [{type: "radiogroup",
 name: "<b>Question 3</b>",
-choicesOrder: "random",
-title: `Which one of these is not true of a probability-probability plot?`,
-cellType: "html",
-choices: [
-"Compares cumulative probabilities under two models, a nonparametric empirical distribution function and the parametric fitted model",
-"Compares incremental probabilities under two models, a nonparametric empirical distribution function and the parametric fitted model",
-"Useful because no artificial scaling is required", 
-"A limitation is that it can sometimes be difficult to detect where a fitted parametric distribution is deficient",
-"A variation of the probability-probability plot is the Lorenz curve"
-],
-correctAnswer: "Compares incremental probabilities under two models, a nonparametric empirical distribution function and the parametric fitted model"
-}]},
-{questions: [{type: "radiogroup",
-name: "<b>Question 4</b>",
-choicesOrder: "random",
-title: `Which one of these is not a goodness of fit statistical measure of assessing the validity of a model`,
-cellType: "html",
-choices: [
-"Kolmogorov-Smirnov", 
-"Cramer-von Mises",
-"Anderson-Darling", 
-"QQ-plot",
-"No choice is correct"
-],
-correctAnswer: "QQ-plot"
-}]},
-{questions: [{type: "radiogroup",
-name: "<b>Question 5</b>",
 choicesOrder: "random",
 title: `Of method of moments, percentile matching and maximum likelihood, which method is generally the preferred estimation method?`,
 cellType: "html",
@@ -87,7 +59,7 @@ completedHtml:
 
 // No need to change the following when just introducing new quiz questions
 json = Object.assign(json, jsonHeader);
-let jsonSum = jsonSummary5EWF(json);
+let jsonSum = jsonSummary3EWF(json);
 // Use "5" for five questions, "4" for four questions, and so on...
 
 document.getElementById("Quiz41Soln").innerHTML = jsonSum.completedHtml; 

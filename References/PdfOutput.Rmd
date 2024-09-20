@@ -1,7 +1,5 @@
 
 ```{r echo = FALSE, eval = PdfEval}
-# Make eval = TRUE for pdf output
-# Make eval = FALSE for html output
 QUIZ = FALSE
 ANIMATION = FALSE 
 SHOW_PDF = FALSE
