@@ -1,4 +1,15 @@
+
 # Loss Data and Insurance Activities {#ChapIntro}
+
+
+***
+
+PdfEval = `r PdfEval`
+
+A `r Gloss('qualitative')`, or `r Gloss('categorical variable')` is one for which the measurement denotes membership in a set of groups, or categories.
+
+
+***
 
 *Chapter Preview*. This book introduces readers to methods of analyzing insurance data. Section \@ref(S:Intro) begins with a discussion of why the use of data is important in the insurance industry. Section \@ref(S:PredModApps) gives a general overview of the purposes of analyzing insurance data which is reinforced in the Section \@ref(S:LGPIF) case study. Naturally, there is a huge gap between the broad goals summarized in the overview and a case study application; this gap is covered through the methods and techniques of data analysis covered in the rest of the text.
 

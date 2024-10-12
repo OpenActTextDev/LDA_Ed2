@@ -23,7 +23,7 @@ bookdown::gitbook:
     -  includeWebex/webex.css
   includes:
     in_header: 
-      -  Format/ShowHide2022.js
+      -  Format/ShowHide2023New.js
       -  includeWebex/webex.js
   split_bib: FALSE  
   config:

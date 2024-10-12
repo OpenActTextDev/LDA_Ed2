@@ -16,12 +16,6 @@
 <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.7/MathJax.js?config=TeX-AMS_HTML"> </script>
 
 
-<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
-<script type="text/javascript" src="https://unpkg.com/survey-jquery/survey.jquery.min.js"></script>
-<link href="https://unpkg.com/survey-jquery/modern.min.css" type="text/css" rel="stylesheet">
-<script src="https://unpkg.com/showdown/dist/showdown.min.js"></script>
-
-
 <script>
 function markdownConverterEWF() {  
 //Create showdown markdown converter

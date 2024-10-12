@@ -1,6 +1,6 @@
 --- 
-#title: "Loss Data Analytics <br> \\newline Second Edition"
-#author: "An open text authored by the Actuarial Community"
+title: "Loss Data Analytics <br> \\newline Second Edition"
+author: "An open text authored by the Actuarial Community"
 # Include title and author for HTML output
 site: bookdown::bookdown_site
 output:
@@ -93,6 +93,7 @@ if (PdfEval) { 'You can learn more about the R code for this example at the onli
 
 
 # Preface {-}
+
 
 <p style="text-align:right;">
 *Date: `r format(Sys.Date(), "%d %B %Y")`*</p>
