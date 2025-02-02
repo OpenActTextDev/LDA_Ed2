@@ -4,13 +4,13 @@
 ### One Parameter Distributions
 
 <div class="tab">
-  <button class="tablinks" onclick="openTab(event, '1pA')">Exponential</button>
-  <button class="tablinks" onclick="openTab(event, '1pB')">Inv Exponential</button>
-  <button class="tablinks" onclick="openTab(event, 'odC')">Single Parameter Pareto</button>
+  <button class="tablinks" onclick="openTab(event, 'Par1A')">Exponential</button>
+  <button class="tablinks" onclick="openTab(event, 'Par1B')">Inv Exponential</button>
+  <button class="tablinks" onclick="openTab(event, 'Par1C')">Single Parameter Pareto</button>
 </div>
 
 
-<div id="1pA" class="tabcontent">
+<div id="Par1A" class="tabcontent">
   <span onclick="this.parentElement.style.display='none'" class="topright"><button>Hide</button></span>
 
 <h3>Exponential</h3>
@@ -74,7 +74,7 @@ plot(x=X,y=dexp(X,rate=1/theta),type="l",
 
 </div>
 
-<div id="1pB" class="tabcontent">
+<div id="Par1B" class="tabcontent">
   <span onclick="this.parentElement.style.display='none'" class="topright"><button>Hide</button></span>
 
 <h3>Inverse Exponential</h3>
@@ -137,7 +137,7 @@ plot(x=X,y=dinvexp(X, rate =  1/theta),type="l",
 </div>
 
 
-<div id="odC" class="tabcontent">
+<div id="Par1C" class="tabcontent">
   <span onclick="this.parentElement.style.display='none'" class="topright"><button>Hide</button></span>
 
 <h3>Single Parameter Pareto</h3>
@@ -204,19 +204,19 @@ plot(x=X,y=dpareto1(X,shape=alpha,min=theta),type="l",
 
 
 <div class="tab">
-  <button class="tablinks" onclick="openTab(event, '2pA')">Pareto</button>
-  <button class="tablinks" onclick="openTab(event, '2pB')">Inv Pareto</button>
-  <button class="tablinks" onclick="openTab(event, '2pC')">Loglogistic</button>
-  <button class="tablinks" onclick="openTab(event, '2pD')">Paralogistic</button>
-  <button class="tablinks" onclick="openTab(event, '2pE')">Gamma</button>
-  <button class="tablinks" onclick="openTab(event, '2pF')">Inv Gamma</button>
-  <button class="tablinks" onclick="openTab(event, '2pG')">Weibull</button>
-  <button class="tablinks" onclick="openTab(event, '2pH')">Inv Weibull</button>
-  <button class="tablinks" onclick="openTab(event, '2pI')">Uniform</button>
-  <button class="tablinks" onclick="openTab(event, '2pJ')">Normal</button>
+  <button class="tablinks" onclick="openTab(event, 'Par2A')">Pareto</button>
+  <button class="tablinks" onclick="openTab(event, 'Par2B')">Inv Pareto</button>
+  <button class="tablinks" onclick="openTab(event, 'Par2C')">Loglogistic</button>
+  <button class="tablinks" onclick="openTab(event, 'Par2D')">Paralogistic</button>
+  <button class="tablinks" onclick="openTab(event, 'Par2E')">Gamma</button>
+  <button class="tablinks" onclick="openTab(event, 'Par2F')">Inv Gamma</button>
+  <button class="tablinks" onclick="openTab(event, 'Par2G')">Weibull</button>
+  <button class="tablinks" onclick="openTab(event, 'Par2H')">Inv Weibull</button>
+  <button class="tablinks" onclick="openTab(event, 'Par2I')">Uniform</button>
+  <button class="tablinks" onclick="openTab(event, 'Par2J')">Normal</button>
 </div>
 
-<div id="2pA" class="tabcontent">
+<div id="Par2A" class="tabcontent">
   <span onclick="this.parentElement.style.display='none'" class="topright"><button>Hide</button></span>
 
 <h3>Pareto</h3>
@@ -285,7 +285,7 @@ plot(x=X,y=actuar::dpareto(X,shape=alpha,scale=theta),type="l",
 
 </div>
 
-<div id="2pB" class="tabcontent">
+<div id="Par2B" class="tabcontent">
   <span onclick="this.parentElement.style.display='none'" class="topright"><button>Hide</button></span>
 
 <h3>Inverse Pareto</h3>
@@ -348,7 +348,7 @@ plot(x=X,y=dinvpareto(X,shape=tau,scale=theta),type="l",
 
 </div>
 
-<div id="2pC" class="tabcontent">
+<div id="Par2C" class="tabcontent">
   <span onclick="this.parentElement.style.display='none'" class="topright"><button>Hide</button></span>
 
 <h3>Loglogistic</h3>
@@ -395,7 +395,7 @@ plot(x=X,y=dloglogistic(X,gamma=gamma,theta=theta),type="l",col="red")
 
 </div>
 
-<div id="2pD" class="tabcontent">
+<div id="Par2D" class="tabcontent">
   <span onclick="this.parentElement.style.display='none'" class="topright"><button>Hide</button></span>
 
 <h3>Paralogistic</h3>
@@ -460,7 +460,7 @@ plot(x=X,y=dparalogis(X,shape=alpha,scale=theta),type="l",
 
 </div>
 
-<div id="2pE" class="tabcontent">
+<div id="Par2E" class="tabcontent">
   <span onclick="this.parentElement.style.display='none'" class="topright"><button>Hide</button></span>
 
 <h3>Gamma</h3>
@@ -522,7 +522,7 @@ plot(x=X,y=dgamma(X,shape=alpha,scale=theta),type="l",
 
 </div>
 
-<div id="2pF" class="tabcontent">
+<div id="Par2F" class="tabcontent">
   <span onclick="this.parentElement.style.display='none'" class="topright"><button>Hide</button></span>
 
 <h3>Inverse Gamma</h3>
@@ -584,7 +584,7 @@ plot(x=X,y=dinvgamma(X,shape=alpha,scale=theta),type="l",
 
 </div>
 
-<div id="2pG" class="tabcontent">
+<div id="Par2G" class="tabcontent">
   <span onclick="this.parentElement.style.display='none'" class="topright"><button>Hide</button></span>
 
 <h3>Weibull</h3>
@@ -649,7 +649,7 @@ plot(x=X,y=dweibull(X,shape=alpha, scale=theta),type="l",
 
 </div>
 
-<div id="2pH" class="tabcontent">
+<div id="Par2H" class="tabcontent">
   <span onclick="this.parentElement.style.display='none'" class="topright"><button>Hide</button></span>
 
 <h3>Inverse Weibull</h3>
@@ -712,7 +712,7 @@ plot(x=X,y=dinvweibull(X,shape=tau,scale=theta),type="l",
 
 </div>
 
-<div id="2pI" class="tabcontent">
+<div id="Par2I" class="tabcontent">
   <span onclick="this.parentElement.style.display='none'" class="topright"><button>Hide</button></span>
 
 <h3>Uniform</h3>
@@ -780,7 +780,7 @@ plot(x=X,y=dunif(X,alpha,beta),type="l",
 </div>
 
 
-<div id="2pJ" class="tabcontent">
+<div id="Par2J" class="tabcontent">
   <span onclick="this.parentElement.style.display='none'" class="topright"><button>Hide</button></span>
 
 <h3>Normal</h3>
@@ -848,7 +848,7 @@ plot(x=X,y=dnorm(X,mean=mu,sd=sigma),type="l",
 
 </div>
 
-<div id="2pK" class="tabcontent">
+<div id="Par2K" class="tabcontent">
   <span onclick="this.parentElement.style.display='none'" class="topright"><button>Hide</button></span>
 
 <h3>Cauchy</h3>
@@ -908,12 +908,12 @@ plot(x=X,y=dcauchy(X,location=alpha,scale=beta),
 
 
 <div class="tab">
-  <button class="tablinks" onclick="openTab(event, '3pA')">Generalized Pareto</button>
-  <button class="tablinks" onclick="openTab(event, '3pB')">Burr</button>
-  <button class="tablinks" onclick="openTab(event, '3pC')">Inv Burr</button>
+  <button class="tablinks" onclick="openTab(event, 'Par3A')">Generalized Pareto</button>
+  <button class="tablinks" onclick="openTab(event, 'Par3B')">Burr</button>
+  <button class="tablinks" onclick="openTab(event, 'Par3C')">Inv Burr</button>
 </div>
 
-<div id="3pA" class="tabcontent">
+<div id="Par3A" class="tabcontent">
   <span onclick="this.parentElement.style.display='none'" class="topright"><button>Hide</button></span>
 
 <h3>Generalized Pareto</h3>
@@ -978,7 +978,7 @@ plot(x=X,y=dgenpareto(X,shape1=alpha,shape2=tau,scale=theta),type="l",
 
 </div>
 
-<div id="3pB" class="tabcontent">
+<div id="Par3B" class="tabcontent">
   <span onclick="this.parentElement.style.display='none'" class="topright"><button>Hide</button></span>
 
 <h3>Burr</h3>
@@ -1043,7 +1043,7 @@ plot(x=X,y=dburr(X,shape1=alpha,shape2=gamma,scale=theta),type="l",
 
 </div>
 
-<div id="3pC" class="tabcontent">
+<div id="Par3C" class="tabcontent">
   <span onclick="this.parentElement.style.display='none'" class="topright"><button>Hide</button></span>
 
 <h3>Inverse Burr</h3>
@@ -1113,10 +1113,10 @@ plot(x=X,y=dinvburr(X,shape1=tau,shape2=gamma,scale=theta),type="l",
 
 
 <div class="tab">
-  <button class="tablinks" onclick="openTab(event, '4pA')">GB2</button>
+  <button class="tablinks" onclick="openTab(event, 'Par4')">GB2</button>  
 </div>
 
-<div id="4pA" class="tabcontent">
+<div id="Par4" class="tabcontent">
   <span onclick="this.parentElement.style.display='none'" class="topright"><button>Hide</button></span>
 
 <h3>Generalized Beta of the Second Kind (GB2)</h3>
@@ -1146,16 +1146,14 @@ $$
 
 Please see the [R Codes for Loss Data Analytics](https://ewfrees.github.io/LDARcode/index.html) site for information about this distribution.
 
-
+</div>
 
 ### Other Distributions
 
-</center>
 
 <div class="tab">
   <button class="tablinks" onclick="openTab(event, 'odA')">Lognormal</button>
   <button class="tablinks" onclick="openTab(event, 'odB')">Inv Gaussian</button>
-  <!-- <button class="tablinks" onclick="openTab(event, 'odC')">Single-Parameter Pareto</button> -->
 </div>
 
 
@@ -1204,7 +1202,7 @@ plot(x=X,y=dlognorm(X,mu=mu,sigma=sigma),type="l",col="red")
 ```
 
 
-</p>
+
 </div>
 
 <div id="odB" class="tabcontent">
@@ -1276,8 +1274,6 @@ plot(x=X,y=dinvgauss(X,mean=mu,dispersion=theta),type="l",
 
 
 ### Distributions with Finite Support
-
-</center>
 
 <div class="tab">
   <button class="tablinks" onclick="openTab(event, 'fsA')">Beta</button>

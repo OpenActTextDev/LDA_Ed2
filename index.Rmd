@@ -5,6 +5,7 @@ author: "An open text authored by the Actuarial Community"
 site: bookdown::bookdown_site
 output:
   bookdown::gitbook
+#documentclass: book  
 documentclass: Format/krantzNoCorner
 classoption: krantz2
 colorlinks: yes

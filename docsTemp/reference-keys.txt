@@ -1,0 +1,12 @@
+ChapSummaryDistributions
+S:DiscreteDistributions
+the-ab0-class
+the-ab1-class
+S:ContinuousDistributions
+one-parameter-distributions
+two-parameter-distributions
+three-parameter-distributions
+four-parameter-distribution
+other-distributions
+distributions-with-finite-support
+limited-expected-values

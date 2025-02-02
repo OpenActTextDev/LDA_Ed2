@@ -1,0 +1,3906 @@
+<!DOCTYPE html>
+<html lang="" xml:lang="">
+<head>
+
+  <meta charset="utf-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <title>Chapter 5 Appendix. Data Resources | Loss Data Analytics   Second Edition</title>
+  <meta name="description" content="Loss Data Analytics is an interactive, online, freely available text. - The online version will contain many interactive objects (quizzes, computer demonstrations, interactive graphs, video, and the like) to promote deeper learning. - A subset of the book will be available in pdf format for low-cost printing. - The online text will be available in multiple languages to promote access to a worldwide audience." />
+  <meta name="generator" content="bookdown 0.39 and GitBook 2.6.7" />
+
+  <meta property="og:title" content="Chapter 5 Appendix. Data Resources | Loss Data Analytics   Second Edition" />
+  <meta property="og:type" content="book" />
+  
+  <meta property="og:description" content="Loss Data Analytics is an interactive, online, freely available text. - The online version will contain many interactive objects (quizzes, computer demonstrations, interactive graphs, video, and the like) to promote deeper learning. - A subset of the book will be available in pdf format for low-cost printing. - The online text will be available in multiple languages to promote access to a worldwide audience." />
+  <meta name="github-repo" content="https://github.com/openacttexts/Loss-Data-Analytics" />
+
+  <meta name="twitter:card" content="summary" />
+  <meta name="twitter:title" content="Chapter 5 Appendix. Data Resources | Loss Data Analytics   Second Edition" />
+  
+  <meta name="twitter:description" content="Loss Data Analytics is an interactive, online, freely available text. - The online version will contain many interactive objects (quizzes, computer demonstrations, interactive graphs, video, and the like) to promote deeper learning. - A subset of the book will be available in pdf format for low-cost printing. - The online text will be available in multiple languages to promote access to a worldwide audience." />
+  
+
+<meta name="author" content="An open text authored by the Actuarial Community" />
+
+
+
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="apple-mobile-web-app-capable" content="yes" />
+  <meta name="apple-mobile-web-app-status-bar-style" content="black" />
+  
+  
+<link rel="prev" href="ChapNotationConvention.html"/>
+<link rel="next" href="bibliography.html"/>
+<script src="libs/jquery-3.6.0/jquery-3.6.0.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/fuse.js@6.4.6/dist/fuse.min.js"></script>
+<link href="libs/gitbook-2.6.7/css/style.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-table.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-bookdown.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-highlight.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-search.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-fontsettings.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-clipboard.css" rel="stylesheet" />
+
+
+
+
+
+
+
+
+<link href="libs/anchor-sections-1.1.0/anchor-sections.css" rel="stylesheet" />
+<link href="libs/anchor-sections-1.1.0/anchor-sections-hash.css" rel="stylesheet" />
+<script src="libs/anchor-sections-1.1.0/anchor-sections.js"></script>
+<script src="libs/kePrint-0.0.1/kePrint.js"></script>
+<link href="libs/lightable-0.0.1/lightable.css" rel="stylesheet" />
+
+<!-- Google tag (gtag.js) -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-YKJD3496MG"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  gtag('config', 'G-YKJD3496MG');
+</script>
+
+
+<!-- Mathjax Version 2-->
+<script type='text/x-mathjax-config'>
+		MathJax.Hub.Config({
+			extensions: ['tex2jax.js'],
+			jax: ['input/TeX', 'output/HTML-CSS'],
+			tex2jax: {
+				inlineMath: [ ['$','$'], ['\\(','\\)'] ],
+				displayMath: [ ['$$','$$'], ['\\[','\\]'] ],
+				processEscapes: true
+			},
+			'HTML-CSS': { availableFonts: ['TeX'] }
+		});
+</script>
+
+<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.7/MathJax.js?config=TeX-AMS_HTML"> </script>
+
+
+<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+<script type="text/javascript" src="https://unpkg.com/survey-jquery/survey.jquery.min.js"></script>
+<link href="https://unpkg.com/survey-jquery/modern.min.css" type="text/css" rel="stylesheet">
+<script src="https://unpkg.com/showdown/dist/showdown.min.js"></script>
+
+
+<script>
+function markdownConverterEWF() {  
+//Create showdown markdown converter
+var converter = new showdown.Converter();
+converter.setOption('ghCompatibleHeaderId', true);
+survey
+    .onTextMarkdown
+    .add(function (survey, options) {
+        //convert the markdown text to html
+        var str = converter.makeHtml(options.text);
+        //remove root paragraphs <p></p>
+        str = str.substring(3);
+        str = str.substring(0, str.length - 4);
+        //set html
+        options.html = str;
+        MathJax.Hub.Queue(['Typeset',MathJax.Hub, 'options']);
+    });  
+};
+
+// Quiz Header info
+const jsonHeader = { 
+    showProgressBar: "bottom",
+    showTimerPanel: "none",
+    maxTimeToFinishPage: 10000,
+    maxTimeToFinish: 25000,
+    firstPageIsStarted: true,
+    startSurveyText: "Start Quiz" //,
+//    title: "Does This Make Sense?"
+}
+
+
+// One and Two question quizzes
+function jsonSummary1EWF(json) {  
+let jsonEnd1 = { 
+completedHtml: 
+json["pages"][1]["questions"][0]["name"]+ "<br>"+
+"<i>Question: </i>"+json["pages"][1]["questions"][0]["title"]+"<br>"+
+"<i>Answer: </i>"+json["pages"][1]["questions"][0]["correctAnswer"]
+};  
+return jsonEnd1;
+};
+
+
+function jsonSummary2EWF(json) {  
+let jsonEnd2 = { 
+completedHtml: 
+json["pages"][1]["questions"][0]["name"]+ "<br>"+
+"<i>Question: </i>"+json["pages"][1]["questions"][0]["title"]+"<br>"+
+"<i>Answer: </i>"+json["pages"][1]["questions"][0]["correctAnswer"]
++"<br>"+
+json["pages"][2]["questions"][0]["name"]+ "<br>"+
+"<i>Question: </i>"+json["pages"][2]["questions"][0]["title"]+"<br>"+
+"<i>Answer: </i>"+json["pages"][2]["questions"][0]["correctAnswer"]
+};  
+return jsonEnd2;
+};
+
+// Three, four, and five question quizzes
+function jsonSummary3EWF(json) {  
+let jsonEnd3 = { 
+completedHtml: 
+json["pages"][1]["questions"][0]["name"]+ "<br>"+
+"<i>Question: </i>"+json["pages"][1]["questions"][0]["title"]+"<br>"+
+"<i>Answer: </i>"+json["pages"][1]["questions"][0]["correctAnswer"]
++"<br>"+
+json["pages"][2]["questions"][0]["name"]+ "<br>"+
+"<i>Question: </i>"+json["pages"][2]["questions"][0]["title"]+"<br>"+
+"<i>Answer: </i>"+json["pages"][2]["questions"][0]["correctAnswer"]
++"<br>"+
+json["pages"][3]["questions"][0]["name"]+ "<br>"+
+"<i>Question: </i>"+json["pages"][3]["questions"][0]["title"]+"<br>"+
+"<i>Answer: </i>"+json["pages"][3]["questions"][0]["correctAnswer"]
+};  
+return jsonEnd3;
+};
+
+function jsonSummary4EWF(json) {  
+jsonEnd4 = jsonSummary3EWF(json);
+jsonEnd4.completedHtml = jsonEnd4.completedHtml +  
+"<br>"+
+json["pages"][4]["questions"][0]["name"]+ "<br>"+
+"<i>Question: </i>"+json["pages"][4]["questions"][0]["title"]+"<br>"+
+"<i>Answer: </i>"+json["pages"][4]["questions"][0]["correctAnswer"]
+;  
+return jsonEnd4;
+};
+
+function jsonSummary5EWF(json) {  
+jsonEnd5 = jsonSummary4EWF(json);
+jsonEnd5.completedHtml = jsonEnd5.completedHtml +  
+"<br>"+
+json["pages"][5]["questions"][0]["name"]+ "<br>"+
+"<i>Question: </i>"+json["pages"][5]["questions"][0]["title"]+"<br>"+
+"<i>Answer: </i>"+json["pages"][5]["questions"][0]["correctAnswer"]
+;  
+return jsonEnd5;
+};
+
+function jsonSummary6EWF(json) {  
+jsonEnd6 = jsonSummary5EWF(json);
+jsonEnd6.completedHtml = jsonEnd6.completedHtml +  
+"<br>"+
+json["pages"][6]["questions"][0]["name"]+ "<br>"+
+"<i>Question: </i>"+json["pages"][6]["questions"][0]["title"]+"<br>"+
+"<i>Answer: </i>"+json["pages"][6]["questions"][0]["correctAnswer"]
+;  
+return jsonEnd6;
+};
+
+function jsonSummary7EWF(json) {  
+jsonEnd7 = jsonSummary6EWF(json);
+jsonEnd7.completedHtml = jsonEnd7.completedHtml +  
+"<br>"+
+json["pages"][7]["questions"][0]["name"]+ "<br>"+
+"<i>Question: </i>"+json["pages"][7]["questions"][0]["title"]+"<br>"+
+"<i>Answer: </i>"+json["pages"][7]["questions"][0]["correctAnswer"]
+;  
+return jsonEnd7;
+};
+
+function jsonSummary8EWF(json) {  
+jsonEnd8 = jsonSummary7EWF(json);
+jsonEnd8.completedHtml = jsonEnd8.completedHtml +  
+"<br>"+
+json["pages"][8]["questions"][0]["name"]+ "<br>"+
+"<i>Question: </i>"+json["pages"][8]["questions"][0]["title"]+"<br>"+
+"<i>Answer: </i>"+json["pages"][8]["questions"][0]["correctAnswer"]
+;  
+return jsonEnd8;
+};
+
+function jsonSummary9EWF(json) {  
+jsonEnd9 = jsonSummary8EWF(json);
+jsonEnd9.completedHtml = jsonEnd9.completedHtml +  
+"<br>"+
+json["pages"][9]["questions"][0]["name"]+ "<br>"+
+"<i>Question: </i>"+json["pages"][9]["questions"][0]["title"]+"<br>"+
+"<i>Answer: </i>"+json["pages"][9]["questions"][0]["correctAnswer"]
+;  
+return jsonEnd9;
+};
+
+
+function jsonSummary10EWF(json) {  
+jsonEnd10 = jsonSummary9EWF(json);
+jsonEnd10.completedHtml = jsonEnd10.completedHtml +  
+"<br>"+
+json["pages"][10]["questions"][0]["name"]+ "<br>"+
+"<i>Question: </i>"+json["pages"][10]["questions"][0]["title"]+"<br>"+
+"<i>Answer: </i>"+json["pages"][10]["questions"][0]["correctAnswer"]
+;  
+return jsonEnd10;
+};
+
+
+function jsonSummary11EWF(json) {  
+jsonEnd11 = jsonSummary10EWF(json);
+jsonEnd11.completedHtml = jsonEnd11.completedHtml +  
+"<br>"+
+json["pages"][11]["questions"][0]["name"]+ "<br>"+
+"<i>Question: </i>"+json["pages"][11]["questions"][0]["title"]+"<br>"+
+"<i>Answer: </i>"+json["pages"][11]["questions"][0]["correctAnswer"]
+;  
+return jsonEnd11;
+};
+
+Survey.StylesManager.applyTheme("modern");
+
+</script>  
+<!-- This completes the code for the quizzes -->
+
+<!-- Various toggle functions used throughout --> 
+<script language="javascript">
+function toggle(id1,id2) {
+	var ele = document.getElementById(id1); var text = document.getElementById(id2);
+	if (ele.style.display == "block") {ele.style.display = "none"; text.innerHTML = "Show Solution";}
+		else {ele.style.display = "block"; text.innerHTML = "Hide Solution";}}
+function togglecode(id1,id2) {
+   var ele = document.getElementById(id1); var text = document.getElementById(id2);
+   if (ele.style.display == "block") {ele.style.display = "none"; text.innerHTML = "Show R Code";}
+      else {ele.style.display = "block"; text.innerHTML = "Hide R Code";}}
+function toggleEX(id1,id2) {
+   var ele = document.getElementById(id1); var text = document.getElementById(id2);
+   if (ele.style.display == "block") {ele.style.display = "none"; text.innerHTML = "Show Example";}
+      else {ele.style.display = "block"; text.innerHTML = "Hide Example";}}
+function toggleTheory(id1,id2) {
+   var ele = document.getElementById(id1); var text = document.getElementById(id2);
+   if (ele.style.display == "block") {ele.style.display = "none"; text.innerHTML = "Show Theory";}
+      else {ele.style.display = "block"; text.innerHTML = "Hide Theory";}}
+function toggleQuiz(id1,id2) {
+   var ele = document.getElementById(id1); var text = document.getElementById(id2);
+   if (ele.style.display == "block") {ele.style.display = "none"; text.innerHTML = "Show Quiz Solution";}
+      else {ele.style.display = "block"; text.innerHTML = "Hide Quiz Solution";}}      
+</script>
+
+<!-- A few functions for revealing definitions -->
+<script language="javascript">
+<!--   $( function() {
+    $("#tabs").tabs();
+  } ); -->
+
+$(document).ready(function(){
+    $('[data-toggle="tooltip"]').tooltip();
+});
+
+$(document).ready(function(){
+    $('[data-toggle="popover"]').popover(); 
+});
+</script>
+
+<script language="javascript">
+function openTab(evt, tabName) {
+    var i, tabcontent, tablinks;
+    tabcontent = document.getElementsByClassName("tabcontent");
+    for (i = 0; i < tabcontent.length; i++) {
+        tabcontent[i].style.display = "none";
+    }
+    tablinks = document.getElementsByClassName("tablinks");
+    for (i = 0; i < tablinks.length; i++) {
+        tablinks[i].className = tablinks[i].className.replace(" active", "");
+    }
+    document.getElementById(tabName).style.display = "block";
+    evt.currentTarget.className += " active";
+}
+
+// Get the element with id="defaultOpen" and click on it
+document.getElementById("defaultOpen").click();
+</script>
+
+<script>
+
+/* update total correct if #webex-total_correct exists */
+update_total_correct = function() {
+  console.log("webex: update total_correct");
+
+  if (t = document.getElementById("webex-total_correct")) {
+    var correct = document.getElementsByClassName("webex-correct").length;
+    var solvemes = document.getElementsByClassName("webex-solveme").length;
+    var radiogroups = document.getElementsByClassName("webex-radiogroup").length;
+    var selects = document.getElementsByClassName("webex-select").length;
+    
+    t.innerHTML = correct + " of " + (solvemes + radiogroups + selects) + " correct";
+  }
+}
+
+/* webex-solution button toggling function */
+b_func = function() {
+  console.log("webex: toggle hide");
+  
+  var cl = this.parentElement.classList;
+  if (cl.contains('open')) {
+    cl.remove("open");
+  } else {
+    cl.add("open");
+  }
+}
+
+/* function for checking solveme answers */
+solveme_func = function(e) {
+  console.log("webex: check solveme");
+
+  var real_answers = JSON.parse(this.dataset.answer);
+  var my_answer = this.value;
+  var cl = this.classList;
+  if (cl.contains("ignorecase")) {
+    my_answer = my_answer.toLowerCase();
+  }
+  if (cl.contains("nospaces")) {
+    my_answer = my_answer.replace(/ /g, "")
+  }
+
+  if (my_answer == "") {
+    cl.remove("webex-correct");
+    cl.remove("webex-incorrect");
+  } else if (real_answers.includes(my_answer)) {
+    cl.add("webex-correct");
+    cl.remove("webex-incorrect");
+  } else {
+    cl.add("webex-incorrect");
+    cl.remove("webex-correct");
+  }
+
+  // match numeric answers within a specified tolerance
+  if(this.dataset.tol > 0){
+    var tol = JSON.parse(this.dataset.tol);
+    var matches = real_answers.map(x => Math.abs(x - my_answer) < tol)
+    if (matches.reduce((a, b) => a + b, 0) > 0) {
+      cl.add("webex-correct");
+    } else {
+      cl.remove("webex-correct");
+    }
+  }
+
+  // added regex bit
+  if (cl.contains("regex")){
+    answer_regex = RegExp(real_answers.join("|"))
+    if (answer_regex.test(my_answer)) {
+      cl.add("webex-correct");
+    }
+  }
+
+  update_total_correct();
+}
+
+/* function for checking select answers */
+select_func = function(e) {
+  console.log("webex: check select");
+  
+  var cl = this.classList
+  
+  /* add style */
+  cl.remove("webex-incorrect");
+  cl.remove("webex-correct");
+  if (this.value == "answer") {
+    cl.add("webex-correct");
+  } else if (this.value != "blank") {
+    cl.add("webex-incorrect");
+  }
+  
+  update_total_correct();
+}
+
+/* function for checking radiogroups answers */
+radiogroups_func = function(e) {
+  console.log("webex: check radiogroups");
+
+  var checked_button = document.querySelector('input[name=' + this.id + ']:checked');
+  var cl = checked_button.parentElement.classList;
+  var labels = checked_button.parentElement.parentElement.children;
+  
+  /* get rid of styles */
+  for (i = 0; i < labels.length; i++) {
+    labels[i].classList.remove("webex-incorrect");
+    labels[i].classList.remove("webex-correct");
+  }
+  
+  /* add style */
+  if (checked_button.value == "answer") {
+    cl.add("webex-correct");
+  } else {
+    cl.add("webex-incorrect");
+  }
+  
+  update_total_correct();
+}
+
+window.onload = function() {
+  console.log("onload");
+  /* set up solution buttons */
+  var buttons = document.getElementsByTagName("button");
+
+  for (var i = 0; i < buttons.length; i++) {
+    if (buttons[i].parentElement.classList.contains('webex-solution')) {
+      buttons[i].onclick = b_func;
+    }
+  }
+
+  /* set up webex-solveme inputs */
+  var solveme = document.getElementsByClassName("webex-solveme");
+
+  for (var i = 0; i < solveme.length; i++) {
+    /* make sure input boxes don't auto-anything */
+    solveme[i].setAttribute("autocomplete","off");
+    solveme[i].setAttribute("autocorrect", "off");
+    solveme[i].setAttribute("autocapitalize", "off");
+    solveme[i].setAttribute("spellcheck", "false");
+    solveme[i].value = "";
+
+    /* adjust answer for ignorecase or nospaces */
+    var cl = solveme[i].classList;
+    var real_answer = solveme[i].dataset.answer;
+    if (cl.contains("ignorecase")) {
+      real_answer = real_answer.toLowerCase();
+    }
+    if (cl.contains("nospaces")) {
+      real_answer = real_answer.replace(/ /g, "");
+    }
+    solveme[i].dataset.answer = real_answer;
+
+    /* attach checking function */
+    solveme[i].onkeyup = solveme_func;
+    solveme[i].onchange = solveme_func;
+  }
+  
+  /* set up radiogroups */
+  var radiogroups = document.getElementsByClassName("webex-radiogroup");
+  for (var i = 0; i < radiogroups.length; i++) {
+    radiogroups[i].onchange = radiogroups_func;
+  }
+  
+  /* set up selects */
+  var selects = document.getElementsByClassName("webex-select");
+  for (var i = 0; i < selects.length; i++) {
+    selects[i].onchange = select_func;
+  }
+
+  update_total_correct();
+}
+
+</script>
+
+
+<style type="text/css">
+pre > code.sourceCode { white-space: pre; position: relative; }
+pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
+pre > code.sourceCode > span:empty { height: 1.2em; }
+.sourceCode { overflow: visible; }
+code.sourceCode > span { color: inherit; text-decoration: inherit; }
+pre.sourceCode { margin: 0; }
+@media screen {
+div.sourceCode { overflow: auto; }
+}
+@media print {
+pre > code.sourceCode { white-space: pre-wrap; }
+pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
+}
+pre.numberSource code
+  { counter-reset: source-line 0; }
+pre.numberSource code > span
+  { position: relative; left: -4em; counter-increment: source-line; }
+pre.numberSource code > span > a:first-child::before
+  { content: counter(source-line);
+    position: relative; left: -1em; text-align: right; vertical-align: baseline;
+    border: none; display: inline-block;
+    -webkit-touch-callout: none; -webkit-user-select: none;
+    -khtml-user-select: none; -moz-user-select: none;
+    -ms-user-select: none; user-select: none;
+    padding: 0 4px; width: 4em;
+    color: #aaaaaa;
+  }
+pre.numberSource { margin-left: 3em; border-left: 1px solid #aaaaaa;  padding-left: 4px; }
+div.sourceCode
+  {   }
+@media screen {
+pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
+}
+code span.al { color: #ff0000; font-weight: bold; } /* Alert */
+code span.an { color: #60a0b0; font-weight: bold; font-style: italic; } /* Annotation */
+code span.at { color: #7d9029; } /* Attribute */
+code span.bn { color: #40a070; } /* BaseN */
+code span.bu { color: #008000; } /* BuiltIn */
+code span.cf { color: #007020; font-weight: bold; } /* ControlFlow */
+code span.ch { color: #4070a0; } /* Char */
+code span.cn { color: #880000; } /* Constant */
+code span.co { color: #60a0b0; font-style: italic; } /* Comment */
+code span.cv { color: #60a0b0; font-weight: bold; font-style: italic; } /* CommentVar */
+code span.do { color: #ba2121; font-style: italic; } /* Documentation */
+code span.dt { color: #902000; } /* DataType */
+code span.dv { color: #40a070; } /* DecVal */
+code span.er { color: #ff0000; font-weight: bold; } /* Error */
+code span.ex { } /* Extension */
+code span.fl { color: #40a070; } /* Float */
+code span.fu { color: #06287e; } /* Function */
+code span.im { color: #008000; font-weight: bold; } /* Import */
+code span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Information */
+code span.kw { color: #007020; font-weight: bold; } /* Keyword */
+code span.op { color: #666666; } /* Operator */
+code span.ot { color: #007020; } /* Other */
+code span.pp { color: #bc7a00; } /* Preprocessor */
+code span.sc { color: #4070a0; } /* SpecialChar */
+code span.ss { color: #bb6688; } /* SpecialString */
+code span.st { color: #4070a0; } /* String */
+code span.va { color: #19177c; } /* Variable */
+code span.vs { color: #4070a0; } /* VerbatimString */
+code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warning */
+</style>
+
+<style type="text/css">
+  
+  div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+</style>
+<style type="text/css">
+/* Used with Pandoc 2.11+ new --citeproc when CSL is used */
+div.csl-bib-body { }
+div.csl-entry {
+  clear: both;
+}
+.hanging div.csl-entry {
+  margin-left:2em;
+  text-indent:-2em;
+}
+div.csl-left-margin {
+  min-width:2em;
+  float:left;
+}
+div.csl-right-inline {
+  margin-left:2em;
+  padding-left:1em;
+}
+div.csl-indent {
+  margin-left: 2em;
+}
+</style>
+
+<link rel="stylesheet" href="Format/style.css" type="text/css" />
+<link rel="stylesheet" href="includeWebex/webex.css" type="text/css" />
+</head>
+
+<body>
+
+
+
+  <div class="book without-animation with-summary font-size-2 font-family-1" data-basepath=".">
+
+    <div class="book-summary">
+      <nav role="navigation">
+
+<ul class="summary">
+<li><a href="./">Loss Data Analytics</a></li>
+
+<li class="divider"></li>
+<li class="chapter" data-level="" data-path="index.html"><a href="index.html"><i class="fa fa-check"></i>Preface</a>
+<ul>
+<li class="chapter" data-level="" data-path="index.html"><a href="index.html#acknowledgements"><i class="fa fa-check"></i>Acknowledgements</a></li>
+<li class="chapter" data-level="" data-path="index.html"><a href="index.html#contributors"><i class="fa fa-check"></i>Contributors</a></li>
+<li class="chapter" data-level="" data-path="index.html"><a href="index.html#reviewers"><i class="fa fa-check"></i>Reviewers</a>
+<ul>
+<li class="chapter" data-level="" data-path="index.html"><a href="index.html#other-collaborators"><i class="fa fa-check"></i>Other Collaborators</a></li>
+</ul></li>
+<li class="chapter" data-level="" data-path="index.html"><a href="index.html#version-number"><i class="fa fa-check"></i>Version Number</a></li>
+<li class="chapter" data-level="" data-path="index.html"><a href="index.html#for-our-readers"><i class="fa fa-check"></i>For our Readers</a></li>
+</ul></li>
+<li class="chapter" data-level="1" data-path="ChapIntro.html"><a href="ChapIntro.html"><i class="fa fa-check"></i><b>1</b> Loss Data and Insurance Activities</a>
+<ul>
+<li class="chapter" data-level="1.1" data-path="ChapIntro.html"><a href="ChapIntro.html#S:Intro"><i class="fa fa-check"></i><b>1.1</b> Data Driven Insurance Activities</a>
+<ul>
+<li class="chapter" data-level="1.1.1" data-path="ChapIntro.html"><a href="ChapIntro.html#nature-and-relevance-of-insurance"><i class="fa fa-check"></i><b>1.1.1</b> Nature and Relevance of Insurance</a></li>
+<li class="chapter" data-level="1.1.2" data-path="ChapIntro.html"><a href="ChapIntro.html#S:DataDriven"><i class="fa fa-check"></i><b>1.1.2</b> Why Data Driven?</a></li>
+<li class="chapter" data-level="1.1.3" data-path="ChapIntro.html"><a href="ChapIntro.html#S:InsProcesses"><i class="fa fa-check"></i><b>1.1.3</b> Insurance Processes</a></li>
+</ul></li>
+<li class="chapter" data-level="1.2" data-path="ChapIntro.html"><a href="ChapIntro.html#S:PredModApps"><i class="fa fa-check"></i><b>1.2</b> Insurance Company Operations</a>
+<ul>
+<li class="chapter" data-level="1.2.1" data-path="ChapIntro.html"><a href="ChapIntro.html#initiating-insurance"><i class="fa fa-check"></i><b>1.2.1</b> Initiating Insurance</a></li>
+<li class="chapter" data-level="1.2.2" data-path="ChapIntro.html"><a href="ChapIntro.html#renewing-insurance"><i class="fa fa-check"></i><b>1.2.2</b> Renewing Insurance</a></li>
+<li class="chapter" data-level="1.2.3" data-path="ChapIntro.html"><a href="ChapIntro.html#claims-and-product-management"><i class="fa fa-check"></i><b>1.2.3</b> Claims and Product Management</a></li>
+<li class="chapter" data-level="1.2.4" data-path="ChapIntro.html"><a href="ChapIntro.html#S:Reserving"><i class="fa fa-check"></i><b>1.2.4</b> Loss Reserving</a></li>
+</ul></li>
+<li class="chapter" data-level="1.3" data-path="ChapIntro.html"><a href="ChapIntro.html#S:LGPIF"><i class="fa fa-check"></i><b>1.3</b> Case Study: Wisconsin Property Fund</a>
+<ul>
+<li class="chapter" data-level="1.3.1" data-path="ChapIntro.html"><a href="ChapIntro.html#S:OutComes"><i class="fa fa-check"></i><b>1.3.1</b> Fund Claims Variables: Frequency and Severity</a></li>
+<li class="chapter" data-level="1.3.2" data-path="ChapIntro.html"><a href="ChapIntro.html#S:FundVariables"><i class="fa fa-check"></i><b>1.3.2</b> Fund Rating Variables</a></li>
+<li class="chapter" data-level="1.3.3" data-path="ChapIntro.html"><a href="ChapIntro.html#fund-operations"><i class="fa fa-check"></i><b>1.3.3</b> Fund Operations</a></li>
+</ul></li>
+<li class="chapter" data-level="1.4" data-path="ChapIntro.html"><a href="ChapIntro.html#exercises"><i class="fa fa-check"></i><b>1.4</b> Exercises</a></li>
+<li class="chapter" data-level="1.5" data-path="ChapIntro.html"><a href="ChapIntro.html#Intro-further-reading-and-resources"><i class="fa fa-check"></i><b>1.5</b> Further Resources and Contributors</a></li>
+</ul></li>
+<li class="chapter" data-level="2" data-path="ChapSeverity.html"><a href="ChapSeverity.html"><i class="fa fa-check"></i><b>2</b> Modeling Loss Severity</a>
+<ul>
+<li class="chapter" data-level="2.1" data-path="ChapSeverity.html"><a href="ChapSeverity.html#S:Sec41"><i class="fa fa-check"></i><b>2.1</b> Basic Distributional Quantities</a>
+<ul>
+<li class="chapter" data-level="2.1.1" data-path="ChapSeverity.html"><a href="ChapSeverity.html#S:Sec411"><i class="fa fa-check"></i><b>2.1.1</b> Moments and Moment Generating Functions</a></li>
+<li class="chapter" data-level="2.1.2" data-path="ChapSeverity.html"><a href="ChapSeverity.html#S:Sec412"><i class="fa fa-check"></i><b>2.1.2</b> Quantiles</a></li>
+</ul></li>
+<li class="chapter" data-level="2.2" data-path="ChapSeverity.html"><a href="ChapSeverity.html#S:Sec42"><i class="fa fa-check"></i><b>2.2</b> Continuous Distributions for Modeling Loss Severity</a>
+<ul>
+<li class="chapter" data-level="2.2.1" data-path="ChapSeverity.html"><a href="ChapSeverity.html#S:Sec421"><i class="fa fa-check"></i><b>2.2.1</b> Gamma Distribution</a></li>
+<li class="chapter" data-level="2.2.2" data-path="ChapSeverity.html"><a href="ChapSeverity.html#S:Sec422"><i class="fa fa-check"></i><b>2.2.2</b> Pareto Distribution</a></li>
+<li class="chapter" data-level="2.2.3" data-path="ChapSeverity.html"><a href="ChapSeverity.html#S:Sec423"><i class="fa fa-check"></i><b>2.2.3</b> Weibull Distribution</a></li>
+<li class="chapter" data-level="2.2.4" data-path="ChapSeverity.html"><a href="ChapSeverity.html#S:Sec424"><i class="fa fa-check"></i><b>2.2.4</b> The Generalized Beta Distribution of the Second Kind</a></li>
+</ul></li>
+<li class="chapter" data-level="2.3" data-path="ChapSeverity.html"><a href="ChapSeverity.html#S:Sec43"><i class="fa fa-check"></i><b>2.3</b> Methods of Creating New Distributions</a>
+<ul>
+<li class="chapter" data-level="2.3.1" data-path="ChapSeverity.html"><a href="ChapSeverity.html#S:Sec431"><i class="fa fa-check"></i><b>2.3.1</b> Functions of Random Variables and their Distributions</a></li>
+<li class="chapter" data-level="2.3.2" data-path="ChapSeverity.html"><a href="ChapSeverity.html#S:Sec432"><i class="fa fa-check"></i><b>2.3.2</b> Mixture Distributions for Severity</a></li>
+</ul></li>
+<li class="chapter" data-level="2.4" data-path="ChapSeverity.html"><a href="ChapSeverity.html#S:Sec44"><i class="fa fa-check"></i><b>2.4</b> Estimating Loss Distributions</a>
+<ul>
+<li class="chapter" data-level="2.4.1" data-path="ChapSeverity.html"><a href="ChapSeverity.html#S:Sec441"><i class="fa fa-check"></i><b>2.4.1</b> Nonparametric Estimation</a></li>
+<li class="chapter" data-level="2.4.2" data-path="ChapSeverity.html"><a href="ChapSeverity.html#S:Sec442"><i class="fa fa-check"></i><b>2.4.2</b> Parametric Estimation</a></li>
+</ul></li>
+<li class="chapter" data-level="2.5" data-path="ChapSeverity.html"><a href="ChapSeverity.html#S:Sec45"><i class="fa fa-check"></i><b>2.5</b> Exercises with a Practical Focus</a></li>
+<li class="chapter" data-level="2.6" data-path="ChapSeverity.html"><a href="ChapSeverity.html#S:Sec46"><i class="fa fa-check"></i><b>2.6</b> Further Resources and Contributors</a></li>
+</ul></li>
+<li class="chapter" data-level="3" data-path="ChapSummaryDistributions.html"><a href="ChapSummaryDistributions.html"><i class="fa fa-check"></i><b>3</b> Appendix D: Summary of Distributions</a>
+<ul>
+<li class="chapter" data-level="3.1" data-path="ChapSummaryDistributions.html"><a href="ChapSummaryDistributions.html#S:DiscreteDistributions"><i class="fa fa-check"></i><b>3.1</b> Discrete Distributions</a>
+<ul>
+<li class="chapter" data-level="3.1.1" data-path="ChapSummaryDistributions.html"><a href="ChapSummaryDistributions.html#the-ab0-class"><i class="fa fa-check"></i><b>3.1.1</b> The <em>(a,b,0)</em> Class</a></li>
+<li class="chapter" data-level="3.1.2" data-path="ChapSummaryDistributions.html"><a href="ChapSummaryDistributions.html#the-ab1-class"><i class="fa fa-check"></i><b>3.1.2</b> The <em>(a,b,1)</em> Class</a></li>
+</ul></li>
+<li class="chapter" data-level="3.2" data-path="ChapSummaryDistributions.html"><a href="ChapSummaryDistributions.html#S:ContinuousDistributions"><i class="fa fa-check"></i><b>3.2</b> Continuous Distributions</a>
+<ul>
+<li class="chapter" data-level="3.2.1" data-path="ChapSummaryDistributions.html"><a href="ChapSummaryDistributions.html#one-parameter-distributions"><i class="fa fa-check"></i><b>3.2.1</b> One Parameter Distributions</a></li>
+<li class="chapter" data-level="3.2.2" data-path="ChapSummaryDistributions.html"><a href="ChapSummaryDistributions.html#two-parameter-distributions"><i class="fa fa-check"></i><b>3.2.2</b> Two Parameter Distributions</a></li>
+<li class="chapter" data-level="3.2.3" data-path="ChapSummaryDistributions.html"><a href="ChapSummaryDistributions.html#three-parameter-distributions"><i class="fa fa-check"></i><b>3.2.3</b> Three Parameter Distributions</a></li>
+<li class="chapter" data-level="3.2.4" data-path="ChapSummaryDistributions.html"><a href="ChapSummaryDistributions.html#four-parameter-distribution"><i class="fa fa-check"></i><b>3.2.4</b> Four Parameter Distribution</a></li>
+<li class="chapter" data-level="3.2.5" data-path="ChapSummaryDistributions.html"><a href="ChapSummaryDistributions.html#other-distributions"><i class="fa fa-check"></i><b>3.2.5</b> Other Distributions</a></li>
+<li class="chapter" data-level="3.2.6" data-path="ChapSummaryDistributions.html"><a href="ChapSummaryDistributions.html#distributions-with-finite-support"><i class="fa fa-check"></i><b>3.2.6</b> Distributions with Finite Support</a></li>
+</ul></li>
+<li class="chapter" data-level="3.3" data-path="ChapSummaryDistributions.html"><a href="ChapSummaryDistributions.html#limited-expected-values"><i class="fa fa-check"></i><b>3.3</b> Limited Expected Values</a></li>
+</ul></li>
+<li class="chapter" data-level="4" data-path="ChapNotationConvention.html"><a href="ChapNotationConvention.html"><i class="fa fa-check"></i><b>4</b> Appendix E: Conventions for Notation</a>
+<ul>
+<li class="chapter" data-level="4.1" data-path="ChapNotationConvention.html"><a href="ChapNotationConvention.html#S:General"><i class="fa fa-check"></i><b>4.1</b> General Conventions</a></li>
+<li class="chapter" data-level="4.2" data-path="ChapNotationConvention.html"><a href="ChapNotationConvention.html#S:Abbreviations"><i class="fa fa-check"></i><b>4.2</b> Abbreviations</a></li>
+<li class="chapter" data-level="4.3" data-path="ChapNotationConvention.html"><a href="ChapNotationConvention.html#S:StatSymbols"><i class="fa fa-check"></i><b>4.3</b> Common Statistical Symbols and Operators</a></li>
+<li class="chapter" data-level="4.4" data-path="ChapNotationConvention.html"><a href="ChapNotationConvention.html#S:Symbols"><i class="fa fa-check"></i><b>4.4</b> Common Mathematical Symbols and Functions</a></li>
+<li class="chapter" data-level="4.5" data-path="ChapNotationConvention.html"><a href="ChapNotationConvention.html#further-readings"><i class="fa fa-check"></i><b>4.5</b> Further Readings</a></li>
+</ul></li>
+<li class="chapter" data-level="5" data-path="DataResources.html"><a href="DataResources.html"><i class="fa fa-check"></i><b>5</b> Appendix. Data Resources</a>
+<ul>
+<li class="chapter" data-level="5.1" data-path="DataResources.html"><a href="DataResources.html#S:WiscPropFundA"><i class="fa fa-check"></i><b>5.1</b> Wisconsin Property Fund</a></li>
+<li class="chapter" data-level="5.2" data-path="DataResources.html"><a href="DataResources.html#Sec:DataTravel"><i class="fa fa-check"></i><b>5.2</b> ANU Corporate Travel Data</a></li>
+<li class="chapter" data-level="5.3" data-path="DataResources.html"><a href="DataResources.html#Sec:DataGPA"><i class="fa fa-check"></i><b>5.3</b> ANU Group Personal Accident Data</a></li>
+<li class="chapter" data-level="5.4" data-path="DataResources.html"><a href="DataResources.html#Sec:DataAuto"><i class="fa fa-check"></i><b>5.4</b> ANU Motor Vehicle Data</a></li>
+<li class="chapter" data-level="5.5" data-path="DataResources.html"><a href="DataResources.html#spanish-personal-insurance-data"><i class="fa fa-check"></i><b>5.5</b> Spanish Personal Insurance Data</a></li>
+<li class="chapter" data-level="5.6" data-path="DataResources.html"><a href="DataResources.html#S:CASDatasets"><i class="fa fa-check"></i><b>5.6</b> ‘R’ Package CASdatasets</a></li>
+<li class="chapter" data-level="5.7" data-path="DataResources.html"><a href="DataResources.html#other-data-sources"><i class="fa fa-check"></i><b>5.7</b> Other Data Sources</a></li>
+</ul></li>
+<li class="chapter" data-level="" data-path="bibliography.html"><a href="bibliography.html"><i class="fa fa-check"></i>Bibliography</a></li>
+<li class="divider"></li>
+<li><a href="https://github.com/OpenActTexts/Loss-Data-Analytics" target="blank">Loss Data Analytics on GitHub</a></li>
+
+</ul>
+
+      </nav>
+    </div>
+
+    <div class="book-body">
+      <div class="body-inner">
+        <div class="book-header" role="navigation">
+          <h1>
+            <i class="fa fa-circle-o-notch fa-spin"></i><a href="./">Loss Data Analytics <br> Second Edition</a>
+          </h1>
+        </div>
+
+        <div class="page-wrapper" tabindex="-1" role="main">
+          <div class="page-inner">
+
+            <section class="normal" id="section-">
+<div id="DataResources" class="section level1 hasAnchor" number="5">
+<h1><span class="header-section-number">Chapter 5</span> Appendix. Data Resources<a href="DataResources.html#DataResources" class="anchor-section" aria-label="Anchor link to header"></a></h1>
+<p>This appendix section describes the datasets used in this book and others that you may wish to explore.</p>
+<p>For each set of data, we provide download buttons so that you can easily access the data in standard .csv (comma separated value) format. This allows you replicate and experiment with the methods developed in the book as well as sharpen your understanding through exercises.</p>
+<p>We provide the source of each dataset. We also recommend, for deeper understanding, that you occasionally refer to these original sources to further develop your appreciation of the data underpinning the analytics developed in this book.</p>
+<div id="S:WiscPropFundA" class="section level2 hasAnchor" number="5.1">
+<h2><span class="header-section-number">5.1</span> Wisconsin Property Fund<a href="DataResources.html#S:WiscPropFundA" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<p><strong>Description</strong>: The Wisconsin Local Government Property Insurance Fund (LGPIF) is an insurance pool administered by the Wisconsin Office of the Insurance Commissioner. The LGPIF was established to provide property insurance for local government entities that include counties, cities, towns, villages, school districts, and library boards. The fund insures local government property such as government buildings, schools, libraries, and motor vehicles. It covers all property losses except those resulting from flood, earthquake, wear and tear, extremes in temperature, mold, war, nuclear reactions, and embezzlement or theft by an employee.</p>
+<p>The data are available using this download button: <a href="https://raw.githubusercontent.com/OpenActTextDev/LDA_Ed2/main/Data/WiscPropFund.csv" download>
+<button type="button"  style="background-color:#008CBA;color:white">Download the Wisconsin Property Fund Data</button></a></p>
+<table class=" lightable-classic table table-striped table-condensed table" style="font-size: 12px; font-family: Cambria; width: auto !important; margin-left: auto; margin-right: auto; margin-left: auto; margin-right: auto; margin-left: auto; margin-right: auto;">
+<caption style="font-size: initial !important;">
+<span id="tab:unnamed-chunk-63">Table 5.1: </span><strong>Variables in the Wisconsin Property Fund Dataset</strong>
+</caption>
+<thead>
+<tr>
+<th style="text-align:left;">
+Variable
+</th>
+<th style="text-align:left;">
+Description
+</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:left;min-width: 2.5cm; min-width: 1.5cm; ">
+PolicyNum
+</td>
+<td style="text-align:left;width: 12cm; ">
+Policy number
+</td>
+</tr>
+<tr>
+<td style="text-align:left;min-width: 2.5cm; min-width: 1.5cm; ">
+Year
+</td>
+<td style="text-align:left;width: 12cm; ">
+Contract year
+</td>
+</tr>
+<tr>
+<td style="text-align:left;min-width: 2.5cm; min-width: 1.5cm; ">
+Premium
+</td>
+<td style="text-align:left;width: 12cm; ">
+Premium
+</td>
+</tr>
+<tr>
+<td style="text-align:left;min-width: 2.5cm; min-width: 1.5cm; ">
+Deduct
+</td>
+<td style="text-align:left;width: 12cm; ">
+Deductible
+</td>
+</tr>
+<tr>
+<td style="text-align:left;min-width: 2.5cm; min-width: 1.5cm; ">
+BCcov
+</td>
+<td style="text-align:left;width: 12cm; ">
+Coverage for building and contents
+</td>
+</tr>
+<tr>
+<td style="text-align:left;min-width: 2.5cm; min-width: 1.5cm; ">
+Freq
+</td>
+<td style="text-align:left;width: 12cm; ">
+Number of claims during the year (frequency)
+</td>
+</tr>
+<tr>
+<td style="text-align:left;min-width: 2.5cm; min-width: 1.5cm; ">
+Fire5
+</td>
+<td style="text-align:left;width: 12cm; ">
+Binary variable to indicate the fire class is below 5
+</td>
+</tr>
+<tr>
+<td style="text-align:left;min-width: 2.5cm; min-width: 1.5cm; ">
+NoClaimCredit
+</td>
+<td style="text-align:left;width: 12cm; ">
+Binary variable to indicate no claims in the past two years
+</td>
+</tr>
+<tr>
+<td style="text-align:left;min-width: 2.5cm; min-width: 1.5cm; ">
+EntityType
+</td>
+<td style="text-align:left;width: 12cm; ">
+Categorical variable that is one of six types: 1=Village, 2=City,3=County, 4=Misc, 5=School, or Town)
+</td>
+</tr>
+<tr>
+<td style="text-align:left;min-width: 2.5cm; min-width: 1.5cm; ">
+AlarmCredit
+</td>
+<td style="text-align:left;width: 12cm; ">
+Categorical variable that is one of four types: (0, 5, 10, or 15) for automatic smoke alarms in main rooms
+</td>
+</tr>
+<tr>
+<td style="text-align:left;min-width: 2.5cm; min-width: 1.5cm; ">
+BCClaim
+</td>
+<td style="text-align:left;width: 12cm; ">
+Builing and contents claims
+</td>
+</tr>
+</tbody>
+</table>
+<table class=" lightable-classic table table-striped table-condensed table" style="font-size: 8px; font-family: Cambria; width: auto !important; margin-left: auto; margin-right: auto; margin-left: auto; margin-right: auto; margin-left: auto; margin-right: auto;">
+<caption style="font-size: initial !important;">
+<span id="tab:unnamed-chunk-64">Table 5.2: </span><strong>Wisconsin Property Fund First Five Rows</strong>
+</caption>
+<thead>
+<tr>
+<th style="text-align:center;">
+PolicyNum
+</th>
+<th style="text-align:center;">
+Year
+</th>
+<th style="text-align:center;">
+Premium
+</th>
+<th style="text-align:center;">
+Deduct
+</th>
+<th style="text-align:center;">
+BCcov
+</th>
+<th style="text-align:center;">
+Freq
+</th>
+<th style="text-align:center;">
+Fire5
+</th>
+<th style="text-align:center;">
+NoClaimCredit
+</th>
+<th style="text-align:center;">
+EntityType
+</th>
+<th style="text-align:center;">
+AlarmCredit
+</th>
+<th style="text-align:center;">
+BCClaim
+</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:center;min-width: 2.5cm; min-width: 1.6cm; ">
+120002
+</td>
+<td style="text-align:center;min-width: 1.6cm; ">
+2006
+</td>
+<td style="text-align:center;min-width: 1.6cm; ">
+9313
+</td>
+<td style="text-align:center;min-width: 1.6cm; ">
+1000
+</td>
+<td style="text-align:center;min-width: 1.6cm; width: 2.0cm; ">
+22714456
+</td>
+<td style="text-align:center;min-width: 1.6cm; ">
+0
+</td>
+<td style="text-align:center;min-width: 1.6cm; ">
+1
+</td>
+<td style="text-align:center;min-width: 1.6cm; width: 2.6cm; ">
+0
+</td>
+<td style="text-align:center;min-width: 1.6cm; width: 2.0cm; ">
+3
+</td>
+<td style="text-align:center;min-width: 1.6cm; width: 2.0cm; ">
+1
+</td>
+<td style="text-align:center;min-width: 1.6cm; width: 2.0cm; ">
+0
+</td>
+</tr>
+<tr>
+<td style="text-align:center;min-width: 2.5cm; min-width: 1.6cm; ">
+120002
+</td>
+<td style="text-align:center;min-width: 1.6cm; ">
+2007
+</td>
+<td style="text-align:center;min-width: 1.6cm; ">
+8767
+</td>
+<td style="text-align:center;min-width: 1.6cm; ">
+1000
+</td>
+<td style="text-align:center;min-width: 1.6cm; width: 2.0cm; ">
+25046646
+</td>
+<td style="text-align:center;min-width: 1.6cm; ">
+0
+</td>
+<td style="text-align:center;min-width: 1.6cm; ">
+1
+</td>
+<td style="text-align:center;min-width: 1.6cm; width: 2.6cm; ">
+0
+</td>
+<td style="text-align:center;min-width: 1.6cm; width: 2.0cm; ">
+3
+</td>
+<td style="text-align:center;min-width: 1.6cm; width: 2.0cm; ">
+1
+</td>
+<td style="text-align:center;min-width: 1.6cm; width: 2.0cm; ">
+0
+</td>
+</tr>
+<tr>
+<td style="text-align:center;min-width: 2.5cm; min-width: 1.6cm; ">
+120002
+</td>
+<td style="text-align:center;min-width: 1.6cm; ">
+2008
+</td>
+<td style="text-align:center;min-width: 1.6cm; ">
+7090
+</td>
+<td style="text-align:center;min-width: 1.6cm; ">
+1000
+</td>
+<td style="text-align:center;min-width: 1.6cm; width: 2.0cm; ">
+20851525
+</td>
+<td style="text-align:center;min-width: 1.6cm; ">
+0
+</td>
+<td style="text-align:center;min-width: 1.6cm; ">
+1
+</td>
+<td style="text-align:center;min-width: 1.6cm; width: 2.6cm; ">
+1
+</td>
+<td style="text-align:center;min-width: 1.6cm; width: 2.0cm; ">
+3
+</td>
+<td style="text-align:center;min-width: 1.6cm; width: 2.0cm; ">
+1
+</td>
+<td style="text-align:center;min-width: 1.6cm; width: 2.0cm; ">
+0
+</td>
+</tr>
+<tr>
+<td style="text-align:center;min-width: 2.5cm; min-width: 1.6cm; ">
+120002
+</td>
+<td style="text-align:center;min-width: 1.6cm; ">
+2009
+</td>
+<td style="text-align:center;min-width: 1.6cm; ">
+8522
+</td>
+<td style="text-align:center;min-width: 1.6cm; ">
+1000
+</td>
+<td style="text-align:center;min-width: 1.6cm; width: 2.0cm; ">
+21852696
+</td>
+<td style="text-align:center;min-width: 1.6cm; ">
+0
+</td>
+<td style="text-align:center;min-width: 1.6cm; ">
+1
+</td>
+<td style="text-align:center;min-width: 1.6cm; width: 2.6cm; ">
+1
+</td>
+<td style="text-align:center;min-width: 1.6cm; width: 2.0cm; ">
+3
+</td>
+<td style="text-align:center;min-width: 1.6cm; width: 2.0cm; ">
+1
+</td>
+<td style="text-align:center;min-width: 1.6cm; width: 2.0cm; ">
+0
+</td>
+</tr>
+<tr>
+<td style="text-align:center;min-width: 2.5cm; min-width: 1.6cm; ">
+120002
+</td>
+<td style="text-align:center;min-width: 1.6cm; ">
+2010
+</td>
+<td style="text-align:center;min-width: 1.6cm; ">
+7994
+</td>
+<td style="text-align:center;min-width: 1.6cm; ">
+1000
+</td>
+<td style="text-align:center;min-width: 1.6cm; width: 2.0cm; ">
+23511493
+</td>
+<td style="text-align:center;min-width: 1.6cm; ">
+1
+</td>
+<td style="text-align:center;min-width: 1.6cm; ">
+1
+</td>
+<td style="text-align:center;min-width: 1.6cm; width: 2.6cm; ">
+1
+</td>
+<td style="text-align:center;min-width: 1.6cm; width: 2.0cm; ">
+3
+</td>
+<td style="text-align:center;min-width: 1.6cm; width: 2.0cm; ">
+1
+</td>
+<td style="text-align:center;min-width: 1.6cm; width: 2.0cm; ">
+6839
+</td>
+</tr>
+</tbody>
+</table>
+<table class=" lightable-classic table table-striped table-condensed table" style="font-size: 8px; font-family: Cambria; width: auto !important; margin-left: auto; margin-right: auto; margin-left: auto; margin-right: auto; margin-left: auto; margin-right: auto;">
+<caption style="font-size: initial !important;">
+<span id="tab:unnamed-chunk-64">Table 5.2: </span><strong>Wisconsin Property Fund Last Five Rows</strong>
+</caption>
+<thead>
+<tr>
+<th style="text-align:center;">
+PolicyNum
+</th>
+<th style="text-align:center;">
+Year
+</th>
+<th style="text-align:center;">
+Premium
+</th>
+<th style="text-align:center;">
+Deduct
+</th>
+<th style="text-align:center;">
+BCcov
+</th>
+<th style="text-align:center;">
+Freq
+</th>
+<th style="text-align:center;">
+Fire5
+</th>
+<th style="text-align:center;">
+NoClaimCredit
+</th>
+<th style="text-align:center;">
+EntityType
+</th>
+<th style="text-align:center;">
+AlarmCredit
+</th>
+<th style="text-align:center;">
+BCClaim
+</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:center;min-width: 2.5cm; min-width: 1.6cm; ">
+180787
+</td>
+<td style="text-align:center;min-width: 1.6cm; ">
+2010
+</td>
+<td style="text-align:center;min-width: 1.6cm; ">
+199
+</td>
+<td style="text-align:center;min-width: 1.6cm; ">
+500
+</td>
+<td style="text-align:center;min-width: 1.6cm; width: 2.0cm; ">
+285000
+</td>
+<td style="text-align:center;min-width: 1.6cm; ">
+0
+</td>
+<td style="text-align:center;min-width: 1.6cm; ">
+1
+</td>
+<td style="text-align:center;min-width: 1.6cm; width: 2.6cm; ">
+1
+</td>
+<td style="text-align:center;min-width: 1.6cm; width: 2.0cm; ">
+4
+</td>
+<td style="text-align:center;min-width: 1.6cm; width: 2.0cm; ">
+1
+</td>
+<td style="text-align:center;min-width: 1.6cm; width: 2.0cm; ">
+0
+</td>
+</tr>
+<tr>
+<td style="text-align:center;min-width: 2.5cm; min-width: 1.6cm; ">
+180788
+</td>
+<td style="text-align:center;min-width: 1.6cm; ">
+2010
+</td>
+<td style="text-align:center;min-width: 1.6cm; ">
+58344
+</td>
+<td style="text-align:center;min-width: 1.6cm; ">
+100000
+</td>
+<td style="text-align:center;min-width: 1.6cm; width: 2.0cm; ">
+416739800
+</td>
+<td style="text-align:center;min-width: 1.6cm; ">
+1
+</td>
+<td style="text-align:center;min-width: 1.6cm; ">
+1
+</td>
+<td style="text-align:center;min-width: 1.6cm; width: 2.6cm; ">
+0
+</td>
+<td style="text-align:center;min-width: 1.6cm; width: 2.0cm; ">
+4
+</td>
+<td style="text-align:center;min-width: 1.6cm; width: 2.0cm; ">
+1
+</td>
+<td style="text-align:center;min-width: 1.6cm; width: 2.0cm; ">
+168304
+</td>
+</tr>
+<tr>
+<td style="text-align:center;min-width: 2.5cm; min-width: 1.6cm; ">
+180789
+</td>
+<td style="text-align:center;min-width: 1.6cm; ">
+2010
+</td>
+<td style="text-align:center;min-width: 1.6cm; ">
+295
+</td>
+<td style="text-align:center;min-width: 1.6cm; ">
+500
+</td>
+<td style="text-align:center;min-width: 1.6cm; width: 2.0cm; ">
+500988
+</td>
+<td style="text-align:center;min-width: 1.6cm; ">
+1
+</td>
+<td style="text-align:center;min-width: 1.6cm; ">
+1
+</td>
+<td style="text-align:center;min-width: 1.6cm; width: 2.6cm; ">
+0
+</td>
+<td style="text-align:center;min-width: 1.6cm; width: 2.0cm; ">
+4
+</td>
+<td style="text-align:center;min-width: 1.6cm; width: 2.0cm; ">
+1
+</td>
+<td style="text-align:center;min-width: 1.6cm; width: 2.0cm; ">
+1034
+</td>
+</tr>
+<tr>
+<td style="text-align:center;min-width: 2.5cm; min-width: 1.6cm; ">
+180790
+</td>
+<td style="text-align:center;min-width: 1.6cm; ">
+2010
+</td>
+<td style="text-align:center;min-width: 1.6cm; ">
+2077
+</td>
+<td style="text-align:center;min-width: 1.6cm; ">
+1000
+</td>
+<td style="text-align:center;min-width: 1.6cm; width: 2.0cm; ">
+3580665
+</td>
+<td style="text-align:center;min-width: 1.6cm; ">
+0
+</td>
+<td style="text-align:center;min-width: 1.6cm; ">
+1
+</td>
+<td style="text-align:center;min-width: 1.6cm; width: 2.6cm; ">
+0
+</td>
+<td style="text-align:center;min-width: 1.6cm; width: 2.0cm; ">
+4
+</td>
+<td style="text-align:center;min-width: 1.6cm; width: 2.0cm; ">
+4
+</td>
+<td style="text-align:center;min-width: 1.6cm; width: 2.0cm; ">
+0
+</td>
+</tr>
+<tr>
+<td style="text-align:center;min-width: 2.5cm; min-width: 1.6cm; ">
+180791
+</td>
+<td style="text-align:center;min-width: 1.6cm; ">
+2010
+</td>
+<td style="text-align:center;min-width: 1.6cm; ">
+81
+</td>
+<td style="text-align:center;min-width: 1.6cm; ">
+500
+</td>
+<td style="text-align:center;min-width: 1.6cm; width: 2.0cm; ">
+118800
+</td>
+<td style="text-align:center;min-width: 1.6cm; ">
+0
+</td>
+<td style="text-align:center;min-width: 1.6cm; ">
+1
+</td>
+<td style="text-align:center;min-width: 1.6cm; width: 2.6cm; ">
+0
+</td>
+<td style="text-align:center;min-width: 1.6cm; width: 2.0cm; ">
+4
+</td>
+<td style="text-align:center;min-width: 1.6cm; width: 2.0cm; ">
+1
+</td>
+<td style="text-align:center;min-width: 1.6cm; width: 2.0cm; ">
+0
+</td>
+</tr>
+</tbody>
+</table>
+</div>
+<div id="Sec:DataTravel" class="section level2 hasAnchor" number="5.2">
+<h2><span class="header-section-number">5.2</span> ANU Corporate Travel Data<a href="DataResources.html#Sec:DataTravel" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<p>Universities purchase corporate travel policies to cover employees and students traveling on official university business for a wide variety of accidents and incidents while away from the campus or primary workplace. This broad coverage includes medical care and evacuation, loss of personal property, extraction for political and weather related reasons, and more. See <span class="citation">Frees and Butt (<a href="bibliography.html#ref-frees2022ANURisks">2022</a>)</span> for more information about this coverage.</p>
+<p>There are 2107 observations in this dataset. The variable names are described in Table <a href="DataResources.html#tab:DescribeTravel">5.3</a> and the first and last five observations are in Table <a href="DataResources.html#tab:PrintNumTravel">5.4</a>.</p>
+<p>Data are available using this button: <a href="https://datacommons.anu.edu.au/DataCommons/rest/records/anudc:6160/data/TravelClaims2022.csv"
+download >
+<button type="button"  style="background-color:#008CBA;color:white">Download Corporate Travel Claims Data</button></a>.</p>
+<table class=" lightable-classic table table-striped table-condensed table" style="font-size: 12px; font-family: Cambria; width: auto !important; margin-left: auto; margin-right: auto; margin-left: auto; margin-right: auto; margin-left: auto; margin-right: auto;">
+<caption style="font-size: initial !important;">
+<span id="tab:DescribeTravel">Table 5.3: </span><strong>Variables in the Corporate Travel Dataset</strong>
+</caption>
+<thead>
+<tr>
+<th style="text-align:left;">
+Variable
+</th>
+<th style="text-align:left;">
+Description
+</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:left;min-width: 2.5cm; min-width: 1.5cm; ">
+UW Year
+</td>
+<td style="text-align:left;width: 12cm; ">
+Underwriting Year
+</td>
+</tr>
+<tr>
+<td style="text-align:left;min-width: 2.5cm; min-width: 1.5cm; ">
+Loss Date
+</td>
+<td style="text-align:left;width: 12cm; ">
+Date that the loss occurred
+</td>
+</tr>
+<tr>
+<td style="text-align:left;min-width: 2.5cm; min-width: 1.5cm; ">
+Reported Date
+</td>
+<td style="text-align:left;width: 12cm; ">
+Date that the loss was reported
+</td>
+</tr>
+<tr>
+<td style="text-align:left;min-width: 2.5cm; min-width: 1.5cm; ">
+Last Trans Date
+</td>
+<td style="text-align:left;width: 12cm; ">
+Last date in which there was a transaction regarding the loss
+</td>
+</tr>
+<tr>
+<td style="text-align:left;min-width: 2.5cm; min-width: 1.5cm; ">
+Paid Loss
+</td>
+<td style="text-align:left;width: 12cm; ">
+Cumulative amount paid on the loss
+</td>
+</tr>
+<tr>
+<td style="text-align:left;min-width: 2.5cm; min-width: 1.5cm; ">
+Outstanding Reserve
+</td>
+<td style="text-align:left;width: 12cm; ">
+Estimate of the loss amount yet to be paid
+</td>
+</tr>
+<tr>
+<td style="text-align:left;min-width: 2.5cm; min-width: 1.5cm; ">
+Incurred Loss
+</td>
+<td style="text-align:left;width: 12cm; ">
+Sum of the amount paid and the estimate of future payments
+</td>
+</tr>
+<tr>
+<td style="text-align:left;min-width: 2.5cm; min-width: 1.5cm; ">
+Status
+</td>
+<td style="text-align:left;width: 12cm; ">
+An indicator as to whether the claim has been deemed settled (closed) or not settled (open)
+</td>
+</tr>
+</tbody>
+</table>
+<table class=" lightable-classic table table-striped table-condensed table" style="font-size: 8px; font-family: Cambria; width: auto !important; margin-left: auto; margin-right: auto; margin-left: auto; margin-right: auto; margin-left: auto; margin-right: auto;">
+<caption style="font-size: initial !important;">
+<span id="tab:PrintNumTravel">Table 5.4: </span><strong>Corporate Travel Data First Five Rows</strong>
+</caption>
+<thead>
+<tr>
+<th style="text-align:center;">
+UW.Year
+</th>
+<th style="text-align:center;">
+Loss.Date
+</th>
+<th style="text-align:center;">
+Reported.Date
+</th>
+<th style="text-align:center;">
+Last.Trans.Date
+</th>
+<th style="text-align:center;">
+Paid.Loss
+</th>
+<th style="text-align:center;">
+Outstanding.Reserve
+</th>
+<th style="text-align:center;">
+Incurred.Loss
+</th>
+<th style="text-align:center;">
+Status
+</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:center;min-width: 2.5cm; min-width: 2.6cm; ">
+2021
+</td>
+<td style="text-align:center;min-width: 2.6cm; ">
+19/12/2021
+</td>
+<td style="text-align:center;min-width: 2.6cm; ">
+20/12/2021
+</td>
+<td style="text-align:center;min-width: 2.6cm; ">
+24/12/2021
+</td>
+<td style="text-align:center;min-width: 2.6cm; ">
+10000
+</td>
+<td style="text-align:center;min-width: 2.6cm; width: 3.6cm; ">
+0
+</td>
+<td style="text-align:center;min-width: 2.6cm; ">
+10000
+</td>
+<td style="text-align:center;min-width: 2.6cm; ">
+Closed
+</td>
+</tr>
+<tr>
+<td style="text-align:center;min-width: 2.5cm; min-width: 2.6cm; ">
+2021
+</td>
+<td style="text-align:center;min-width: 2.6cm; ">
+9/4/2022
+</td>
+<td style="text-align:center;min-width: 2.6cm; ">
+29/04/2022
+</td>
+<td style="text-align:center;min-width: 2.6cm; ">
+30/05/2022
+</td>
+<td style="text-align:center;min-width: 2.6cm; ">
+423
+</td>
+<td style="text-align:center;min-width: 2.6cm; width: 3.6cm; ">
+0
+</td>
+<td style="text-align:center;min-width: 2.6cm; ">
+423
+</td>
+<td style="text-align:center;min-width: 2.6cm; ">
+Closed
+</td>
+</tr>
+<tr>
+<td style="text-align:center;min-width: 2.5cm; min-width: 2.6cm; ">
+2021
+</td>
+<td style="text-align:center;min-width: 2.6cm; ">
+2/5/2022
+</td>
+<td style="text-align:center;min-width: 2.6cm; ">
+4/5/2022
+</td>
+<td style="text-align:center;min-width: 2.6cm; ">
+</td>
+<td style="text-align:center;min-width: 2.6cm; ">
+0
+</td>
+<td style="text-align:center;min-width: 2.6cm; width: 3.6cm; ">
+500
+</td>
+<td style="text-align:center;min-width: 2.6cm; ">
+500
+</td>
+<td style="text-align:center;min-width: 2.6cm; ">
+Open
+</td>
+</tr>
+<tr>
+<td style="text-align:center;min-width: 2.5cm; min-width: 2.6cm; ">
+2021
+</td>
+<td style="text-align:center;min-width: 2.6cm; ">
+5/5/2022
+</td>
+<td style="text-align:center;min-width: 2.6cm; ">
+17/05/2022
+</td>
+<td style="text-align:center;min-width: 2.6cm; ">
+</td>
+<td style="text-align:center;min-width: 2.6cm; ">
+0
+</td>
+<td style="text-align:center;min-width: 2.6cm; width: 3.6cm; ">
+562
+</td>
+<td style="text-align:center;min-width: 2.6cm; ">
+562
+</td>
+<td style="text-align:center;min-width: 2.6cm; ">
+Open
+</td>
+</tr>
+<tr>
+<td style="text-align:center;min-width: 2.5cm; min-width: 2.6cm; ">
+2021
+</td>
+<td style="text-align:center;min-width: 2.6cm; ">
+30/04/2022
+</td>
+<td style="text-align:center;min-width: 2.6cm; ">
+27/05/2022
+</td>
+<td style="text-align:center;min-width: 2.6cm; ">
+10/6/2022
+</td>
+<td style="text-align:center;min-width: 2.6cm; ">
+1500
+</td>
+<td style="text-align:center;min-width: 2.6cm; width: 3.6cm; ">
+0
+</td>
+<td style="text-align:center;min-width: 2.6cm; ">
+1500
+</td>
+<td style="text-align:center;min-width: 2.6cm; ">
+Closed
+</td>
+</tr>
+</tbody>
+</table>
+<table class=" lightable-classic table table-striped table-condensed table" style="font-size: 8px; font-family: Cambria; width: auto !important; margin-left: auto; margin-right: auto; margin-left: auto; margin-right: auto; margin-left: auto; margin-right: auto;">
+<caption style="font-size: initial !important;">
+<span id="tab:PrintNumTravel">Table 5.4: </span><strong>Corporate Travel Data Last Five Rows</strong>
+</caption>
+<thead>
+<tr>
+<th style="text-align:center;">
+UW.Year
+</th>
+<th style="text-align:center;">
+Loss.Date
+</th>
+<th style="text-align:center;">
+Reported.Date
+</th>
+<th style="text-align:center;">
+Last.Trans.Date
+</th>
+<th style="text-align:center;">
+Paid.Loss
+</th>
+<th style="text-align:center;">
+Outstanding.Reserve
+</th>
+<th style="text-align:center;">
+Incurred.Loss
+</th>
+<th style="text-align:center;">
+Status
+</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:center;min-width: 2.5cm; min-width: 2.6cm; ">
+2006
+</td>
+<td style="text-align:center;min-width: 2.6cm; ">
+1/11/2006
+</td>
+<td style="text-align:center;min-width: 2.6cm; ">
+19/06/2007
+</td>
+<td style="text-align:center;min-width: 2.6cm; ">
+</td>
+<td style="text-align:center;min-width: 2.6cm; ">
+0
+</td>
+<td style="text-align:center;min-width: 2.6cm; width: 3.6cm; ">
+0
+</td>
+<td style="text-align:center;min-width: 2.6cm; ">
+0
+</td>
+<td style="text-align:center;min-width: 2.6cm; ">
+Closed
+</td>
+</tr>
+<tr>
+<td style="text-align:center;min-width: 2.5cm; min-width: 2.6cm; ">
+2006
+</td>
+<td style="text-align:center;min-width: 2.6cm; ">
+24/06/2007
+</td>
+<td style="text-align:center;min-width: 2.6cm; ">
+26/06/2007
+</td>
+<td style="text-align:center;min-width: 2.6cm; ">
+8/1/2008
+</td>
+<td style="text-align:center;min-width: 2.6cm; ">
+6278
+</td>
+<td style="text-align:center;min-width: 2.6cm; width: 3.6cm; ">
+0
+</td>
+<td style="text-align:center;min-width: 2.6cm; ">
+6278
+</td>
+<td style="text-align:center;min-width: 2.6cm; ">
+Closed
+</td>
+</tr>
+<tr>
+<td style="text-align:center;min-width: 2.5cm; min-width: 2.6cm; ">
+2006
+</td>
+<td style="text-align:center;min-width: 2.6cm; ">
+4/7/2007
+</td>
+<td style="text-align:center;min-width: 2.6cm; ">
+6/7/2007
+</td>
+<td style="text-align:center;min-width: 2.6cm; ">
+11/9/2007
+</td>
+<td style="text-align:center;min-width: 2.6cm; ">
+114
+</td>
+<td style="text-align:center;min-width: 2.6cm; width: 3.6cm; ">
+0
+</td>
+<td style="text-align:center;min-width: 2.6cm; ">
+114
+</td>
+<td style="text-align:center;min-width: 2.6cm; ">
+Closed
+</td>
+</tr>
+<tr>
+<td style="text-align:center;min-width: 2.5cm; min-width: 2.6cm; ">
+2006
+</td>
+<td style="text-align:center;min-width: 2.6cm; ">
+20/05/2007
+</td>
+<td style="text-align:center;min-width: 2.6cm; ">
+26/06/2007
+</td>
+<td style="text-align:center;min-width: 2.6cm; ">
+14/07/2007
+</td>
+<td style="text-align:center;min-width: 2.6cm; ">
+136
+</td>
+<td style="text-align:center;min-width: 2.6cm; width: 3.6cm; ">
+0
+</td>
+<td style="text-align:center;min-width: 2.6cm; ">
+136
+</td>
+<td style="text-align:center;min-width: 2.6cm; ">
+Closed
+</td>
+</tr>
+<tr>
+<td style="text-align:center;min-width: 2.5cm; min-width: 2.6cm; ">
+2006
+</td>
+<td style="text-align:center;min-width: 2.6cm; ">
+15/02/2007
+</td>
+<td style="text-align:center;min-width: 2.6cm; ">
+27/06/2007
+</td>
+<td style="text-align:center;min-width: 2.6cm; ">
+14/07/2007
+</td>
+<td style="text-align:center;min-width: 2.6cm; ">
+1208
+</td>
+<td style="text-align:center;min-width: 2.6cm; width: 3.6cm; ">
+0
+</td>
+<td style="text-align:center;min-width: 2.6cm; ">
+1208
+</td>
+<td style="text-align:center;min-width: 2.6cm; ">
+Closed
+</td>
+</tr>
+</tbody>
+</table>
+<p><br></p>
+<p><em>Source</em>: Frees, Edward and Butt, Adam (2022). “ANU Corporate Travel Insurance Claims 2022”. Australian National University Data Commons. DOI <a href="https://doi.org/10.25911/vrdw-9f32" class="uri">https://doi.org/10.25911/vrdw-9f32</a>.</p>
+</div>
+<div id="Sec:DataGPA" class="section level2 hasAnchor" number="5.3">
+<h2><span class="header-section-number">5.3</span> ANU Group Personal Accident Data<a href="DataResources.html#Sec:DataGPA" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<p>Group personal accident insurance offers financial protection in case of injury or death resulting from an incident that occurs on the job. Like workers’ compensation, group personal accident offers insurance coverage and liability insurance protection against accidental death or injury. Unlike workers’ compensation, group personal accident covers students and ANU’s voluntary workers. See <span class="citation">Frees and Butt (<a href="bibliography.html#ref-frees2022ANURisks">2022</a>)</span> for more information about this coverage.</p>
+<p>There are 148 observations in this dataset. The variable names are described in Table <a href="DataResources.html#tab:DescribeGPA">5.5</a> and the first and last five observations are in Table <a href="DataResources.html#tab:PrintNumGPA">5.6</a>.</p>
+<p>Data are available using this button: <a href="https://datacommons.anu.edu.au/DataCommons/rest/records/anudc:6164/data/GroupPersonalAccidentClaims2022.csv" download > <button type="button"  style="background-color:#008CBA;color:white">Download Group Personal Accident Claims Data</button></a>.</p>
+<table class=" lightable-classic table table-striped table-condensed table" style="font-size: 12px; font-family: Cambria; width: auto !important; margin-left: auto; margin-right: auto; margin-left: auto; margin-right: auto; margin-left: auto; margin-right: auto;">
+<caption style="font-size: initial !important;">
+<span id="tab:DescribeGPA">Table 5.5: </span><strong>Variables in the Group Personal Accident Dataset</strong>
+</caption>
+<thead>
+<tr>
+<th style="text-align:left;">
+Variable
+</th>
+<th style="text-align:left;">
+Description
+</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:left;min-width: 2.5cm; min-width: 1.5cm; ">
+UW Year
+</td>
+<td style="text-align:left;width: 12cm; ">
+Underwriting Year
+</td>
+</tr>
+<tr>
+<td style="text-align:left;min-width: 2.5cm; min-width: 1.5cm; ">
+Loss Date
+</td>
+<td style="text-align:left;width: 12cm; ">
+Date that the loss occurred
+</td>
+</tr>
+<tr>
+<td style="text-align:left;min-width: 2.5cm; min-width: 1.5cm; ">
+Last Trans Date
+</td>
+<td style="text-align:left;width: 12cm; ">
+Last date in which there was a transaction regarding the loss.
+</td>
+</tr>
+<tr>
+<td style="text-align:left;min-width: 2.5cm; min-width: 1.5cm; ">
+Paid Loss
+</td>
+<td style="text-align:left;width: 12cm; ">
+Cumulative amount paid on the loss
+</td>
+</tr>
+<tr>
+<td style="text-align:left;min-width: 2.5cm; min-width: 1.5cm; ">
+Outstanding Reserve
+</td>
+<td style="text-align:left;width: 12cm; ">
+Estimate of the loss amount yet to be paid
+</td>
+</tr>
+<tr>
+<td style="text-align:left;min-width: 2.5cm; min-width: 1.5cm; ">
+Incurred Loss
+</td>
+<td style="text-align:left;width: 12cm; ">
+Sum of the amount paid and the estimate of future payments
+</td>
+</tr>
+<tr>
+<td style="text-align:left;min-width: 2.5cm; min-width: 1.5cm; ">
+Status
+</td>
+<td style="text-align:left;width: 12cm; ">
+An indicator as to whether the claim has been deemed settled (closed) or not settled (open)
+</td>
+</tr>
+</tbody>
+</table>
+<table class=" lightable-classic table table-striped table-condensed table" style="font-size: 12px; font-family: Cambria; width: auto !important; margin-left: auto; margin-right: auto; margin-left: auto; margin-right: auto; margin-left: auto; margin-right: auto;">
+<caption style="font-size: initial !important;">
+<span id="tab:PrintNumGPA">Table 5.6: </span><strong>Group Personal Accident Data First Five Rows</strong>
+</caption>
+<thead>
+<tr>
+<th style="text-align:center;">
+UW.Year
+</th>
+<th style="text-align:center;">
+Loss.Date
+</th>
+<th style="text-align:center;">
+Last.Trans.Date
+</th>
+<th style="text-align:center;">
+Paid.Loss
+</th>
+<th style="text-align:center;">
+Outstanding.Reserve
+</th>
+<th style="text-align:center;">
+Incurred.Loss
+</th>
+<th style="text-align:center;">
+Status
+</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:center;min-width: 2.5cm; min-width: 2.4cm; ">
+2021
+</td>
+<td style="text-align:center;min-width: 2.4cm; ">
+6/12/2021
+</td>
+<td style="text-align:center;min-width: 2.4cm; ">
+3/6/2022
+</td>
+<td style="text-align:center;min-width: 2.4cm; ">
+805
+</td>
+<td style="text-align:center;min-width: 2.4cm; width: 3.0cm; ">
+0
+</td>
+<td style="text-align:center;min-width: 2.4cm; ">
+805
+</td>
+<td style="text-align:center;min-width: 2.4cm; ">
+Closed
+</td>
+</tr>
+<tr>
+<td style="text-align:center;min-width: 2.5cm; min-width: 2.4cm; ">
+2021
+</td>
+<td style="text-align:center;min-width: 2.4cm; ">
+15/11/2021
+</td>
+<td style="text-align:center;min-width: 2.4cm; ">
+</td>
+<td style="text-align:center;min-width: 2.4cm; ">
+0
+</td>
+<td style="text-align:center;min-width: 2.4cm; width: 3.0cm; ">
+0
+</td>
+<td style="text-align:center;min-width: 2.4cm; ">
+0
+</td>
+<td style="text-align:center;min-width: 2.4cm; ">
+Closed
+</td>
+</tr>
+<tr>
+<td style="text-align:center;min-width: 2.5cm; min-width: 2.4cm; ">
+2021
+</td>
+<td style="text-align:center;min-width: 2.4cm; ">
+15/11/2021
+</td>
+<td style="text-align:center;min-width: 2.4cm; ">
+</td>
+<td style="text-align:center;min-width: 2.4cm; ">
+0
+</td>
+<td style="text-align:center;min-width: 2.4cm; width: 3.0cm; ">
+0
+</td>
+<td style="text-align:center;min-width: 2.4cm; ">
+0
+</td>
+<td style="text-align:center;min-width: 2.4cm; ">
+Closed
+</td>
+</tr>
+<tr>
+<td style="text-align:center;min-width: 2.5cm; min-width: 2.4cm; ">
+2021
+</td>
+<td style="text-align:center;min-width: 2.4cm; ">
+22/03/2022
+</td>
+<td style="text-align:center;min-width: 2.4cm; ">
+4/5/2022
+</td>
+<td style="text-align:center;min-width: 2.4cm; ">
+396
+</td>
+<td style="text-align:center;min-width: 2.4cm; width: 3.0cm; ">
+0
+</td>
+<td style="text-align:center;min-width: 2.4cm; ">
+396
+</td>
+<td style="text-align:center;min-width: 2.4cm; ">
+Closed
+</td>
+</tr>
+<tr>
+<td style="text-align:center;min-width: 2.5cm; min-width: 2.4cm; ">
+2021
+</td>
+<td style="text-align:center;min-width: 2.4cm; ">
+11/4/2022
+</td>
+<td style="text-align:center;min-width: 2.4cm; ">
+2/8/2022
+</td>
+<td style="text-align:center;min-width: 2.4cm; ">
+740
+</td>
+<td style="text-align:center;min-width: 2.4cm; width: 3.0cm; ">
+360
+</td>
+<td style="text-align:center;min-width: 2.4cm; ">
+1100
+</td>
+<td style="text-align:center;min-width: 2.4cm; ">
+Open
+</td>
+</tr>
+</tbody>
+</table>
+<table class=" lightable-classic table table-striped table-condensed table" style="font-size: 12px; font-family: Cambria; width: auto !important; margin-left: auto; margin-right: auto; margin-left: auto; margin-right: auto; margin-left: auto; margin-right: auto;">
+<caption style="font-size: initial !important;">
+<span id="tab:PrintNumGPA">Table 5.6: </span><strong>Group Personal Accident Data Last Five Rows</strong>
+</caption>
+<thead>
+<tr>
+<th style="text-align:center;">
+UW.Year
+</th>
+<th style="text-align:center;">
+Loss.Date
+</th>
+<th style="text-align:center;">
+Last.Trans.Date
+</th>
+<th style="text-align:center;">
+Paid.Loss
+</th>
+<th style="text-align:center;">
+Outstanding.Reserve
+</th>
+<th style="text-align:center;">
+Incurred.Loss
+</th>
+<th style="text-align:center;">
+Status
+</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:center;min-width: 2.5cm; min-width: 2.4cm; ">
+2010
+</td>
+<td style="text-align:center;min-width: 2.4cm; ">
+6/3/2011
+</td>
+<td style="text-align:center;min-width: 2.4cm; ">
+26/07/2011
+</td>
+<td style="text-align:center;min-width: 2.4cm; ">
+776
+</td>
+<td style="text-align:center;min-width: 2.4cm; width: 3.0cm; ">
+0
+</td>
+<td style="text-align:center;min-width: 2.4cm; ">
+776
+</td>
+<td style="text-align:center;min-width: 2.4cm; ">
+Closed
+</td>
+</tr>
+<tr>
+<td style="text-align:center;min-width: 2.5cm; min-width: 2.4cm; ">
+2010
+</td>
+<td style="text-align:center;min-width: 2.4cm; ">
+22/07/2011
+</td>
+<td style="text-align:center;min-width: 2.4cm; ">
+23/01/2012
+</td>
+<td style="text-align:center;min-width: 2.4cm; ">
+4625
+</td>
+<td style="text-align:center;min-width: 2.4cm; width: 3.0cm; ">
+0
+</td>
+<td style="text-align:center;min-width: 2.4cm; ">
+4625
+</td>
+<td style="text-align:center;min-width: 2.4cm; ">
+Closed
+</td>
+</tr>
+<tr>
+<td style="text-align:center;min-width: 2.5cm; min-width: 2.4cm; ">
+2010
+</td>
+<td style="text-align:center;min-width: 2.4cm; ">
+5/6/2011
+</td>
+<td style="text-align:center;min-width: 2.4cm; ">
+30/01/2012
+</td>
+<td style="text-align:center;min-width: 2.4cm; ">
+1504
+</td>
+<td style="text-align:center;min-width: 2.4cm; width: 3.0cm; ">
+0
+</td>
+<td style="text-align:center;min-width: 2.4cm; ">
+1504
+</td>
+<td style="text-align:center;min-width: 2.4cm; ">
+Closed
+</td>
+</tr>
+<tr>
+<td style="text-align:center;min-width: 2.5cm; min-width: 2.4cm; ">
+2007
+</td>
+<td style="text-align:center;min-width: 2.4cm; ">
+11/1/2008
+</td>
+<td style="text-align:center;min-width: 2.4cm; ">
+23/02/2008
+</td>
+<td style="text-align:center;min-width: 2.4cm; ">
+0
+</td>
+<td style="text-align:center;min-width: 2.4cm; width: 3.0cm; ">
+0
+</td>
+<td style="text-align:center;min-width: 2.4cm; ">
+0
+</td>
+<td style="text-align:center;min-width: 2.4cm; ">
+Closed
+</td>
+</tr>
+<tr>
+<td style="text-align:center;min-width: 2.5cm; min-width: 2.4cm; ">
+2007
+</td>
+<td style="text-align:center;min-width: 2.4cm; ">
+29/08/2008
+</td>
+<td style="text-align:center;min-width: 2.4cm; ">
+</td>
+<td style="text-align:center;min-width: 2.4cm; ">
+0
+</td>
+<td style="text-align:center;min-width: 2.4cm; width: 3.0cm; ">
+0
+</td>
+<td style="text-align:center;min-width: 2.4cm; ">
+0
+</td>
+<td style="text-align:center;min-width: 2.4cm; ">
+Closed
+</td>
+</tr>
+</tbody>
+</table>
+<p><br></p>
+<p><em>Source</em>: Frees, Edward and Butt, Adam (2022). “ANU Group Personal Accident Claims 2022”. Australian National University Data Commons. <a href="https://doi.org/10.25911/jcfx-zj56" class="uri">https://doi.org/10.25911/jcfx-zj56</a>.</p>
+</div>
+<div id="Sec:DataAuto" class="section level2 hasAnchor" number="5.4">
+<h2><span class="header-section-number">5.4</span> ANU Motor Vehicle Data<a href="DataResources.html#Sec:DataAuto" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<p>This policy covers ANU’s vehicles including cars, vans, utilities, and motorcycles. See <span class="citation">Frees and Butt (<a href="bibliography.html#ref-frees2022ANURisks">2022</a>)</span> for more information about this coverage.</p>
+<p>There are 318 observations in this dataset. The variable names are described in Table <a href="DataResources.html#tab:DescribeAuto">5.7</a> and the first and last five observations are in Table <a href="DataResources.html#tab:PrintNumAuto">5.8</a>.</p>
+<p>Data are available using this button: <a href="https://datacommons.anu.edu.au/DataCommons/rest/records/anudc:6165/data/MotorClaims2022.csv"
+download >
+<button type="button"  style="background-color:#008CBA;color:white">Download Motor Vehicle Claims Data</button></a>.</p>
+<table class=" lightable-classic table table-striped table-condensed table" style="font-size: 12px; font-family: Cambria; width: auto !important; margin-left: auto; margin-right: auto; margin-left: auto; margin-right: auto; margin-left: auto; margin-right: auto;">
+<caption style="font-size: initial !important;">
+<span id="tab:DescribeAuto">Table 5.7: </span><strong>Variables in the Motor Vehicle Dataset</strong>
+</caption>
+<thead>
+<tr>
+<th style="text-align:left;">
+Variable
+</th>
+<th style="text-align:left;">
+Description
+</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:left;min-width: 2.5cm; min-width: 1.5cm; ">
+Policy Term Start Date
+</td>
+<td style="text-align:left;width: 12cm; ">
+Start date of the contract year in which the loss occurred
+</td>
+</tr>
+<tr>
+<td style="text-align:left;min-width: 2.5cm; min-width: 1.5cm; ">
+Loss Date
+</td>
+<td style="text-align:left;width: 12cm; ">
+Date that the loss occurred
+</td>
+</tr>
+<tr>
+<td style="text-align:left;min-width: 2.5cm; min-width: 1.5cm; ">
+Reported Date
+</td>
+<td style="text-align:left;width: 12cm; ">
+Date that the loss was reported
+</td>
+</tr>
+<tr>
+<td style="text-align:left;min-width: 2.5cm; min-width: 1.5cm; ">
+Motor Fault
+</td>
+<td style="text-align:left;width: 12cm; ">
+Party responsible for the loss
+</td>
+</tr>
+<tr>
+<td style="text-align:left;min-width: 2.5cm; min-width: 1.5cm; ">
+Driver Age
+</td>
+<td style="text-align:left;width: 12cm; ">
+Age of the driver
+</td>
+</tr>
+<tr>
+<td style="text-align:left;min-width: 2.5cm; min-width: 1.5cm; ">
+Vehicle Description
+</td>
+<td style="text-align:left;width: 12cm; ">
+Type of vehicle
+</td>
+</tr>
+<tr>
+<td style="text-align:left;min-width: 2.5cm; min-width: 1.5cm; ">
+Loss Postcode
+</td>
+<td style="text-align:left;width: 12cm; ">
+Postal code where the loss occurred
+</td>
+</tr>
+<tr>
+<td style="text-align:left;min-width: 2.5cm; min-width: 1.5cm; ">
+Excess
+</td>
+<td style="text-align:left;width: 12cm; ">
+The deductible applied to the loss
+</td>
+</tr>
+<tr>
+<td style="text-align:left;min-width: 2.5cm; min-width: 1.5cm; ">
+Motor Net Paid
+</td>
+<td style="text-align:left;width: 12cm; ">
+Amount paid to the insured (ANU)
+</td>
+</tr>
+<tr>
+<td style="text-align:left;min-width: 2.5cm; min-width: 1.5cm; ">
+Outstanding Estimate
+</td>
+<td style="text-align:left;width: 12cm; ">
+Estimate of the loss amount yet to be paid
+</td>
+</tr>
+<tr>
+<td style="text-align:left;min-width: 2.5cm; min-width: 1.5cm; ">
+Motor Net Incurred
+</td>
+<td style="text-align:left;width: 12cm; ">
+Sum of the amount paid and the estimate of future payments
+</td>
+</tr>
+<tr>
+<td style="text-align:left;min-width: 2.5cm; min-width: 1.5cm; ">
+Third Party Identified
+</td>
+<td style="text-align:left;width: 12cm; ">
+Indicates whether a responsible third party could be identified
+</td>
+</tr>
+<tr>
+<td style="text-align:left;min-width: 2.5cm; min-width: 1.5cm; ">
+Third Party Insured
+</td>
+<td style="text-align:left;width: 12cm; ">
+Indicates whether a responsible third party was insured
+</td>
+</tr>
+</tbody>
+</table>
+<table class=" lightable-classic table table-striped table-condensed table" style="font-size: 8px; font-family: Cambria; width: auto !important; margin-left: auto; margin-right: auto; margin-left: auto; margin-right: auto; margin-left: auto; margin-right: auto;">
+<caption style="font-size: initial !important;">
+<span id="tab:PrintNumAuto">Table 5.8: </span><strong>Motor Vehicle Data First Five Rows</strong>
+</caption>
+<thead>
+<tr>
+<th style="text-align:center;">
+Policy.Term.Start.Date
+</th>
+<th style="text-align:center;">
+Loss.Date
+</th>
+<th style="text-align:center;">
+Reported.Date
+</th>
+<th style="text-align:center;">
+Motor.Fault
+</th>
+<th style="text-align:center;">
+Driver.Age
+</th>
+<th style="text-align:center;">
+Vehicle.Description
+</th>
+<th style="text-align:center;">
+Loss.Postcode
+</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:center;min-width: 2.5cm; min-width: 3.0cm; ">
+1/11/2011
+</td>
+<td style="text-align:center;min-width: 3.0cm; ">
+6/6/2012
+</td>
+<td style="text-align:center;min-width: 3.0cm; ">
+4/10/2012
+</td>
+<td style="text-align:center;min-width: 3.0cm; width: 2.0cm; ">
+THIRD PARTY RESPONSIBLE
+</td>
+<td style="text-align:center;min-width: 3.0cm; ">
+NA
+</td>
+<td style="text-align:center;min-width: 3.0cm; width: 2.0cm; ">
+FORD TRANSIT VAN
+</td>
+<td style="text-align:center;min-width: 3.0cm; ">
+2600
+</td>
+</tr>
+<tr>
+<td style="text-align:center;min-width: 2.5cm; min-width: 3.0cm; ">
+1/11/2011
+</td>
+<td style="text-align:center;min-width: 3.0cm; ">
+16/08/2012
+</td>
+<td style="text-align:center;min-width: 3.0cm; ">
+14/11/2013
+</td>
+<td style="text-align:center;min-width: 3.0cm; width: 2.0cm; ">
+INSURED RESPONSIBLE
+</td>
+<td style="text-align:center;min-width: 3.0cm; ">
+39
+</td>
+<td style="text-align:center;min-width: 3.0cm; width: 2.0cm; ">
+TOYOTA HIACE
+</td>
+<td style="text-align:center;min-width: 3.0cm; ">
+2612
+</td>
+</tr>
+<tr>
+<td style="text-align:center;min-width: 2.5cm; min-width: 3.0cm; ">
+1/11/2011
+</td>
+<td style="text-align:center;min-width: 3.0cm; ">
+4/9/2012
+</td>
+<td style="text-align:center;min-width: 3.0cm; ">
+17/01/2013
+</td>
+<td style="text-align:center;min-width: 3.0cm; width: 2.0cm; ">
+INSURED RESPONSIBLE
+</td>
+<td style="text-align:center;min-width: 3.0cm; ">
+52
+</td>
+<td style="text-align:center;min-width: 3.0cm; width: 2.0cm; ">
+HYUNDAI IX35
+</td>
+<td style="text-align:center;min-width: 3.0cm; ">
+2600
+</td>
+</tr>
+<tr>
+<td style="text-align:center;min-width: 2.5cm; min-width: 3.0cm; ">
+1/11/2011
+</td>
+<td style="text-align:center;min-width: 3.0cm; ">
+21/09/2012
+</td>
+<td style="text-align:center;min-width: 3.0cm; ">
+28/09/2012
+</td>
+<td style="text-align:center;min-width: 3.0cm; width: 2.0cm; ">
+THIRD PARTY RESPONSIBLE
+</td>
+<td style="text-align:center;min-width: 3.0cm; ">
+59
+</td>
+<td style="text-align:center;min-width: 3.0cm; width: 2.0cm; ">
+HOLDEN COMMODORE
+</td>
+<td style="text-align:center;min-width: 3.0cm; ">
+2518
+</td>
+</tr>
+<tr>
+<td style="text-align:center;min-width: 2.5cm; min-width: 3.0cm; ">
+1/11/2011
+</td>
+<td style="text-align:center;min-width: 3.0cm; ">
+22/09/2012
+</td>
+<td style="text-align:center;min-width: 3.0cm; ">
+12/10/2012
+</td>
+<td style="text-align:center;min-width: 3.0cm; width: 2.0cm; ">
+INSURED RESPONSIBLE
+</td>
+<td style="text-align:center;min-width: 3.0cm; ">
+NA
+</td>
+<td style="text-align:center;min-width: 3.0cm; width: 2.0cm; ">
+SUBARU FORESTER
+</td>
+<td style="text-align:center;min-width: 3.0cm; ">
+2612
+</td>
+</tr>
+</tbody>
+</table>
+<table class=" lightable-classic table table-striped table-condensed table" style="font-size: 8px; font-family: Cambria; width: auto !important; margin-left: auto; margin-right: auto; margin-left: auto; margin-right: auto; margin-left: auto; margin-right: auto;">
+<thead>
+<tr>
+<th style="text-align:center;">
+Excess
+</th>
+<th style="text-align:center;">
+Motor.Net.Paid
+</th>
+<th style="text-align:center;">
+Outstanding.Estimate
+</th>
+<th style="text-align:center;">
+Motor.Net.Incurred
+</th>
+<th style="text-align:center;">
+Third.Party.Identified
+</th>
+<th style="text-align:center;">
+Third.Party.Insured
+</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:center;min-width: 2.5cm; min-width: 2.6cm; ">
+1000
+</td>
+<td style="text-align:center;min-width: 2.6cm; ">
+385
+</td>
+<td style="text-align:center;min-width: 2.6cm; ">
+0
+</td>
+<td style="text-align:center;min-width: 2.6cm; ">
+385
+</td>
+<td style="text-align:center;min-width: 2.6cm; ">
+IDENTIFIED
+</td>
+<td style="text-align:center;min-width: 2.6cm; ">
+</td>
+</tr>
+<tr>
+<td style="text-align:center;min-width: 2.5cm; min-width: 2.6cm; ">
+1000
+</td>
+<td style="text-align:center;min-width: 2.6cm; ">
+901
+</td>
+<td style="text-align:center;min-width: 2.6cm; ">
+0
+</td>
+<td style="text-align:center;min-width: 2.6cm; ">
+901
+</td>
+<td style="text-align:center;min-width: 2.6cm; ">
+</td>
+<td style="text-align:center;min-width: 2.6cm; ">
+</td>
+</tr>
+<tr>
+<td style="text-align:center;min-width: 2.5cm; min-width: 2.6cm; ">
+1000
+</td>
+<td style="text-align:center;min-width: 2.6cm; ">
+1226
+</td>
+<td style="text-align:center;min-width: 2.6cm; ">
+0
+</td>
+<td style="text-align:center;min-width: 2.6cm; ">
+1226
+</td>
+<td style="text-align:center;min-width: 2.6cm; ">
+</td>
+<td style="text-align:center;min-width: 2.6cm; ">
+</td>
+</tr>
+<tr>
+<td style="text-align:center;min-width: 2.5cm; min-width: 2.6cm; ">
+NA
+</td>
+<td style="text-align:center;min-width: 2.6cm; ">
+1672
+</td>
+<td style="text-align:center;min-width: 2.6cm; ">
+0
+</td>
+<td style="text-align:center;min-width: 2.6cm; ">
+1672
+</td>
+<td style="text-align:center;min-width: 2.6cm; ">
+IDENTIFIED
+</td>
+<td style="text-align:center;min-width: 2.6cm; ">
+NOT INSURED
+</td>
+</tr>
+<tr>
+<td style="text-align:center;min-width: 2.5cm; min-width: 2.6cm; ">
+1000
+</td>
+<td style="text-align:center;min-width: 2.6cm; ">
+3419
+</td>
+<td style="text-align:center;min-width: 2.6cm; ">
+0
+</td>
+<td style="text-align:center;min-width: 2.6cm; ">
+3419
+</td>
+<td style="text-align:center;min-width: 2.6cm; ">
+</td>
+<td style="text-align:center;min-width: 2.6cm; ">
+INSURED
+</td>
+</tr>
+</tbody>
+</table>
+<table class=" lightable-classic table table-striped table-condensed table" style="font-size: 8px; font-family: Cambria; width: auto !important; margin-left: auto; margin-right: auto; margin-left: auto; margin-right: auto; margin-left: auto; margin-right: auto;">
+<caption style="font-size: initial !important;">
+<span id="tab:PrintNumAuto">Table 5.8: </span><strong>Motor Vehicle Data Last Five Rows</strong>
+</caption>
+<thead>
+<tr>
+<th style="text-align:center;">
+Policy.Term.Start.Date
+</th>
+<th style="text-align:center;">
+Loss.Date
+</th>
+<th style="text-align:center;">
+Reported.Date
+</th>
+<th style="text-align:center;">
+Motor.Fault
+</th>
+<th style="text-align:center;">
+Driver.Age
+</th>
+<th style="text-align:center;">
+Vehicle.Description
+</th>
+<th style="text-align:center;">
+Loss.Postcode
+</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:center;min-width: 2.5cm; min-width: 3.0cm; ">
+1/11/2021
+</td>
+<td style="text-align:center;min-width: 3.0cm; ">
+4/4/2022
+</td>
+<td style="text-align:center;min-width: 3.0cm; ">
+5/4/2022
+</td>
+<td style="text-align:center;min-width: 3.0cm; width: 2.0cm; ">
+INSURED RESPONSIBLE
+</td>
+<td style="text-align:center;min-width: 3.0cm; ">
+66
+</td>
+<td style="text-align:center;min-width: 3.0cm; width: 2.0cm; ">
+VOLKSWAGEN TIGUAN
+</td>
+<td style="text-align:center;min-width: 3.0cm; ">
+2604
+</td>
+</tr>
+<tr>
+<td style="text-align:center;min-width: 2.5cm; min-width: 3.0cm; ">
+11/1/2021
+</td>
+<td style="text-align:center;min-width: 3.0cm; ">
+11/4/2022
+</td>
+<td style="text-align:center;min-width: 3.0cm; ">
+9/5/2022
+</td>
+<td style="text-align:center;min-width: 3.0cm; width: 2.0cm; ">
+INSURED RESPONSIBLE
+</td>
+<td style="text-align:center;min-width: 3.0cm; ">
+27
+</td>
+<td style="text-align:center;min-width: 3.0cm; width: 2.0cm; ">
+TOYOTA HILUX
+</td>
+<td style="text-align:center;min-width: 3.0cm; ">
+2540
+</td>
+</tr>
+<tr>
+<td style="text-align:center;min-width: 2.5cm; min-width: 3.0cm; ">
+1/11/2021
+</td>
+<td style="text-align:center;min-width: 3.0cm; ">
+11/4/2022
+</td>
+<td style="text-align:center;min-width: 3.0cm; ">
+9/5/2022
+</td>
+<td style="text-align:center;min-width: 3.0cm; width: 2.0cm; ">
+INSURED RESPONSIBLE
+</td>
+<td style="text-align:center;min-width: 3.0cm; ">
+27
+</td>
+<td style="text-align:center;min-width: 3.0cm; width: 2.0cm; ">
+TOYOTA HILUX
+</td>
+<td style="text-align:center;min-width: 3.0cm; ">
+2540
+</td>
+</tr>
+<tr>
+<td style="text-align:center;min-width: 2.5cm; min-width: 3.0cm; ">
+11/1/2021
+</td>
+<td style="text-align:center;min-width: 3.0cm; ">
+15/04/2022
+</td>
+<td style="text-align:center;min-width: 3.0cm; ">
+11/7/2022
+</td>
+<td style="text-align:center;min-width: 3.0cm; width: 2.0cm; ">
+INSURED RESPONSIBLE
+</td>
+<td style="text-align:center;min-width: 3.0cm; ">
+21
+</td>
+<td style="text-align:center;min-width: 3.0cm; width: 2.0cm; ">
+TOYOTA HILVX
+</td>
+<td style="text-align:center;min-width: 3.0cm; ">
+2601
+</td>
+</tr>
+<tr>
+<td style="text-align:center;min-width: 2.5cm; min-width: 3.0cm; ">
+1/11/2021
+</td>
+<td style="text-align:center;min-width: 3.0cm; ">
+18/07/2022
+</td>
+<td style="text-align:center;min-width: 3.0cm; ">
+18/07/2022
+</td>
+<td style="text-align:center;min-width: 3.0cm; width: 2.0cm; ">
+NO-ONE RESPONSIBLE
+</td>
+<td style="text-align:center;min-width: 3.0cm; ">
+NA
+</td>
+<td style="text-align:center;min-width: 3.0cm; width: 2.0cm; ">
+TOYOTA HILUX
+</td>
+<td style="text-align:center;min-width: 3.0cm; ">
+2601
+</td>
+</tr>
+</tbody>
+</table>
+<table class=" lightable-classic table table-striped table-condensed table" style="font-size: 8px; font-family: Cambria; width: auto !important; margin-left: auto; margin-right: auto; margin-left: auto; margin-right: auto; margin-left: auto; margin-right: auto;">
+<thead>
+<tr>
+<th style="text-align:center;">
+Excess
+</th>
+<th style="text-align:center;">
+Motor.Net.Paid
+</th>
+<th style="text-align:center;">
+Outstanding.Estimate
+</th>
+<th style="text-align:center;">
+Motor.Net.Incurred
+</th>
+<th style="text-align:center;">
+Third.Party.Identified
+</th>
+<th style="text-align:center;">
+Third.Party.Insured
+</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:center;min-width: 2.5cm; min-width: 2.6cm; ">
+0
+</td>
+<td style="text-align:center;min-width: 2.6cm; ">
+2373
+</td>
+<td style="text-align:center;min-width: 2.6cm; ">
+1056
+</td>
+<td style="text-align:center;min-width: 2.6cm; ">
+3429
+</td>
+<td style="text-align:center;min-width: 2.6cm; ">
+</td>
+<td style="text-align:center;min-width: 2.6cm; ">
+</td>
+</tr>
+<tr>
+<td style="text-align:center;min-width: 2.5cm; min-width: 2.6cm; ">
+0
+</td>
+<td style="text-align:center;min-width: 2.6cm; ">
+210
+</td>
+<td style="text-align:center;min-width: 2.6cm; ">
+25000
+</td>
+<td style="text-align:center;min-width: 2.6cm; ">
+25210
+</td>
+<td style="text-align:center;min-width: 2.6cm; ">
+</td>
+<td style="text-align:center;min-width: 2.6cm; ">
+</td>
+</tr>
+<tr>
+<td style="text-align:center;min-width: 2.5cm; min-width: 2.6cm; ">
+0
+</td>
+<td style="text-align:center;min-width: 2.6cm; ">
+0
+</td>
+<td style="text-align:center;min-width: 2.6cm; ">
+31927
+</td>
+<td style="text-align:center;min-width: 2.6cm; ">
+31927
+</td>
+<td style="text-align:center;min-width: 2.6cm; ">
+</td>
+<td style="text-align:center;min-width: 2.6cm; ">
+</td>
+</tr>
+<tr>
+<td style="text-align:center;min-width: 2.5cm; min-width: 2.6cm; ">
+0
+</td>
+<td style="text-align:center;min-width: 2.6cm; ">
+0
+</td>
+<td style="text-align:center;min-width: 2.6cm; ">
+2750
+</td>
+<td style="text-align:center;min-width: 2.6cm; ">
+2750
+</td>
+<td style="text-align:center;min-width: 2.6cm; ">
+</td>
+<td style="text-align:center;min-width: 2.6cm; ">
+</td>
+</tr>
+<tr>
+<td style="text-align:center;min-width: 2.5cm; min-width: 2.6cm; ">
+0
+</td>
+<td style="text-align:center;min-width: 2.6cm; ">
+0
+</td>
+<td style="text-align:center;min-width: 2.6cm; ">
+299
+</td>
+<td style="text-align:center;min-width: 2.6cm; ">
+299
+</td>
+<td style="text-align:center;min-width: 2.6cm; ">
+</td>
+<td style="text-align:center;min-width: 2.6cm; ">
+</td>
+</tr>
+</tbody>
+</table>
+<p><br></p>
+<p><em>Source</em>: Frees, Edward and Butt, Adam (2022). “ANU Motor Vehicle Claims 2022”. Australian National University Data Commons. DOI <a href="https://doi.org/10.25911/g7e4-9e46" class="uri">https://doi.org/10.25911/g7e4-9e46</a>.</p>
+</div>
+<div id="spanish-personal-insurance-data" class="section level2 hasAnchor" number="5.5">
+<h2><span class="header-section-number">5.5</span> Spanish Personal Insurance Data<a href="DataResources.html#spanish-personal-insurance-data" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<p>This dataset consists of 10,000 insurance private customers of a real portfolio of insurance policy holders in Spain with a motor insurance and a homeowners insurance contract for policy year 2014. The data contain information on each customer, policies and yearly claims by type of contract.</p>
+<p>The data are available using this download button: <a href="https://raw.githubusercontent.com/OpenActTextDev/LDA_Ed2/main/Data/SpanishPersonalIns.csv" download>
+<button type="button"  style="background-color:#008CBA;color:white">Download the Spanish Personal Insurance Data</button></a></p>
+<p>The description of the data appears in Table <a href="DataResources.html#tab:DescribeCover">5.9</a>.</p>
+<table class=" lightable-classic table table-striped table-condensed table" style="font-family: &quot;Arial Narrow&quot;, &quot;Source Sans Pro&quot;, sans-serif; width: auto !important; margin-left: auto; margin-right: auto; font-size: 10px; margin-left: auto; margin-right: auto; margin-left: auto; margin-right: auto;">
+<caption style="font-size: initial !important;">
+<span id="tab:DescribeCover">Table 5.9: </span><span id="tab:DescribeCover">Table 5.10: </span>Variable and Description of Spanish Personal Insurance Data
+</caption>
+<thead>
+<tr>
+<th style="text-align:left;">
+Variable
+</th>
+<th style="text-align:left;">
+Description
+</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:left;width: 4.25cm; ">
+gender
+</td>
+<td style="text-align:left;width: 10cm; ">
+1 for male and 0 for female
+</td>
+</tr>
+<tr>
+<td style="text-align:left;width: 4.25cm; ">
+Age_client
+</td>
+<td style="text-align:left;width: 10cm; ">
+the age of the customer in years
+</td>
+</tr>
+<tr>
+<td style="text-align:left;width: 4.25cm; ">
+year
+</td>
+<td style="text-align:left;width: 10cm; ">
+Policy year. Equals 5 corresponding to 2014.
+</td>
+</tr>
+<tr>
+<td style="text-align:left;width: 4.25cm; ">
+age_of_car_M
+</td>
+<td style="text-align:left;width: 10cm; ">
+the number of years since the vehicle was bought by the customer
+</td>
+</tr>
+<tr>
+<td style="text-align:left;width: 4.25cm; ">
+Car_power_M
+</td>
+<td style="text-align:left;width: 10cm; ">
+the power of the vehicle
+</td>
+</tr>
+<tr>
+<td style="text-align:left;width: 4.25cm; ">
+Car_2ndDriver_M
+</td>
+<td style="text-align:left;width: 10cm; ">
+1 if the customer has informed the insurance company that a second occasional driver uses the vehicle, and 0 otherwise
+</td>
+</tr>
+<tr>
+<td style="text-align:left;width: 4.25cm; ">
+num_policiesC
+</td>
+<td style="text-align:left;width: 10cm; ">
+the total number of policies held by the same customer in the insurance company
+</td>
+</tr>
+<tr>
+<td style="text-align:left;width: 4.25cm; ">
+metro_code
+</td>
+<td style="text-align:left;width: 10cm; ">
+1 for urban or metropolitan and 0 for rural
+</td>
+</tr>
+<tr>
+<td style="text-align:left;width: 4.25cm; ">
+Policy_PaymentMethodA
+</td>
+<td style="text-align:left;width: 10cm; ">
+1 for annual payment and 0 for monthly payment in the motor policy
+</td>
+</tr>
+<tr>
+<td style="text-align:left;width: 4.25cm; ">
+Policy_PaymentMethodH
+</td>
+<td style="text-align:left;width: 10cm; ">
+1 for annual payment and 0 for monthly payment in the homeowners policy
+</td>
+</tr>
+<tr>
+<td style="text-align:left;width: 4.25cm; ">
+Insuredcapital_content_re
+</td>
+<td style="text-align:left;width: 10cm; ">
+the value of content in homeowners insurance
+</td>
+</tr>
+<tr>
+<td style="text-align:left;width: 4.25cm; ">
+Insuredcapital_continent_re
+</td>
+<td style="text-align:left;width: 10cm; ">
+the value of building in homeowners insurance
+</td>
+</tr>
+<tr>
+<td style="text-align:left;width: 4.25cm; ">
+appartment
+</td>
+<td style="text-align:left;width: 10cm; ">
+1 if the homeowners insurance correspond to an apartment and 0 otherwise
+</td>
+</tr>
+<tr>
+<td style="text-align:left;width: 4.25cm; ">
+Client_Seniority
+</td>
+<td style="text-align:left;width: 10cm; ">
+the number of years that the customer has been in the company
+</td>
+</tr>
+<tr>
+<td style="text-align:left;width: 4.25cm; ">
+Retention
+</td>
+<td style="text-align:left;width: 10cm; ">
+1 if the policy is renewed and 0 otherwise
+</td>
+</tr>
+<tr>
+<td style="text-align:left;width: 4.25cm; ">
+NClaims1
+</td>
+<td style="text-align:left;width: 10cm; ">
+the number of claims in the motor insurance policy for the corresponding year
+</td>
+</tr>
+<tr>
+<td style="text-align:left;width: 4.25cm; ">
+NClaims2
+</td>
+<td style="text-align:left;width: 10cm; ">
+the number of claims in the homeowners insurance policy for the corresponding year
+</td>
+</tr>
+<tr>
+<td style="text-align:left;width: 4.25cm; ">
+Claims1
+</td>
+<td style="text-align:left;width: 10cm; ">
+the sum of claims cost in the motor insurance policy for the corresponding year
+</td>
+</tr>
+<tr>
+<td style="text-align:left;width: 4.25cm; ">
+Claims2
+</td>
+<td style="text-align:left;width: 10cm; ">
+the sum of claims cost in the homeowners insurance policy for the corresponding year
+</td>
+</tr>
+<tr>
+<td style="text-align:left;width: 4.25cm; ">
+Types
+</td>
+<td style="text-align:left;width: 10cm; ">
+1 when neither an auto nor a home claim, it is equal to 2 when the customer has an auto but not a home claim, it is equal to 3 when the customer does not have not an auto but a home claim and it is equal to 4 when both an auto and a home claim.
+</td>
+</tr>
+<tr>
+<td style="text-align:left;width: 4.25cm; ">
+PolID
+</td>
+<td style="text-align:left;width: 10cm; ">
+Policy Identification Number
+</td>
+</tr>
+</tbody>
+</table>
+<div style="page-break-after: always;"></div>
+<div style="page-break-after: always;"></div>
+<p>All monetary units are expressed in Euros. In motor insurance, only claims at fault are considered.</p>
+<table class=" lightable-classic table table-striped table-condensed table" style="font-size: 8px; font-family: Cambria; width: auto !important; margin-left: auto; margin-right: auto; margin-left: auto; margin-right: auto; margin-left: auto; margin-right: auto;">
+<caption style="font-size: initial !important;">
+<span id="tab:PrintNumPersonalIns">Table 5.11: </span><strong>Spanish Personal Insurance Data First Five Rows</strong>
+</caption>
+<thead>
+<tr>
+<th style="text-align:center;">
+gender
+</th>
+<th style="text-align:center;">
+Age_client
+</th>
+<th style="text-align:center;">
+year
+</th>
+<th style="text-align:center;">
+age_of_car_M
+</th>
+<th style="text-align:center;">
+Car_power_M
+</th>
+<th style="text-align:center;">
+Car_2ndDriver_M
+</th>
+<th style="text-align:center;">
+num_policiesC
+</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:center;min-width: 2.5cm; min-width: 2.6cm; ">
+1
+</td>
+<td style="text-align:center;min-width: 2.6cm; ">
+47
+</td>
+<td style="text-align:center;min-width: 2.6cm; ">
+5
+</td>
+<td style="text-align:center;min-width: 2.6cm; ">
+12
+</td>
+<td style="text-align:center;min-width: 2.6cm; ">
+163
+</td>
+<td style="text-align:center;min-width: 2.6cm; ">
+0
+</td>
+<td style="text-align:center;min-width: 2.6cm; ">
+0
+</td>
+</tr>
+<tr>
+<td style="text-align:center;min-width: 2.5cm; min-width: 2.6cm; ">
+1
+</td>
+<td style="text-align:center;min-width: 2.6cm; ">
+52
+</td>
+<td style="text-align:center;min-width: 2.6cm; ">
+5
+</td>
+<td style="text-align:center;min-width: 2.6cm; ">
+13
+</td>
+<td style="text-align:center;min-width: 2.6cm; ">
+80
+</td>
+<td style="text-align:center;min-width: 2.6cm; ">
+0
+</td>
+<td style="text-align:center;min-width: 2.6cm; ">
+1
+</td>
+</tr>
+<tr>
+<td style="text-align:center;min-width: 2.5cm; min-width: 2.6cm; ">
+0
+</td>
+<td style="text-align:center;min-width: 2.6cm; ">
+66
+</td>
+<td style="text-align:center;min-width: 2.6cm; ">
+5
+</td>
+<td style="text-align:center;min-width: 2.6cm; ">
+7
+</td>
+<td style="text-align:center;min-width: 2.6cm; ">
+97
+</td>
+<td style="text-align:center;min-width: 2.6cm; ">
+0
+</td>
+<td style="text-align:center;min-width: 2.6cm; ">
+1
+</td>
+</tr>
+<tr>
+<td style="text-align:center;min-width: 2.5cm; min-width: 2.6cm; ">
+1
+</td>
+<td style="text-align:center;min-width: 2.6cm; ">
+70
+</td>
+<td style="text-align:center;min-width: 2.6cm; ">
+5
+</td>
+<td style="text-align:center;min-width: 2.6cm; ">
+17
+</td>
+<td style="text-align:center;min-width: 2.6cm; ">
+95
+</td>
+<td style="text-align:center;min-width: 2.6cm; ">
+0
+</td>
+<td style="text-align:center;min-width: 2.6cm; ">
+1
+</td>
+</tr>
+<tr>
+<td style="text-align:center;min-width: 2.5cm; min-width: 2.6cm; ">
+1
+</td>
+<td style="text-align:center;min-width: 2.6cm; ">
+67
+</td>
+<td style="text-align:center;min-width: 2.6cm; ">
+5
+</td>
+<td style="text-align:center;min-width: 2.6cm; ">
+13
+</td>
+<td style="text-align:center;min-width: 2.6cm; ">
+110
+</td>
+<td style="text-align:center;min-width: 2.6cm; ">
+0
+</td>
+<td style="text-align:center;min-width: 2.6cm; ">
+1
+</td>
+</tr>
+</tbody>
+</table>
+<table class=" lightable-classic table table-striped table-condensed table" style="font-size: 8px; font-family: Cambria; width: auto !important; margin-left: auto; margin-right: auto; margin-left: auto; margin-right: auto; margin-left: auto; margin-right: auto;">
+<thead>
+<tr>
+<th style="text-align:center;">
+metro_code
+</th>
+<th style="text-align:center;">
+Policy_PaymentMethodA
+</th>
+<th style="text-align:center;">
+Policy_PaymentMethodH
+</th>
+<th style="text-align:center;">
+Insuredcapital_content_re
+</th>
+<th style="text-align:center;">
+Insuredcapital_continent_re
+</th>
+<th style="text-align:center;">
+appartment
+</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:center;min-width: 2.5cm; min-width: 3.6cm; ">
+0
+</td>
+<td style="text-align:center;min-width: 3.6cm; ">
+1
+</td>
+<td style="text-align:center;min-width: 3.6cm; ">
+1
+</td>
+<td style="text-align:center;min-width: 3.6cm; ">
+10
+</td>
+<td style="text-align:center;min-width: 3.6cm; ">
+12
+</td>
+<td style="text-align:center;min-width: 3.6cm; ">
+1
+</td>
+</tr>
+<tr>
+<td style="text-align:center;min-width: 2.5cm; min-width: 3.6cm; ">
+0
+</td>
+<td style="text-align:center;min-width: 3.6cm; ">
+1
+</td>
+<td style="text-align:center;min-width: 3.6cm; ">
+1
+</td>
+<td style="text-align:center;min-width: 3.6cm; ">
+10
+</td>
+<td style="text-align:center;min-width: 3.6cm; ">
+11
+</td>
+<td style="text-align:center;min-width: 3.6cm; ">
+0
+</td>
+</tr>
+<tr>
+<td style="text-align:center;min-width: 2.5cm; min-width: 3.6cm; ">
+1
+</td>
+<td style="text-align:center;min-width: 3.6cm; ">
+1
+</td>
+<td style="text-align:center;min-width: 3.6cm; ">
+1
+</td>
+<td style="text-align:center;min-width: 3.6cm; ">
+9
+</td>
+<td style="text-align:center;min-width: 3.6cm; ">
+11
+</td>
+<td style="text-align:center;min-width: 3.6cm; ">
+1
+</td>
+</tr>
+<tr>
+<td style="text-align:center;min-width: 2.5cm; min-width: 3.6cm; ">
+0
+</td>
+<td style="text-align:center;min-width: 3.6cm; ">
+1
+</td>
+<td style="text-align:center;min-width: 3.6cm; ">
+1
+</td>
+<td style="text-align:center;min-width: 3.6cm; ">
+10
+</td>
+<td style="text-align:center;min-width: 3.6cm; ">
+11
+</td>
+<td style="text-align:center;min-width: 3.6cm; ">
+1
+</td>
+</tr>
+<tr>
+<td style="text-align:center;min-width: 2.5cm; min-width: 3.6cm; ">
+0
+</td>
+<td style="text-align:center;min-width: 3.6cm; ">
+1
+</td>
+<td style="text-align:center;min-width: 3.6cm; ">
+1
+</td>
+<td style="text-align:center;min-width: 3.6cm; ">
+11
+</td>
+<td style="text-align:center;min-width: 3.6cm; ">
+12
+</td>
+<td style="text-align:center;min-width: 3.6cm; ">
+0
+</td>
+</tr>
+</tbody>
+</table>
+<table class=" lightable-classic table table-striped table-condensed table" style="font-size: 8px; font-family: Cambria; width: auto !important; margin-left: auto; margin-right: auto; margin-left: auto; margin-right: auto; margin-left: auto; margin-right: auto;">
+<thead>
+<tr>
+<th style="text-align:center;">
+Client_Seniority
+</th>
+<th style="text-align:center;">
+Retention
+</th>
+<th style="text-align:center;">
+NClaims1
+</th>
+<th style="text-align:center;">
+NClaims2
+</th>
+<th style="text-align:center;">
+Claims1
+</th>
+<th style="text-align:center;">
+Claims2
+</th>
+<th style="text-align:center;">
+Types
+</th>
+<th style="text-align:center;">
+PolID
+</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:center;min-width: 2.5cm; min-width: 2.6cm; ">
+7
+</td>
+<td style="text-align:center;min-width: 2.6cm; ">
+1
+</td>
+<td style="text-align:center;min-width: 2.6cm; ">
+0
+</td>
+<td style="text-align:center;min-width: 2.6cm; ">
+0
+</td>
+<td style="text-align:center;min-width: 2.6cm; ">
+0
+</td>
+<td style="text-align:center;min-width: 2.6cm; ">
+0
+</td>
+<td style="text-align:center;min-width: 2.6cm; ">
+1
+</td>
+<td style="text-align:center;min-width: 2.6cm; ">
+12476
+</td>
+</tr>
+<tr>
+<td style="text-align:center;min-width: 2.5cm; min-width: 2.6cm; ">
+18
+</td>
+<td style="text-align:center;min-width: 2.6cm; ">
+1
+</td>
+<td style="text-align:center;min-width: 2.6cm; ">
+0
+</td>
+<td style="text-align:center;min-width: 2.6cm; ">
+0
+</td>
+<td style="text-align:center;min-width: 2.6cm; ">
+0
+</td>
+<td style="text-align:center;min-width: 2.6cm; ">
+0
+</td>
+<td style="text-align:center;min-width: 2.6cm; ">
+1
+</td>
+<td style="text-align:center;min-width: 2.6cm; ">
+29232
+</td>
+</tr>
+<tr>
+<td style="text-align:center;min-width: 2.5cm; min-width: 2.6cm; ">
+15
+</td>
+<td style="text-align:center;min-width: 2.6cm; ">
+1
+</td>
+<td style="text-align:center;min-width: 2.6cm; ">
+0
+</td>
+<td style="text-align:center;min-width: 2.6cm; ">
+0
+</td>
+<td style="text-align:center;min-width: 2.6cm; ">
+0
+</td>
+<td style="text-align:center;min-width: 2.6cm; ">
+0
+</td>
+<td style="text-align:center;min-width: 2.6cm; ">
+1
+</td>
+<td style="text-align:center;min-width: 2.6cm; ">
+23770
+</td>
+</tr>
+<tr>
+<td style="text-align:center;min-width: 2.5cm; min-width: 2.6cm; ">
+16
+</td>
+<td style="text-align:center;min-width: 2.6cm; ">
+1
+</td>
+<td style="text-align:center;min-width: 2.6cm; ">
+0
+</td>
+<td style="text-align:center;min-width: 2.6cm; ">
+1
+</td>
+<td style="text-align:center;min-width: 2.6cm; ">
+0
+</td>
+<td style="text-align:center;min-width: 2.6cm; ">
+58
+</td>
+<td style="text-align:center;min-width: 2.6cm; ">
+3
+</td>
+<td style="text-align:center;min-width: 2.6cm; ">
+8228
+</td>
+</tr>
+<tr>
+<td style="text-align:center;min-width: 2.5cm; min-width: 2.6cm; ">
+6
+</td>
+<td style="text-align:center;min-width: 2.6cm; ">
+1
+</td>
+<td style="text-align:center;min-width: 2.6cm; ">
+0
+</td>
+<td style="text-align:center;min-width: 2.6cm; ">
+0
+</td>
+<td style="text-align:center;min-width: 2.6cm; ">
+0
+</td>
+<td style="text-align:center;min-width: 2.6cm; ">
+0
+</td>
+<td style="text-align:center;min-width: 2.6cm; ">
+1
+</td>
+<td style="text-align:center;min-width: 2.6cm; ">
+37088
+</td>
+</tr>
+</tbody>
+</table>
+<table class=" lightable-classic table table-striped table-condensed table" style="font-size: 8px; font-family: Cambria; width: auto !important; margin-left: auto; margin-right: auto; margin-left: auto; margin-right: auto; margin-left: auto; margin-right: auto;">
+<caption style="font-size: initial !important;">
+<span id="tab:PrintNumPersonalIns">Table 5.11: </span><strong>Spanish Personal Insurance Data Last Five Rows</strong>
+</caption>
+<thead>
+<tr>
+<th style="text-align:center;">
+gender
+</th>
+<th style="text-align:center;">
+Age_client
+</th>
+<th style="text-align:center;">
+year
+</th>
+<th style="text-align:center;">
+age_of_car_M
+</th>
+<th style="text-align:center;">
+Car_power_M
+</th>
+<th style="text-align:center;">
+Car_2ndDriver_M
+</th>
+<th style="text-align:center;">
+num_policiesC
+</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:center;min-width: 2.5cm; min-width: 2.6cm; ">
+1
+</td>
+<td style="text-align:center;min-width: 2.6cm; ">
+66
+</td>
+<td style="text-align:center;min-width: 2.6cm; ">
+5
+</td>
+<td style="text-align:center;min-width: 2.6cm; ">
+8
+</td>
+<td style="text-align:center;min-width: 2.6cm; ">
+143
+</td>
+<td style="text-align:center;min-width: 2.6cm; ">
+0
+</td>
+<td style="text-align:center;min-width: 2.6cm; ">
+1
+</td>
+</tr>
+<tr>
+<td style="text-align:center;min-width: 2.5cm; min-width: 2.6cm; ">
+1
+</td>
+<td style="text-align:center;min-width: 2.6cm; ">
+55
+</td>
+<td style="text-align:center;min-width: 2.6cm; ">
+5
+</td>
+<td style="text-align:center;min-width: 2.6cm; ">
+18
+</td>
+<td style="text-align:center;min-width: 2.6cm; ">
+125
+</td>
+<td style="text-align:center;min-width: 2.6cm; ">
+1
+</td>
+<td style="text-align:center;min-width: 2.6cm; ">
+1
+</td>
+</tr>
+<tr>
+<td style="text-align:center;min-width: 2.5cm; min-width: 2.6cm; ">
+0
+</td>
+<td style="text-align:center;min-width: 2.6cm; ">
+41
+</td>
+<td style="text-align:center;min-width: 2.6cm; ">
+5
+</td>
+<td style="text-align:center;min-width: 2.6cm; ">
+10
+</td>
+<td style="text-align:center;min-width: 2.6cm; ">
+190
+</td>
+<td style="text-align:center;min-width: 2.6cm; ">
+0
+</td>
+<td style="text-align:center;min-width: 2.6cm; ">
+1
+</td>
+</tr>
+<tr>
+<td style="text-align:center;min-width: 2.5cm; min-width: 2.6cm; ">
+1
+</td>
+<td style="text-align:center;min-width: 2.6cm; ">
+50
+</td>
+<td style="text-align:center;min-width: 2.6cm; ">
+5
+</td>
+<td style="text-align:center;min-width: 2.6cm; ">
+5
+</td>
+<td style="text-align:center;min-width: 2.6cm; ">
+140
+</td>
+<td style="text-align:center;min-width: 2.6cm; ">
+0
+</td>
+<td style="text-align:center;min-width: 2.6cm; ">
+1
+</td>
+</tr>
+<tr>
+<td style="text-align:center;min-width: 2.5cm; min-width: 2.6cm; ">
+1
+</td>
+<td style="text-align:center;min-width: 2.6cm; ">
+55
+</td>
+<td style="text-align:center;min-width: 2.6cm; ">
+5
+</td>
+<td style="text-align:center;min-width: 2.6cm; ">
+12
+</td>
+<td style="text-align:center;min-width: 2.6cm; ">
+90
+</td>
+<td style="text-align:center;min-width: 2.6cm; ">
+0
+</td>
+<td style="text-align:center;min-width: 2.6cm; ">
+1
+</td>
+</tr>
+</tbody>
+</table>
+<table class=" lightable-classic table table-striped table-condensed table" style="font-size: 8px; font-family: Cambria; width: auto !important; margin-left: auto; margin-right: auto; margin-left: auto; margin-right: auto; margin-left: auto; margin-right: auto;">
+<thead>
+<tr>
+<th style="text-align:center;">
+metro_code
+</th>
+<th style="text-align:center;">
+Policy_PaymentMethodA
+</th>
+<th style="text-align:center;">
+Policy_PaymentMethodH
+</th>
+<th style="text-align:center;">
+Insuredcapital_content_re
+</th>
+<th style="text-align:center;">
+Insuredcapital_continent_re
+</th>
+<th style="text-align:center;">
+appartment
+</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:center;min-width: 2.5cm; min-width: 3.6cm; ">
+0
+</td>
+<td style="text-align:center;min-width: 3.6cm; ">
+1
+</td>
+<td style="text-align:center;min-width: 3.6cm; ">
+1
+</td>
+<td style="text-align:center;min-width: 3.6cm; ">
+10
+</td>
+<td style="text-align:center;min-width: 3.6cm; ">
+11
+</td>
+<td style="text-align:center;min-width: 3.6cm; ">
+1
+</td>
+</tr>
+<tr>
+<td style="text-align:center;min-width: 2.5cm; min-width: 3.6cm; ">
+0
+</td>
+<td style="text-align:center;min-width: 3.6cm; ">
+1
+</td>
+<td style="text-align:center;min-width: 3.6cm; ">
+1
+</td>
+<td style="text-align:center;min-width: 3.6cm; ">
+11
+</td>
+<td style="text-align:center;min-width: 3.6cm; ">
+11
+</td>
+<td style="text-align:center;min-width: 3.6cm; ">
+1
+</td>
+</tr>
+<tr>
+<td style="text-align:center;min-width: 2.5cm; min-width: 3.6cm; ">
+0
+</td>
+<td style="text-align:center;min-width: 3.6cm; ">
+1
+</td>
+<td style="text-align:center;min-width: 3.6cm; ">
+1
+</td>
+<td style="text-align:center;min-width: 3.6cm; ">
+9
+</td>
+<td style="text-align:center;min-width: 3.6cm; ">
+12
+</td>
+<td style="text-align:center;min-width: 3.6cm; ">
+1
+</td>
+</tr>
+<tr>
+<td style="text-align:center;min-width: 2.5cm; min-width: 3.6cm; ">
+0
+</td>
+<td style="text-align:center;min-width: 3.6cm; ">
+1
+</td>
+<td style="text-align:center;min-width: 3.6cm; ">
+1
+</td>
+<td style="text-align:center;min-width: 3.6cm; ">
+10
+</td>
+<td style="text-align:center;min-width: 3.6cm; ">
+12
+</td>
+<td style="text-align:center;min-width: 3.6cm; ">
+0
+</td>
+</tr>
+<tr>
+<td style="text-align:center;min-width: 2.5cm; min-width: 3.6cm; ">
+1
+</td>
+<td style="text-align:center;min-width: 3.6cm; ">
+1
+</td>
+<td style="text-align:center;min-width: 3.6cm; ">
+1
+</td>
+<td style="text-align:center;min-width: 3.6cm; ">
+11
+</td>
+<td style="text-align:center;min-width: 3.6cm; ">
+13
+</td>
+<td style="text-align:center;min-width: 3.6cm; ">
+0
+</td>
+</tr>
+</tbody>
+</table>
+<table class=" lightable-classic table table-striped table-condensed table" style="font-size: 8px; font-family: Cambria; width: auto !important; margin-left: auto; margin-right: auto; margin-left: auto; margin-right: auto; margin-left: auto; margin-right: auto;">
+<thead>
+<tr>
+<th style="text-align:center;">
+Client_Seniority
+</th>
+<th style="text-align:center;">
+Retention
+</th>
+<th style="text-align:center;">
+NClaims1
+</th>
+<th style="text-align:center;">
+NClaims2
+</th>
+<th style="text-align:center;">
+Claims1
+</th>
+<th style="text-align:center;">
+Claims2
+</th>
+<th style="text-align:center;">
+Types
+</th>
+<th style="text-align:center;">
+PolID
+</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:center;min-width: 2.5cm; min-width: 2.6cm; ">
+20
+</td>
+<td style="text-align:center;min-width: 2.6cm; ">
+1
+</td>
+<td style="text-align:center;min-width: 2.6cm; ">
+0
+</td>
+<td style="text-align:center;min-width: 2.6cm; ">
+0
+</td>
+<td style="text-align:center;min-width: 2.6cm; ">
+0
+</td>
+<td style="text-align:center;min-width: 2.6cm; ">
+0
+</td>
+<td style="text-align:center;min-width: 2.6cm; ">
+1
+</td>
+<td style="text-align:center;min-width: 2.6cm; ">
+2967
+</td>
+</tr>
+<tr>
+<td style="text-align:center;min-width: 2.5cm; min-width: 2.6cm; ">
+15
+</td>
+<td style="text-align:center;min-width: 2.6cm; ">
+1
+</td>
+<td style="text-align:center;min-width: 2.6cm; ">
+0
+</td>
+<td style="text-align:center;min-width: 2.6cm; ">
+0
+</td>
+<td style="text-align:center;min-width: 2.6cm; ">
+0
+</td>
+<td style="text-align:center;min-width: 2.6cm; ">
+0
+</td>
+<td style="text-align:center;min-width: 2.6cm; ">
+1
+</td>
+<td style="text-align:center;min-width: 2.6cm; ">
+9387
+</td>
+</tr>
+<tr>
+<td style="text-align:center;min-width: 2.5cm; min-width: 2.6cm; ">
+6
+</td>
+<td style="text-align:center;min-width: 2.6cm; ">
+1
+</td>
+<td style="text-align:center;min-width: 2.6cm; ">
+0
+</td>
+<td style="text-align:center;min-width: 2.6cm; ">
+0
+</td>
+<td style="text-align:center;min-width: 2.6cm; ">
+0
+</td>
+<td style="text-align:center;min-width: 2.6cm; ">
+0
+</td>
+<td style="text-align:center;min-width: 2.6cm; ">
+1
+</td>
+<td style="text-align:center;min-width: 2.6cm; ">
+36519
+</td>
+</tr>
+<tr>
+<td style="text-align:center;min-width: 2.5cm; min-width: 2.6cm; ">
+8
+</td>
+<td style="text-align:center;min-width: 2.6cm; ">
+1
+</td>
+<td style="text-align:center;min-width: 2.6cm; ">
+0
+</td>
+<td style="text-align:center;min-width: 2.6cm; ">
+0
+</td>
+<td style="text-align:center;min-width: 2.6cm; ">
+0
+</td>
+<td style="text-align:center;min-width: 2.6cm; ">
+0
+</td>
+<td style="text-align:center;min-width: 2.6cm; ">
+1
+</td>
+<td style="text-align:center;min-width: 2.6cm; ">
+33276
+</td>
+</tr>
+<tr>
+<td style="text-align:center;min-width: 2.5cm; min-width: 2.6cm; ">
+6
+</td>
+<td style="text-align:center;min-width: 2.6cm; ">
+1
+</td>
+<td style="text-align:center;min-width: 2.6cm; ">
+0
+</td>
+<td style="text-align:center;min-width: 2.6cm; ">
+0
+</td>
+<td style="text-align:center;min-width: 2.6cm; ">
+0
+</td>
+<td style="text-align:center;min-width: 2.6cm; ">
+0
+</td>
+<td style="text-align:center;min-width: 2.6cm; ">
+1
+</td>
+<td style="text-align:center;min-width: 2.6cm; ">
+25370
+</td>
+</tr>
+</tbody>
+</table>
+<p>These data were drawn from a larger database of 40,284 insurance private customers. These customers are tracked from 2010 to 2014. Some customers do not renew their policies, so that they do not stay in the sample for five years. For the smaller data, only the 2014 policy year was used and from this, a random sample of 10,000 customers was drawn.</p>
+<div style="page-break-after: always;"></div>
+<p>See <span class="citation">Frees et al. (<a href="bibliography.html#ref-frees2021dependence">2021</a>)</span> for more information about this dataset. The larger database contains 122935 rows and is freely available at:</p>
+<p><em>Source:</em> Guillen, Montserrat; Bolancé, Catalina; Frees, Edward W.; Valdez, Emiliano A. (2021), “Insurance data for homeowners and motor insurance customers monitored over five years”, Mendeley Data, V1, DOI <a href="https://doi.org/10.17632/vfchtm5y7j.1" class="uri">https://doi.org/10.17632/vfchtm5y7j.1</a></p>
+</div>
+<div id="S:CASDatasets" class="section level2 hasAnchor" number="5.6">
+<h2><span class="header-section-number">5.6</span> ‘R’ Package CASdatasets<a href="DataResources.html#S:CASDatasets" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<p>The <code>R</code> package <code>CASdatasets</code> provides a convenient way to access many well-known insurance datasets. This package was originally created to support the book <em>Computational Actuarial Science with R</em>, edited by Arthur Charpentier, <span class="citation">Charpentier (<a href="bibliography.html#ref-charpentier2014computational">2014</a>)</span>.</p>
+<p>To install the package, here is a bit of <code>R</code> code:</p>
+<div class="sourceCode" id="cb67"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb67-1"><a href="DataResources.html#cb67-1" tabindex="-1"></a><span class="fu">install.packages</span>(<span class="st">&quot;CASdatasets&quot;</span>, <span class="at">repos =</span> <span class="st">&quot;http://cas.uqam.ca/pub/&quot;</span>, <span class="at">type =</span> <span class="st">&quot;source&quot;</span>)</span>
+<span id="cb67-2"><a href="DataResources.html#cb67-2" tabindex="-1"></a><span class="fu">library</span>(CASdatasets)</span>
+<span id="cb67-3"><a href="DataResources.html#cb67-3" tabindex="-1"></a><span class="st">`</span><span class="at">?</span><span class="st">`</span>(CASdatasets)</span>
+<span id="cb67-4"><a href="DataResources.html#cb67-4" tabindex="-1"></a><span class="st">`</span><span class="at">?</span><span class="st">`</span>(sgautonb  <span class="co"># See the documentation of the Singapore Auto Data</span></span>
+<span id="cb67-5"><a href="DataResources.html#cb67-5" tabindex="-1"></a>)</span>
+<span id="cb67-6"><a href="DataResources.html#cb67-6" tabindex="-1"></a><span class="st">`</span><span class="at">?</span><span class="st">`</span>(lossalae  <span class="co"># See the documentation of the Loss and Expense Data</span></span>
+<span id="cb67-7"><a href="DataResources.html#cb67-7" tabindex="-1"></a>)</span></code></pre></div>
+<p>Note that this package assumes that you have already installed a few other packages, including <em>xts</em>, <em>sp</em>, and <em>zoo</em>.</p>
+<p>To illustrate,</p>
+<ul>
+<li>in Chapter <a href="#ChapFrequency-Modeling"><strong>??</strong></a> we use the Singapore data (referred to as <code>sgautonb</code> in the package) and</li>
+<li>in Chapter <a href="#ChapDependenceModel"><strong>??</strong></a> we use the loss and expense data (referred to as <code>lossalae</code> in the package).</li>
+</ul>
+</div>
+<div id="other-data-sources" class="section level2 hasAnchor" number="5.7">
+<h2><span class="header-section-number">5.7</span> Other Data Sources<a href="DataResources.html#other-data-sources" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<p>There exists man other (non-actarial) data sources. First, data can be obtained from university-based researchers who collect primary data. Second, data can be obtained from organizations that are set up for the purpose of releasing secondary data for the general research community. Third, data can be obtained from national and regional statistical institutes that collect data. Finally, companies have corporate data that can be obtained for research purposes.</p>
+<p>While it might be difficult to obtain data to address a specific research problem or answer a business question, it is relatively easy to obtain data to test a model or an algorithm for data analysis. In the modern era, readers can obtain datasets from the Internet. The following is a list of some websites to obtain real-world data:</p>
+<ul>
+<li><strong>UCI Machine Learning Repository.</strong> This website (url: <a href="http://archive.ics.uci.edu/ml/index.php">http://archive.ics.uci.edu/ml/index.php</a>) maintains more than 400 datasets that can be used to test machine learning algorithms.</li>
+<li><strong>Kaggle.</strong> The Kaggle website (url: <a href="https://www.kaggle.com/">https://www.kaggle.com/</a>) include real-world datasets used for data science competitions. Readers can download data from Kaggle by registering an account.</li>
+<li><strong>DrivenData.</strong> DrivenData aims at bringing cutting-edge practices in data science to solve some of the world’s biggest social challenges. In its website (url: <a href="https://www.drivendata.org/">https://www.drivendata.org/</a>), readers can participate in data science competitions and download datasets.</li>
+<li><strong>Analytics Vidhya.</strong> This website (url: <a href="https://datahack.analyticsvidhya.com/contest/all/">https://datahack.analyticsvidhya.com/contest/all/</a>) allows you to participate and download datasets from practice problems and hackathon problems.</li>
+<li><strong>KDD Cup.</strong> KDD Cup is the annual Data Mining and Knowledge Discovery competition organized by the ACM Special Interest Group on Knowledge Discovery and Data Mining. This website (url: <a href="http://www.kdd.org/kdd-cup">http://www.kdd.org/kdd-cup</a>) contains the datasets used in past KDD Cup competitions since 1997.</li>
+<li><strong>U.S. Government’s open data.</strong> This website (url: <a href="https://www.data.gov/">https://www.data.gov/</a>) contains about 200,000 datasets covering a wide range of areas including climate, education, energy, and finance.</li>
+<li><strong>AWS Public Datasets.</strong> In this website (url: <a href="https://aws.amazon.com/datasets/">https://aws.amazon.com/datasets/</a>), Amazon provides a centralized repository of public datasets, including some huge datasets.</li>
+</ul>
+
+
+</div>
+</div>
+            </section>
+
+          </div>
+        </div>
+      </div>
+<a href="ChapNotationConvention.html" class="navigation navigation-prev " aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
+<a href="bibliography.html" class="navigation navigation-next " aria-label="Next page"><i class="fa fa-angle-right"></i></a>
+    </div>
+  </div>
+<script src="libs/gitbook-2.6.7/js/app.min.js"></script>
+<script src="libs/gitbook-2.6.7/js/clipboard.min.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-search.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-sharing.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-fontsettings.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-bookdown.js"></script>
+<script src="libs/gitbook-2.6.7/js/jquery.highlight.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-clipboard.js"></script>
+<script>
+gitbook.require(["gitbook"], function(gitbook) {
+gitbook.start({
+"sharing": {
+"github": false,
+"facebook": true,
+"twitter": true,
+"linkedin": false,
+"weibo": false,
+"instapaper": false,
+"vk": false,
+"whatsapp": false,
+"all": ["facebook", "twitter", "linkedin", "weibo", "instapaper"]
+},
+"fontsettings": {
+"theme": "white",
+"family": "sans",
+"size": 2
+},
+"edit": {
+"link": null,
+"text": null
+},
+"history": {
+"link": null,
+"text": null
+},
+"view": {
+"link": null,
+"text": null
+},
+"download": null,
+"search": {
+"engine": "fuse",
+"options": null
+},
+"toc": {
+"collapse": "subsection"
+}
+});
+});
+</script>
+
+<!-- dynamically load mathjax for compatibility with self-contained -->
+<script>
+  (function () {
+    var script = document.createElement("script");
+    script.type = "text/javascript";
+    var src = "true";
+    if (src === "" || src === "true") src = "https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.9/latest.js?config=TeX-MML-AM_CHTML";
+    if (location.protocol !== "file:")
+      if (/^https?:/.test(src))
+        src = src.replace(/^https?:/, '');
+    script.src = src;
+    document.getElementsByTagName("head")[0].appendChild(script);
+  })();
+</script>
+</body>
+
+</html>

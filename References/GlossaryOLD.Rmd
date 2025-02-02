@@ -1,0 +1,151 @@
+
+
+```{r echo = FALSE}
+#  Some Switches
+QUIZ = TRUE
+ANIMATION = TRUE
+SHOW_PDF = TRUE
+ANIMATIONHOOK <- 'gifski'
+GLOSSARY = FALSE
+DIST_TABLES_LATEX = FALSE
+# Switches that control the number of animations in Chapter 6
+# Use these for html output
+numAnimation =  5#10#30     # Section 6.4 Importance Sampling
+numAnimation2 = 2#23    # Section 6.5.1 Hastings Metropolis 
+numAnimation3 = 2#100   # Section 6.5.2 Gibbs
+# Use these for pdf output - maybe later
+
+```
+
+```{r echo = FALSE}
+library(kableExtra)
+```
+
+```{r echo = FALSE}
+#  Default Widths for Latex
+ColWidth4  <- "1.8cm"
+ColWidth5  <- "1.6cm"
+ColWidth6  <- "1.4cm"
+ColWidth7  <- "1.3cm"
+ColWidth8  <- "1.1cm"
+ColWidth9  <- "1.0cm"
+ColWidth10 <- "0.9cm"
+ColWidth14 <- "0.5cm"
+  if (HtmlEval){
+ #  Default Widths for HTML
+     ColWidth4  <- "3.6cm"
+     ColWidth5  <- "3.2cm"
+     ColWidth6  <- "2.8cm"
+     ColWidth7  <- "2.6cm"
+     ColWidth8  <- "2.2cm"
+     ColWidth9  <- "2.0cm"
+     ColWidth10 <- "1.8cm"
+     ColWidth14 <- "1.0cm" }
+#  Function to Create a Style for Generating Tables
+TableGen1 <-function(TableData,TextTitle,Align=`r`, Digits=0, ColumnSpec=1,
+                     ColumnSpec0=1, ColWidth0= "2.5cm", 
+                     BorderRight=1, ColWidth= "1.5cm", latexFont = 10,
+                     Border_Right = FALSE){
+  if (HtmlEval){
+     TextTitle1 <- paste0('**', TextTitle,'**', collapse='')
+     if (is.na(TextTitle)){TextTitle1 <- NA}
+     kableExtra::kbl(TableData, caption=TextTitle1, align = Align,
+                     booktabs = T, digits=Digits) %>%
+     kableExtra::kable_classic(full_width = F, font = 12, html_font = "Cambria") %>%
+     kable_styling(bootstrap_options = c("striped", "condensed"))  %>%
+     kableExtra::column_spec(ColumnSpec0, width_min = ColWidth0) %>%
+     kableExtra::column_spec(ColumnSpec,  width_min = ColWidth)    %>%
+     kableExtra::column_spec(BorderRight, border_right = Border_Right)
+   } else  
+   { ColumnSpec <- ColumnSpec+1
+     TextTitle1 <- paste0('\\textbf{',TextTitle,'}', collapse='')
+     if (is.na(TextTitle)){TextTitle1 <- NA}
+     kableExtra::kbl(TableData, caption = TextTitle1, align = Align,
+                     booktabs = T, digits=Digits,escape = FALSE) %>%
+    kableExtra::kable_styling(latex_options = c("striped", "condensed") ,
+                              font = latexFont, protect_latex= TRUE)   %>%
+     kableExtra::column_spec(ColumnSpec, width =  ColWidth)     %>%
+    kableExtra::column_spec(BorderRight, border_right = Border_Right)
+   }  
+}
+  
+```
+
+
+
+
+```{r echo = FALSE}
+Gloss_data <- read.csv("References/GlossFct.csv", header = TRUE)
+Gloss_data$Term = trimws(tolower(Gloss_data$Term))
+
+A1 <- '<a href="#" class="tooltip" style="color:green">*'
+A2 <- '*<span style="font-size:8pt">'
+A3 <- '</span></a>'
+
+Glossfunction <- function(term){
+  temp2 <- which(Gloss_data == trimws(tolower(term)), arr.ind = TRUE)
+  ifelse(length(temp2) == 0, return(''), return(Gloss_data[temp2[[1]],2]))
+}
+
+GlossfunctionBySection <- function(term, section){
+  temp2 <- which(Gloss_data$Term == trimws(tolower(term)) & Gloss_data$Section == section)
+  ifelse(length(temp2) == 0, return(''), return(Gloss_data[temp2,2]))
+}
+
+#Gloss <- function(term){
+#  return(paste(A1,term,A2,Glossfunction(term),A3, sep=""))
+#}
+
+Gloss <- function(term, section){
+  if (missing(section)) {
+    section = FALSE
+  }
+  
+  if (section == FALSE) {
+    return(paste(A1,term,A2,Glossfunction(term),A3, sep=""))
+  } else {
+    return(paste(A1,term,A2,GlossfunctionBySection(term, section),A3, sep=""))
+  }
+}
+
+```
+
+
+
+
+```{r echo = FALSE}
+B1 <- '<h5 style="text-align: center;"><a id="displayExample.'
+B2 <- ' href="javascript:toggleEX(\'toggleExample.'
+B3 <- '\',\'displayExample.'
+B4a <- '\');"><i><strong>'
+B4b <- '</strong></i></a> </h5><div id="toggleExample.'
+B5 <- '" style="display: none">'
+
+HideExample <- function(arg1,arg2){
+  return(paste(B1,arg1,'"',B2,arg1,B3,arg1,B4a,arg2,B4b,arg1,B5, sep=""))
+} 
+
+C1 <- '<h5 style="text-align: center;"><a id="displayCode.'
+C2 <- ' href="javascript:togglecode(\'toggleCode.'
+C3 <- '\',\'displayCode.'
+C4a<- '\');"><i><strong>'
+C4b<- '</strong></i></a> </h5><div id="toggleCode.'
+C5 <- '" style="display: none">'
+
+HideRCode <- function(arg1,arg2){
+  return(paste(C1,arg1,'"',C2,arg1,C3,arg1,C4a,arg2,C4b,arg1,C5, sep=""))
+}
+
+D1 <- '<h5 style="text-align: center;"><a id="displayTheory.'
+D2 <- ' href="javascript:toggleTheory(\'toggleTheory.'
+D3 <- '\',\'displayTheory.'
+D4a<- '\');"><i><strong>'
+D4b<- '</strong></i></a> </h5><div id="toggleTheory.'
+D5 <- '" style="display: none">'
+
+HideProofTheory <- function(arg1,arg2){
+  return(paste(D1,arg1,'"',D2,arg1,C3,arg1,D4a,arg2,D4b,arg1,D5, sep=""))
+}
+
+```
+

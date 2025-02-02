@@ -78,19 +78,6 @@ TableGen1 <-function(TableData,TextTitle,Align=`r`, Digits=0, ColumnSpec=1,
   
 ```
 
-<script language="javascript">
-<!--   $( function() {
-    $("#tabs").tabs();
-  } ); -->
-
-$(document).ready(function(){
-    $('[data-toggle="tooltip"]').tooltip();
-});
-
-$(document).ready(function(){
-    $('[data-toggle="popover"]').popover(); 
-});
-</script>
 
 
 ```{r echo = FALSE}

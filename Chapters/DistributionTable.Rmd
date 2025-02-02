@@ -28,6 +28,7 @@
 
 ```{r child = 'Chapters/DistributionTableSections/Continuous.Rmd', eval = !DIST_TABLES_LATEX}
 ```
+
 ```{r child = 'Chapters/DistributionTableSections/ContinuousLatex.Rmd', eval = DIST_TABLES_LATEX}
 ```
 
